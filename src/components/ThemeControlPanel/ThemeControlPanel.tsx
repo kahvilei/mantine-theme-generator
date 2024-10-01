@@ -13,14 +13,17 @@ import {
   Group,
   SegmentedControl,
   Autocomplete,
-  Accordion,
   Button,
   TextInput,
   ActionIcon,
   ColorPicker,
   Box,
+  Tabs,
+  FileInput,
+  DEFAULT_THEME
 } from '@mantine/core';
-import { IconTrash } from '@tabler/icons-react';
+import { IconTrash, IconDownload, IconUpload } from '@tabler/icons-react';
+import generateShades from '../../utils/generateColors';
 
 interface ThemeControlPanelProps {
   theme: MantineThemeOverride;
@@ -38,24 +41,23 @@ const monospaceFonts = [
   'Bitstream Vera Sans Mono', 'Courier', 'Fira Code', 'Source Code Pro', 'Ubuntu Mono', 'JetBrains Mono',
 ];
 
-// Function to generate color shades
-const generateShades = (baseColor: string): string[] => {
-  // This is a placeholder function. You should implement a proper shade generation algorithm here.
-  // For now, we'll just return an array of the same color 10 times.
-
-  return Array(10).fill(baseColor);
-};
-
 const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateTheme }) => {
   const currentTheme = useMantineTheme();
 
-  //if theme is currently empty, set it to the current theme
   if (Object.keys(theme).length === 0) {
-    updateTheme(currentTheme);
+    theme = DEFAULT_THEME;
   }
 
   const [newColorName, setNewColorName] = useState('');
   const [newColorValue, setNewColorValue] = useState('#000000');
+  const [colorKeyColors, setColorKeyColors] = useState<{ [key: string]: string }>({});
+  const [useVariableColorShades, setUseVariableColorShades] = useState<boolean>(
+    typeof theme.primaryShade === 'object'
+  );
+
+  for (let color in theme.colors) {
+    colorKeyColors[color] = theme.colors[color] ? theme.colors[color][5] : '#000';
+  }
 
   const addNewColor = () => {
     if (newColorName && newColorValue) {
@@ -65,8 +67,10 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
           [newColorName]: generateShades(newColorValue),
         },
       });
+      setColorKeyColors({ ...colorKeyColors, [newColorName]: newColorValue });
       setNewColorName('');
       setNewColorValue('#000000');
+
     }
   };
 
@@ -77,6 +81,9 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
         [colorName]: generateShades(newBaseColor),
       },
     });
+    for (let color in theme.colors) {
+      colorKeyColors[color] = theme.colors[color] ? theme.colors[color][5] : newBaseColor;
+    }
   };
 
   const deleteColor = (colorName: string) => {
@@ -88,26 +95,147 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
     }
   };
 
+  const downloadTheme = (theme: MantineThemeOverride) => {
+    const themeString = JSON.stringify(theme, null, 2);
+    const blob = new Blob([themeString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'mantine-theme.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  const uploadTheme = (payload: File | null) => {
+    const file = payload;
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const theme = JSON.parse(e.target?.result as string);
+        updateTheme(theme);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handlePrimaryShadeChange = (value: number | { light: number; dark: number }) => {
+    if (useVariableColorShades) {
+      updateTheme({
+        primaryShade: {
+          light: typeof value === 'object' ? value.light as MantineColorShade : value as MantineColorShade,
+          dark: typeof value === 'object' ? value.dark as MantineColorShade : value as MantineColorShade,
+        },
+      });
+    } else {
+      updateTheme({ primaryShade: value as MantineColorShade });
+    }
+  };
+
   return (
-    <Box id="control-panel" style={{ width: '400px', maxHeight: '100vh', height: '100vh', overflowY: 'auto', borderRight: '1px solid grey'}}>
+    <Box id="control-panel" style={{ width: '500px', maxHeight: '100vh', height: '100vh', overflowY: 'auto', borderRight: '1px solid grey' }}>
       <Stack gap="md" p="md">
-        <Text size="xl">Theme Controls</Text>
-        <Accordion>
-          <Accordion.Item value="colors">
-            <Accordion.Control>Color Palette</Accordion.Control>
-            <Accordion.Panel>
+        <Group justify="space-between">
+          <Text size="xl">Mantine Theme Editor</Text>
+          <Group align="right">
+            <ActionIcon color={"red"} onClick={() => updateTheme(currentTheme)}>
+              <IconTrash size="1.5rem" />
+            </ActionIcon>
+            <ActionIcon color={"green"} onClick={() => downloadTheme(theme)}>
+              <IconDownload size="1.5rem" />
+            </ActionIcon>
+            <ActionIcon onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}>
+              <IconUpload size="1.5rem" />
+            </ActionIcon>
+            <FileInput onChange={uploadTheme} accept=".json" style={{ display: 'none' }} />
+          </Group>
+        </Group>
+        <Tabs defaultValue="color">
+          <Tabs.List>
+            <Tabs.Tab value="color">Color</Tabs.Tab>
+            <Tabs.Tab value="typography">Typography</Tabs.Tab>
+            <Tabs.Tab value="general">General</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="color">
+            <Stack mt="md">
               <Select
                 label="Primary Color"
                 data={Object.keys(theme.colors || currentTheme.colors)}
-                value={theme.primaryColor}
+                value={theme.primaryColor ? theme.primaryColor : Object.keys(theme.colors || currentTheme.colors)[0]}
                 onChange={(value) => updateTheme({ primaryColor: value as string })}
+              />
+
+              <Switch
+                label="Use variable color shades"
+                checked={useVariableColorShades}
+                onChange={(event) => {
+                  setUseVariableColorShades(event.currentTarget.checked);
+                  if (event.currentTarget.checked) {
+                    handlePrimaryShadeChange({ light: 6, dark: 8 });
+                  } else {
+                    handlePrimaryShadeChange(6);
+                  }
+                }}
+              />
+
+              {useVariableColorShades ? (
+                <>
+                  <Text size="sm" mt="md">Light Mode Primary Shade</Text>
+                  <Slider
+                    min={0}
+                    max={9}
+                    step={1}
+                    value={typeof theme.primaryShade === 'object' ? theme.primaryShade.light : 6}
+                    onChange={(value) => handlePrimaryShadeChange({
+                      light: value,
+                      dark: typeof theme.primaryShade === 'object' ? theme.primaryShade.dark ? theme.primaryShade.dark : 8 : 8
+                    })}
+                  />
+                  <Text size="sm" mt="md">Dark Mode Primary Shade</Text>
+                  <Slider
+                    min={0}
+                    max={9}
+                    step={1}
+                    value={typeof theme.primaryShade === 'object' ? theme.primaryShade.dark : 8}
+                    onChange={(value) => handlePrimaryShadeChange({
+                      light: typeof theme.primaryShade === 'object' ? theme.primaryShade.light ? theme.primaryShade.light : 6 : 6,
+                      dark: value
+                    })}
+                  />
+                </>
+              ) : (
+                <>
+                  <Text size="sm" mt="md">Primary Shade</Text>
+                  <Slider
+                    min={0}
+                    max={9}
+                    step={1}
+                    value={typeof theme.primaryShade === 'number' ? theme.primaryShade : 6}
+                    onChange={(value) => handlePrimaryShadeChange(value)}
+                  />
+                </>
+              )}
+
+              <NumberInput
+                label="Luminance Threshold"
+                min={0}
+                max={1}
+                step={0.1}
+                value={theme.luminanceThreshold}
+                onChange={(value) => updateTheme({ luminanceThreshold: typeof value === 'number' ? value : 0 })}
+              />
+
+              <Switch
+                label="Auto Contrast"
+                checked={theme.autoContrast}
+                onChange={(event) => updateTheme({ autoContrast: event.currentTarget.checked })}
               />
 
               <Text size="sm" mt="md">Manage Colors</Text>
               {Object.entries(theme.colors || currentTheme.colors).map(([colorName, shades]) => (
                 <Group key={colorName} mt="xs">
                   <ColorInput
-                    value={shades? shades[5]: '#000000'}
+                    value={shades ? shades[5] : '#000000'}
                     onChange={(color) => updateColor(colorName, color)}
                   />
                   <Text size="sm">{colorName}</Text>
@@ -131,23 +259,81 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
                 />
                 <Button onClick={addNewColor}>Add</Button>
               </Group>
-            </Accordion.Panel>
-          </Accordion.Item>
 
-          <Accordion.Item value="general">
-            <Accordion.Control>General Settings</Accordion.Control>
-            <Accordion.Panel>
-              <Text size="sm">Primary Shade</Text>
-              <Slider
-                min={0}
-                max={9}
-                step={1}
-                value={typeof theme.primaryShade === 'number' ? Number(theme.primaryShade) : Number(currentTheme.primaryShade)}
-                onChange={(value) => updateTheme({ primaryShade: value as MantineColorShade })}
+              <Text size="sm" mt="md">Default Gradient</Text>
+              <Group grow>
+                <ColorInput
+                  format="rgba"
+                  value={theme.defaultGradient?.from}
+                  onChange={(color) => updateTheme({
+                    defaultGradient: {
+                      ...theme.defaultGradient,
+                      from: color,
+                    },
+                  })}
+                  swatches={Object.values(colorKeyColors)}
+                />
+                <ColorInput
+                  format="rgba"
+                  value={theme.defaultGradient?.to}
+                  onChange={(color) => updateTheme({
+                    defaultGradient: {
+                      ...theme.defaultGradient,
+                      to: color,
+                    },
+                  })}
+                  swatches={Object.values(colorKeyColors)}
+                />
+              </Group>
+              <div
+                style={{
+                  width: '100%',
+                  height: '50px',
+                  background: `linear-gradient(to right, ${theme.defaultGradient?.from}, ${theme.defaultGradient?.to})`,
+                  borderRadius: currentTheme.defaultRadius,
+                }}
+              />
+            </Stack>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="typography">
+            <Stack mt="md">
+              <Autocomplete
+                label="Main Font Family"
+                data={commonFonts}
+                value={theme.fontFamily}
+                onChange={(value) => updateTheme({ fontFamily: value })}
+                placeholder="Select or type a font family"
               />
 
-              <Select
-                label="Focus Ring"
+              <Autocomplete
+                label="Heading Font Family"
+                data={commonFonts}
+                value={theme.headings?.fontFamily}
+                onChange={(value) => updateTheme({ headings: { ...theme.headings, fontFamily: value } })}
+                placeholder="Select or type a font family"
+              />
+
+              <Autocomplete
+                label="Monospace Font Family"
+                data={monospaceFonts}
+                value={theme.fontFamilyMonospace}
+                onChange={(value) => updateTheme({ fontFamilyMonospace: value })}
+                placeholder="Select or type a monospace font family"
+              />
+
+              <Switch
+                label="Font Smoothing"
+                checked={theme.fontSmoothing}
+                onChange={(event) => updateTheme({ fontSmoothing: event.currentTarget.checked })}
+              />
+            </Stack>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="general">
+            <Stack mt="md">
+              <Text size="sm">Focus Ring</Text>
+              <SegmentedControl
                 data={[
                   { value: 'auto', label: 'Auto' },
                   { value: 'always', label: 'Always' },
@@ -166,38 +352,6 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
                 onChange={(value) => updateTheme({ scale: Number(value) })}
               />
 
-              <Switch
-                label="Font Smoothing"
-                checked={theme.fontSmoothing}
-                onChange={(event) => updateTheme({ fontSmoothing: event.currentTarget.checked })}
-              />
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          <Accordion.Item value="fonts">
-            <Accordion.Control>Fonts</Accordion.Control>
-            <Accordion.Panel>
-              <Autocomplete
-                label="Font Family"
-                data={commonFonts}
-                value={theme.fontFamily}
-                onChange={(value) => updateTheme({ fontFamily: value })}
-                placeholder="Select or type a font family"
-              />
-
-              <Autocomplete
-                label="Monospace Font Family"
-                data={monospaceFonts}
-                value={theme.fontFamilyMonospace}
-                onChange={(value) => updateTheme({ fontFamilyMonospace: value })}
-                placeholder="Select or type a monospace font family"
-              />
-            </Accordion.Panel>
-          </Accordion.Item>
-
-          <Accordion.Item value="other">
-            <Accordion.Control>Other Settings</Accordion.Control>
-            <Accordion.Panel>
               <Text size="sm">Default Radius</Text>
               <Slider
                 min={0}
@@ -223,48 +377,9 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
                 onChange={(value) => updateTheme({ cursorType: value as 'default' | 'pointer' })}
               />
 
-              <Text size="sm">Default Gradient</Text>
-              <Group grow>
-                <ColorPicker
-                  format="rgba"
-                  value={theme.defaultGradient?.from}
-                  onChange={(color) => updateTheme({
-                    defaultGradient: {
-                      ...theme.defaultGradient,
-                      from: color,
-                    },
-                  })}
-                />
-                <ColorPicker
-                  format="rgba"
-                  value={theme.defaultGradient?.to}
-                  onChange={(color) => updateTheme({
-                    defaultGradient: {
-                      ...theme.defaultGradient,
-                      to: color,
-                    },
-                  })}
-                />
-              </Group>
-
-              <NumberInput
-                label="Luminance Threshold"
-                min={0}
-                max={1}
-                step={0.1}
-                value={theme.luminanceThreshold}
-                onChange={(value) => updateTheme({ luminanceThreshold: typeof value === 'number' ? value : 0 })}
-              />
-
-              <Switch
-                label="Auto Contrast"
-                checked={theme.autoContrast}
-                onChange={(event) => updateTheme({ autoContrast: event.currentTarget.checked })}
-              />
-            </Accordion.Panel>
-          </Accordion.Item>
-
-        </Accordion>
+            </Stack>
+          </Tabs.Panel>
+        </Tabs>
       </Stack>
     </Box>
   );
