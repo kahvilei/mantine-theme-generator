@@ -3,6 +3,7 @@ import {
     Stack,
     Switch,
     Select,
+    SelectProps,
     Slider,
     Text,
     ColorInput,
@@ -14,9 +15,14 @@ import {
     TextInput,
     ActionIcon,
     DEFAULT_THEME,
+    ColorSwatch,
+    Popover,
+    ColorPicker,
 } from '@mantine/core';
-import { IconTrash } from '@tabler/icons-react';
+import { IconEdit, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
 import generateShades from '../../utils/generateColors';
+import classes from './ColorControls.module.css';
+import { Input } from 'postcss';
 
 
 interface ColorControlProps {
@@ -87,6 +93,16 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
         }
     };
 
+    const renderColorSelect: SelectProps['renderOption'] = ({ option, checked }) => (
+        <Group>
+            <ColorSwatch
+                color={colorKeyColors[option.value]}
+                size={'20px'}
+            />
+            <Text>{option.value}</Text>
+        </Group>
+    );
+
     return (
 
         <Stack mt="md">
@@ -95,6 +111,8 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
                 data={Object.keys(theme.colors || currentTheme.colors)}
                 value={theme.primaryColor ? theme.primaryColor : Object.keys(theme.colors || currentTheme.colors)[0]}
                 onChange={(value) => updateTheme({ primaryColor: value as string })}
+                renderOption={renderColorSelect}
+                leftSection={<ColorSwatch color={colorKeyColors[theme.primaryColor ? theme.primaryColor : '0']} size={20} />}
             />
 
             <Switch
@@ -163,34 +181,75 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
                 onChange={(event) => updateTheme({ autoContrast: event.currentTarget.checked })}
             />
 
-            <Text size="sm" mt="md">Manage Colors</Text>
-            {Object.entries(theme.colors || currentTheme.colors).map(([colorName, shades]) => (
-                <Group key={colorName} mt="xs">
-                    <ColorInput
-                        value={shades ? shades[5] : '#000000'}
-                        onChange={(color) => updateColor(colorName, color)}
-                    />
-                    <Text size="sm">{colorName}</Text>
-                    <ActionIcon color="red" onClick={() => deleteColor(colorName)}>
-                        <IconTrash size="1rem" />
-                    </ActionIcon>
-                </Group>
-            ))}
+            <Text size="sm" mt="md">Color Palette</Text>
+            <Group mt="xs">
+                {Object.entries(theme.colors || currentTheme.colors).map(([colorName, shades]) => (
+                    <Popover
+                        key={colorName}
+                        withArrow
+                        position="bottom"
+                        trapFocus
+                    >
+                        <Popover.Target>
+                            <Group>
+                                <ColorSwatch
+                                    key={colorName}
+                                    color={shades ? shades[5] as string : '#000000'}
+                                    size={'4rem'}
+                                    className={classes.swatchEditor}
+                                >
+                                    <IconPencil size="1.5rem" />
+                                </ColorSwatch>
+                            </Group>
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                            <Stack>
+                                <Group>
+                                    <TextInput label={'name'} placeholder={colorName} />
 
-            <Text size="sm" mt="md">Add New Color</Text>
-            <Group align="flex-end">
-                <TextInput
-                    label="Color Name"
-                    value={newColorName}
-                    onChange={(event) => setNewColorName(event.currentTarget.value)}
-                />
-                <ColorInput
-                    label="Color Value"
-                    value={newColorValue}
-                    onChange={setNewColorValue}
-                />
-                <Button onClick={addNewColor}>Add</Button>
+                                </Group>
+                                <ColorInput withPicker={false} pointer label="color" placeholder={colorKeyColors[colorName]} value={colorKeyColors[colorName]} onBlur={(color) => updateColor(colorName, color.target.innerText)} />
+                                <ColorPicker
+                                    value={colorKeyColors[colorName]}
+                                    onChange={(color) => updateColor(colorName, color)}
+                                    swatches={Object.values(colorKeyColors)}
+                                />
+                            </Stack>
+                        </Popover.Dropdown>
+                    </Popover>
+
+                ))}
+                <Popover
+                    withArrow
+                    position="bottom"
+                >
+                    <Popover.Target>
+                        <Group>
+                            <ActionIcon radius={'xl'} size='4rem' color="bg" className={classes.colorAdd}>
+                                <IconPlus/>
+                            </ActionIcon>
+                        </Group>
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                        <Text size="sm" mt="md">Add New Color</Text>
+                        <Group align="flex-end">
+                            <TextInput
+                                label="Color Name"
+                                value={newColorName}
+                                onChange={(event) => setNewColorName(event.currentTarget.value)}
+                            />
+                            <ColorInput
+                                label="Color Value"
+                                value={newColorValue}
+                                onChange={setNewColorValue}
+                            />
+                            <Button onClick={addNewColor}>Add</Button>
+                        </Group>
+                    </Popover.Dropdown>
+                </Popover>
             </Group>
+
+
 
             <Text size="sm" mt="md">Default Gradient</Text>
             <Group grow>

@@ -1,0 +1,18 @@
+.swatchEditor {
+    cursor: pointer;
+    svg{
+       opacity: 0;
+       transition: .1s;
+    }
+    :hover svg{
+        scale: 1.1;
+        opacity: 1;
+    }
+
+}
+
+.colorAdd {
+    cursor: pointer;
+    color:  var(--mantine-color-gray-text);
+    outline: 1px solid var(--mantine-color-gray-text);
+}

@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     Stack,
     Switch,
     MantineThemeOverride,
     Autocomplete,
-    DEFAULT_THEME
 } from '@mantine/core';
 
 interface TypographyControlProps {
@@ -24,16 +23,6 @@ const monospaceFonts = [
 ];
 
 const TypographyControl: React.FC<TypographyControlProps> = ({ theme, updateTheme }) => {
-    const currentTheme = DEFAULT_THEME;
-
-    //this runs once in the case we do not have any theme set
-    useEffect(() => {
-        //if theme is empty, set it to default theme
-        if (Object.keys(theme).length === 0) {
-            updateTheme(currentTheme);
-        }
-    }, []);
-
 
     return (
 
