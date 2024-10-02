@@ -204,9 +204,11 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
                         </Popover.Target>
                         <Popover.Dropdown>
                             <Stack>
-                                <Group>
+                                <Group align='end'>
                                     <TextInput label={'name'} placeholder={colorName} />
-
+                                    <ActionIcon color="red" onClick={() => deleteColor(colorName)}>
+                                        <IconTrash />
+                                    </ActionIcon>
                                 </Group>
                                 <ColorInput withPicker={false} pointer label="color" placeholder={colorKeyColors[colorName]} value={colorKeyColors[colorName]} onBlur={(color) => updateColor(colorName, color.target.innerText)} />
                                 <ColorPicker
@@ -226,7 +228,7 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
                     <Popover.Target>
                         <Group>
                             <ActionIcon radius={'xl'} size='4rem' color="bg" className={classes.colorAdd}>
-                                <IconPlus/>
+                                <IconPlus />
                             </ActionIcon>
                         </Group>
                     </Popover.Target>
@@ -253,34 +255,36 @@ const ColorControl: React.FC<ColorControlProps> = ({ theme, updateTheme }) => {
 
             <Text size="sm" mt="md">Default Gradient</Text>
             <Group grow>
-                <ColorInput
-                    format="rgba"
-                    value={theme.defaultGradient?.from}
+                <Select
+                    data={Object.keys(theme.colors || currentTheme.colors)}
+                    value={theme.defaultGradient ? theme.defaultGradient.from : Object.keys(theme.colors || currentTheme.colors)[0]}
                     onChange={(color) => updateTheme({
                         defaultGradient: {
                             ...theme.defaultGradient,
-                            from: color,
+                            from: color?.toString() || 'blue',
                         },
                     })}
-                    swatches={Object.values(colorKeyColors)}
+                    renderOption={renderColorSelect}
+                    leftSection={<ColorSwatch color={colorKeyColors[theme.defaultGradient ? theme.defaultGradient.from as string : '0']} size={20} />}
                 />
-                <ColorInput
-                    format="rgba"
-                    value={theme.defaultGradient?.to}
+                <Select
+                    data={Object.keys(theme.colors || currentTheme.colors)}
+                    value={theme.defaultGradient ? theme.defaultGradient.to : Object.keys(theme.colors || currentTheme.colors)[0]}
                     onChange={(color) => updateTheme({
                         defaultGradient: {
                             ...theme.defaultGradient,
-                            to: color,
+                            to: color?.toString() || 'blue',
                         },
                     })}
-                    swatches={Object.values(colorKeyColors)}
+                    renderOption={renderColorSelect}
+                    leftSection={<ColorSwatch color={colorKeyColors[theme.defaultGradient ? theme.defaultGradient.to as string: '0']} size={20} />}
                 />
             </Group>
             <div
                 style={{
                     width: '100%',
                     height: '50px',
-                    background: `linear-gradient(to right, ${theme.defaultGradient?.from}, ${theme.defaultGradient?.to})`,
+                    background: `linear-gradient(to right, ${colorKeyColors[theme.defaultGradient?.from as string]}, ${colorKeyColors[theme.defaultGradient?.to as string]})`,
                     borderRadius: currentTheme.defaultRadius,
                 }}
             />
