@@ -1,9 +1,9 @@
 {
-  "name": "mantine-vite-template",
+  "name": "mantine-theme-generator",
   "private": true,
   "type": "module",
   "version": "0.0.0",
-  "homepage": "https://kahvilei.github.io/mantine-theme-generator",
+  "homepage": "https://kahvilei.github.io/mantine-theme-generator/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
