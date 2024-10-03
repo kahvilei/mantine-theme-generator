@@ -1,64 +1,76 @@
 import React from 'react';
 import {
-  Button,
-  Text,
-  Card,
-  Input,
-  Checkbox,
-  Switch,
-  Select,
-  Slider,
-  ColorPicker,
-  Stack,
-  Group,
-  Title,
-  Container,
-  TextInput,
-  Textarea,
-  NumberInput,
-  Radio,
-  Chip,
-  Badge,
-  Alert,
-  Tooltip,
+  IconAlertCircle,
+  IconMessageCircle,
+  IconPhoto,
+  IconSettings,
+  IconTrash,
+} from '@tabler/icons-react';
+import {
   Accordion,
-  Tabs,
-  Paper,
-  Progress,
-  Divider,
   ActionIcon,
-  Menu,
-  Loader,
+  Alert,
+  Badge,
   Box,
+  Button,
+  Card,
+  Checkbox,
+  Chip,
+  ColorPicker,
+  Container,
+  Divider,
+  Group,
+  Input,
+  Loader,
   MantineProvider,
   MantineThemeOverride,
+  Menu,
+  NumberInput,
+  Paper,
+  Progress,
+  Radio,
+  Select,
+  Slider,
+  Stack,
+  Switch,
+  Tabs,
+  Text,
+  Textarea,
+  TextInput,
+  Title,
+  Tooltip,
 } from '@mantine/core';
-import { IconAlertCircle, IconSettings, IconPhoto, IconMessageCircle, IconTrash } from '@tabler/icons-react';
 
 export interface ThemeDisplayProps {
+  number: number; //necessary for instances where there is more than one ThemeDisplay component
   mode: 'light' | 'dark';
-  theme: Partial<MantineThemeOverride>
-};
+  theme: Partial<MantineThemeOverride>;
+}
 
-const ThemeDisplay: React.FC<ThemeDisplayProps> = ({mode, theme}) => {
-
+const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme }) => {
   return (
     <MantineProvider
       forceColorScheme={mode}
       theme={theme}
-      getRootElement={() => document.querySelector<HTMLElement>(`#display-panel-${mode}`) ?? undefined}
-      cssVariablesSelector={`#display-panel-${mode}`}
+      getRootElement={() =>
+        document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined
+      }
+      cssVariablesSelector={`#display-panel-${mode}-${number}`}
     >
-      <Box id={`display-panel-${mode}`} bg={"var(--mantine-color-body)"}>
-        <Container id="display-panel" size="lg">
+      <Box id={`display-panel-${mode}-${number}`} bg={'var(--mantine-color-body)'}>
+        <Container p={'md'} size="lg">
           <Stack gap="xl">
             <Card shadow="sm" padding="lg">
               <Title order={2}>Typography</Title>
-              <Text size="xl" fw={700}>Extra large bold text</Text>
+              <Text size="xl" fw={700}>
+                Extra large bold text
+              </Text>
               <Text size="lg">Large text</Text>
               <Text>Default text</Text>
               <Text size="sm">Small text</Text>
-              <Text size="xs" fs="italic">Extra small italic text</Text>
+              <Text size="xs" fs="italic">
+                Extra small italic text
+              </Text>
               <Divider my="sm" />
               <Title order={3}>Heading 3</Title>
               <Title order={4}>Heading 4</Title>
@@ -138,7 +150,9 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({mode, theme}) => {
                   <Menu.Dropdown>
                     <Menu.Item leftSection={<IconPhoto size={14} />}>Gallery</Menu.Item>
                     <Menu.Item leftSection={<IconMessageCircle size={14} />}>Messages</Menu.Item>
-                    <Menu.Item leftSection={<IconTrash size={14} />} color="red">Delete</Menu.Item>
+                    <Menu.Item leftSection={<IconTrash size={14} />} color="red">
+                      Delete
+                    </Menu.Item>
                   </Menu.Dropdown>
                 </Menu>
               </Group>
@@ -153,7 +167,8 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({mode, theme}) => {
                 <Chip defaultChecked>Chip</Chip>
               </Group>
               <Alert icon={<IconAlertCircle size={16} />} title="Bummer!" color="red" mt="md">
-                Something terrible happened! You made a mistake and there is no going back, your data was lost forever!
+                Something terrible happened! You made a mistake and there is no going back, your
+                data was lost forever!
               </Alert>
               <Progress.Root size="xl">
                 <Progress.Section value={35}>
@@ -166,19 +181,31 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({mode, theme}) => {
               <Title order={2}>Navigation</Title>
               <Tabs defaultValue="gallery">
                 <Tabs.List>
-                  <Tabs.Tab value="gallery" leftSection={<IconPhoto size={14} />}>Gallery</Tabs.Tab>
-                  <Tabs.Tab value="messages" leftSection={<IconMessageCircle size={14} />}>Messages</Tabs.Tab>
-                  <Tabs.Tab value="settings" leftSection={<IconSettings size={14} />}>Settings</Tabs.Tab>
+                  <Tabs.Tab value="gallery" leftSection={<IconPhoto size={14} />}>
+                    Gallery
+                  </Tabs.Tab>
+                  <Tabs.Tab value="messages" leftSection={<IconMessageCircle size={14} />}>
+                    Messages
+                  </Tabs.Tab>
+                  <Tabs.Tab value="settings" leftSection={<IconSettings size={14} />}>
+                    Settings
+                  </Tabs.Tab>
                 </Tabs.List>
               </Tabs>
               <Accordion defaultValue="customization" mt="md">
                 <Accordion.Item value="customization">
                   <Accordion.Control>Customization</Accordion.Control>
-                  <Accordion.Panel>Colors, fonts, shadows and many other parts are customizable to fit your design needs</Accordion.Panel>
+                  <Accordion.Panel>
+                    Colors, fonts, shadows and many other parts are customizable to fit your design
+                    needs
+                  </Accordion.Panel>
                 </Accordion.Item>
                 <Accordion.Item value="flexibility">
                   <Accordion.Control>Flexibility</Accordion.Control>
-                  <Accordion.Panel>Configure components appearance and behavior with vast amount of settings or overwrite any part of component styles</Accordion.Panel>
+                  <Accordion.Panel>
+                    Configure components appearance and behavior with vast amount of settings or
+                    overwrite any part of component styles
+                  </Accordion.Panel>
                 </Accordion.Item>
               </Accordion>
             </Card>

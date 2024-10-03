@@ -6,7 +6,6 @@ const SATURATION_MAP = [0.32, 0.16, 0.08, 0.04, 0, 0, 0.04, 0.08, 0.16, 0.32];
 const generateShades = (baseColor: string): string[] => {
   const userColorChroma = chroma.valid(baseColor) ? chroma(baseColor) : chroma('#000000');
 
-
   const lightnessGoal = userColorChroma.get('hsl.l');
   const closestLightness = LIGHTNESS_MAP.reduce((prev, curr) =>
     Math.abs(curr - lightnessGoal) < Math.abs(prev - lightnessGoal) ? curr : prev
@@ -23,7 +22,7 @@ const generateShades = (baseColor: string): string[] => {
     });
 
   // Return the middle set of colors (original hue adjustment)
-  return colors.map(color => color.hex());
+  return colors.map((color) => color.hex());
 };
 
 export default generateShades;

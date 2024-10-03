@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ThemeDisplay, { ThemeDisplayProps } from './ThemeDisplay';
 import { MantineThemeOverride } from '@mantine/core';
+import ThemeDisplay, { ThemeDisplayProps } from './ThemeDisplay';
 
 export default {
   title: 'Components/ThemeDisplay',
@@ -24,11 +24,11 @@ const Template: StoryFn<ThemeDisplayProps> = (args: any) => <ThemeDisplay {...ar
 export const LightMode = Template.bind({});
 LightMode.args = {
   mode: 'light',
-    theme: {
-        colorScheme: 'light',
-        primaryColor: 'blue',
-        fontFamily: 'Arial, sans-serif',
-    } as Partial<MantineThemeOverride>,
+  theme: {
+    colorScheme: 'light',
+    primaryColor: 'blue',
+    fontFamily: 'Arial, sans-serif',
+  } as Partial<MantineThemeOverride>,
 };
 
 export const DarkMode = Template.bind({});
