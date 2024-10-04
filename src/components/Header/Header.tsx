@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { IconDownload, IconTrash, IconUpload } from '@tabler/icons-react';
+import { IconDownload, IconTrash, IconUpload, IconLayoutSidebar } from '@tabler/icons-react';
 import {
-  Button,
+  ActionIcon,
   DEFAULT_THEME,
   FileInput,
   Group,
@@ -9,72 +9,90 @@ import {
   Popover,
   Text,
   Title,
+  Tooltip,
+  Select,
 } from '@mantine/core';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
+import premadeThemes from '../../data/premadeThemes.json';
 
 interface HeaderProps {
   theme: MantineThemeOverride;
   updateTheme: (theme: Partial<MantineThemeOverride>) => void;
+  toggleAside: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ theme, updateTheme }) => {
+const Header: React.FC<HeaderProps> = ({ theme, updateTheme, toggleAside }) => {
   const currentTheme = DEFAULT_THEME;
   const [opened, setOpened] = useState(false);
 
-  // This runs once in the case we do not have any theme set
   useEffect(() => {
-    // If theme is empty, set it to default theme
     if (Object.keys(theme).length === 0) {
       updateTheme(currentTheme);
     }
   }, []);
 
+  const handlePreMadeThemeSelect = (value: string | null) => {
+    if (value && value in premadeThemes) {
+      const selectedTheme = premadeThemes[value as keyof typeof premadeThemes];
+      updateTheme(selectedTheme);
+    }
+  };
+
   return (
     <Group p={'md'} h={'100%'} align="center" justify="space-between">
-      <Title size={'1.2rem'} c={'blue.8'}>
-        Mantine Theme Editor
-      </Title>
+      <Group>
+        <Title size={'1.2rem'} c={'blue.8'}>
+          Mantine Theme Editor
+        </Title>
+        <Select
+          placeholder="Select a pre-made theme"
+          data={Object.keys(premadeThemes)}
+          onChange={handlePreMadeThemeSelect}
+          style={{ width: '200px' }}
+        />
+      </Group>
       <Group align="right">
-        <Button
-          leftSection={<IconDownload size="1.5rem" />}
-          color="green"
-          onClick={() => downloadTheme(theme)}
-        >
-          Download theme
-        </Button>
-        <Button
-          leftSection={<IconUpload size="1.5rem" />}
-          onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}
-        >
-          Upload theme
-        </Button>
+        <Tooltip label="Toggle Sidebar">
+          <ActionIcon variant="outline" onClick={toggleAside}>
+            <IconLayoutSidebar size="1.25rem" />
+          </ActionIcon>
+        </Tooltip>
+        <Tooltip label="Download Theme">
+          <ActionIcon variant="outline" onClick={() => downloadTheme(theme)}>
+            <IconDownload size="1.25rem" />
+          </ActionIcon>
+        </Tooltip>
+        <Tooltip label="Upload Theme">
+          <ActionIcon variant="outline" onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}>
+            <IconUpload size="1.25rem" />
+          </ActionIcon>
+        </Tooltip>
         <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
           <Popover.Target>
-            <Button
-              leftSection={<IconTrash size="1.5rem" />}
-              color="red"
-              onClick={() => setOpened(true)}
-            >
-              Reset theme
-            </Button>
+            <Tooltip label="Reset Theme">
+              <ActionIcon variant="outline" color="red" onClick={() => setOpened(true)}>
+                <IconTrash size="1.25rem" />
+              </ActionIcon>
+            </Tooltip>
           </Popover.Target>
           <Popover.Dropdown>
             <Text size="sm">
               Are you sure you want to reset the theme? This will delete all current changes.
             </Text>
             <Group mt="md">
-              <Button
+              <ActionIcon
+                variant="filled"
                 color="red"
                 onClick={() => {
                   updateTheme(currentTheme);
                   setOpened(false);
                 }}
               >
-                Yes
-              </Button>
-              <Button variant="outline" onClick={() => setOpened(false)}>
-                No
-              </Button>
+                <IconTrash size="1.25rem" />
+              </ActionIcon>
+              <ActionIcon variant="outline" onClick={() => setOpened(false)}>
+                <IconLayoutSidebar size="1.25rem" />
+              </ActionIcon>
             </Group>
           </Popover.Dropdown>
         </Popover>

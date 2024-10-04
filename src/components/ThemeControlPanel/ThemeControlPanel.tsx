@@ -12,7 +12,7 @@ import {
   Text,
 } from '@mantine/core';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
-import ColorControl from './ColorControls';
+import ColorControl from './Color Controls/ColorControls';
 import GeneralControls from './GeneralControls';
 import TypographyControl from './TypographyControls';
 

@@ -22,10 +22,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@mantine/core": "7.13.0",
-    "@mantine/hooks": "7.13.0",
+    "@mantine/core": "^7.13.2",
+    "@mantine/dates": "^7.13.2",
+    "@mantine/hooks": "^7.13.2",
     "@tabler/icons-react": "^3.19.0",
     "chroma-js": "^3.1.1",
+    "dayjs": "^1.11.13",
     "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

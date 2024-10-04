@@ -6,8 +6,10 @@ import {
   AppShell,
   createTheme,
   Group,
+  JsonInput,
   MantineProvider,
   MantineThemeOverride,
+  Stack,
   Tabs,
 } from '@mantine/core';
 import Header from './components/Header/Header';
@@ -27,6 +29,12 @@ const App: React.FC = () => {
     }));
   };
 
+  const [asideVisible, setAsideVisible] = useState(true);
+
+  const toggleAside = () => {
+    setAsideVisible(prev => !prev);
+  };
+
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
   return (
@@ -37,9 +45,17 @@ const App: React.FC = () => {
           width: 500,
           breakpoint: 'sm',
         }}
+        aside={{
+          width: 700,
+          breakpoint: 'sm',
+          collapsed: {
+            desktop: !asideVisible,
+            mobile: true,
+          }
+        }}
       >
         <AppShell.Header withBorder>
-          <Header theme={theme} updateTheme={updateTheme} />
+          <Header theme={theme} updateTheme={updateTheme} toggleAside={toggleAside} />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <MantineProvider
@@ -89,6 +105,18 @@ const App: React.FC = () => {
             </Tabs.Panel>
           </Tabs>
         </AppShell.Main>
+        <AppShell.Aside>   
+          <Stack p="md">       
+            <JsonInput
+              onChange={(value) => {setTheme(JSON.parse(value))}}
+              value={JSON.stringify(theme, null, 2)}
+              autosize
+              variant="filled"
+              style={{ width: '100%', maxHeight: '100vh', overflow: 'auto' }}
+            >      
+            </JsonInput>
+          </Stack>
+        </AppShell.Aside>
       </AppShell>
     </MantineProvider>
   );

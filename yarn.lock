@@ -391,10 +391,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@mantine/core@7.13.0":
-  version "7.13.0"
-  resolved "https://registry.npmjs.org/@mantine/core/-/core-7.13.0.tgz"
-  integrity sha512-aQpx3Q69ATDhVopBNkWS0sql93ZaPqeA5jTgqU7GxZvJdkpG87vbKYgp4cDV/gqr7BYu4kel0smeHYuPemiZ8Q==
+"@mantine/core@^7.13.2", "@mantine/core@7.13.2":
+  version "7.13.2"
+  resolved "https://registry.npmjs.org/@mantine/core/-/core-7.13.2.tgz"
+  integrity sha512-nD8oKIal+KdthqF074+ZG21035QBEAKso2zK9D6zWxRTLVCjLCNSc5JSXrXLrdBTnvPQGY26yunX4+MEPlmrHg==
   dependencies:
     "@floating-ui/react" "^0.26.9"
     clsx "^2.1.1"
@@ -403,10 +403,17 @@
     react-textarea-autosize "8.5.3"
     type-fest "^4.12.0"
 
-"@mantine/hooks@7.13.0":
-  version "7.13.0"
-  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.13.0.tgz"
-  integrity sha512-oQpwSi0gajH3UR1DFa9MQ+zeYy75xbc8Im9jIIepLbiJXtIcPK+yll1BMxNwPQLYU1pYI6ZgUazI2PoykVNmsg==
+"@mantine/dates@^7.13.2":
+  version "7.13.2"
+  resolved "https://registry.npmjs.org/@mantine/dates/-/dates-7.13.2.tgz"
+  integrity sha512-FSLGTM5s47mmHnIudRxrMXjE1EO56Qp01nATa9OwqVgVYVxxJ5xvS1ys5yxSGSE1jQk+3kyYQXHyLFcqbFhIVA==
+  dependencies:
+    clsx "^2.1.1"
+
+"@mantine/hooks@^7.13.2", "@mantine/hooks@7.13.2":
+  version "7.13.2"
+  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.13.2.tgz"
+  integrity sha512-NKfGl2sKZw6zF//AfAFJrVDftjg7DKCn0h8rwJBIZCKi9axhwlV0Mvlqe2dep8QuM7O/uLLJSymSKIv1gaxIJg==
 
 "@mdx-js/react@^3.0.0":
   version "3.0.1"
@@ -1853,6 +1860,11 @@ data-view-byte-offset@^1.0.0:
     call-bind "^1.0.6"
     es-errors "^1.3.0"
     is-data-view "^1.0.1"
+
+dayjs@^1.11.13, dayjs@>=1.0.0:
+  version "1.11.13"
+  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.13.tgz"
+  integrity sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==
 
 debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.3.6, debug@4:
   version "4.3.7"
