@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { IconDownload, IconTrash, IconUpload, IconLayoutSidebar, IconSunMoon } from '@tabler/icons-react';
+import {
+  IconDownload,
+  IconLayoutSidebar,
+  IconSunMoon,
+  IconTrash,
+  IconUpload,
+} from '@tabler/icons-react';
 import {
   ActionIcon,
   DEFAULT_THEME,
@@ -7,13 +13,13 @@ import {
   Group,
   MantineThemeOverride,
   Popover,
+  Select,
   Text,
   Title,
   Tooltip,
-  Select,
 } from '@mantine/core';
-import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 import premadeThemes from '../../data/premadeThemes.json';
+import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 
 interface HeaderProps {
   theme: MantineThemeOverride;
@@ -24,7 +30,14 @@ interface HeaderProps {
   currentContent: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ theme, updateTheme, currentContent, updateDisplayContent, toggleAside, toggleScheme }) => {
+const Header: React.FC<HeaderProps> = ({
+  theme,
+  updateTheme,
+  currentContent,
+  updateDisplayContent,
+  toggleAside,
+  toggleScheme,
+}) => {
   const currentTheme = DEFAULT_THEME;
   const [opened, setOpened] = useState(false);
 
@@ -35,10 +48,8 @@ const Header: React.FC<HeaderProps> = ({ theme, updateTheme, currentContent, upd
   }, []);
 
   const handlePreMadeThemeSelect = (value: string | null) => {
-    if (value && value in premadeThemes) {
-      const selectedTheme = premadeThemes[value as keyof typeof premadeThemes];
-      updateTheme(selectedTheme);
-    }
+    let themes = JSON.parse(JSON.stringify(premadeThemes));
+    updateTheme(themes[value as string]);
   };
 
   return (
@@ -76,7 +87,10 @@ const Header: React.FC<HeaderProps> = ({ theme, updateTheme, currentContent, upd
           </ActionIcon>
         </Tooltip>
         <Tooltip label="Upload Theme">
-          <ActionIcon variant="outline" onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}>
+          <ActionIcon
+            variant="outline"
+            onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}
+          >
             <IconUpload size="1.25rem" />
           </ActionIcon>
         </Tooltip>
