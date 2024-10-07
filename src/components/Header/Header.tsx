@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IconDownload, IconTrash, IconUpload, IconLayoutSidebar } from '@tabler/icons-react';
+import { IconDownload, IconTrash, IconUpload, IconLayoutSidebar, IconSunMoon } from '@tabler/icons-react';
 import {
   ActionIcon,
   DEFAULT_THEME,
@@ -19,9 +19,12 @@ interface HeaderProps {
   theme: MantineThemeOverride;
   updateTheme: (theme: Partial<MantineThemeOverride>) => void;
   toggleAside: () => void;
+  toggleScheme: () => void;
+  updateDisplayContent: (content: string) => void;
+  currentContent: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ theme, updateTheme, toggleAside }) => {
+const Header: React.FC<HeaderProps> = ({ theme, updateTheme, currentContent, updateDisplayContent, toggleAside, toggleScheme }) => {
   const currentTheme = DEFAULT_THEME;
   const [opened, setOpened] = useState(false);
 
@@ -44,14 +47,24 @@ const Header: React.FC<HeaderProps> = ({ theme, updateTheme, toggleAside }) => {
         <Title size={'1.2rem'} c={'blue.8'}>
           Mantine Theme Editor
         </Title>
+        <ActionIcon variant="outline" onClick={toggleScheme}>
+          <IconSunMoon size="1.25rem" />
+        </ActionIcon>
+      </Group>
+      <Group align="center">
+        <Select
+          placeholder="Preview content"
+          data={['Mantine Components', 'Repository']}
+          value={currentContent}
+          onChange={(value) => updateDisplayContent(value as string)}
+          style={{ width: '200px' }}
+        />
         <Select
           placeholder="Select a pre-made theme"
           data={Object.keys(premadeThemes)}
           onChange={handlePreMadeThemeSelect}
           style={{ width: '200px' }}
         />
-      </Group>
-      <Group align="right">
         <Tooltip label="Toggle Sidebar">
           <ActionIcon variant="outline" onClick={toggleAside}>
             <IconLayoutSidebar size="1.25rem" />

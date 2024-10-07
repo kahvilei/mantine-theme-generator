@@ -29,18 +29,28 @@ const App: React.FC = () => {
     }));
   };
 
-  const [asideVisible, setAsideVisible] = useState(true);
+  const [asideVisible, setAsideVisible] = useState(false);
 
   const toggleAside = () => {
-    setAsideVisible(prev => !prev);
+    setAsideVisible((prev) => !prev);
   };
 
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
+  const toggleScheme = () => {
+    setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  const [currentContent, setCurrentContent] = useState('Mantine Components');
+
+  const updateDisplayContent = (content: string) => {
+    setCurrentContent(content);
+  };
+
   return (
     <MantineProvider forceColorScheme={mode}>
       <AppShell
-        header={{ height: 60 }}
+        header={{ height: 80 }}
         navbar={{
           width: 500,
           breakpoint: 'sm',
@@ -51,11 +61,18 @@ const App: React.FC = () => {
           collapsed: {
             desktop: !asideVisible,
             mobile: true,
-          }
+          },
         }}
       >
         <AppShell.Header withBorder>
-          <Header theme={theme} updateTheme={updateTheme} toggleAside={toggleAside} />
+          <Header
+            theme={theme}
+            updateTheme={updateTheme}
+            toggleAside={toggleAside}
+            toggleScheme={toggleScheme}
+            currentContent={currentContent}
+            updateDisplayContent={updateDisplayContent}
+          />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <MantineProvider
@@ -89,32 +106,53 @@ const App: React.FC = () => {
             </Tabs.List>
             <Tabs.Panel pt={'1.5rem'} value="dark">
               <Group justify="center" grow>
-                <ThemeDisplay number={1} mode={'dark'} theme={theme} />
+                <ThemeDisplay
+                  number={1}
+                  mode={'dark'}
+                  theme={theme}
+                  displayContent={currentContent}
+                />
               </Group>
             </Tabs.Panel>
             <Tabs.Panel pt={'1.5rem'} value="dark-and-light">
-              <Group justify="center" grow>
-                <ThemeDisplay number={2} mode={'dark'} theme={theme} />
-                <ThemeDisplay number={3} mode={'light'} theme={theme} />
+              <Group gap={0} justify="center" grow>
+                <ThemeDisplay
+                  number={2}
+                  mode={'dark'}
+                  theme={theme}
+                  displayContent={currentContent}
+                />
+                <ThemeDisplay
+                  number={3}
+                  mode={'light'}
+                  theme={theme}
+                  displayContent={currentContent}
+                />
               </Group>
             </Tabs.Panel>
             <Tabs.Panel pt={'1.5rem'} value="light">
               <Group justify="center" grow>
-                <ThemeDisplay number={4} mode={'light'} theme={theme} />
+                <ThemeDisplay
+                  number={4}
+                  mode={'light'}
+                  theme={theme}
+                  displayContent={currentContent}
+                />
               </Group>
             </Tabs.Panel>
           </Tabs>
         </AppShell.Main>
-        <AppShell.Aside>   
-          <Stack p="md">       
+        <AppShell.Aside>
+          <Stack p="md">
             <JsonInput
-              onChange={(value) => {setTheme(JSON.parse(value))}}
+              onChange={(value) => {
+                setTheme(JSON.parse(value));
+              }}
               value={JSON.stringify(theme, null, 2)}
               autosize
               variant="filled"
               style={{ width: '100%', maxHeight: '100vh', overflow: 'auto' }}
-            >      
-            </JsonInput>
+            ></JsonInput>
           </Stack>
         </AppShell.Aside>
       </AppShell>

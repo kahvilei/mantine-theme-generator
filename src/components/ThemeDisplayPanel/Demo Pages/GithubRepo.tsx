@@ -1,5 +1,18 @@
 import React from 'react';
 import {
+  IconCode,
+  IconDots,
+  IconEye,
+  IconFile,
+  IconFileText,
+  IconGitBranch,
+  IconGitFork,
+  IconHistory,
+  IconPlaylist,
+  IconStar,
+  IconTag,
+} from '@tabler/icons-react';
+import {
   ActionIcon,
   Anchor,
   Badge,
@@ -19,22 +32,8 @@ import {
   Title,
   useMantineTheme,
 } from '@mantine/core';
-import {
-  IconGitBranch,
-  IconCode,
-  IconDots,
-  IconEye,
-  IconFile,
-  IconFileText,
-  IconGitFork,
-  IconHistory,
-  IconPlaylist,
-  IconStar,
-  IconTag,
-} from '@tabler/icons-react';
 
 const GitHubRepoDemo: React.FC = () => {
-
   const RepoHeader = () => (
     <Box mb="md">
       <Group justify="space-between" align="flex-start">
