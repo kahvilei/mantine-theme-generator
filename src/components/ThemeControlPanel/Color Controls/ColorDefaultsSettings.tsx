@@ -12,6 +12,8 @@ import {
   Text,
   Title,
 } from '@mantine/core';
+import ColorManager from './ColorManager';
+import generateShades from '../../../utils/generateColors';
 
 interface ColorDefaultsProps {
   theme: MantineThemeOverride;
@@ -21,13 +23,40 @@ interface ColorDefaultsProps {
 
 const ColorDefaults: React.FC<ColorDefaultsProps> = ({ theme, updateTheme, colorKeyColors }) => {
   const currentTheme = DEFAULT_THEME;
+  const colorManager = new ColorManager(theme);
 
-  const renderColorSelect: SelectProps['renderOption'] = ({ option, checked }) => (
+  const renderColorSelect: SelectProps['renderOption'] = ({ option }) => (
     <Group>
       <ColorSwatch color={colorKeyColors[option.value]} size={'20px'} />
       <Text>{option.value}</Text>
     </Group>
   );
+
+
+  function MantineDefaultColorEdit() {
+    return (
+      <>
+        {Array.from(colorManager.getMantineColors().entries()).map(([name, shades], index) => (
+            <Stack key={index}>
+              <Text>{name}</Text>
+              <ColorInput
+                value={colorManager.getMainColor(name)}
+                onChange={(color) => {
+                  const newShades = generateShades(color);
+                  updateTheme({
+                    colors: {
+                      ...theme.colors,
+                      [name]: newShades,
+                    },
+                  });
+                }}
+              />
+            </Stack>
+          ))
+        }
+      </>
+    );
+  }
 
   return (
     <Card withBorder padding="lg">
@@ -95,6 +124,10 @@ const ColorDefaults: React.FC<ColorDefaultsProps> = ({ theme, updateTheme, color
           value={theme.black || '#000000'}
           onChange={(color) => updateTheme({ black: color })}
         />
+        <Stack>
+          <Text>Default Mantine Colors</Text>
+          <MantineDefaultColorEdit />
+        </Stack>
       </Stack>
     </Card>
   );

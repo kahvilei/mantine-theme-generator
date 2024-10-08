@@ -9,6 +9,7 @@ import {
   JsonInput,
   MantineProvider,
   MantineThemeOverride,
+  ScrollArea,
   Stack,
   Tabs,
 } from '@mantine/core';
@@ -75,6 +76,7 @@ const App: React.FC = () => {
           />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
+          <ScrollArea>
           <MantineProvider
             theme={defaultTheme}
             forceColorScheme={mode}
@@ -85,6 +87,7 @@ const App: React.FC = () => {
           >
             <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
           </MantineProvider>
+          </ScrollArea>
         </AppShell.Navbar>
         <AppShell.Main>
           <Tabs defaultValue="dark-and-light" w={'100%'}>
