@@ -20,6 +20,7 @@ import {
 } from '@mantine/core';
 import generateShades from '../../../utils/generateColors';
 import classes from './ColorControls.module.css';
+import ColorManager from './ColorManager';
 
 interface ColorPaletteProps {
   theme: MantineThemeOverride;
@@ -31,19 +32,13 @@ interface ColorPaletteProps {
 const ColorPalette: React.FC<ColorPaletteProps> = ({
   theme,
   updateTheme,
-  colorKeyColors,
-  setColorKeyColors,
 }) => {
-  const currentTheme = DEFAULT_THEME;
   const [newColorName, setNewColorName] = useState('');
   const [newColorValue, setNewColorValue] = useState('#000000');
   const [editingColorName, setEditingColorName] = useState<string>('');
   const [isShadeModalOpen, setIsShadeModalOpen] = useState<boolean>(false);
   const [currentEditingColor, setCurrentEditingColor] = useState<string>('');
-
-  for (let color in theme.colors) {
-    colorKeyColors[color] = theme.colors[color] ? theme.colors[color][5] : '#000';
-  }
+  const colorManager = new ColorManager(theme);
 
   const addNewColor = () => {
     if (newColorName && newColorValue) {
@@ -53,7 +48,6 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
           [newColorName]: generateShades(newColorValue),
         },
       });
-      setColorKeyColors({ ...colorKeyColors, [newColorName]: newColorValue });
       setNewColorName('');
       setNewColorValue('#000000');
     }
@@ -66,10 +60,6 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
         [colorName]: generateShades(newBaseColor),
       },
     });
-    setColorKeyColors((prevColors) => ({
-      ...prevColors,
-      [colorName]: newBaseColor,
-    }));
   };
 
   const updateColorName = (oldName: string, newName: string) => {
@@ -81,12 +71,6 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
       if (theme.primaryColor === oldName) {
         updateTheme({ primaryColor: newName });
       }
-      setColorKeyColors((prevColors) => {
-        const updatedKeyColors = { ...prevColors };
-        updatedKeyColors[newName] = updatedKeyColors[oldName];
-        delete updatedKeyColors[oldName];
-        return updatedKeyColors;
-      });
     }
     // make sure the input is made undefined after the change
     setEditingColorName('');
@@ -99,11 +83,6 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
     if (theme.primaryColor === colorName) {
       updateTheme({ primaryColor: Object.keys(updatedColors)[0] });
     }
-    setColorKeyColors((prevColors) => {
-      const updatedKeyColors = { ...prevColors };
-      delete updatedKeyColors[colorName];
-      return updatedKeyColors;
-    });
   };
 
   const openShadeModal = (colorName: string) => {
@@ -126,9 +105,9 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
 
   return (
     <Card withBorder padding="lg">
-      <Title order={4}>Color Palette</Title>
+      <Title order={4}>Custom Colors</Title>
       <Group mt="xs">
-        {Object.entries(theme.colors || currentTheme.colors).map(([colorName, shades]) => (
+        {Array.from(colorManager.getCustomColors().entries()).map(([colorName, shades]) => (
           <Popover key={colorName} withArrow position="bottom">
             <Popover.Target>
               <ColorSwatch
@@ -156,13 +135,13 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
                   withPicker={false}
                   pointer
                   label="color"
-                  value={colorKeyColors[colorName]}
+                  value={colorManager.getMainColor(colorName)}
                   onChange={(color) => updateColor(colorName, color)}
                 />
                 <ColorPicker
-                  value={colorKeyColors[colorName]}
+                  value={colorManager.getMainColor(colorName)}
                   onChange={(color) => updateColor(colorName, color)}
-                  swatches={Object.values(colorKeyColors)}
+                  swatches={colorManager.getAllMainColorArray()}
                 />
                 <Button onClick={() => openShadeModal(colorName)}>Fine-tune Shades</Button>
               </Stack>

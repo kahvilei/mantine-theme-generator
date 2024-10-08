@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MantineThemeOverride, Stack } from '@mantine/core';
+import { MantineThemeOverride, Stack, DEFAULT_THEME, MantineColorsTuple } from '@mantine/core';
 import ColorDefaults from './ColorDefaultsSettings';
 import ColorPalette from './ColorPalette';
 import PrimaryColorSettings from './PrimaryColorSettings';
@@ -11,6 +11,11 @@ interface ColorPanelProps {
 
 const ColorPanel: React.FC<ColorPanelProps> = ({ theme, updateTheme }) => {
   const [colorKeyColors, setColorKeyColors] = useState<{ [key: string]: string }>({});
+  const [mantineDefaultColorNames, setMantineDefaultColorNames] = useState<{ [key: string]: string }>({});
+
+  for (let color in DEFAULT_THEME.colors) {
+    mantineDefaultColorNames[color] = color;
+  }
 
   // Initialize colorKeyColors
   for (let color in theme.colors) {

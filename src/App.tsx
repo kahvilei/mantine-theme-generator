@@ -66,7 +66,7 @@ const App: React.FC = () => {
       >
         <AppShell.Header withBorder>
           <Header
-            theme={theme}
+            theme={defaultTheme}
             updateTheme={updateTheme}
             toggleAside={toggleAside}
             toggleScheme={toggleScheme}
