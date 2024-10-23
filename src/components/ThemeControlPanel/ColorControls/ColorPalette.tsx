@@ -1,17 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { IconPencil, IconPlus } from '@tabler/icons-react';
 import {
   ActionIcon,
   Card,
   ColorSwatch,
   Group,
+  MantineColorsTuple,
   Popover,
   Title,
-  MantineColorsTuple
 } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
-import classes from './ColorControls.module.css';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
+import classes from './ColorControls.module.css';
 
 const ColorPalette: React.FC = () => {
   const themeManager = useContext(ThemeContext);
@@ -32,14 +32,17 @@ const ColorPalette: React.FC = () => {
   };
   const updateColorName = (oldName: string, newName: string) => {
     if (oldName !== newName && newName.trim() !== '') {
-      themeManager.updateColor(oldName, newName, themeManager.getColor(oldName) || [] as unknown as MantineColorsTuple);
+      themeManager.updateColor(
+        oldName,
+        newName,
+        themeManager.getColor(oldName) || ([] as unknown as MantineColorsTuple)
+      );
     }
     setEditingColorName('');
   };
   const deleteColor = (colorName: string) => {
     themeManager.deleteColor(colorName);
   };
-
 
   return (
     <Card withBorder padding="lg">
@@ -59,10 +62,6 @@ const ColorPalette: React.FC = () => {
             <ColorEditorPopup
               colorName={editingColorName || colorName}
               colorValue={themeManager.getMainColorShade(colorName)}
-              onColorNameChange={(name) => setEditingColorName(name)}
-              onColorValueChange={(color) => updateColor(colorName, color)}
-              onSave={() => updateColorName(colorName, editingColorName)}
-              onDelete={() => deleteColor(colorName)}
               isEditing={true}
             />
           </Popover>
@@ -73,14 +72,7 @@ const ColorPalette: React.FC = () => {
               <IconPlus />
             </ActionIcon>
           </Popover.Target>
-          <ColorEditorPopup
-            colorName={newColorName}
-            colorValue={newColorValue}
-            onColorNameChange={setNewColorName}
-            onColorValueChange={setNewColorValue}
-            onSave={addNewColor}
-
-          />
+          <ColorEditorPopup colorName={newColorName} colorValue={newColorValue} />
         </Popover>
       </Group>
     </Card>

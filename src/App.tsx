@@ -15,11 +15,13 @@ import {
   Tabs,
 } from '@mantine/core';
 import Header from './components/Header/Header';
+import DefaultColorItem from './components/ThemeControlPanel/ColorControls/Reusable Controls/DefaultColorItem';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 
 const App: React.FC = () => {
-  const defaultTheme = DEFAULT_THEME;
+  const defaultTheme = createTheme({});
+
   const [theme, setTheme] = useState<MantineThemeOverride>({
     ...defaultTheme,
   });
@@ -50,7 +52,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
+    <MantineProvider forceColorScheme={mode} theme={DEFAULT_THEME}>
       <AppShell
         header={{ height: 80 }}
         navbar={{
@@ -68,7 +70,7 @@ const App: React.FC = () => {
       >
         <AppShell.Header withBorder>
           <Header
-            theme={defaultTheme}
+            theme={DEFAULT_THEME}
             updateTheme={updateTheme}
             toggleAside={toggleAside}
             toggleScheme={toggleScheme}
@@ -78,16 +80,16 @@ const App: React.FC = () => {
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <ScrollArea>
-          <MantineProvider
-            theme={defaultTheme}
-            forceColorScheme={mode}
-            getRootElement={() =>
-              document.querySelector<HTMLElement>('#control-panel') ?? undefined
-            }
-            cssVariablesSelector="#control-panel"
-          >
-            <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
-          </MantineProvider>
+            <MantineProvider
+              theme={DEFAULT_THEME}
+              forceColorScheme={mode}
+              getRootElement={() =>
+                document.querySelector<HTMLElement>('#control-panel') ?? undefined
+              }
+              cssVariablesSelector="#control-panel"
+            >
+              <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
+            </MantineProvider>
           </ScrollArea>
         </AppShell.Navbar>
         <AppShell.Main>

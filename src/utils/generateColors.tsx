@@ -11,25 +11,26 @@ const generateShades = (baseColor: string): string[] => {
 
   // Adjust lightness map so that baseColor is at position [5]
   const adjustedLightnessMap = LIGHTNESS_MAP.map((l, i) => {
-    if(i === 5) return baseLightness;
-    if(i < 5) {
-      const delta = (9 - i - 5) * ((.95 - baseLightness) / 5);
-      return Math.min(Math.max(baseLightness + delta, .05), .95);
+    if (i === 5) return baseLightness;
+    if (i < 5) {
+      const delta = (9 - i - 5) * ((0.95 - baseLightness) / 5);
+      return Math.min(Math.max(baseLightness + delta, 0.05), 0.95);
     }
-    const delta = (i - 5) * ((baseLightness - .05) / 4);
-    return Math.min(Math.max(baseLightness - delta, .05), .95);
+    const delta = (i - 5) * ((baseLightness - 0.05) / 4);
+    return Math.min(Math.max(baseLightness - delta, 0.05), 0.95);
   });
 
   // Adjust saturation map so that baseColor is at position [5]
   const adjustedSaturationMap = SATURATION_MAP.map((s, i) => {
     const delta = (9 - i - 5) * ((0.32 - baseSaturation) / 5);
-    return Math.min(Math.max(baseSaturation + delta, .05), .95);
+    return Math.min(Math.max(baseSaturation + delta, 0.05), 0.95);
   });
 
   const colors = adjustedLightnessMap.map((l, i) => {
     let color = userColorChroma.set('hsl.l', l);
     const saturationDelta = adjustedSaturationMap[i] - baseSaturation;
-    color = saturationDelta >= 0 ? color.saturate(saturationDelta) : color.desaturate(-saturationDelta);
+    color =
+      saturationDelta >= 0 ? color.saturate(saturationDelta) : color.desaturate(-saturationDelta);
     return color.hex();
   });
 

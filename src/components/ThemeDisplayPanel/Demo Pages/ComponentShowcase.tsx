@@ -1,12 +1,35 @@
 import React from 'react';
-import { MantineProvider, Title, Text, Container, Stack, Button, TextInput, Checkbox, Select, Slider, Switch, Card, Badge, Group, ActionIcon, Tooltip, Accordion, Tabs, Notification, Progress } from '@mantine/core';
 import { IconBellRinging, IconCheck, IconX } from '@tabler/icons-react';
+import {
+  Accordion,
+  ActionIcon,
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  Group,
+  MantineProvider,
+  Notification,
+  Progress,
+  Select,
+  Slider,
+  Stack,
+  Switch,
+  Tabs,
+  Text,
+  TextInput,
+  Title,
+  Tooltip,
+} from '@mantine/core';
 
 const ComponentsShowcase = () => {
   return (
     <MantineProvider>
       <Container size="lg" p="md">
-        <Title order={1} ta="center" mb="xl">Mantine 7 Components Demo</Title>
+        <Title order={1} ta="center" mb="xl">
+          Mantine 7 Components Demo
+        </Title>
 
         <Stack gap="xl">
           <Section title="Typography">
@@ -14,14 +37,16 @@ const ComponentsShowcase = () => {
             <Text fw={700}>Bold text</Text>
             <Text fs="italic">Italic text</Text>
             <Text td="underline">Underlined text</Text>
-            <Text size="xl" c="blue">Extra large blue text</Text>
+            <Text size="xl" c="blue">
+              Extra large blue text
+            </Text>
           </Section>
 
           <Section title="Buttons">
             <Group>
               <Button>Default</Button>
-              <Button variant="filled" >Filled</Button>
-              <Button variant="outline" >Outline</Button>
+              <Button variant="filled">Filled</Button>
+              <Button variant="outline">Outline</Button>
               <Button variant="light">Light</Button>
             </Group>
           </Section>
@@ -52,13 +77,13 @@ const ComponentsShowcase = () => {
 
           <Section title="Card and Badge">
             <Card shadow="sm" p="lg" radius="md" withBorder>
-              <Card.Section>
-               
-              </Card.Section>
+              <Card.Section></Card.Section>
 
               <Group justify="space-between" mt="md" mb="xs">
                 <Text fw={500}>Card Title</Text>
-                <Badge c="pink" variant="light">Badge</Badge>
+                <Badge c="pink" variant="light">
+                  Badge
+                </Badge>
               </Group>
 
               <Text size="sm" c="dimmed">
@@ -95,11 +120,17 @@ const ComponentsShowcase = () => {
             <Accordion>
               <Accordion.Item value="customization">
                 <Accordion.Control>Customization</Accordion.Control>
-                <Accordion.Panel>Colors, fonts, shadows and many other parts are customizable to fit your design needs</Accordion.Panel>
+                <Accordion.Panel>
+                  Colors, fonts, shadows and many other parts are customizable to fit your design
+                  needs
+                </Accordion.Panel>
               </Accordion.Item>
               <Accordion.Item value="flexibility">
                 <Accordion.Control>Flexibility</Accordion.Control>
-                <Accordion.Panel>Configure components appearance and behavior with vast amount of settings or overwrite any part of component styles</Accordion.Panel>
+                <Accordion.Panel>
+                  Configure components appearance and behavior with vast amount of settings or
+                  overwrite any part of component styles
+                </Accordion.Panel>
               </Accordion.Item>
             </Accordion>
           </Section>
@@ -139,8 +170,6 @@ const ComponentsShowcase = () => {
     </MantineProvider>
   );
 };
-
-
 
 interface SectionProps {
   title: string;
