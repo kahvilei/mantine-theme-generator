@@ -16,10 +16,10 @@ const GroupedColorSelector: React.FC<{
       let tuple = colors[0]["theme"].get(color);
         if (colors[0]["theme"].has(color)) {
             tuple = colors[0]["theme"].get(color);
-            return tuple?tuple[6]:"#000";
+            return tuple?tuple[5]:"#000";
         } else if (colors[1]["mantine"].has(color)) {
             tuple = colors[1]["mantine"].get(color);
-            return tuple?tuple[6]:"#000";
+            return tuple?tuple[5]:"#000";
         }
         return "#000";
     }
