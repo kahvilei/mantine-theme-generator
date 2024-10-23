@@ -11,6 +11,7 @@ import {
   Title,
 } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
+import MantineDefaultColorEdit from './Reusable Controls/MantineDefaultColorEdit';
 
 
 const ColorDefaults: React.FC = () => {
@@ -87,25 +88,5 @@ const ColorDefaults: React.FC = () => {
     </Card>
   );
 };
-
-function MantineDefaultColorEdit() {
-  const theme = useContext(ThemeContext);
-  return (
-    <>
-      {Array.from(theme.getMantineColors().entries()).map(([name, shades], index) => (
-        <Stack key={index}>
-          <Text>{name}</Text>
-          <ColorInput
-            value={theme.getMainColorShade(name)}
-            onChange={(color) => {
-              theme.setColorFromString(name, color);
-            }}
-          />
-        </Stack>
-      ))
-      }
-    </>
-  );
-}
 
 export default ColorDefaults;

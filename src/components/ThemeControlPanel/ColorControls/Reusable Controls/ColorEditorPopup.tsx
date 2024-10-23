@@ -1,6 +1,8 @@
 import React from 'react';
+import { useContext } from 'react';
 import { ActionIcon, Button, ColorInput, ColorPicker, Group, Popover, Stack, Text, TextInput, Modal, ColorSwatch } from '@mantine/core';
 import { IconColorSwatch, IconTrash } from '@tabler/icons-react';
+import ThemeContext from '../../ThemeContext/ThemeContext';
 
 interface ColorEditorPopupProps {
   colorName: string;
@@ -10,7 +12,6 @@ interface ColorEditorPopupProps {
   onSave: () => void;
   onDelete?: () => void;
   isEditing?: boolean;
-  themeManager: any; // Replace with the actual type of themeManager
 }
 
 const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
@@ -20,12 +21,12 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
   onColorValueChange,
   onSave,
   onDelete,
-  themeManager,
   isEditing = false,
 }) => {
 
     const [isShadeModalOpen, setIsShadeModalOpen] = React.useState(false);
     const [currentEditingColor, setCurrentEditingColor] = React.useState(colorName);
+    const themeManager = useContext(ThemeContext);
 
     const updateColorShade = (index: number, newShade: string) => {
         themeManager.updateColorShade(currentEditingColor, index, newShade);

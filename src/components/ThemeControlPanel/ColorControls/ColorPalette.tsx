@@ -64,7 +64,6 @@ const ColorPalette: React.FC = () => {
               onSave={() => updateColorName(colorName, editingColorName)}
               onDelete={() => deleteColor(colorName)}
               isEditing={true}
-              themeManager={themeManager}
             />
           </Popover>
         ))}
@@ -80,7 +79,7 @@ const ColorPalette: React.FC = () => {
             onColorNameChange={setNewColorName}
             onColorValueChange={setNewColorValue}
             onSave={addNewColor}
-            themeManager={themeManager}
+
           />
         </Popover>
       </Group>
