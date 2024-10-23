@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react';
-import { IconDownload, IconTrash, IconUpload } from '@tabler/icons-react';
 import {
-  ActionIcon,
   Box,
   DEFAULT_THEME,
-  FileInput,
-  Group,
   MantineThemeOverride,
   Stack,
-  Tabs,
-  Text,
+  Tabs
 } from '@mantine/core';
-import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
-import ColorControl from './Color Controls/ColorControls';
+import ColorControl from './ColorControls/ColorControl';
 import GeneralControls from './GeneralControls';
 import TypographyControl from './TypographyControls';
+import ThemeManager from './ThemeContext/ThemeManager/ThemeManager';
+import ThemeContext from './ThemeContext/ThemeContext';
 
 interface ThemeControlPanelProps {
   theme: MantineThemeOverride;
@@ -22,18 +18,21 @@ interface ThemeControlPanelProps {
 }
 
 const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateTheme }) => {
-  const currentTheme = DEFAULT_THEME;
+  const defTheme = DEFAULT_THEME;
+  const themeManager = new ThemeManager(theme, updateTheme);
 
   //this runs once in the case we do not have any theme set
   useEffect(() => {
     //if theme is empty, set it to default theme
     if (Object.keys(theme).length === 0) {
-      updateTheme(currentTheme);
+      updateTheme(defTheme);
     }
+
   }, []);
 
   return (
     <Box id="control-panel" p={'md'}>
+      <ThemeContext.Provider value={themeManager}>
       <Stack>
         <Tabs defaultValue="color">
           <Tabs.List>
@@ -42,7 +41,7 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
             <Tabs.Tab value="general">General</Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="color">
-            <ColorControl theme={theme} updateTheme={updateTheme} />
+            <ColorControl />
           </Tabs.Panel>
           <Tabs.Panel value="typography">
             <TypographyControl theme={theme} updateTheme={updateTheme} />
@@ -52,6 +51,7 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
           </Tabs.Panel>
         </Tabs>
       </Stack>
+      </ThemeContext.Provider>
     </Box>
   );
 };

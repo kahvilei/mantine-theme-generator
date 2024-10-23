@@ -20,9 +20,9 @@ const ComponentsShowcase = () => {
           <Section title="Buttons">
             <Group>
               <Button>Default</Button>
-              <Button variant="filled" c="green">Filled</Button>
-              <Button variant="outline" c="red">Outline</Button>
-              <Button variant="light" c="yellow">Light</Button>
+              <Button variant="filled" >Filled</Button>
+              <Button variant="outline" >Outline</Button>
+              <Button variant="light">Light</Button>
             </Group>
           </Section>
 
@@ -53,11 +53,7 @@ const ComponentsShowcase = () => {
           <Section title="Card and Badge">
             <Card shadow="sm" p="lg" radius="md" withBorder>
               <Card.Section>
-                <img
-                  src="/api/placeholder/600/160"
-                  height={160}
-                  alt="Sample image"
-                />
+               
               </Card.Section>
 
               <Group justify="space-between" mt="md" mb="xs">

@@ -5,6 +5,7 @@ import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import {
   AppShell,
   createTheme,
+  DEFAULT_THEME,
   Group,
   JsonInput,
   MantineProvider,
@@ -18,7 +19,7 @@ import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel'
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 
 const App: React.FC = () => {
-  const defaultTheme = createTheme({});
+  const defaultTheme = DEFAULT_THEME;
   const [theme, setTheme] = useState<MantineThemeOverride>({
     ...defaultTheme,
   });
@@ -49,7 +50,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <MantineProvider forceColorScheme={mode}>
+    <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
         header={{ height: 80 }}
         navbar={{

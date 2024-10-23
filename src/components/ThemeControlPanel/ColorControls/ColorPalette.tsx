@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -7,82 +7,48 @@ import {
   ColorInput,
   ColorPicker,
   ColorSwatch,
-  DEFAULT_THEME,
   Group,
-  MantineThemeOverride,
   Modal,
   Popover,
-  SelectProps,
   Stack,
   Text,
   TextInput,
   Title,
+  MantineColorsTuple
 } from '@mantine/core';
-import generateShades from '../../../utils/generateColors';
+import ThemeContext from '../ThemeContext/ThemeContext';
 import classes from './ColorControls.module.css';
-import ColorManager from './ColorManager';
 
-interface ColorPaletteProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
-  colorKeyColors: { [key: string]: string };
-  setColorKeyColors: React.Dispatch<React.SetStateAction<{ [key: string]: string }>>;
-}
-
-const ColorPalette: React.FC<ColorPaletteProps> = ({
-  theme,
-  updateTheme,
-}) => {
+const ColorPalette: React.FC = () => {
+  const themeManager = useContext(ThemeContext);
   const [newColorName, setNewColorName] = useState('');
   const [newColorValue, setNewColorValue] = useState('#000000');
   const [editingColorName, setEditingColorName] = useState<string>('');
   const [isShadeModalOpen, setIsShadeModalOpen] = useState<boolean>(false);
   const [currentEditingColor, setCurrentEditingColor] = useState<string>('');
-  const colorManager = new ColorManager(theme);
 
   const addNewColor = () => {
     if (newColorName && newColorValue) {
-      updateTheme({
-        colors: {
-          ...theme.colors,
-          [newColorName]: generateShades(newColorValue),
-        },
-      });
+      themeManager.setColorFromString(newColorName, newColorValue);
       setNewColorName('');
       setNewColorValue('#000000');
     }
   };
 
   const updateColor = (colorName: string, newBaseColor: string) => {
-    updateTheme({
-      colors: {
-        ...theme.colors,
-        [colorName]: generateShades(newBaseColor),
-      },
-    });
+    themeManager.setColorFromString(colorName, newBaseColor);
   };
 
   const updateColorName = (oldName: string, newName: string) => {
     if (oldName !== newName && newName.trim() !== '') {
-      const updatedColors = { ...theme.colors };
-      updatedColors[newName] = updatedColors[oldName];
-      delete updatedColors[oldName];
-      updateTheme({ colors: updatedColors });
-      if (theme.primaryColor === oldName) {
-        updateTheme({ primaryColor: newName });
-      }
+      themeManager.updateColor(oldName, newName, themeManager.getColor(oldName) || [] as unknown as MantineColorsTuple);
     }
-    // make sure the input is made undefined after the change
     setEditingColorName('');
   };
 
   const deleteColor = (colorName: string) => {
-    const updatedColors = { ...theme.colors };
-    delete updatedColors[colorName];
-    updateTheme({ colors: updatedColors });
-    if (theme.primaryColor === colorName) {
-      updateTheme({ primaryColor: Object.keys(updatedColors)[0] });
-    }
+    // We need to add a method to ThemeManager to handle color deletion
+    themeManager.deleteColor(colorName);
   };
 
   const openShadeModal = (colorName: string) => {
@@ -91,27 +57,19 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
   };
 
   const updateColorShade = (index: number, newShade: string) => {
-    if (theme.colors && theme.colors[currentEditingColor]) {
-      const updatedShades = [...theme.colors[currentEditingColor]];
-      updatedShades[index] = newShade;
-      updateTheme({
-        colors: {
-          ...theme.colors,
-          [currentEditingColor]: updatedShades,
-        },
-      });
-    }
+    // We need to add a method to ThemeManager to handle updating individual shades
+    themeManager.updateColorShade(currentEditingColor, index, newShade);
   };
 
   return (
     <Card withBorder padding="lg">
       <Title order={4}>Custom Colors</Title>
       <Group mt="xs">
-        {Array.from(colorManager.getCustomColors().entries()).map(([colorName, shades]) => (
+        {Array.from(themeManager.getCustomColors().entries()).map(([colorName, shades]) => (
           <Popover key={colorName} withArrow position="bottom">
             <Popover.Target>
               <ColorSwatch
-                color={shades ? (shades[5] as string) : '#000000'}
+                color={shades ? shades[5] : '#000000'}
                 size={'4rem'}
                 className={classes.swatchEditor}
               >
@@ -135,13 +93,13 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
                   withPicker={false}
                   pointer
                   label="color"
-                  value={colorManager.getMainColor(colorName)}
+                  value={themeManager.getMainColorShade(colorName)}
                   onChange={(color) => updateColor(colorName, color)}
                 />
                 <ColorPicker
-                  value={colorManager.getMainColor(colorName)}
+                  value={themeManager.getMainColorShade(colorName)}
                   onChange={(color) => updateColor(colorName, color)}
-                  swatches={colorManager.getAllMainColorArray()}
+                  swatches={themeManager.getAllMainColorArray()}
                 />
                 <Button onClick={() => openShadeModal(colorName)}>Fine-tune Shades</Button>
               </Stack>
@@ -177,19 +135,17 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
         title={`Fine-tune Shades for ${currentEditingColor}`}
       >
         <Stack>
-          {theme.colors &&
-            theme.colors[currentEditingColor] &&
-            theme.colors[currentEditingColor].map((shade, index) => (
-              <Group key={index}>
-                <ColorInput
-                  value={shade}
-                  onChange={(color) => updateColorShade(index, color)}
-                  label={`Shade ${index}`}
-                  style={{ flex: 1 }}
-                />
-                <ColorSwatch color={shade} size={30} />
-              </Group>
-            ))}
+          {themeManager.getColor(currentEditingColor)?.map((shade, index) => (
+            <Group key={index}>
+              <ColorInput
+                value={shade}
+                onChange={(color) => updateColorShade(index, color)}
+                label={`Shade ${index}`}
+                style={{ flex: 1 }}
+              />
+              <ColorSwatch color={shade} size={30} />
+            </Group>
+          ))}
         </Stack>
       </Modal>
     </Card>
@@ -197,3 +153,5 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({
 };
 
 export default ColorPalette;
+
+
