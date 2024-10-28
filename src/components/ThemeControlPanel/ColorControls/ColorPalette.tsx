@@ -5,7 +5,6 @@ import {
   Card,
   ColorSwatch,
   Group,
-  MantineColorsTuple,
   Popover,
   Title,
 } from '@mantine/core';
@@ -15,34 +14,9 @@ import classes from './ColorControls.module.css';
 
 const ColorPalette: React.FC = () => {
   const themeManager = useContext(ThemeContext);
-  const [newColorName, setNewColorName] = useState('');
-  const [newColorValue, setNewColorValue] = useState('#000000');
-  const [editingColorName, setEditingColorName] = useState<string>('');
-
-  const addNewColor = () => {
-    if (newColorName && newColorValue) {
-      themeManager.setColorFromString(newColorName, newColorValue);
-      setNewColorName('');
-      setNewColorValue('#000000');
-    }
-  };
-
-  const updateColor = (colorName: string, newBaseColor: string) => {
-    themeManager.setColorFromString(colorName, newBaseColor);
-  };
-  const updateColorName = (oldName: string, newName: string) => {
-    if (oldName !== newName && newName.trim() !== '') {
-      themeManager.updateColor(
-        oldName,
-        newName,
-        themeManager.getColor(oldName) || ([] as unknown as MantineColorsTuple)
-      );
-    }
-    setEditingColorName('');
-  };
-  const deleteColor = (colorName: string) => {
-    themeManager.deleteColor(colorName);
-  };
+  const [newColorName] = useState('');
+  const [newColorValue] = useState('#000000');
+  const [editingColorName] = useState<string>('');
 
   return (
     <Card withBorder padding="lg">

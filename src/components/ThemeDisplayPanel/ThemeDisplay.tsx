@@ -15,7 +15,6 @@ export interface ThemeDisplayProps {
 }
 
 const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displayContent }) => {
-  const [opened, setOpened] = useState(false);
 
   const Content = () => {
     switch (displayContent) {

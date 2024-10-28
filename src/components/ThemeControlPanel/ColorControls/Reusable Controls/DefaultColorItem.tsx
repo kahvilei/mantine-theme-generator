@@ -34,12 +34,14 @@ const DefaultColorItem: React.FC<DefaultColorItemProps> = ({
   const themeManager = useContext(ThemeContext);
 
   return (
-    <Card withBorder padding="xs" radius="sm">
+    <Card withBorder bg={name + ".0"} padding="xs" radius="sm">
       <Stack gap="m">
         <Group justify="space-between" align="start" wrap="nowrap">
           <Group w={'75%'} wrap="nowrap">
             <ColorInput
+              c={name + ".9"}
               label={name}
+              descriptionProps={{ c: name + ".8" }}
               description={description}
               value={color}
               w={'100%'}
@@ -56,7 +58,7 @@ const DefaultColorItem: React.FC<DefaultColorItemProps> = ({
             )}
 
             <Tooltip label="Fine-tune shades">
-              <ActionIcon variant="outline" onClick={() => setIsEditing((v) => !v)}>
+              <ActionIcon variant="outline" bg='white' onClick={() => setIsEditing((v) => !v)}>
                 <IconColorSwatch size={16} />
               </ActionIcon>
             </Tooltip>
