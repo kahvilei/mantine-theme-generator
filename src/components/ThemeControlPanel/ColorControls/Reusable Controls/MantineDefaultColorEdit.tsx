@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DEFAULT_THEME, Stack, Text } from '@mantine/core';
+import { Stack} from '@mantine/core';
 import ThemeContext from '../../ThemeContext/ThemeContext';
 import DefaultColorItem from './DefaultColorItem'; // Adjust the import path
 
@@ -13,7 +13,6 @@ const MantineDefaultColorEdit: React.FC = () => {
     red: 'commonly used for error messages and destructive actions.',
     green: 'commonly used for success messages and constructive actions.',
     yellow: 'commonly used for warning messages.',
-    // Add descriptions for other colors as needed
   };
 
   return (

@@ -1,16 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { IconColorSwatch, IconPencil, IconRefresh, IconRestore } from '@tabler/icons-react';
+import { IconColorSwatch, IconRestore } from '@tabler/icons-react';
 import {
   ActionIcon,
-  Button,
   Card,
   Collapse,
   ColorInput,
   DEFAULT_THEME,
   Group,
-  Popover,
   Stack,
-  Text,
   Tooltip,
 } from '@mantine/core';
 // Import the default theme

@@ -20,7 +20,6 @@ import {
   Button,
   Card,
   Container,
-  Divider,
   Flex,
   Group,
   Paper,
@@ -28,9 +27,6 @@ import {
   Table,
   Tabs,
   Text,
-  TextInput,
-  Title,
-  useMantineTheme,
 } from '@mantine/core';
 
 const GitHubRepoDemo: React.FC = () => {

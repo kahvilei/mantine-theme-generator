@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Card, NumberInput, Slider, Stack, Switch, Text, Title } from '@mantine/core';
+import React, { useContext } from 'react';
+import { Card, Slider, Stack, Switch, Text, Title } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';

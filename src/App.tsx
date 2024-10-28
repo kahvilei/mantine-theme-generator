@@ -15,7 +15,6 @@ import {
   Tabs,
 } from '@mantine/core';
 import Header from './components/Header/Header';
-import DefaultColorItem from './components/ThemeControlPanel/ColorControls/Reusable Controls/DefaultColorItem';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 
