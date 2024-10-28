@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   IconDownload,
+  IconJson,
   IconLayoutSidebar,
   IconSunMoon,
   IconTrash,
@@ -76,9 +77,9 @@ const Header: React.FC<HeaderProps> = ({
           onChange={handlePreMadeThemeSelect}
           style={{ width: '200px' }}
         />
-        <Tooltip label="Toggle Sidebar">
+        <Tooltip label="Toggle JSON Sidebar">
           <ActionIcon variant="outline" onClick={toggleAside}>
-            <IconLayoutSidebar size="1.25rem" />
+            <IconJson size="1.25rem" />
           </ActionIcon>
         </Tooltip>
         <Tooltip label="Download Theme">

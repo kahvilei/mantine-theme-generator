@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
 
 import './ThemeDisplay.css';
@@ -28,6 +28,8 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displa
     }
   };
 
+  const MemoizedContent = useMemo(() => Content, [displayContent]);
+
   return (
     <MantineProvider
       theme={{ ...theme }}
@@ -44,7 +46,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displa
         className={`scheme-override-${mode} ${classes.displayPanel}`}
         bg={'var(--mantine-color-body)'}
       >
-        <Content />
+        <MemoizedContent />
       </Box>
     </MantineProvider>
   );

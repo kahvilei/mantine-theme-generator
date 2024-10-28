@@ -49,7 +49,7 @@ const DefaultColorItem: React.FC<DefaultColorItemProps> = ({
           <Group gap="xs" wrap="nowrap">
             {color !== defaultColor && (
               <Tooltip label="Reset to default mantine color">
-                <ActionIcon c="red" variant="outline" onClick={onReset}>
+                <ActionIcon variant="outline" color="red" onClick={onReset}>
                   <IconRestore size={16} />
                 </ActionIcon>
               </Tooltip>
