@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({
       <Group align="center">
         <Select
           placeholder="Preview content"
-          data={['Mantine Components', 'Repository']}
+          data={['Mantine Components', 'Repository', 'Messaging Service']}
           value={currentContent}
           onChange={(value) => updateDisplayContent(value as string)}
           style={{ width: '200px' }}

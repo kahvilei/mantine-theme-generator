@@ -6,6 +6,7 @@ import './ThemeDisplay.css';
 import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
 import classes from './ThemeDisplay.module.css';
+import MessagingService from './Demo Pages/MessagingService';
 
 export interface ThemeDisplayProps {
   number: number;
@@ -22,6 +23,8 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displa
         return <ComponentShowcase />;
       case 'Repository':
         return <GitHubRepoDemo />;
+      case 'Messaging Service':
+        return <MessagingService />;
       default:
         return <ComponentShowcase />;
     }
