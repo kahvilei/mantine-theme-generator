@@ -16,3 +16,10 @@
     color:  var(--mantine-color-gray-text);
     outline: 1px solid var(--mantine-color-gray-text);
 }
+
+.gradientText {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}

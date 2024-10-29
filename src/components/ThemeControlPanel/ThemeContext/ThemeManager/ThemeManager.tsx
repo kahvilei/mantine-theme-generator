@@ -48,7 +48,7 @@ class ThemeManager {
     else return undefined;
   }
 
-  updateColor(oldName: string, newName: string, value: MantineColorsTuple) {
+  updateColor(oldName: string, newName: string, value?: MantineColorsTuple) {
     if (oldName !== newName && newName.trim() !== '') {
       const updatedColors = { ...this.theme.colors };
       updatedColors[newName] = updatedColors[oldName];
@@ -131,6 +131,19 @@ class ThemeManager {
     return this.getMainColorShade(this.getGradientTo() || 'blue');
   }
 
+  getGradientAngle() {
+    return this.theme.defaultGradient
+      ? this.theme.defaultGradient.deg
+      : this.defaultTheme.defaultGradient.deg;
+  }
+
+  setGradientAngle(value: number) {
+    this.theme.defaultGradient
+      ? (this.theme.defaultGradient.deg = value)
+      : (this.theme.defaultGradient = { from: this.getGradientFrom(), to: this.getGradientTo(), deg: value });
+    this.commitChanges();
+  }
+
   getMainColorShade(key: string) {
     if (this.theme.colors && this.theme.colors[key]) {
       return this.theme.colors[key][5];
@@ -210,7 +223,7 @@ class ThemeManager {
 
   getPrimaryShade(scheme?: 'light' | 'dark') {
     if (this.theme.primaryShade && typeof this.theme.primaryShade === 'object' && scheme) {
-      return this.theme.primaryShade[scheme] ? this.theme.primaryShade[scheme] : 6;
+      return this.theme.primaryShade[scheme] ? this.theme.primaryShade[scheme] : 5;
     } else {
       return this.theme.primaryShade as number;
     }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import { IconPencil, IconPlus } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -7,44 +7,45 @@ import {
   Group,
   Popover,
   Title,
+  Tooltip,
 } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
+import ColorItem from './Reusable Controls/ColorItem';
 import classes from './ColorControls.module.css';
 
 const ColorPalette: React.FC = () => {
   const themeManager = useContext(ThemeContext);
   const [newColorName] = useState('');
   const [newColorValue] = useState('#000000');
-  const [editingColorName] = useState<string>('');
+
+  // Memoize the custom colors to avoid unnecessary re-renders
+  const customColors = useMemo(() => {
+    return Array.from(themeManager.getCustomColors().entries());
+  }, [themeManager.getCustomColors()]);
 
   return (
     <Card withBorder padding="lg">
       <Title order={4}>Custom Colors</Title>
       <Group mt="xs">
-        {Array.from(themeManager.getCustomColors().entries()).map(([colorName, shades]) => (
-          <Popover key={colorName} withArrow position="bottom">
-            <Popover.Target>
-              <ColorSwatch
-                color={shades ? shades[5] : '#000000'}
-                size={'4rem'}
-                className={classes.swatchEditor}
-              >
-                <IconPencil size="1.5rem" />
-              </ColorSwatch>
-            </Popover.Target>
-            <ColorEditorPopup
-              colorName={editingColorName || colorName}
-              colorValue={themeManager.getMainColorShade(colorName)}
-              isEditing={true}
-            />
-          </Popover>
+        {customColors.map(([colorName, shades]) => (
+          <ColorItem
+            key={colorName}
+            name={colorName}
+            type='theme'
+            description=''
+            color={themeManager.getMainColorShade(colorName)}
+            onEdit={(color) => themeManager.setColorFromString(colorName, color)}
+            onReset={() => themeManager.deleteColor(colorName)}
+          />
         ))}
-        <Popover withArrow position="bottom">
+        <Popover withArrow shadow='default' position="bottom">
           <Popover.Target>
-            <ActionIcon radius={'xl'} size="4rem" color="bg" className={classes.colorAdd}>
+            <Tooltip label="Add new color">
+            <ActionIcon color="bg" className={classes.colorAdd}>
               <IconPlus />
             </ActionIcon>
+            </Tooltip>
           </Popover.Target>
           <ColorEditorPopup colorName={newColorName} colorValue={newColorValue} />
         </Popover>
