@@ -18,10 +18,10 @@ class ThemeManager {
       theme.primaryShade && typeof theme.primaryShade === 'object' ? true : false;
     this.theme = theme;
     this.theme.colors ? this.theme.colors : (this.theme.colors = {});
-    //add all default colors to the theme
-    for (let color in this.defaultTheme.colors) {
+    //add each mantine color to the theme
+    for (let color in DEFAULT_THEME.colors) {
       if (!this.theme.colors[color]) {
-        this.theme.colors[color] = this.defaultTheme.colors[color];
+        this.theme.colors[color] = DEFAULT_THEME.colors[color];
       }
     }
     this.stateFunction = stateFunction;
