@@ -1,5 +1,15 @@
 import React from 'react';
 import {
+  IconAt,
+  IconHash,
+  IconMicrophone,
+  IconMoodHappy,
+  IconPlus,
+  IconSearch,
+  IconSettings,
+  IconVideo,
+} from '@tabler/icons-react';
+import {
   ActionIcon,
   Avatar,
   Box,
@@ -18,16 +28,6 @@ import {
   Tooltip,
   UnstyledButton,
 } from '@mantine/core';
-import {
-  IconAt,
-  IconHash,
-  IconMicrophone,
-  IconPlus,
-  IconSearch,
-  IconSettings,
-  IconMoodHappy,
-  IconVideo,
-} from '@tabler/icons-react';
 
 const MOCK_MESSAGES = [
   {
@@ -42,7 +42,8 @@ const MOCK_MESSAGES = [
     user: 'James Wilson',
     avatar: 'JW',
     time: '12:05 PM',
-    content: 'Yes, I left some comments on the Figma file. The new navigation looks much better! 👍',
+    content:
+      'Yes, I left some comments on the Figma file. The new navigation looks much better! 👍',
   },
   {
     id: 3,
@@ -71,22 +72,28 @@ const MessagingService: React.FC = () => {
   return (
     <Group align="stretch" h="calc(100vh - 160px)" wrap="nowrap" style={{ overflow: 'hidden' }}>
       {/* Server List */}
-      <Paper w={70} h="100%" >
+      <Paper w={70} h="100%">
         <Stack align="center" gap="xs" p="xs">
           <Tooltip label="Home" position="right">
             <UnstyledButton>
-              <Avatar radius="md" size="md">H</Avatar>
+              <Avatar radius="md" size="md">
+                H
+              </Avatar>
             </UnstyledButton>
           </Tooltip>
           <Divider w="80%" />
           <Tooltip label="Design Team" position="right">
             <UnstyledButton>
-              <Avatar radius="md" size="md">D</Avatar>
+              <Avatar radius="md" size="md">
+                D
+              </Avatar>
             </UnstyledButton>
           </Tooltip>
           <Tooltip label="Development" position="right">
             <UnstyledButton>
-              <Avatar radius="md" size="md">C</Avatar>
+              <Avatar radius="md" size="md">
+                C
+              </Avatar>
             </UnstyledButton>
           </Tooltip>
           <Tooltip label="Add Server" position="right">
@@ -107,15 +114,13 @@ const MessagingService: React.FC = () => {
             </ActionIcon>
           </Group>
 
-          <TextInput
-            placeholder="Search"
-            leftSection={<IconSearch size="0.9rem" />}
-            size="xs"
-          />
+          <TextInput placeholder="Search" leftSection={<IconSearch size="0.9rem" />} size="xs" />
 
           <ScrollArea h="calc(100vh - 180px)">
             <Stack gap={0}>
-              <Text size="sm" fw={700} p="xs">Channels</Text>
+              <Text size="sm" fw={700} p="xs">
+                Channels
+              </Text>
               {MOCK_CHANNELS.map((channel) => (
                 <NavLink
                   key={channel.name}
@@ -125,14 +130,21 @@ const MessagingService: React.FC = () => {
                 />
               ))}
 
-              <Text size="sm" fw={700} p="xs" mt="md">Direct Messages</Text>
+              <Text size="sm" fw={700} p="xs" mt="md">
+                Direct Messages
+              </Text>
               {MOCK_DIRECT_MESSAGES.map((dm) => (
                 <NavLink
                   key={dm.name}
                   label={dm.name}
                   leftSection={
                     <Box pos="relative">
-                      <Avatar size="sm">{dm.name.split(' ').map(n => n[0]).join('')}</Avatar>
+                      <Avatar size="sm">
+                        {dm.name
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')}
+                      </Avatar>
                       {dm.online && (
                         <Box
                           pos="absolute"
@@ -185,7 +197,9 @@ const MessagingService: React.FC = () => {
                 <Stack gap={2}>
                   <Group gap="xs">
                     <Text fw={500}>{message.user}</Text>
-                    <Text size="xs" c="dimmed">{message.time}</Text>
+                    <Text size="xs" c="dimmed">
+                      {message.time}
+                    </Text>
                   </Group>
                   <Text>{message.content}</Text>
                 </Stack>
@@ -219,24 +233,38 @@ const MessagingService: React.FC = () => {
       {/* Members List */}
       <Paper w={240} h="100%" withBorder>
         <Stack gap="xs" p="xs">
-          <Text size="sm" fw={700} p="xs">Online — 3</Text>
-          {MOCK_DIRECT_MESSAGES.filter(dm => dm.online).map((member) => (
+          <Text size="sm" fw={700} p="xs">
+            Online — 3
+          </Text>
+          {MOCK_DIRECT_MESSAGES.filter((dm) => dm.online).map((member) => (
             <NavLink
               key={member.name}
               label={member.name}
               leftSection={
-                <Avatar size="sm">{member.name.split(' ').map(n => n[0]).join('')}</Avatar>
+                <Avatar size="sm">
+                  {member.name
+                    .split(' ')
+                    .map((n) => n[0])
+                    .join('')}
+                </Avatar>
               }
             />
           ))}
 
-          <Text size="sm" fw={700} p="xs" mt="md">Offline — 1</Text>
-          {MOCK_DIRECT_MESSAGES.filter(dm => !dm.online).map((member) => (
+          <Text size="sm" fw={700} p="xs" mt="md">
+            Offline — 1
+          </Text>
+          {MOCK_DIRECT_MESSAGES.filter((dm) => !dm.online).map((member) => (
             <NavLink
               key={member.name}
               label={member.name}
               leftSection={
-                <Avatar size="sm">{member.name.split(' ').map(n => n[0]).join('')}</Avatar>
+                <Avatar size="sm">
+                  {member.name
+                    .split(' ')
+                    .map((n) => n[0])
+                    .join('')}
+                </Avatar>
               }
             />
           ))}

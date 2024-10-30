@@ -140,7 +140,11 @@ class ThemeManager {
   setGradientAngle(value: number) {
     this.theme.defaultGradient
       ? (this.theme.defaultGradient.deg = value)
-      : (this.theme.defaultGradient = { from: this.getGradientFrom(), to: this.getGradientTo(), deg: value });
+      : (this.theme.defaultGradient = {
+          from: this.getGradientFrom(),
+          to: this.getGradientTo(),
+          deg: value,
+        });
     this.commitChanges();
   }
 

@@ -1,14 +1,6 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { IconPencil, IconPlus } from '@tabler/icons-react';
-import {
-  ActionIcon,
-  Card,
-  ColorSwatch,
-  Group,
-  Popover,
-  Title,
-  Tooltip,
-} from '@mantine/core';
+import { ActionIcon, Card, ColorSwatch, Group, Popover, Title, Tooltip } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
 import ColorItem from './Reusable Controls/ColorItem';
@@ -32,19 +24,19 @@ const ColorPalette: React.FC = () => {
           <ColorItem
             key={colorName}
             name={colorName}
-            type='theme'
-            description=''
+            type="theme"
+            description=""
             color={themeManager.getMainColorShade(colorName)}
             onEdit={(color) => themeManager.setColorFromString(colorName, color)}
             onReset={() => themeManager.deleteColor(colorName)}
           />
         ))}
-        <Popover withArrow shadow='default' position="bottom">
+        <Popover withArrow shadow="default" position="bottom">
           <Popover.Target>
             <Tooltip label="Add new color">
-            <ActionIcon color="bg" className={classes.colorAdd}>
-              <IconPlus />
-            </ActionIcon>
+              <ActionIcon color="bg" className={classes.colorAdd}>
+                <IconPlus />
+              </ActionIcon>
             </Tooltip>
           </Popover.Target>
           <ColorEditorPopup colorName={newColorName} colorValue={newColorValue} />

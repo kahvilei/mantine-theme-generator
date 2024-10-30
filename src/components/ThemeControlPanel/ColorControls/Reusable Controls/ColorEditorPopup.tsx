@@ -50,7 +50,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
 
   return (
     <>
-      <Popover.Dropdown variant='shadow'>
+      <Popover.Dropdown variant="shadow">
         <Stack>
           <Group justify="space-between">
             <Text size="sm" color="gray">

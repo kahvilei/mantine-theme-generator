@@ -1,14 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  Card,
-  DEFAULT_THEME,
-  Group,
-  Box,
-  Slider,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Box, Card, DEFAULT_THEME, Group, Slider, Stack, Text, Title } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import classes from './ColorControls.module.css';
@@ -25,25 +16,19 @@ const GradientControls: React.FC = () => {
       <Stack mt="md">
         <Title order={4}>Gradient</Title>
         <Group grow>
-        <GroupedColorSelector
-          colors={[
-            { theme: theme.getCustomColors() },
-            { mantine: theme.getMantineColors() },
-          ]}
-          mainColor={{ shade: theme.getMainColorShade(gradientStart), name: gradientStart }}
-          onSelect={(color) => theme.setGradientFrom(color)}
-        />
-           <GroupedColorSelector
-          colors={[
-            { theme: theme.getCustomColors() },
-            { mantine: theme.getMantineColors() },
-          ]}
-          mainColor={{ shade: theme.getMainColorShade(gradientEnd), name: gradientEnd }}
-          onSelect={(color) => theme.setGradientTo(color)}
-        />
+          <GroupedColorSelector
+            colors={[{ theme: theme.getCustomColors() }, { mantine: theme.getMantineColors() }]}
+            mainColor={{ shade: theme.getMainColorShade(gradientStart), name: gradientStart }}
+            onSelect={(color) => theme.setGradientFrom(color)}
+          />
+          <GroupedColorSelector
+            colors={[{ theme: theme.getCustomColors() }, { mantine: theme.getMantineColors() }]}
+            mainColor={{ shade: theme.getMainColorShade(gradientEnd), name: gradientEnd }}
+            onSelect={(color) => theme.setGradientTo(color)}
+          />
         </Group>
-        <Group 
-          justify='center'
+        <Group
+          justify="center"
           align="center"
           style={{
             width: '100%',
@@ -54,17 +39,23 @@ const GradientControls: React.FC = () => {
             borderRadius: DEFAULT_THEME.radius.sm,
           }}
         >
-          <Box bg={'white'} p={'3'} style={{
-            borderRadius: DEFAULT_THEME.radius.sm,
-          }}>
-          <Text className={classes.gradientText} style={{ 
-            backgroundImage:  `linear-gradient( ${gradientAngle}deg, ${theme.getMainColorShade(
-              gradientStart
-            )}, ${theme.getMainColorShade(gradientEnd)})`,
+          <Box
+            bg={'white'}
+            p={'3'}
+            style={{
+              borderRadius: DEFAULT_THEME.radius.sm,
             }}
+          >
+            <Text
+              className={classes.gradientText}
+              style={{
+                backgroundImage: `linear-gradient( ${gradientAngle}deg, ${theme.getMainColorShade(
+                  gradientStart
+                )}, ${theme.getMainColorShade(gradientEnd)})`,
+              }}
             >
-            {gradientAngle}deg
-          </Text>
+              {gradientAngle}deg
+            </Text>
           </Box>
         </Group>
         <Slider

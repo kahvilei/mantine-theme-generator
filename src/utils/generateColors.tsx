@@ -22,7 +22,7 @@ const generateShades = (baseColor: string): string[] => {
 
   // Adjust saturation map so that baseColor is at position [5]
   const adjustedSaturationMap = SATURATION_MAP.map((s, i) => {
-    if (i === 5) return baseSaturation
+    if (i === 5) return baseSaturation;
     const delta = (9 - i - 5) * ((0.32 - baseSaturation) / 5);
     return Math.min(Math.max(baseSaturation + delta, 0.05), 0.95);
   });

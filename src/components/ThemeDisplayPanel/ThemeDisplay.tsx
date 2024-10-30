@@ -1,12 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
 
 import './ThemeDisplay.css';
 
 import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
-import classes from './ThemeDisplay.module.css';
 import MessagingService from './Demo Pages/MessagingService';
+import classes from './ThemeDisplay.module.css';
 
 export interface ThemeDisplayProps {
   number: number;
@@ -16,7 +16,6 @@ export interface ThemeDisplayProps {
 }
 
 const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displayContent }) => {
-
   const Content = () => {
     switch (displayContent) {
       case 'Mantine Components':

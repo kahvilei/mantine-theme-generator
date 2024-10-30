@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Stack} from '@mantine/core';
+import { Stack } from '@mantine/core';
 import ThemeContext from '../../ThemeContext/ThemeContext';
 import DefaultColorItem from './ColorItem'; // Adjust the import path
 
@@ -22,7 +22,7 @@ const MantineDefaultColorEdit: React.FC = () => {
           <DefaultColorItem
             name={name}
             description={descriptions[name] || ''}
-            type='mantine'
+            type="mantine"
             color={theme.getMainColorShade(name)}
             onReset={() => theme.deleteColor(name)}
             onEdit={(color) => theme.setColorFromString(name, color)}
