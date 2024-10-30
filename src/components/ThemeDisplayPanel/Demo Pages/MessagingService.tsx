@@ -105,8 +105,8 @@ const MessagingService: React.FC = () => {
       </Paper>
 
       {/* Channel List */}
-      <Paper w={240} h="100%" withBorder>
-        <Stack gap="xs" p="xs">
+      <Card w={240} h="100%" withBorder>
+        <Stack gap="xs" p="0">
           <Group justify="space-between" p="xs">
             <Title order={5}>Design Team</Title>
             <ActionIcon variant="subtle">
@@ -163,7 +163,7 @@ const MessagingService: React.FC = () => {
             </Stack>
           </ScrollArea>
         </Stack>
-      </Paper>
+      </Card>
 
       {/* Main Chat Area */}
       <Stack style={{ flex: 1 }}>
@@ -231,7 +231,7 @@ const MessagingService: React.FC = () => {
       </Stack>
 
       {/* Members List */}
-      <Paper w={240} h="100%" withBorder>
+      <Card p={'0'} w={240} h="100%" withBorder>
         <Stack gap="xs" p="xs">
           <Text size="sm" fw={700} p="xs">
             Online — 3
@@ -269,7 +269,7 @@ const MessagingService: React.FC = () => {
             />
           ))}
         </Stack>
-      </Paper>
+      </Card>
     </Group>
   );
 };

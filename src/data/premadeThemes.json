@@ -1,4 +1,11 @@
 {
+    "default":{
+       "scale": 1,
+        "colors": {
+          
+        },
+        "primaryColor": "blue"
+    },
     "google": {
         "scale": 1,
         "fontSmoothing": true,

@@ -53,7 +53,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
       w={'100%'}
       withBorder
       bd={`1px solid ${theme.getColor(name)?.[2]}`}
-      bg={theme.getColor(name)?.[0]}
+      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[0]}, ${theme.getColor(name)?.[2]})`}
       padding="xs"
       radius="sm"
     >
@@ -73,7 +73,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
               />
             ) : (
               <Group wrap="nowrap" gap="4px">
-                <Text>{name}</Text>
+                <Text fw={700} c={theme.getColor(name)?.[8]}>{name}</Text>
                 {description && (
                   <Tooltip label={description}>
                     <ActionIcon

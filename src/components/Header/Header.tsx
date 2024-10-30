@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons-react';
 import {
   ActionIcon,
+  createTheme,
   DEFAULT_THEME,
   FileInput,
   Group,
@@ -21,6 +22,7 @@ import {
 } from '@mantine/core';
 import premadeThemes from '../../data/premadeThemes.json';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
+import { M } from 'vite/dist/node/types.d-aGj9QkWt';
 
 interface HeaderProps {
   theme: MantineThemeOverride;
@@ -39,7 +41,8 @@ const Header: React.FC<HeaderProps> = ({
   toggleAside,
   toggleScheme,
 }) => {
-  const currentTheme = DEFAULT_THEME;
+  const currentTheme = createTheme({});
+  const defaultTheme = createTheme({});
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
@@ -112,7 +115,7 @@ const Header: React.FC<HeaderProps> = ({
                 variant="filled"
                 color="red"
                 onClick={() => {
-                  updateTheme(currentTheme);
+                  updateTheme(defaultTheme);
                   setOpened(false);
                 }}
               >

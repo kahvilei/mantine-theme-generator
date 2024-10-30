@@ -5,7 +5,6 @@ import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import {
   AppShell,
   createTheme,
-  DEFAULT_THEME,
   Group,
   JsonInput,
   MantineProvider,
@@ -51,7 +50,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <MantineProvider forceColorScheme={mode} theme={DEFAULT_THEME}>
+    <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
         header={{ height: 80 }}
         navbar={{
@@ -69,8 +68,8 @@ const App: React.FC = () => {
       >
         <AppShell.Header withBorder>
           <Header
-            theme={DEFAULT_THEME}
-            updateTheme={updateTheme}
+            theme={defaultTheme}
+            updateTheme={setTheme}
             toggleAside={toggleAside}
             toggleScheme={toggleScheme}
             currentContent={currentContent}
@@ -80,12 +79,8 @@ const App: React.FC = () => {
         <AppShell.Navbar withBorder>
           <ScrollArea>
             <MantineProvider
-              theme={DEFAULT_THEME}
+              theme={defaultTheme}
               forceColorScheme={mode}
-              getRootElement={() =>
-                document.querySelector<HTMLElement>('#control-panel') ?? undefined
-              }
-              cssVariablesSelector="#control-panel"
             >
               <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
             </MantineProvider>
