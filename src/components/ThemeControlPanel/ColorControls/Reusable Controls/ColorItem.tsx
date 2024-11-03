@@ -52,14 +52,14 @@ const ColorItem: React.FC<ColorItemProps> = ({
     <Card
       w={'100%'}
       withBorder
-      bd={`1px solid ${theme.getColor(name)?.[2]}`}
-      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[0]}, ${theme.getColor(name)?.[2]})`}
+      bd={`1px solid ${theme.getColor(name)?.[2]}30`}
+      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[5]}10, ${theme.getColor(name)?.[5]}40)`}
       padding="xs"
       radius="sm"
     >
       <Stack gap="m">
-        <Group justify="space-between" align="start" wrap="nowrap">
-          <Group w={'75%'} wrap="nowrap">
+        <Group justify="space-between" gap={'0'} align="middle" wrap="nowrap">
+          <Group w={'100%'} wrap="nowrap">
             {type === 'theme' ? (
               <TextInput
                 value={colorName}
@@ -73,7 +73,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
               />
             ) : (
               <Group wrap="nowrap" gap="4px">
-                <Text fw={700} c={theme.getColor(name)?.[8]}>{name}</Text>
+                <Text fw={700} c={theme.getMainColorShade(name)}>{name}</Text>
                 {description && (
                   <Tooltip label={description}>
                     <ActionIcon
@@ -91,6 +91,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
             )}
             <ColorInput
               c={theme.getColor(name)?.[9]}
+              variant='variant'
               value={color}
               w={'100%'}
               onChange={(value) => {
