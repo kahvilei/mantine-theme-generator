@@ -19,7 +19,7 @@ import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
 
 const App: React.FC = () => {
-  const defaultTheme = createTheme(appTheme);
+  const defaultTheme = createTheme({appTheme} as MantineThemeOverride);
 
   const [theme, setTheme] = useState<MantineThemeOverride>({
     ...defaultTheme,
