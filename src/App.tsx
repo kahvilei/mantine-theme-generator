@@ -19,7 +19,7 @@ import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
 
 const App: React.FC = () => {
-  const defaultTheme = createTheme({appTheme} as MantineThemeOverride);
+  const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
 
   const [theme, setTheme] = useState<MantineThemeOverride>({
     ...defaultTheme,
@@ -79,10 +79,7 @@ const App: React.FC = () => {
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <ScrollArea>
-            <MantineProvider
-              theme={defaultTheme}
-              forceColorScheme={mode}
-            >
+            <MantineProvider>
               <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
             </MantineProvider>
           </ScrollArea>

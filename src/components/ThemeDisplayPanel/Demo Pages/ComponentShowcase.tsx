@@ -25,7 +25,6 @@ import {
 
 const ComponentsShowcase = () => {
   return (
-    <MantineProvider>
       <Container size="lg" p="md">
         <Title order={1} ta="center" mb="xl">
           Mantine 7 Components Demo
@@ -167,7 +166,6 @@ const ComponentsShowcase = () => {
           </Section>
         </Stack>
       </Container>
-    </MantineProvider>
   );
 };
 
