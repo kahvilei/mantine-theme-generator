@@ -7,10 +7,10 @@ import PrimaryColorSettings from './PrimaryColorSettings';
 
 const ColorPanel: React.FC = () => {
   return (
-    <Stack mt="md">
+    <Stack>
       <PrimaryColorSettings />
-      <ColorPalette />
       <GradientControls />
+      <ColorPalette />
       <ColorDefaults />
     </Stack>
   );

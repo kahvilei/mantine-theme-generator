@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { IconPencil, IconPlus } from '@tabler/icons-react';
-import { ActionIcon, Card, ColorSwatch, Group, Popover, Title, Tooltip } from '@mantine/core';
+import { ActionIcon, Box, ColorSwatch, Group, Popover, Title, Tooltip } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
 import ColorItem from './Reusable Controls/ColorItem';
@@ -17,7 +17,7 @@ const ColorPalette: React.FC = () => {
   }, [themeManager.getCustomColors()]);
 
   return (
-    <Card withBorder padding="lg">
+    <Box>
       <Title order={4}>Custom Colors</Title>
       <Group mt="xs">
         {customColors.map(([colorName, shades]) => (
@@ -42,7 +42,7 @@ const ColorPalette: React.FC = () => {
           <ColorEditorPopup colorName={newColorName} colorValue={newColorValue} />
         </Popover>
       </Group>
-    </Card>
+    </Box>
   );
 };
 

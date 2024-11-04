@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Card, Slider, Stack, Switch, Text, Title } from '@mantine/core';
+import { Box, Slider, Stack, Switch, Text, Title } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';
@@ -10,7 +10,7 @@ const PrimaryColorSettings: React.FC = () => {
   const primaryShades = [...themeManager.getShadesFromColorString(primaryColor)];
 
   return (
-    <Card withBorder padding="lg">
+    <Box>
       <Title order={4}>Primary Color Settings</Title>
       <Stack gap="xl" mt="md">
         <GroupedColorSelector
@@ -104,7 +104,7 @@ const PrimaryColorSettings: React.FC = () => {
           )}
         </Stack>
       </Stack>
-    </Card>
+    </Box>
   );
 };
 

@@ -78,7 +78,7 @@ const App: React.FC = () => {
           />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
-          <ScrollArea>
+          <ScrollArea scrollbarSize={6}>
             <MantineProvider>
               <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
             </MantineProvider>

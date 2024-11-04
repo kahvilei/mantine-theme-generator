@@ -12,7 +12,7 @@ const GradientControls: React.FC = () => {
   const gradientAngle = theme.getGradientAngle();
 
   return (
-    <Card withBorder padding="lg">
+    <Box>
       <Stack mt="md">
         <Title order={4}>Gradient</Title>
         <Group grow>
@@ -67,7 +67,7 @@ const GradientControls: React.FC = () => {
           step={1}
         />
       </Stack>
-    </Card>
+    </Box>
   );
 };
 

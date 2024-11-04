@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Card,
+  Box,
   ColorInput,
   ColorSwatch,
   Group,
@@ -24,13 +24,13 @@ const ColorDefaults: React.FC = () => {
   );
 
   return (
-    <Card withBorder padding="lg">
+    <Box maw={'100%'}>
       <Stack mt="md">
         <Title order={4}>Default Color Override</Title>
         <Stack>
           <Stack gap="0">
             <Text>Default Mantine Colors</Text>
-            <Text size="xs" c="dimmed">
+            <Text size="xs" c="dimmed" maw={'100%'}>
               {' '}
               These are the default colors provided by Mantine, you may override these colors below.
               Note that some colors are used by default by certain mantine components (like white,
@@ -55,7 +55,7 @@ const ColorDefaults: React.FC = () => {
           <MantineDefaultColorEdit />
         </Stack>
       </Stack>
-    </Card>
+    </Box>
   );
 };
 

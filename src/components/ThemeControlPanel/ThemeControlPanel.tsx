@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { Box, DEFAULT_THEME, MantineThemeOverride, Stack, Tabs } from '@mantine/core';
+import { ActionIcon, Box, DEFAULT_THEME, MantineThemeOverride, Stack, Tabs, Tooltip } from '@mantine/core';
 import ColorControl from './ColorControls/ColorControl';
 import GeneralControls from './GeneralControls';
 import ThemeContext from './ThemeContext/ThemeContext';
 import ThemeManager from './ThemeContext/ThemeManager/ThemeManager';
 import TypographyControl from './TypographyControls';
+import { IconPalette, IconSettings, IconTypeface } from '@tabler/icons-react';
+
+import classes from './ThemeControlPanel.module.css';
 
 interface ThemeControlPanelProps {
   theme: MantineThemeOverride;
@@ -24,22 +27,41 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
   }, []);
 
   return (
-    <Box id="control-panel" p={'md'}>
+    <Box id="control-panel" p={'0'}>
       <ThemeContext.Provider value={themeManager}>
         <Stack>
-          <Tabs defaultValue="color">
-            <Tabs.List>
-              <Tabs.Tab value="color">Color</Tabs.Tab>
-              <Tabs.Tab value="typography">Typography</Tabs.Tab>
-              <Tabs.Tab value="general">General</Tabs.Tab>
+          <Tabs variant="pills" defaultValue="color" orientation="vertical" >
+            <Tabs.List variant="filled" p="sm" className={classes.tabList}>
+              <Stack pos={'fixed'}>
+              <Tabs.Tab value="color">
+                <Tooltip label="Color">
+                <ActionIcon size="md" variant="transparent" radius="xl">
+                  <IconPalette size="xl" />
+                </ActionIcon>
+                </Tooltip>
+              </Tabs.Tab>
+              <Tabs.Tab value="typography">
+                <Tooltip label="Typography">
+                <ActionIcon size="md" variant="transparent" radius="xl">
+                  <IconTypeface size="xl" />
+                </ActionIcon>
+                </Tooltip>
+              </Tabs.Tab>
+              <Tabs.Tab value="general">
+                <Tooltip label="General">
+                <ActionIcon size="md" variant="transparent" radius="xl">
+                  <IconSettings size="xl" />
+                </ActionIcon>
+                </Tooltip>
+              </Tabs.Tab></Stack>
             </Tabs.List>
-            <Tabs.Panel value="color">
+            <Tabs.Panel className={classes.tabPanel} value="color">
               <ColorControl />
             </Tabs.Panel>
-            <Tabs.Panel value="typography">
+            <Tabs.Panel className={classes.tabPanel} value="typography">
               <TypographyControl theme={theme} updateTheme={updateTheme} />
             </Tabs.Panel>
-            <Tabs.Panel value="general">
+            <Tabs.Panel className={classes.tabPanel} value="general">
               <GeneralControls theme={theme} updateTheme={updateTheme} />
             </Tabs.Panel>
           </Tabs>
