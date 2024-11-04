@@ -11,7 +11,7 @@ const PrimaryColorSettings: React.FC = () => {
 
   return (
     <Box>
-      <Title order={4}>Primary Color Settings</Title>
+      <Title order={4}>Primary Color</Title>
       <Stack gap="xl" mt="md">
         <GroupedColorSelector
           colors={[

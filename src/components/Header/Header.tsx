@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <Group p={'md'} h={'100%'} align="center" justify="space-between">
       <Group>
-        <Title size={'1.2rem'} c={'primary'}>
+        <Title size={'1.2rem'} c={'blue'}>
           Mantine Theme Editor
         </Title>
         <ActionIcon variant="outline" onClick={toggleScheme}>

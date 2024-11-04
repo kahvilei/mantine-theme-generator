@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { IconColorSwatch, IconQuestionMark, IconRestore, IconTrash } from '@tabler/icons-react';
+import { IconColorPicker, IconColorSwatch, IconQuestionMark, IconRestore, IconTrash } from '@tabler/icons-react';
 import {
   ActionIcon,
+  Box,
   Card,
   Collapse,
   ColorInput,
   DEFAULT_THEME,
   Group,
+  Space,
   Stack,
   Text,
   TextInput,
@@ -14,6 +16,8 @@ import {
 } from '@mantine/core';
 import ThemeContext from '../../ThemeContext/ThemeContext';
 import QuestionMarkTooltip from '../../Reusable Controls/QuestionMarkTooltip';
+
+import classes from './ColorItem.module.css';
 
 interface ColorItemProps {
   name: string;
@@ -52,11 +56,8 @@ const ColorItem: React.FC<ColorItemProps> = ({
   return (
     <Card
       w={'100%'}
-      withBorder
-      bd={`1px solid ${theme.getColor(name)?.[2]}30`}
-      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[5]}10, ${theme.getColor(name)?.[5]}40)`}
-      padding="5px"
-      radius="sm"
+      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[5]}20, ${theme.getColor(name)?.[5]}50)`}
+      padding="5px 10px"
     >
       <Stack gap="m">
         <Group justify="space-between" gap={'0'} align="middle" wrap="nowrap">
@@ -115,13 +116,21 @@ const ColorItem: React.FC<ColorItemProps> = ({
           </Group>
         </Group>
         <Collapse in={isEditing}>
-          <Stack>
+          <Stack gap="sm" p={'sm'} className={classes.shadeContainer}>
             {theme.getColor(name)?.map((shade: string, index: number) => (
-              <Group key={index}>
+              <Group key={index} gap={0} className={classes.shadePicker}>
+                <Box
+                  w={'30%'}
+                  bg={shade}
+                  h={36}
+                >
+                </Box>
                 <ColorInput
                   value={shade}
+                  variant='none'
+                  withEyeDropper={false}
+                  leftSection={<IconColorPicker size={'15px'}/>}
                   onChange={(color) => theme.updateColorShade(name, index, color)}
-                  label={`Shade ${index}`}
                   style={{ flex: 1 }}
                 />
               </Group>

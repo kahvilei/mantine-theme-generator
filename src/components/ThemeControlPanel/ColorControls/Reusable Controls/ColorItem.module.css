@@ -1,0 +1,18 @@
+.shadePicker{
+    border-radius: var(--mantine-radius-sm);
+    background-color: var(--mantine-color-dark-7);
+    overflow: hidden;
+    padding: 0;
+}
+
+:where([data-mantine-color-scheme='light']) .shadePicker{
+    background-color: var(--mantine-color-white);
+}
+
+.shadeContainer{
+    border-top: 1px solid var(--mantine-color-dark-9);
+}
+
+:where([data-mantine-color-scheme='light']) .shadeContainer{
+    border-top: 1px solid var(--mantine-color-gray-2);
+}

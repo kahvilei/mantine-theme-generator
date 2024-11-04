@@ -9,7 +9,7 @@ const GradientControls: React.FC = () => {
   const gradientStart = theme.getGradientFrom() || 'blue';
   const gradientEnd = theme.getGradientTo() || 'cyan';
 
-  const gradientAngle = theme.getGradientAngle();
+  const gradientAngle = theme.getGradientAngle()?theme.getGradientAngle():180;
 
   return (
     <Box>

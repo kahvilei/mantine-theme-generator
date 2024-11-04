@@ -4,8 +4,9 @@ import { ColorSwatch, Group, MantineColorsTuple, Select, Text } from '@mantine/c
 const GroupedColorSelector: React.FC<{
   colors: { [key: string]: Map<string, MantineColorsTuple> }[];
   mainColor: { [key: string]: string };
+  label?: string;
   onSelect: (color: string) => void;
-}> = ({ colors, onSelect, mainColor }) => {
+}> = ({ colors, onSelect, mainColor, label }) => {
   const mainColorFind = (color: string) => {
     let tuple = colors[0]['theme'].get(color);
     if (colors[0]['theme'].has(color)) {
@@ -19,7 +20,7 @@ const GroupedColorSelector: React.FC<{
   };
   return (
     <Select
-      label="Primary Color"
+      label={label}
       data={[
         { group: 'Custom Colors', items: Array.from(colors[0]['theme'].keys()) },
         { group: 'Mantine Colors', items: Array.from(colors[1]['mantine'].keys()) },
