@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@mantine/code-highlight/styles.css';
 
 import React, { useState } from 'react';
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
@@ -6,7 +7,6 @@ import {
   AppShell,
   createTheme,
   Group,
-  JsonInput,
   MantineProvider,
   MantineThemeOverride,
   ScrollArea,
@@ -14,6 +14,7 @@ import {
   Tabs,
 } from '@mantine/core';
 import Header from './components/Header/Header';
+import JsonEditor from './components/JsonEditor/JsonEditor';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
@@ -72,6 +73,7 @@ const App: React.FC = () => {
             theme={defaultTheme}
             updateTheme={setTheme}
             toggleAside={toggleAside}
+            lightMode={mode === 'light'}
             toggleScheme={toggleScheme}
             currentContent={currentContent}
             updateDisplayContent={updateDisplayContent}
@@ -142,15 +144,10 @@ const App: React.FC = () => {
         </AppShell.Main>
         <AppShell.Aside>
           <Stack p="md">
-            <JsonInput
-              onChange={(value) => {
-                setTheme(JSON.parse(value));
-              }}
-              value={JSON.stringify(theme, null, 2)}
-              autosize
-              variant="filled"
-              style={{ width: '100%', maxHeight: '100vh', overflow: 'auto' }}
-            ></JsonInput>
+            <JsonEditor
+              theme={JSON.stringify(theme, null, 2)}
+              onEdit={(newTheme: string) => setTheme(JSON.parse(newTheme))}
+            />
           </Stack>
         </AppShell.Aside>
       </AppShell>

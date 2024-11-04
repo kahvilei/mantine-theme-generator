@@ -16,19 +16,23 @@ import {
   MantineThemeOverride,
   Popover,
   Select,
+  SelectProps,
   Text,
   Title,
   Tooltip,
 } from '@mantine/core';
 import premadeThemes from '../../data/premadeThemes.json';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
-import { M } from 'vite/dist/node/types.d-aGj9QkWt';
+import ThemePreview from './ThemePreview';
+
+import classes from './Header.module.css';
 
 interface HeaderProps {
   theme: MantineThemeOverride;
   updateTheme: (theme: Partial<MantineThemeOverride>) => void;
   toggleAside: () => void;
   toggleScheme: () => void;
+  lightMode: boolean;
   updateDisplayContent: (content: string) => void;
   currentContent: string;
 }
@@ -37,13 +41,16 @@ const Header: React.FC<HeaderProps> = ({
   theme,
   updateTheme,
   currentContent,
+  lightMode,
   updateDisplayContent,
   toggleAside,
   toggleScheme,
 }) => {
   const currentTheme = createTheme({});
+  const [currentThemeName, setCurrentThemeName] = useState('');
   const defaultTheme = createTheme({});
   const [opened, setOpened] = useState(false);
+  const themes = JSON.parse(JSON.stringify(premadeThemes));
 
   useEffect(() => {
     if (Object.keys(theme).length === 0) {
@@ -52,9 +59,15 @@ const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const handlePreMadeThemeSelect = (value: string | null) => {
-    let themes = JSON.parse(JSON.stringify(premadeThemes));
+    setCurrentThemeName(value as string);
     updateTheme(themes[value as string]);
   };
+
+  const themeOptions: SelectProps['renderOption'] = ({ option, checked }) => (
+      <ThemePreview lightMode={lightMode} theme={themes[option.value]} name={option.value} />
+  );
+
+  const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
 
   return (
     <Group p={'md'} h={'100%'} align="center" justify="space-between">
@@ -69,16 +82,19 @@ const Header: React.FC<HeaderProps> = ({
       <Group align="center">
         <Select
           placeholder="Preview content"
-          data={['Mantine Components', 'Repository', 'Messaging Service']}
-          value={currentContent}
+          data={['UI Demo', 'Repository', 'Messaging Service']}
+          value={currentContent? currentContent : "UI Demo"}
           onChange={(value) => updateDisplayContent(value as string)}
-          style={{ width: '200px' }}
+          style={{ width: '300px' }}
         />
         <Select
           placeholder="Select a pre-made theme"
-          data={Object.keys(premadeThemes)}
+          data={themeData}
+          renderOption={themeOptions}
+          value={currentThemeName? currentThemeName : 'mantine'}
           onChange={handlePreMadeThemeSelect}
-          style={{ width: '200px' }}
+          style={{ width: '300px' }}
+          classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown}}
         />
         <Tooltip label="Toggle JSON Sidebar">
           <ActionIcon variant="outline" onClick={toggleAside}>

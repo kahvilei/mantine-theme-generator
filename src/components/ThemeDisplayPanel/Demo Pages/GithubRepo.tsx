@@ -143,7 +143,7 @@ const GitHubRepoDemo: React.FC = () => {
   );
 
   return (
-    <Container size="xl">
+    <Container size="lg">
       <Stack gap="xl">
         <RepoHeader />
         <RepoNavigation />

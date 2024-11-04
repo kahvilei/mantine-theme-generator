@@ -1,10 +1,6 @@
 {
     "mantine":{
-       "scale": 1,
-        "colors": {
-          
-        },
-        "primaryColor": "blue"
+       
     },
     "google": {
         "scale": 1,
@@ -276,10 +272,7 @@
                 "#540c26"
             ]
         },
-        "primaryShade": {
-            "light": 5,
-            "dark": 7
-        },
+        "primaryShade": 5,
         "primaryColor": "purple",
         "autoContrast": false,
         "luminanceThreshold": 0.3,

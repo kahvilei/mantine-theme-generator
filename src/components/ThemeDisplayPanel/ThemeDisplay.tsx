@@ -7,6 +7,8 @@ import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
 import MessagingService from './Demo Pages/MessagingService';
 import classes from './ThemeDisplay.module.css';
+import '@mantine/dates/styles.css';
+import '@mantine/charts/styles.css';
 
 export interface ThemeDisplayProps {
   number: number;
@@ -18,7 +20,7 @@ export interface ThemeDisplayProps {
 const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displayContent }) => {
   const Content = () => {
     switch (displayContent) {
-      case 'Mantine Components':
+      case 'UI Demo':
         return <ComponentShowcase />;
       case 'Repository':
         return <GitHubRepoDemo />;

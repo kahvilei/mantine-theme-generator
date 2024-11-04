@@ -1,184 +1,357 @@
 import React from 'react';
-import { IconBellRinging, IconCheck, IconX } from '@tabler/icons-react';
 import {
-  Accordion,
-  ActionIcon,
-  Badge,
-  Button,
   Card,
-  Checkbox,
   Container,
+  Grid,
   Group,
-  MantineProvider,
-  Notification,
-  Progress,
-  Select,
-  Slider,
-  Stack,
-  Switch,
-  Tabs,
   Text,
   TextInput,
+  Button,
+  Stack,
+  Avatar,
+  Badge,
+  List,
+  ThemeIcon,
+  Checkbox,
+  Select,
+  Textarea,
   Title,
+  Tabs,
+  Paper,
+  ActionIcon,
+  Input,
+  Indicator,
+  Menu,
+  Progress,
+  RingProgress,
+  Switch,
   Tooltip,
+  Pill,
+  rem
 } from '@mantine/core';
+import { Calendar } from '@mantine/dates';
+import { IconSettings, IconBell, IconSearch, IconMenu2, IconUser, IconMail, IconLock, IconChevronRight, IconMessage, IconStar, IconHeart, IconCircleCheck, IconCircleDashed, IconBellMinus, IconUsersGroup} from '@tabler/icons-react';
+import { preview } from 'vite';
 
-const ComponentsShowcase = () => {
+const ComponentShowcase = () => {
+  const [activeTab, setActiveTab] = React.useState('first');
+
   return (
-      <Container size="lg" p="md">
-        <Title order={1} ta="center" mb="xl">
-          Mantine 7 Components Demo
-        </Title>
-
-        <Stack gap="xl">
-          <Section title="Typography">
-            <Text>Default text</Text>
-            <Text fw={700}>Bold text</Text>
-            <Text fs="italic">Italic text</Text>
-            <Text td="underline">Underlined text</Text>
-            <Text size="xl" c="blue">
-              Extra large blue text
-            </Text>
-          </Section>
-
-          <Section title="Buttons">
-            <Group>
-              <Button>Default</Button>
-              <Button variant="filled">Filled</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="light">Light</Button>
-            </Group>
-          </Section>
-
-          <Section title="Inputs">
-            <Stack>
-              <TextInput placeholder="Type something..." label="Text Input" />
-              <Checkbox label="Check me" />
-              <Select
-                label="Select an option"
-                placeholder="Pick one"
-                data={['React', 'Vue', 'Angular']}
-              />
-            </Stack>
-          </Section>
-
-          <Section title="Slider and Switch">
-            <Slider
-              marks={[
-                { value: 20, label: '20%' },
-                { value: 50, label: '50%' },
-                { value: 80, label: '80%' },
-              ]}
-              mb="md"
-            />
-            <Switch label="Toggle me" />
-          </Section>
-
-          <Section title="Card and Badge">
-            <Card shadow="sm" p="lg" radius="md" withBorder>
-              <Card.Section></Card.Section>
-
-              <Group justify="space-between" mt="md" mb="xs">
-                <Text fw={500}>Card Title</Text>
-                <Badge c="pink" variant="light">
-                  Badge
-                </Badge>
-              </Group>
-
-              <Text size="sm" c="dimmed">
-                This is a sample card component from Mantine 7.
-              </Text>
-
-              <Button variant="light" c="blue" fullWidth mt="md" radius="md">
-                Card Button
-              </Button>
-            </Card>
-          </Section>
-
-          <Section title="Action Icons and Tooltips">
-            <Group>
-              <Tooltip label="Notification">
-                <ActionIcon variant="outline" c="blue" size="lg">
-                  <IconBellRinging size="1.1rem" />
-                </ActionIcon>
-              </Tooltip>
-              <Tooltip label="Success">
-                <ActionIcon variant="outline" c="green" size="lg">
-                  <IconCheck size="1.1rem" />
-                </ActionIcon>
-              </Tooltip>
-              <Tooltip label="Error">
-                <ActionIcon variant="outline" c="red" size="lg">
-                  <IconX size="1.1rem" />
-                </ActionIcon>
-              </Tooltip>
-            </Group>
-          </Section>
-
-          <Section title="Accordion">
-            <Accordion>
-              <Accordion.Item value="customization">
-                <Accordion.Control>Customization</Accordion.Control>
-                <Accordion.Panel>
-                  Colors, fonts, shadows and many other parts are customizable to fit your design
-                  needs
-                </Accordion.Panel>
-              </Accordion.Item>
-              <Accordion.Item value="flexibility">
-                <Accordion.Control>Flexibility</Accordion.Control>
-                <Accordion.Panel>
-                  Configure components appearance and behavior with vast amount of settings or
-                  overwrite any part of component styles
-                </Accordion.Panel>
-              </Accordion.Item>
-            </Accordion>
-          </Section>
-
-          <Section title="Tabs">
-            <Tabs defaultValue="gallery">
-              <Tabs.List>
-                <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-                <Tabs.Tab value="messages">Messages</Tabs.Tab>
-                <Tabs.Tab value="settings">Settings</Tabs.Tab>
-              </Tabs.List>
-
-              <Tabs.Panel value="gallery" pt="xs">
-                Gallery tab content
-              </Tabs.Panel>
-              <Tabs.Panel value="messages" pt="xs">
-                Messages tab content
-              </Tabs.Panel>
-              <Tabs.Panel value="settings" pt="xs">
-                Settings tab content
-              </Tabs.Panel>
-            </Tabs>
-          </Section>
-
-          <Section title="Notification">
-            <Notification title="We notify you that">
-              You are now obligated to give a star to Mantine project on GitHub
-            </Notification>
-          </Section>
-
-          <Section title="Progress">
-            <Progress value={50} animated mb="md" />
-            <Progress value={75} c="green" size="xl" radius="xl" />
-          </Section>
-        </Stack>
-      </Container>
+    <Container size="lg">
+      <Grid gutter="md">
+        <Grid.Col span={4}>
+          <Stack gap="md">
+          <UserProfile />
+          <TaskManager />
+          <QuickActions />
+          </Stack>
+        </Grid.Col>
+        <Grid.Col span={4}>
+        <Stack gap="md">
+          <NotificationCenter />
+          <MessageThreads />
+          </Stack>
+        </Grid.Col>
+        <Grid.Col span={4}>
+          <Stack gap="md">
+          <MetricsCard />
+          <ProgressMetrics />
+          <UserPreferences />
+          </Stack>
+        </Grid.Col>
+      </Grid>
+    </Container>
   );
 };
 
-interface SectionProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-const Section: React.FC<SectionProps> = ({ title, children }) => (
-  <Stack>
-    <Title order={2}>{title}</Title>
-    {children}
-  </Stack>
+const UserProfile = () => (
+  <Card>
+    <Stack align="center">
+      <Indicator processing size={16} offset={7} position="bottom-end">
+        <Avatar size="xl" radius="xl">JD</Avatar>
+      </Indicator>
+      <Stack gap="xs" align="center">
+        <Text size="lg" fw={500}>John Doe</Text>
+        <Group gap="xs">
+          <Pill>Pro User</Pill>
+          <Pill>Developer</Pill>
+        </Group>
+        <Text size="sm" c="dimmed">Full-stack developer passionate about UI/UX</Text>
+      </Stack>
+      <Progress value={75} size="sm" radius="xl" />
+      <Text size="xs" c="dimmed">Profile Completion: 75%</Text>
+    </Stack>
+  </Card>
 );
 
-export default ComponentsShowcase;
+const NotificationCenter = () => (
+  <Card>
+    <Stack>
+      <Group justify="space-between">
+        <Title order={4}>Notifications</Title>
+        <ActionIcon variant="subtle"><IconBell size={20} /></ActionIcon>
+      </Group>
+      <Paper p="xs">
+        <Group>
+          <ThemeIcon size="lg"><IconMail size={20} /></ThemeIcon>
+          <Stack gap={0}>
+            <Text size="sm">New message received</Text>
+            <Text size="xs" c="dimmed">2 minutes ago</Text>
+          </Stack>
+        </Group>
+      </Paper>
+      <Paper p="xs">
+        <Group>
+          <ThemeIcon size="lg"><IconStar size={20} /></ThemeIcon>
+          <Stack gap={0}>
+            <Text size="sm">Project milestone achieved</Text>
+            <Text size="xs" c="dimmed">1 hour ago</Text>
+          </Stack>
+        </Group>
+      </Paper>
+      <Paper p="xs">
+        <Group>
+          <ThemeIcon size="lg"><IconLock size={20} /></ThemeIcon>
+          <Stack gap={0}>
+            <Text size="sm">Account password updated</Text>
+            <Text size="xs" c="dimmed">1 day ago</Text>
+          </Stack>
+        </Group>
+      </Paper>
+    </Stack>
+  </Card>
+);
+
+const MetricsCard = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Key Metrics</Title>
+      <Group grow>
+        <RingProgress
+          sections={[{ value: 812, color: 'green' }, { value: 23, color: 'blue' }, { value: 12, color: 'red' }]}
+        />
+        <Stack gap={0} align="center">
+          <Text size="xl" fw={500}>847</Text>
+          <Text size="sm" c="dimmed">Total Tasks</Text>
+        </Stack>
+      </Group>
+      <Group
+        justify="space-between"
+        align="center"
+        gap="sm"
+      >
+        <Stack gap={0} align="center">
+          <Text size="xl" fw={500}>23</Text>
+          <Text size="sm" c="dimmed">Pending</Text>
+        </Stack>
+        <Stack gap={0} align="center">
+          <Text size="xl" fw={500}>12</Text>
+          <Text size="sm" c="dimmed">In Progress</Text>
+        </Stack>
+        <Stack gap={0} align="center">
+          <Text size="xl" fw={500}>812</Text>
+          <Text size="sm" c="dimmed">Completed</Text>
+        </Stack>
+      </Group>
+    </Stack>
+  </Card>
+);
+
+const TaskManager = () => (
+  <Card>
+    <Stack>
+      <Group justify="space-between">
+        <Title order={4}>Tasks</Title>
+        <Menu>
+          <Menu.Target>
+            <ActionIcon variant="subtle"><IconMenu2 size={20} /></ActionIcon>
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Item>All Tasks</Menu.Item>
+            <Menu.Item>Completed</Menu.Item>
+            <Menu.Item>Pending</Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      </Group>
+      <List 
+        spacing="xs"
+        size="sm"
+        center
+        icon={
+          <ThemeIcon color="green" size={24} radius="xl">
+            <IconCircleCheck style={{ width: rem(16), height: rem(16) }} />
+          </ThemeIcon>
+        }
+        >
+        {['Design system update', 'API integration'].map((task) => (
+          <List.Item key={task}>
+            <Group justify="space-between">
+              {task}
+              <Badge variant="light">Complete</Badge>
+            </Group>
+          </List.Item>
+        ))}
+        <List.Item
+        icon={
+          <ThemeIcon color="blue" size={24} radius="xl">
+            <IconCircleDashed style={{ width: rem(16), height: rem(16) }} />
+          </ThemeIcon>
+        }
+      >
+        <Group justify="space-between">
+        Documentation update
+              <Badge variant="light">In Progress</Badge>
+            </Group>
+      </List.Item>
+      {['Testing', 'Deployment'].map((task) => (
+        <List.Item key={task}
+          icon={
+            <ThemeIcon color="grey" size={24} radius="xl">
+              <IconLock size={16} />
+            </ThemeIcon>
+          }
+          >
+          <Group justify="space-between">
+            {task}
+            <Badge variant="light">Not Started</Badge>
+          </Group>
+        </List.Item>
+      ))}
+      </List>
+    </Stack>
+  </Card>
+);
+
+const MessageThreads = () => (
+  <Card>
+    <Stack>
+      <Group justify="space-between">
+        <Title order={4}>Messages</Title>
+        <Input
+          placeholder="Search messages"
+          leftSection={<IconSearch size={16} />}
+          variant="filled"
+          size="xs"
+        />
+      </Group>
+      {[
+        {name:'Alice Smith', preview: 'Hey, how are you?', unread: 2},
+        {name:'Bob Johnson', preview: 'Can you send me the latest...', unread: 1},
+        {name:'Carol White', preview: 'I have a question about...', unread: 0},
+        {name:'David Brown', preview: 'Thanks for the update!', unread: 0},
+        {name:'Eve Green', preview: 'I need your help with...', unread: 0}
+        ].map((message) => (
+        <Paper key={message.name} p="xs">
+          <Group justify="space-between">
+            
+              {message.unread > 0 && (<Group>
+                <Indicator label={message.unread} size={20} >
+                <Avatar 
+                size="md" 
+                radius="xl"
+                >
+                {message.name[0]}
+                </Avatar>
+                </Indicator>
+              <Stack gap={0}>
+                <Text size="sm"  fw={'700'}>{message.name}</Text>
+                <Text size="xs" c="dimmed">{message.preview}</Text>
+              </Stack></Group>
+              )}
+
+              {message.unread === 0 && (<Group>
+                <Avatar 
+                size="md" 
+                radius="xl"
+                >
+                {message.name[0]}
+                </Avatar>
+              <Stack gap={0}>
+                <Text size="sm">{message.name}</Text>
+                <Text size="xs" c="dimmed">{message.preview}</Text>
+              </Stack></Group>
+              )}
+            
+            <IconChevronRight size={16} />
+          </Group>
+        </Paper>
+      ))}
+    </Stack>
+  </Card>
+);
+
+const ProgressMetrics = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Project Progress</Title>
+      <Stack gap="xs">
+        {[
+          { label: 'Design', progress: 80 },
+          { label: 'Development', progress: 60 },
+          { label: 'Testing', progress: 40 }
+        ].map((item) => (
+          <Stack key={item.label} gap="xs">
+            <Group justify="space-between">
+              <Text size="sm">{item.label}</Text>
+              <Text size="sm" c="dimmed">{item.progress}%</Text>
+            </Group>
+            <Progress value={item.progress} size="sm" radius="xl" />
+          </Stack>
+        ))}
+      </Stack>
+    </Stack>
+  </Card>
+);
+
+const QuickActions = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Quick Actions</Title>
+      <Grid>
+        <>
+          {[
+            { icon: IconMessage, label: 'Message', color: 'blue' },
+            { icon: IconUser, label: 'Profile', color: 'cyan' },
+            { icon: IconSettings, label: 'Settings', color: 'orange' },
+            { icon: IconHeart, label: 'Favorites', color: 'red' },
+            { icon: IconBellMinus, label: 'Notifications', color: 'green' },
+            { icon: IconCircleCheck, label: 'Tasks', color: 'grape' },
+            { icon: IconSearch, label: 'Search', color: 'teal' },
+            { icon: IconUsersGroup, label: 'Team', color: 'pink' }
+          ].map((action) => (
+            <Grid.Col key={action.label} span={3}>
+              <Tooltip label={action.label}>
+                  <Stack align="center" gap="xs">
+                    <ThemeIcon size="xl" color={action.color} >
+                      <action.icon size={20} />
+                    </ThemeIcon>
+                    <Text size="xs">{action.label}</Text>
+                  </Stack>
+              </Tooltip>
+            </Grid.Col>
+          ))}
+        </>
+      </Grid>
+    </Stack>
+  </Card>
+);
+
+const UserPreferences = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Preferences</Title>
+      <Stack gap="md">
+        <Switch label="Email notifications" />
+        <Switch label="Push notifications" />
+        <Switch label="Dark mode" />
+        <Select
+          label="Time zone"
+          placeholder="Select timezone"
+          data={['UTC', 'EST', 'PST', 'GMT']}
+        />
+      </Stack>
+    </Stack>
+  </Card>
+);
+
+export default ComponentShowcase;
