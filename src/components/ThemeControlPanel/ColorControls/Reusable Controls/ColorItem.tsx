@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from '@mantine/core';
 import ThemeContext from '../../ThemeContext/ThemeContext';
+import QuestionMarkTooltip from '../../Reusable Controls/QuestionMarkTooltip';
 
 interface ColorItemProps {
   name: string;
@@ -54,7 +55,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
       withBorder
       bd={`1px solid ${theme.getColor(name)?.[2]}30`}
       bg={`linear-gradient(45deg, ${theme.getColor(name)?.[5]}10, ${theme.getColor(name)?.[5]}40)`}
-      padding="xs"
+      padding="5px"
       radius="sm"
     >
       <Stack gap="m">
@@ -73,19 +74,9 @@ const ColorItem: React.FC<ColorItemProps> = ({
               />
             ) : (
               <Group wrap="nowrap" gap="4px">
-                <Text fw={700} c={theme.getMainColorShade(name)}>{name}</Text>
+                <Text fw={700} size={'sm'} c={theme.getMainColorShade(name)}>{name}</Text>
                 {description && (
-                  <Tooltip label={description}>
-                    <ActionIcon
-                      c={theme.getColor(name)?.[8]}
-                      size={12}
-                      radius={100}
-                      bd={'1px solid'}
-                      variant="outline"
-                    >
-                      <IconQuestionMark size={12} />
-                    </ActionIcon>
-                  </Tooltip>
+                  <QuestionMarkTooltip description={description} color={theme.getMainColorShade(name)} />
                 )}
               </Group>
             )}
@@ -104,20 +95,20 @@ const ColorItem: React.FC<ColorItemProps> = ({
           <Group gap="xs" wrap="nowrap">
             {isMantine && color !== defaultColor && (
               <Tooltip label="Reset to default mantine color">
-                <ActionIcon variant="outline" bg="white" color="red" onClick={onReset}>
+                <ActionIcon variant="outline" color="red" onClick={onReset}>
                   <IconRestore size={16} />
                 </ActionIcon>
               </Tooltip>
             )}
             {!isMantine && (
               <Tooltip label="Delete Color">
-                <ActionIcon variant="outline" bg="white" color="red" onClick={onReset}>
+                <ActionIcon variant="outline" color="red" onClick={onReset}>
                   <IconTrash size={16} />
                 </ActionIcon>
               </Tooltip>
             )}
             <Tooltip label="Fine-tune shades">
-              <ActionIcon variant="outline" bg="white" onClick={() => setIsEditing((v) => !v)}>
+              <ActionIcon variant="outline" onClick={() => setIsEditing((v) => !v)}>
                 <IconColorSwatch size={16} />
               </ActionIcon>
             </Tooltip>

@@ -16,10 +16,10 @@ const MantineDefaultColorEdit: React.FC = () => {
   };
 
   return (
-    <>
+    <Stack gap="sm">
       {Array.from(theme.getMantineColors().entries()).map(([name, shades], index) => (
-        <Stack key={index}>
           <DefaultColorItem
+            key={index}
             name={name}
             description={descriptions[name] || ''}
             type="mantine"
@@ -27,9 +27,8 @@ const MantineDefaultColorEdit: React.FC = () => {
             onReset={() => theme.deleteColor(name)}
             onEdit={(color) => theme.setColorFromString(name, color)}
           />
-        </Stack>
       ))}
-    </>
+      </Stack>
   );
 };
 

@@ -8,8 +8,8 @@ const ShadeSelector: React.FC<{
 }> = ({ colors, selectedIndex, onSelect }) => {
   return (
     <Group
-      gap={1}
-      h={50}
+      gap={2}
+      h={30}
       justify="stretch"
       align="stretch"
       wrap="nowrap"
@@ -26,9 +26,10 @@ const ShadeSelector: React.FC<{
           onClick={() => onSelect(index)}
           style={{
             cursor: 'pointer',
-            border: index === selectedIndex ? '2px solid white' : '2px solid transparent',
+            border: index === selectedIndex ? `2px solid white` : '2px solid transparent',
             zIndex: index === selectedIndex ? 1 : 0,
-            transform: index === selectedIndex ? 'scale(1.2)' : 'scale(1)',
+            transition: 'transform 100ms',
+            transform: index === selectedIndex ? 'scale(1.3)' : 'scale(1)',
             borderRadius:
               index === 0
                 ? 'var(--mantine-radius-default) 0 0 var(--mantine-radius-default)'
@@ -37,7 +38,7 @@ const ShadeSelector: React.FC<{
                   : '0',
           }}
         >
-          {index === selectedIndex && <Text>{index}</Text>}
+          {index === selectedIndex && <Text size='xs'>{index}</Text>}
         </Stack>
       ))}
     </Group>
