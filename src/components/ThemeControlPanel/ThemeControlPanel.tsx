@@ -5,9 +5,10 @@ import GeneralControls from './GeneralControls';
 import ThemeContext from './ThemeContext/ThemeContext';
 import ThemeManager from './ThemeContext/ThemeManager/ThemeManager';
 import TypographyControl from './TypographyControls';
-import { IconPalette, IconSettings, IconTypeface } from '@tabler/icons-react';
+import { IconPalette, IconResize, IconScale, IconSettings, IconTypeface } from '@tabler/icons-react';
 
 import classes from './ThemeControlPanel.module.css';
+import SizeAndLayoutControls from './SizeAndLayoutControls';
 
 interface ThemeControlPanelProps {
   theme: MantineThemeOverride;
@@ -47,6 +48,13 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
+              <Tabs.Tab value="size-and-layout">
+                <Tooltip label="Size and Layout">
+                <ActionIcon size="md" variant="transparent" radius="xl">
+                  <IconResize size="xl" />
+                </ActionIcon>
+                </Tooltip>
+              </Tabs.Tab>
               <Tabs.Tab value="general">
                 <Tooltip label="General">
                 <ActionIcon size="md" variant="transparent" radius="xl">
@@ -60,6 +68,9 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="typography">
               <TypographyControl theme={theme} updateTheme={updateTheme} />
+            </Tabs.Panel>
+            <Tabs.Panel className={classes.tabPanel} value="size-and-layout">
+               <SizeAndLayoutControls theme={theme} updateTheme={updateTheme} />
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="general">
               <GeneralControls theme={theme} updateTheme={updateTheme} />

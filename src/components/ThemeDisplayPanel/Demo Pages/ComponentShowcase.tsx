@@ -5,18 +5,13 @@ import {
   Grid,
   Group,
   Text,
-  TextInput,
-  Button,
   Stack,
   Avatar,
   Badge,
   List,
   ThemeIcon,
-  Checkbox,
   Select,
-  Textarea,
   Title,
-  Tabs,
   Paper,
   ActionIcon,
   Input,
@@ -31,7 +26,7 @@ import {
 } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
 import { IconSettings, IconBell, IconSearch, IconMenu2, IconUser, IconMail, IconLock, IconChevronRight, IconMessage, IconStar, IconHeart, IconCircleCheck, IconCircleDashed, IconBellMinus, IconUsersGroup} from '@tabler/icons-react';
-import { preview } from 'vite';
+import { LineChart } from '@mantine/charts';
 
 const ComponentShowcase = () => {
   const [activeTab, setActiveTab] = React.useState('first');
@@ -49,6 +44,7 @@ const ComponentShowcase = () => {
         <Grid.Col span={4}>
         <Stack gap="md">
           <NotificationCenter />
+          <CalendarCard />
           <MessageThreads />
           </Stack>
         </Grid.Col>
@@ -57,6 +53,7 @@ const ComponentShowcase = () => {
           <MetricsCard />
           <ProgressMetrics />
           <UserPreferences />
+          <LineChartCard />
           </Stack>
         </Grid.Col>
       </Grid>
@@ -351,6 +348,64 @@ const UserPreferences = () => (
         />
       </Stack>
     </Stack>
+  </Card>
+);
+
+const CalendarCard = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Calendar</Title>
+      <Calendar />
+    </Stack>
+  </Card>
+);
+
+export const data = [
+  {
+    date: 'Mar 22',
+    Apples: 2890,
+    Oranges: 2338,
+    Tomatoes: 2452,
+  },
+  {
+    date: 'Mar 23',
+    Apples: 2756,
+    Oranges: 2103,
+    Tomatoes: 2402,
+  },
+  {
+    date: 'Mar 24',
+    Apples: 3322,
+    Oranges: 986,
+    Tomatoes: 1821,
+  },
+  {
+    date: 'Mar 25',
+    Apples: 3470,
+    Oranges: 2108,
+    Tomatoes: 2809,
+  },
+  {
+    date: 'Mar 26',
+    Apples: 3129,
+    Oranges: 1726,
+    Tomatoes: 2290,
+  },
+];
+
+const LineChartCard = () => (
+  <Card>
+    <LineChart
+      h={300}
+      data={data}
+      dataKey="date"
+      series={[
+        { name: 'Apples', color: 'blue.6' },
+        { name: 'Oranges', color: 'red.6' },
+        { name: 'Tomatoes', color: 'green.6' },
+      ]}
+      curveType="linear"
+    />
   </Card>
 );
 

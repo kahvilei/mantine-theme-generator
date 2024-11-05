@@ -31,28 +31,6 @@ const GeneralControls: React.FC<GeneralControlsProps> = ({ theme, updateTheme })
         onChange={(value) => updateTheme({ focusRing: value as 'auto' | 'always' | 'never' })}
       />
 
-      <NumberInput
-        label="Scale"
-        min={0.1}
-        max={2}
-        step={0.1}
-        value={theme.scale}
-        onChange={(value) => updateTheme({ scale: Number(value) })}
-      />
-
-      <Text size="sm">Default Radius</Text>
-      <Slider
-        min={0}
-        max={20}
-        step={1}
-        value={
-          typeof theme.defaultRadius === 'number'
-            ? (theme.defaultRadius as number)
-            : (currentTheme.defaultRadius as number)
-        }
-        onChange={(value) => updateTheme({ defaultRadius: value })}
-      />
-
       <Switch
         label="Respect Reduced Motion"
         checked={theme.respectReducedMotion}
