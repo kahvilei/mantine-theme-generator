@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  DEFAULT_THEME,
-  MantineThemeOverride,
-  NumberInput,
-  SegmentedControl,
-  Slider,
-  Stack,
-  Switch,
-  Text,
-} from '@mantine/core';
+import { Stack, Text, SegmentedControl, Slider, NumberInput, Group } from '@mantine/core';
+import { MantineThemeOverride, DEFAULT_THEME } from '@mantine/core';
+import RadiusControls from './RadiusControls';
+import SpacingControls from './SpacingControls';
 
 interface SizeAndLayoutControlsProps {
   theme: MantineThemeOverride;
@@ -37,24 +31,8 @@ const SizeAndLayoutControls: React.FC<SizeAndLayoutControlsProps> = ({ theme, up
           label={(value) => `${value}x`}
         />
       </Stack>
-
-      <Text size="sm">Default Radius</Text>
-      <SegmentedControl
-        data={[
-          { label: 'xs', value: '2' },
-          { label: 'sm', value: '4' },
-          { label: 'md', value: '8' },
-          { label: 'lg', value: '12' },
-          { label: 'xl', value: '16' }
-        ]}
-        value={
-          typeof theme.defaultRadius === 'number' 
-            ? theme.defaultRadius.toString()
-            : currentTheme.defaultRadius?.toString() || '8'
-        }
-        onChange={(value) => updateTheme({ defaultRadius: parseInt(value) })}
-      />
-
+      <RadiusControls />
+      <SpacingControls />
     </Stack>
   );
 };

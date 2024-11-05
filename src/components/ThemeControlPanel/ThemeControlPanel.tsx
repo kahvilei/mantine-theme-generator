@@ -4,11 +4,11 @@ import ColorControl from './ColorControls/ColorControl';
 import GeneralControls from './GeneralControls';
 import ThemeContext from './ThemeContext/ThemeContext';
 import ThemeManager from './ThemeContext/ThemeManager/ThemeManager';
-import TypographyControl from './TypographyControls';
+import TypographyControl from './TypographyControls/TypographyControls';
 import { IconPalette, IconResize, IconScale, IconSettings, IconTypeface } from '@tabler/icons-react';
 
 import classes from './ThemeControlPanel.module.css';
-import SizeAndLayoutControls from './SizeAndLayoutControls';
+import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 
 interface ThemeControlPanelProps {
   theme: MantineThemeOverride;

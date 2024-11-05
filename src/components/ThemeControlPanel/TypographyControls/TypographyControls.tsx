@@ -1,5 +1,6 @@
 import React from 'react';
-import { Autocomplete, MantineThemeOverride, Stack, Switch } from '@mantine/core';
+import { Autocomplete, MantineThemeOverride, Stack, Switch, Title } from '@mantine/core';
+import HeadingsSettings from './HeadingsSettings';
 
 interface TypographyControlProps {
   theme: MantineThemeOverride;
@@ -74,6 +75,9 @@ const TypographyControl: React.FC<TypographyControlProps> = ({ theme, updateThem
         checked={theme.fontSmoothing}
         onChange={(event) => updateTheme({ fontSmoothing: event.currentTarget.checked })}
       />
+
+      <HeadingsSettings />
+
     </Stack>
   );
 };

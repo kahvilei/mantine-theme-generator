@@ -1,5 +1,6 @@
 import {
   DEFAULT_THEME,
+  HeadingStyle,
   MantineColorShade,
   MantineColorsTuple,
   MantineThemeOverride,
@@ -237,6 +238,45 @@ class ThemeManager {
     return this.theme.defaultRadius ? this.theme.defaultRadius : this.defaultTheme.defaultRadius;
   }
 
+  setDefaultRadius(value: 'xs' | 'sm' | 'md' | 'lg' | 'xl') {
+    this.theme.defaultRadius = value;
+    this.commitChanges();
+  }
+
+  private frameValue(value: string): string {
+    return `calc(${value} * var(--mantine-scale))`;
+  }
+
+  private unframeValue(value: string): string {
+    return value.replace(/calc\((.*?) \* var\(--mantine-scale\)\)/, '$1');
+  }
+
+  getRadius(key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') {
+    const value = this.theme.radius ? this.theme.radius[key] : this.defaultTheme.radius[key];
+    return value ? this.unframeValue(value) : value;
+  }
+
+  setRadius(key: 'xs' | 'sm' | 'md' | 'lg' | 'xl', value: string) {
+    const framedValue = this.frameValue(value);
+    this.theme.radius 
+      ? (this.theme.radius[key] = framedValue) 
+      : (this.theme.radius = { [key]: framedValue });
+    this.commitChanges();
+  }
+
+  getSpacing(key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') {
+    const value = this.theme.spacing ? this.theme.spacing[key] : this.defaultTheme.spacing[key];
+    return value ? this.unframeValue(value) : value;
+  }
+
+  setSpacing(key: 'xs' | 'sm' | 'md' | 'lg' | 'xl', value: string) {
+    const framedValue = this.frameValue(value);
+    this.theme.spacing 
+      ? (this.theme.spacing[key] = framedValue) 
+      : (this.theme.spacing = { [key]: framedValue });
+    this.commitChanges();
+  }
+
   getWhite() {
     return this.theme.white ? this.theme.white : this.defaultTheme.white;
   }
@@ -272,6 +312,68 @@ class ThemeManager {
 
   setLuminanceThreshold(value: number) {
     this.theme.luminanceThreshold = value;
+    this.commitChanges();
+  }
+
+  getHeadingFontFamily() {
+    return this.theme.headings?.fontFamily
+      ? this.theme.headings.fontFamily
+      : this.defaultTheme.headings?.fontFamily;
+  }
+
+  setHeadingFontFamily(value: string) {
+    this.theme.headings 
+      ? (this.theme.headings.fontFamily = value) 
+      : (this.theme.headings = { fontFamily: value });
+    this.commitChanges();
+  }
+
+  getHeadingWeight() {
+    return this.theme.headings?.fontWeight
+      ? this.theme.headings.fontWeight
+      : this.defaultTheme.headings?.fontWeight;
+  }
+
+  setHeadingWeight(value: string) {
+    this.theme.headings 
+      ? (this.theme.headings.fontWeight = value) 
+      : (this.theme.headings = { fontWeight: value });
+    this.commitChanges();
+  }
+
+  getHeadingSize(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
+    return this.theme.headings?.sizes
+      ? this.unframeValue(this.theme.headings.sizes[key]?.fontSize as string)
+      : this.unframeValue(this.defaultTheme.headings?.sizes[key].fontSize as unknown as string);
+  }
+
+  setHeadingSize(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
+    const framedValue = this.frameValue(value);
+    this.theme.headings
+      ? (this.theme.headings.sizes ? (this.theme.headings.sizes[key] = { ...this.theme.headings.sizes[key], fontSize: framedValue }) : this.theme.headings.sizes = { [key]: { fontSize: framedValue } })
+      : (this.theme.headings = { sizes: { [key]: {fontSize: framedValue} } });
+    this.commitChanges();
+  }
+
+  getBodyFontFamily() {
+    return this.theme.fontFamily
+      ? this.theme.fontFamily
+      : this.defaultTheme?.fontFamily;
+  }
+
+  setBodyFontFamily(value: string) {
+    this.theme.fontFamily = value;
+    this.commitChanges();
+  }
+
+  getMonospaceFontFamily() {
+    return this.theme.fontFamilyMonospace
+      ? this.theme.fontFamilyMonospace
+      : this.defaultTheme.fontFamilyMonospace;
+  }
+
+  setMonospaceFontFamily(value: string) {
+    this.theme.fontFamilyMonospace = value;
     this.commitChanges();
   }
 }
