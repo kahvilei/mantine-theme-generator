@@ -1,9 +1,26 @@
-import React from 'react';
-import { DEFAULT_THEME } from '@mantine/core';
-import ThemeManager from './ThemeManager/ThemeManager';
+import React, { createContext } from 'react';
+import { useTheme } from './useTheme';
+import { MantineThemeOverride } from '@mantine/core';
 
-const ThemeContext = React.createContext<ThemeManager>(
-  new ThemeManager(DEFAULT_THEME, (theme) => {})
-);
+const ThemeContext = createContext<ReturnType<typeof useTheme> | null>(null);
 
-export default ThemeContext;
+export const ThemeProvider: React.FC<{
+  children: React.ReactNode;
+  initialTheme: MantineThemeOverride;
+}> = ({ children, initialTheme }) => {
+  const themeContext = useTheme(initialTheme);
+
+  return (
+    <ThemeContext.Provider value={themeContext}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useThemeContext = () => {
+  const context = React.useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useThemeContext must be used within ThemeProvider');
+  }
+  return context;
+};

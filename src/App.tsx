@@ -12,12 +12,14 @@ import {
   ScrollArea,
   Stack,
   Tabs,
+  DEFAULT_THEME,
 } from '@mantine/core';
 import Header from './components/Header/Header';
 import JsonEditor from './components/JsonEditor/JsonEditor';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
+import { ThemeProvider } from './components/ThemeControlPanel/ThemeContext/ThemeContext';
 
 const MemoizedHeader = React.memo(Header);
 
@@ -70,6 +72,7 @@ const App: React.FC = () => {
   );
 
   return (
+    <ThemeProvider initialTheme={DEFAULT_THEME}>
     <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
         header={{ height: 80 }}
@@ -161,6 +164,7 @@ const App: React.FC = () => {
         </AppShell.Aside>
       </AppShell>
     </MantineProvider>
+    </ThemeProvider>
   );
 };
 
