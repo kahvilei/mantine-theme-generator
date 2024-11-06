@@ -16,7 +16,7 @@ import classes from './NumberUnitSelector.module.css';
 const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   value,
   onChange,
-  step = 1,
+  step = undefined,
   label,
   hasUnits = true,
   min = 0,
@@ -42,9 +42,27 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   const defaultParsed = parseValue(value);
   const [numberValue, setNumberValue] = useState(defaultParsed.number);
   const [unitValue, setUnitValue] = useState(defaultParsed.unit);
+  const [dynamicStep, setDynamicStep] = useState(1);
+
+
 
   useEffect(() => {
     onChange(hasUnits ? `${numberValue}${unitValue}` : `${numberValue}`);
+    if (step == undefined) {
+      if (unitValue === 'px') {
+        setDynamicStep(1);
+      } else if (unitValue === 'rem') {
+        setDynamicStep(0.1);
+      } else if (unitValue === 'em') {
+        setDynamicStep(0.1);
+      } else if (unitValue === '%') {
+        setDynamicStep(1);
+      } else if (unitValue === 'vh') {
+        setDynamicStep(1);
+      } else if (unitValue === 'vw') {
+        setDynamicStep(1);
+      }
+    }
   }, [numberValue, unitValue, hasUnits]);
 
   return (
@@ -57,7 +75,7 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
           min={min}
           max={max}
           w={hasUnits ? '30%' : '60%'}
-          step={step}
+          step={step || dynamicStep}
         />
         {hasUnits && (
           <Select
