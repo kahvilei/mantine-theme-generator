@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  IconBrandGithub,
   IconDownload,
   IconJson,
   IconLayoutSidebar,
@@ -75,6 +76,9 @@ const Header: React.FC<HeaderProps> = ({
         <Title size={'1.2rem'} c={'blue'}>
           Mantine Theme Editor
         </Title>
+        <ActionIcon variant="filled" onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}>
+          <IconBrandGithub size="1.25rem" />
+        </ActionIcon>
         <ActionIcon variant="outline" onClick={toggleScheme}>
           <IconSunMoon size="1.25rem" />
         </ActionIcon>
@@ -85,6 +89,7 @@ const Header: React.FC<HeaderProps> = ({
           data={['UI Demo', 'Repository', 'Messaging Service']}
           value={currentContent? currentContent : "UI Demo"}
           onChange={(value) => updateDisplayContent(value as string)}
+          allowDeselect = {false}
           style={{ width: '300px' }}
         />
         <Select
@@ -93,6 +98,7 @@ const Header: React.FC<HeaderProps> = ({
           renderOption={themeOptions}
           value={currentThemeName? currentThemeName : 'mantine'}
           onChange={handlePreMadeThemeSelect}
+          allowDeselect = {false}
           style={{ width: '300px' }}
           classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown}}
         />

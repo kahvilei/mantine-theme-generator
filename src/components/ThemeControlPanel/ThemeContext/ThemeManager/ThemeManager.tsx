@@ -328,13 +328,13 @@ class ThemeManager {
     this.commitChanges();
   }
 
-  getHeadingWeight() {
+  getHeadingDefaultWeight() {
     return this.theme.headings?.fontWeight
       ? this.theme.headings.fontWeight
       : this.defaultTheme.headings?.fontWeight;
   }
 
-  setHeadingWeight(value: string) {
+  setHeadingDefaultWeight(value: string) {
     this.theme.headings 
       ? (this.theme.headings.fontWeight = value) 
       : (this.theme.headings = { fontWeight: value });
@@ -354,6 +354,33 @@ class ThemeManager {
       : (this.theme.headings = { sizes: { [key]: {fontSize: framedValue} } });
     this.commitChanges();
   }
+
+  getHeadingLineHeight(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
+    return this.theme.headings?.sizes
+      ? this.unframeValue(this.theme.headings.sizes[key]?.lineHeight as string)
+      : this.unframeValue(this.defaultTheme.headings?.sizes[key].lineHeight as string);
+  }
+
+  setHeadingLineHeight(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
+    this.theme.headings
+      ? (this.theme.headings.sizes ? (this.theme.headings.sizes[key] = { ...this.theme.headings.sizes[key], lineHeight: value }) : this.theme.headings.sizes = { [key]: { lineHeight: value } })
+      : (this.theme.headings = { sizes: { [key]: { lineHeight: value } } });
+    this.commitChanges();
+  }
+
+  getHeadingWeight(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
+    return this.theme.headings?.sizes
+      ? this.theme.headings.sizes[key]?.fontWeight
+      : this.defaultTheme.headings?.sizes[key].fontWeight? this.defaultTheme.headings.sizes[key].fontWeight : this.theme.headings?.fontWeight ? this.theme.headings.fontWeight : this.defaultTheme.headings?.fontWeight;
+  }
+
+  setHeadingWeight(key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
+    this.theme.headings
+      ? (this.theme.headings.sizes ? (this.theme.headings.sizes[key] = { ...this.theme.headings.sizes[key], fontWeight: value }) : this.theme.headings.sizes = { [key]: { fontWeight: value } })
+      : (this.theme.headings = { sizes: { [key]: { fontWeight: value } } });
+    this.commitChanges();
+  }
+
 
   getBodyFontFamily() {
     return this.theme.fontFamily

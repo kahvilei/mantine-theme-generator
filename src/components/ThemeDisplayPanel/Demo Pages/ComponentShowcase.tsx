@@ -203,7 +203,7 @@ const TaskManager = () => (
       {['Testing', 'Deployment'].map((task) => (
         <List.Item key={task}
           icon={
-            <ThemeIcon color="grey" size={24} radius="xl">
+            <ThemeIcon color="gray" size={24} radius="xl">
               <IconLock size={16} />
             </ThemeIcon>
           }

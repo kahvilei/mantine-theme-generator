@@ -33,6 +33,7 @@ const GroupedColorSelector: React.FC<{
           <Text>{option.label}</Text>
         </Group>
       )}
+      allowDeselect = {false}
       leftSection={<ColorSwatch color={mainColor.shade} size={20} />}
     />
   );

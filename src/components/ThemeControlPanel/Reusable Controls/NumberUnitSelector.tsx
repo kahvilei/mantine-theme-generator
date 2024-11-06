@@ -5,6 +5,8 @@ interface NumberUnitSelectorProps {
   value: string;
   onChange: (value: string) => void;
   label?: string;
+  step?: number
+  hasUnits?: boolean;
   min?: number;
   max?: number;
 }
@@ -14,7 +16,9 @@ import classes from './NumberUnitSelector.module.css';
 const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   value,
   onChange,
+  step = 1,
   label,
+  hasUnits = true,
   min = 0,
   max = 1000,
 }) => {
@@ -27,12 +31,11 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
     { value: 'vw', label: 'vw' },
   ];
 
-  // Parse default value into number and unit
   const parseValue = (value: string) => {
-    const match = value.match(/^([-\d.]+)(\D+)$/);
+    const match = value.match(/^([-\d.]+)(\D+)?$/);
     return {
       number: match ? parseFloat(match[1]) : 0,
-      unit: match ? match[2] : 'px',
+      unit: hasUnits ? (match?.[2] || 'px') : '',
     };
   };
 
@@ -41,28 +44,30 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   const [unitValue, setUnitValue] = useState(defaultParsed.unit);
 
   useEffect(() => {
-    onChange(`${numberValue}${unitValue}`);
-  }, [numberValue, unitValue]);
+    onChange(hasUnits ? `${numberValue}${unitValue}` : `${numberValue}`);
+  }, [numberValue, unitValue, hasUnits]);
 
   return (
     <Card p='xs' className={classes.numberUnitSelector}>
-    <Group align="center" wrap='nowrap'>
-      <Text w={'150px'}>{label}</Text>
-      <NumberInput
-        value={numberValue}
-        onChange={(value) => setNumberValue(value as number || 0)}
-        min={min}
-        max={max}
-        w={'30%'}
-        step={unitValue === 'rem' || unitValue === 'em' ? 0.1 : 1}
-      />
-      <Select
-        data={cssUnits}
-        w={'30%'}
-        value={unitValue}
-        onChange={(value) => setUnitValue(value || 'px')}
-      />
-    </Group>
+      <Group align="center" wrap='nowrap'>
+        <Text w={'150px'}>{label}</Text>
+        <NumberInput
+          value={numberValue}
+          onChange={(value) => setNumberValue(value as number || 0)}
+          min={min}
+          max={max}
+          w={hasUnits ? '30%' : '60%'}
+          step={step}
+        />
+        {hasUnits && (
+          <Select
+            data={cssUnits}
+            w={'30%'}
+            value={unitValue}
+            onChange={(value) => setUnitValue(value || 'px')}
+          />
+        )}
+      </Group>
     </Card>
   );
 };
