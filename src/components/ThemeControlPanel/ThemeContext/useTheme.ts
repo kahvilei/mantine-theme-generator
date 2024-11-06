@@ -5,7 +5,7 @@ import { DEFAULT_THEME } from '@mantine/core';
 
 export const useTheme = (initialTheme: MantineThemeOverride) => {
   const [theme, dispatch] = useReducer(themeReducer, initialTheme);
-  const defaultTheme = DEFAULT_THEME;
+  const defaultTheme = {...DEFAULT_THEME};
 
   const unframeValue = (value: string): string => {
     return value.replace(/calc\((.*?) \* var\(--mantine-scale\)\)/, '$1');
@@ -157,6 +157,8 @@ export const useTheme = (initialTheme: MantineThemeOverride) => {
   const getMainColorShade = (key: string) => {
     if (theme.colors && theme.colors[key]) {
       return theme.colors[key][5];
+    } if (defaultTheme.colors[key]) {
+      return defaultTheme.colors[key][5];
     }
     return '#000';
   };

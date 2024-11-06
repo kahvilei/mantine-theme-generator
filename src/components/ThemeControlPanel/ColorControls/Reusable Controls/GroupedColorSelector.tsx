@@ -34,7 +34,7 @@ const GroupedColorSelector: React.FC<{
         </Group>
       )}
       allowDeselect = {false}
-      leftSection={<ColorSwatch color={mainColor.shade} size={20} />}
+      leftSection={<ColorSwatch color={mainColorFind(mainColor.name)} size={20} />}
     />
   );
 };

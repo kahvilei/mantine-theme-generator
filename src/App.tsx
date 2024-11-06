@@ -20,6 +20,19 @@ import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel'
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
 import { ThemeProvider } from './components/ThemeControlPanel/ThemeContext/ThemeContext';
+import { Provider } from 'react-redux';
+
+// Store setup
+import { configureStore } from '@reduxjs/toolkit';
+import themeReducer from './data/ThemeState/themeSlice';
+
+export const store = configureStore({
+  reducer: {
+    theme: themeReducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
 
 
 const App: React.FC = () => {
@@ -45,6 +58,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider initialTheme={DEFAULT_THEME}>
+    <Provider store={store}>
     <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
         header={{ height: 80 }}
@@ -136,6 +150,7 @@ const App: React.FC = () => {
         </AppShell.Aside>
       </AppShell>
     </MantineProvider>
+    </Provider>
     </ThemeProvider>
   );
 };

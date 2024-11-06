@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import { Box, DEFAULT_THEME, Group, Slider, Stack, Text, Title } from '@mantine/core';
+import { Box, Group, Slider, Stack, Text, Title } from '@mantine/core';
 import { useThemeContext } from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import classes from './ColorControls.module.css';
 
-const GradientControls: React.FC = () => {
+const GradientControls = () => {
   const { getCustomColors, getMantineColors, getMainColorShade, getGradientFrom, getGradientTo, setGradientFrom, setGradientTo, getGradientAngle, setGradientAngle } = useThemeContext();
 
   const gradientStart = getGradientFrom() || 'blue';
@@ -37,14 +36,14 @@ const GradientControls: React.FC = () => {
             background: `linear-gradient( ${gradientAngle}deg, ${getMainColorShade(
               gradientStart
             )}, ${getMainColorShade(gradientEnd)})`,
-            borderRadius: DEFAULT_THEME.radius.sm,
+            borderRadius: '15px',
           }}
         >
           <Box
             bg={'white'}
             p={'3'}
             style={{
-              borderRadius: DEFAULT_THEME.radius.sm,
+              borderRadius: '15px',
             }}
           >
             <Text

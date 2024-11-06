@@ -5,11 +5,21 @@ import {
   Text,
   Title,
 } from '@mantine/core';
-import { useThemeContext } from '../ThemeContext/ThemeContext';
 import MantineDefaultColorEdit from './Reusable Controls/MantineDefaultColorEdit';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setBlack,
+  setWhite,
+} from '../../../data/ThemeState/themeSlice';
+import {
+  selectBlack,
+  selectWhite,
+} from '../../../data/ThemeState/themeSelectors';
 
 const ColorDefaults = () => {
-  const { getWhite, setWhite, getBlack, setBlack } = useThemeContext();
+  const white = useSelector(selectWhite);
+  const black = useSelector(selectBlack);
+  const dispatch = useDispatch();
 
   return (
     <Box maw={'100%'}>
@@ -28,14 +38,14 @@ const ColorDefaults = () => {
           <ColorInput
             label="White"
             description="Shade-less color used as the background on light mode as well as some accents on dark mode."
-            value={getWhite()}
-            onChange={(color) => setWhite(color)}
+            value={white}
+            onChange={(color) => dispatch(setWhite(color))}
           />
           <ColorInput
             label="Black"
             description="Shade-less color used as the text color on light mode."
-            value={getBlack()}
-            onChange={(color) => setBlack(color)}
+            value={black}
+            onChange={(color) => dispatch(setBlack(color))}
           />
         </Stack>
         <Stack>
