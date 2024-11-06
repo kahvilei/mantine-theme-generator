@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-.tabList button[data-active][data-active] button{
+.tabList button[data-active][data-active] div{
    color: white;
 }
 .tabList>div>button{

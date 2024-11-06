@@ -1,16 +1,12 @@
-import React from 'react';
-import { Stack, Text, SegmentedControl, Slider, NumberInput, Group } from '@mantine/core';
-import { MantineThemeOverride, DEFAULT_THEME } from '@mantine/core';
+import { Stack, Text, Slider} from '@mantine/core';
 import RadiusControls from './RadiusControls';
 import SpacingControls from './SpacingControls';
 
-interface SizeAndLayoutControlsProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
-}
+import ThemeContext from '../ThemeContext/ThemeContext';
+import { useContext } from 'react';
 
-const SizeAndLayoutControls: React.FC<SizeAndLayoutControlsProps> = ({ theme, updateTheme }) => {
-  const currentTheme = DEFAULT_THEME;
+const SizeAndLayoutControls = () => {
+  const theme = useContext(ThemeContext);
 
   return (
     <Stack mt="md">
@@ -20,8 +16,8 @@ const SizeAndLayoutControls: React.FC<SizeAndLayoutControlsProps> = ({ theme, up
           min={0.1}
           max={2}
           step={0.1}
-          value={theme.scale}
-          onChange={(value) => updateTheme({ scale: value })}
+          value={theme.getScale()}
+          onChange={(value) => theme.setScale(value)}
           marks={[
             { value: 0.5, label: '0.5x' },
             { value: 1, label: '1x' },

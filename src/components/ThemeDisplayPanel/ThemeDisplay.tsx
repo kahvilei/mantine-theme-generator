@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
 
 import './ThemeDisplay.css';

@@ -1,22 +1,15 @@
-import React from 'react';
 import {
-  DEFAULT_THEME,
-  MantineThemeOverride,
-  NumberInput,
   SegmentedControl,
-  Slider,
   Stack,
   Switch,
   Text,
 } from '@mantine/core';
 
-interface GeneralControlsProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
-}
+import ThemeContext from './ThemeContext/ThemeContext';
+import { useContext } from 'react';
 
-const GeneralControls: React.FC<GeneralControlsProps> = ({ theme, updateTheme }) => {
-  const currentTheme = DEFAULT_THEME;
+const GeneralControls = () => {
+  const theme = useContext(ThemeContext);
 
   return (
     <Stack mt="md">
@@ -27,14 +20,14 @@ const GeneralControls: React.FC<GeneralControlsProps> = ({ theme, updateTheme })
           { value: 'always', label: 'Always' },
           { value: 'never', label: 'Never' },
         ]}
-        value={theme.focusRing}
-        onChange={(value) => updateTheme({ focusRing: value as 'auto' | 'always' | 'never' })}
+        value={theme.getFocusRing()}
+        onChange={(value) => theme.setFocusRing(value as 'auto' | 'always' | 'never')}
       />
 
       <Switch
         label="Respect Reduced Motion"
-        checked={theme.respectReducedMotion}
-        onChange={(event) => updateTheme({ respectReducedMotion: event.currentTarget.checked })}
+        checked={theme.getRespectReducedMotion()}
+        onChange={(event) => theme.setRespectReducedMotion(event.currentTarget.checked)}
       />
 
       <Text size="sm">Cursor Type</Text>
@@ -43,8 +36,8 @@ const GeneralControls: React.FC<GeneralControlsProps> = ({ theme, updateTheme })
           { label: 'Default', value: 'default' },
           { label: 'Pointer', value: 'pointer' },
         ]}
-        value={theme.cursorType}
-        onChange={(value) => updateTheme({ cursorType: value as 'default' | 'pointer' })}
+        value={theme.getCursorType()}
+        onChange={(value) => theme.setCursorType(value as 'default' | 'pointer')}
       />
     </Stack>
   );

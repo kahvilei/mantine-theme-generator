@@ -1,6 +1,5 @@
 import {
   DEFAULT_THEME,
-  HeadingStyle,
   MantineColorShade,
   MantineColorsTuple,
   MantineThemeOverride,
@@ -10,7 +9,6 @@ import generateShades from '@/utils/generateColors';
 class ThemeManager {
   theme: MantineThemeOverride;
   schemeDependentPrimaryShade: boolean;
-  //state function will be react hook
   stateFunction: (theme: MantineThemeOverride) => void;
   defaultTheme = DEFAULT_THEME;
 
@@ -32,6 +30,15 @@ class ThemeManager {
     this.stateFunction(this.theme);
   }
 
+  getScale() {
+    return this.theme.scale ? this.theme.scale : this.defaultTheme.scale;
+  }
+
+  setScale(value: number) {
+    this.theme.scale = value;
+    this.commitChanges();
+  }
+
   setColor(key: string, value: MantineColorsTuple) {
     this.theme.colors ? (this.theme.colors[key] = value) : (this.theme.colors = { [key]: value });
     this.commitChanges();
@@ -49,7 +56,7 @@ class ThemeManager {
     else return undefined;
   }
 
-  updateColor(oldName: string, newName: string, value?: MantineColorsTuple) {
+  updateColor(oldName: string, newName: string) {
     if (oldName !== newName && newName.trim() !== '') {
       const updatedColors = { ...this.theme.colors };
       updatedColors[newName] = updatedColors[oldName];
@@ -381,7 +388,6 @@ class ThemeManager {
     this.commitChanges();
   }
 
-
   getBodyFontFamily() {
     return this.theme.fontFamily
       ? this.theme.fontFamily
@@ -403,6 +409,45 @@ class ThemeManager {
     this.theme.fontFamilyMonospace = value;
     this.commitChanges();
   }
+
+  getFontSmoothing() {
+    return this.theme.fontSmoothing ? this.theme.fontSmoothing : this.defaultTheme.fontSmoothing;
+  }
+
+  setFontSmoothing(value: boolean) {
+    this.theme.fontSmoothing = value;
+    this.commitChanges();
+  }
+
+  getFocusRing() {
+    return this.theme.focusRing ? this.theme.focusRing : this.defaultTheme.focusRing;
+  }
+
+  setFocusRing(value: "always" | "auto" | "never") {
+    this.theme.focusRing = value;
+    this.commitChanges();
+  }
+
+  getCursorType() {
+    return this.theme.cursorType ? this.theme.cursorType : this.defaultTheme.cursorType;
+  }
+
+  setCursorType(value: "default" | "pointer") {
+    this.theme.cursorType = value;
+    this.commitChanges();
+  }
+
+  getRespectReducedMotion() {
+    return this.theme.respectReducedMotion
+      ? this.theme.respectReducedMotion
+      : this.defaultTheme.respectReducedMotion;
+  }
+
+  setRespectReducedMotion(value: boolean) {
+    this.theme.respectReducedMotion = value;
+    this.commitChanges();
+  }
+
 }
 
 export default ThemeManager;

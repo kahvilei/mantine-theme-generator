@@ -36,7 +36,7 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ theme, name, lightMode=fals
         <Text size="xs" style={{ color: fontColorSecondary }}> {firstFontFamily} - </Text>  
             <Text size="xs" style={{ color: fontColorSecondary }}> {mainColor} </Text>
             
-            <ActionIcon variant='filled' color={mainColor} size='sm' style={{borderRadius:`var(--mantine-radius-${defaultRadius})`}}>
+            <ActionIcon component='div' variant='filled' color={mainColor} size='sm' style={{borderRadius:`var(--mantine-radius-${defaultRadius})`}}>
                 <IconPalette/>
             </ActionIcon>
         </Group>

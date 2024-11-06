@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Card,
   Container,
@@ -29,7 +28,6 @@ import { IconSettings, IconBell, IconSearch, IconMenu2, IconUser, IconMail, Icon
 import { LineChart } from '@mantine/charts';
 
 const ComponentShowcase = () => {
-  const [activeTab, setActiveTab] = React.useState('first');
 
   return (
     <Container size="lg">
@@ -397,6 +395,7 @@ const LineChartCard = () => (
   <Card>
     <LineChart
       h={300}
+      w={'100%'}
       data={data}
       dataKey="date"
       series={[

@@ -11,7 +11,7 @@ const HeadingsSettings = () => {
     <Stack mt="md">
       <Title order={4}>Headings</Title>
       {headings.map((heading) => (
-        <Stack gap="md">
+        <Stack gap="md" key={heading}>
         <Title order={6} key={heading}>{heading}</Title>
         <NumberUnitSelector
             key={`heading-size-${heading}`} 

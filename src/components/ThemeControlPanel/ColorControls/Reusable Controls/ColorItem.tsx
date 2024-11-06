@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { IconColorPicker, IconColorSwatch, IconQuestionMark, IconRestore, IconTrash } from '@tabler/icons-react';
+import { IconColorPicker, IconColorSwatch, IconRestore, IconTrash } from '@tabler/icons-react';
 import {
   ActionIcon,
   Box,
@@ -8,7 +8,6 @@ import {
   ColorInput,
   DEFAULT_THEME,
   Group,
-  Space,
   Stack,
   Text,
   TextInput,

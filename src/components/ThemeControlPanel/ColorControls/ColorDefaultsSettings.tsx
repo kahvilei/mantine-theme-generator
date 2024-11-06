@@ -2,10 +2,6 @@ import React, { useContext } from 'react';
 import {
   Box,
   ColorInput,
-  ColorSwatch,
-  Group,
-  Select,
-  SelectProps,
   Stack,
   Text,
   Title,
@@ -15,13 +11,6 @@ import MantineDefaultColorEdit from './Reusable Controls/MantineDefaultColorEdit
 
 const ColorDefaults: React.FC = () => {
   const theme = useContext(ThemeContext);
-
-  const renderColorSelect: SelectProps['renderOption'] = ({ option }) => (
-    <Group>
-      <ColorSwatch color={theme.getMainColorShade(option.value)} size={'20px'} />
-      <Text>{option.value}</Text>
-    </Group>
-  );
 
   return (
     <Box maw={'100%'}>

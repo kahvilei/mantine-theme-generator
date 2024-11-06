@@ -11,7 +11,6 @@ import {
 import {
   ActionIcon,
   createTheme,
-  DEFAULT_THEME,
   FileInput,
   Group,
   MantineThemeOverride,
@@ -41,7 +40,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({
   theme,
   updateTheme,
-  currentContent,
   lightMode,
   updateDisplayContent,
   toggleAside,
@@ -49,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const currentTheme = createTheme({});
   const [currentThemeName, setCurrentThemeName] = useState('');
+  const [currentContent, setCurrentContent] = useState('UI Demo');
   const defaultTheme = createTheme({});
   const [opened, setOpened] = useState(false);
   const themes = JSON.parse(JSON.stringify(premadeThemes));
@@ -88,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({
           placeholder="Preview content"
           data={['UI Demo', 'Repository', 'Messaging Service']}
           value={currentContent? currentContent : "UI Demo"}
-          onChange={(value) => updateDisplayContent(value as string)}
+          onChange={(value) => {updateDisplayContent(value as string); setCurrentContent(value as string)}}
           allowDeselect = {false}
           style={{ width: '300px' }}
         />

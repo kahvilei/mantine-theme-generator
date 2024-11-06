@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Box, Card, DEFAULT_THEME, Group, Slider, Stack, Text, Title } from '@mantine/core';
+import { Box, DEFAULT_THEME, Group, Slider, Stack, Text, Title } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import classes from './ColorControls.module.css';

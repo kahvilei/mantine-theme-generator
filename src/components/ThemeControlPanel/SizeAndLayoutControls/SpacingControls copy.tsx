@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Stack, Text, SegmentedControl, Title, Box} from '@mantine/core';
+import { Stack, Text, Title, Box} from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
 

@@ -1,11 +1,8 @@
-import React from 'react';
-import { Autocomplete, MantineThemeOverride, Stack, Switch, Title } from '@mantine/core';
+import { Autocomplete, Stack, Switch, } from '@mantine/core';
 import HeadingsSettings from './HeadingsSettings';
 
-interface TypographyControlProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
-}
+import ThemeContext from '../ThemeContext/ThemeContext';
+import { useContext } from 'react';
 
 const commonFonts = [
   'Arial',
@@ -43,37 +40,38 @@ const monospaceFonts = [
   'JetBrains Mono',
 ];
 
-const TypographyControl: React.FC<TypographyControlProps> = ({ theme, updateTheme }) => {
+const TypographyControl = () => {
+  const theme = useContext(ThemeContext);
   return (
     <Stack mt="md">
       <Autocomplete
         label="Main Font Family"
         data={commonFonts}
-        value={theme.fontFamily}
-        onChange={(value) => updateTheme({ fontFamily: value })}
+        value={theme.getBodyFontFamily()}
+        onChange={(value) => theme.setBodyFontFamily(value)}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Heading Font Family"
         data={commonFonts}
-        value={theme.headings?.fontFamily}
-        onChange={(value) => updateTheme({ headings: { ...theme.headings, fontFamily: value } })}
+        value={theme.getHeadingFontFamily()}
+        onChange={(value) => theme.setHeadingFontFamily(value)}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Monospace Font Family"
         data={monospaceFonts}
-        value={theme.fontFamilyMonospace}
-        onChange={(value) => updateTheme({ fontFamilyMonospace: value })}
+        value={theme.getMonospaceFontFamily()}
+        onChange={(value) => theme.setMonospaceFontFamily(value)}
         placeholder="Select or type a monospace font family"
       />
 
       <Switch
         label="Font Smoothing"
-        checked={theme.fontSmoothing}
-        onChange={(event) => updateTheme({ fontSmoothing: event.currentTarget.checked })}
+        checked={theme.getFontSmoothing()}
+        onChange={(event) => theme.setFontSmoothing(event.currentTarget.checked)}
       />
 
       <HeadingsSettings />

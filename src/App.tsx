@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo} from 'react';
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import {
   AppShell,
@@ -18,6 +18,9 @@ import JsonEditor from './components/JsonEditor/JsonEditor';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
+
+const MemoizedHeader = React.memo(Header);
+
 
 const App: React.FC = () => {
   const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
@@ -51,6 +54,21 @@ const App: React.FC = () => {
     setCurrentContent(content);
   };
 
+  const memoizedHeader = useMemo(
+    () => (
+      <MemoizedHeader
+        theme={defaultTheme}
+        updateTheme={setTheme}
+        toggleAside={toggleAside}
+        lightMode={mode === 'light'}
+        toggleScheme={toggleScheme}
+        currentContent={currentContent}
+        updateDisplayContent={updateDisplayContent}
+      />
+    ),
+    []
+  );
+
   return (
     <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
@@ -69,15 +87,7 @@ const App: React.FC = () => {
         }}
       >
         <AppShell.Header withBorder>
-          <Header
-            theme={defaultTheme}
-            updateTheme={setTheme}
-            toggleAside={toggleAside}
-            lightMode={mode === 'light'}
-            toggleScheme={toggleScheme}
-            currentContent={currentContent}
-            updateDisplayContent={updateDisplayContent}
-          />
+          {memoizedHeader}
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <ScrollArea scrollbarSize={6}>
@@ -146,7 +156,6 @@ const App: React.FC = () => {
           <Stack p="md">
             <JsonEditor
               theme={JSON.stringify(theme, null, 2)}
-              onEdit={(newTheme: string) => setTheme(JSON.parse(newTheme))}
             />
           </Stack>
         </AppShell.Aside>

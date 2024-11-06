@@ -1,6 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { IconPencil, IconPlus } from '@tabler/icons-react';
-import { ActionIcon, Box, ColorSwatch, Group, Popover, Title, Tooltip } from '@mantine/core';
+import { IconPlus } from '@tabler/icons-react';
+import { ActionIcon, Box, Group, Popover, Title, Tooltip } from '@mantine/core';
 import ThemeContext from '../ThemeContext/ThemeContext';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
 import ColorItem from './Reusable Controls/ColorItem';
