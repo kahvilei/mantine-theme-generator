@@ -1,35 +1,16 @@
-import React, { useEffect } from 'react';
-import { ActionIcon, Box, DEFAULT_THEME, MantineThemeOverride, Stack, Tabs, Tooltip } from '@mantine/core';
+
+import { ActionIcon, Box, Stack, Tabs, Tooltip } from '@mantine/core';
 import ColorControl from './ColorControls/ColorControl';
 import GeneralControls from './GeneralControls';
-import ThemeContext from './ThemeContext/ThemeContext';
-import ThemeManager from './ThemeContext/ThemeManager/ThemeManager';
 import TypographyControl from './TypographyControls/TypographyControls';
 import { IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
-
 import classes from './ThemeControlPanel.module.css';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 
-interface ThemeControlPanelProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
-}
-
-const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateTheme }) => {
-  const defTheme = DEFAULT_THEME;
-  const themeManager = new ThemeManager(theme, updateTheme);
-
-  //this runs once in the case we do not have any theme set
-  useEffect(() => {
-    //if theme is empty, set it to default theme
-    if (Object.keys(theme).length === 0) {
-      updateTheme(defTheme);
-    }
-  }, []);
+const ThemeControlPanel = () => {
 
   return (
     <Box id="control-panel" p={'0'}>
-      <ThemeContext.Provider value={themeManager}>
         <Stack>
           <Tabs variant="pills" defaultValue="color" orientation="vertical" >
             <Tabs.List variant="filled" p="sm" className={classes.tabList}>
@@ -77,7 +58,6 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ theme, updateThem
             </Tabs.Panel>
           </Tabs>
         </Stack>
-      </ThemeContext.Provider>
     </Box>
   );
 };

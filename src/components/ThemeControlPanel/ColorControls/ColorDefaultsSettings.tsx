@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import {
   Box,
   ColorInput,
@@ -6,11 +5,11 @@ import {
   Text,
   Title,
 } from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 import MantineDefaultColorEdit from './Reusable Controls/MantineDefaultColorEdit';
 
-const ColorDefaults: React.FC = () => {
-  const theme = useContext(ThemeContext);
+const ColorDefaults = () => {
+  const { getWhite, setWhite, getBlack, setBlack } = useThemeContext();
 
   return (
     <Box maw={'100%'}>
@@ -29,14 +28,14 @@ const ColorDefaults: React.FC = () => {
           <ColorInput
             label="White"
             description="Shade-less color used as the background on light mode as well as some accents on dark mode."
-            value={theme.getWhite()}
-            onChange={(color) => theme.setWhite(color)}
+            value={getWhite()}
+            onChange={(color) => setWhite(color)}
           />
           <ColorInput
             label="Black"
             description="Shade-less color used as the text color on light mode."
-            value={theme.getBlack()}
-            onChange={(color) => theme.setBlack(color)}
+            value={getBlack()}
+            onChange={(color) => setBlack(color)}
           />
         </Stack>
         <Stack>

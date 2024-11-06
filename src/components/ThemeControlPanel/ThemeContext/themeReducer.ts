@@ -3,6 +3,8 @@ import generateShades from '@/utils/generateColors';
 
 // Action Types
 export type ThemeAction =
+  // Replace Theme
+  | { type: 'SET_THEME'; theme: MantineThemeOverride }
   // Color Management
   | { type: 'SET_COLOR'; key: string; value: MantineColorsTuple }
   | { type: 'SET_COLOR_FROM_STRING'; key: string; value: string }
@@ -51,6 +53,9 @@ export const themeReducer = (
   action: ThemeAction
 ): MantineThemeOverride => {
   switch (action.type) {
+    // Replace Theme
+    case 'SET_THEME':
+      return action.theme;
     // Color Management
     case 'SET_COLOR':
       return {

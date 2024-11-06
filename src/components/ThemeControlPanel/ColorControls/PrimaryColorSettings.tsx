@@ -1,13 +1,26 @@
-import React, { useContext } from 'react';
-import { Box, Slider, Stack, Switch, Text, Title } from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
+import { Box, MantineColorShade, Slider, Stack, Switch, Text, Title } from '@mantine/core';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';
 
-const PrimaryColorSettings: React.FC = () => {
-  const themeManager = useContext(ThemeContext);
-  const primaryColor = themeManager.getPrimaryColor();
-  const primaryShades = [...themeManager.getShadesFromColorString(primaryColor)];
+const PrimaryColorSettings = () => {
+  const {
+    getPrimaryColor,
+    getPrimaryShade,
+    setPrimaryColor,
+    setPrimaryShade,
+    getAutoContrast,
+    setAutoContrast,
+    getLuminanceThreshold,
+    setLuminanceThreshold,
+    isSchemeDependentPrimaryShade,
+    getShadesFromColorString,
+    getMainColorShade,
+    getCustomColors,
+    getMantineColors,
+  } = useThemeContext();
+  const primaryColor = getPrimaryColor();
+  const primaryShades = [...getShadesFromColorString(primaryColor)];
 
   return (
     <Box>
@@ -15,38 +28,38 @@ const PrimaryColorSettings: React.FC = () => {
       <Stack gap="xl" mt="md">
         <GroupedColorSelector
           colors={[
-            { theme: themeManager.getCustomColors() },
-            { mantine: themeManager.getMantineColors() },
+            { theme: getCustomColors() },
+            { mantine: getMantineColors() },
           ]}
-          mainColor={{ shade: themeManager.getMainColorShade(primaryColor), name: primaryColor }}
-          onSelect={(color) => themeManager.setPrimaryColor(color)}
+          mainColor={{ shade: getMainColorShade(primaryColor), name: primaryColor || 'blue' }}
+          onSelect={(color) => setPrimaryColor(color)}
         />
         <Stack>
           <Switch
             label="Use different shades for light and dark modes"
-            checked={themeManager.schemeDependentPrimaryShade}
+            checked={isSchemeDependentPrimaryShade()}
             onChange={(event) => {
               if (event.currentTarget.checked) {
-                themeManager.setPrimaryShade({ light: 6, dark: 8 });
+                setPrimaryShade({ light: 6, dark: 8 }as unknown as MantineColorShade);
               } else {
-                themeManager.setPrimaryShade(6);
+                setPrimaryShade(6);
               }
             }}
           />
 
-          {themeManager.schemeDependentPrimaryShade ? (
+          {isSchemeDependentPrimaryShade() ? (
             <>
               <Text size="sm" mt="md">
                 Light Mode Primary Shade
               </Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={themeManager.getPrimaryShade('light')}
+                selectedIndex={getPrimaryShade('light')}
                 onSelect={(value) =>
-                  themeManager.setPrimaryShade({
+                  setPrimaryShade({
                     light: value,
-                    dark: themeManager.getPrimaryShade('dark'),
-                  })
+                    dark: getPrimaryShade('dark'),
+                  } as unknown as MantineColorShade)
                 }
               />
               <Text size="sm" mt="md">
@@ -54,12 +67,12 @@ const PrimaryColorSettings: React.FC = () => {
               </Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={themeManager.getPrimaryShade('dark')}
+                selectedIndex={getPrimaryShade('dark')}
                 onSelect={(value) =>
-                  themeManager.setPrimaryShade({
-                    light: themeManager.getPrimaryShade('light'),
+                  setPrimaryShade({
+                    light: getPrimaryShade('light'),
                     dark: value,
-                  })
+                  }as unknown as MantineColorShade)
                 }
               />
             </>
@@ -70,8 +83,8 @@ const PrimaryColorSettings: React.FC = () => {
               </Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={themeManager.getPrimaryShade()}
-                onSelect={(value) => themeManager.setPrimaryShade(value)}
+                selectedIndex={getPrimaryShade()}
+                onSelect={(value) => setPrimaryShade(value as unknown as MantineColorShade)}
               />
             </>
           )}
@@ -80,14 +93,13 @@ const PrimaryColorSettings: React.FC = () => {
         <Stack>
           <Switch
             label="Auto Contrast"
-            checked={themeManager.theme.autoContrast}
+            checked={getAutoContrast()}
             onChange={(event) => {
-              themeManager.theme.autoContrast = event.currentTarget.checked;
-              themeManager.commitChanges();
+              setAutoContrast(event.currentTarget.checked);
             }}
           />
 
-          {themeManager.theme.autoContrast && (
+          {getAutoContrast() && (
             <Stack>
               <Text size="sm" mt="md">
                 Luminance Threshold
@@ -96,8 +108,8 @@ const PrimaryColorSettings: React.FC = () => {
                 min={0}
                 max={1}
                 step={0.01}
-                value={themeManager.getLuminanceThreshold()}
-                onChange={(value) => themeManager.setLuminanceThreshold(value)}
+                value={getLuminanceThreshold()}
+                onChange={(value) => setLuminanceThreshold(value)}
                 label={(value) => value.toFixed(2)} // Display the current value as the label
               />
             </Stack>

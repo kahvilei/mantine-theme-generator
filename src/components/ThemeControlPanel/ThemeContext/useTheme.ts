@@ -1,9 +1,20 @@
 import { useReducer, useCallback } from 'react';
 import { themeReducer, ThemeAction } from './themeReducer';
 import { MantineThemeOverride, MantineColorsTuple, MantineColorShade } from '@mantine/core';
+import { DEFAULT_THEME } from '@mantine/core';
 
 export const useTheme = (initialTheme: MantineThemeOverride) => {
   const [theme, dispatch] = useReducer(themeReducer, initialTheme);
+  const defaultTheme = DEFAULT_THEME;
+
+  const unframeValue = (value: string): string => {
+    return value.replace(/calc\((.*?) \* var\(--mantine-scale\)\)/, '$1');
+  };
+
+  // Replace Theme
+    const setTheme = useCallback((theme: MantineThemeOverride) => {
+        dispatch({ type: 'SET_THEME', theme });
+    }, []);
 
   // Color Management
   const setColor = useCallback((key: string, value: MantineColorsTuple) => {
@@ -131,36 +142,142 @@ export const useTheme = (initialTheme: MantineThemeOverride) => {
   }, []);
 
   // Getter functions - these don't need to be memoized as they're just accessing state
-  const getScale = () => theme.scale;
-  const getPrimaryColor = () => theme.primaryColor;
-  const getDefaultGradient = () => theme.defaultGradient;
-  const getGradientFrom = () => theme.defaultGradient?.from;
-  const getGradientTo = () => theme.defaultGradient?.to;
-  const getGradientAngle = () => theme.defaultGradient?.deg;
-  const getDefaultRadius = () => theme.defaultRadius;
-  const getRadius = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => theme.radius?.[key];
-  const getSpacing = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => theme.spacing?.[key];
-  const getWhite = () => theme.white;
-  const getBlack = () => theme.black;
-  const getAutoContrast = () => theme.autoContrast;
-  const getLuminanceThreshold = () => theme.luminanceThreshold;
-  const getHeadingFontFamily = () => theme.headings?.fontFamily;
-  const getHeadingDefaultWeight = () => theme.headings?.fontWeight;
-  const getHeadingSize = (key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => 
-    theme.headings?.sizes?.[key]?.fontSize;
-  const getHeadingLineHeight = (key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => 
-    theme.headings?.sizes?.[key]?.lineHeight;
+  const getScale = () => theme.scale ?? defaultTheme.scale;
+  
+  const getPrimaryColor = () => theme.primaryColor ?? defaultTheme.primaryColor;
+  
+  const getDefaultGradient = () => theme.defaultGradient ?? defaultTheme.defaultGradient;
+  
+  const getGradientFrom = () => theme.defaultGradient?.from ?? defaultTheme.defaultGradient.from;
+  
+  const getGradientTo = () => theme.defaultGradient?.to ?? defaultTheme.defaultGradient.to;
+  
+  const getGradientAngle = () => theme.defaultGradient?.deg ?? defaultTheme.defaultGradient.deg;
+  
+  const getMainColorShade = (key: string) => {
+    if (theme.colors && theme.colors[key]) {
+      return theme.colors[key][5];
+    }
+    return '#000';
+  };
+
+  const getGradientFromMainHex = () => getMainColorShade(getGradientFrom() || 'blue');
+  
+  const getGradientToMainHex = () => getMainColorShade(getGradientTo() || 'blue');
+
+  const getShadesFromColorString = (key: string) => {
+    if (theme.colors && theme.colors[key]) {
+      return theme.colors[key];
+    }
+    return defaultTheme.colors[key];
+  };
+
+  const getColor = (key: string) => {
+    if (theme.colors && theme.colors[key]) {
+      return theme.colors[key];
+    }
+    return defaultTheme.colors[key];
+  };
+
+  const getCustomColors = () => {
+    const customColors = new Map<string, MantineColorsTuple>();
+    for (let color in theme.colors) {
+      if (theme.colors[color] && !defaultTheme.colors[color]) {
+        customColors.set(color, theme.colors[color]);
+      }
+    }
+    return customColors;
+  };
+
+  const getMantineColors = () => {
+    const mantineColors = new Map<string, MantineColorsTuple>();
+    for (let color in defaultTheme.colors) {
+      if (theme.colors?.[color]) {
+        mantineColors.set(color, theme.colors[color]);
+      } else {
+        mantineColors.set(color, defaultTheme.colors[color]);
+      }
+    }
+    return mantineColors;
+  };
+
+  const getAllColors = () => theme.colors ?? defaultTheme.colors;
+
+  const getAllMainColorArray = () => 
+    Array.from(Object.values(getAllColors() || {})).map(color => 
+      color ? color[5] : '#000'
+    );
+
+  const getAllColorKeysArray = () => Array.from(Object.keys(getAllColors()));
+
+  const getRadius = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
+    const value = theme.radius ? theme.radius[key] : defaultTheme.radius[key];
+    return value ? unframeValue(value) : value;
+  };
+
+  const getDefaultRadius = () => theme.defaultRadius ?? defaultTheme.defaultRadius;
+
+  const getSpacing = (key: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => {
+    const value = theme.spacing ? theme.spacing[key] : defaultTheme.spacing[key];
+    return value ? unframeValue(value) : value;
+  };
+
+  const getWhite = () => theme.white ?? defaultTheme.white;
+  
+  const getBlack = () => theme.black ?? defaultTheme.black;
+  
+  const getAutoContrast = () => theme.autoContrast ?? defaultTheme.autoContrast;
+  
+  const getLuminanceThreshold = () => theme.luminanceThreshold ?? defaultTheme.luminanceThreshold;
+
+  const getHeadingFontFamily = () => theme.headings?.fontFamily ?? defaultTheme.headings?.fontFamily;
+  
+  const getHeadingDefaultWeight = () => theme.headings?.fontWeight ?? defaultTheme.headings?.fontWeight;
+
+  const getHeadingSize = (key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+    const value = theme.headings?.sizes?.[key]?.fontSize ?? defaultTheme.headings?.sizes?.[key].fontSize;
+    return value ? unframeValue(value as string) : value;
+  };
+
+  const getHeadingLineHeight = (key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
+    const value = theme.headings?.sizes?.[key]?.lineHeight ?? defaultTheme.headings?.sizes?.[key].lineHeight;
+    return value ? unframeValue(value as string) : value;
+  };
+
   const getHeadingWeight = (key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => 
-    theme.headings?.sizes?.[key]?.fontWeight;
-  const getBodyFontFamily = () => theme.fontFamily;
-  const getMonospaceFontFamily = () => theme.fontFamilyMonospace;
-  const getFontSmoothing = () => theme.fontSmoothing;
-  const getFocusRing = () => theme.focusRing;
-  const getCursorType = () => theme.cursorType;
-  const getRespectReducedMotion = () => theme.respectReducedMotion;
+    theme.headings?.sizes?.[key]?.fontWeight ?? 
+    defaultTheme.headings?.sizes?.[key].fontWeight ?? 
+    theme.headings?.fontWeight ?? 
+    defaultTheme.headings?.fontWeight;
+
+  const getBodyFontFamily = () => theme.fontFamily ?? defaultTheme.fontFamily;
+  
+  const getMonospaceFontFamily = () => theme.fontFamilyMonospace ?? defaultTheme.fontFamilyMonospace;
+  
+  const getFontSmoothing = () => theme.fontSmoothing ?? defaultTheme.fontSmoothing;
+  
+  const getFocusRing = () => theme.focusRing ?? defaultTheme.focusRing;
+  
+  const getCursorType = () => theme.cursorType ?? defaultTheme.cursorType;
+  
+  const getRespectReducedMotion = () => theme.respectReducedMotion ?? defaultTheme.respectReducedMotion;
+
+  const getPrimaryShade = (scheme?: 'light' | 'dark') => {
+    if (theme.primaryShade && typeof theme.primaryShade === 'object' && scheme) {
+      return theme.primaryShade[scheme] ?? 5;
+    }
+    return (theme.primaryShade as number) ?? 5;
+  };
+
+  const isSchemeDependentPrimaryShade = () => {
+    if(!theme.primaryShade) return false;
+    return theme.primaryShade && typeof theme.primaryShade === 'object';
+  }
 
   return {
     theme,
+    // Replace Theme
+    setTheme,
     // Color Management
     setColor,
     setColorFromString,
@@ -206,6 +323,16 @@ export const useTheme = (initialTheme: MantineThemeOverride) => {
     getGradientFrom,
     getGradientTo,
     getGradientAngle,
+    getMainColorShade,
+    getGradientFromMainHex,
+    getGradientToMainHex,
+    getShadesFromColorString,
+    getColor,
+    getCustomColors,
+    getMantineColors,
+    getAllColors,
+    getAllMainColorArray,
+    getAllColorKeysArray,
     getDefaultRadius,
     getRadius,
     getSpacing,
@@ -224,5 +351,7 @@ export const useTheme = (initialTheme: MantineThemeOverride) => {
     getFocusRing,
     getCursorType,
     getRespectReducedMotion,
+    getPrimaryShade,
+    isSchemeDependentPrimaryShade,
   };
 };

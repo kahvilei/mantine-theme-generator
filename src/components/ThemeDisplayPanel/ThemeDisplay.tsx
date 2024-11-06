@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
-import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
+import { Box, MantineProvider } from '@mantine/core';
+
+import { useThemeContext } from '../ThemeControlPanel/ThemeContext/ThemeContext';
 
 import './ThemeDisplay.css';
 
@@ -13,11 +15,10 @@ import '@mantine/charts/styles.css';
 export interface ThemeDisplayProps {
   number: number;
   mode: 'light' | 'dark';
-  theme: Partial<MantineThemeOverride>;
   displayContent: string;
 }
 
-const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displayContent }) => {
+const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayContent }) => {
   const Content = () => {
     switch (displayContent) {
       case 'UI Demo':
@@ -32,6 +33,8 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, theme, displa
   };
 
   const MemoizedContent = useMemo(() => Content, [displayContent]);
+
+  const { theme } = useThemeContext();
 
   return (
     <MantineProvider

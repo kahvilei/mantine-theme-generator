@@ -1,13 +1,15 @@
 import { CodeHighlight } from '@mantine/code-highlight';
 import { Stack} from '@mantine/core';
 
+import { useThemeContext } from '../ThemeControlPanel/ThemeContext/ThemeContext';
+
 
 interface JsonEditorProps {
-  theme: string;
   onEdit?: (newTheme: string) => void;
 }
 
-function JsonEditor ({ theme, onEdit }: JsonEditorProps) {
+function JsonEditor ({ onEdit }: JsonEditorProps) {
+  const { theme } = useThemeContext();
 
   return (
     <Stack gap="md">

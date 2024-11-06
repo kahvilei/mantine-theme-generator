@@ -24,29 +24,14 @@ const Template: StoryFn<ThemeDisplayProps> = (args: any) => <ThemeDisplay {...ar
 export const LightMode = Template.bind({});
 LightMode.args = {
   mode: 'light',
-  theme: {
-    colorScheme: 'light',
-    primaryColor: 'blue',
-    fontFamily: 'Arial, sans-serif',
-  } as Partial<MantineThemeOverride>,
 };
 
 export const DarkMode = Template.bind({});
 DarkMode.args = {
   mode: 'dark',
-  theme: {
-    colorScheme: 'dark',
-    primaryColor: 'blue',
-    fontFamily: 'Arial, sans-serif',
-  } as Partial<MantineThemeOverride>,
 };
 
 export const CustomTheme = Template.bind({});
 CustomTheme.args = {
   mode: 'light',
-  theme: {
-    colorScheme: 'light',
-    primaryColor: 'blue',
-    fontFamily: 'Arial, sans-serif',
-  } as Partial<MantineThemeOverride>,
 };

@@ -13,7 +13,6 @@ import {
   createTheme,
   FileInput,
   Group,
-  MantineThemeOverride,
   Popover,
   Select,
   SelectProps,
@@ -24,12 +23,10 @@ import {
 import premadeThemes from '../../data/premadeThemes.json';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 import ThemePreview from './ThemePreview';
-
+import { useThemeContext } from '../ThemeControlPanel/ThemeContext/ThemeContext';
 import classes from './Header.module.css';
 
 interface HeaderProps {
-  theme: MantineThemeOverride;
-  updateTheme: (theme: Partial<MantineThemeOverride>) => void;
   toggleAside: () => void;
   toggleScheme: () => void;
   lightMode: boolean;
@@ -38,8 +35,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-  theme,
-  updateTheme,
   lightMode,
   updateDisplayContent,
   toggleAside,
@@ -52,15 +47,17 @@ const Header: React.FC<HeaderProps> = ({
   const [opened, setOpened] = useState(false);
   const themes = JSON.parse(JSON.stringify(premadeThemes));
 
+  const { theme, setTheme } = useThemeContext();
+
   useEffect(() => {
     if (Object.keys(theme).length === 0) {
-      updateTheme(currentTheme);
+      setTheme(currentTheme);
     }
   }, []);
 
   const handlePreMadeThemeSelect = (value: string | null) => {
     setCurrentThemeName(value as string);
-    updateTheme(themes[value as string]);
+    setTheme(themes[value as string]);
   };
 
   const themeOptions: SelectProps['renderOption'] = ({ option, checked }) => (
@@ -136,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({
                 variant="filled"
                 color="red"
                 onClick={() => {
-                  updateTheme(defaultTheme);
+                  setTheme(defaultTheme);
                   setOpened(false);
                 }}
               >
@@ -149,7 +146,7 @@ const Header: React.FC<HeaderProps> = ({
           </Popover.Dropdown>
         </Popover>
         <FileInput
-          onChange={(file) => uploadTheme(file, updateTheme)}
+          onChange={(file) => uploadTheme(file, setTheme)}
           accept=".json"
           style={{ display: 'none' }}
         />

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Stack } from '@mantine/core';
-import ThemeContext from '../../ThemeContext/ThemeContext';
+import { useThemeContext } from '../../ThemeContext/ThemeContext';
 import DefaultColorItem from './ColorItem'; // Adjust the import path
 
 const MantineDefaultColorEdit: React.FC = () => {
-  const theme = useContext(ThemeContext);
+  const { getMantineColors, getMainColorShade, setColorFromString, deleteColor } = useThemeContext();
 
   const descriptions: { [key: string]: string } = {
     dark: 'used in dark mode as the background color and text color for most components. ',
@@ -17,15 +17,15 @@ const MantineDefaultColorEdit: React.FC = () => {
 
   return (
     <Stack gap="sm">
-      {Array.from(theme.getMantineColors().entries()).map(([name, shades], index) => (
+      {Array.from(getMantineColors().entries()).map(([name, shades], index) => (
           <DefaultColorItem
             key={index}
             name={name}
             description={descriptions[name] || ''}
             type="mantine"
-            color={theme.getMainColorShade(name)}
-            onReset={() => theme.deleteColor(name)}
-            onEdit={(color) => theme.setColorFromString(name, color)}
+            color={getMainColorShade(name)}
+            onReset={() => deleteColor(name)}
+            onEdit={(color) => setColorFromString(name, color)}
           />
       ))}
       </Stack>

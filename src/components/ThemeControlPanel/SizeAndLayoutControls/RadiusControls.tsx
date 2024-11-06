@@ -1,10 +1,11 @@
-import { useContext } from 'react';
 import { Stack, Text, SegmentedControl, Title, Box} from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
 
+import { useThemeContext } from '../ThemeContext/ThemeContext';
+
 const RadiusControls = ({ }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useThemeContext();
+
   const radiusSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
   return (
     <Box>

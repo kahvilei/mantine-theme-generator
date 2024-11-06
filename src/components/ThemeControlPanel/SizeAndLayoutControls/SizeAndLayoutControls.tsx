@@ -2,11 +2,10 @@ import { Stack, Text, Slider} from '@mantine/core';
 import RadiusControls from './RadiusControls';
 import SpacingControls from './SpacingControls';
 
-import ThemeContext from '../ThemeContext/ThemeContext';
-import { useContext } from 'react';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 
 const SizeAndLayoutControls = () => {
-  const theme = useContext(ThemeContext);
+  const { getScale, setScale } = useThemeContext();
 
   return (
     <Stack mt="md">
@@ -16,8 +15,8 @@ const SizeAndLayoutControls = () => {
           min={0.1}
           max={2}
           step={0.1}
-          value={theme.getScale()}
-          onChange={(value) => theme.setScale(value)}
+          value={getScale()}
+          onChange={(value) => setScale(value)}
           marks={[
             { value: 0.5, label: '0.5x' },
             { value: 1, label: '1x' },

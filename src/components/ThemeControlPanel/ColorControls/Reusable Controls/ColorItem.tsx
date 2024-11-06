@@ -13,7 +13,7 @@ import {
   TextInput,
   Tooltip,
 } from '@mantine/core';
-import ThemeContext from '../../ThemeContext/ThemeContext';
+import { useThemeContext } from '../../ThemeContext/ThemeContext';
 import QuestionMarkTooltip from '../../Reusable Controls/QuestionMarkTooltip';
 
 import classes from './ColorItem.module.css';
@@ -37,7 +37,9 @@ const ColorItem: React.FC<ColorItemProps> = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [colorName, setColorName] = useState(name);
-  const theme = useContext(ThemeContext);
+
+  const { updateColor, updateColorShade, getColor, getMainColorShade } = useThemeContext();
+  
 
   const defaultColor = type === 'mantine' ? DEFAULT_THEME.colors[name][5] : '';
   const isMantine = type === 'mantine';
@@ -48,14 +50,14 @@ const ColorItem: React.FC<ColorItemProps> = ({
 
   const handleNameBlur = () => {
     if (colorName !== name) {
-      theme.updateColor(name, colorName);
+      updateColor(name, colorName);
     }
   };
 
   return (
     <Card
       w={'100%'}
-      bg={`linear-gradient(45deg, ${theme.getColor(name)?.[5]}20, ${theme.getColor(name)?.[5]}50)`}
+      bg={`linear-gradient(45deg, ${getColor(name)?.[5]}20, ${getColor(name)?.[5]}50)`}
       padding="5px 10px"
     >
       <Stack gap="m">
@@ -70,18 +72,18 @@ const ColorItem: React.FC<ColorItemProps> = ({
                 onBlur={handleNameBlur}
                 w={'100%'}
                 description={description}
-                descriptionProps={{ c: theme.getColor(name)?.[8] }}
+                descriptionProps={{ c: getColor(name)?.[8] }}
               />
             ) : (
               <Group wrap="nowrap" gap="4px">
-                <Text fw={700} size={'sm'} c={theme.getMainColorShade(name)}>{name}</Text>
+                <Text fw={700} size={'sm'} c={getMainColorShade(name)}>{name}</Text>
                 {description && (
-                  <QuestionMarkTooltip description={description} color={theme.getMainColorShade(name)} />
+                  <QuestionMarkTooltip description={description} color={getMainColorShade(name)} />
                 )}
               </Group>
             )}
             <ColorInput
-              c={theme.getColor(name)?.[9]}
+              c={getColor(name)?.[9]}
               variant='variant'
               value={color}
               w={'100%'}
@@ -116,7 +118,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
         </Group>
         <Collapse in={isEditing}>
           <Stack gap="sm" p={'sm'} className={classes.shadeContainer}>
-            {theme.getColor(name)?.map((shade: string, index: number) => (
+            {getColor(name)?.map((shade: string, index: number) => (
               <Group key={index} gap={0} className={classes.shadePicker}>
                 <Box
                   w={'30%'}
@@ -129,7 +131,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
                   variant='none'
                   withEyeDropper={false}
                   leftSection={<IconColorPicker size={'15px'}/>}
-                  onChange={(color) => theme.updateColorShade(name, index, color)}
+                  onChange={(color) => updateColorShade(name, index, color)}
                   style={{ flex: 1 }}
                 />
               </Group>

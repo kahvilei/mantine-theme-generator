@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { IconColorSwatch, IconTrash } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from '@mantine/core';
 import generateColors from '../../../../utils/generateColors';
-import ThemeContext from '../../ThemeContext/ThemeContext';
+import { useThemeContext } from '../../ThemeContext/ThemeContext';
 
 interface ColorEditorPopupProps {
   colorName: string;
@@ -35,14 +35,14 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
   const [currentEditingColor, setCurrentEditingColor] = React.useState(colorName);
   const [newColorName, setNewColorName] = React.useState(colorName);
   const [newColorValue, setNewColorValue] = React.useState(colorValue);
-  const themeManager = useContext(ThemeContext);
+  const { setColor, getColor, updateColorShade, deleteColor } = useThemeContext();
 
-  const updateColorShade = (index: number, newShade: string) => {
-    themeManager.updateColorShade(currentEditingColor, index, newShade);
+  const updateColorShadeCurrent = (index: number, newShade: string) => {
+    updateColorShade(currentEditingColor, index, newShade);
   };
 
   const handleAddColor = () => {
-    themeManager.setColor(
+    setColor(
       newColorName,
       generateColors(newColorValue) as unknown as MantineColorsTuple
     );
@@ -70,7 +70,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
                       variant="light"
                       color="red"
                       onClick={() => {
-                        themeManager.deleteColor(colorName);
+                        deleteColor(colorName);
                       }}
                     >
                       <IconTrash />
@@ -97,7 +97,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
             onChange={(color) => {
               setNewColorValue(color);
               if (isEditing) {
-                themeManager.setColor(
+                setColor(
                   newColorName,
                   generateColors(color) as unknown as MantineColorsTuple
                 );
@@ -109,7 +109,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
             onChange={(color) => {
               setNewColorValue(color);
               if (isEditing) {
-                themeManager.setColor(
+                setColor(
                   newColorName,
                   generateColors(color) as unknown as MantineColorsTuple
                 );
@@ -130,11 +130,11 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
         title={`Fine-tune Shades for ${currentEditingColor}`}
       >
         <Stack>
-          {themeManager.getColor(currentEditingColor)?.map((shade: string, index: number) => (
+          {getColor(currentEditingColor)?.map((shade: string, index: number) => (
             <Group key={index}>
               <ColorInput
                 value={shade}
-                onChange={(color) => updateColorShade(index, color)}
+                onChange={(color) => updateColorShadeCurrent(index, color)}
                 label={`Shade ${index}`}
                 style={{ flex: 1 }}
               />

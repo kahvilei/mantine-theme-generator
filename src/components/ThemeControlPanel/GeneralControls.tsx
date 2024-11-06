@@ -4,12 +4,12 @@ import {
   Switch,
   Text,
 } from '@mantine/core';
+import { useThemeContext } from './ThemeContext/ThemeContext';
 
-import ThemeContext from './ThemeContext/ThemeContext';
-import { useContext } from 'react';
+
 
 const GeneralControls = () => {
-  const theme = useContext(ThemeContext);
+  const { setFocusRing, getFocusRing, setRespectReducedMotion, getRespectReducedMotion, setCursorType, getCursorType } = useThemeContext();
 
   return (
     <Stack mt="md">
@@ -20,14 +20,14 @@ const GeneralControls = () => {
           { value: 'always', label: 'Always' },
           { value: 'never', label: 'Never' },
         ]}
-        value={theme.getFocusRing()}
-        onChange={(value) => theme.setFocusRing(value as 'auto' | 'always' | 'never')}
+        value={getFocusRing()}
+        onChange={(value) => setFocusRing(value as 'auto' | 'always' | 'never')}
       />
 
       <Switch
         label="Respect Reduced Motion"
-        checked={theme.getRespectReducedMotion()}
-        onChange={(event) => theme.setRespectReducedMotion(event.currentTarget.checked)}
+        checked={getRespectReducedMotion()}
+        onChange={(event) => setRespectReducedMotion(event.currentTarget.checked)}
       />
 
       <Text size="sm">Cursor Type</Text>
@@ -36,8 +36,8 @@ const GeneralControls = () => {
           { label: 'Default', value: 'default' },
           { label: 'Pointer', value: 'pointer' },
         ]}
-        value={theme.getCursorType()}
-        onChange={(value) => theme.setCursorType(value as 'default' | 'pointer')}
+        value={getCursorType()}
+        onChange={(value) => setCursorType(value as 'default' | 'pointer')}
       />
     </Stack>
   );

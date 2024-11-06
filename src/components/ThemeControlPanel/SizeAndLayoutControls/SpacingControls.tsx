@@ -1,10 +1,10 @@
-import { useContext } from 'react';
 import { Stack, Text, Title, Box} from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 
 const SpacingControls = ({ }) => {
-  const theme = useContext(ThemeContext);
+  const { getSpacing, setSpacing } = useThemeContext();
+  
   const spacingSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
   return (
     <Box>
@@ -15,8 +15,8 @@ const SpacingControls = ({ }) => {
         <NumberUnitSelector
             key={size}
             label={size}
-            value={theme.getSpacing(size) || '0px'}
-            onChange={(value) => theme.setSpacing(size, value)}
+            value={getSpacing(size) || '0px'}
+            onChange={(value) => setSpacing(size, value)}
             min={0}
             max={100}
         />

@@ -1,20 +1,21 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { IconPlus } from '@tabler/icons-react';
 import { ActionIcon, Box, Group, Popover, Title, Tooltip } from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
 import ColorItem from './Reusable Controls/ColorItem';
 import classes from './ColorControls.module.css';
 
 const ColorPalette: React.FC = () => {
-  const themeManager = useContext(ThemeContext);
+  
   const [newColorName] = useState('');
   const [newColorValue] = useState('#000000');
+  const { getCustomColors, getMainColorShade, setColorFromString, deleteColor } = useThemeContext();
 
   // Memoize the custom colors to avoid unnecessary re-renders
   const customColors = useMemo(() => {
-    return Array.from(themeManager.getCustomColors().entries());
-  }, [themeManager.getCustomColors()]);
+    return Array.from(getCustomColors().entries());
+  }, [getCustomColors()]);
 
   return (
     <Box>
@@ -26,9 +27,9 @@ const ColorPalette: React.FC = () => {
             name={colorName}
             type="theme"
             description=""
-            color={themeManager.getMainColorShade(colorName)}
-            onEdit={(color) => themeManager.setColorFromString(colorName, color)}
-            onReset={() => themeManager.deleteColor(colorName)}
+            color={getMainColorShade(colorName)}
+            onEdit={(color) => setColorFromString(colorName, color)}
+            onReset={() => deleteColor(colorName)}
           />
         ))}
         <Popover withArrow shadow="default" position="bottom">

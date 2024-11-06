@@ -1,8 +1,6 @@
 import { Autocomplete, Stack, Switch, } from '@mantine/core';
 import HeadingsSettings from './HeadingsSettings';
-
-import ThemeContext from '../ThemeContext/ThemeContext';
-import { useContext } from 'react';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 
 const commonFonts = [
   'Arial',
@@ -41,37 +39,37 @@ const monospaceFonts = [
 ];
 
 const TypographyControl = () => {
-  const theme = useContext(ThemeContext);
+  const { getBodyFontFamily, setBodyFontFamily, getHeadingFontFamily, setHeadingFontFamily, getMonospaceFontFamily, setMonospaceFontFamily, getFontSmoothing, setFontSmoothing, } = useThemeContext();
   return (
     <Stack mt="md">
       <Autocomplete
         label="Main Font Family"
         data={commonFonts}
-        value={theme.getBodyFontFamily()}
-        onChange={(value) => theme.setBodyFontFamily(value)}
+        value={getBodyFontFamily()}
+        onChange={(value) => setBodyFontFamily(value)}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Heading Font Family"
         data={commonFonts}
-        value={theme.getHeadingFontFamily()}
-        onChange={(value) => theme.setHeadingFontFamily(value)}
+        value={getHeadingFontFamily()}
+        onChange={(value) => setHeadingFontFamily(value)}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Monospace Font Family"
         data={monospaceFonts}
-        value={theme.getMonospaceFontFamily()}
-        onChange={(value) => theme.setMonospaceFontFamily(value)}
+        value={getMonospaceFontFamily()}
+        onChange={(value) => setMonospaceFontFamily(value)}
         placeholder="Select or type a monospace font family"
       />
 
       <Switch
         label="Font Smoothing"
-        checked={theme.getFontSmoothing()}
-        onChange={(event) => theme.setFontSmoothing(event.currentTarget.checked)}
+        checked={getFontSmoothing()}
+        onChange={(event) => setFontSmoothing(event.currentTarget.checked)}
       />
 
       <HeadingsSettings />

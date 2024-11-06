@@ -11,7 +11,7 @@ const ColorPanel: React.FC = () => {
       <PrimaryColorSettings />
       <GradientControls />
       <ColorPalette />
-      <ColorDefaults />
+      <ColorDefaults /> 
     </Stack>
   );
 };

@@ -21,22 +21,9 @@ import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
 import { ThemeProvider } from './components/ThemeControlPanel/ThemeContext/ThemeContext';
 
-const MemoizedHeader = React.memo(Header);
-
 
 const App: React.FC = () => {
   const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
-
-  const [theme, setTheme] = useState<MantineThemeOverride>({
-    ...defaultTheme,
-  });
-
-  const updateTheme = (newThemeProperties: Partial<MantineThemeOverride>) => {
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...newThemeProperties,
-    }));
-  };
 
   const [asideVisible, setAsideVisible] = useState(false);
 
@@ -55,21 +42,6 @@ const App: React.FC = () => {
   const updateDisplayContent = (content: string) => {
     setCurrentContent(content);
   };
-
-  const memoizedHeader = useMemo(
-    () => (
-      <MemoizedHeader
-        theme={defaultTheme}
-        updateTheme={setTheme}
-        toggleAside={toggleAside}
-        lightMode={mode === 'light'}
-        toggleScheme={toggleScheme}
-        currentContent={currentContent}
-        updateDisplayContent={updateDisplayContent}
-      />
-    ),
-    []
-  );
 
   return (
     <ThemeProvider initialTheme={DEFAULT_THEME}>
@@ -90,12 +62,18 @@ const App: React.FC = () => {
         }}
       >
         <AppShell.Header withBorder>
-          {memoizedHeader}
+          <Header
+            lightMode={mode === 'light'}
+            updateDisplayContent={updateDisplayContent}
+            toggleAside={toggleAside}
+            toggleScheme={toggleScheme}
+            currentContent={currentContent}
+          />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
           <ScrollArea scrollbarSize={6}>
             <MantineProvider>
-              <ThemeControlPanel theme={theme} updateTheme={updateTheme} />
+              <ThemeControlPanel/>
             </MantineProvider>
           </ScrollArea>
         </AppShell.Navbar>
@@ -122,7 +100,6 @@ const App: React.FC = () => {
                 <ThemeDisplay
                   number={1}
                   mode={'dark'}
-                  theme={theme}
                   displayContent={currentContent}
                 />
               </Group>
@@ -132,13 +109,11 @@ const App: React.FC = () => {
                 <ThemeDisplay
                   number={2}
                   mode={'dark'}
-                  theme={theme}
                   displayContent={currentContent}
                 />
                 <ThemeDisplay
                   number={3}
                   mode={'light'}
-                  theme={theme}
                   displayContent={currentContent}
                 />
               </Group>
@@ -148,7 +123,6 @@ const App: React.FC = () => {
                 <ThemeDisplay
                   number={4}
                   mode={'light'}
-                  theme={theme}
                   displayContent={currentContent}
                 />
               </Group>
@@ -157,9 +131,7 @@ const App: React.FC = () => {
         </AppShell.Main>
         <AppShell.Aside>
           <Stack p="md">
-            <JsonEditor
-              theme={JSON.stringify(theme, null, 2)}
-            />
+            <JsonEditor/>
           </Stack>
         </AppShell.Aside>
       </AppShell>

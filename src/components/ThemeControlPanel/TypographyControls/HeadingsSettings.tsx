@@ -1,11 +1,11 @@
-import { useContext } from 'react';
 import { Stack, Title } from '@mantine/core';
-import ThemeContext from '../ThemeContext/ThemeContext';
+
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+import { useThemeContext } from '../ThemeContext/ThemeContext';
 
 
 const HeadingsSettings = () => {
-  const theme = useContext(ThemeContext);
+  const { getHeadingSize, setHeadingSize, getHeadingLineHeight, setHeadingLineHeight, getHeadingWeight, setHeadingWeight } = useThemeContext();
   const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
   return (
     <Stack mt="md">
@@ -16,16 +16,16 @@ const HeadingsSettings = () => {
         <NumberUnitSelector
             key={`heading-size-${heading}`} 
             label={'Size'}
-            value={theme.getHeadingSize(heading) || '0px'}
-            onChange={(value) => theme.setHeadingSize(heading, value)}
+            value={getHeadingSize(heading) || '0px'}
+            onChange={(value) => setHeadingSize(heading, value)}
             min={0}
             max={100}
         />
         <NumberUnitSelector
             key={`heading-line-height-${heading}`} 
             label={'Line Height'}
-            value={theme.getHeadingLineHeight(heading) || '0px'}
-            onChange={(value) => theme.setHeadingLineHeight(heading, value)}
+            value={getHeadingLineHeight(heading) || '0px'}
+            onChange={(value) => setHeadingLineHeight(heading, value)}
             hasUnits={false}
             step={0.1}
             min={0}
@@ -34,8 +34,8 @@ const HeadingsSettings = () => {
         <NumberUnitSelector
             key={`heading-weight-${heading}`} 
             label={'Weight'}
-            value={theme.getHeadingWeight(heading) || '0px'}
-            onChange={(value) => theme.setHeadingWeight(heading, value)}
+            value={getHeadingWeight(heading) || '0px'}
+            onChange={(value) => setHeadingWeight(heading, value)}
             hasUnits={false}
             step={100}
             min={100}
