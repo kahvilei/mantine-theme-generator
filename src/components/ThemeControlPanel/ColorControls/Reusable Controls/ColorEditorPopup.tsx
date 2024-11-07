@@ -7,7 +7,6 @@ import {
   ColorPicker,
   ColorSwatch,
   Group,
-  MantineColorsTuple,
   Modal,
   Popover,
   Stack,
@@ -15,37 +14,69 @@ import {
   TextInput,
   Tooltip,
 } from '@mantine/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { 
+  setColor, 
+  updateColorShade, 
+  deleteColor 
+} from '@/data/ThemeState/themeSlice';
 import generateColors from '../../../../utils/generateColors';
-import { useThemeContext } from '../../ThemeContext/ThemeContext';
+import type { ColorTuple } from '@/data/types';
+import { RootState } from '@/App';
 
 interface ColorEditorPopupProps {
-  colorName: string;
-  colorValue: string;
+  colorName?: string;
+  colorValue?: string;
   isEditing?: boolean;
-  isDefaultColor?: boolean; // New prop to indicate if the color is a default color
+  isDefaultColor?: boolean;
 }
 
 const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
   colorName,
   colorValue,
   isEditing = false,
-  isDefaultColor = false, // Default to false
+  isDefaultColor = false,
 }) => {
+  const dispatch = useDispatch();
+  
   const [isShadeModalOpen, setIsShadeModalOpen] = React.useState(false);
   const [currentEditingColor, setCurrentEditingColor] = React.useState(colorName);
   const [newColorName, setNewColorName] = React.useState(colorName);
   const [newColorValue, setNewColorValue] = React.useState(colorValue);
-  const { setColor, getColor, updateColorShade, deleteColor } = useThemeContext();
 
-  const updateColorShadeCurrent = (index: number, newShade: string) => {
-    updateColorShade(currentEditingColor, index, newShade);
+  // Get color shades from Redux state
+  const colorShades = useSelector((state: RootState) => 
+    currentEditingColor 
+      ? state.theme.theme.colors?.[currentEditingColor] 
+      : undefined
+  );
+
+  const handleUpdateColorShade = (index: number, newShade: string) => {
+    if (currentEditingColor) {
+      dispatch(updateColorShade({ 
+        colorName: currentEditingColor, 
+        index, 
+        newShade 
+      }));
+    }
+  };
+
+  const handleSetColor = (name: string, color: string) => {
+    const generatedColors = generateColors(color) as ColorTuple;
+    dispatch(setColor({ 
+      key: name, 
+      value: generatedColors 
+    }));
+  };
+
+  const handleDeleteColor = (name: string) => {
+    dispatch(deleteColor({ colorName: name }));
   };
 
   const handleAddColor = () => {
-    setColor(
-      newColorName,
-      generateColors(newColorValue) as unknown as MantineColorsTuple
-    );
+    if (newColorName && newColorValue) {
+      handleSetColor(newColorName, newColorValue);
+    }
   };
 
   return (
@@ -70,7 +101,9 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
                       variant="light"
                       color="red"
                       onClick={() => {
-                        deleteColor(colorName);
+                        if (colorName) {
+                          handleDeleteColor(colorName);
+                        }
                       }}
                     >
                       <IconTrash />
@@ -96,11 +129,8 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
             required
             onChange={(color) => {
               setNewColorValue(color);
-              if (isEditing) {
-                setColor(
-                  newColorName,
-                  generateColors(color) as unknown as MantineColorsTuple
-                );
+              if (isEditing && newColorName) {
+                handleSetColor(newColorName, color);
               }
             }}
           />
@@ -108,11 +138,8 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
             value={newColorValue}
             onChange={(color) => {
               setNewColorValue(color);
-              if (isEditing) {
-                setColor(
-                  newColorName,
-                  generateColors(color) as unknown as MantineColorsTuple
-                );
+              if (isEditing && newColorName) {
+                handleSetColor(newColorName, color);
               }
             }}
           />
@@ -130,11 +157,11 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
         title={`Fine-tune Shades for ${currentEditingColor}`}
       >
         <Stack>
-          {getColor(currentEditingColor)?.map((shade: string, index: number) => (
+          {colorShades?.map((shade: string, index: number) => (
             <Group key={index}>
               <ColorInput
                 value={shade}
-                onChange={(color) => updateColorShadeCurrent(index, color)}
+                onChange={(color) => handleUpdateColorShade(index, color)}
                 label={`Shade ${index}`}
                 style={{ flex: 1 }}
               />

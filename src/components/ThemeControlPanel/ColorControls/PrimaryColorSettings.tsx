@@ -1,26 +1,65 @@
-import { Box, MantineColorShade, Slider, Stack, Switch, Text, Title } from '@mantine/core';
-import { useThemeContext } from '../ThemeContext/ThemeContext';
+import { Box, Slider, Stack, Switch, Text, Title } from '@mantine/core';
+import { useDispatch, useSelector } from 'react-redux';
 import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';
+import {
+  selectPrimaryColor,
+  selectPrimaryShade,
+  selectAutoContrast,
+  selectLuminanceThreshold,
+  selectCustomColors,
+  selectMantineColors,
+  selectMainColorShade,
+  selectIsSchemeDependentPrimaryShade,
+  selectShadesFromColorString
+} from '@/data/ThemeState/themeSelectors';
+import {
+  setPrimaryColor,
+  setPrimaryShade,
+  setAutoContrast,
+  setLuminanceThreshold
+} from '@/data/ThemeState/themeSlice';
+import { RootState } from '@/data/store';
 
 const PrimaryColorSettings = () => {
-  const {
-    getPrimaryColor,
-    getPrimaryShade,
-    setPrimaryColor,
-    setPrimaryShade,
-    getAutoContrast,
-    setAutoContrast,
-    getLuminanceThreshold,
-    setLuminanceThreshold,
-    isSchemeDependentPrimaryShade,
-    getShadesFromColorString,
-    getMainColorShade,
-    getCustomColors,
-    getMantineColors,
-  } = useThemeContext();
-  const primaryColor = getPrimaryColor();
-  const primaryShades = [...getShadesFromColorString(primaryColor)];
+  const dispatch = useDispatch();
+
+  // Selectors
+  const primaryColor = useSelector(selectPrimaryColor);
+  const lightShade = useSelector((state: RootState) => 
+    selectPrimaryShade(state, 'light')
+  );
+  const darkShade = useSelector ((state: RootState) =>
+    selectPrimaryShade(state, 'dark')
+  );
+  const autoContrast = useSelector(selectAutoContrast);
+  const luminanceThreshold = useSelector(selectLuminanceThreshold);
+  const customColors = useSelector(selectCustomColors);
+  const mantineColors = useSelector(selectMantineColors);
+  const isSchemeDependentShade = useSelector(selectIsSchemeDependentPrimaryShade);
+  const mainColorShade = useSelector((state: RootState) => 
+    selectMainColorShade(state, primaryColor || 'blue')
+  );
+  const primaryShades = useSelector((state: RootState) => 
+    selectShadesFromColorString(state, primaryColor)
+  );
+
+  // Action handlers
+  const handlePrimaryColorChange = (color: string) => {
+    dispatch(setPrimaryColor(color));
+  };
+
+  const handlePrimaryShadeChange = (value: number | { light: number; dark: number }) => {
+    dispatch(setPrimaryShade(value));
+  };
+
+  const handleAutoContrastChange = (checked: boolean) => {
+    dispatch(setAutoContrast(checked));
+  };
+
+  const handleLuminanceThresholdChange = (value: number) => {
+    dispatch(setLuminanceThreshold(value));
+  };
 
   return (
     <Box>
@@ -28,63 +67,53 @@ const PrimaryColorSettings = () => {
       <Stack gap="xl" mt="md">
         <GroupedColorSelector
           colors={[
-            { theme: getCustomColors() },
-            { mantine: getMantineColors() },
+            { theme: customColors },
+            { mantine: mantineColors },
           ]}
-          mainColor={{ shade: getMainColorShade(primaryColor), name: primaryColor || 'blue' }}
-          onSelect={(color) => setPrimaryColor(color)}
+          mainColor={{ shade: mainColorShade, name: primaryColor || 'blue' }}
+          onSelect={handlePrimaryColorChange}
         />
         <Stack>
           <Switch
             label="Use different shades for light and dark modes"
-            checked={isSchemeDependentPrimaryShade()}
+            checked={isSchemeDependentShade}
             onChange={(event) => {
               if (event.currentTarget.checked) {
-                setPrimaryShade({ light: 6, dark: 8 }as unknown as MantineColorShade);
+                handlePrimaryShadeChange({ light: 6, dark: 8 });
               } else {
-                setPrimaryShade(6);
+                handlePrimaryShadeChange(6);
               }
             }}
           />
 
-          {isSchemeDependentPrimaryShade() ? (
+          {isSchemeDependentShade ? (
             <>
-              <Text size="sm" mt="md">
-                Light Mode Primary Shade
-              </Text>
+              <Text size="sm" mt="md">Light Mode Primary Shade</Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={getPrimaryShade('light')}
-                onSelect={(value) =>
-                  setPrimaryShade({
-                    light: value,
-                    dark: getPrimaryShade('dark'),
-                  } as unknown as MantineColorShade)
-                }
+                selectedIndex={lightShade}
+                onSelect={(value) => handlePrimaryShadeChange({
+                  light: value,
+                  dark: darkShade,
+                })}
               />
-              <Text size="sm" mt="md">
-                Dark Mode Primary Shade
-              </Text>
+              <Text size="sm" mt="md">Dark Mode Primary Shade</Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={getPrimaryShade('dark')}
-                onSelect={(value) =>
-                  setPrimaryShade({
-                    light: getPrimaryShade('light'),
-                    dark: value,
-                  }as unknown as MantineColorShade)
-                }
+                selectedIndex={darkShade}
+                onSelect={(value) => handlePrimaryShadeChange({
+                  light: lightShade,
+                  dark: value,
+                })}
               />
             </>
           ) : (
             <>
-              <Text size="sm" mt="md">
-                Primary Shade
-              </Text>
+              <Text size="sm" mt="md">Primary Shade</Text>
               <ShadeSelector
                 colors={primaryShades}
-                selectedIndex={getPrimaryShade()}
-                onSelect={(value) => setPrimaryShade(value as unknown as MantineColorShade)}
+                selectedIndex={ lightShade }
+                onSelect={(value) => handlePrimaryShadeChange(value)}
               />
             </>
           )}
@@ -93,24 +122,20 @@ const PrimaryColorSettings = () => {
         <Stack>
           <Switch
             label="Auto Contrast"
-            checked={getAutoContrast()}
-            onChange={(event) => {
-              setAutoContrast(event.currentTarget.checked);
-            }}
+            checked={autoContrast}
+            onChange={(event) => handleAutoContrastChange(event.currentTarget.checked)}
           />
 
-          {getAutoContrast() && (
+          {autoContrast && (
             <Stack>
-              <Text size="sm" mt="md">
-                Luminance Threshold
-              </Text>
+              <Text size="sm" mt="md">Luminance Threshold</Text>
               <Slider
                 min={0}
                 max={1}
                 step={0.01}
-                value={getLuminanceThreshold()}
-                onChange={(value) => setLuminanceThreshold(value)}
-                label={(value) => value.toFixed(2)} // Display the current value as the label
+                value={luminanceThreshold}
+                onChange={handleLuminanceThresholdChange}
+                label={(value) => value.toFixed(2)}
               />
             </Stack>
           )}
@@ -120,4 +145,4 @@ const PrimaryColorSettings = () => {
   );
 };
 
-export default PrimaryColorSettings;
+export default PrimaryColorSettings

@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 
-import React, { useState, useMemo} from 'react';
+import React, { useState } from 'react';
 import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import {
   AppShell,
@@ -12,14 +12,12 @@ import {
   ScrollArea,
   Stack,
   Tabs,
-  DEFAULT_THEME,
 } from '@mantine/core';
 import Header from './components/Header/Header';
 import JsonEditor from './components/JsonEditor/JsonEditor';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
-import { ThemeProvider } from './components/ThemeControlPanel/ThemeContext/ThemeContext';
 import { Provider } from 'react-redux';
 
 // Store setup
@@ -57,7 +55,6 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider initialTheme={DEFAULT_THEME}>
     <Provider store={store}>
     <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
@@ -151,7 +148,6 @@ const App: React.FC = () => {
       </AppShell>
     </MantineProvider>
     </Provider>
-    </ThemeProvider>
   );
 };
 

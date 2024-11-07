@@ -4,12 +4,36 @@ import {
   Switch,
   Text,
 } from '@mantine/core';
-import { useThemeContext } from './ThemeContext/ThemeContext';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectFocusRing,
+  selectRespectReducedMotion,
+  selectCursorType,
+} from '@/data/ThemeState/themeSelectors';
+import {
+  setFocusRing,
+  setRespectReducedMotion,
+  setCursorType,
+} from '@/data/ThemeState/themeSlice';
 
 const GeneralControls = () => {
-  const { setFocusRing, getFocusRing, setRespectReducedMotion, getRespectReducedMotion, setCursorType, getCursorType } = useThemeContext();
+  const dispatch = useDispatch();
+
+  const focusRing = useSelector(selectFocusRing);
+  const respectReducedMotion = useSelector(selectRespectReducedMotion);
+  const cursorType = useSelector(selectCursorType);
+
+  const handleFocusRingChange = (value: 'auto' | 'always' | 'never') => {
+    dispatch(setFocusRing(value));
+  };
+
+  const handleRespectReducedMotionChange = (checked: boolean) => {
+    dispatch(setRespectReducedMotion(checked));
+  };
+
+  const handleCursorTypeChange = (value: 'default' | 'pointer') => {
+    dispatch(setCursorType(value));
+  };
 
   return (
     <Stack mt="md">
@@ -20,14 +44,14 @@ const GeneralControls = () => {
           { value: 'always', label: 'Always' },
           { value: 'never', label: 'Never' },
         ]}
-        value={getFocusRing()}
-        onChange={(value) => setFocusRing(value as 'auto' | 'always' | 'never')}
+        value={focusRing}
+        onChange={(value) => handleFocusRingChange(value as 'auto' | 'always' | 'never')}
       />
 
       <Switch
         label="Respect Reduced Motion"
-        checked={getRespectReducedMotion()}
-        onChange={(event) => setRespectReducedMotion(event.currentTarget.checked)}
+        checked={respectReducedMotion}
+        onChange={(event) => handleRespectReducedMotionChange(event.currentTarget.checked)}
       />
 
       <Text size="sm">Cursor Type</Text>
@@ -36,8 +60,8 @@ const GeneralControls = () => {
           { label: 'Default', value: 'default' },
           { label: 'Pointer', value: 'pointer' },
         ]}
-        value={getCursorType()}
-        onChange={(value) => setCursorType(value as 'default' | 'pointer')}
+        value={cursorType}
+        onChange={(value) => handleCursorTypeChange(value as 'default' | 'pointer')}
       />
     </Stack>
   );

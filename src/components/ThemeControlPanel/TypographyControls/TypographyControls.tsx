@@ -1,6 +1,18 @@
-import { Autocomplete, Stack, Switch, } from '@mantine/core';
+import { Autocomplete, Stack, Switch } from '@mantine/core';
+import { useDispatch, useSelector } from 'react-redux';
 import HeadingsSettings from './HeadingsSettings';
-import { useThemeContext } from '../ThemeContext/ThemeContext';
+import {
+  selectBodyFontFamily,
+  selectHeadingFontFamily,
+  selectMonospaceFontFamily,
+  selectFontSmoothing,
+} from '@/data/ThemeState/themeSelectors';
+import {
+  setBodyFontFamily,
+  setHeadingFontFamily,
+  setMonospaceFontFamily,
+  setFontSmoothing,
+} from '@/data/ThemeState/themeSlice';
 
 const commonFonts = [
   'Arial',
@@ -39,41 +51,64 @@ const monospaceFonts = [
 ];
 
 const TypographyControl = () => {
-  const { getBodyFontFamily, setBodyFontFamily, getHeadingFontFamily, setHeadingFontFamily, getMonospaceFontFamily, setMonospaceFontFamily, getFontSmoothing, setFontSmoothing, } = useThemeContext();
+  const dispatch = useDispatch();
+
+  // Selectors
+  const bodyFontFamily = useSelector(selectBodyFontFamily);
+  const headingFontFamily = useSelector(selectHeadingFontFamily);
+  const monospaceFontFamily = useSelector(selectMonospaceFontFamily);
+  const fontSmoothing = useSelector(selectFontSmoothing);
+
+  // Action handlers
+  const handleBodyFontFamilyChange = (value: string) => {
+    dispatch(setBodyFontFamily(value));
+  };
+
+  const handleHeadingFontFamilyChange = (value: string) => {
+    dispatch(setHeadingFontFamily(value));
+  };
+
+  const handleMonospaceFontFamilyChange = (value: string) => {
+    dispatch(setMonospaceFontFamily(value));
+  };
+
+  const handleFontSmoothingChange = (checked: boolean) => {
+    dispatch(setFontSmoothing(checked));
+  };
+
   return (
     <Stack mt="md">
       <Autocomplete
         label="Main Font Family"
         data={commonFonts}
-        value={getBodyFontFamily()}
-        onChange={(value) => setBodyFontFamily(value)}
+        value={bodyFontFamily}
+        onChange={handleBodyFontFamilyChange}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Heading Font Family"
         data={commonFonts}
-        value={getHeadingFontFamily()}
-        onChange={(value) => setHeadingFontFamily(value)}
+        value={headingFontFamily}
+        onChange={handleHeadingFontFamilyChange}
         placeholder="Select or type a font family"
       />
 
       <Autocomplete
         label="Monospace Font Family"
         data={monospaceFonts}
-        value={getMonospaceFontFamily()}
-        onChange={(value) => setMonospaceFontFamily(value)}
+        value={monospaceFontFamily}
+        onChange={handleMonospaceFontFamilyChange}
         placeholder="Select or type a monospace font family"
       />
 
       <Switch
         label="Font Smoothing"
-        checked={getFontSmoothing()}
-        onChange={(event) => setFontSmoothing(event.currentTarget.checked)}
+        checked={fontSmoothing}
+        onChange={(event) => handleFontSmoothingChange(event.currentTarget.checked)}
       />
 
       <HeadingsSettings />
-
     </Stack>
   );
 };

@@ -13,6 +13,7 @@ import {
   createTheme,
   FileInput,
   Group,
+  MantineThemeOverride,
   Popover,
   Select,
   SelectProps,
@@ -23,8 +24,11 @@ import {
 import premadeThemes from '../../data/premadeThemes.json';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 import ThemePreview from './ThemePreview';
-import { useThemeContext } from '../ThemeControlPanel/ThemeContext/ThemeContext';
 import classes from './Header.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme } from '@/data/ThemeState/themeSelectors';
+import { setTheme } from '@/data/ThemeState/themeSlice';
+
 
 interface HeaderProps {
   toggleAside: () => void;
@@ -40,24 +44,20 @@ const Header: React.FC<HeaderProps> = ({
   toggleAside,
   toggleScheme,
 }) => {
-  const currentTheme = createTheme({});
   const [currentThemeName, setCurrentThemeName] = useState('');
   const [currentContent, setCurrentContent] = useState('UI Demo');
   const defaultTheme = createTheme({});
   const [opened, setOpened] = useState(false);
   const themes = JSON.parse(JSON.stringify(premadeThemes));
 
-  const { theme, setTheme } = useThemeContext();
+  const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
 
-  useEffect(() => {
-    if (Object.keys(theme).length === 0) {
-      setTheme(currentTheme);
-    }
-  }, []);
 
   const handlePreMadeThemeSelect = (value: string | null) => {
     setCurrentThemeName(value as string);
-    setTheme(themes[value as string]);
+    const newTheme = createTheme(themes[value as string]);
+    dispatch(setTheme(newTheme));
   };
 
   const themeOptions: SelectProps['renderOption'] = ({ option, checked }) => (
@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({
           </ActionIcon>
         </Tooltip>
         <Tooltip label="Download Theme">
-          <ActionIcon variant="outline" onClick={() => downloadTheme(theme)}>
+          <ActionIcon variant="outline" onClick={() => downloadTheme(theme as MantineThemeOverride)}>
             <IconDownload size="1.25rem" />
           </ActionIcon>
         </Tooltip>

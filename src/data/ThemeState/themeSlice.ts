@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DEFAULT_THEME } from '@mantine/core';
 import { ThemeState, ColorTuple, HeadingSize } from '@/data/types';
 import generateShades from '@/utils/generateColors';
+import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const initialState: ThemeState = {
   theme: {
@@ -119,20 +120,28 @@ export const themeSlice = createSlice({
 
     // Gradient Management
     setGradientFrom: (state, action: PayloadAction<string>) => {
+      const currentGradient = state.theme.defaultGradient ?? DEFAULT_THEME.defaultGradient;
       state.theme.defaultGradient = {
-        ...state.theme.defaultGradient,
-        from: action.payload
+        from: action.payload,
+        to: currentGradient.to,
+        deg: currentGradient.deg
       };
     },
+    
     setGradientTo: (state, action: PayloadAction<string>) => {
+      const currentGradient = state.theme.defaultGradient ?? DEFAULT_THEME.defaultGradient;
       state.theme.defaultGradient = {
-        ...state.theme.defaultGradient,
-        to: action.payload
+        from: currentGradient.from,
+        to: action.payload,
+        deg: currentGradient.deg
       };
     },
+    
     setGradientAngle: (state, action: PayloadAction<number>) => {
+      const currentGradient = state.theme.defaultGradient ?? DEFAULT_THEME.defaultGradient;
       state.theme.defaultGradient = {
-        ...state.theme.defaultGradient,
+        from: currentGradient.from,
+        to: currentGradient.to,
         deg: action.payload
       };
     },
@@ -147,16 +156,25 @@ export const themeSlice = createSlice({
       state.theme.defaultRadius = action.payload;
     },
     setRadius: (state, action: PayloadAction<{ key: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; value: string }>) => {
+      const currentRadius = state.theme.radius ?? DEFAULT_THEME.radius;
       state.theme.radius = {
-        ...state.theme.radius,
+        xs: currentRadius.xs,
+        sm: currentRadius.sm,
+        md: currentRadius.md,
+        lg: currentRadius.lg,
+        xl: currentRadius.xl,
         [action.payload.key]: frameValue(action.payload.value)
       };
     },
-
-    // Spacing Management
+    
     setSpacing: (state, action: PayloadAction<{ key: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; value: string }>) => {
+      const currentSpacing = state.theme.spacing ?? DEFAULT_THEME.spacing;
       state.theme.spacing = {
-        ...state.theme.spacing,
+        xs: currentSpacing.xs,
+        sm: currentSpacing.sm,
+        md: currentSpacing.md,
+        lg: currentSpacing.lg,
+        xl: currentSpacing.xl,
         [action.payload.key]: frameValue(action.payload.value)
       };
     },
@@ -185,7 +203,7 @@ export const themeSlice = createSlice({
     setHeadingDefaultWeight: (state, action: PayloadAction<string>) => {
       state.theme.headings = {
         ...state.theme.headings,
-        fontWeight: action.payload as unknown as number
+        fontWeight: action.payload 
       };
     },
     setHeadingSize: (state, action: PayloadAction<{ key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; value: string }>) => {
@@ -197,7 +215,7 @@ export const themeSlice = createSlice({
             ...state.theme.headings?.sizes?.[action.payload.key],
             fontSize: frameValue(action.payload.value)
           }
-        }
+        } as Record<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', HeadingSize>
       };
     },
     setHeadingLineHeight: (state, action: PayloadAction<{ key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; value: string }>) => {
@@ -209,7 +227,7 @@ export const themeSlice = createSlice({
             ...state.theme.headings?.sizes?.[action.payload.key],
             lineHeight: action.payload.value
           }
-        }
+        } as Record<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', HeadingSize>
       };
     },
     setHeadingWeight: (state, action: PayloadAction<{ key: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; value: string }>) => {
@@ -221,7 +239,7 @@ export const themeSlice = createSlice({
             ...state.theme.headings?.sizes?.[action.payload.key],
             fontWeight: action.payload.value
           }
-        }
+        } as Record<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', HeadingSize>
       };
     },
     setBodyFontFamily: (state, action: PayloadAction<string>) => {
@@ -248,6 +266,7 @@ export const themeSlice = createSlice({
 });
 
 export const {
+  setTheme,
   setColor,
   setColorFromString,
   updateColor,

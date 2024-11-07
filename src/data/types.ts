@@ -14,8 +14,8 @@ export type ColorTuple = [
   
 export type HeadingSize = {
 fontSize?: string;
-lineHeight?: string | number;
-fontWeight?: number;
+lineHeight?: string;
+fontWeight?: string;
 };
 
 export interface ThemeState {

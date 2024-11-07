@@ -1,14 +1,11 @@
 import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Box, MantineProvider } from '@mantine/core';
-
-import { useThemeContext } from '../ThemeControlPanel/ThemeContext/ThemeContext';
-
-import './ThemeDisplay.css';
-
 import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
 import MessagingService from './Demo Pages/MessagingService';
 import classes from './ThemeDisplay.module.css';
+import { selectTheme } from '@/data/ThemeState/themeSelectors';
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
 
@@ -19,26 +16,32 @@ export interface ThemeDisplayProps {
 }
 
 const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayContent }) => {
+  // Get theme from Redux instead of context
+  const theme = useSelector(selectTheme);
+
+  //memoize each content page
+  const MemoizedComponentShowcase = useMemo(() => ComponentShowcase, []);
+  const MemoizedGitHubRepoDemo = useMemo(() => GitHubRepoDemo, []);
+  const MemoizedMessagingService = useMemo(() => MessagingService, []);
+
   const Content = () => {
     switch (displayContent) {
       case 'UI Demo':
-        return <ComponentShowcase />;
+        return <MemoizedComponentShowcase />;
       case 'Repository':
-        return <GitHubRepoDemo />;
+        return <MemoizedGitHubRepoDemo />;
       case 'Messaging Service':
-        return <MessagingService />;
+        return <MemoizedMessagingService />;
       default:
-        return <ComponentShowcase />;
+        return <MemoizedComponentShowcase />;
     }
   };
 
   const MemoizedContent = useMemo(() => Content, [displayContent]);
 
-  const { theme } = useThemeContext();
-
   return (
     <MantineProvider
-      theme={{ ...theme }}
+      theme={{ ...theme as any }}
       forceColorScheme={mode}
       getRootElement={() =>
         document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined

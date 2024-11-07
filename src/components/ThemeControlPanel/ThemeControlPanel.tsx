@@ -8,7 +8,6 @@ import classes from './ThemeControlPanel.module.css';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 
 const ThemeControlPanel = () => {
-
   return (
     <Box id="control-panel" p={'0'}>
         <Stack>

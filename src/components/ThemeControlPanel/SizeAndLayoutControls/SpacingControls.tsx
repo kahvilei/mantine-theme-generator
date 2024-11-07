@@ -1,27 +1,39 @@
-import { Stack, Text, Title, Box} from '@mantine/core';
+import { Stack, Text, Title, Box } from '@mantine/core';
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
-import { useThemeContext } from '../ThemeContext/ThemeContext';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectSpacing,
+} from '@/data/ThemeState/themeSelectors';
+import {
+  setSpacing,
+} from '@/data/ThemeState/themeSlice';
+import { RootState } from '@/data/store';
 
-const SpacingControls = ({ }) => {
-  const { getSpacing, setSpacing } = useThemeContext();
+const SpacingControls = () => {
+  const dispatch = useDispatch();
   
   const spacingSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+
+  const handleSpacingChange = (size: typeof spacingSizes[number], value: string) => {
+    dispatch(setSpacing({ key:size, value:value }));
+  };
+
   return (
     <Box>
       <Title order={4}>Spacing</Title>
-    <Stack mt="md">
-      <Text size="sm">Spacing settings</Text>
+      <Stack mt="md">
+        <Text size="sm">Spacing settings</Text>
         {spacingSizes.map((size) => (
-        <NumberUnitSelector
+          <NumberUnitSelector
             key={size}
             label={size}
-            value={getSpacing(size) || '0px'}
-            onChange={(value) => setSpacing(size, value)}
+            value={useSelector((state: RootState) => selectSpacing(state, size)) || '0px'}
+            onChange={(value) => handleSpacingChange(size, value)}
             min={0}
             max={100}
-        />
-        ))}     
-    </Stack>
+          />
+        ))}
+      </Stack>
     </Box>
   );
 };
