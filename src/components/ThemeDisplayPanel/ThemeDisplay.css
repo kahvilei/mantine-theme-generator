@@ -46,3 +46,20 @@
     color: var(--mantine-color-text);
 }
 
+:where([data-mantine-color-scheme="light"]).scheme-override-light .m_db6d6462 {
+    background-color: var(--mantine-color-gray-2);
+}
+
+[data-mantine-color-scheme="light"].scheme-override-light .m_9307d992 {
+    --switch-bg: var(--mantine-color-gray-2);
+    --switch-bd: var(--mantine-color-gray-3);
+    --switch-text-color: var(--mantine-color-gray-6);
+    --switch-disabled-color: var(--mantine-color-gray-2);
+  }
+
+  [data-mantine-color-scheme="light"].scheme-override-light .m_6c018570[data-variant="filled"] {
+    --input-bd: transparent;
+    --input-bg: var(--mantine-color-gray-1);
+    --input-bd-focus: var(--mantine-primary-color-filled);
+  }
+

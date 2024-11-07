@@ -5,6 +5,7 @@ import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
 import MessagingService from './Demo Pages/MessagingService';
 import classes from './ThemeDisplay.module.css';
+import './ThemeDisplay.css';
 import { selectTheme } from '@/data/ThemeState/themeSelectors';
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';

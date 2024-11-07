@@ -7,8 +7,6 @@ import {
   selectPrimaryShade,
   selectAutoContrast,
   selectLuminanceThreshold,
-  selectCustomColors,
-  selectMantineColors,
   selectMainColorShade,
   selectIsSchemeDependentPrimaryShade,
   selectShadesFromColorString
@@ -34,8 +32,6 @@ const PrimaryColorSettings = () => {
   );
   const autoContrast = useSelector(selectAutoContrast);
   const luminanceThreshold = useSelector(selectLuminanceThreshold);
-  const customColors = useSelector(selectCustomColors);
-  const mantineColors = useSelector(selectMantineColors);
   const isSchemeDependentShade = useSelector(selectIsSchemeDependentPrimaryShade);
   const mainColorShade = useSelector((state: RootState) => 
     selectMainColorShade(state, primaryColor || 'blue')
@@ -66,10 +62,6 @@ const PrimaryColorSettings = () => {
       <Title order={4}>Primary Color</Title>
       <Stack gap="xl" mt="md">
         <GroupedColorSelector
-          colors={[
-            { theme: customColors },
-            { mantine: mantineColors },
-          ]}
           mainColor={{ shade: mainColorShade, name: primaryColor || 'blue' }}
           onSelect={handlePrimaryColorChange}
         />

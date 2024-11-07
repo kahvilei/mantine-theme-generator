@@ -25,8 +25,7 @@ import premadeThemes from '../../data/premadeThemes.json';
 import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 import ThemePreview from './ThemePreview';
 import classes from './Header.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme } from '@/data/ThemeState/themeSelectors';
+import { useDispatch } from 'react-redux';
 import { setTheme } from '@/data/ThemeState/themeSlice';
 
 
@@ -51,8 +50,6 @@ const Header: React.FC<HeaderProps> = ({
   const themes = JSON.parse(JSON.stringify(premadeThemes));
 
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
-
 
   const handlePreMadeThemeSelect = (value: string | null) => {
     setCurrentThemeName(value as string);
@@ -104,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({
           </ActionIcon>
         </Tooltip>
         <Tooltip label="Download Theme">
-          <ActionIcon variant="outline" onClick={() => downloadTheme(theme as MantineThemeOverride)}>
+          <ActionIcon variant="outline" onClick={() => downloadTheme('json')}>
             <IconDownload size="1.25rem" />
           </ActionIcon>
         </Tooltip>
@@ -146,7 +143,7 @@ const Header: React.FC<HeaderProps> = ({
           </Popover.Dropdown>
         </Popover>
         <FileInput
-          onChange={(file) => uploadTheme(file, setTheme)}
+          onChange={(file) => { if (file) uploadTheme(file); }}
           accept=".json"
           style={{ display: 'none' }}
         />

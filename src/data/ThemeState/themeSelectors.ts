@@ -1,6 +1,7 @@
 import { RootState } from '../store';
 import { DEFAULT_THEME } from '@mantine/core';
 import { ColorTuple } from '../types';
+import { createSelector } from '@reduxjs/toolkit';
 
 const unframeValue = (value: string): string => {
   return value.replace(/calc\((.*?) \* var\(--mantine-scale\)\)/, '$1');
@@ -13,6 +14,8 @@ export const selectTheme = (state: RootState) => state.theme.theme;
 export const selectMainColorShade = (state: RootState, key: string) => {
   if (state.theme.theme.colors?.[key]) {
     return state.theme.theme.colors[key][5];
+  }if (DEFAULT_THEME.colors[key]) {
+    return DEFAULT_THEME.colors[key][5];
   }
   return '#000';
 };
@@ -27,27 +30,63 @@ export const selectColor = (state: RootState, key: string) => {
   return DEFAULT_THEME.colors[key];
 }
 
-export const selectCustomColors = (state: RootState) => {
-  const customColors = new Map<string, ColorTuple>();
-  for (let color in state.theme.theme.colors) {
-    if (state.theme.theme.colors[color] && !DEFAULT_THEME.colors[color]) {
-      customColors.set(color, state.theme.theme.colors[color]);
-    }
-  }
-  return customColors;
-};
+// Base selector for theme colors
+const selectThemeColors = (state: RootState) => state.theme.theme.colors;
 
-export const selectMantineColors = (state: RootState) => {
-  const mantineColors = new Map<string, ColorTuple>();
-  for (let color in DEFAULT_THEME.colors) {
-    if (state.theme.theme.colors?.[color]) {
-      mantineColors.set(color, state.theme.theme.colors[color]);
-    } else {
-      mantineColors.set(color, DEFAULT_THEME.colors[color] as ColorTuple);
+// Memoized selector for custom colors
+export const selectCustomColors = createSelector(
+  [selectThemeColors],
+  (colors) => {
+    const customColors = new Map<string, ColorTuple>();
+    if (!colors) return customColors;
+
+    for (let color in colors) {
+      if (colors[color] && !DEFAULT_THEME.colors[color]) {
+        customColors.set(color, colors[color]);
+      }
     }
+    return customColors;
   }
-  return mantineColors;
-};
+);
+
+// Memoized selector for Mantine colors
+export const selectMantineColors = createSelector(
+  [selectThemeColors],
+  (colors) => {
+    const mantineColors = new Map<string, ColorTuple>();
+    
+    for (let color in DEFAULT_THEME.colors) {
+      if (colors?.[color]) {
+        mantineColors.set(color, colors[color]);
+      } else {
+        mantineColors.set(color, DEFAULT_THEME.colors[color] as ColorTuple);
+      }
+    }
+    return mantineColors;
+  }
+);
+
+// If you need both custom and mantine colors together
+export const selectAllColorsMemoized = createSelector(
+  [selectCustomColors, selectMantineColors],
+  (customColors, mantineColors) => ({
+    customColors,
+    mantineColors
+  })
+);
+
+// If you need just the array of all color names
+export const selectColorNames = createSelector(
+  [selectThemeColors],
+  (colors) => Object.keys(colors || {})
+);
+
+// If you need the main shade (index 5) of specific colors
+export const makeSelectColorShade = (colorKey: string) =>
+  createSelector(
+    [selectThemeColors],
+    (colors) => colors?.[colorKey]?.[5] || DEFAULT_THEME.colors[colorKey]?.[5] || '#000'
+  );
 
 export const selectAllColors = (state: RootState) => 
   state.theme.theme.colors ?? DEFAULT_THEME.colors;
@@ -169,7 +208,6 @@ export const selectWhite = (state: RootState) =>
   };
 
   export const selectIsSchemeDependentPrimaryShade = (state: RootState) => {
-    const primaryShade = selectPrimaryShade(state);
-    return typeof primaryShade === 'object';
+    return selectTheme(state).isThemeDependentPrimaryShade ?? true;
   };
   

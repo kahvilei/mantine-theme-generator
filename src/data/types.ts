@@ -24,6 +24,7 @@ theme: {
     colors?: Record<string, ColorTuple>;
     primaryColor?: string;
     primaryShade?: number | { light: number; dark: number };
+    isThemeDependentPrimaryShade?: boolean;
     white?: string;
     black?: string;
     

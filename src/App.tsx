@@ -49,6 +49,7 @@ const App: React.FC = () => {
   };
 
   const [currentContent, setCurrentContent] = useState('Mantine Components');
+  const [selectedTab, setSelectedTab] = useState('dark-and-light');
 
   const updateDisplayContent = (content: string) => {
     setCurrentContent(content);
@@ -89,56 +90,67 @@ const App: React.FC = () => {
           </ScrollArea>
         </AppShell.Navbar>
         <AppShell.Main>
-          <Tabs defaultValue="dark-and-light" w={'100%'}>
-            <Tabs.List
-              pos={'fixed'}
-              w={'100%'}
-              bg={'var(--mantine-color-body)'}
-              style={{ zIndex: 1 }}
-            >
-              <Tabs.Tab value="dark" leftSection={<IconMoon size={12}></IconMoon>}>
-                Dark
-              </Tabs.Tab>
-              <Tabs.Tab value="dark-and-light" leftSection={<IconSunMoon size={12}></IconSunMoon>}>
-                Dark and Light
-              </Tabs.Tab>
-              <Tabs.Tab value="light" leftSection={<IconSun size={12}></IconSun>}>
-                Light
-              </Tabs.Tab>
-            </Tabs.List>
-            <Tabs.Panel pt={'1.5rem'} value="dark">
-              <Group justify="center" grow>
-                <ThemeDisplay
-                  number={1}
-                  mode={'dark'}
-                  displayContent={currentContent}
-                />
-              </Group>
-            </Tabs.Panel>
-            <Tabs.Panel pt={'1.5rem'} value="dark-and-light">
-              <Group gap={0} justify="center" grow>
-                <ThemeDisplay
-                  number={2}
-                  mode={'dark'}
-                  displayContent={currentContent}
-                />
-                <ThemeDisplay
-                  number={3}
-                  mode={'light'}
-                  displayContent={currentContent}
-                />
-              </Group>
-            </Tabs.Panel>
-            <Tabs.Panel pt={'1.5rem'} value="light">
-              <Group justify="center" grow>
-                <ThemeDisplay
-                  number={4}
-                  mode={'light'}
-                  displayContent={currentContent}
-                />
-              </Group>
-            </Tabs.Panel>
-          </Tabs>
+        <Tabs
+        defaultValue="dark-and-light"
+        value={selectedTab}
+        onChange={(value) => setSelectedTab(value ?? 'dark-and-light')}
+        w={'100%'}
+      >
+        <Tabs.List
+          pos={'fixed'}
+          w={'100%'}
+          bg={'var(--mantine-color-body)'}
+          style={{ zIndex: 1 }}
+        >
+          <Tabs.Tab value="dark" leftSection={<IconMoon size={12} />}>
+            Dark
+          </Tabs.Tab>
+          <Tabs.Tab value="dark-and-light" leftSection={<IconSunMoon size={12} />}>
+            Dark and Light
+          </Tabs.Tab>
+          <Tabs.Tab value="light" leftSection={<IconSun size={12} />}>
+            Light
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel pt={'1.5rem'} value="dark">
+          {selectedTab === 'dark' && (
+            <Group justify="center" grow>
+              <ThemeDisplay
+                number={1}
+                mode={'dark'}
+                displayContent={currentContent}
+              />
+            </Group>
+          )}
+        </Tabs.Panel>
+        <Tabs.Panel pt={'1.5rem'} value="dark-and-light">
+          {selectedTab === 'dark-and-light' && (
+            <Group gap={0} justify="center" grow>
+              <ThemeDisplay
+                number={2}
+                mode={'dark'}
+                displayContent={currentContent}
+              />
+              <ThemeDisplay
+                number={3}
+                mode={'light'}
+                displayContent={currentContent}
+              />
+            </Group>
+          )}
+        </Tabs.Panel>
+        <Tabs.Panel pt={'1.5rem'} value="light">
+          {selectedTab === 'light' && (
+            <Group justify="center" grow>
+              <ThemeDisplay
+                number={4}
+                mode={'light'}
+                displayContent={currentContent}
+              />
+            </Group>
+          )}
+        </Tabs.Panel>
+      </Tabs>
         </AppShell.Main>
         <AppShell.Aside>
           <Stack p="md">

@@ -23,8 +23,7 @@ const GradientControls = () => {
   const dispatch = useDispatch();
   
   // Selectors
-  const customColors = useSelector(selectCustomColors);
-  const mantineColors = useSelector(selectMantineColors);
+  
   const gradientStart = useSelector(selectGradientFrom) || 'blue';
   const gradientEnd = useSelector(selectGradientTo) || 'cyan';
   const gradientAngle = useSelector(selectGradientAngle) || 180;
@@ -50,12 +49,10 @@ const GradientControls = () => {
         <Title order={4}>Gradient</Title>
         <Group grow>
           <GroupedColorSelector
-            colors={[{ theme: customColors }, { mantine: mantineColors }]}
             mainColor={{ shade: startShade, name: gradientStart }}
             onSelect={handleGradientFromChange}
           />
           <GroupedColorSelector
-            colors={[{ theme: customColors }, { mantine: mantineColors }]}
             mainColor={{ shade: endShade, name: gradientEnd }}
             onSelect={handleGradientToChange}
           />

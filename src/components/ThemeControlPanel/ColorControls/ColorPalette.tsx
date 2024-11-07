@@ -10,7 +10,6 @@ import {
 } from '@/data/ThemeState/themeSelectors';
 
 const ColorPalette: React.FC = () => {
-  const dispatch = useDispatch();
   
   // Use Redux selector instead of context
   const customColors = useSelector(selectCustomColors);

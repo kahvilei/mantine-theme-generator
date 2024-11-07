@@ -13,6 +13,8 @@ const initialState: ThemeState = {
     }, {} as Record<string, ColorTuple>),
     primaryColor: DEFAULT_THEME.primaryColor,
     primaryShade: DEFAULT_THEME.primaryShade,
+    isThemeDependentPrimaryShade: false,
+    
     white: DEFAULT_THEME.white,
     black: DEFAULT_THEME.black,
     defaultGradient: {
@@ -115,7 +117,13 @@ export const themeSlice = createSlice({
       state.theme.primaryColor = action.payload;
     },
     setPrimaryShade: (state, action: PayloadAction<number | { light: number; dark: number }>) => {
-      state.theme.primaryShade = action.payload;
+      if (typeof action.payload === 'number') {
+        state.theme.isThemeDependentPrimaryShade = false;
+        state.theme.primaryShade = action.payload;
+      } else {
+        state.theme.isThemeDependentPrimaryShade = true;
+        state.theme.primaryShade = action.payload;
+      }
     },
 
     // Gradient Management

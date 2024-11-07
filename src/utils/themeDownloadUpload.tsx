@@ -1,6 +1,11 @@
-import { MantineThemeOverride } from '@mantine/core';
+import { useDispatch } from 'react-redux';
+import { setTheme } from '@/data/ThemeState/themeSlice';
+import { RootState } from '@/data/store';
+import { useSelector } from 'react-redux';
+import { selectTheme } from '@/data/ThemeState/themeSelectors';
 
-const downloadTheme = (theme: MantineThemeOverride) => {
+const downloadTheme = (language: "json" | "tsx") => {
+  const theme = useSelector(selectTheme);
   const themeString = JSON.stringify(theme, null, 2);
   const blob = new Blob([themeString], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -11,13 +16,13 @@ const downloadTheme = (theme: MantineThemeOverride) => {
   URL.revokeObjectURL(url);
 };
 
-const uploadTheme = (payload: File | null, updateTheme: Function) => {
-  const file = payload;
+const uploadTheme = (file: File) => {
+  const dispatch = useDispatch();
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
       const theme = JSON.parse(e.target?.result as string);
-      updateTheme(theme);
+      dispatch(setTheme(theme));
     };
     reader.readAsText(file);
   }
