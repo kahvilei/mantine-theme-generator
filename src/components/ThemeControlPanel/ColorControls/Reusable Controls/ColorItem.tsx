@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { IconColorPicker, IconColorSwatch, IconRestore, IconTrash } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -16,31 +16,43 @@ import {
 import QuestionMarkTooltip from '../../Reusable Controls/QuestionMarkTooltip';
 
 import classes from './ColorItem.module.css';
-import { updateColorShade } from '@/data/ThemeState/themeSlice';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/data/store';
+import { setColorFromString, setColor, updateColor, deleteColor } from '@/data/ThemeState/themeSlice';
+import { selectColor } from '@/data/ThemeState/themeSelectors';
+import { ColorTuple } from '@/data/types';
 
 interface ColorItemProps {
   name: string;
   description: string;
-  shades: string[];
-  color: string;
   type: 'mantine' | 'theme';
-  onReset: () => void;
-  onEditShade: (name: string, shades: string[]) => void;
-  onEdit: (name: string, color: string) => void;
 }
 
 const ColorItem: React.FC<ColorItemProps> = ({
   name,
   description,
-  color,
-  shades,
   type,
-  onReset,
-  onEdit,
-  onEditShade
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [colorName, setColorName] = useState(name);
+
+  const dispatch = useDispatch();
+  const colorObject = useSelector((state: RootState) => selectColor(state, name));
+  const color = colorObject[5];
+  const shades = colorObject as unknown as string[] ?? DEFAULT_THEME.colors[name];
+
+  const onEdit = (key: string, value: string) => {
+    dispatch(setColorFromString({ key, value }));
+  };
+
+  const onEditShade = (key: string, value: string[]) => {
+    dispatch(setColor({ key, value: value as ColorTuple }));
+  };
+
+  const onReset = () => {
+    dispatch(deleteColor({ colorName: name }));
+  };
   
 
   const defaultColor = type === 'mantine' ? DEFAULT_THEME.colors[name][5] : '';
@@ -52,6 +64,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
 
   const handleNameBlur = () => {
     if (colorName !== name) {
+      dispatch(updateColor({ oldName: name, newName: colorName }));
       onEditShade(colorName, shades);
       onReset();
     }

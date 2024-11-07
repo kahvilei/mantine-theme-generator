@@ -20,6 +20,13 @@ export const selectMainColorShade = (state: RootState, key: string) => {
 export const selectPrimaryColor = (state: RootState) => 
   selectTheme(state).primaryColor ?? DEFAULT_THEME.primaryColor;
 
+export const selectColor = (state: RootState, key: string) => {
+  if (state.theme.theme.colors?.[key]) {
+    return state.theme.theme.colors[key];
+  }
+  return DEFAULT_THEME.colors[key];
+}
+
 export const selectCustomColors = (state: RootState) => {
   const customColors = new Map<string, MantineColorsTuple>();
   for (let color in state.theme.theme.colors) {

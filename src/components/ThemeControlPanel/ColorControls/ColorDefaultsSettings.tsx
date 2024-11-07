@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import {
   Box,
   ColorInput,
@@ -20,6 +21,11 @@ const ColorDefaults = () => {
   const white = useSelector(selectWhite);
   const black = useSelector(selectBlack);
   const dispatch = useDispatch();
+
+  const memoizedMantineDefaultColorEdit = useMemo(
+    () => <MantineDefaultColorEdit />,
+    []
+  );
 
   return (
     <Box maw={'100%'}>
@@ -50,7 +56,7 @@ const ColorDefaults = () => {
         </Stack>
         <Stack>
           <Text>Shade-based colors</Text>
-          <MantineDefaultColorEdit />
+          {memoizedMantineDefaultColorEdit}
         </Stack>
       </Stack>
     </Box>
