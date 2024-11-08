@@ -59,5 +59,10 @@ theme: {
     respectReducedMotion?: boolean;
     autoContrast?: boolean;
     luminanceThreshold?: number;
+
+    // components
+    components?: {
+    [key: string]: any;
+    };
 };
 }

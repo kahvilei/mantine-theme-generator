@@ -5,10 +5,10 @@ import { selectCustomColors, selectMantineColors } from '@/data/ThemeState/theme
 
 const GroupedColorSelector: React.FC<{
   colors?: { [key: string]: Map<string, MantineColorsTuple> }[];
-  mainColor: { [key: string]: string };
+  mainColor?: { [key: string]: string };
   label?: string;
   onSelect: (color: string) => void;
-}> = ({ colors =  {}, mainColor, label, onSelect }) => {
+}> = ({ colors =  {}, mainColor= {name:'blue'}, label, onSelect }) => {
   const customColors = useSelector(selectCustomColors);
   const mantineColors = useSelector(selectMantineColors);
   

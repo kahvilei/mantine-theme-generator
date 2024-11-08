@@ -3,7 +3,8 @@ import { ActionIcon, Box, Stack, Tabs, Tooltip } from '@mantine/core';
 import ColorControl from './ColorControls/ColorControl';
 import GeneralControls from './GeneralControls';
 import TypographyControl from './TypographyControls/TypographyControls';
-import { IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
+import ComponentControls from './ComponentControls/ComponentControls';
+import { IconCube, IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
 import classes from './ThemeControlPanel.module.css';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 
@@ -41,7 +42,15 @@ const ThemeControlPanel = () => {
                   <IconSettings size="xl" />
                 </ActionIcon>
                 </Tooltip>
-              </Tabs.Tab></Stack>
+              </Tabs.Tab>
+              <Tabs.Tab value="components">
+                <Tooltip label="Components">
+                <ActionIcon component='div' size="md" variant="transparent" radius="xl">
+                  <IconCube size="xl" />
+                </ActionIcon>
+                </Tooltip>
+              </Tabs.Tab>
+              </Stack>
             </Tabs.List>
             <Tabs.Panel className={classes.tabPanel} value="color">
               <ColorControl/>
@@ -54,6 +63,9 @@ const ThemeControlPanel = () => {
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="general">
               <GeneralControls/>
+            </Tabs.Panel>
+            <Tabs.Panel className={classes.tabPanel} value="components">
+              <ComponentControls/>
             </Tabs.Panel>
           </Tabs>
         </Stack>

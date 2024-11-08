@@ -51,6 +51,8 @@ const initialState: ThemeState = {
     respectReducedMotion: DEFAULT_THEME.respectReducedMotion,
     autoContrast: DEFAULT_THEME.autoContrast,
     luminanceThreshold: DEFAULT_THEME.luminanceThreshold,
+
+    components: DEFAULT_THEME.components
   }
 };
 
@@ -270,6 +272,23 @@ export const themeSlice = createSlice({
     setRespectReducedMotion: (state, action: PayloadAction<boolean>) => {
       state.theme.respectReducedMotion = action.payload;
     },
+
+    setComponentRules: (state, action: PayloadAction<Record<string, any>>) => {
+      state.theme.components = action.payload;
+    },
+
+    setComponentRule: (state, action: PayloadAction<{ key: string; value: any }>) => {
+      state.theme.components = {
+        ...state.theme.components,
+        [action.payload.key]: action.payload.value
+      };
+    },
+
+    deleteComponentRule: (state, action: PayloadAction<string>) => {
+      if (!state.theme.components) return;
+      const { [action.payload]: _, ...rest } = state.theme.components;
+      state.theme.components = rest;
+    }
   }
 });
 
@@ -304,6 +323,9 @@ export const {
   setFocusRing,
   setCursorType,
   setRespectReducedMotion,
+  setComponentRules,
+  setComponentRule,
+  deleteComponentRule
 } = themeSlice.actions;
 
 export default themeSlice.reducer;

@@ -1,6 +1,6 @@
 import { Box, Slider, Stack, Switch, Text, Title } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
-import GroupedColorSelector from './Reusable Controls/GroupedColorSelector';
+import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';
 import {
   selectPrimaryColor,

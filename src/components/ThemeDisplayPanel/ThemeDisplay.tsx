@@ -4,6 +4,7 @@ import { Box, MantineProvider } from '@mantine/core';
 import ComponentShowcase from './Demo Pages/ComponentShowcase';
 import GitHubRepoDemo from './Demo Pages/GithubRepo';
 import MessagingService from './Demo Pages/MessagingService';
+import ArticleDemo from './Demo Pages/ArticleDemo';
 import classes from './ThemeDisplay.module.css';
 import './ThemeDisplay.css';
 import { selectTheme } from '@/data/ThemeState/themeSelectors';
@@ -21,20 +22,19 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayConten
   const theme = useSelector(selectTheme);
 
   //memoize each content page
-  const MemoizedComponentShowcase = useMemo(() => ComponentShowcase, []);
-  const MemoizedGitHubRepoDemo = useMemo(() => GitHubRepoDemo, []);
-  const MemoizedMessagingService = useMemo(() => MessagingService, []);
 
   const Content = () => {
     switch (displayContent) {
       case 'UI Demo':
-        return <MemoizedComponentShowcase />;
+        return <ComponentShowcase />;
+      case 'Article':
+        return <ArticleDemo />;
       case 'Repository':
-        return <MemoizedGitHubRepoDemo />;
+        return <GitHubRepoDemo />;
       case 'Messaging Service':
-        return <MemoizedMessagingService />;
+        return <MessagingService />;
       default:
-        return <MemoizedComponentShowcase />;
+        return <ComponentShowcase />;
     }
   };
 

@@ -210,4 +210,10 @@ export const selectWhite = (state: RootState) =>
   export const selectIsSchemeDependentPrimaryShade = (state: RootState) => {
     return selectTheme(state).isThemeDependentPrimaryShade ?? true;
   };
+
+  export const selectComponentRules = (state: RootState) =>
+    selectTheme(state).components ?? DEFAULT_THEME.components;
+
+  export const selectComponentRuleByName = (state: RootState, name: string) =>
+    selectComponentRules(state)[name] ?? DEFAULT_THEME.components[name];
   

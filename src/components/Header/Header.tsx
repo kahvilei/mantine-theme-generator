@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({
       <Group align="center">
         <Select
           placeholder="Preview content"
-          data={['UI Demo', 'Repository', 'Messaging Service']}
+          data={['UI Demo', 'Article', 'Repository', 'Messaging Service']}
           value={currentContent? currentContent : "UI Demo"}
           onChange={(value) => {updateDisplayContent(value as string); setCurrentContent(value as string)}}
           allowDeselect = {false}
