@@ -65,90 +65,38 @@ export const COMMON_STYLE_PROPS = {
       styleApi: ['root', 'label', 'inner', 'section', 'loader'],
     },
     
-    Card: {
-      padding: ['xs', 'sm', 'md', 'lg', 'xl'],
-      radius: ['xs', 'sm', 'md', 'lg', 'xl'],
-      withBorder: 'boolean',
-      shadow: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    
-    Badge: {
-      gradient: {
-        from: 'color',
-        to: 'color',
-        deg: 'number',
+    Alert: {
+      props: {
+        color: 'color',
+        title: 'string',
+        message: 'string',
+        icon: 'string',
+        shadow: 'boolean',
+        dismissable: 'boolean',
+        transition: 'string',
       },
-    },
-    
-    Input: {
-      placeholder: 'string',
-      icon: 'boolean',
-    },
-    
-    Paper: {
-      padding: ['xs', 'sm', 'md', 'lg', 'xl'],
-      radius: ['xs', 'sm', 'md', 'lg', 'xl'],
-      withBorder: 'boolean',
-      shadow: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    
-    Avatar: {
-      size: ['xs', 'sm', 'md', 'lg', 'xl'],
-      radius: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
-      color: 'color',
-    },
-  
-    Tooltip: {
-      position: ['top', 'right', 'bottom', 'left'],
-      withArrow: 'boolean',
-      arrowSize: 'number',
-      color: 'color',
-      radius: ['xs', 'sm', 'md', 'lg', 'xl'],
+      styleApi: ['root', 'label', 'inner', 'section', 'loader'],
     },
 
-    Text: {
-      size: ['xs', 'sm', 'md', 'lg', 'xl'],
-      weight: ['400', '500', '600', '700', '800'],
-      transform: ['uppercase', 'lowercase', 'capitalize', 'none'],
+    Autocomplete: {
+      props: {
+        data: 'array',
+        value: 'string',
+        placeholder: 'string',
+        label: 'string',
+        radius: 'dimension',
+        fullWidth: 'boolean',
+        disabled: 'boolean',
+        required: 'boolean',
+        clearable: 'boolean',
+        creatable: 'boolean',
+        searchable: 'boolean',
+        multiple: 'boolean',
+        size: ['xs', 'sm', 'md', 'lg', 'xl'],
+        variant: ['filled', 'light', 'outline', 'subtle', 'default', 'gradient'],
+      },
+      styleApi: ['root', 'label', 'inner', 'section', 'loader'],
     },
-
-    Stack: {
-      direction: ['row', 'column'],
-      align: ['start', 'center', 'end', 'stretch', 'baseline'],
-      justify: ['start', 'center', 'end', 'space-between', 'space-around'],
-      gap: 'dimension',
-    },
-
-    Group: {
-      direction: ['row', 'column'],
-      align: ['start', 'center', 'end', 'stretch', 'baseline'],
-      justify: ['start', 'center', 'end', 'space-between', 'space-around'],
-      gap: 'dimension',
-    },
-
-    Container: {
-      size: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-
-    Grid: {
-      columns: 'number',
-      spacing: 'dimension',
-    },
-
-    Flex: {
-      direction: ['row', 'column'],
-      align: ['start', 'center', 'end', 'stretch', 'baseline'],
-      justify: ['start', 'center', 'end', 'space-between', 'space-around'],
-    },
-
-    Space: {
-      size: 'dimension',
-    },
-
-    Title: {
-      order: ['1', '2', '3', '4', '5', '6'],
-    },
-
     
   } as const;
 

@@ -5,6 +5,7 @@ import { COMMON_CSS_SELECTORS, COMMON_STYLE_PROPS } from './componentPropDefinit
 import { PropValue } from './componentPropDefinitions';
 import { getPropInputType, getMantineComponentProps } from './componentPropDefinitions';
 import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
+import { c } from 'vite/dist/node/types.d-aGj9QkWt';
 
 
 const ComponentPropertyEditor: React.FC<{
@@ -78,12 +79,12 @@ const ComponentPropertyEditor: React.FC<{
     //get the available props from the mantine component
     const availableProps = getMantineComponentProps(componentName) || null;
 
-    if (!availableProps) {
+    if (!availableProps.props) {
       return null;
     }
 
     //filter out the props that are already in the currentProps
-    const propMapped = Object.keys(availableProps).filter(prop => !(prop in currentProps));
+    const propMapped = Object.keys(availableProps.props).filter(prop => !(prop in currentProps));
 
     const stylePropsMapped = Object.keys(STYlE_PROPS_DATA).filter(prop => !(prop in currentProps));
 
@@ -184,9 +185,10 @@ const ComponentPropertyEditor: React.FC<{
   };
 
   export const AddStyleSelectorButton: React.FC<{
+    componentName: string;
     onAdd: (selector: string) => void;
-  }> = ({ onAdd }) => {
-    const availableSelectors = Object.values(COMMON_CSS_SELECTORS)
+  }> = ({ onAdd, componentName }) => {
+    const availableSelectors = getMantineComponentProps(componentName)?.styleApi|| COMMON_CSS_SELECTORS;
   
     return (
       <Select

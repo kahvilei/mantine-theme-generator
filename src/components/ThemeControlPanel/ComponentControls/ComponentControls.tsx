@@ -175,7 +175,7 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
           componentName={componentName}
           propKey={key}
           propValue={value as string}
-          propDef={availableProps[key as keyof typeof availableProps]}
+          propDef={availableProps['props'][key as keyof typeof availableProps]}
           onChange={(newValue) => handleDefaultPropChange(key, newValue as string)} 
           onRemove={() => handleRemoveProp(key)}
         />
@@ -220,6 +220,7 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
       ))}
       <AddStyleSelectorButton
         onAdd={(selector) => handleAddSelector(selector)}
+        componentName={componentName}
         />
       </Stack>
     </Box>
