@@ -1,3 +1,4 @@
+import { ActionIcon } from "@mantine/core";
 import { root } from "postcss";
 
 // Shared style properties that apply to all components
@@ -33,6 +34,8 @@ export const COMMON_STYLE_PROPS = {
     transition: 'string',
     transform: 'string',
   } as const;
+
+  ActionIcon
   
   // Component-specific default props
   export const COMPONENT_DEFAULT_PROPS = {
@@ -57,12 +60,12 @@ export const COMMON_STYLE_PROPS = {
         color: 'color',
         size: 'dimension',
         radius: 'dimension',
-        padding: 'dimension',
-        variant: ['filled', 'light', 'outline', 'subtle', 'default', 'gradient'],
+        gradient: 'string',
+        loading: 'boolean',
         disabled: 'boolean',
-        fullWidth: 'boolean',
+        variant: ['filled', 'light', 'outline', 'subtle', 'default', 'gradient'],
       },
-      styleApi: ['root', 'label', 'inner', 'section', 'loader'],
+      styleApi: ['root', 'icon', 'loader'],
     },
     
     Alert: {
@@ -206,7 +209,7 @@ export const COMMON_STYLE_PROPS = {
   } as const;
 
   
-export const MANTINE_COMPONENTS = [
+export const MANTINE_COMPONENTS = new Set([
   // Layout
   'AppShell',
   'Center',
@@ -318,7 +321,7 @@ export const MANTINE_COMPONENTS = [
   // Color Swatches
   'ColorSwatch',
   'ThemeIcon',
-] as const;
+]);
 
   //common css selectors
     export const COMMON_CSS_SELECTORS = {

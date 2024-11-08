@@ -175,7 +175,7 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
           componentName={componentName}
           propKey={key}
           propValue={value as string}
-          propDef={availableProps['props'][key as keyof typeof availableProps]}
+          propDef={availableProps.props[key as keyof typeof availableProps]}
           onChange={(newValue) => handleDefaultPropChange(key, newValue as string)} 
           onRemove={() => handleRemoveProp(key)}
         />
@@ -205,7 +205,7 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
               selector={selector}
               property={prop}
               value={value as string}
-              propDef={availableStyleProps[prop as keyof typeof availableStyleProps]}
+              propDef={availableStyleProps.stylesApi[prop as keyof typeof availableStyleProps]}
               onChange={(newValue) => handleStyleChange(selector, prop, newValue as string)}
               onRemove={() => handleRemoveStyle(selector, prop)}
             />
