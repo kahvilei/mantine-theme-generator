@@ -5,9 +5,6 @@ import {
   Text,
   Stack,
   Group,
-  Select,
-  TextInput,
-  Switch,
   ActionIcon,
   Paper,
   Button,
@@ -20,10 +17,8 @@ import { selectComponentRules, selectComponentRuleByName } from '@/data/ThemeSta
 import { setComponentRule, deleteComponentRule } from '@/data/ThemeState/themeSlice';
 import { RootState } from '@/App';
 import ComponentSelector from './ComponentSelector';
-import { COMPONENT_DEFAULT_PROPS } from './componentPropDefinitions';
-import { getAvailablePropsForComponent, getAvailableStyleProps } from './componentPropDefinitions';
-import { getStyleSelectorOptions } from './componentPropDefinitions';
 import ComponentPropertyEditor, { AddPropertyButton, StylePropertyEditor, AddStylePropertyButton, AddStyleSelectorButton } from './ComponentPropertyEditor';
+import { ComponentProps } from './componentPropDefinitions';
 
 
 const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName }) => {
@@ -31,9 +26,6 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
   const rule = useSelector((state:RootState) => selectComponentRuleByName(state, componentName));
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const availableProps = getAvailablePropsForComponent(componentName as keyof typeof COMPONENT_DEFAULT_PROPS);
-  const availableStyleProps = getAvailableStyleProps();
-  const styleSelectors = getStyleSelectorOptions();
 
   const handleDefaultPropChange = (key: string, value: string | boolean) => {
     dispatch(setComponentRule({
@@ -172,22 +164,20 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
       {Object.entries(rule?.defaultProps || {}).map(([key, value]) => (
         <ComponentPropertyEditor
           key={key}
-          componentName={componentName}
+          componentName={componentName as keyof ComponentProps}
           propKey={key}
           propValue={value as string}
-          propDef={availableProps.props[key as keyof typeof availableProps]}
           onChange={(newValue) => handleDefaultPropChange(key, newValue as string)} 
           onRemove={() => handleRemoveProp(key)}
         />
       ))}
       <AddPropertyButton
-        componentName={componentName}
-        availableProps={availableProps}
+        componentName={componentName as keyof ComponentProps}
         currentProps={rule?.defaultProps || {}}
         onAdd={(key) => handleAddProp(key)}
       />
       </Stack>
-      <Text mt="md">Styles</Text>
+      <Text mt="md">Styles API</Text>
       <Stack gap="sm" p={'10px 0'}>
       {Object.entries(rule?.styles || {}).map(([selector, styles]) => (
        
@@ -205,7 +195,6 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
               selector={selector}
               property={prop}
               value={value as string}
-              propDef={availableStyleProps.stylesApi[prop as keyof typeof availableStyleProps]}
               onChange={(newValue) => handleStyleChange(selector, prop, newValue as string)}
               onRemove={() => handleRemoveStyle(selector, prop)}
             />
@@ -220,7 +209,7 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
       ))}
       <AddStyleSelectorButton
         onAdd={(selector) => handleAddSelector(selector)}
-        componentName={componentName}
+        componentName={componentName as keyof ComponentProps}
         />
       </Stack>
     </Box>

@@ -1,3 +1,8 @@
-:where([data-mantine-color-scheme='light']) .numberUnitSelector{
+:where([data-mantine-color-scheme='light']) .default{
     background-color: var(--mantine-color-gray-1);
+}
+
+:where([data-mantine-color-scheme='light']) .reverse input{
+    background-color: var(--mantine-color-gray-1);
+    border: none;
 }

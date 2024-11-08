@@ -19,7 +19,8 @@
     "test": "npm run typecheck && npm run prettier && npm run lint && npm run vitest && npm run build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "extract-props":"npx tsx ./scripts/propsParse.ts"
   },
   "dependencies": {
     "@mantine/charts": "^7.13.4",

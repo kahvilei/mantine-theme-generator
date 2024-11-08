@@ -21,9 +21,9 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ theme, name, lightMode=fals
   const gray = colors['gray']?colors['gray'][5]:DEFAULT_THEME.colors['gray'][5];
   const borderColor = lightMode ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-4)';
   
-  const fontColor = lightMode ? 'black' : colors['dark'][1];
-  const fontColorSecondary = lightMode ? gray : colors['dark'][2];
-  const backgroundColor = lightMode ? 'white' : colors['dark'][7];
+  const fontColor = lightMode ? 'black' : colors['dark']?colors['dark'][0]:DEFAULT_THEME.colors['dark'][0];
+  const fontColorSecondary = lightMode ? gray : colors['dark']?colors['dark'][2]:DEFAULT_THEME.colors['dark'][2];
+  const backgroundColor = lightMode ? 'white' : colors['dark']?colors['dark'][7]:DEFAULT_THEME.colors['dark'][7];
 
 
   return (

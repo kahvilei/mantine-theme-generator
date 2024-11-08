@@ -1,12 +1,13 @@
 
- import { CATEGORIZED_COMPONENTS, MANTINE_COMPONENTS } from './componentPropDefinitions';
+ import { CATEGORIZED_COMPONENTS } from './componentPropDefinitions';
+ import mantineProps from '@/data/mantineProps.json'
   
   // Type for component names
-  export type MantineComponentName = typeof MANTINE_COMPONENTS[number];
+  export type MantineComponentName = keyof typeof mantineProps;
   
   // Helper function to check if a string is a valid Mantine component name
   export const isMantineComponent = (name: string): name is MantineComponentName => {
-    return MANTINE_COMPONENTS.includes(name as MantineComponentName);
+    return name in mantineProps;
   };
 
   

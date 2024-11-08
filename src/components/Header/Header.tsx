@@ -22,11 +22,11 @@ import {
   Tooltip,
 } from '@mantine/core';
 import premadeThemes from '../../data/premadeThemes.json';
-import { downloadTheme, uploadTheme } from '../../utils/themeDownloadUpload';
 import ThemePreview from './ThemePreview';
 import classes from './Header.module.css';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '@/data/ThemeState/themeSlice';
+import { DownloadThemeButton, UploadThemeButton } from './themeDownloadUpload';
 
 
 interface HeaderProps {
@@ -101,17 +101,10 @@ const Header: React.FC<HeaderProps> = ({
           </ActionIcon>
         </Tooltip>
         <Tooltip label="Download Theme">
-          <ActionIcon variant="outline" onClick={() => downloadTheme('json')}>
-            <IconDownload size="1.25rem" />
-          </ActionIcon>
+          <DownloadThemeButton/>
         </Tooltip>
         <Tooltip label="Upload Theme">
-          <ActionIcon
-            variant="outline"
-            onClick={() => document.querySelector<HTMLInputElement>('input[type="file"]')?.click()}
-          >
-            <IconUpload size="1.25rem" />
-          </ActionIcon>
+          <UploadThemeButton />
         </Tooltip>
         <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
           <Popover.Target>
@@ -142,11 +135,6 @@ const Header: React.FC<HeaderProps> = ({
             </Group>
           </Popover.Dropdown>
         </Popover>
-        <FileInput
-          onChange={(file) => { if (file) uploadTheme(file); }}
-          accept=".json"
-          style={{ display: 'none' }}
-        />
       </Group>
     </Group>
   );

@@ -3,19 +3,22 @@ import { Group, Text, Select, ColorInput, Switch, NumberInput, TextInput, Action
 import { IconPlus, IconTrash } from '@tabler/icons-react';
 import { COMMON_CSS_SELECTORS, COMMON_STYLE_PROPS } from './componentPropDefinitions';
 import { PropValue } from './componentPropDefinitions';
-import { getPropInputType, getMantineComponentProps } from './componentPropDefinitions';
+import { getPropInputType, getMantineComponentProps, getAvailablePropsForComponent, ComponentProps, getAvailableStyleProps } from './componentPropDefinitions';
 import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
-import { c } from 'vite/dist/node/types.d-aGj9QkWt';
+import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+
 
 
 const ComponentPropertyEditor: React.FC<{
-    componentName: string;
+    componentName: keyof ComponentProps;
     propKey: string;
     propValue: PropValue;
-    propDef: unknown;
     onChange: (value: PropValue) => void;
     onRemove: () => void;
-  }> = ({ componentName, propKey, propValue, propDef, onChange, onRemove }) => {
+  }> = ({ componentName, propKey, propValue, onChange, onRemove }) => {
+    const availableProps = getAvailablePropsForComponent(componentName) as Record<string, any>;
+    const propDef = availableProps[propKey];
+
     const inputType = getPropInputType(propDef);
   
     return (
@@ -51,6 +54,11 @@ const ComponentPropertyEditor: React.FC<{
             onChange={(val) => onChange(val || 0)}
           />
         )}
+        {inputType === 'dimension' && (
+          <NumberUnitSelector
+            value={propValue.toString()}
+            onChange={(val) => onChange(val)} />
+        )}
         {inputType === 'text' && (
           <TextInput
             size="xs"
@@ -70,8 +78,7 @@ const ComponentPropertyEditor: React.FC<{
   export default ComponentPropertyEditor;
   
   export const AddPropertyButton: React.FC<{
-    componentName: string;
-    availableProps: Record<string, unknown>;
+    componentName: keyof ComponentProps;
     currentProps: Record<string, PropValue>;
     onAdd: (key: string) => void;
   }> = ({ componentName, currentProps, onAdd }) => {
@@ -108,10 +115,11 @@ const ComponentPropertyEditor: React.FC<{
     selector: string;
     property: string;
     value: string;
-    propDef: unknown;
     onChange: (value: PropValue) => void;
     onRemove: () => void;
-  }> = ({ selector, property, propDef, value, onChange, onRemove }) => {
+  }> = ({ property, value, onChange, onRemove }) => {
+    const props = getAvailableStyleProps();
+    const propDef = props[property as keyof typeof props];
     const inputType = getPropInputType(propDef);
   
     return (
@@ -123,7 +131,7 @@ const ComponentPropertyEditor: React.FC<{
           <Select
             size="xs"
             value={value as string}
-            data={propDef as string[]}
+            data={propDef as unknown as string[]}
             onChange={(val) => onChange(val || '')}
           />
         )}
@@ -146,6 +154,13 @@ const ComponentPropertyEditor: React.FC<{
             value={Number(value)}
             onChange={(val) => onChange(val || 0)}
           />
+        )}
+        {inputType === 'dimension' && (
+          <NumberUnitSelector
+            size="xs"
+            variant='reverse'
+            value={value}
+            onChange={(val) => onChange(val)} />
         )}
         {inputType === 'text' && (
           <TextInput
@@ -185,7 +200,7 @@ const ComponentPropertyEditor: React.FC<{
   };
 
   export const AddStyleSelectorButton: React.FC<{
-    componentName: string;
+    componentName: keyof ComponentProps;
     onAdd: (selector: string) => void;
   }> = ({ onAdd, componentName }) => {
     const availableSelectors = getMantineComponentProps(componentName)?.styleApi|| COMMON_CSS_SELECTORS;

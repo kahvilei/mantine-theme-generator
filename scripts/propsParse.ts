@@ -31,6 +31,14 @@ function parseTypeScriptFile(filePath: string) {
             // Handle different types of props
             if (propType.includes('MantineSize')) {
               result.props[propName] = ['xs', 'sm', 'md', 'lg', 'xl'];
+            } else if (propType.includes('MantineNumberSize')) {
+              result.props[propName] = 'number';
+            } else if (propType.includes('MantineRadius')) {
+              result.props[propName] = ['xs', 'sm', 'md', 'lg', 'xl'];
+            } else if (propType.includes('MantineSpacing')) {
+              result.props[propName] = ['xs', 'sm', 'md', 'lg', 'xl'];
+            } else if (propType.includes('MantineShadow')) {
+              result.props[propName] = ['xs', 'sm', 'md', 'lg', 'xl'];
             } else if (propType.includes('MantineColor')) {
               result.props[propName] = 'color';
             } else if (propType.includes('boolean')) {
@@ -60,6 +68,22 @@ function parseTypeScriptFile(filePath: string) {
         .map(style => style.trim().replace(/'/g, '').replace(/\s/g, ''))
         .filter(style => style !== 'undefined');
       result.styleApi = styleNames;
+    }
+    if(node.name.text.includes('CssVariables')) {
+      const typeText = node.type.getText(sourceFile);
+      const cssVars = typeText
+        .split('|')
+        .map(style => style.trim().replace(/'/g, '').replace(/\s/g, ''))
+        .filter(style => style !== 'undefined');
+      result.cssVars = cssVars;
+    }
+    if(node.name.text.includes('Variant')) {
+      const typeText = node.type.getText(sourceFile);
+      const variant = typeText
+        .split('|')
+        .map(style => style.trim().replace(/'/g, '').replace(/\s/g, ''))
+        .filter(style => style !== 'undefined');
+      result.props.variant = variant;
     }
   }
 

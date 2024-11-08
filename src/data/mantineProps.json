@@ -1,9 +1,22 @@
 {
   "Accordion": {
     "props": {
+      "variant": [
+        "default",
+        "contained",
+        "filled",
+        "separated"
+      ],
       "loop": "boolean",
       "disableChevronRotation": "boolean",
-      "chevronSize": "string"
+      "chevronSize": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "styleApi": [
       "root",
@@ -15,10 +28,25 @@
       "label",
       "itemTitle",
       "control"
+    ],
+    "cssVars": [
+      "{root:--accordion-transition-duration",
+      "--accordion-chevron-size",
+      "--accordion-radius;}"
     ]
   },
   "ActionIcon": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "subtle",
+        "default",
+        "gradient"
+      ],
       "'data-disabled'": "boolean",
       "__staticSelector": "string",
       "loading": "boolean",
@@ -30,6 +58,13 @@
         "xl"
       ],
       "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "disabled": "boolean",
       "autoContrast": "boolean"
     },
@@ -37,6 +72,15 @@
       "root",
       "loader",
       "icon"
+    ],
+    "cssVars": [
+      "{root:--ai-radius",
+      "--ai-size",
+      "--ai-bg",
+      "--ai-hover",
+      "--ai-hover-color",
+      "--ai-color",
+      "--ai-bd;}"
     ]
   },
   "Affix": {
@@ -47,10 +91,32 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--affix-z-index",
+      "--affix-top",
+      "--affix-left",
+      "--affix-bottom",
+      "--affix-right;}"
     ]
   },
   "Alert": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "default",
+        "transparent",
+        "white"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "color": "color",
       "withCloseButton": "boolean",
       "closeButtonLabel": "string",
@@ -65,10 +131,19 @@
       "wrapper",
       "message",
       "closeButton"
+    ],
+    "cssVars": [
+      "{root:--alert-radius",
+      "--alert-bg",
+      "--alert-color",
+      "--alert-bd;}"
     ]
   },
   "Anchor": {
     "props": {
+      "variant": [
+        "TextVariant"
+      ],
       "underline": [
         "always",
         "hover",
@@ -77,14 +152,20 @@
     },
     "styleApi": [
       "TextStylesNames"
+    ],
+    "cssVars": [
+      "TextCssVariables"
     ]
   },
   "AppShell": {
     "props": {
       "withBorder": "boolean",
       "padding": [
-        "MantineSpacing",
-        "AppShellResponsiveSize"
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
       ],
       "zIndex": "string",
       "layout": [
@@ -102,12 +183,19 @@
       "footer",
       "aside",
       "section"
+    ],
+    "cssVars": [
+      "{root:--app-shell-transition-duration",
+      "--app-shell-transition-timing-function;}"
     ]
   },
   "AspectRatio": {
     "props": {},
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--ar-ratio;}"
     ]
   },
   "Autocomplete": {
@@ -123,7 +211,23 @@
   },
   "Avatar": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "gradient",
+        "outline",
+        "transparent",
+        "default",
+        "white"
+      ],
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -141,18 +245,45 @@
       "root",
       "placeholder",
       "image"
+    ],
+    "cssVars": [
+      "{root:--avatar-size",
+      "--avatar-radius",
+      "--avatar-bg",
+      "--avatar-color",
+      "--avatar-bd;}"
     ]
   },
   "BackgroundImage": {
     "props": {
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "src": "string"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--bi-radius;}"
     ]
   },
   "Badge": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "dot",
+        "transparent",
+        "white",
+        "default",
+        "gradient"
+      ],
       "size": [
         "xs",
         "sm",
@@ -161,6 +292,13 @@
         "xl"
       ],
       "circle": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "color": "color",
       "fullWidth": "boolean",
       "autoContrast": "boolean"
@@ -169,25 +307,60 @@
       "root",
       "section",
       "label"
+    ],
+    "cssVars": [
+      "{root:--badge-height",
+      "--badge-padding-x",
+      "--badge-fz",
+      "--badge-radius",
+      "--badge-bg",
+      "--badge-color",
+      "--badge-bd",
+      "--badge-dot-color;}"
     ]
   },
   "Blockquote": {
     "props": {
       "iconSize": "string",
-      "color": "color"
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "styleApi": [
       "root",
       "icon",
       "cite"
+    ],
+    "cssVars": [
+      "{root:--bq-bg-light",
+      "--bq-bg-dark",
+      "--bq-bd",
+      "--bq-icon-size",
+      "--bq-radius;}"
     ]
   },
   "Breadcrumbs": {
-    "props": {},
+    "props": {
+      "separatorMargin": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
     "styleApi": [
       "root",
       "separator",
       "breadcrumb"
+    ],
+    "cssVars": [
+      "{root:--bc-separator-margin;}"
     ]
   },
   "Burger": {
@@ -207,10 +380,27 @@
     "styleApi": [
       "root",
       "burger"
+    ],
+    "cssVars": [
+      "{root:--burger-color",
+      "--burger-size",
+      "--burger-line-size",
+      "--burger-transition-duration",
+      "--burger-transition-timing-function;}"
     ]
   },
   "Button": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "subtle",
+        "default",
+        "gradient"
+      ],
       "'data-disabled'": "boolean",
       "size": [
         "xs",
@@ -221,6 +411,13 @@
       ],
       "color": "color",
       "fullWidth": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "disabled": "boolean",
       "loading": "boolean",
       "autoContrast": "boolean"
@@ -231,15 +428,51 @@
       "loader",
       "section",
       "label"
+    ],
+    "cssVars": [
+      "{root:--button-justify",
+      "--button-height",
+      "--button-padding-x",
+      "--button-fz",
+      "--button-radius",
+      "--button-bg",
+      "--button-hover",
+      "--button-hover-color",
+      "--button-color",
+      "--button-bd;}"
     ]
   },
   "Card": {
     "props": {
-      "withBorder": "boolean"
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "withBorder": "boolean",
+      "padding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "styleApi": [
       "root",
       "section"
+    ],
+    "cssVars": [
+      "{root:--card-padding;}"
     ]
   },
   "Center": {
@@ -252,9 +485,20 @@
   },
   "Checkbox": {
     "props": {
+      "variant": [
+        "filled",
+        "outline"
+      ],
       "id": "string",
       "color": "color",
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -276,10 +520,28 @@
       "inner",
       "input",
       "InlineInputStylesNames"
+    ],
+    "cssVars": [
+      "{root:--checkbox-size",
+      "--checkbox-radius",
+      "--checkbox-color",
+      "--checkbox-icon-color;}"
     ]
   },
   "Chip": {
     "props": {
+      "variant": [
+        "outline",
+        "filled",
+        "light"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "size": [
         "xs",
         "sm",
@@ -305,12 +567,36 @@
       "iconWrapper",
       "checkIcon",
       "label"
+    ],
+    "cssVars": [
+      "{root:--chip-fz",
+      "--chip-size",
+      "--chip-icon-size",
+      "--chip-padding",
+      "--chip-checked-padding",
+      "--chip-radius",
+      "--chip-bg",
+      "--chip-hover",
+      "--chip-color",
+      "--chip-bd",
+      "--chip-spacing;}"
     ]
   },
   "CloseButton": {
     "props": {
+      "variant": [
+        "subtle",
+        "transparent"
+      ],
       "'data-disabled'": "boolean",
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -322,6 +608,11 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--cb-icon-size",
+      "--cb-size",
+      "--cb-radius;}"
     ]
   },
   "Code": {
@@ -331,6 +622,9 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--code-bg;}"
     ]
   },
   "Collapse": {
@@ -357,6 +651,9 @@
       "colorPreview",
       "ColorPickerStylesNames",
       "__InputStylesNames"
+    ],
+    "cssVars": [
+      "{eyeDropperIcon:--ci-eye-dropper-icon-size;colorPreview:--ci-preview-size;}"
     ]
   },
   "ColorPicker": {
@@ -396,11 +693,26 @@
       "thumb",
       "swatches",
       "swatch"
+    ],
+    "cssVars": [
+      "{wrapper:--cp-preview-size",
+      "--cp-width",
+      "--cp-body-spacing",
+      "--cp-swatch-size",
+      "--cp-thumb-size",
+      "--cp-saturation-height;}"
     ]
   },
   "ColorSwatch": {
     "props": {
       "color": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "withShadow": "boolean"
     },
     "styleApi": [
@@ -409,6 +721,10 @@
       "shadowOverlay",
       "colorOverlay",
       "childrenOverlay"
+    ],
+    "cssVars": [
+      "{root:--cs-radius",
+      "--cs-size;}"
     ]
   },
   "Combobox": {
@@ -450,6 +766,9 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--container-size;}"
     ]
   },
   "CopyButton": {
@@ -475,10 +794,18 @@
     "styleApi": [
       "root",
       "closeButton"
+    ],
+    "cssVars": [
+      "{root:--dialog-size;}"
     ]
   },
   "Divider": {
     "props": {
+      "variant": [
+        "solid",
+        "dashed",
+        "dotted"
+      ],
       "color": "color",
       "size": [
         "xs",
@@ -500,6 +827,11 @@
     "styleApi": [
       "root",
       "label"
+    ],
+    "cssVars": [
+      "{root:--divider-color",
+      "--divider-border-style",
+      "--divider-size;}"
     ]
   },
   "Drawer": {
@@ -509,10 +841,26 @@
     },
     "styleApi": [
       "DrawerRootStylesNames"
+    ],
+    "cssVars": [
+      "DrawerRootCssVariables"
     ]
   },
   "Fieldset": {
-    "props": {},
+    "props": {
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
     "styleApi": [
       "root",
       "legend"
@@ -603,6 +951,9 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--transition-duration;}"
     ]
   },
   "FocusTrap": {
@@ -614,6 +965,13 @@
   },
   "Grid": {
     "props": {
+      "gutter": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "grow": "boolean",
       "type": [
         "media",
@@ -625,15 +983,34 @@
       "col",
       "inner",
       "container"
+    ],
+    "cssVars": [
+      "{root:--grid-justify",
+      "--grid-align",
+      "--grid-overflow;}"
     ]
   },
   "Group": {
     "props": {
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "grow": "boolean",
       "preventGrowOverflow": "boolean"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--group-gap",
+      "--group-align",
+      "--group-justify",
+      "--group-wrap",
+      "--group-child-width;}"
     ]
   },
   "Highlight": {
@@ -657,16 +1034,34 @@
   },
   "Image": {
     "props": {
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "fallbackSrc": "string"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--image-radius",
+      "--image-object-fit;}"
     ]
   },
   "Indicator": {
     "props": {
       "inline": "boolean",
       "size": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "color": "color",
       "withBorder": "boolean",
       "disabled": "boolean",
@@ -677,6 +1072,14 @@
     "styleApi": [
       "root",
       "indicator"
+    ],
+    "cssVars": [
+      "{root:--indicator-color",
+      "--indicator-text-color",
+      "--indicator-size",
+      "--indicator-radius",
+      "--indicator-z-index",
+      "IndicatorPositionVariables;}"
     ]
   },
   "InlineInput": {
@@ -709,7 +1112,19 @@
   "Input": {
     "props": {
       "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
       "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "disabled": "boolean",
       "size": [
         "xs",
@@ -731,6 +1146,18 @@
       "input",
       "wrapper",
       "section"
+    ],
+    "cssVars": [
+      "{wrapper:--input-height",
+      "--input-fz",
+      "--input-radius",
+      "--input-left-section-width",
+      "--input-right-section-width",
+      "--input-left-section-pointer-events",
+      "--input-right-section-pointer-events",
+      "--input-padding-y",
+      "--input-margin-top",
+      "--input-margin-bottom;}"
     ]
   },
   "InputBase": {
@@ -774,6 +1201,10 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--kbd-padding",
+      "--kbd-fz;}"
     ]
   },
   "List": {
@@ -790,11 +1221,23 @@
         "lg",
         "xl"
       ],
+      "spacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "center": "boolean"
     },
     "styleApi": [
       "root",
       "ListItemStylesNames"
+    ],
+    "cssVars": [
+      "{root:--list-fz",
+      "--list-lh",
+      "--list-spacing;}"
     ]
   },
   "Loader": {
@@ -810,6 +1253,10 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--loader-size",
+      "--loader-color;}"
     ]
   },
   "LoadingOverlay": {
@@ -821,6 +1268,9 @@
       "root",
       "loader",
       "overlay"
+    ],
+    "cssVars": [
+      "{root:--lo-z-index;}"
     ]
   },
   "Mark": {
@@ -829,6 +1279,10 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--mark-bg-dark",
+      "--mark-bg-light;}"
     ]
   },
   "Menu": {
@@ -871,6 +1325,9 @@
     },
     "styleApi": [
       "ModalRootStylesNames"
+    ],
+    "cssVars": [
+      "ModalRootCssVariables"
     ]
   },
   "ModalBase": {
@@ -886,6 +1343,20 @@
       "closeOnEscape": "boolean",
       "returnFocus": "boolean",
       "zIndex": "string",
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "padding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "size": [
         "xs",
         "sm",
@@ -929,6 +1400,11 @@
   },
   "NavLink": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "subtle"
+      ],
       "active": "boolean",
       "color": "color",
       "noWrap": "boolean",
@@ -955,12 +1431,24 @@
       "chevron",
       "collapse",
       "children"
+    ],
+    "cssVars": [
+      "{root:--nl-color",
+      "--nl-bg",
+      "--nl-hover;children:--nl-offset;}"
     ]
   },
   "Notification": {
     "props": {
       "variant": "string",
       "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "loading": "boolean",
       "withBorder": "boolean",
       "withCloseButton": "boolean",
@@ -974,6 +1462,10 @@
       "title",
       "description",
       "closeButton"
+    ],
+    "cssVars": [
+      "{root:--notification-radius",
+      "--notification-color;}"
     ]
   },
   "NumberFormatter": {
@@ -1042,6 +1534,9 @@
       "controls",
       "control",
       "__InputStylesNames"
+    ],
+    "cssVars": [
+      "{controls:--ni-chevron-size;}"
     ]
   },
   "Overlay": {
@@ -1049,11 +1544,24 @@
       "blur": "string",
       "gradient": "string",
       "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "center": "boolean",
       "fixed": "boolean"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--overlay-bg",
+      "--overlay-filter",
+      "--overlay-radius",
+      "--overlay-z-index;}"
     ]
   },
   "Pagination": {
@@ -1072,14 +1580,35 @@
     },
     "styleApi": [
       "PaginationRootStylesNames"
+    ],
+    "cssVars": [
+      "PaginationRootCssVariables"
     ]
   },
   "Paper": {
     "props": {
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "withBorder": "boolean"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--paper-radius",
+      "--paper-shadow;}"
     ]
   },
   "PasswordInput": {
@@ -1095,10 +1624,18 @@
       "visibilityToggle",
       "innerInput",
       "__InputStylesNames"
+    ],
+    "cssVars": [
+      "{root:--psi-icon-size",
+      "--psi-button-size;}"
     ]
   },
   "Pill": {
     "props": {
+      "variant": [
+        "default",
+        "contrast"
+      ],
       "size": [
         "xs",
         "sm",
@@ -1107,12 +1644,24 @@
         "xl"
       ],
       "withRemoveButton": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "disabled": "boolean"
     },
     "styleApi": [
       "root",
       "label",
       "remove"
+    ],
+    "cssVars": [
+      "{root:--pill-fz",
+      "--pill-radius",
+      "--pill-height;}"
     ]
   },
   "PillsInput": {
@@ -1127,6 +1676,20 @@
     "props": {
       "name": "string",
       "form": "string",
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "size": [
         "xs",
         "sm",
@@ -1168,6 +1731,9 @@
       "root",
       "pinInput",
       "input"
+    ],
+    "cssVars": [
+      "{root:--pin-input-size;}"
     ]
   },
   "Popover": {
@@ -1180,6 +1746,20 @@
       "withArrow": "boolean",
       "withinPortal": "boolean",
       "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "disabled": "boolean",
       "returnFocus": "boolean",
       "__staticSelector": "string",
@@ -1196,6 +1776,10 @@
     "styleApi": [
       "dropdown",
       "arrow"
+    ],
+    "cssVars": [
+      "{dropdown:--popover-radius",
+      "--popover-shadow;}"
     ]
   },
   "Portal": {
@@ -1216,6 +1800,10 @@
   },
   "Radio": {
     "props": {
+      "variant": [
+        "filled",
+        "outline"
+      ],
       "color": "color",
       "size": [
         "xs",
@@ -1229,6 +1817,13 @@
         "left",
         "right"
       ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "iconColor": "color",
       "autoContrast": "boolean"
     },
@@ -1237,6 +1832,13 @@
       "inner",
       "radio",
       "icon"
+    ],
+    "cssVars": [
+      "{root:--radio-size",
+      "--radio-radius",
+      "--radio-color",
+      "--radio-icon-color",
+      "--radio-icon-size;}"
     ]
   },
   "Rating": {
@@ -1269,6 +1871,10 @@
       "label",
       "symbolBody",
       "symbolGroup"
+    ],
+    "cssVars": [
+      "{root:--rating-size",
+      "--rating-color;}"
     ]
   },
   "RingProgress": {
@@ -1281,6 +1887,10 @@
       "svg",
       "label",
       "curve"
+    ],
+    "cssVars": [
+      "{root:--rp-size",
+      "--rp-label-offset;}"
     ]
   },
   "ScrollArea": {
@@ -1307,6 +1917,9 @@
       "scrollbar",
       "thumb",
       "corner"
+    ],
+    "cssVars": [
+      "{root:--scrollarea-scrollbar-size;}"
     ]
   },
   "SegmentedControl": {
@@ -1320,6 +1933,13 @@
       "fullWidth": "boolean",
       "color": "color",
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -1342,6 +1962,15 @@
       "control",
       "indicator",
       "innerLabel"
+    ],
+    "cssVars": [
+      "{root:--sc-radius",
+      "--sc-color",
+      "--sc-font-size",
+      "--sc-padding",
+      "--sc-shadow",
+      "--sc-transition-duration",
+      "--sc-transition-timing-function;}"
     ]
   },
   "Select": {
@@ -1389,10 +2018,31 @@
       "emptySegment",
       "filledSegment",
       "label"
+    ],
+    "cssVars": [
+      "{root:--scp-filled-segment-color",
+      "--scp-empty-segment-color",
+      "--scp-rotation",
+      "--scp-transition-duration",
+      "--scp-thickness;}"
     ]
   },
   "SimpleGrid": {
     "props": {
+      "spacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "verticalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "type": [
         "media",
         "container"
@@ -1411,6 +2061,11 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--skeleton-width",
+      "--skeleton-height",
+      "--skeleton-radius;}"
     ]
   },
   "Space": {
@@ -1427,12 +2082,28 @@
       "root",
       "control",
       "content"
+    ],
+    "cssVars": [
+      "{root:--spoiler-transition-duration;}"
     ]
   },
   "Stack": {
-    "props": {},
+    "props": {
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--stack-gap",
+      "--stack-align",
+      "--stack-justify;}"
     ]
   },
   "Stepper": {
@@ -1451,6 +2122,13 @@
       ],
       "color": "color",
       "iconSize": "string",
+      "contentPadding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "orientation": [
         "vertical",
         "horizontal"
@@ -1460,6 +2138,13 @@
         "left"
       ],
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -1484,6 +2169,15 @@
       "stepBody",
       "stepLabel",
       "stepDescription"
+    ],
+    "cssVars": [
+      "{root:--stepper-color",
+      "--stepper-icon-color",
+      "--stepper-icon-size",
+      "--stepper-content-padding",
+      "--stepper-radius",
+      "--stepper-fz",
+      "--stepper-spacing;}"
     ]
   },
   "Switch": {
@@ -1491,6 +2185,13 @@
       "id": "string",
       "color": "color",
       "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
         "xs",
         "sm",
         "md",
@@ -1510,6 +2211,15 @@
       "thumb",
       "input",
       "InlineInputStylesNames"
+    ],
+    "cssVars": [
+      "{root:--switch-radius",
+      "--switch-height",
+      "--switch-width",
+      "--switch-thumb-size",
+      "--switch-label-font-size",
+      "--switch-track-label-padding",
+      "--switch-color;}"
     ]
   },
   "Table": {
@@ -1522,6 +2232,20 @@
       "withTableBorder": "boolean",
       "withColumnBorders": "boolean",
       "withRowBorders": "boolean",
+      "horizontalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "verticalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "striped": "boolean",
       "stripedColor": "color",
       "highlightOnHover": "boolean",
@@ -1538,10 +2262,25 @@
       "th",
       "td",
       "caption"
+    ],
+    "cssVars": [
+      "{table:--table-layout",
+      "--table-border-color",
+      "--table-caption-side",
+      "--table-horizontal-spacing",
+      "--table-vertical-spacing",
+      "--table-striped-color",
+      "--table-highlight-on-hover-color",
+      "--table-sticky-header-offset;}"
     ]
   },
   "Tabs": {
     "props": {
+      "variant": [
+        "default",
+        "outline",
+        "pills"
+      ],
       "defaultValue": "string",
       "value": "string",
       "onChange": "string",
@@ -1558,6 +2297,13 @@
       "activateTabWithKeyboard": "boolean",
       "allowTabDeactivation": "boolean",
       "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "inverted": "boolean",
       "keepMounted": "boolean",
       "autoContrast": "boolean"
@@ -1567,6 +2313,10 @@
       "TabsListStylesNames",
       "TabsPanelStylesNames",
       "TabsTabStylesNames"
+    ],
+    "cssVars": [
+      "{root:--tabs-color",
+      "--tabs-radius;}"
     ]
   },
   "TagsInput": {
@@ -1595,6 +2345,10 @@
   },
   "Text": {
     "props": {
+      "variant": [
+        "text",
+        "gradient"
+      ],
       "__staticSelector": "string",
       "size": [
         "xs",
@@ -1610,6 +2364,12 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--text-gradient",
+      "--text-line-clamp",
+      "--text-fz",
+      "--text-lh;}"
     ]
   },
   "Textarea": {
@@ -1625,6 +2385,15 @@
   },
   "ThemeIcon": {
     "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "default",
+        "gradient"
+      ],
       "size": [
         "xs",
         "sm",
@@ -1633,15 +2402,36 @@
         "xl"
       ],
       "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "autoContrast": "boolean"
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--ti-radius",
+      "--ti-size",
+      "--ti-bg",
+      "--ti-color",
+      "--ti-bd;}"
     ]
   },
   "Timeline": {
     "props": {
       "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "bulletSize": "string",
       "align": [
         "right",
@@ -1654,6 +2444,13 @@
     "styleApi": [
       "root",
       "TimelineItemStylesNames"
+    ],
+    "cssVars": [
+      "{root:--tl-line-width",
+      "--tl-bullet-size",
+      "--tl-color",
+      "--tl-icon-color",
+      "--tl-radius;}"
     ]
   },
   "Title": {
@@ -1668,6 +2465,13 @@
     },
     "styleApi": [
       "root"
+    ],
+    "cssVars": [
+      "{root:--title-fw",
+      "--title-lh",
+      "--title-fz",
+      "--title-line-clamp",
+      "--title-text-wrap;}"
     ]
   },
   "Tooltip": {
@@ -1695,6 +2499,13 @@
   },
   "Tree": {
     "props": {
+      "levelOffset": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "expandOnClick": "boolean",
       "expandOnSpace": "boolean",
       "selectOnClick": "boolean",
@@ -1706,6 +2517,9 @@
       "node",
       "subtree",
       "label"
+    ],
+    "cssVars": [
+      "{root:--level-offset;}"
     ]
   },
   "TypographyStylesProvider": {

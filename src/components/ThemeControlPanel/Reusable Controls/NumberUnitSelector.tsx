@@ -9,6 +9,8 @@ interface NumberUnitSelectorProps {
   hasUnits?: boolean;
   min?: number;
   max?: number;
+  size?: string;
+  variant?: string;
 }
 
 import classes from './NumberUnitSelector.module.css';
@@ -16,6 +18,8 @@ import classes from './NumberUnitSelector.module.css';
 const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   value,
   onChange,
+  size,
+  variant,
   step = undefined,
   label,
   hasUnits = true,
@@ -45,6 +49,8 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   const [dynamicStep, setDynamicStep] = useState(1);
 
 
+  const numberWidth = hasUnits ? label ? '30%' : '60%' : '100%';
+  const selectWidth = hasUnits ? label ? '30%' : '40%' : '0%';
 
   useEffect(() => {
     onChange(hasUnits ? `${numberValue}${unitValue}` : `${numberValue}`);
@@ -66,21 +72,23 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   }, [numberValue, unitValue, hasUnits]);
 
   return (
-    <Card p='xs' className={classes.numberUnitSelector}>
-      <Group align="center" wrap='nowrap'>
-        <Text w={'150px'}>{label}</Text>
+    <Card p={size=='xs'?0:'sm'} className={variant=='reverse'?classes.reverse:classes.default}>
+      <Group align="center" justify='end' wrap='nowrap'>
+        {label && <Text w={'150px'}>{label}</Text>}
         <NumberInput
+          size='xs'
           value={numberValue}
           onChange={(value) => setNumberValue(value as number || 0)}
           min={min}
           max={max}
-          w={hasUnits ? '30%' : '60%'}
+          w={numberWidth}
           step={step || dynamicStep}
         />
         {hasUnits && (
           <Select
+            size='xs'
             data={cssUnits}
-            w={'30%'}
+            w={selectWidth}
             value={unitValue}
             onChange={(value) => setUnitValue(value || 'px')}
           />
