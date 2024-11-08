@@ -136,10 +136,11 @@ const ComponentPropertyEditor: React.FC<{
           />
         )}
         {inputType === 'color' && (
-          <GroupedColorSelector
-          mainColor={{name:value}}
-            onSelect={(val) => onChange(val)}
-           />
+          <ColorInput
+            size="xs"
+            value={value}
+            onChange={(val) => onChange(val)}
+            />
         )}
         {inputType === 'boolean' && (
           <Switch

@@ -189,6 +189,229 @@
           }
         }
       },
+    "macos": {
+      "scale": 1,
+      "fontSmoothing": true,
+      "focusRing": "auto",
+      "white": "#ffffff",
+      "black": "#000000",
+      "colors": {
+        "dark": [
+          "#F5F5F5",
+          "#E4E4E4",
+          "#D3D3D3",
+          "#939393",
+          "#636363",
+          "#464646",
+          "#363636",
+          "#242424",
+          "#161616",
+          "#000000"
+        ],
+        "gray": [
+          "#F9F9F9",
+          "#F2F2F2",
+          "#E9E9E9",
+          "#E0E0E0",
+          "#CECECE",
+          "#AEAEAE",
+          "#8E8E8E",
+          "#6E6E6E",
+          "#4E4E4E",
+          "#2E2E2E"
+        ],
+        "blue": [
+          "#F0F6FF",
+          "#E0EDFF",
+          "#99C1FF",
+          "#66A1FF",
+          "#3381FF",
+          "#0061FF",
+          "#0055E5",
+          "#0049CC",
+          "#003DB2",
+          "#003199"
+        ],
+        "red": [
+          "#FFF1F0",
+          "#FFE1E0",
+          "#FF9C99",
+          "#FF6663",
+          "#FF322D",
+          "#FF3B30",
+          "#E6352B",
+          "#CC2F26",
+          "#B32922",
+          "#99231D"
+        ],
+        "green": [
+          "#F0FFF1",
+          "#E0FFE1",
+          "#99FF9C",
+          "#63FF66",
+          "#2DFF32",
+          "#34C759",
+          "#2BB24E",
+          "#269C44",
+          "#208639",
+          "#1B702F"
+        ]
+      },
+      "primaryShade": {
+        "light": 4,
+        "dark": 4
+      },
+      "primaryColor": "blue",
+      "autoContrast": false,
+      "luminanceThreshold": 0.3,
+      "fontFamily": "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif",
+      "fontFamilyMonospace": "SF Mono, SFMono-Regular, ui-monospace, monospace",
+      "headings": {
+        "fontFamily": "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif",
+        "fontWeight": "500",
+        "sizes": {
+          "h1": {
+            "fontSize": "calc(3.125px * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.3"
+          },
+          "h2": {
+            "fontSize": "calc(1.5rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.35"
+          },
+          "h3": {
+            "fontSize": "calc(1.25rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.4"
+          },
+          "h4": {
+            "fontSize": "calc(1.125rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.45"
+          },
+          "h5": {
+            "fontSize": "calc(1rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.5"
+          },
+          "h6": {
+            "fontSize": "calc(0.875rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.5"
+          }
+        }
+      },
+      "defaultRadius": "md",
+      "components": {
+        "Button": {
+          "defaultProps": {
+            "variant": "light",
+            "radius": "md",
+            "size": "sm"
+          },
+          "styles": {
+            "root": {
+              "fontWeight": "500",
+              "letterSpacing": "-0.01em",
+              "backgroundColor": "rgba(0, 97, 255, 0.1)"
+            }
+          }
+        },
+        "Card": {
+          "defaultProps": {
+            "withBorder": false,
+            "radius": "lg",
+            "shadow": "sm",
+            "padding": "lg"
+          },
+          "styles": {
+            "root": {
+              "backdropFilter": "blur(8px)"
+            }
+          }
+        },
+        "Badge": {
+          "defaultProps": {
+            "radius": "md",
+            "variant": "light",
+            "size": "md"
+          },
+          "styles": {
+            "root": {
+              "textTransform": "none",
+              "fontWeight": "500",
+              "letterSpacing": "-0.01em"
+            }
+          }
+        },
+        "Menu": {
+          "defaultProps": {
+            "radius": "md"
+          },
+          "styles": {
+            "dropdown": {
+              "backgroundColor": "rgba(255, 255, 255, 0.8)",
+              "backdropFilter": "blur(8px)",
+              "border": "0px"
+            }
+          }
+        },
+        "Modal": {
+          "defaultProps": {
+            "radius": "lg",
+            "centered": true
+          },
+          "styles": {
+            "header": {
+              "backgroundColor": "rgba(255, 255, 255, 0.8)",
+              "backdropFilter": "blur(8px)"
+            }
+          }
+        },
+        "ActionIcon": {
+          "defaultProps": {
+            "variant": "transparent",
+            "size": "md",
+            "radius": "md",
+            "autoContrast": false
+          },
+          "styles": {}
+        },
+        "Indicator": {
+          "defaultProps": {
+            "radius": "lg",
+            "autoContrast": true,
+            "processing": false,
+            "withBorder": true,
+            "size": "20px",
+            "color": "blue"
+          },
+          "styles": {
+            "indicator": {
+              "fontSize": "64%",
+              "padding": "0px",
+              "lineHeight": "0px"
+            }
+          }
+        }
+      },
+      "spacing": {
+        "xs": "calc(0.825rem * var(--mantine-scale))",
+        "sm": "calc(0.95rem * var(--mantine-scale))",
+        "md": "calc(1rem * var(--mantine-scale))",
+        "lg": "calc(1.25rem * var(--mantine-scale))",
+        "xl": "calc(2rem * var(--mantine-scale))"
+      },
+      "isThemeDependentPrimaryShade": true,
+      "respectReducedMotion": false,
+      "cursorType": "pointer",
+      "defaultGradient": {
+        "from": "blue",
+        "to": "cyan",
+        "deg": 64
+      }
+    },
     "github": {
         "scale": 1,
         "fontSmoothing": true,

@@ -240,7 +240,7 @@ const MessageThreads = () => (
           <Group justify="space-between">
             
               {message.unread > 0 && (<Group>
-                <Indicator label={message.unread} size={20} >
+                <Indicator label={message.unread} >
                 <Avatar 
                 size="md" 
                 radius="xl"

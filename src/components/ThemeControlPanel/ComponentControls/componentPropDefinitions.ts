@@ -32,6 +32,7 @@ export const COMMON_STYLE_PROPS = {
     borderRadius: 'dimension',
     border: 'dimension',
     boxShadow: 'string',
+    backdropFilter: 'string',
     
     // Transitions
     transition: 'string',
