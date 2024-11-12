@@ -51,7 +51,7 @@ const initialState: ThemeState = {
     respectReducedMotion: DEFAULT_THEME.respectReducedMotion,
     autoContrast: DEFAULT_THEME.autoContrast,
     luminanceThreshold: DEFAULT_THEME.luminanceThreshold,
-
+    breakpoints: DEFAULT_THEME.breakpoints,
     components: DEFAULT_THEME.components
   }
 };
@@ -288,6 +288,13 @@ export const themeSlice = createSlice({
       if (!state.theme.components) return;
       const { [action.payload]: _, ...rest } = state.theme.components;
       state.theme.components = rest;
+    },
+
+    setBreakpoint: (state, action: PayloadAction<{ key: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; value: string }>) => {
+      state.theme.breakpoints = {
+        ...state.theme.breakpoints,
+        [action.payload.key]: action.payload.value
+      };
     }
   }
 });
@@ -325,7 +332,8 @@ export const {
   setRespectReducedMotion,
   setComponentRules,
   setComponentRule,
-  deleteComponentRule
+  deleteComponentRule,
+  setBreakpoint
 } = themeSlice.actions;
 
 export default themeSlice.reducer;

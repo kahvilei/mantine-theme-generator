@@ -47,30 +47,26 @@ export const COMMON_STYLE_PROPS = {
   export const CATEGORIZED_COMPONENTS = {
     layout: [
       'AppShell',
+      'AspectRatio',
       'Center',
       'Container',
       'Flex',
       'Grid',
       'Group',
-      'Paper',
       'SimpleGrid',
       'Space',
       'Stack'
     ],
     inputs: [
       'AngleSlider',
-      'ActionIcon',
-      'Autocomplete',
-      'Button',
       'Checkbox',
-      'ChipGroup',
       'Chip',
       'ColorInput',
       'ColorPicker',
+      'Fieldset',
       'FileInput',
       'Input',
       'JsonInput',
-      'MultiSelect',
       'NativeSelect',
       'NumberInput',
       'PasswordInput',
@@ -78,12 +74,27 @@ export const COMMON_STYLE_PROPS = {
       'Radio',
       'Rating',
       'SegmentedControl',
-      'Select',
       'Slider',
       'Switch',
       'Textarea',
-      'TextInput',
-      'TransferList'
+      'TextInput'
+    ],
+    combobox: [
+      'Autocomplete',
+      'Combobox',
+      'MultiSelect',
+      'Pill',
+      'PillsInput',
+      'Select',
+      'TagsInput'
+    ],
+    buttons: [
+      'ActionIcon',
+      'Button',
+      'CloseButton',
+      'CopyButton',
+      'FileButton',
+      'UnstyledButton'
     ],
     navigation: [
       'Anchor',
@@ -92,61 +103,68 @@ export const COMMON_STYLE_PROPS = {
       'NavLink',
       'Pagination',
       'Stepper',
-      'Tabs'
+      'Tabs',
+      'Tree'
     ],
-    dataDisplay: [
-      'Accordion',
-      'Avatar',
-      'Badge',
-      'Card',
-      'Carousel',
-      'Code',
-      'Image',
-      'Indicator',
-      'Kbd',
-      'List',
+    feedback: [
+      'Alert',
       'Loader',
-      'Mark',
-      'Highlight',
+      'Notification',
       'Progress',
       'RingProgress',
-      'Skeleton',
-      'Spoiler',
-      'Table',
-      'Text',
-      'Timeline',
-      'Title'
+      'SemiCircleProgress',
+      'Skeleton'
     ],
-    overlay: [
+    overlays: [
       'Affix',
       'Dialog',
       'Drawer',
+      'FloatingIndicator',
       'HoverCard',
       'LoadingOverlay',
       'Menu',
       'Modal',
       'Overlay',
       'Popover',
-      'Portal',
       'Tooltip'
     ],
-    feedback: ['Alert', 'Notification'],
-    miscellaneous: [
+    dataDisplay: [
+      'Accordion',
+      'Avatar',
       'BackgroundImage',
+      'Badge',
+      'Card',
+      'ColorSwatch',
+      'Image',
+      'Indicator',
+      'Kbd',
+      'NumberFormatter',
+      'Spoiler',
+      'ThemeIcon',
+      'Timeline'
+    ],
+    typography: [
+      'Blockquote',
+      'Code',
+      'Highlight',
+      'List',
+      'Mark',
+      'Table',
+      'Text',
+      'Title',
+      'TypographyStylesProvider'
+    ],
+    misc: [
       'Box',
-      'CloseButton',
       'Collapse',
       'Divider',
       'FocusTrap',
-      'MediaQuery',
+      'Paper',
+      'Portal',
       'ScrollArea',
       'Transition',
-      'TypographyStylesProvider',
-      'Blockquote',
-      'UnstyledButton'
-    ],
-    dataHandling: ['DataTable', 'Dropzone'],
-    visual: ['ColorSwatch', 'ThemeIcon']
+      'VisuallyHidden'
+    ]
   } as const;
 
   //common css selectors

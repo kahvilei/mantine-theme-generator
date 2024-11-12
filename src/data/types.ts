@@ -41,6 +41,7 @@ theme: {
     radius?: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string>;
     spacing?: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string>;
     defaultRadius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    breakpoints: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string>;
 
     // Typography
     fontFamily?: string;

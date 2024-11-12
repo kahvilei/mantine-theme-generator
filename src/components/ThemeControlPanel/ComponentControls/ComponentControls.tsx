@@ -10,9 +10,10 @@ import {
   Button,
   Collapse,
   Title,
+  Tooltip,
   Card,
 } from '@mantine/core';
-import { IconArrowDown, IconArrowUp, IconPlus, IconTrash, } from '@tabler/icons-react';
+import { IconArrowDown, IconArrowUp, IconBrandMantine, IconPlus, IconTrash, } from '@tabler/icons-react';
 import { selectComponentRules, selectComponentRuleByName } from '@/data/ThemeState/themeSelectors';
 import { setComponentRule, deleteComponentRule } from '@/data/ThemeState/themeSlice';
 import { RootState } from '@/App';
@@ -25,6 +26,12 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
   const dispatch = useDispatch();
   const rule = useSelector((state:RootState) => selectComponentRuleByName(state, componentName));
   const [isOpen, setIsOpen] = React.useState(false);
+
+  //urlize names by inserting hyphens between camelCase words, not including the first word
+
+  const urlize = (name: string) => {
+    return name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  }
 
 
   const handleDefaultPropChange = (key: string, value: string | boolean) => {
@@ -142,7 +149,14 @@ const ComponentRuleEditor: React.FC<{ componentName: string}> = ({ componentName
   return (
     <Paper p="md" withBorder>
       <Group justify="space-between" align="center">
+        <Group gap={2}>
         <Title order={4}>{componentName}</Title>
+        <Tooltip label="Mantine Documentation">
+            <ActionIcon color="blue" variant='transparent' onClick={() => window.open(`https://mantine.dev/core/${urlize(componentName)}`, '_blank')}>
+              <IconBrandMantine size={20} />
+            </ActionIcon>
+          </Tooltip>
+        </Group>
         <Group gap={5}>
           <ActionIcon onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <IconArrowUp size={16}/> : <IconArrowDown size={16}/>}
@@ -239,6 +253,8 @@ const ComponentRulesManager: React.FC = () => {
 
   return (
     <Stack>
+      <Title order={3}>Component Rules</Title>
+      <Text size="sm" c="dimmed">Select a component below to define default props and styles. These rules will be applied to all instances of the component in the theme.</Text>
       <Group>
         <ComponentSelector 
           value={selectedComponent} 
@@ -247,6 +263,7 @@ const ComponentRulesManager: React.FC = () => {
         <Button 
           onClick={handleAddComponent}
           disabled={!selectedComponent}
+          rightSection={!selectedComponent?null:<IconPlus size={16} />}
         >
           Add Component Rule
         </Button>
@@ -260,6 +277,9 @@ const ComponentRulesManager: React.FC = () => {
           />
         ))}
       </Stack>
+      <Text size="sm" c="dimmed">For reference on each component's props and styles API, see the <a target='_blank' href='https://mantine.dev/overview/'>Mantine Documentation</a>, or click the icon next to added component's names.</Text>
+      <Text size="sm" c="dimmed">This feature is meant to be include all core components and their props and styles. If you notice a component or setting is missing, please let me know by opening an issue on the 
+        <a target='_blank' href='https://github.com/kahvilei/mantine-theme-generator'> GitHub repository</a></Text>
     </Stack>
   );
 };

@@ -15,6 +15,7 @@ import {
   setRespectReducedMotion,
   setCursorType,
 } from '@/data/ThemeState/themeSlice';
+import RadiusControls from './RadiusControls';
 
 const GeneralControls = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const GeneralControls = () => {
 
   return (
     <Stack mt="md">
+      <RadiusControls />
       <Text size="sm">Focus Ring</Text>
       <SegmentedControl
         data={[

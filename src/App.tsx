@@ -49,7 +49,7 @@ const App: React.FC = () => {
   };
 
   const [currentContent, setCurrentContent] = useState('Mantine Components');
-  const [selectedTab, setSelectedTab] = useState('dark-and-light');
+  const [selectedTab, setSelectedTab] = useState('dark');
 
   const updateDisplayContent = (content: string) => {
     setCurrentContent(content);

@@ -1,4 +1,4 @@
-import { Box, Group, Slider, Stack, Text, Title } from '@mantine/core';
+import { AngleSlider, Box, Group, Slider, Stack, Text, Title } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
 import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
 import classes from './ColorControls.module.css';
@@ -67,29 +67,11 @@ const GradientControls = () => {
             borderRadius: '15px',
           }}
         >
-          <Box
-            bg={'white'}
-            p={'3'}
-            style={{ borderRadius: '15px' }}
-          >
-            <Text
-              className={classes.gradientText}
-              style={{
-                backgroundImage: `linear-gradient(${gradientAngle}deg, ${startShade}, ${endShade})`,
-              }}
-            >
-              {gradientAngle}deg
-            </Text>
-          </Box>
+            <AngleSlider
+              value={gradientAngle}
+              onChange={handleGradientAngleChange}
+            />
         </Group>
-        <Slider
-          label="Angle"
-          value={gradientAngle}
-          onChange={handleGradientAngleChange}
-          max={360}
-          min={0}
-          step={1}
-        />
       </Stack>
     </Box>
   );

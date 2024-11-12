@@ -22,7 +22,6 @@ const SpacingControls = () => {
     <Box>
       <Title order={4}>Spacing</Title>
       <Stack mt="md">
-        <Text size="sm">Spacing settings</Text>
         {spacingSizes.map((size) => (
           <NumberUnitSelector
             key={size}

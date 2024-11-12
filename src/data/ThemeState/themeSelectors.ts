@@ -216,4 +216,9 @@ export const selectWhite = (state: RootState) =>
 
   export const selectComponentRuleByName = (state: RootState, name: string) =>
     selectComponentRules(state)[name] ?? DEFAULT_THEME.components[name];
+
+  export const selectBreakpoints = (state: RootState) =>
+    selectTheme(state).breakpoints ?? DEFAULT_THEME.breakpoints;
+  
+
   

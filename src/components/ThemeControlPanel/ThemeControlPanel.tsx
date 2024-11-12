@@ -1,7 +1,7 @@
 
 import { ActionIcon, Box, Stack, Tabs, Tooltip } from '@mantine/core';
 import ColorControl from './ColorControls/ColorControl';
-import GeneralControls from './GeneralControls';
+import GeneralControls from './GeneralControls/GeneralControls';
 import TypographyControl from './TypographyControls/TypographyControls';
 import ComponentControls from './ComponentControls/ComponentControls';
 import { IconCube, IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
