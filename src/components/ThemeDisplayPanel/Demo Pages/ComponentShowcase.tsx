@@ -493,8 +493,8 @@ const DocumentManager = () => (
               <Text size="xs">Uploaded: {file.date}</Text>
               <Text size="xs">Size: {file.size}</Text>
               <Group>
-                <Button size="xs" variant="light">Download</Button>
-                <Button size="xs" variant="light" color="red">Delete</Button>
+                <Button size="xs">Download</Button>
+                <Button size="xs" color="red">Delete</Button>
               </Group>
             </Stack>
           </HoverCard.Dropdown>

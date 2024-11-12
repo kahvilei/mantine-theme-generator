@@ -1,194 +1,230 @@
 {
     "mantine":{
-       
+       "scale": 1
     },
-    "google": {
-        "scale": 1,
-        "fontSmoothing": true,
-        "focusRing": "auto",
-        "white": "#ffffff",
-        "black": "#202124",
-        "colors": {
-          "dark": [
-            "#C1C2C5",
-            "#A6A7AB",
-            "#909296",
-            "#5C5F66",
-            "#373A40",
-            "#2C2E33",
-            "#25262B",
-            "#1A1B1E",
-            "#141517",
-            "#101113"
-          ],
-          "gray": [
-            "#f8f9fa",
-            "#f1f3f5",
-            "#e9ecef",
-            "#dee2e6",
-            "#ced4da",
-            "#adb5bd",
-            "#868e96",
-            "#495057",
-            "#343a40",
-            "#212529"
-          ],
-          "blue": [
-            "#e8f0fe",
-            "#c6dafc",
-            "#a3c4fa",
-            "#81aef7",
-            "#5e97f6",
-            "#4285f4",
-            "#3b78e7",
-            "#3367d6",
-            "#2a56c6",
-            "#1c3aa9"
-          ],
-          "red": [
-            "#fce8e6",
-            "#fad2cf",
-            "#f6bbb9",
-            "#f3a4a0",
-            "#f08c86",
-            "#ea4335",
-            "#d93025",
-            "#c5221f",
-            "#b31412",
-            "#a50e0e"
-          ],
-          "yellow": [
-            "#fef7e0",
-            "#feefc3",
-            "#fde6a8",
-            "#fddc8c",
-            "#fcd470",
-            "#fbbc04",
-            "#f9ab00",
-            "#f29900",
-            "#ea8600",
-            "#e37400"
-          ],
-          "green": [
-            "#e6f4ea",
-            "#ceead6",
-            "#b8e0c2",
-            "#a1d5ae",
-            "#8acb9a",
-            "#34a853",
-            "#1e8e3e",
-            "#188038",
-            "#137333",
-            "#0d652d"
-          ]
-        },
-        "primaryShade": {
-          "light": 6,
-          "dark": 5
-        },
-        "primaryColor": "blue",
-        "autoContrast": false,
-        "luminanceThreshold": 0.3,
-        "fontFamily": "'Roboto', 'Arial', sans-serif",
-        "fontFamilyMonospace": "'Roboto Mono', monospace",
-        "headings": {
-          "fontFamily": "'Google Sans', 'Arial', sans-serif",
-          "fontWeight": "500",
-          "sizes": {
-            "h1": {
-              "fontSize": "calc(2.225rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.3"
-            },
-            "h2": {
-              "fontSize": "calc(1.525rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.35"
-            },
-            "h3": {
-              "fontSize": "calc(1.325rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.4"
-            },
-            "h4": {
-              "fontSize": "calc(1.125rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.45"
-            },
-            "h5": {
-              "fontSize": "calc(1rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.5"
-            },
-            "h6": {
-              "fontSize": "calc(0.875rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "lineHeight": "1.5"
-            }
-          }
-        },
-        "defaultRadius": "sm",
-        "components": {
-          "Button": {
-            "defaultProps": {
-              "variant": "filled",
-              "radius": "sm"
-            },
-            "styles": {
-              "root": {
-                "fontWeight": 500,
-                "letterSpacing": "0.25px"
-              }
-            }
+    "Google/Material Design": {
+      "scale": 1,
+      "fontSmoothing": true,
+      "focusRing": "auto",
+      "white": "#ffffff",
+      "black": "#202124",
+      "colors": {
+        "dark": [
+          "#ffffff",
+          "#d4d4d4",
+          "#9c9899",
+          "#737373",
+          "#474747",
+          "#2b2b2b",
+          "#252323",
+          "#111",
+          "#000000",
+          "#000000"
+        ],
+        "gray": [
+          "#f8f9fa",
+          "#f1f3f5",
+          "#e9ecef",
+          "#dee2e6",
+          "#ced4da",
+          "#adb5bd",
+          "#868e96",
+          "#495057",
+          "#343a40",
+          "#212529"
+        ],
+        "blue": [
+          "#e8f0fe",
+          "#c6dafc",
+          "#a3c4fa",
+          "#81aef7",
+          "#5e97f6",
+          "#4285f4",
+          "#3b78e7",
+          "#3367d6",
+          "#2a56c6",
+          "#1c3aa9"
+        ],
+        "red": [
+          "#fce8e6",
+          "#fad2cf",
+          "#f6bbb9",
+          "#f3a4a0",
+          "#f08c86",
+          "#ea4335",
+          "#d93025",
+          "#c5221f",
+          "#b31412",
+          "#a50e0e"
+        ],
+        "yellow": [
+          "#fef7e0",
+          "#feefc3",
+          "#fde6a8",
+          "#fddc8c",
+          "#fcd470",
+          "#fbbc04",
+          "#f9ab00",
+          "#f29900",
+          "#ea8600",
+          "#e37400"
+        ],
+        "green": [
+          "#e6f4ea",
+          "#ceead6",
+          "#b8e0c2",
+          "#a1d5ae",
+          "#8acb9a",
+          "#34a853",
+          "#1e8e3e",
+          "#188038",
+          "#137333",
+          "#0d652d"
+        ]
+      },
+      "primaryShade": {
+        "light": 7,
+        "dark": 7
+      },
+      "primaryColor": "blue",
+      "autoContrast": false,
+      "luminanceThreshold": 0.3,
+      "fontFamily": "Roboto",
+      "fontFamilyMonospace": "'Roboto Mono', monospace",
+      "headings": {
+        "fontFamily": "Roboto",
+        "fontWeight": "500",
+        "sizes": {
+          "h1": {
+            "fontSize": "calc(2.225rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.3"
           },
-          "Card": {
-            "defaultProps": {
-              "withBorder": true,
-              "radius": "sm"
-            }
+          "h2": {
+            "fontSize": "calc(1.525rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.35"
           },
-          "Badge": {
-            "defaultProps": {
-              "radius": "xl",
-              "variant": "light"
-            },
-            "styles": {
-              "root": {
-                "textTransform": "none",
-                "fontWeight": 500
-              }
-            }
+          "h3": {
+            "fontSize": "calc(1.325rem * var(--mantine-scale))",
+            "fontWeight": "600",
+            "lineHeight": "1.4"
           },
-          "Avatar": {
-            "defaultProps": {
-              "radius": "xl"
-            }
+          "h4": {
+            "fontSize": "calc(1.425rem * var(--mantine-scale))",
+            "fontWeight": "400",
+            "lineHeight": "1.45"
           },
-          "Input": {
-            "defaultProps": {
-              "radius": "sm"
-            }
+          "h5": {
+            "fontSize": "calc(1rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.5"
           },
-          "ActionIcon": {
-            "defaultProps": {
-              "variant": "subtle",
-              "radius": "xl"
-            }
-          },
-          "Paper": {
-            "defaultProps": {
-              "radius": "sm",
-              "withBorder": true
-            }
-          },
-          "Tooltip": {
-            "defaultProps": {
-              "withArrow": true,
-              "arrowSize": 6
-            }
+          "h6": {
+            "fontSize": "calc(0.875rem * var(--mantine-scale))",
+            "fontWeight": "500",
+            "lineHeight": "1.5"
           }
         }
       },
+      "defaultRadius": "xl",
+      "components": {
+        "Button": {
+          "defaultProps": {
+            "variant": "filled",
+            "radius": "xl"
+          },
+          "styles": {
+            "root": {
+              "fontWeight": 500,
+              "letterSpacing": "0.25px"
+            }
+          }
+        },
+        "Card": {
+          "defaultProps": {
+            "withBorder": false,
+            "radius": "lg",
+            "padding": "lg"
+          }
+        },
+        "Badge": {
+          "defaultProps": {
+            "radius": "xl",
+            "variant": "light"
+          },
+          "styles": {
+            "root": {
+              "textTransform": "none",
+              "fontWeight": 500
+            }
+          }
+        },
+        "Avatar": {
+          "defaultProps": {
+            "radius": "xl"
+          }
+        },
+        "Input": {
+          "defaultProps": {
+            "radius": "sm",
+            "variant": "filled"
+          },
+          "styles": {}
+        },
+        "ActionIcon": {
+          "defaultProps": {
+            "variant": "subtle",
+            "radius": "xl"
+          }
+        },
+        "Paper": {
+          "defaultProps": {
+            "radius": "lg",
+            "withBorder": false
+          }
+        },
+        "Tooltip": {
+          "defaultProps": {
+            "withArrow": true,
+            "arrowSize": 6
+          }
+        },
+        "Image": {
+          "defaultProps": {
+            "radius": "lg"
+          },
+          "styles": {}
+        },
+        "Stack": {
+          "defaultProps": {
+            "gap": "sm"
+          },
+          "styles": {}
+        },
+        "Grid": {
+          "defaultProps": {
+            "gutter": "sm"
+          },
+          "styles": {}
+        }
+      },
+      "spacing": {
+        "xs": "calc(0.925rem * var(--mantine-scale))",
+        "sm": "calc(0.85rem * var(--mantine-scale))",
+        "md": "calc(1.3rem * var(--mantine-scale))",
+        "lg": "calc(1.85rem * var(--mantine-scale))",
+        "xl": "calc(2rem * var(--mantine-scale))"
+      },
+      "isThemeDependentPrimaryShade": true,
+      "radius": {
+        "xs": "calc(0.125rem * var(--mantine-scale))",
+        "sm": "calc(0.25rem * var(--mantine-scale))",
+        "md": "calc(0.5rem * var(--mantine-scale))",
+        "lg": "calc(2.4rem * var(--mantine-scale))",
+        "xl": "calc(3rem * var(--mantine-scale))"
+      }
+    },
     "macos": {
       "scale": 1,
       "fontSmoothing": true,
@@ -599,89 +635,6 @@
         },
         "defaultRadius": "md"
     },
-    "spotify": {
-        "scale": 1,
-        "fontSmoothing": true,
-        "focusRing": "auto",
-        "white": "#ffffff",
-        "black": "#191414",
-        "colors": {
-            "dark": [
-                "#ffffff",
-                "#b3b3b3",
-                "#969696",
-                "#7a7a7a",
-                "#5d5d5d",
-                "#404040",
-                "#282828",
-                "#181818",
-                "#121212",
-                "#000000"
-            ],
-            "gray": [
-                "#ffffff",
-                "#f8f8f8",
-                "#efefef",
-                "#e5e5e5",
-                "#dbdbdb",
-                "#535353",
-                "#424242",
-                "#333333",
-                "#242424",
-                "#181818"
-            ],
-            "green": [
-                "#f0f9f0",
-                "#d2f1d5",
-                "#b4e9bb",
-                "#96e1a1",
-                "#78d987",
-                "#1DB954",
-                "#1aa04b",
-                "#168742",
-                "#136e39",
-                "#105530"
-            ],
-            "blue": [
-                "#e6f3ff",
-                "#cce7ff",
-                "#b3dbff",
-                "#99cfff",
-                "#80c3ff",
-                "#2e77d0",
-                "#2565b7",
-                "#1c539e",
-                "#134185",
-                "#0a2f6c"
-            ],
-            "orange": [
-                "#fff4e5",
-                "#ffe9cc",
-                "#ffdeb2",
-                "#ffd399",
-                "#ffc880",
-                "#ff7d1a",
-                "#e66600",
-                "#cc5900",
-                "#b34d00",
-                "#994000"
-            ]
-        },
-        "primaryShade": {
-            "light": 5,
-            "dark": 7
-        },
-        "primaryColor": "green",
-        "autoContrast": true,
-        "luminanceThreshold": 0.3,
-        "fontFamily": "'Circular Std', 'Helvetica', 'Arial', sans-serif",
-        "fontFamilyMonospace": "'Consolas', 'Menlo', 'Monaco', 'Lucida Console', monospace",
-        "headings": {
-            "fontFamily": "'Circular Std', 'Helvetica', 'Arial', sans-serif",
-            "fontWeight": "700"
-        },
-        "defaultRadius": "full"
-    },
     "discord": {
         "scale": 1,
         "fontSmoothing": true,
@@ -781,243 +734,5 @@
             "to": "green",
             "deg": 45
         }
-    },
-    "material":{
-        "scale": 1,
-        "fontSmoothing": true,
-        "focusRing": "auto",
-        "white": "#ffffff",
-        "black": "#000000",
-        "colors": {
-          "primary": [
-            "#e3f2fd",
-            "#bbdefb",
-            "#90caf9",
-            "#64b5f6",
-            "#42a5f5",
-            "#2196f3",
-            "#1e88e5",
-            "#1976d2",
-            "#1565c0",
-            "#0d47a1"
-          ],
-          "gray": [
-            "#fafafa",
-            "#f5f5f5",
-            "#eeeeee",
-            "#e0e0e0",
-            "#bdbdbd",
-            "#9e9e9e",
-            "#757575",
-            "#616161",
-            "#424242",
-            "#212121"
-          ],
-          "error": [
-            "#ffebee",
-            "#ffcdd2",
-            "#ef9a9a",
-            "#e57373",
-            "#ef5350",
-            "#f44336",
-            "#e53935",
-            "#d32f2f",
-            "#c62828",
-            "#b71c1c"
-          ],
-          "warning": [
-            "#fff3e0",
-            "#ffe0b2",
-            "#ffcc80",
-            "#ffb74d",
-            "#ffa726",
-            "#ff9800",
-            "#fb8c00",
-            "#f57c00",
-            "#ef6c00",
-            "#e65100"
-          ],
-          "success": [
-            "#e8f5e9",
-            "#c8e6c9",
-            "#a5d6a7",
-            "#81c784",
-            "#66bb6a",
-            "#4caf50",
-            "#43a047",
-            "#388e3c",
-            "#2e7d32",
-            "#1b5e20"
-          ],
-          "info": [
-            "#e1f5fe",
-            "#b3e5fc",
-            "#81d4fa",
-            "#4fc3f7",
-            "#29b6f6",
-            "#03a9f4",
-            "#039be5",
-            "#0288d1",
-            "#0277bd",
-            "#01579b"
-          ]
-        },
-        "primaryShade": {
-          "light": 5,
-          "dark": 7
-        },
-        "primaryColor": "primary",
-        "autoContrast": false,
-        "luminanceThreshold": 0.3,
-        "fontFamily": "'Roboto', 'Helvetica', 'Arial', sans-serif",
-        "fontFamilyMonospace": "'Roboto Mono', monospace",
-        "headings": {
-          "fontFamily": "'Roboto', 'Helvetica', 'Arial', sans-serif",
-          "fontWeight": "400",
-          "sizes": {
-            "h1": {
-              "fontSize": "calc(6rem * var(--mantine-scale))",
-              "fontWeight": "300",
-              "letterSpacing": "-0.01562em",
-              "lineHeight": "1.167"
-            },
-            "h2": {
-              "fontSize": "calc(3.75rem * var(--mantine-scale))",
-              "fontWeight": "300",
-              "letterSpacing": "-0.00833em",
-              "lineHeight": "1.2"
-            },
-            "h3": {
-              "fontSize": "calc(3rem * var(--mantine-scale))",
-              "fontWeight": "400",
-              "letterSpacing": "0em",
-              "lineHeight": "1.167"
-            },
-            "h4": {
-              "fontSize": "calc(2.125rem * var(--mantine-scale))",
-              "fontWeight": "400",
-              "letterSpacing": "0.00735em",
-              "lineHeight": "1.235"
-            },
-            "h5": {
-              "fontSize": "calc(1.5rem * var(--mantine-scale))",
-              "fontWeight": "400",
-              "letterSpacing": "0em",
-              "lineHeight": "1.334"
-            },
-            "h6": {
-              "fontSize": "calc(1.25rem * var(--mantine-scale))",
-              "fontWeight": "500",
-              "letterSpacing": "0.0075em",
-              "lineHeight": "1.6"
-            }
-          }
-        },
-        "defaultRadius": "md",
-        "components": {
-          "Button": {
-            "defaultProps": {
-              "variant": "filled",
-              "radius": "md"
-            },
-            "styles": {
-              "root": {
-                "textTransform": "uppercase",
-                "fontWeight": 500,
-                "letterSpacing": "0.02857em",
-                "transition": "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
-              }
-            },
-            "variants": {
-              "contained": {
-                "boxShadow": "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)"
-              },
-              "text": {
-                "backgroundColor": "transparent"
-              }
-            }
-          },
-          "Card": {
-            "defaultProps": {
-              "radius": "md",
-              "withBorder": false,
-              "shadow": "sm"
-            },
-            "styles": {
-              "root": {
-                "boxShadow": "0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)"
-              }
-            }
-          },
-          "Paper": {
-            "defaultProps": {
-              "radius": "md",
-              "shadow": "sm"
-            },
-            "styles": {
-              "root": {
-                "boxShadow": "0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)"
-              }
-            }
-          },
-          "Input": {
-            "defaultProps": {
-              "radius": "md",
-              "variant": "filled"
-            },
-            "styles": {
-              "input": {
-                "transition": "border-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
-              }
-            }
-          },
-          "Badge": {
-            "defaultProps": {
-              "radius": "xl",
-              "variant": "filled"
-            },
-            "styles": {
-              "root": {
-                "textTransform": "uppercase",
-                "fontWeight": 500,
-                "letterSpacing": "0.02857em"
-              }
-            }
-          },
-          "Avatar": {
-            "defaultProps": {
-              "radius": "xl"
-            }
-          },
-          "ActionIcon": {
-            "defaultProps": {
-              "variant": "subtle",
-              "radius": "xl"
-            },
-            "styles": {
-              "root": {
-                "transition": "background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
-              }
-            }
-          },
-          "Tooltip": {
-            "defaultProps": {
-              "withArrow": true,
-              "arrowSize": 8,
-              "transitionProps": {
-                "transition": "fade",
-                "duration": 200
-              }
-            },
-            "styles": {
-              "tooltip": {
-                "fontSize": "0.625rem",
-                "lineHeight": "1.4",
-                "fontWeight": 500,
-                "letterSpacing": "0.02857em"
-              }
-            }
-          }
-        }
-      }
+    }
 }
