@@ -58,6 +58,7 @@ export const COMMON_STYLE_PROPS = {
       'Stack'
     ],
     inputs: [
+      'AngleSlider',
       'ActionIcon',
       'Autocomplete',
       'Button',

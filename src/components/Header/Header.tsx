@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   IconBrandGithub,
+  IconBrandMantine,
   IconDownload,
   IconJson,
   IconLayoutSidebar,
@@ -69,12 +70,24 @@ const Header: React.FC<HeaderProps> = ({
         <Title size={'1.2rem'} c={'blue'}>
           Mantine Theme Editor
         </Title>
+        <Tooltip label="View on GitHub">
         <ActionIcon variant="filled" onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}>
           <IconBrandGithub size="1.25rem" />
         </ActionIcon>
+        </Tooltip>
+        <Tooltip label="View Mantine Documentation">
+        <ActionIcon variant="filled" onClick={() => window.open('https://mantine.dev/', '_blank')}>
+          <IconBrandMantine size="1.25rem" />
+        </ActionIcon>
+        </Tooltip>
+        <Tooltip label="Toggle Light/Dark Mode">
         <ActionIcon variant="outline" onClick={toggleScheme}>
           <IconSunMoon size="1.25rem" />
         </ActionIcon>
+        </Tooltip>
+        <Text size="xs" c="dimmed">
+          Running on Mantine v7.14.0
+        </Text>
       </Group>
       <Group align="center">
         <Select

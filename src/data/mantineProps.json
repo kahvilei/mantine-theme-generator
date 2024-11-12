@@ -157,6 +157,26 @@
       "TextCssVariables"
     ]
   },
+  "AngleSlider": {
+    "props": {
+      "withLabel": "boolean",
+      "marks": "string",
+      "disabled": "boolean",
+      "restrictToMarks": "boolean",
+      "name": "string"
+    },
+    "styleApi": [
+      "root",
+      "thumb",
+      "label",
+      "marks",
+      "mark"
+    ],
+    "cssVars": [
+      "{root:--slider-size",
+      "--thumb-size;}"
+    ]
+  },
   "AppShell": {
     "props": {
       "withBorder": "boolean",
@@ -837,7 +857,8 @@
   "Drawer": {
     "props": {
       "withOverlay": "boolean",
-      "withCloseButton": "boolean"
+      "withCloseButton": "boolean",
+      "stackId": "string"
     },
     "styleApi": [
       "DrawerRootStylesNames"
@@ -1321,7 +1342,8 @@
     "props": {
       "__staticSelector": "string",
       "withOverlay": "boolean",
-      "withCloseButton": "boolean"
+      "withCloseButton": "boolean",
+      "stackId": "string"
     },
     "styleApi": [
       "ModalRootStylesNames"
