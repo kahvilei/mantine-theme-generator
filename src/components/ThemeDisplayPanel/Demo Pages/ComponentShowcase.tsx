@@ -21,48 +21,56 @@ import {
   Switch,
   Tooltip,
   Pill,
-  rem
+  rem,
+  TextInput,
+  PasswordInput,
+  Checkbox,
+  Button,
+  Divider,
+  FileInput,
+  HoverCard
 } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
-import { IconSettings, IconBell, IconSearch, IconMenu2, IconUser, IconMail, IconLock, IconChevronRight, IconMessage, IconStar, IconHeart, IconCircleCheck, IconCircleDashed, IconBellMinus, IconUsersGroup} from '@tabler/icons-react';
+import { IconSettings, IconBell, IconSearch, IconMenu2, IconUser, IconMail, IconLock, IconChevronRight, IconMessage, IconStar, IconHeart, IconCircleCheck, IconCircleDashed, IconBellMinus, IconUsersGroup, IconUpload, IconFile, IconTrash} from '@tabler/icons-react';
 import { LineChart } from '@mantine/charts';
 
 const ComponentShowcase = () => {
 
   return (
     <Container size="lg">
-      <Grid gutter="md">
-        <Grid.Col span={4}>
-          <Stack gap="md">
+    <Grid>
+      <Grid.Col span={4}>
+        <Stack>
           <UserProfile />
+          <LoginForm />
           <TaskManager />
           <QuickActions />
-          </Stack>
-        </Grid.Col>
-        <Grid.Col span={4}>
-        <Stack gap="md">
-          <NotificationCenter />
+        </Stack>
+      </Grid.Col>
+      <Grid.Col span={4}>
+        <Stack>
+          <DocumentManager />
           <CalendarCard />
           <MessageThreads />
-          </Stack>
-        </Grid.Col>
-        <Grid.Col span={4}>
-          <Stack gap="md">
+        </Stack>
+      </Grid.Col>
+      <Grid.Col span={4}>
+        <Stack>
           <MetricsCard />
           <ProgressMetrics />
           <UserPreferences />
           <LineChartCard />
-          </Stack>
-        </Grid.Col>
-      </Grid>
-    </Container>
+        </Stack>
+      </Grid.Col>
+    </Grid>
+  </Container>
   );
 };
 
 const UserProfile = () => (
   <Card>
     <Stack align="center">
-      <Indicator processing size={16} offset={7} position="bottom-end">
+      <Indicator size={16} offset={7} position="bottom-end">
         <Avatar size="xl" radius="xl">JD</Avatar>
       </Indicator>
       <Stack gap="xs" align="center">
@@ -335,7 +343,7 @@ const UserPreferences = () => (
   <Card>
     <Stack>
       <Title order={4}>Preferences</Title>
-      <Stack gap="md">
+      <Stack>
         <Switch label="Email notifications" />
         <Switch label="Push notifications" />
         <Switch label="Dark mode" />
@@ -353,7 +361,7 @@ const CalendarCard = () => (
   <Card>
     <Stack>
       <Title order={4}>Calendar</Title>
-      <Calendar />
+      <Calendar w={'100%'} />
     </Stack>
   </Card>
 );
@@ -407,5 +415,94 @@ const LineChartCard = () => (
     />
   </Card>
 );
+
+const LoginForm = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Sign In</Title>
+      <TextInput
+        label="Email"
+        placeholder="your@email.com"
+        leftSection={<IconMail size={16} />}
+      />
+      <PasswordInput
+        label="Password"
+        placeholder="Your password"
+        leftSection={<IconLock size={16} />}
+      />
+      <Group justify="space-between" mt="xs">
+        <Checkbox label="Remember me" size="xs" />
+        <Text size="xs" c="blue" style={{ cursor: 'pointer' }}>
+          Forgot password?
+        </Text>
+      </Group>
+      <Button fullWidth>Sign In</Button>
+      <Divider label="or continue with" labelPosition="center" />
+      <Group grow>
+        <Button variant="light">Google</Button>
+        <Button variant="light">GitHub</Button>
+      </Group>
+    </Stack>
+  </Card>
+);
+
+const DocumentManager = () => (
+  <Card>
+    <Stack>
+      <Title order={4}>Document Manager</Title>
+      <FileInput
+        label="Upload file"
+        placeholder="Click to upload"
+        leftSection={<IconUpload size={16} />}
+        accept="image/*, .pdf, .doc, .docx"
+      />
+      <Select
+        label="Sort by"
+        defaultValue="date"
+        data={[
+          { value: 'date', label: 'Date' },
+          { value: 'name', label: 'Name' },
+          { value: 'size', label: 'Size' },
+        ]}
+      />
+      {[
+        { name: 'Project Brief.pdf', size: '2.4MB', date: 'Today' },
+        { name: 'Design Assets.zip', size: '15MB', date: 'Yesterday' },
+        { name: 'Meeting Notes.docx', size: '512KB', date: '3 days ago' },
+      ].map((file) => (
+        <HoverCard key={file.name} width={280} shadow="md">
+          <HoverCard.Target>
+            <Paper p="xs">
+              <Group>
+                <ThemeIcon>
+                  <IconFile size={16} />
+                </ThemeIcon>
+                <Stack gap={0} style={{ flex: 1 }}>
+                  <Text size="sm">{file.name}</Text>
+                  <Text size="xs" c="dimmed">{file.size}</Text>
+                </Stack>
+                <ActionIcon color="red" variant="subtle">
+                  <IconTrash size={16} />
+                </ActionIcon>
+              </Group>
+            </Paper>
+          </HoverCard.Target>
+          <HoverCard.Dropdown>
+            <Stack gap="xs">
+              <Text size="sm" fw={500}>File Details</Text>
+              <Text size="xs">Uploaded: {file.date}</Text>
+              <Text size="xs">Size: {file.size}</Text>
+              <Group>
+                <Button size="xs" variant="light">Download</Button>
+                <Button size="xs" variant="light" color="red">Delete</Button>
+              </Group>
+            </Stack>
+          </HoverCard.Dropdown>
+        </HoverCard>
+      ))}
+    </Stack>
+  </Card>
+);
+
 
 export default ComponentShowcase;

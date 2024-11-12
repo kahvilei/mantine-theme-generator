@@ -3,6 +3,7 @@ import {
   Stack,
   Switch,
   Text,
+  Title,
 } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -39,6 +40,7 @@ const GeneralControls = () => {
   return (
     <Stack mt="md">
       <RadiusControls />
+      <Title order={4}>Interaction and Accessibility</Title>
       <Text size="sm">Focus Ring</Text>
       <SegmentedControl
         data={[
