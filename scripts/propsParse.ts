@@ -16,7 +16,8 @@ function parseTypeScriptFile(filePath: string) {
 
   const result: any = {
     props: {},
-    styleApi: []
+    styleApi: [],
+    interfaceExtends: [],
   };
 
   // Helper function to process interfaces
@@ -57,6 +58,15 @@ function parseTypeScriptFile(filePath: string) {
         }
       });
     }
+    node.heritageClauses?.forEach((clause) => {
+      // Handle extending other interfaces, we should find the source file for each and process them
+      clause.types.forEach((type) => {
+        const typeText = type.expression.getText(sourceFile);
+        const typeTextMinusProps = typeText.replace('Props', '');
+        result.interfaceExtends?.push(typeTextMinusProps);
+      }
+      );
+    });
   }
 
   // Helper function to process type aliases
@@ -69,7 +79,7 @@ function parseTypeScriptFile(filePath: string) {
         .filter(style => style !== 'undefined');
       result.styleApi = styleNames;
     }
-    if(node.name.text.includes('CssVariables')) {
+    if (node.name.text.includes('CssVariables')) {
       const typeText = node.type.getText(sourceFile);
       const cssVars = typeText
         .split('|')
@@ -77,7 +87,7 @@ function parseTypeScriptFile(filePath: string) {
         .filter(style => style !== 'undefined');
       result.cssVars = cssVars;
     }
-    if(node.name.text.includes('Variant')) {
+    if (node.name.text.includes('Variant')) {
       const typeText = node.type.getText(sourceFile);
       const variant = typeText
         .split('|')
@@ -97,6 +107,7 @@ function parseTypeScriptFile(filePath: string) {
     ts.forEachChild(node, visit);
   }
 
+
   visit(sourceFile);
   return result;
 }
@@ -105,7 +116,7 @@ function parseTypeScriptFile(filePath: string) {
 async function generateMantineProps() {
   const componentsDir = path.join(__dirname, 'node_modules/@mantine/core/lib/components');
   const componentDirs = fs.readdirSync(componentsDir);
-  
+
   const result: Record<string, any> = {};
 
   for (const componentDir of componentDirs) {
@@ -113,10 +124,34 @@ async function generateMantineProps() {
     if (fs.statSync(componentPath).isDirectory()) {
       const files = fs.readdirSync(componentPath);
       const dtsFile = files.find(f => f.toLowerCase() === `${componentDir.toLowerCase()}.d.ts`);
-      
+
       if (dtsFile) {
         const filePath = path.join(componentPath, dtsFile);
         result[componentDir] = parseTypeScriptFile(filePath);
+      }
+    }
+  }
+
+  // once the object is filled out, we'll loop back though and add any interfaces that are extended and start with "__", 
+  // we can find these by just looking for theses interfaces in the result object
+  for (const component in result) {
+    const extendedInterfaces = result[component].interfaceExtends;
+    if (extendedInterfaces) {
+      for (const extendedInterface of extendedInterfaces) {
+        // if current interface starts with "__" we'll add the props to the current component
+        let extendedInterfaceName = extendedInterface.replace('__', '');
+
+        //if current interface is "BaseInput" we'll make it Input
+        if (extendedInterfaceName === 'BaseInput') {
+          extendedInterfaceName = 'Input';
+        }
+
+          if (result[extendedInterfaceName]) {
+            result[component].props = {
+              ...result[component].props,
+              ...result[extendedInterfaceName].props
+            };
+          }
       }
     }
   }

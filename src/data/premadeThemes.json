@@ -1,8 +1,8 @@
 {
-    "mantine":{
+    "Mantine":{
        "scale": 1
     },
-    "Google/Material Design": {
+    "Google": {
       "scale": 1,
       "fontSmoothing": true,
       "focusRing": "auto",
@@ -225,7 +225,7 @@
         "xl": "calc(3rem * var(--mantine-scale))"
       }
     },
-    "macos": {
+    "MacOS": {
       "scale": 1,
       "fontSmoothing": true,
       "focusRing": "auto",
@@ -448,7 +448,7 @@
         "deg": 64
       }
     },
-    "github": {
+    "Github": {
         "scale": 1,
         "fontSmoothing": true,
         "focusRing": "auto",
@@ -543,7 +543,7 @@
         },
         "defaultRadius": "md"
     },
-    "slack": {
+    "Slack": {
         "scale": 1,
         "fontSmoothing": true,
         "focusRing": "auto",
@@ -635,7 +635,7 @@
         },
         "defaultRadius": "md"
     },
-    "discord": {
+    "Discord": {
         "scale": 1,
         "fontSmoothing": true,
         "focusRing": "auto",

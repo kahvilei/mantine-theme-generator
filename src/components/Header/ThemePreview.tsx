@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Group, Text, Box, DEFAULT_THEME, ColorSwatch, ActionIcon } from '@mantine/core';
 import { IconAdCircle, IconApple, IconDog, IconLeaf, IconPalette, IconTrash, IconTrashFilled, IconUser } from '@tabler/icons-react';
+import classes from './Header.module.css';
 
 interface ThemePreviewProps {
   theme: any;
@@ -19,7 +20,7 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ theme, name, lightMode=fals
   const firstFontFamily = fontFamily.split(',')[0].replace(/['"]+/g, '');
 
   const gray = colors['gray']?colors['gray'][5]:DEFAULT_THEME.colors['gray'][5];
-  const borderColor = lightMode ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-dark-4)';
+  const borderColor = mainColor;
   
   const fontColor = lightMode ? 'black' : colors['dark']?colors['dark'][0]:DEFAULT_THEME.colors['dark'][0];
   const fontColorSecondary = lightMode ? gray : colors['dark']?colors['dark'][2]:DEFAULT_THEME.colors['dark'][2];
@@ -27,15 +28,12 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ theme, name, lightMode=fals
 
 
   return (
-    <Box p="xs" style={{ backgroundColor: backgroundColor, fontFamily:fontFamily, width:"100%", borderBottom: `1px solid ${borderColor}`}}>
+    <Box p="xs" className={classes.themePreview} style={{ backgroundColor: backgroundColor, fontFamily:fontFamily, width:"100%", borderRadius:'.5rem', border:`2px solid ${borderColor}`}}>
       <Group justify="space-between" gap="xs">
         <Text size="sm" fw={500} style={{ color: fontColor }}>
           {name}
         </Text>
         <Group gap="5px">
-        <Text size="xs" style={{ color: fontColorSecondary }}> {firstFontFamily} - </Text>  
-            <Text size="xs" style={{ color: fontColorSecondary }}> {mainColor} </Text>
-            
             <ActionIcon component='div' variant='filled' color={mainColor} size='sm' style={{borderRadius:`var(--mantine-radius-${defaultRadius})`}}>
                 <IconPalette/>
             </ActionIcon>

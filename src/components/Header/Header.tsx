@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({
           value={currentContent? currentContent : "UI Demo"}
           onChange={(value) => {updateDisplayContent(value as string); setCurrentContent(value as string)}}
           allowDeselect = {false}
-          style={{ width: '300px' }}
+          style={{ width: '150px' }}
         />
         <Select
           placeholder="Select a pre-made theme"
@@ -105,8 +105,9 @@ const Header: React.FC<HeaderProps> = ({
           value={currentThemeName? currentThemeName : 'mantine'}
           onChange={handlePreMadeThemeSelect}
           allowDeselect = {false}
-          style={{ width: '300px' }}
-          classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown}}
+          style={{ width: '200px' }}
+          classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown, options: classes.themePreviewOptions}}
+          comboboxProps={{ width: '500px' }}
         />
         <Tooltip label="Toggle JSON Sidebar">
           <ActionIcon variant="outline" onClick={toggleAside}>

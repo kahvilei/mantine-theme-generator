@@ -7,6 +7,12 @@
             "name": "Run npm dev",
             "request": "launch",
             "type": "node-terminal"
+        },
+        {
+            "command": "npm run extract-props",
+            "name": "Run npm extract-props",
+            "request": "launch",
+            "type": "node-terminal"
         }
     ]
 }
