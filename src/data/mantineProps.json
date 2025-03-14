@@ -96,7 +96,13 @@
     "props": {
       "zIndex": "string",
       "withinPortal": "boolean",
-      "position": "string"
+      "position": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "styleApi": [
       "root"
@@ -167,6 +173,7 @@
       "underline": [
         "always",
         "hover",
+        "not-hover",
         "never"
       ]
     },
@@ -261,6 +268,7 @@
       "value": "string",
       "defaultValue": "string",
       "onChange": "string",
+      "clearable": "boolean",
       "wrapperProps": "string",
       "variant": [
         "default",
@@ -286,6 +294,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -748,7 +757,8 @@
         "xl"
       ],
       "disabled": "boolean",
-      "iconSize": "string"
+      "iconSize": "string",
+      "__staticSelector": "string"
     },
     "styleApi": [
       "root"
@@ -826,6 +836,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -963,6 +974,7 @@
       ],
       "keepMounted": "boolean",
       "withArrow": "boolean",
+      "withOverlay": "boolean",
       "withinPortal": "boolean",
       "zIndex": "string",
       "radius": [
@@ -1212,6 +1224,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -1495,6 +1508,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -1557,6 +1571,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "id": "string"
     },
     "styleApi": [],
@@ -1732,12 +1747,14 @@
         "-1",
         "0"
       ],
+      "withInitialFocusPlaceholder": "boolean",
       "offset": [
         "number",
         "FloatingAxesOffsets"
       ],
       "keepMounted": "boolean",
       "withArrow": "boolean",
+      "withOverlay": "boolean",
       "withinPortal": "boolean",
       "zIndex": "string",
       "radius": [
@@ -1848,6 +1865,7 @@
       "hidePickedOptions": "boolean",
       "clearable": "boolean",
       "hiddenInputValuesDivider": "string",
+      "chevronColor": "color",
       "wrapperProps": "string",
       "variant": [
         "default",
@@ -1873,6 +1891,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -2072,6 +2091,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -2134,7 +2154,8 @@
         "lg",
         "xl"
       ],
-      "hideWithOnePage": "boolean"
+      "hideWithOnePage": "boolean",
+      "withPages": "boolean"
     },
     "styleApi": [
       "PaginationRootStylesNames"
@@ -2209,6 +2230,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -2301,6 +2323,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "id": "string",
       "withAria": "boolean"
     },
@@ -2389,6 +2412,7 @@
       ],
       "keepMounted": "boolean",
       "withArrow": "boolean",
+      "withOverlay": "boolean",
       "withinPortal": "boolean",
       "zIndex": "string",
       "radius": [
@@ -2420,7 +2444,8 @@
     },
     "styleApi": [
       "dropdown",
-      "arrow"
+      "arrow",
+      "overlay"
     ],
     "interfaceExtends": [
       "__Popover",
@@ -2433,7 +2458,8 @@
   },
   "Portal": {
     "props": {
-      "target": "string"
+      "target": "string",
+      "reuseTargetNode": "boolean"
     },
     "styleApi": [],
     "interfaceExtends": [
@@ -2562,7 +2588,8 @@
     ],
     "cssVars": [
       "{root:--rp-size",
-      "--rp-label-offset;}"
+      "--rp-label-offset",
+      "--rp-transition-duration;}"
     ]
   },
   "ScrollArea": {
@@ -2672,6 +2699,7 @@
       "onSearchChange": "string",
       "allowDeselect": "boolean",
       "clearable": "boolean",
+      "chevronColor": "color",
       "wrapperProps": "string",
       "variant": [
         "default",
@@ -2697,6 +2725,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -2984,6 +3013,10 @@
   },
   "Table": {
     "props": {
+      "variant": [
+        "default",
+        "vertical"
+      ],
       "captionSide": [
         "top",
         "bottom"
@@ -3011,7 +3044,8 @@
       "highlightOnHover": "boolean",
       "highlightOnHoverColor": "color",
       "stickyHeader": "boolean",
-      "stickyHeaderOffset": "string"
+      "stickyHeaderOffset": "string",
+      "tabularNums": "boolean"
     },
     "styleApi": [
       "table",
@@ -3037,6 +3071,50 @@
       "--table-striped-color",
       "--table-highlight-on-hover-color",
       "--table-sticky-header-offset;}"
+    ]
+  },
+  "TableOfContents": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "none"
+      ],
+      "active": "boolean",
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "autoContrast": "boolean",
+      "getControlProps": "string",
+      "depthOffset": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "control"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--toc-bg",
+      "--toc-color",
+      "--toc-size",
+      "--toc-depth-offset",
+      "--toc-radius;}"
     ]
   },
   "Tabs": {
@@ -3129,6 +3207,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -3212,6 +3291,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__stylesApiProps": "string",
       "multiline": "boolean",
       "id": "string",
@@ -3252,6 +3332,7 @@
       "pointer": "boolean",
       "withErrorStyles": "boolean",
       "inputSize": "string",
+      "__clearable": "boolean",
       "__staticSelector": "string",
       "__stylesApiProps": "string",
       "multiline": "boolean",
@@ -3410,6 +3491,7 @@
       ],
       "expandOnClick": "boolean",
       "expandOnSpace": "boolean",
+      "checkOnSpace": "boolean",
       "selectOnClick": "boolean",
       "clearSelectionOnOutsideClick": "boolean",
       "allowRangeSelection": "boolean"

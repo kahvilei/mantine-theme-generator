@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState } from 'react';
 import {
   IconBrandGithub,
   IconBrandMantine,
-  IconDownload,
   IconJson,
   IconLayoutSidebar,
   IconSunMoon,
-  IconTrash,
-  IconUpload,
+  IconTrash
 } from '@tabler/icons-react';
 import {
   ActionIcon,
   createTheme,
-  FileInput,
   Group,
-  MantineThemeOverride,
   Popover,
   Select,
   SelectProps,
@@ -58,14 +55,14 @@ const Header: React.FC<HeaderProps> = ({
     dispatch(setTheme(newTheme));
   };
 
-  const themeOptions: SelectProps['renderOption'] = ({ option, checked }) => (
+  const themeOptions: SelectProps['renderOption'] = ({ option }) => (
       <ThemePreview lightMode={lightMode} theme={themes[option.value]} name={option.value} />
   );
 
   const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
 
   return (
-    <Group p={'md'} h={'100%'} align="center" justify="space-between">
+    <Group p='md' h="100%" align="center" justify="space-between">
       <Group>
         <Title size={'1.2rem'} c={'blue'}>
           Mantine Theme Editor
@@ -86,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({
         </ActionIcon>
         </Tooltip>
         <Text size="xs" c="dimmed">
-          Running on Mantine v7.14.0
+          Running on Mantine v7.17.0
         </Text>
       </Group>
       <Group align="center">

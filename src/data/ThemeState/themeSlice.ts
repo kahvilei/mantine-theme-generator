@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DEFAULT_THEME } from '@mantine/core';
 import { ThemeState, ColorTuple, HeadingSize } from '@/data/types';
 import generateShades from '@/utils/generateColors';
-import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const initialState: ThemeState = {
   theme: {
@@ -97,7 +96,7 @@ export const themeSlice = createSlice({
       }
     },
     deleteColor: (state, action: PayloadAction<{ colorName: string }>) => {
-      if (!state.theme.colors) return;
+      if (!state.theme.colors) {return;}
       
       const { [action.payload.colorName]: _, ...rest } = state.theme.colors;
       state.theme.colors = rest;
@@ -107,7 +106,7 @@ export const themeSlice = createSlice({
       }
     },
     updateColorShade: (state, action: PayloadAction<{ colorName: string; index: number; newShade: string }>) => {
-      if (!state.theme.colors?.[action.payload.colorName]) return;
+      if (!state.theme.colors?.[action.payload.colorName]) {return;}
       const shades = [...(state.theme.colors[action.payload.colorName] || [])];
       shades[action.payload.index] = action.payload.newShade;
       state.theme.colors = {
