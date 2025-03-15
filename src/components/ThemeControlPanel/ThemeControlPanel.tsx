@@ -10,43 +10,43 @@ import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls
 
 const ThemeControlPanel = () => {
   return (
-    <Box id="control-panel" p={'0'}>
+    <Box id="control-panel" p="0">
         <Stack>
           <Tabs variant="pills" defaultValue="color" orientation="vertical" >
-            <Tabs.List variant="filled" p="sm" className={classes.tabList}>
-              <Stack pos={'fixed'}>
-              <Tabs.Tab value="color">
+            <Tabs.List variant="filled" className={classes.tabList}>
+              <Stack pos="fixed" p=".4rem 0" justify="space-between" align="center">
+              <Tabs.Tab value="color" p=".2rem">
                 <Tooltip label="Color">
-                <ActionIcon component='div' size="md" variant="transparent" radius="xl">
-                  <IconPalette size="xl" />
+                <ActionIcon component='div' variant="transparent" radius="xl">
+                  <IconPalette size="1.5rem" />
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
-              <Tabs.Tab value="typography">
+              <Tabs.Tab value="typography" p=".2rem">
                 <Tooltip label="Typography">
-                <ActionIcon component='div' size="md" variant="transparent" radius="xl">
-                  <IconTypeface size="xl" />
+                <ActionIcon component='div' variant="transparent" radius="xl">
+                  <IconTypeface size="1.5rem" />
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
-              <Tabs.Tab value="size-and-layout">
+              <Tabs.Tab value="size-and-layout" p=".2rem">
                 <Tooltip label="Size and Layout">
-                <ActionIcon component='div' size="md" variant="transparent" radius="xl">
-                  <IconResize size="xl" />
+                <ActionIcon component='div'  variant="transparent" radius="xl">
+                  <IconResize size="1.5rem" />
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
-              <Tabs.Tab value="general">
+              <Tabs.Tab value="general" p=".2rem">
                 <Tooltip label="General">
-                <ActionIcon component='div'size="md" variant="transparent" radius="xl">
-                  <IconSettings size="xl" />
+                <ActionIcon component='div' variant="transparent" radius="xl">
+                  <IconSettings size="1.5rem" />
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
-              <Tabs.Tab value="components">
+              <Tabs.Tab value="components" p=".2rem">
                 <Tooltip label="Components">
-                <ActionIcon component='div' size="md" variant="transparent" radius="xl">
-                  <IconCube size="xl" />
+                <ActionIcon component='div' variant="transparent" radius="xl">
+                  <IconCube size="1.5rem" />
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>

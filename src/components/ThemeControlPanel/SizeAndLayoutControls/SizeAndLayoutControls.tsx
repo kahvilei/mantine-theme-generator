@@ -6,7 +6,7 @@ import BreakpointControls from './BreakpointControls';
 const SizeAndLayoutControls = () => {
 
   return (
-    <Stack mt="md">
+    <Stack>
       <Scale />
       <SpacingControls />
       <BreakpointControls />

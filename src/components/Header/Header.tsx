@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
   const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
 
   return (
-    <Group p='md' h="100%" align="center" justify="space-between">
+    <Group p='sm' h="100%" align="center" justify="space-between">
       <Group>
         <Title size={'1.2rem'} c={'blue'}>
           Mantine Theme Editor

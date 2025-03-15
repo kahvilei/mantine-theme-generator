@@ -38,8 +38,9 @@ const GeneralControls = () => {
   };
 
   return (
-    <Stack mt="md">
+    <Stack gap={'xl'}>
       <RadiusControls />
+        <Stack>
       <Title order={4}>Interaction and Accessibility</Title>
       <Text size="sm">Focus Ring</Text>
       <SegmentedControl
@@ -66,7 +67,7 @@ const GeneralControls = () => {
         ]}
         value={cursorType}
         onChange={(value) => handleCursorTypeChange(value as 'default' | 'pointer')}
-      />
+      /></Stack>
     </Stack>
   );
 };

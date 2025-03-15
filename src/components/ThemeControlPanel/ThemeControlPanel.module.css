@@ -1,12 +1,20 @@
 .tabPanel{
-    width: calc(100% - 80px);
-    padding: 20px;
+    width: 100%;
+    max-width: calc(100% - 3rem);
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.tabPanel div{
+    max-width: 100%;
 }
 
 .tabList{
-    width: 80px;
+    width: 100%;
+    max-width: 3rem;
     background-color: var(--mantine-color-dark-6);
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -16,6 +24,7 @@
 .tabList button[data-active][data-active] div{
    color: white;
 }
+
 .tabList>div>button{
     padding: var(--mantine-spacing-xs) var(--mantine-spacing-xs);
 }
@@ -23,4 +32,8 @@
 
 :where([data-mantine-color-scheme='light']) .tabList{
     background-color: var(--mantine-color-gray-1);
+}
+
+#control-panel{
+    max-width: 30%;
 }

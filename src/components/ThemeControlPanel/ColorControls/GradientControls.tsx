@@ -44,7 +44,6 @@ const GradientControls = () => {
   };
 
   return (
-    <Box>
       <Stack mt="md">
         <Title order={4}>Gradient</Title>
         <Group grow>
@@ -73,7 +72,6 @@ const GradientControls = () => {
             />
         </Group>
       </Stack>
-    </Box>
   );
 };
 

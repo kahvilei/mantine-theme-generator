@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Group, NumberInput, Card, Select, Text } from '@mantine/core';
+import {Group, NumberInput, Card, Select, Text, Box} from '@mantine/core';
 
-interface NumberUnitSelectorProps {
+export interface NumberUnitSelectorProps {
   value: string;
   onChange: (value: string) => void;
   label?: string;
@@ -72,7 +72,7 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   }, [numberValue, unitValue, hasUnits]);
 
   return (
-    <Card p={size=='xs'?0:'sm'} className={variant=='reverse'?classes.reverse:classes.default}>
+    <Box className={variant==='reverse'?classes.reverse:classes.default}>
       <Group align="center" justify='end' wrap='nowrap'>
         {label && <Text w={'150px'}>{label}</Text>}
         <NumberInput
@@ -94,7 +94,7 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
           />
         )}
       </Group>
-    </Card>
+    </Box>
   );
 };
 

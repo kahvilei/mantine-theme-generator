@@ -21,7 +21,7 @@ const ColorPalette: React.FC = () => {
   );
 
   return (
-    <Box>
+    <>
       <Title order={4}>Custom Colors</Title>
       <Group mt="xs">
         {colorEntries.map(([colorName, shades]) => (
@@ -43,7 +43,7 @@ const ColorPalette: React.FC = () => {
           <ColorEditorPopup />
         </Popover>
       </Group>
-    </Box>
+    </>
   );
 };
 

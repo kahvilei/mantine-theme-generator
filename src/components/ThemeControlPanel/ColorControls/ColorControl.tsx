@@ -7,10 +7,10 @@ import PrimaryColorSettings from './PrimaryColorSettings';
 const ColorPanel = () => {
   return (
     <Stack>
-      <PrimaryColorSettings />
-      <GradientControls />
-      <ColorPalette />
-      <ColorDefaults /> 
+        <ColorPalette />
+        <PrimaryColorSettings />
+        <GradientControls />
+        <ColorDefaults />
     </Stack>
   );
 };

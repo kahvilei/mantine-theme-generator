@@ -42,7 +42,7 @@ const App: React.FC = () => {
     setAsideVisible((prev) => !prev);
   };
 
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   const toggleScheme = () => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
@@ -59,13 +59,13 @@ const App: React.FC = () => {
     <Provider store={store}>
     <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
       <AppShell
-        header={{ height: 80 }}
+        header={{ height: 60 }}
         navbar={{
-          width: 500,
+          width: '20%',
           breakpoint: 'sm',
         }}
         aside={{
-          width: 700,
+          width: 500,
           breakpoint: 'sm',
           collapsed: {
             desktop: !asideVisible,
@@ -83,10 +83,8 @@ const App: React.FC = () => {
           />
         </AppShell.Header>
         <AppShell.Navbar withBorder>
-          <ScrollArea scrollbarSize={6}>
-            <MantineProvider>
+          <ScrollArea scrollbarSize={6} scrollbars="y">
               <ThemeControlPanel/>
-            </MantineProvider>
           </ScrollArea>
         </AppShell.Navbar>
         <AppShell.Main>

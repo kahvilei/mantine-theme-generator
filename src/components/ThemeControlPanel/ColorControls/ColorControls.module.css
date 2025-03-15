@@ -14,7 +14,7 @@
 .colorAdd {
     cursor: pointer;
     color:  var(--mantine-color-gray-text);
-    outline: 1px solid var(--mantine-color-gray-text);
+    width: 100%;
 }
 
 .gradientText {

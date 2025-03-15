@@ -77,7 +77,7 @@ const TypographyControl = () => {
   };
 
   return (
-    <Stack mt="md">
+    <Stack>
       <Autocomplete
         label="Main Font Family"
         data={commonFonts}

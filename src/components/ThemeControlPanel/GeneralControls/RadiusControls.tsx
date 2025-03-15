@@ -1,4 +1,4 @@
-import { Stack, Text, SegmentedControl, Title, Box } from '@mantine/core';
+import {Stack, Text, SegmentedControl, Title, Box, Paper} from '@mantine/core';
 import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -23,7 +23,7 @@ const RadiusControls = () => {
   };
 
   const handleRadiusChange = (size: typeof radiusSizes[number], value: string) => {
-    dispatch(setRadius({ key:size, value:value }));
+    dispatch(setRadius({ key:size, value }));
   };
 
   return (
@@ -43,6 +43,8 @@ const RadiusControls = () => {
           onChange={(value) => handleDefaultRadiusChange(value as 'xs' | 'sm' | 'md' | 'lg' | 'xl')}
         />
         <Text size="sm">Radius settings</Text>
+          <Paper withBorder p={"sm"}>
+              <Stack>
         {radiusSizes.map((size) => (
           <NumberUnitSelector
             key={size}
@@ -52,7 +54,7 @@ const RadiusControls = () => {
             min={0}
             max={100}
           />
-        ))}
+        ))}</Stack></Paper>
       </Stack>
     </Box>
   );
