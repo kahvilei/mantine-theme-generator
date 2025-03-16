@@ -9,4 +9,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './vitest.setup.mjs',
   },
+  build: {
+    sourcemap: true, // enable production source maps
+  },
+  css: {
+    devSourcemap: true // enable CSS source maps during development
+  }
 });

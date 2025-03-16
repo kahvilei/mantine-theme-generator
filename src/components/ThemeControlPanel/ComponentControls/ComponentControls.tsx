@@ -239,7 +239,7 @@ const ComponentRulesManager: React.FC = () => {
   const [selectedComponent, setSelectedComponent] = React.useState<string | null>(null);
 
   const handleAddComponent = () => {
-    if (selectedComponent) {
+    if (selectedComponent !== null) {
       dispatch( setComponentRule({
           key: selectedComponent,
           value: {

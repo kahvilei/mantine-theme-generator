@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '@/data/ThemeState/themeSlice';
 import { selectTheme } from '@/data/ThemeState/themeSelectors';
 import { IconDownload, IconUpload } from '@tabler/icons-react';
-import { ActionIcon } from '@mantine/core';
+import {ActionIcon, Tooltip} from '@mantine/core';
 
 const language = "json";
 
@@ -21,13 +21,13 @@ export const DownloadThemeButton = () => {
   };
 
   return (
+      <Tooltip label={`Download theme as ${language}`}>
     <ActionIcon
-      title={`Download theme as ${language}`}
       variant='outline'
       onClick={() => downloadTheme(language)}
     >
       {language === "json" ? <IconDownload size={18} /> : <IconDownload size={18} />}
-    </ActionIcon>
+    </ActionIcon></Tooltip>
   );
 };
 
@@ -46,8 +46,8 @@ export const UploadThemeButton = () => {
   };
 
   return (
+       <Tooltip label={`Upload theme`}>
     <ActionIcon
-      title="Upload theme"
       variant='outline'
       onClick={() => {
         const input = document.createElement('input');
@@ -63,6 +63,6 @@ export const UploadThemeButton = () => {
       }}
     >
       <IconUpload size={18} />
-    </ActionIcon>
+    </ActionIcon></Tooltip>
   );
 };

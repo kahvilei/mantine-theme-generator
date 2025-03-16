@@ -141,12 +141,8 @@ const App: React.FC = () => {
                             classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown, options: classes.themePreviewOptions}}
                             comboboxProps={{ width: '500px' }}
                         />
-                        <Tooltip label="Download Theme">
                           <DownloadThemeButton/>
-                        </Tooltip>
-                        <Tooltip label="Upload Theme">
                           <UploadThemeButton />
-                        </Tooltip>
                         <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
                           <Popover.Target>
                             <Tooltip label="Reset Theme">
