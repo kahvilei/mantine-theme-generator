@@ -1,20 +1,19 @@
-
-import { ActionIcon, Box, Stack, Tabs, Tooltip } from '@mantine/core';
-import ColorControl from './ColorControls/ColorControl';
-import GeneralControls from './GeneralControls/GeneralControls';
-import TypographyControl from './TypographyControls/TypographyControls';
-import ComponentControls from './ComponentControls/ComponentControls';
 import { IconCube, IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
-import classes from './ThemeControlPanel.module.css';
+import { ActionIcon, Box, ScrollArea, Stack, Tabs, Tooltip } from '@mantine/core';
+import ColorControl from './ColorControls/ColorControl';
+import ComponentControls from './ComponentControls/ComponentControls';
+import GeneralControls from './GeneralControls/GeneralControls';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
+import TypographyControl from './TypographyControls/TypographyControls';
+import classes from './ThemeControlPanel.module.css';
+
 
 const ThemeControlPanel = () => {
   return (
     <Box id="control-panel" p="0">
         <Stack>
-          <Tabs variant="pills" defaultValue="color" orientation="vertical" >
+          <Tabs variant="pills" defaultValue="color" >
             <Tabs.List variant="filled" className={classes.tabList}>
-              <Stack pos="fixed" p=".4rem 0" justify="space-between" align="center">
               <Tabs.Tab value="color" p=".2rem">
                 <Tooltip label="Color">
                 <ActionIcon component='div' variant="transparent" radius="xl">
@@ -50,10 +49,12 @@ const ThemeControlPanel = () => {
                 </ActionIcon>
                 </Tooltip>
               </Tabs.Tab>
-              </Stack>
             </Tabs.List>
+            <ScrollArea scrollbarSize={6} scrollbars="y" type={'hover'} className="sidebar-scroll">
             <Tabs.Panel className={classes.tabPanel} value="color">
+              <ScrollArea scrollbarSize={6} scrollbars="y" type={'hover'} className="sidebar-scroll">
               <ColorControl/>
+                </ScrollArea>
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="typography">
               <TypographyControl/>
@@ -66,7 +67,8 @@ const ThemeControlPanel = () => {
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="components">
               <ComponentControls/>
-            </Tabs.Panel>
+            </Tabs.Panel>M
+            </ScrollArea>
           </Tabs>
         </Stack>
     </Box>

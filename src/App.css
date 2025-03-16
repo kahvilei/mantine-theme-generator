@@ -1,0 +1,107 @@
+/* App Layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    gap: 2rem;
+}
+
+:root{
+    --editor-height: calc(100vh - 150px);
+}
+
+.app-header {
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 20px);
+    max-width: 2100px;
+    height: var(--editor-height);
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    background-color: var(--mantine-color-dark-9);
+    padding: 0;
+}
+
+:where([data-mantine-color-scheme='light']) .app-content {
+    background-color: var(--mantine-color-gray-0);
+}
+
+/* Sidebar */
+.app-sidebar {
+    width: 30%;
+    min-width: 320px;
+    height: 100%;
+    position: relative;
+}
+
+.sidebar-scroll {
+    height: 100%;
+}
+
+/* Main Content Area */
+.app-main {
+    overflow: hidden;
+    flex: 1;
+    height: var(--editor-height);
+}
+
+.content-card {
+    overflow: hidden;
+    width: 100%;
+    height: var(--editor-height);
+}
+
+/* Tab System */
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tab-header {
+    padding: 10px 16px;
+}
+
+.tab-button {
+    transition: background-color 0.2s ease;
+}
+
+.content-selector {
+    width: 250px;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app-content {
+        flex-direction: column;
+    }
+
+    .app-sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-right: none;
+    }
+
+    .content-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .tab-content-scroll {
+        height: auto;
+        max-height: calc(100vh - 400px);
+    }
+}

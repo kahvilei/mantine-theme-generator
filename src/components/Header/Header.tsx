@@ -38,7 +38,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({
   lightMode,
   updateDisplayContent,
-  toggleAside,
   toggleScheme,
 }) => {
   const [currentThemeName, setCurrentThemeName] = useState('');
@@ -87,14 +86,7 @@ const Header: React.FC<HeaderProps> = ({
         </Text>
       </Group>
       <Group align="center">
-        <Select
-          placeholder="Preview content"
-          data={['UI Demo', 'Article', 'Repository', 'Messaging Service']}
-          value={currentContent? currentContent : "UI Demo"}
-          onChange={(value) => {updateDisplayContent(value as string); setCurrentContent(value as string)}}
-          allowDeselect = {false}
-          style={{ width: '150px' }}
-        />
+
         <Select
           placeholder="Select a pre-made theme"
           data={themeData}
@@ -106,11 +98,6 @@ const Header: React.FC<HeaderProps> = ({
           classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown, options: classes.themePreviewOptions}}
           comboboxProps={{ width: '500px' }}
         />
-        <Tooltip label="Toggle JSON Sidebar">
-          <ActionIcon variant="outline" onClick={toggleAside}>
-            <IconJson size="1.25rem" />
-          </ActionIcon>
-        </Tooltip>
         <Tooltip label="Download Theme">
           <DownloadThemeButton/>
         </Tooltip>

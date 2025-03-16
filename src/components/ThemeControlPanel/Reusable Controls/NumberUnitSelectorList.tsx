@@ -1,31 +1,41 @@
-import React from "react";
-import { Box, Paper, Stack } from '@mantine/core';
-import NumberUnitSelector, { NumberUnitSelectorProps } from '@/components/ThemeControlPanel/Reusable Controls/NumberUnitSelector';
-import {useSelector} from "react-redux";
-import {RootState} from "@/App";
-
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Box, Paper, Stack, Text } from '@mantine/core';
+import { RootState } from '@/App';
+import NumberUnitSelector, {
+  NumberUnitSelectorProps,
+} from '@/components/ThemeControlPanel/Reusable Controls/NumberUnitSelector';
 
 interface NumberUnitSelectorListProps {
-    list: Array<NumberUnitSelectorProps>;
-    selector: ,
-    onChange: (value: NumberUnitSelectorProps) => void;
+  list: Array<NumberUnitSelectorProps>;
+  selector: (state: RootState, value: string | number) => string;
+  onChange: (value: string | number) => void;
 }
-const NumberUnitSelectorList: React.FC<NumberUnitSelectorListProps> = ({list}) => {
-    
-    return (<Box>
-    <Text size="sm">Radius settings</Text>
-    <Paper withBorder p={"sm"}>
-        <Stack>
-            {list.map((size) => (
-                <NumberUnitSelector
-                    key={size}
-                    label={size}
-                    value={useSelector((state: RootState) => selectRadius(state, size)) || '0px'}
-                    onChange={(value) => handleRadiusChange(size, value)}
-                    min={0}
-                    max={100}
-                />
-            ))}</Stack></Paper></Box>
-)
 
-}
+export const NumberUnitSelectorList: React.FC<NumberUnitSelectorListProps> = ({
+  list,
+  selector,
+  onChange,
+}) => {
+  return (
+    <Box>
+      <Text size="sm">Radius settings</Text>
+      <Paper withBorder p={'sm'}>
+        <Stack>
+          {list.map((element) => (
+            <NumberUnitSelector
+              key={element.label}
+              label={element.label}
+              value={
+                useSelector((state: RootState) => selector(state, element.label ?? '')) || '0px'
+              }
+              onChange={(value) => onChange(value)}
+              min={element.min ?? 0}
+              max={element.max ?? 100}
+            />
+          ))}
+        </Stack>
+      </Paper>
+    </Box>
+  );
+};
