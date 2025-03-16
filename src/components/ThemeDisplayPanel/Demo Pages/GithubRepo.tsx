@@ -95,7 +95,7 @@ const GitHubRepoDemo: React.FC = () => {
   );
 
   const FileExplorer = () => (
-    <Paper withBorder p="xs">
+    <Paper p="xs">
       <Table>
         <Table.Tbody>
           {['src', 'docs', 'tests', 'README.md', 'package.json'].map((item) => (
@@ -124,7 +124,7 @@ const GitHubRepoDemo: React.FC = () => {
   );
 
   const ReadmeSection = () => (
-    <Card withBorder>
+    <Card>
       <Group justify="space-between" mb="md">
         <Group>
           <IconFileText size={20} />
@@ -166,7 +166,7 @@ const GitHubRepoDemo: React.FC = () => {
             </Stack>
           </Box>
           <Box style={{ flex: 3 }}>
-            <Card withBorder>
+            <Card>
               <Text size="sm">About</Text>
               <Text mt="xs">A fully featured React components library</Text>
               <Group mt="md">

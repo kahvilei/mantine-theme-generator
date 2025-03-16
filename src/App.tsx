@@ -5,8 +5,8 @@ import './App.css';
 import React, { useState } from 'react';
 // Store setup
 import { configureStore } from '@reduxjs/toolkit';
-import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
-import { Provider } from 'react-redux';
+import {IconLayoutSidebar, IconMoon, IconSun, IconSunMoon, IconTrash} from '@tabler/icons-react';
+import {Provider, useDispatch} from 'react-redux';
 import {
   Card,
   createTheme,
@@ -16,26 +16,22 @@ import {
   ScrollArea,
   Select,
   Stack,
-  Button,
+  Button, Tooltip, Popover, ActionIcon, Text, SelectProps,
 } from '@mantine/core';
 import Header from './components/Header/Header';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
-import themeReducer from './data/ThemeState/themeSlice';
+import {setTheme} from './data/ThemeState/themeSlice';
+import classes from "@/components/Header/Header.module.css";
+import {DownloadThemeButton, UploadThemeButton} from "@/components/Header/themeDownloadUpload";
+import premadeThemes from "@/data/premadeThemes.json";
+import ThemePreview from "@/components/Header/ThemePreview";
 
-export const store = configureStore({
-  reducer: {
-    theme: themeReducer,
-  },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
 
 const App: React.FC = () => {
   const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
-  const [currentContent, setCurrentContent] = useState('Mantine Components');
   const [selectedTab, setSelectedTab] = useState('dark');
 
   const toggleScheme = () => {
@@ -46,8 +42,26 @@ const App: React.FC = () => {
     setCurrentContent(content);
   };
 
+  const [currentThemeName, setCurrentThemeName] = useState('');
+  const [currentContent, setCurrentContent] = useState('UI Demo');
+  const [opened, setOpened] = useState(false);
+  const themes = JSON.parse(JSON.stringify(premadeThemes));
+
+  const dispatch = useDispatch();
+
+  const handlePreMadeThemeSelect = (value: string | null) => {
+    setCurrentThemeName(value as string);
+    const newTheme = createTheme(themes[value as string]);
+    dispatch(setTheme(newTheme));
+  };
+
+  const themeOptions: SelectProps['renderOption'] = ({ option }) => (
+      <ThemePreview lightMode={mode==='light'} theme={themes[option.value]} name={option.value} />
+  );
+
+  const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
+
   return (
-      <Provider store={store}>
         <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
           <div className="app-container">
             {/* Header */}
@@ -104,6 +118,7 @@ const App: React.FC = () => {
                             Light
                           </Button>
                         </Group>
+                        <Group>
                         <Select
                             placeholder="Preview content"
                             data={['UI Demo', 'Article', 'Repository', 'Messaging Service']}
@@ -115,6 +130,53 @@ const App: React.FC = () => {
                             allowDeselect={false}
                             className="content-selector"
                         />
+                        <Select
+                            placeholder="Select a pre-made theme"
+                            data={themeData}
+                            renderOption={themeOptions}
+                            value={currentThemeName? currentThemeName : 'mantine'}
+                            onChange={handlePreMadeThemeSelect}
+                            allowDeselect = {false}
+                            style={{ width: '200px' }}
+                            classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown, options: classes.themePreviewOptions}}
+                            comboboxProps={{ width: '500px' }}
+                        />
+                        <Tooltip label="Download Theme">
+                          <DownloadThemeButton/>
+                        </Tooltip>
+                        <Tooltip label="Upload Theme">
+                          <UploadThemeButton />
+                        </Tooltip>
+                        <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
+                          <Popover.Target>
+                            <Tooltip label="Reset Theme">
+                              <ActionIcon variant="outline" color="red" onClick={() => setOpened(true)}>
+                                <IconTrash size="1.25rem" />
+                              </ActionIcon>
+                            </Tooltip>
+                          </Popover.Target>
+                          <Popover.Dropdown>
+                            <Text size="sm">
+                              Are you sure you want to reset the theme? This will delete all current changes.
+                            </Text>
+                            <Group mt="md">
+                              <ActionIcon
+                                  variant="filled"
+                                  color="red"
+                                  onClick={() => {
+                                    setTheme(defaultTheme);
+                                    setOpened(false);
+                                  }}
+                              >
+                                <IconTrash size="1.25rem" />
+                              </ActionIcon>
+                              <ActionIcon variant="outline" onClick={() => setOpened(false)}>
+                                <IconLayoutSidebar size="1.25rem" />
+                              </ActionIcon>
+                            </Group>
+                          </Popover.Dropdown>
+                        </Popover>
+                        </Group>
                       </Group>
 
                       {/* Tab Content */}
@@ -148,7 +210,6 @@ const App: React.FC = () => {
             </Card>
           </div>
         </MantineProvider>
-      </Provider>
   );
 };
 

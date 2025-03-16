@@ -17,12 +17,13 @@
     height: 60px;
     width: 100%;
     z-index: 10;
+
 }
 
 .app-content {
     display: flex;
     flex-direction: row;
-    width: calc(100vw - 20px);
+    width: calc(100vw - 4rem);
     max-width: 2100px;
     height: var(--editor-height);
     justify-content: center;
@@ -40,6 +41,7 @@
 .app-sidebar {
     width: 30%;
     min-width: 320px;
+    max-width: 520px;
     height: 100%;
     position: relative;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Paper, Stack, Text } from '@mantine/core';
-import { RootState } from '@/App';
+import { RootState } from '@/main';
 import NumberUnitSelector, {
   NumberUnitSelectorProps,
 } from '@/components/ThemeControlPanel/Reusable Controls/NumberUnitSelector';

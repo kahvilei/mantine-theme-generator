@@ -13,7 +13,7 @@ const ThemeControlPanel = () => {
     <Box id="control-panel" p="0">
         <Stack>
           <Tabs variant="pills" defaultValue="color" >
-            <Tabs.List variant="filled" className={classes.tabList}>
+            <Tabs.List variant="filled" className={classes.tabList} p=".7rem">
               <Tabs.Tab value="color" p=".2rem">
                 <Tooltip label="Color">
                 <ActionIcon component='div' variant="transparent" radius="xl">

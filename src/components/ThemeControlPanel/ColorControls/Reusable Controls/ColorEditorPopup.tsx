@@ -22,7 +22,7 @@ import {
 } from '@/data/ThemeState/themeSlice';
 import generateColors from '../../../../utils/generateColors';
 import type { ColorTuple } from '@/data/types';
-import { RootState } from '@/App';
+import { RootState } from '@/main';
 
 interface ColorEditorPopupProps {
   colorName?: string;

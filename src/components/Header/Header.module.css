@@ -33,3 +33,12 @@
     overflow: hidden;
 }
 
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--mantine-color-blue-5);
+}

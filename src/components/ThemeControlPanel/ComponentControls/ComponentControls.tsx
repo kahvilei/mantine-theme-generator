@@ -16,7 +16,7 @@ import {
 import { IconArrowDown, IconArrowUp, IconBrandMantine, IconPlus, IconTrash, } from '@tabler/icons-react';
 import { selectComponentRules, selectComponentRuleByName } from '@/data/ThemeState/themeSelectors';
 import { setComponentRule, deleteComponentRule } from '@/data/ThemeState/themeSlice';
-import { RootState } from '@/App';
+import { RootState } from '@/main';
 import ComponentSelector from './ComponentSelector';
 import ComponentPropertyEditor, { AddPropertyButton, StylePropertyEditor, AddStylePropertyButton, AddStyleSelectorButton } from './ComponentPropertyEditor';
 import { ComponentProps } from './componentPropDefinitions';
