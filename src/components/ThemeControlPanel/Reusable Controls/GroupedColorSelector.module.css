@@ -1,0 +1,21 @@
+.option {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.5rem * var(--mantine-scale));
+    flex-basis: 31%;
+    flex-grow: 1;
+    min-width: 8rem;
+    margin: 1%;
+    border: 1px solid var(--mantine-color-default-border);
+}
+
+.options>div>div>div>div>div div{
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.options>div>div>div>div>div>div>div:first-child{
+    flex-grow: 1;
+    width: 100%;
+}

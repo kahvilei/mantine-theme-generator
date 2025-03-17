@@ -127,12 +127,14 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
             label="Color Value"
             value={newColorValue}
             required
+            withPicker={false}
             onChange={(color) => {
               setNewColorValue(color);
               if (isEditing && newColorName) {
                 handleSetColor(newColorName, color);
               }
             }}
+
           />
           <ColorPicker
             value={newColorValue}

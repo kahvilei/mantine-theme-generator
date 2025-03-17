@@ -2,6 +2,7 @@ import React from 'react';
 import { ColorSwatch, Group, MantineColorsTuple, Select, Text } from '@mantine/core';
 import { useSelector } from 'react-redux';
 import { selectCustomColors, selectMantineColors } from '@/data/ThemeState/themeSelectors';
+import classes from './GroupedColorSelector.module.css'
 
 const GroupedColorSelector: React.FC<{
   colors?: { [key: string]: Map<string, MantineColorsTuple> }[];
@@ -25,6 +26,10 @@ const GroupedColorSelector: React.FC<{
   };
   return (
     <Select
+        classNames = {{
+            option: classes.option,
+            options: classes.options
+        }}
       label={label}
       data={[
         { group: 'Custom Colors', items: Array.from(customColors.keys()) },

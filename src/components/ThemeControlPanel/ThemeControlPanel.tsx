@@ -67,7 +67,7 @@ const ThemeControlPanel = () => {
             </Tabs.Panel>
             <Tabs.Panel className={classes.tabPanel} value="components">
               <ComponentControls/>
-            </Tabs.Panel>M
+            </Tabs.Panel>
             </ScrollArea>
           </Tabs>
         </Stack>
