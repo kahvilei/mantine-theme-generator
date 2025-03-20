@@ -85,10 +85,10 @@
     "primaryColor": "blue",
     "autoContrast": true,
     "luminanceThreshold": 0.3,
-    "fontFamily": "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
-    "fontFamilyMonospace": "'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace",
+    "fontFamily": "Nunito",
+    "fontFamilyMonospace": "Roboto Mono",
     "headings": {
-        "fontFamily": "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+        "fontFamily": "Nunito",
         "fontWeight": "600"
     },
     "defaultRadius": "md"

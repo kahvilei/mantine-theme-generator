@@ -41,3 +41,13 @@
     padding-top: var(--mantine-spacing-lg);
     position: relative;
 }
+
+.bottomPanel{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--mantine-spacing-sm);
+    bottom: 0;
+}

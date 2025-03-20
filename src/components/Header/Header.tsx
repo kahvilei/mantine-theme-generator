@@ -16,11 +16,8 @@ import classes from './Header.module.css';
 
 
 interface HeaderProps {
-  toggleAside: () => void;
   toggleScheme: () => void;
   lightMode: boolean;
-  updateDisplayContent: (content: string) => void;
-  currentContent: string;
 }
 
 const Header: React.FC<HeaderProps> = ({

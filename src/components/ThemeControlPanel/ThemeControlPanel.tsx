@@ -1,14 +1,61 @@
-import { IconCube, IconPalette, IconResize, IconSettings, IconTypeface } from '@tabler/icons-react';
-import { ActionIcon, Box, ScrollArea, Stack, Tabs, Tooltip } from '@mantine/core';
+import {
+  IconCube,
+  IconLayoutSidebar,
+  IconPalette,
+  IconResize,
+  IconSettings,
+  IconTrash,
+  IconTypeface
+} from '@tabler/icons-react';
+import {
+  ActionIcon,
+  Box,
+  createTheme,
+  Group, MantineThemeOverride,
+  Popover,
+  ScrollArea,
+  Select, SelectProps,
+  Stack,
+  Tabs,
+  Text,
+  Tooltip
+} from '@mantine/core';
 import ColorControl from './ColorControls/ColorControl';
 import ComponentControls from './ComponentControls/ComponentControls';
 import GeneralControls from './GeneralControls/GeneralControls';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
+import {DownloadThemeButton, UploadThemeButton} from "@/components/Header/themeDownloadUpload";
+import {setTheme} from "@/data/ThemeState/themeSlice";
+import React, {useState} from "react";
+import appTheme from "@/data/appTheme.json";
+import premadeThemes from "@/data/premadeThemes.json";
+import {useDispatch} from "react-redux";
+import ThemePreview from "@/components/Header/ThemePreview";
 
 
 const ThemeControlPanel = () => {
+  const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
+  const [mode] = useState<'light' | 'dark'>('dark');
+
+  const [currentThemeName, setCurrentThemeName] = useState('');
+  const [opened, setOpened] = useState(false);
+  const themes = JSON.parse(JSON.stringify(premadeThemes));
+
+  const dispatch = useDispatch();
+
+  const handlePreMadeThemeSelect = (value: string | null) => {
+    setCurrentThemeName(value as string);
+    const newTheme = createTheme(themes[value as string]);
+    dispatch(setTheme(newTheme));
+  };
+
+  const themeOptions: SelectProps['renderOption'] = ({ option }) => (
+      <ThemePreview lightMode={mode==='light'} theme={themes[option.value]} name={option.value} />
+  );
+
+  const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
   return (
     <Box id="control-panel" p="0">
         <Stack>
@@ -50,9 +97,9 @@ const ThemeControlPanel = () => {
                 </Tooltip>
               </Tabs.Tab>
             </Tabs.List>
-            <ScrollArea scrollbarSize={6} scrollbars="y" type={'hover'} className="sidebar-scroll">
+            <ScrollArea scrollbarSize={6} scrollbars="y" type="hover" className="sidebar-scroll">
             <Tabs.Panel className={classes.tabPanel} value="color">
-              <ScrollArea scrollbarSize={6} scrollbars="y" type={'hover'} className="sidebar-scroll">
+              <ScrollArea scrollbarSize={6} scrollbars="y" type="hover" className="sidebar-scroll">
               <ColorControl/>
                 </ScrollArea>
             </Tabs.Panel>
@@ -70,6 +117,50 @@ const ThemeControlPanel = () => {
             </Tabs.Panel>
             </ScrollArea>
           </Tabs>
+          <Group className={classes.bottomPanel}>
+            <Select
+                placeholder="Select a pre-made theme"
+                data={themeData}
+                renderOption={themeOptions}
+                value={currentThemeName? currentThemeName : 'mantine'}
+                onChange={handlePreMadeThemeSelect}
+                allowDeselect = {false}
+                style={{ width: '200px' }}
+                classNames={{option: classes.themePreviewOption, dropdown: classes.themePreviewDropdown, options: classes.themePreviewOptions}}
+                comboboxProps={{ width: '500px' }}
+            />
+            <DownloadThemeButton/>
+            <UploadThemeButton />
+            <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
+              <Popover.Target>
+                <Tooltip label="Reset Theme">
+                  <ActionIcon variant="outline" color="red" onClick={() => setOpened(true)}>
+                    <IconTrash size="1.25rem" />
+                  </ActionIcon>
+                </Tooltip>
+              </Popover.Target>
+              <Popover.Dropdown>
+                <Text size="sm">
+                  Are you sure you want to reset the theme? This will delete all current changes.
+                </Text>
+                <Group mt="md">
+                  <ActionIcon
+                      variant="filled"
+                      color="red"
+                      onClick={() => {
+                        setTheme(defaultTheme);
+                        setOpened(false);
+                      }}
+                  >
+                    <IconTrash size="1.25rem" />
+                  </ActionIcon>
+                  <ActionIcon variant="outline" onClick={() => setOpened(false)}>
+                    <IconLayoutSidebar size="1.25rem" />
+                  </ActionIcon>
+                </Group>
+              </Popover.Dropdown>
+            </Popover>
+          </Group>
         </Stack>
     </Box>
   );

@@ -61,6 +61,8 @@
     overflow: hidden;
     width: 100%;
     height: var(--editor-height);
+    padding: 0;
+    border-radius: 0;
 }
 
 /* Tab System */
@@ -71,8 +73,9 @@
 }
 
 .tab-header {
-    padding: 10px 16px;
+    padding: .5rem 1rem 0;
 }
+
 
 .tab-button {
     transition: background-color 0.2s ease;
@@ -81,7 +84,6 @@
 .content-selector {
     width: 250px;
 }
-
 
 
 /* Responsive adjustments */

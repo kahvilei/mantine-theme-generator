@@ -1,15 +1,20 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Box, MantineProvider } from '@mantine/core';
-import ComponentShowcase from './Demo Pages/ComponentShowcase';
-import GitHubRepoDemo from './Demo Pages/GithubRepo';
-import MessagingService from './Demo Pages/MessagingService';
-import ArticleDemo from './Demo Pages/ArticleDemo';
 import classes from './ThemeDisplay.module.css';
+
 import './ThemeDisplay.css';
+
 import { selectTheme } from '@/data/ThemeState/themeSelectors';
+
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
+
+import { Overview } from '@/components/ThemeDisplayPanel/Demo Pages/Overview';
+import { Typography } from "@/components/ThemeDisplayPanel/Demo Pages/Typography";
+import {Components} from "@/components/ThemeDisplayPanel/Demo Pages/Components";
+import {Forms} from "@/components/ThemeDisplayPanel/Demo Pages/Forms";
+import {Dashboard} from "@/components/ThemeDisplayPanel/Demo Pages/Dashboard";
 
 export interface ThemeDisplayProps {
   number: number;
@@ -25,16 +30,18 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayConten
 
   const Content = () => {
     switch (displayContent) {
-      case 'UI Demo':
-        return <ComponentShowcase />;
-      case 'Article':
-        return <ArticleDemo />;
-      case 'Repository':
-        return <GitHubRepoDemo />;
-      case 'Messaging Service':
-        return <MessagingService />;
+      case 'overview':
+        return <Overview />;
+      case 'typography':
+        return <Typography theme={theme} />
+      case 'components':
+        return <Components />;
+      case 'forms':
+        return <Forms />;
+        case 'dashboard':
+          return <Dashboard />;
       default:
-        return <ComponentShowcase />;
+        return <Overview />;
     }
   };
 
@@ -42,7 +49,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayConten
 
   return (
     <MantineProvider
-      theme={{ ...theme as any }}
+      theme={{ ...(theme as any) }}
       forceColorScheme={mode}
       getRootElement={() =>
         document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined
@@ -50,11 +57,11 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayConten
       cssVariablesSelector={`#display-panel-${mode}-${number}`}
     >
       <Box
-        h={'100%'}
-        p={'xl'}
+        h="100%"
+        p="xl"
         id={`display-panel-${mode}-${number}`}
         className={`scheme-override-${mode} ${classes.displayPanel}`}
-        bg={'var(--mantine-color-body)'}
+        bg="var(--mantine-color-body)"
       >
         <MemoizedContent />
       </Box>
