@@ -69,7 +69,7 @@ const App: React.FC = () => {
                 {/* Custom Tab System */}
                 <div className="tab-container">
                   {/* Tab Header */}
-                  <Group className="tab-header" justify="space-between">
+                  <Group className="tab-header" justify="space-between" align="center">
                     <Tabs value={currentContent} onChange={setCurrentContent} variant="outline">
                       <Tabs.List className="tab-header-list">
                         <Tabs.Tab value="overview" leftSection={<IconPalette size={16} />}>

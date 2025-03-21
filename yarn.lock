@@ -901,6 +901,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/colors-generator@npm:^7.17.2":
+  version: 7.17.2
+  resolution: "@mantine/colors-generator@npm:7.17.2"
+  peerDependencies:
+    chroma-js: ">=2.4.2"
+  checksum: 10c0/f63f7e316761906bad2dae4b56e3531fb56955071e61f1354c886886995e2d9f25876218d4b1efd1a6be011cc36104c6c79dbdf7bd3dd7ee3ae8406f9936487b
+  languageName: node
+  linkType: hard
+
 "@mantine/core@npm:^7.17.0":
   version: 7.17.2
   resolution: "@mantine/core@npm:7.17.2"
@@ -2901,10 +2910,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chroma-js@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "chroma-js@npm:3.1.1"
-  checksum: 10c0/fb5e3cd958a954b8cd44017f70aff42ae37bc561cdcea0ebeeb6d2df5989e7402e02c674274af2eefd1478ee172e05ce51ac353e3cbe1db139f599b338523339
+"chroma-js@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "chroma-js@npm:3.1.2"
+  checksum: 10c0/145ce9aea91dac81c6158082675084778e8c83e6959032e37fd4ba9b01db9f5c29c520453ec4bab7e87689f12756fcc63821e3c6b866e083ea41d341c7b2bf71
   languageName: node
   linkType: hard
 
@@ -5699,6 +5708,7 @@ __metadata:
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.3.1"
     "@mantine/charts": "npm:^7.17.0"
     "@mantine/code-highlight": "npm:^7.17.0"
+    "@mantine/colors-generator": "npm:^7.17.2"
     "@mantine/core": "npm:^7.17.0"
     "@mantine/dates": "npm:^7.17.0"
     "@mantine/hooks": "npm:^7.17.0"
@@ -5720,7 +5730,7 @@ __metadata:
     "@types/react": "npm:^18.3.5"
     "@types/react-dom": "npm:^18.3.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
-    chroma-js: "npm:^3.1.1"
+    chroma-js: "npm:^3.1.2"
     dayjs: "npm:^1.11.13"
     eslint: "npm:^9.10.0"
     eslint-config-mantine: "npm:^4.0.3"

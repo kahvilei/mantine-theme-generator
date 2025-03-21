@@ -1,6 +1,6 @@
 import {
     Button,
-    Card,
+    Card, Center,
     Grid,
     Group, List,
     Paper,
@@ -132,7 +132,7 @@ export const Dashboard: React.FC = () => {
                                 <Title order={3}>Recent Activities</Title>
                                 <Button variant="light" leftSection={<IconPlus size={14} />}>Add New</Button>
                             </Group>
-                            <ScrollArea h={300}>
+                            <ScrollArea h={650}>
                                 <Stack>
                                     {[
                                         { text: 'John updated the project status to "Completed"', time: '2 minutes ago', icon: IconCheck, color: 'green' },
@@ -166,6 +166,7 @@ export const Dashboard: React.FC = () => {
                         <Card p="lg">
                             <Stack gap="md">
                                 <Title order={3}>Device Usage</Title>
+                                <Center>
                                 <DonutChart
                                     data={[
                                         { name: 'Desktop', value: 45, color: 'blue' },
@@ -176,7 +177,7 @@ export const Dashboard: React.FC = () => {
                                     thickness={20}
                                     withLabels
                                     withTooltip
-                                />
+                                /></Center>
                                 <List spacing="xs" size="sm" center>
                                     <List.Item icon={
                                         <ThemeIcon color="blue" size={20} radius="xl">

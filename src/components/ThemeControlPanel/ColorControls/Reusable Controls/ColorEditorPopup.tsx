@@ -20,7 +20,7 @@ import {
   updateColorShade, 
   deleteColor 
 } from '@/data/ThemeState/themeSlice';
-import generateColors from '../../../../utils/generateColors';
+import generateColors from '@/utils/generateColors';
 import type { ColorTuple } from '@/data/types';
 import { RootState } from '@/main';
 

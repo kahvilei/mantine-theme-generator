@@ -73,7 +73,11 @@
 }
 
 .tab-header {
-    padding: .5rem 1rem 0;
+    padding: 0 .5rem ;
+}
+
+.tab-header-list {
+    padding: .5rem 0 0;
 }
 
 
