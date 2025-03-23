@@ -129,7 +129,6 @@ const App: React.FC = () => {
 
                   {/* Tab Content */}
                   <ScrollArea
-                    scrollbarSize={6}
                     scrollbars="y"
                     type="hover"
                     className="tab-content-scroll"

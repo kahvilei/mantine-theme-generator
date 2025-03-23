@@ -1,34 +1,26 @@
-.tabPanel{
+
+.contentArea{
+    height: calc(var(--editor-height) - 5rem);
+    padding: 1rem 2rem;
     width: 100%;
     box-sizing: border-box;
-    padding: 0;
-    height: var(--editor-height);
+    position: relative;
 }
 
-.tabPanel>div{
-    max-width: 100%;
-    padding: 4rem 2rem;
-}
-
-.tabList{
+.header{
     box-sizing: border-box;
     overflow: hidden;
-    position: absolute;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: space-between;
     width: 100%;
-    padding: .5rem;
     z-index: 6;
+    padding: .5rem;
     background: var(--mantine-color-dark-9);
 }
 
 .tabList button[data-active][data-active] div{
    color: white;
-}
-
-.tabList>div>button{
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-xs);
 }
 
 
@@ -38,16 +30,6 @@
 
 #control-panel{
     max-width: 100%;
-    padding-top: var(--mantine-spacing-lg);
     position: relative;
-}
-
-.bottomPanel{
-    width: 100%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--mantine-spacing-sm);
-    bottom: 0;
+    background: var(--mantine-color-dark-9);
 }

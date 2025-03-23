@@ -23,7 +23,6 @@ export const DownloadThemeButton = () => {
   return (
       <Tooltip label={`Download theme as ${language}`}>
     <ActionIcon
-      variant='outline'
       onClick={() => downloadTheme(language)}
     >
       {language === "json" ? <IconDownload size={18} /> : <IconDownload size={18} />}
@@ -48,7 +47,6 @@ export const UploadThemeButton = () => {
   return (
        <Tooltip label={`Upload theme`}>
     <ActionIcon
-      variant='outline'
       onClick={() => {
         const input = document.createElement('input');
         input.type = 'file';

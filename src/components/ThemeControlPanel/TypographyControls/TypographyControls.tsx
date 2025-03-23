@@ -163,7 +163,7 @@ const TypographyControl = () => {
         <Stack>
 
             <Group mb="xs">
-                <Text fw={500}>Typography Settings</Text>
+                <Text>Typography Settings</Text>
             </Group>
 
             <Autocomplete

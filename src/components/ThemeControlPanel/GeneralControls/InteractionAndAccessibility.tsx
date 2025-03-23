@@ -16,9 +16,8 @@ import {
   setRespectReducedMotion,
   setCursorType,
 } from '@/data/ThemeState/themeSlice';
-import RadiusControls from './RadiusControls';
 
-const GeneralControls = () => {
+const InteractionAndAccessibilityControls = () => {
   const dispatch = useDispatch();
 
   const focusRing = useSelector(selectFocusRing);
@@ -38,9 +37,7 @@ const GeneralControls = () => {
   };
 
   return (
-    <Stack gap={'xl'}>
-      <RadiusControls />
-        <Stack>
+    <Stack>
       <Title order={4}>Interaction and Accessibility</Title>
       <Text size="sm">Focus Ring</Text>
       <SegmentedControl
@@ -67,9 +64,9 @@ const GeneralControls = () => {
         ]}
         value={cursorType}
         onChange={(value) => handleCursorTypeChange(value as 'default' | 'pointer')}
-      /></Stack>
+      />
     </Stack>
   );
 };
 
-export default GeneralControls;
+export default InteractionAndAccessibilityControls;

@@ -69,7 +69,7 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl" radius="md" color="primary">
+                            <ThemeIcon size="xl" color="primary">
                                 <IconUser size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
@@ -83,7 +83,7 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl" radius="md" color="green">
+                            <ThemeIcon size="xl" color="green">
                                 <IconChartBar size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
@@ -97,7 +97,7 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl" radius="md" color="violet">
+                            <ThemeIcon size="xl" color="violet">
                                 <IconDeviceDesktop size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
@@ -111,7 +111,7 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl" radius="md" color="red">
+                            <ThemeIcon size="xl" color="red">
                                 <IconBrandSlack size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
@@ -127,7 +127,7 @@ export const Dashboard: React.FC = () => {
             <Grid>
                 <Grid.Col span={8}>
                     <Card p="lg">
-                        <Stack gap="md">
+                        <Stack>
                             <Group justify="space-between">
                                 <Title order={3}>Recent Activities</Title>
                                 <Button variant="light" leftSection={<IconPlus size={14} />}>Add New</Button>

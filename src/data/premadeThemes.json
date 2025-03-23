@@ -1,6 +1,535 @@
 {
-  "Mantine": {},
-  "Forest": {
+  "Mantine": {
+    "colors": {
+      "dark": [
+        "#C9C9C9",
+        "#b8b8b8",
+        "#828282",
+        "#696969",
+        "#424242",
+        "#3b3b3b",
+        "#2e2e2e",
+        "#242424",
+        "#1f1f1f",
+        "#141414"
+      ],
+      "gray": [
+        "#f8f9fa",
+        "#f1f3f5",
+        "#e9ecef",
+        "#dee2e6",
+        "#ced4da",
+        "#adb5bd",
+        "#868e96",
+        "#495057",
+        "#343a40",
+        "#212529"
+      ],
+      "red": [
+        "#fff5f5",
+        "#ffe3e3",
+        "#ffc9c9",
+        "#ffa8a8",
+        "#ff8787",
+        "#ff6b6b",
+        "#fa5252",
+        "#f03e3e",
+        "#e03131",
+        "#c92a2a"
+      ],
+      "pink": [
+        "#fff0f6",
+        "#ffdeeb",
+        "#fcc2d7",
+        "#faa2c1",
+        "#f783ac",
+        "#f06595",
+        "#e64980",
+        "#d6336c",
+        "#c2255c",
+        "#a61e4d"
+      ],
+      "grape": [
+        "#f8f0fc",
+        "#f3d9fa",
+        "#eebefa",
+        "#e599f7",
+        "#da77f2",
+        "#cc5de8",
+        "#be4bdb",
+        "#ae3ec9",
+        "#9c36b5",
+        "#862e9c"
+      ],
+      "violet": [
+        "#f3f0ff",
+        "#e5dbff",
+        "#d0bfff",
+        "#b197fc",
+        "#9775fa",
+        "#845ef7",
+        "#7950f2",
+        "#7048e8",
+        "#6741d9",
+        "#5f3dc4"
+      ],
+      "indigo": [
+        "#edf2ff",
+        "#dbe4ff",
+        "#bac8ff",
+        "#91a7ff",
+        "#748ffc",
+        "#5c7cfa",
+        "#4c6ef5",
+        "#4263eb",
+        "#3b5bdb",
+        "#364fc7"
+      ],
+      "blue": [
+        "#e7f5ff",
+        "#d0ebff",
+        "#a5d8ff",
+        "#74c0fc",
+        "#4dabf7",
+        "#339af0",
+        "#228be6",
+        "#1c7ed6",
+        "#1971c2",
+        "#1864ab"
+      ],
+      "cyan": [
+        "#e3fafc",
+        "#c5f6fa",
+        "#99e9f2",
+        "#66d9e8",
+        "#3bc9db",
+        "#22b8cf",
+        "#15aabf",
+        "#1098ad",
+        "#0c8599",
+        "#0b7285"
+      ],
+      "teal": [
+        "#e6fcf5",
+        "#c3fae8",
+        "#96f2d7",
+        "#63e6be",
+        "#38d9a9",
+        "#20c997",
+        "#12b886",
+        "#0ca678",
+        "#099268",
+        "#087f5b"
+      ],
+      "green": [
+        "#ebfbee",
+        "#d3f9d8",
+        "#b2f2bb",
+        "#8ce99a",
+        "#69db7c",
+        "#51cf66",
+        "#40c057",
+        "#37b24d",
+        "#2f9e44",
+        "#2b8a3e"
+      ],
+      "lime": [
+        "#f4fce3",
+        "#e9fac8",
+        "#d8f5a2",
+        "#c0eb75",
+        "#a9e34b",
+        "#94d82d",
+        "#82c91e",
+        "#74b816",
+        "#66a80f",
+        "#5c940d"
+      ],
+      "yellow": [
+        "#fff9db",
+        "#fff3bf",
+        "#ffec99",
+        "#ffe066",
+        "#ffd43b",
+        "#fcc419",
+        "#fab005",
+        "#f59f00",
+        "#f08c00",
+        "#e67700"
+      ],
+      "orange": [
+        "#fff4e6",
+        "#ffe8cc",
+        "#ffd8a8",
+        "#ffc078",
+        "#ffa94d",
+        "#ff922b",
+        "#fd7e14",
+        "#f76707",
+        "#e8590c",
+        "#d9480f"
+      ]
+    },
+    "primaryColor": "blue",
+    "primaryShade": {
+      "light": 6,
+      "dark": 8
+    },
+    "isThemeDependentPrimaryShade": false,
+    "white": "#fff",
+    "black": "#000",
+    "defaultGradient": {
+      "from": "blue",
+      "to": "cyan",
+      "deg": 45
+    },
+    "scale": 1,
+    "radius": {
+      "xs": "calc(0.125rem * var(--mantine-scale))",
+      "sm": "calc(0.25rem * var(--mantine-scale))",
+      "md": "calc(0.5rem * var(--mantine-scale))",
+      "lg": "calc(1rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
+    },
+    "spacing": {
+      "xs": "calc(0.625rem * var(--mantine-scale))",
+      "sm": "calc(0.75rem * var(--mantine-scale))",
+      "md": "calc(1rem * var(--mantine-scale))",
+      "lg": "calc(1.25rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
+    },
+    "defaultRadius": "md",
+    "fontFamily": "Roboto",
+    "fontFamilyMonospace": "Menlo",
+    "headings": {
+      "fontFamily": "Roboto",
+      "fontWeight": "700",
+      "sizes": {
+        "h1": {
+          "fontSize": "calc(2.125rem * var(--mantine-scale))",
+          "lineHeight": "1.3",
+          "fontWeight": "700"
+        },
+        "h2": {
+          "fontSize": "calc(1.625rem * var(--mantine-scale))",
+          "lineHeight": "1.35",
+          "fontWeight": "700"
+        },
+        "h3": {
+          "fontSize": "calc(1.375rem * var(--mantine-scale))",
+          "lineHeight": "1.4",
+          "fontWeight": "700"
+        },
+        "h4": {
+          "fontSize": "calc(1.125rem * var(--mantine-scale))",
+          "lineHeight": "1.45",
+          "fontWeight": "700"
+        },
+        "h5": {
+          "fontSize": "calc(1rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "700"
+        },
+        "h6": {
+          "fontSize": "calc(0.875rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "700"
+        }
+      }
+    },
+    "focusRing": "auto",
+    "cursorType": "default",
+    "fontSmoothing": true,
+    "respectReducedMotion": false,
+    "autoContrast": false,
+    "luminanceThreshold": 0.3,
+    "breakpoints": {
+      "xs": "36em",
+      "sm": "48em",
+      "md": "62em",
+      "lg": "75em",
+      "xl": "88em"
+    },
+    "components": {}
+  },
+
+  "Murkrow": {
+    "scale": 1,
+    "fontSmoothing": true,
+    "focusRing": "auto",
+    "white": "#ffffff",
+    "black": "#24292f",
+    "colors": {
+      "dark": [
+        "#fff",
+        "#7b92c7",
+        "#4765aa",
+        "#2f4371",
+        "#27375c",
+        "#1c2a4a",
+        "#151e33",
+        "#0e1626",
+        "#0a101d",
+        "#060b15"
+      ],
+      "gray": [
+        "#e3e7f1",
+        "#d8ddeb",
+        "#ced4e5",
+        "#c3cadf",
+        "#b8c1d9",
+        "#b8c1d9",
+        "#7b8cb8",
+        "#4b5c8b",
+        "#2a334d",
+        "#090b10"
+      ],
+      "blue": [
+        "#d1deeb",
+        "#aecce7",
+        "#8bb9e2",
+        "#68a6de",
+        "#4393d9",
+        "#4393d9",
+        "#1473bb",
+        "#005187",
+        "#003052",
+        "#000e1c"
+      ],
+      "green": [
+        "#dafbe1",
+        "#aceebb",
+        "#6fdd8b",
+        "#4ac26b",
+        "#2da44e",
+        "#1a7f37",
+        "#116329",
+        "#044f1e",
+        "#003d16",
+        "#002d11"
+      ],
+      "yellow": [
+        "#f7f1e5",
+        "#faeacd",
+        "#fce3b5",
+        "#fddd9d",
+        "#fed687",
+        "#ffd685",
+        "#ffb82d",
+        "#ce8906",
+        "#744d03",
+        "#191102"
+      ],
+      "orange": [
+        "#fff1e5",
+        "#ffd8b5",
+        "#ffb77c",
+        "#fb8f44",
+        "#e16f24",
+        "#bc4c00",
+        "#953800",
+        "#762c00",
+        "#5c2200",
+        "#471700"
+      ]
+    },
+    "primaryShade": {
+      "light": 6,
+      "dark": 5
+    },
+    "primaryColor": "yellow",
+    "autoContrast": true,
+    "luminanceThreshold": 0.3,
+    "fontFamily": "Rubik",
+    "fontFamilyMonospace": "Roboto Mono",
+    "headings": {
+      "fontFamily": "Rubik",
+      "fontWeight": "600",
+      "sizes": {
+        "h1": {
+          "fontSize": "calc(2.125rem * var(--mantine-scale))",
+          "lineHeight": "1.3",
+          "fontWeight": "300"
+        },
+        "h2": {
+          "fontSize": "calc(1.625rem * var(--mantine-scale))",
+          "lineHeight": "1.35",
+          "fontWeight": "300"
+        },
+        "h3": {
+          "fontSize": "calc(1.375rem * var(--mantine-scale))",
+          "lineHeight": "1.4",
+          "fontWeight": "300"
+        },
+        "h4": {
+          "fontSize": "calc(1.125rem * var(--mantine-scale))",
+          "lineHeight": "1.45",
+          "fontWeight": "500"
+        },
+        "h5": {
+          "fontSize": "calc(1rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        },
+        "h6": {
+          "fontSize": "calc(0.875rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        }
+      }
+    },
+    "defaultRadius": "md",
+    "defaultGradient": {
+      "from": "blue",
+      "to": "gray",
+      "deg": 45
+    }
+  },
+
+  "Goomy": {
+    "scale": 1,
+    "fontSmoothing": true,
+    "focusRing": "auto",
+    "white": "#ffffff",
+    "black": "#2e085c",
+    "colors": {
+      "dark": [
+        "#ffffff",
+        "#beb3d1",
+        "#a495be",
+        "#8a78aa",
+        "#715d94",
+        "#715d94",
+        "#584872",
+        "#3e3451",
+        "#251f2f",
+        "#0b0a0d"
+      ],
+      "gray": [
+        "#f0e7f3",
+        "#ecdff0",
+        "#e8d8ed",
+        "#e4d1eb",
+        "#e0cae8",
+        "#e0cae8",
+        "#b783ca",
+        "#8845a1",
+        "#4c265a",
+        "#100713"
+      ],
+      "green": [
+        "#c3eac9",
+        "#95dea0",
+        "#91db88",
+        "#80cc78",
+        "#78b86c",
+        "#77c46e",
+        "#3d914c",
+        "#31783e",
+        "#1d662c",
+        "#124d1a"
+      ],
+      "red": [
+        "#fff5f5",
+        "#ffe3e3",
+        "#ffc9c9",
+        "#ffa8a8",
+        "#eb6363",
+        "#f24e4e",
+        "#f75959",
+        "#f55858",
+        "#fc6868",
+        "#c92a2a"
+      ],
+      "blue": [
+        "#dae4ed",
+        "#c1d7ea",
+        "#a8cae7",
+        "#8fbce3",
+        "#75afe0",
+        "#75afe0",
+        "#288ad6",
+        "#0b619b",
+        "#00385c",
+        "#000f1c"
+      ]
+    },
+    "primaryShade": {
+      "light": 5,
+      "dark": 5
+    },
+    "primaryColor": "green",
+    "autoContrast": true,
+    "luminanceThreshold": 0.3,
+    "fontFamily": "Nunito",
+    "fontFamilyMonospace": "Roboto Mono",
+    "headings": {
+      "fontFamily": "Nunito",
+      "fontWeight": "600",
+      "sizes": {
+        "h1": {
+          "fontSize": "calc(2.125rem * var(--mantine-scale))",
+          "lineHeight": "1.3",
+          "fontWeight": "600"
+        },
+        "h2": {
+          "fontSize": "calc(1.625rem * var(--mantine-scale))",
+          "lineHeight": "1.35",
+          "fontWeight": "600"
+        },
+        "h3": {
+          "fontSize": "calc(1.375rem * var(--mantine-scale))",
+          "lineHeight": "1.4",
+          "fontWeight": "600"
+        },
+        "h4": {
+          "fontSize": "calc(1.125rem * var(--mantine-scale))",
+          "lineHeight": "1.45",
+          "fontWeight": "600"
+        },
+        "h5": {
+          "fontSize": "calc(1rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "600"
+        },
+        "h6": {
+          "fontSize": "calc(0.875rem * var(--mantine-scale))",
+          "lineHeight": "1.5",
+          "fontWeight": "600"
+        }
+      }
+    },
+    "defaultRadius": "xl",
+    "defaultGradient": {
+      "from": "green",
+      "to": "lime",
+      "deg": 45
+    },
+    "isThemeDependentPrimaryShade": true,
+    "spacing": {
+      "xs": "calc(0.625rem * var(--mantine-scale))",
+      "sm": "calc(0.75rem * var(--mantine-scale))",
+      "md": "calc(1rem * var(--mantine-scale))",
+      "lg": "calc(1.25rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
+    },
+    "breakpoints": {
+      "xs": "36em",
+      "sm": "48em",
+      "md": "62em",
+      "lg": "75em",
+      "xl": "88em"
+    },
+    "radius": {
+      "xs": "calc(0.125rem * var(--mantine-scale))",
+      "sm": "calc(0.25rem * var(--mantine-scale))",
+      "md": "calc(0.5rem * var(--mantine-scale))",
+      "lg": "calc(1rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
+    }
+  },
+
+  "Vivillan": {
     "scale": 1,
     "fontSmoothing": true,
     "focusRing": "auto",
@@ -302,7 +831,7 @@
     }
   },
 
-  "Ocean": {
+  "Popplio": {
     "scale": 1,
     "fontSmoothing": true,
     "focusRing": "auto",
@@ -494,11 +1023,11 @@
       "light": 5,
       "dark": 5
     },
-    "primaryColor": "azure",
+    "primaryColor": "coral",
     "autoContrast": true,
     "luminanceThreshold": 0.3,
     "fontFamily": "Montserrat",
-    "fontFamilyMonospace": "Inconsolata",
+    "fontFamilyMonospace": "Lucida Console",
     "headings": {
       "fontFamily": "Montserrat",
       "fontWeight": "600",
@@ -595,13 +1124,19 @@
       },
       "Blockquote": {
         "defaultProps": {
-          "color": "coral"
+          "color": "azure"
         },
         "styles": {}
       },
       "ActionIcon": {
         "defaultProps": {
-          "color": "coral"
+          "color": "azure"
+        },
+        "styles": {}
+      },
+      "Highlight": {
+        "defaultProps": {
+          "highlight": ""
         },
         "styles": {}
       }
@@ -628,383 +1163,174 @@
     "isThemeDependentPrimaryShade": true
   },
 
-  "Sahara": {
+  "Altaria": {
     "scale": 1,
     "fontSmoothing": true,
     "focusRing": "auto",
     "white": "#ffffff",
-    "black": "#2C1D10",
+    "black": "#1A2B47",
     "colors": {
       "dark": [
-        "#F6F2ED",
-        "#EBE5DB",
-        "#DFD6C7",
-        "#C3B6A0",
-        "#A79678",
-        "#7F6E53",
-        "#5F5233",
-        "#443A25",
-        "#2C1D10",
-        "#1E1408"
+        "#f6faff",
+        "#d8e6fa",
+        "#bbd2f5",
+        "#9cbef0",
+        "#6692d1",
+        "#3b71bf",
+        "#2c5494",
+        "#23447a",
+        "#0f294f",
+        "#02080f"
       ],
       "gray": [
-        "#FAF8F5",
-        "#F5F2ED",
-        "#EBE6DE",
-        "#DFD8CC",
-        "#C3B9A6",
-        "#A79A7F",
-        "#897D65",
-        "#6C614B",
-        "#504833",
-        "#2C1D10"
+        "#f0f8ff",
+        "#e6f0fa",
+        "#dce9f6",
+        "#d2e2f2",
+        "#c8daed",
+        "#c8daed",
+        "#9bb3d4",
+        "#6e8cbB",
+        "#3d5173",
+        "#0d182a"
       ],
-      "sand": [
-        "#FFF9EC",
-        "#FFF3D9",
-        "#FFEEC7",
-        "#FFE8B4",
-        "#FFE2A1",
-        "#D4A149",
-        "#AA803A",
-        "#805F2C",
-        "#553F1E",
-        "#2B200F"
+      "blue": [
+        "#d2e3f3",
+        "#b3d0ed",
+        "#95bee6",
+        "#76abe0",
+        "#5799da",
+        "#5799da",
+        "#2f75c2",
+        "#1a559a",
+        "#0b3666",
+        "#001732"
       ],
-      "terra": [
-        "#FFF5EC",
-        "#FFE9D9",
-        "#FFDEC7",
-        "#FFD2B4",
-        "#FFC7A1",
-        "#B35D34",
-        "#8E4A2A",
-        "#6A3820",
-        "#452515",
-        "#21130B"
+      "azure": [
+        "#d9eefa",
+        "#b9e0f7",
+        "#9ad2f4",
+        "#7ac4f1",
+        "#5bb6ed",
+        "#5bb6ed",
+        "#2494de",
+        "#0a73b6",
+        "#004a76",
+        "#001d30"
       ],
-      "rust": [
-        "#FFF0EC",
-        "#FFDFD9",
-        "#FFCFC7",
-        "#FFBEB4",
-        "#FFAEA1",
-        "#BF4C30",
-        "#993D27",
-        "#732E1D",
-        "#4C1F14",
-        "#260F0A"
+      "gold": [
+        "#fdf3d9",
+        "#fcecba",
+        "#fbe49c",
+        "#fadd7d",
+        "#f9d65e",
+        "#f9d65e",
+        "#f4c319",
+        "#ca9c04",
+        "#745a00",
+        "#221a00"
       ],
-      "olive": [
-        "#F8FAED",
-        "#F0F5DB",
-        "#E9F0C9",
-        "#E2EBB7",
-        "#DAE6A5",
-        "#757B3F",
-        "#5D6332",
-        "#464B26",
-        "#2E3219",
-        "#171A0C"
+      "cream": [
+        "#fff9ed",
+        "#fff4e0",
+        "#ffefd4",
+        "#ffe9c7",
+        "#ffe4ba",
+        "#ffe4ba",
+        "#ffce88",
+        "#ffb856",
+        "#b97b24",
+        "#2e1e09"
+      ],
+      "white": [
+        "#f7fafc",
+        "#eef2f7",
+        "#e5ebf1",
+        "#dce3ec",
+        "#d3dce6",
+        "#d3dce6",
+        "#b0bdcf",
+        "#8d9eb8",
+        "#57657d",
+        "#1e2534"
       ]
     },
     "primaryShade": {
       "light": 5,
-      "dark": 5
+      "dark": 6
     },
-    "primaryColor": "sand",
+    "primaryColor": "azure",
     "autoContrast": true,
     "luminanceThreshold": 0.3,
-    "fontFamily": "Roboto, sans-serif",
-    "fontFamilyMonospace": "Roboto Mono, monospace",
+    "fontFamily": "Quicksand",
+    "fontFamilyMonospace": "Fira Code",
     "headings": {
-      "fontFamily": "Playfair Display, serif",
-      "fontWeight": "700",
+      "fontFamily": "Quicksand",
+      "fontWeight": "500",
       "sizes": {
         "h1": {
-          "fontSize": "calc(2.5rem * var(--mantine-scale))",
-          "fontWeight": "700",
-          "lineHeight": "1.2"
-        },
-        "h2": {
-          "fontSize": "calc(2rem * var(--mantine-scale))",
+          "fontSize": "calc(2.25rem * var(--mantine-scale))",
           "fontWeight": "700",
           "lineHeight": "1.3"
         },
-        "h3": {
-          "fontSize": "calc(1.5rem * var(--mantine-scale))",
-          "fontWeight": "700",
-          "lineHeight": "1.4"
-        },
-        "h4": {
-          "fontSize": "calc(1.25rem * var(--mantine-scale))",
-          "fontWeight": "600",
-          "lineHeight": "1.5"
-        },
-        "h5": {
-          "fontSize": "calc(1.125rem * var(--mantine-scale))",
-          "fontWeight": "600",
-          "lineHeight": "1.5"
-        },
-        "h6": {
-          "fontSize": "calc(1rem * var(--mantine-scale))",
-          "fontWeight": "600",
-          "lineHeight": "1.5"
-        }
-      }
-    },
-    "defaultRadius": "sm",
-    "components": {
-      "Button": {
-        "defaultProps": {
-          "variant": "filled",
-          "radius": "sm",
-          "size": "md"
-        },
-        "styles": {
-          "root": {
-            "fontWeight": "500",
-            "textTransform": "uppercase",
-            "letterSpacing": "0.05em"
-          }
-        }
-      },
-      "Card": {
-        "defaultProps": {
-          "withBorder": true,
-          "radius": "sm",
-          "shadow": "sm",
-          "padding": "lg"
-        }
-      },
-      "Badge": {
-        "defaultProps": {
-          "radius": "sm",
-          "variant": "outline",
-          "size": "md"
-        },
-        "styles": {
-          "root": {
-            "textTransform": "uppercase",
-            "fontWeight": "500",
-            "letterSpacing": "0.05em"
-          }
-        }
-      },
-      "Paper": {
-        "defaultProps": {
-          "radius": "sm",
-          "withBorder": true,
-          "shadow": "xs"
-        }
-      },
-      "Divider": {
-        "defaultProps": {
-          "size": "xs",
-          "color": "gray.3"
-        }
-      }
-    },
-    "spacing": {
-      "xs": "calc(0.5rem * var(--mantine-scale))",
-      "sm": "calc(0.75rem * var(--mantine-scale))",
-      "md": "calc(1.25rem * var(--mantine-scale))",
-      "lg": "calc(2rem * var(--mantine-scale))",
-      "xl": "calc(3.5rem * var(--mantine-scale))"
-    },
-    "radius": {
-      "xs": "calc(0.125rem * var(--mantine-scale))",
-      "sm": "calc(0.25rem * var(--mantine-scale))",
-      "md": "calc(0.5rem * var(--mantine-scale))",
-      "lg": "calc(0.75rem * var(--mantine-scale))",
-      "xl": "calc(1rem * var(--mantine-scale))"
-    }
-  },
-
-  "Tundra": {
-    "scale": 1,
-    "fontSmoothing": true,
-    "focusRing": "auto",
-    "white": "#ffffff",
-    "black": "#244b69",
-    "colors": {
-      "dark": [
-        "#d6f8ff",
-        "#879fbc",
-        "#57769b",
-        "#3a4e67",
-        "#1d2733",
-        "#1d2733",
-        "#18212b",
-        "#0a111a",
-        "#060b12",
-        "#000000"
-      ],
-      "gray": [
-        "#f2fcff",
-        "#d5e1e5",
-        "#cad7dc",
-        "#c0ced2",
-        "#b5c4c9",
-        "#b5c4c9",
-        "#849aa2",
-        "#5a6d74",
-        "#343d40",
-        "#0d0d0d"
-      ],
-      "slate": [
-        "#c3d3dc",
-        "#9ab3bf",
-        "#7192a2",
-        "#526e7c",
-        "#374952",
-        "#374952",
-        "#2d3a40",
-        "#232b2f",
-        "#181c1e",
-        "#0d0d0d"
-      ],
-      "lavender": [
-        "#d8d1e8",
-        "#bfb4db",
-        "#a797ce",
-        "#8e7ac0",
-        "#765db3",
-        "#765db3",
-        "#594390",
-        "#3f2f66",
-        "#251c3c",
-        "#0b0812"
-      ],
-      "lichen": [
-        "#d1e6e1",
-        "#b4d6ce",
-        "#97c6ba",
-        "#7bb6a7",
-        "#5ea694",
-        "#5ea694",
-        "#488273",
-        "#345c52",
-        "#1f3630",
-        "#0b100f"
-      ],
-      "green": [
-        "#caeacf",
-        "#a5deae",
-        "#7fd18c",
-        "#59c46a",
-        "#3dad4f",
-        "#3dad4f",
-        "#2d873c",
-        "#1e602a",
-        "#103a18",
-        "#021405"
-      ],
-      "red": [
-        "#eddfdd",
-        "#eccfcc",
-        "#ebbeba",
-        "#eaaea9",
-        "#e89e97",
-        "#e89e97",
-        "#db574c",
-        "#ab2c22",
-        "#621611",
-        "#1d0200"
-      ],
-      "blue": [
-        "#c7d9e9",
-        "#9ac1e3",
-        "#6ea9dd",
-        "#4191d7",
-        "#2477bd",
-        "#2477bd",
-        "#095d97",
-        "#00436f",
-        "#002846",
-        "#000e1c"
-      ]
-    },
-    "primaryShade": {
-      "light": 6,
-      "dark": 6
-    },
-    "primaryColor": "lichen",
-    "autoContrast": true,
-    "luminanceThreshold": 0.39,
-    "fontFamily": "Inter",
-    "fontFamilyMonospace": "Fira Code",
-    "headings": {
-      "fontFamily": "Inter",
-      "fontWeight": "600",
-      "sizes": {
-        "h1": {
-          "fontSize": "calc(2rem * var(--mantine-scale))",
-          "fontWeight": "700",
-          "lineHeight": "1.3",
-          "letterSpacing": "-0.02em"
-        },
         "h2": {
-          "fontSize": "calc(1.5rem * var(--mantine-scale))",
+          "fontSize": "calc(1.8rem * var(--mantine-scale))",
           "fontWeight": "600",
-          "lineHeight": "1.35",
-          "letterSpacing": "-0.01em"
+          "lineHeight": "1.35"
         },
         "h3": {
-          "fontSize": "calc(1.25rem * var(--mantine-scale))",
-          "fontWeight": "600",
+          "fontSize": "calc(1.5rem * var(--mantine-scale))",
+          "fontWeight": "500",
           "lineHeight": "1.4"
         },
         "h4": {
-          "fontSize": "calc(1.125rem * var(--mantine-scale))",
-          "fontWeight": "600",
+          "fontSize": "calc(1.2rem * var(--mantine-scale))",
+          "fontWeight": "500",
           "lineHeight": "1.45"
         },
         "h5": {
           "fontSize": "calc(1rem * var(--mantine-scale))",
-          "fontWeight": "600",
+          "fontWeight": "500",
           "lineHeight": "1.5"
         },
         "h6": {
           "fontSize": "calc(0.875rem * var(--mantine-scale))",
-          "fontWeight": "600",
+          "fontWeight": "500",
           "lineHeight": "1.5"
         }
       }
     },
-    "defaultRadius": "md",
+    "defaultRadius": "xl",
     "components": {
       "Button": {
         "defaultProps": {
-          "variant": "outline",
-          "radius": "md",
-          "size": "sm"
+          "variant": "filled",
+          "radius": "xl",
+          "size": "md"
         },
         "styles": {
           "root": {
-            "fontWeight": "500"
+            "fontWeight": "500",
+            "boxShadow": "0 2px 8px rgba(0, 0, 0, 0.05)"
           }
         }
       },
       "Card": {
         "defaultProps": {
           "withBorder": false,
-          "radius": "md",
-          "shadow": "xs",
-          "padding": "lg",
-          "bd": "none"
+          "radius": "xl",
+          "padding": "xl"
         },
         "styles": {
           "root": {
-            "backdropFilter": "blur(6px)"
+            "boxShadow": "0 4px 12px rgba(0, 0, 0, 0.05)"
           }
         }
       },
       "Badge": {
         "defaultProps": {
-          "radius": "md",
-          "variant": "outline",
-          "size": "sm"
+          "radius": "xl",
+          "variant": "light"
         },
         "styles": {
           "root": {
@@ -1013,49 +1339,39 @@
           }
         }
       },
+      "Avatar": {
+        "defaultProps": {
+          "radius": "xl",
+          "color": "azure"
+        }
+      },
       "Input": {
         "defaultProps": {
-          "radius": "md",
-          "variant": "default"
+          "radius": "lg",
+          "variant": "filled"
         }
-      },
-      "ActionIcon": {
-        "defaultProps": {
-          "radius": "md",
-          "variant": "subtle"
-        }
-      },
-      "Paper": {
-        "defaultProps": {
-          "withBorder": true,
-          "radius": "md",
-          "bg": "var(--mantine-color-default)",
-          "bd": ".05rem solid var(--mantine-primary-color-filled)",
-          "shadow": "none"
-        },
-        "styles": {}
       }
     },
     "spacing": {
-      "xs": "calc(0.5rem * var(--mantine-scale))",
+      "xs": "calc(0.625rem * var(--mantine-scale))",
       "sm": "calc(0.75rem * var(--mantine-scale))",
       "md": "calc(1rem * var(--mantine-scale))",
-      "lg": "calc(1.5rem * var(--mantine-scale))",
-      "xl": "calc(2.5rem * var(--mantine-scale))"
+      "lg": "calc(1.25rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
     },
     "radius": {
-      "xs": "calc(0.125rem * var(--mantine-scale))",
-      "sm": "calc(0.25rem * var(--mantine-scale))",
-      "md": "calc(0.375rem * var(--mantine-scale))",
-      "lg": "calc(0.5rem * var(--mantine-scale))",
-      "xl": "calc(1rem * var(--mantine-scale))"
+      "xs": "calc(0.375rem * var(--mantine-scale))",
+      "sm": "calc(0.5rem * var(--mantine-scale))",
+      "md": "calc(0.75rem * var(--mantine-scale))",
+      "lg": "calc(1.25rem * var(--mantine-scale))",
+      "xl": "calc(2rem * var(--mantine-scale))"
     },
-    "respectReducedMotion": true,
-    "isThemeDependentPrimaryShade": true,
     "defaultGradient": {
-      "from": "lichen",
-      "to": "cyan",
+      "from": "azure",
+      "to": "blue",
       "deg": 45
-    }
+    },
+    "isThemeDependentPrimaryShade": true
   }
+
 }
