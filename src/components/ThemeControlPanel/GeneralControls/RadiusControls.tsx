@@ -1,5 +1,5 @@
 import {Stack, Text, SegmentedControl, Title, Box, Paper} from '@mantine/core';
-import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDefaultRadius,

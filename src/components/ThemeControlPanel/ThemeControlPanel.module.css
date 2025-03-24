@@ -16,7 +16,6 @@
     width: 100%;
     z-index: 6;
     padding: .5rem;
-    background: var(--mantine-color-dark-9);
 }
 
 .tabList button[data-active][data-active] div{

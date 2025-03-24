@@ -1,11 +1,9 @@
 import React from 'react';
-import { Group, Text, Select, ColorInput, Switch, NumberInput, TextInput, ActionIcon, Card, Autocomplete, STYlE_PROPS_DATA } from '@mantine/core';
+import { Group, Text, Select, ColorInput, Switch, NumberInput, TextInput, ActionIcon, Card, STYlE_PROPS_DATA } from '@mantine/core';
 import { IconPlus, IconTrash } from '@tabler/icons-react';
-import { COMMON_CSS_SELECTORS, COMMON_STYLE_PROPS } from './componentPropDefinitions';
-import { PropValue } from './componentPropDefinitions';
-import { getPropInputType, getMantineComponentProps, getAvailablePropsForComponent, ComponentProps, getAvailableStyleProps } from './componentPropDefinitions';
-import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
-import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+import { COMMON_CSS_SELECTORS, COMMON_STYLE_PROPS, getPropInputType, getMantineComponentProps, getAvailablePropsForComponent, ComponentProps, PropValue, getAvailableStyleProps } from './componentPropDefinitions';
+import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
+import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 
 
 
@@ -35,8 +33,7 @@ const ComponentPropertyEditor: React.FC<{
           />
         )}
         {inputType === 'color' && (
-          <GroupedColorSelector
-          mainColor={{name:propValue.toString()}}
+          <ThemeColorSelector
             onSelect={(val) => onChange(val)}
            />
         )}
@@ -183,7 +180,7 @@ const ComponentPropertyEditor: React.FC<{
     selector: string;
     currentStyles: Record<string, string>;
     onAdd: (property: string) => void;
-  }> = ({ selector, currentStyles, onAdd }) => {
+  }> = ({currentStyles, onAdd }) => {
     const availableProps = Object.keys(COMMON_STYLE_PROPS)
       .filter(prop => !(prop in currentStyles));
   

@@ -3,7 +3,7 @@ import { Box, Card, Group, ScrollArea, Stack, Tabs, Text, Title } from '@mantine
 import { RootState } from '@/data/store';
 import { selectHeadingFontFamily, selectHeadingLineHeight, selectHeadingSize, selectHeadingWeight } from '@/data/ThemeState/themeSelectors';
 import { setHeadingLineHeight, setHeadingSize, setHeadingWeight } from '@/data/ThemeState/themeSlice';
-import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
+import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
 
 
 const HeadingsSettings = () => {

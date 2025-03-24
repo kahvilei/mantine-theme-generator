@@ -1,31 +1,23 @@
-import { AngleSlider, Box, Group, Slider, Stack, Text, Title } from '@mantine/core';
-import { useSelector, useDispatch } from 'react-redux';
-import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
-import classes from './ColorControls.module.css';
-import { 
-  selectCustomColors, 
-  selectMantineColors,
+import { useDispatch, useSelector } from 'react-redux';
+import { AngleSlider, Group, Stack } from '@mantine/core';
+import { RootState } from '@/data/store';
+import {
+  selectGradientAngle,
   selectGradientFrom,
   selectGradientTo,
-  selectGradientAngle,
-  selectMainColorShade
+  selectMainColorShade,
 } from '@/data/ThemeState/themeSelectors';
-import { 
-  setGradientFrom, 
-  setGradientTo, 
-  setGradientAngle 
-} from '@/data/ThemeState/themeSlice';
-
-import { RootState } from '@/data/store';
-
+import { setGradientAngle, setGradientFrom, setGradientTo } from '@/data/ThemeState/themeSlice';
+import {IconAspectRatio} from "@tabler/icons-react";
+import React from "react";
+import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 
 const GradientControls = () => {
   const dispatch = useDispatch();
-  
+
   // Selectors
-  
-  const gradientStart = useSelector(selectGradientFrom) || 'blue';
-  const gradientEnd = useSelector(selectGradientTo) || 'cyan';
+    const gradientStart = useSelector(selectGradientFrom) || 'blue';
+    const gradientEnd = useSelector(selectGradientTo) || 'cyan';
   const gradientAngle = useSelector(selectGradientAngle) || 180;
   const startShade = useSelector((state: RootState) => selectMainColorShade(state, gradientStart));
   const endShade = useSelector((state: RootState) => selectMainColorShade(state, gradientEnd));
@@ -44,34 +36,34 @@ const GradientControls = () => {
   };
 
   return (
-      <Stack mt="md">
-        <Title order={4}>Gradient</Title>
-        <Group grow>
-          <GroupedColorSelector
-            mainColor={{ shade: startShade, name: gradientStart }}
+    <Stack gap="xs" >
+        <Group gap={5}>
+            <IconAspectRatio size={20} />
+            Gradient
+        </Group>
+      <Group
+        justify="center"
+        align="center"
+        style={{
+          width: '100%',
+          height: '150px',
+          background: `linear-gradient(${gradientAngle}deg, ${startShade}, ${endShade})`,
+          borderRadius: 'var(--mantine-radius-default)',
+        }}
+      >
+        <AngleSlider value={gradientAngle} onChange={handleGradientAngleChange} />
+      </Group>
+        <Group mt='-5rem' p="1rem" justify="space-between">
+        <ThemeColorSelector
+            mainColorSelector={selectGradientFrom}
             onSelect={handleGradientFromChange}
-          />
-          <GroupedColorSelector
-            mainColor={{ shade: endShade, name: gradientEnd }}
+        />
+        <ThemeColorSelector
+            mainColorSelector={selectGradientTo}
             onSelect={handleGradientToChange}
-          />
-        </Group>
-        <Group
-          justify="center"
-          align="center"
-          style={{
-            width: '100%',
-            height: '150px',
-            background: `linear-gradient(${gradientAngle}deg, ${startShade}, ${endShade})`,
-            borderRadius: '15px',
-          }}
-        >
-            <AngleSlider
-              value={gradientAngle}
-              onChange={handleGradientAngleChange}
-            />
-        </Group>
-      </Stack>
+        />
+    </Group>
+    </Stack>
   );
 };
 

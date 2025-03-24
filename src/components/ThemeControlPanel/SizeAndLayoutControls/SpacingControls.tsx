@@ -1,5 +1,4 @@
 import { Stack, Text, Title, Box } from '@mantine/core';
-import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSpacing,
@@ -8,6 +7,7 @@ import {
   setSpacing,
 } from '@/data/ThemeState/themeSlice';
 import { RootState } from '@/data/store';
+import NumberUnitSelector from "@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector";
 
 const SpacingControls = () => {
   const dispatch = useDispatch();

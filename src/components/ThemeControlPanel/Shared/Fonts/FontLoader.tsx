@@ -1,5 +1,5 @@
 // FontLoader.tsx
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 // Track which fonts we've already loaded to avoid duplicates
 const loadedFonts = new Set<string>();

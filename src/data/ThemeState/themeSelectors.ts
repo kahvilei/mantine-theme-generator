@@ -1,6 +1,5 @@
 import { RootState } from '../store';
-import { DEFAULT_THEME } from '@mantine/core';
-import { ColorTuple } from '../types';
+import {DEFAULT_THEME, MantineColorsTuple} from '@mantine/core';
 import { createSelector } from '@reduxjs/toolkit';
 
 const unframeValue = (value: string): string => {
@@ -37,10 +36,10 @@ const selectThemeColors = (state: RootState) => state.theme.theme.colors;
 export const selectCustomColors = createSelector(
   [selectThemeColors],
   (colors) => {
-    const customColors = new Map<string, ColorTuple>();
-    if (!colors) return customColors;
+    const customColors = new Map<string, MantineColorsTuple>();
+    if (!colors) {return customColors;}
 
-    for (let color in colors) {
+    for (const color in colors) {
       if (colors[color] && !DEFAULT_THEME.colors[color]) {
         customColors.set(color, colors[color]);
       }
@@ -53,13 +52,13 @@ export const selectCustomColors = createSelector(
 export const selectMantineColors = createSelector(
   [selectThemeColors],
   (colors) => {
-    const mantineColors = new Map<string, ColorTuple>();
+    const mantineColors = new Map<string, MantineColorsTuple>();
     
-    for (let color in DEFAULT_THEME.colors) {
+    for (const color in DEFAULT_THEME.colors) {
       if (colors?.[color]) {
         mantineColors.set(color, colors[color]);
       } else {
-        mantineColors.set(color, DEFAULT_THEME.colors[color] as ColorTuple);
+        mantineColors.set(color, DEFAULT_THEME.colors[color] as MantineColorsTuple);
       }
     }
     return mantineColors;
@@ -188,8 +187,7 @@ export const selectWhite = (state: RootState) =>
   export const selectPrimaryShade = (state: RootState, scheme?: 'light' | 'dark') => {
     const primaryShade = selectTheme(state).primaryShade;
     if (primaryShade && typeof primaryShade === 'object') {
-      scheme = scheme ?? 'light';
-      return primaryShade[scheme] ?? 5;
+      return primaryShade[scheme ?? 'light'] ?? 5;
     }
     return (primaryShade as number) ?? 5;
   };
@@ -204,7 +202,7 @@ export const selectWhite = (state: RootState) =>
     if (state.theme.theme.colors?.[key]) {
       return state.theme.theme.colors[key];
     }
-    return DEFAULT_THEME.colors[key] as ColorTuple;
+    return DEFAULT_THEME.colors[key] as MantineColorsTuple;
   };
 
   export const selectIsSchemeDependentPrimaryShade = (state: RootState) => {

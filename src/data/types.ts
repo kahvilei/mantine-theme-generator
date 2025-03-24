@@ -1,17 +1,7 @@
 // types.ts
-export type ColorTuple = [
-    string, // 0
-    string, // 1
-    string, // 2
-    string, // 3
-    string, // 4
-    string, // 5
-    string, // 6
-    string, // 7 
-    string, // 8
-    string  // 9
-  ];
   
+import {MantineColorsTuple} from "@mantine/core";
+
 export type HeadingSize = {
 fontSize?: string;
 lineHeight?: string;
@@ -21,7 +11,7 @@ fontWeight?: string;
 export interface ThemeState {
 theme: {
     // Colors
-    colors?: Record<string, ColorTuple>;
+    colors?: Record<string, MantineColorsTuple>;
     primaryColor?: string;
     primaryShade?: number | { light: number; dark: number };
     isThemeDependentPrimaryShade?: boolean;

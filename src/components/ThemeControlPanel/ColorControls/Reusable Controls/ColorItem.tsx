@@ -7,13 +7,12 @@ import {
   Collapse,
   ColorInput,
   DEFAULT_THEME,
-  Group,
+  Group, MantineColorsTuple,
   Stack,
   Text,
   TextInput,
   Tooltip,
 } from '@mantine/core';
-import QuestionMarkTooltip from '../../Reusable Controls/QuestionMarkTooltip';
 
 import classes from './ColorItem.module.css';
 
@@ -21,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/data/store';
 import { setColorFromString, setColor, updateColor, deleteColor } from '@/data/ThemeState/themeSlice';
 import { selectColor } from '@/data/ThemeState/themeSelectors';
-import { ColorTuple } from '@/data/types';
+import QuestionMarkTooltip from "@/components/ThemeControlPanel/Shared/Misc/QuestionMarkTooltip";
 
 interface ColorItemProps {
   name: string;
@@ -47,7 +46,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
   };
 
   const onEditShade = (key: string, value: string[]) => {
-    dispatch(setColor({ key, value: value as ColorTuple }));
+    dispatch(setColor({ key, value: value as unknown as MantineColorsTuple }));
   };
 
   const onReset = () => {
@@ -77,13 +76,13 @@ const ColorItem: React.FC<ColorItemProps> = ({
 
   return (
     <Card
-      w={'100%'}
+      w="100%"
       bg={`linear-gradient(45deg, ${shades[5]}20, ${shades[5]}50)`}
       padding="5px 10px"
     >
       <Stack gap="m">
-        <Group justify="space-between" gap={'0'} align="middle" wrap="nowrap">
-          <Group w={'100%'} wrap="nowrap">
+        <Group justify="space-between" gap="0" align="middle" wrap="nowrap">
+          <Group w="100%" wrap="nowrap">
             {type === 'theme' ? (
               <TextInput
                 value={colorName}
@@ -91,13 +90,13 @@ const ColorItem: React.FC<ColorItemProps> = ({
                   handleNameChange(e);
                 }}
                 onBlur={handleNameBlur}
-                w={'100%'}
+                w="100%"
                 description={description}
                 descriptionProps={{ c: shades[8] }}
               />
             ) : (
               <Group wrap="nowrap" gap="4px">
-                <Text fw={700} size={'sm'} c={shades[5]}>{name}</Text>
+                <Text fw={700} size="sm" c={shades[5]}>{name}</Text>
                 {description && (
                   <QuestionMarkTooltip description={description} color={shades[5]} />
                 )}
@@ -107,7 +106,7 @@ const ColorItem: React.FC<ColorItemProps> = ({
               c={shades[5]?.[9]}
               variant='variant'
               value={color}
-              w={'100%'}
+              w="100%"
               onChange={(value) => {
                 if (value !== color) {
                   onEdit(colorName, value);
@@ -138,20 +137,19 @@ const ColorItem: React.FC<ColorItemProps> = ({
           </Group>
         </Group>
         <Collapse in={isEditing}>
-          <Stack gap="sm" p={'sm'} className={classes.shadeContainer}>
+          <Stack gap="sm" p="sm" className={classes.shadeContainer}>
             {shades.map((shade: string, index: number) => (
               <Group key={index} gap={0} className={classes.shadePicker}>
                 <Box
-                  w={'30%'}
+                  w="30%"
                   bg={shade}
                   h={36}
-                >
-                </Box>
+                 />
                 <ColorInput
                   value={shade}
                   variant='none'
                   withEyeDropper={false}
-                  leftSection={<IconColorPicker size={'15px'}/>}
+                  leftSection={<IconColorPicker size="15px"/>}
                   onChange={(color) => updateColorShade(index, color)}
                   style={{ flex: 1 }}
                 />

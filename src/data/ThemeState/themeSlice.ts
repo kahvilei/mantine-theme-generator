@@ -1,15 +1,15 @@
 // themeSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DEFAULT_THEME } from '@mantine/core';
-import { ThemeState, ColorTuple, HeadingSize } from '@/data/types';
+import {DEFAULT_THEME, MantineColorsTuple} from '@mantine/core';
+import { ThemeState, HeadingSize } from '@/data/types';
 import generateShades from '@/utils/generateColors';
 
 const initialState: ThemeState = {
   theme: {
     colors: Object.entries(DEFAULT_THEME.colors).reduce((acc, [key, value]) => {
-      acc[key] = value as ColorTuple;
+      acc[key] = value as MantineColorsTuple;
       return acc;
-    }, {} as Record<string, ColorTuple>),
+    }, {} as Record<string, MantineColorsTuple>),
     primaryColor: DEFAULT_THEME.primaryColor,
     primaryShade: DEFAULT_THEME.primaryShade,
     isThemeDependentPrimaryShade: false,
@@ -68,16 +68,16 @@ export const themeSlice = createSlice({
       state.theme = action.payload;
     },
     // Color Management
-    setColor: (state, action: PayloadAction<{ key: string; value: ColorTuple }>) => {
+    setColor: (state, action: PayloadAction<{ key: string; value: MantineColorsTuple }>) => {
       state.theme.colors = {
         ...state.theme.colors,
-        [action.payload.key]: action.payload.value
+        [action.payload.key]: action.payload.value as [string, string, string, string, string, string, string, string, string, string]
       };
     },
     setColorFromString: (state, action: PayloadAction<{ key: string; value: string }>) => {
       state.theme.colors = {
         ...state.theme.colors,
-        [action.payload.key]: generateShades(action.payload.value) as ColorTuple
+        [action.payload.key]: generateShades(action.payload.value) as [string, string, string, string, string, string, string, string, string, string]
       };
     },
     updateColor: (state, action: PayloadAction<{ oldName: string; newName: string }>) => {
@@ -109,10 +109,7 @@ export const themeSlice = createSlice({
       if (!state.theme.colors?.[action.payload.colorName]) {return;}
       const shades = [...(state.theme.colors[action.payload.colorName] || [])];
       shades[action.payload.index] = action.payload.newShade;
-      state.theme.colors = {
-        ...state.theme.colors,
-        [action.payload.colorName]: shades as ColorTuple
-      };
+      state.theme.colors[action.payload.colorName] = shades as [string, string, string, string, string, string, string, string, string, string];
     },
     setPrimaryColor: (state, action: PayloadAction<string>) => {
       state.theme.primaryColor = action.payload;
@@ -284,7 +281,7 @@ export const themeSlice = createSlice({
     },
 
     deleteComponentRule: (state, action: PayloadAction<string>) => {
-      if (!state.theme.components) return;
+      if (!state.theme.components) {return;}
       const { [action.payload]: _, ...rest } = state.theme.components;
       state.theme.components = rest;
     },

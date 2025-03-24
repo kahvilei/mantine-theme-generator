@@ -2,7 +2,7 @@ import { Autocomplete, Stack, Switch, Group, Text } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import HeadingsSettings from './HeadingsSettings';
-import FontLoader from './FontLoader';
+import FontLoader from '../Shared/Fonts/FontLoader';
 import {
     selectBodyFontFamily,
     selectHeadingFontFamily,
@@ -172,6 +172,7 @@ const TypographyControl = () => {
                 value={bodyFontFamily}
                 onChange={handleBodyFontFamilyChange}
                 placeholder="Select or type a font family"
+                clearable
                 renderOption={(props) => (
                         <FontOption value={props.option.value} label={props.option.value} />
                 )}

@@ -1,23 +1,21 @@
-import { Box, Slider, Stack, Switch, Text, Title } from '@mantine/core';
+import { Box, Slider, Stack, Switch, Text } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
-import GroupedColorSelector from '../Reusable Controls/GroupedColorSelector';
 import ShadeSelector from './Reusable Controls/ShadeSelector';
 import {
   selectPrimaryColor,
   selectPrimaryShade,
   selectAutoContrast,
   selectLuminanceThreshold,
-  selectMainColorShade,
   selectIsSchemeDependentPrimaryShade,
   selectShadesFromColorString
 } from '@/data/ThemeState/themeSelectors';
 import {
-  setPrimaryColor,
   setPrimaryShade,
   setAutoContrast,
   setLuminanceThreshold
 } from '@/data/ThemeState/themeSlice';
 import { RootState } from '@/data/store';
+import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 
 const PrimaryColorSettings = () => {
   const dispatch = useDispatch();
@@ -33,17 +31,9 @@ const PrimaryColorSettings = () => {
   const autoContrast = useSelector(selectAutoContrast);
   const luminanceThreshold = useSelector(selectLuminanceThreshold);
   const isSchemeDependentShade = useSelector(selectIsSchemeDependentPrimaryShade);
-  const mainColorShade = useSelector((state: RootState) => 
-    selectMainColorShade(state, primaryColor || 'blue')
-  );
   const primaryShades = useSelector((state: RootState) => 
     selectShadesFromColorString(state, primaryColor)
   );
-
-  // Action handlers
-  const handlePrimaryColorChange = (color: string) => {
-    dispatch(setPrimaryColor(color));
-  };
 
   const handlePrimaryShadeChange = (value: number | { light: number; dark: number }) => {
     dispatch(setPrimaryShade(value));
@@ -59,12 +49,8 @@ const PrimaryColorSettings = () => {
 
   return (
     <Box>
-      <Title order={4}>Primary Color</Title>
-      <Stack gap="xl" mt="md">
-        <GroupedColorSelector
-          mainColor={{ shade: mainColorShade, name: primaryColor || 'blue' }}
-          onSelect={handlePrimaryColorChange}
-        />
+      <Stack>
+        <ThemeColorSelector label="Primary Color" />
         <Stack>
           <Switch
             label="Use different shades for light and dark modes"
@@ -82,7 +68,7 @@ const PrimaryColorSettings = () => {
             <>
               <Text size="sm" mt="md">Light Mode Primary Shade</Text>
               <ShadeSelector
-                colors={primaryShades}
+                colors={[...primaryShades]}
                 selectedIndex={lightShade}
                 onSelect={(value) => handlePrimaryShadeChange({
                   light: value,
@@ -91,7 +77,7 @@ const PrimaryColorSettings = () => {
               />
               <Text size="sm" mt="md">Dark Mode Primary Shade</Text>
               <ShadeSelector
-                colors={primaryShades}
+                colors={[...primaryShades]}
                 selectedIndex={darkShade}
                 onSelect={(value) => handlePrimaryShadeChange({
                   light: lightShade,
@@ -103,7 +89,7 @@ const PrimaryColorSettings = () => {
             <>
               <Text size="sm" mt="md">Primary Shade</Text>
               <ShadeSelector
-                colors={primaryShades}
+                colors={[...primaryShades]}
                 selectedIndex={ lightShade }
                 onSelect={(value) => handlePrimaryShadeChange(value)}
               />

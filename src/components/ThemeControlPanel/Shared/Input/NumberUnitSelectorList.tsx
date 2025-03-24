@@ -4,7 +4,7 @@ import { Box, Paper, Stack, Text } from '@mantine/core';
 import { RootState } from '@/main';
 import NumberUnitSelector, {
   NumberUnitSelectorProps,
-} from '@/components/ThemeControlPanel/Reusable Controls/NumberUnitSelector';
+} from '@/components/ThemeControlPanel/Shared/NumberUnitSelector';
 
 interface NumberUnitSelectorListProps {
   list: Array<NumberUnitSelectorProps>;

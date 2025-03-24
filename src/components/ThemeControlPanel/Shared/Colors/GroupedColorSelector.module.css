@@ -1,0 +1,46 @@
+.option {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.5rem * var(--mantine-scale));
+    padding: 0;
+}
+
+.option:hover, .option:focus {
+    outline: 2px solid var(--mantine-color-blue-5);
+}
+
+.options>div>div>div>div>div div{
+    display: flex !important;
+    flex-direction: row;
+    gap: calc(0.5rem * var(--mantine-scale));
+    flex-wrap: wrap;
+    overflow: visible;
+}
+
+.options {
+    padding: 0 calc(0.5rem * var(--mantine-scale)) calc(0.5rem * var(--mantine-scale));
+}
+
+.options>div>div>div>div>div>div>div:first-child{
+    flex-grow: 1;
+    width: 100%;
+    padding: .4rem 0 0;
+}
+
+.colorSelectorRoot{
+    position: relative;
+}
+
+.colorSelectorInput{
+    width: 4rem;
+    height: 4rem;
+}
+
+.colorSelectorWrapper{
+    width: 4rem;
+    height: 4rem;
+}
+
+.colorSelectorDropdown{
+    width: 100% !important;
+}

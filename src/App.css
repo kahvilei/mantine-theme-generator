@@ -39,9 +39,8 @@
 
 /* Sidebar */
 .app-sidebar {
-    width: 30%;
-    min-width: 320px;
-    max-width: 520px;
+    width: 20%;
+    min-width: 360px;
     height: 100%;
     position: relative;
 }

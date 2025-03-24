@@ -24,7 +24,7 @@ import ComponentControls from './ComponentControls/ComponentControls';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
-import {DownloadThemeButton, UploadThemeButton} from "@/components/Header/themeDownloadUpload";
+import {DownloadThemeButton, UploadThemeButton} from "./Shared/Themes/themeDownloadUpload";
 import {setTheme} from "@/data/ThemeState/themeSlice";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";

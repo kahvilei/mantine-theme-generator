@@ -1,37 +1,15 @@
-import {createTheme, Select, SelectProps, Stack} from '@mantine/core';
-import {setTheme} from "@/data/ThemeState/themeSlice";
-import ThemePreview from "@/components/Header/ThemePreview";
-import React, {useState} from "react";
-import premadeThemes from "@/data/premadeThemes.json";
-import {useDispatch} from "react-redux";
+import {MantineThemeOverride, Stack, Title} from '@mantine/core';
+import premadeThemes from "@/components/ThemeControlPanel/Shared/Themes/premadeThemes.json";
+
+import ThemeSelector from "@/components/ThemeControlPanel/Shared/Themes/ThemeSelector";
+import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 
 const QuickSetUp = () => {
-    const themes = JSON.parse(JSON.stringify(premadeThemes));
-    const [currentThemeName, setCurrentThemeName] = useState('');
-    const dispatch = useDispatch();
-
-    const handlePreMadeThemeSelect = (value: string | null) => {
-        setCurrentThemeName(value as string);
-        const newTheme = createTheme(themes[value as string]);
-        dispatch(setTheme(newTheme));
-    };
-
-    const themeOptions: SelectProps['renderOption'] = ({ option }) => (
-        <ThemePreview theme={themes[option.value]} name={option.value} />
-    );
-
-    const themeData = Object.keys(themes).map((themeName) => ({ value: themeName, label: themeName }));
-
     return (
-        <Stack>
-              <Select
-                  placeholder="Select a pre-made theme"
-                  data={themeData}
-                  renderOption={themeOptions}
-                  value={currentThemeName ? currentThemeName : 'mantine'}
-                  onChange={handlePreMadeThemeSelect}
-                  allowDeselect={false}
-              />
+        <Stack gap="xl">
+            <Title order={2}>Quick Setup</Title>
+            <ThemeSelector themes={premadeThemes as unknown as Record<string, Partial<MantineThemeOverride>>} />
+            <ThemeColorSelector label="Primary Color"/>
         </Stack>
     );
 };

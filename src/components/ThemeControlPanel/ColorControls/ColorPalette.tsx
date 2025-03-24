@@ -23,7 +23,7 @@ const ColorPalette: React.FC = () => {
   return (
     <>
       <Title order={4}>Custom Colors</Title>
-      <Group mt="xs">
+      <Group >
         {colorEntries.map(([colorName]) => (
           <ColorItem
             key={colorName}

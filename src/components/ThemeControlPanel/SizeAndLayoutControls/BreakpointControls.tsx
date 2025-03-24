@@ -1,5 +1,4 @@
 import { Stack, Text, Title, Box } from '@mantine/core';
-import NumberUnitSelector from '../Reusable Controls/NumberUnitSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBreakpoints,
@@ -7,6 +6,7 @@ import {
 import {
   setBreakpoint,
 } from '@/data/ThemeState/themeSlice';
+import NumberUnitSelector from "@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector";
 
 const BreakpointControls = () => {
   const dispatch = useDispatch();
