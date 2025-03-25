@@ -6,7 +6,7 @@ import {
   ColorInput,
   ColorPicker,
   ColorSwatch,
-  Group,
+  Group, MantineColorsTuple,
   Modal,
   Popover,
   Stack,
@@ -21,7 +21,6 @@ import {
   deleteColor 
 } from '@/data/ThemeState/themeSlice';
 import generateColors from '@/utils/generateColors';
-import type { ColorTuple } from '@/data/types';
 import { RootState } from '@/main';
 
 interface ColorEditorPopupProps {
@@ -62,10 +61,10 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({
   };
 
   const handleSetColor = (name: string, color: string) => {
-    const generatedColors = generateColors(color) as ColorTuple;
+    const generatedColors = generateColors(color);
     dispatch(setColor({ 
       key: name, 
-      value: generatedColors 
+      value: generatedColors as unknown as MantineColorsTuple
     }));
   };
 

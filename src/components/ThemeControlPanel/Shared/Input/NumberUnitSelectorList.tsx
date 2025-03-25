@@ -4,7 +4,7 @@ import { Box, Paper, Stack, Text } from '@mantine/core';
 import { RootState } from '@/main';
 import NumberUnitSelector, {
   NumberUnitSelectorProps,
-} from '@/components/ThemeControlPanel/Shared/NumberUnitSelector';
+} from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
 
 interface NumberUnitSelectorListProps {
   list: Array<NumberUnitSelectorProps>;
@@ -20,7 +20,7 @@ export const NumberUnitSelectorList: React.FC<NumberUnitSelectorListProps> = ({
   return (
     <Box>
       <Text size="sm">Radius settings</Text>
-      <Paper withBorder p={'sm'}>
+      <Paper withBorder p="sm">
         <Stack>
           {list.map((element) => (
             <NumberUnitSelector
@@ -29,7 +29,7 @@ export const NumberUnitSelectorList: React.FC<NumberUnitSelectorListProps> = ({
               value={
                 useSelector((state: RootState) => selector(state, element.label ?? '')) || '0px'
               }
-              onChange={(value) => onChange(value)}
+              onChange={(value:string) => onChange(value)}
               min={element.min ?? 0}
               max={element.max ?? 100}
             />
