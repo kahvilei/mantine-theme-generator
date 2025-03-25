@@ -1,7 +1,5 @@
 import React from 'react';
-import { IconColorSwatch } from '@tabler/icons-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Group, Stack } from '@mantine/core';
 import GroupedColorSelector from '@/components/ThemeControlPanel/Shared/Colors/GroupedColorSelector';
 import { RootState } from '@/data/store';
 import {
@@ -18,7 +16,6 @@ interface ThemeColorSelectorProps {
 }
 
 const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
-  label,
   onSelect,
   mainColorSelector,
 }: ThemeColorSelectorProps) => {
@@ -34,13 +31,6 @@ const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   const mainColor = useSelector(mainColorSelector ?? selectPrimaryColor);
 
   return (
-    <Stack gap={5}>
-      {label && (
-        <Group gap={5}>
-          <IconColorSwatch size={20} />
-          {label}
-        </Group>
-      )}
       <GroupedColorSelector
         colors={[
           { key: 'Custom Colors', value: customColors },
@@ -49,7 +39,6 @@ const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
         onSelect={onSelect ?? handlePrimaryColorChange}
         mainColor={mainColor}
       />
-    </Stack>
   );
 };
 

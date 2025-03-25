@@ -38,30 +38,6 @@ const debounce = <F extends (...args: any[]) => any>(
     };
 };
 
-// Preload all Google Fonts with debounce
-export const preloadAllGoogleFonts = (fontList: string[]): void => {
-    // Filter out system fonts
-    const googleFonts = fontList.filter(font => isGoogleFont(font));
-
-    // Create a single link for all Google fonts
-    if (googleFonts.length > 0) {
-        const formattedFonts = googleFonts.map(font =>
-            `${formatFontFamily(font)}:wght@100;200;300;400;500;600;700;800`
-        ).join('&family=');
-
-        const link = document.createElement('link');
-        link.href = `https://fonts.googleapis.com/css2?family=${formattedFonts}&display=swap`;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-
-        // Mark all as loaded
-        googleFonts.forEach(font => loadedFonts.add(font));
-    }
-};
-
-// Debounced version of the preloadAllGoogleFonts function (2 seconds)
-const debouncedPreloadAllGoogleFonts = debounce(preloadAllGoogleFonts, 2000);
-
 // Load a single custom Google Font (not in our predefined list)
 export const loadCustomGoogleFont = (fontFamily: string): void => {
     if (!fontFamily || loadedFonts.has(fontFamily)) {return;}
@@ -85,30 +61,10 @@ interface FontLoaderProps {
 }
 
 // Component to manage loading multiple fonts
-const FontLoader = ({ predefinedFonts, customFonts }:FontLoaderProps) => {
-    const prevPredefinedFonts = useRef<string[]>([]);
+const FontLoader = ({ customFonts }:FontLoaderProps) => {
+
     const prevCustomFonts = useRef<string[]>([]);
-
     // Load all predefined Google fonts on component mount or when they change
-    useEffect(() => {
-        // Check if the array has actually changed
-        const hasChanged = predefinedFonts.length !== prevPredefinedFonts.current.length ||
-            predefinedFonts.some((font, i) => font !== prevPredefinedFonts.current[i]);
-
-        if (hasChanged) {
-            // Store current fonts for the next comparison
-            prevPredefinedFonts.current = [...predefinedFonts];
-
-            // Only on first load, load immediately
-            if (prevPredefinedFonts.current.length === 0) {
-                preloadAllGoogleFonts(predefinedFonts);
-            } else {
-                // Otherwise use debounced version
-                debouncedPreloadAllGoogleFonts(predefinedFonts);
-            }
-        }
-    }, [predefinedFonts]);
-
     // Load any custom fonts when they're added with debounce
     useEffect(() => {
         // Check if the array has actually changed (more efficient than loading every time)

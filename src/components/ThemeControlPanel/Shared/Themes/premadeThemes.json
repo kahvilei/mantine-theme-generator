@@ -200,7 +200,7 @@
     },
     "defaultRadius": "md",
     "fontFamily": "Roboto",
-    "fontFamilyMonospace": "Menlo",
+    "fontFamilyMonospace": "Roboto Mono",
     "headings": {
       "fontFamily": "Roboto",
       "fontWeight": "700",

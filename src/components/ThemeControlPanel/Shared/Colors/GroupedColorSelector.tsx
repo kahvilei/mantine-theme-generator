@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, MantineColorsTuple, Select, Tooltip} from '@mantine/core';
+import { Card, MantineColorsTuple, Select, Tooltip } from '@mantine/core';
 import classes from './GroupedColorSelector.module.css';
 
 const GroupedColorSelector: React.FC<{
@@ -29,7 +29,8 @@ const GroupedColorSelector: React.FC<{
           options: classes.options,
           input: classes.colorSelectorInput,
           wrapper: classes.colorSelectorWrapper,
-            root: classes.colorSelectorRoot,
+          root: classes.colorSelectorRoot,
+            section: classes.colorSelectorSection
         }}
         comboboxProps={{ width: 350, position: 'bottom-start' }}
         styles={{
@@ -44,7 +45,7 @@ const GroupedColorSelector: React.FC<{
         onChange={(value) => onSelect(value ? value : 'blue')}
         renderOption={({ option }) => (
           <Tooltip label={option.label} position="right">
-              <Card bg={mainColorFind(option.value)} />
+            <Card bg={mainColorFind(option.value)} />
           </Tooltip>
         )}
         allowDeselect={false}

@@ -70,7 +70,7 @@ const App: React.FC = () => {
                 <div className="tab-container">
                   {/* Tab Header */}
                   <Group className="tab-header" justify="space-between" align="center">
-                    <Tabs value={currentContent} onChange={setCurrentContent} variant="outline">
+                    <Tabs value={currentContent} onChange={setCurrentContent}>
                       <Tabs.List className="tab-header-list">
                         <Tabs.Tab value="overview" leftSection={<IconPalette size={16} />}>
                           Overview

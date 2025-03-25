@@ -1,0 +1,46 @@
+.typeFaceSelector button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    background-color: var(--mantine-color-default);
+    border-color: var(--mantine-color-default);
+    padding: .5rem;
+    font-size: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    aspect-ratio: 1;
+
+    &:hover{
+        border-color: var(--mantine-color-anchor);
+    }
+}
+
+.typeFacePreview{
+    font-size: .55em;
+    line-height: 100%;
+}
+
+.typeFaceName{
+    font-size: .12em;
+    text-wrap: nowrap;
+    max-width: 100%;
+    line-height: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.typeFaceDropDown{
+    width: 20rem !important;
+}
+
+.typeFaceLabel{
+    font-size: .12em;
+    line-height: 90%;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding-bottom: 3px;
+    border-bottom: 1px dashed var(--mantine-color-default-border);
+}

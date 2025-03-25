@@ -10,7 +10,7 @@
 }
 
 .options>div>div>div>div>div div{
-    display: flex !important;
+    display: flex;
     flex-direction: row;
     gap: calc(0.5rem * var(--mantine-scale));
     flex-wrap: wrap;
@@ -39,6 +39,22 @@
 .colorSelectorWrapper{
     width: 4rem;
     height: 4rem;
+    position: relative;
+}
+
+.colorSelectorSection{
+    top: .5rem;
+    right: .5rem;
+    bottom: unset;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: var(--mantine-radius-default);
+    background-color: var(--mantine-color-default);
+    position: absolute;
+
+    & svg{
+        color: var(--mantine-color-text);
+    }
 }
 
 .colorSelectorDropdown{

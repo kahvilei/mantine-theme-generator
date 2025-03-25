@@ -1,19 +1,19 @@
-import { Stack } from '@mantine/core';
 import InteractionAndAccessibilityControls from '@/components/ThemeControlPanel/GeneralControls/InteractionAndAccessibility';
 import RadiusControls from '@/components/ThemeControlPanel/GeneralControls/RadiusControls';
 import BreakpointControls from './BreakpointControls';
 import Scale from './Scale';
 import SpacingControls from './SpacingControls';
+import EditorPage from "@/components/ThemeControlPanel/Shared/Layout/EditorPage";
 
 const SizeAndLayoutControls = () => {
   return (
-    <Stack>
+    <EditorPage title="Scale and Layout Controls">
       <Scale />
       <SpacingControls />
       <BreakpointControls />
       <RadiusControls />
       <InteractionAndAccessibilityControls />
-    </Stack>
+    </EditorPage>
   );
 };
 

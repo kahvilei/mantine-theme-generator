@@ -27,33 +27,28 @@ const ThemeSelector = ({themes}:ThemeSelectorInterface) => {
 
 
     return (
-        <Stack gap={5}>
-            <Group gap={5}><IconLayout size={20}/> Pre-made Themes</Group>
-            <Group>
-                <Group gap={6}>
-                    {themeData.map((theme: {value: Partial<MantineThemeOverride>, name: string}) => (
-                        <Box
-                            key={theme.name}
-                            className={classes.themeButtonWrap}
-                            tabIndex={0}
-                            onClick={
-                            (e) => {
-                                e.preventDefault();
-                                handlePreMadeThemeSelect(theme.name)}
-                            }
-                            onKeyDown={
-                                (e) => {
+        <Group gap={6}>
+            {themeData.map((theme: {value: Partial<MantineThemeOverride>, name: string}) => (
+                <Box
+                    key={theme.name}
+                    className={classes.themeButtonWrap}
+                    tabIndex={0}
+                    onClick={
+                    (e) => {
+                        e.preventDefault();
+                        handlePreMadeThemeSelect(theme.name)}
+                    }
+                    onKeyDown={
+                        (e) => {
 
-                                    if (e.key === 'Enter') {
-                                    handlePreMadeThemeSelect(theme.name)}}
-                            }>
+                            if (e.key === 'Enter') {
+                            handlePreMadeThemeSelect(theme.name)}}
+                    }>
 
-                        <ThemePreview selected={currentThemeName === theme.name} theme={theme.value} name={theme.name} />
-                        </Box>
-                    ))}
-                </Group>
-            </Group>
-        </Stack>
+                <ThemePreview selected={currentThemeName === theme.name} theme={theme.value} name={theme.name} />
+                </Box>
+            ))}
+        </Group>
     );
 };
 

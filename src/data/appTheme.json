@@ -89,7 +89,15 @@
     "fontFamilyMonospace": "Roboto Mono",
     "headings": {
         "fontFamily": "Nunito",
-        "fontWeight": "600"
+        "fontWeight": "500"
     },
-    "defaultRadius": "md"
+    "defaultRadius": "md",
+    "components": {
+        "Input": {
+            "defaultProps": {
+                "variant": "filled"
+            },
+            "styles": {}
+        }
+    }
 }
