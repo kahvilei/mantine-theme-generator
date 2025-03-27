@@ -13,11 +13,13 @@ interface ThemeColorSelectorProps {
   label?: string;
   onSelect?: (color: string) => void;
   mainColorSelector?: (state: RootState) => string;
+  mainColor?: string;
 }
 
 const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   onSelect,
   mainColorSelector,
+  mainColor,
 }: ThemeColorSelectorProps) => {
   const customColors = useSelector(selectCustomColors);
   const mantineColors = useSelector(selectMantineColors);
@@ -28,17 +30,17 @@ const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
     dispatch(setPrimaryColor(color));
   };
 
-  const mainColor = useSelector(mainColorSelector ?? selectPrimaryColor);
+  const color = mainColorSelector ? useSelector(mainColorSelector) : mainColor ? mainColor : useSelector(selectPrimaryColor);
 
   return (
-      <GroupedColorSelector
-        colors={[
-          { key: 'Custom Colors', value: customColors },
-          { key: 'Mantine Colors', value: mantineColors },
-        ]}
-        onSelect={onSelect ?? handlePrimaryColorChange}
-        mainColor={mainColor}
-      />
+    <GroupedColorSelector
+      colors={[
+        { key: 'Custom Colors', value: new Set(customColors.keys()) },
+        { key: 'Mantine Colors', value: new Set(mantineColors.keys()) },
+      ]}
+      onSelect={onSelect ?? handlePrimaryColorChange}
+      mainColor={color}
+    />
   );
 };
 

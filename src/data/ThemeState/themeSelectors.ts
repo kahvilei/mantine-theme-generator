@@ -1,19 +1,28 @@
-import { RootState } from '../store';
-import {DEFAULT_THEME, MantineColorsTuple} from '@mantine/core';
 import { createSelector } from '@reduxjs/toolkit';
+import { createTheme, DEFAULT_THEME, MantineColorsTuple, MantineTheme, MantineThemeOverride } from '@mantine/core';
+import { RootState } from '../store';
+import { VirtualColor} from "@/data/types";
+
 
 const unframeValue = (value: string): string => {
   return value.replace(/calc\((.*?) \* var\(--mantine-scale\)\)/, '$1');
 };
 
 // Base selector
-export const selectTheme = (state: RootState) => state.theme.theme;
+export const selectTheme = (state: RootState): MantineTheme =>
+  <MantineTheme>createTheme(state.theme.theme as MantineThemeOverride);
 
 // Color Management
-export const selectMainColorShade = (state: RootState, key: string) => {
-  if (state.theme.theme.colors?.[key]) {
-    return state.theme.theme.colors[key][5];
-  }if (DEFAULT_THEME.colors[key]) {
+export const selectMainColorShade = (state: RootState, key: string, scheme: "light" | "dark" = "light") => {
+  const color = selectColor(state, key);
+  if (color) {
+    if ((color as MantineColorsTuple)[5]) {
+      return(color as MantineColorsTuple)[selectPrimaryShade(state, scheme)];
+    }
+
+    return scheme==="light"?(color as VirtualColor).light[selectPrimaryShade(state, scheme)]:(color as VirtualColor).dark[selectPrimaryShade(state, scheme)];
+  }
+  if (DEFAULT_THEME.colors[key]) {
     return DEFAULT_THEME.colors[key][5];
   }
   return '#000';
@@ -23,8 +32,11 @@ export const selectPrimaryColor = (state: RootState) =>
   selectTheme(state).primaryColor ?? DEFAULT_THEME.primaryColor;
 
 export const selectColor = (state: RootState, key: string) => {
-  if (state.theme.theme.colors?.[key]) {
-    return state.theme.theme.colors[key];
+  if (selectTheme(state).colors?.[key]) {
+    if (selectVirtualColors(state)[key] !== undefined) {
+      return {dark: selectTheme(state).colors[selectVirtualColors(state)[key].dark], light: selectTheme(state).colors[selectVirtualColors(state)[key].light]};
+    }
+    return selectTheme(state).colors[key];
   }
   return DEFAULT_THEME.colors[key];
 }
@@ -94,6 +106,15 @@ export const selectAllMainColorArray = (state: RootState) =>
   Array.from(Object.values(selectAllColors(state))).map(color => 
     color ? color[5] : '#000'
   );
+
+export const selectVirtualColors = (state: RootState) => {
+  return selectTheme(state).other?.virtualColors ?? {};
+}
+
+export const selectVirtualColor = (state: RootState, name: string) => {
+  return selectTheme(state).other?.virtualColors[name] ?? { dark: 'blue', light: 'green' };
+}
+
 
 export const selectAllColorKeysArray = (state: RootState) => 
   Array.from(Object.keys(selectAllColors(state)));
@@ -205,9 +226,6 @@ export const selectWhite = (state: RootState) =>
     return DEFAULT_THEME.colors[key] as MantineColorsTuple;
   };
 
-  export const selectIsSchemeDependentPrimaryShade = (state: RootState) => {
-    return selectTheme(state).isThemeDependentPrimaryShade ?? true;
-  };
 
   export const selectComponentRules = (state: RootState) =>
     selectTheme(state).components ?? DEFAULT_THEME.components;
@@ -217,6 +235,3 @@ export const selectWhite = (state: RootState) =>
 
   export const selectBreakpoints = (state: RootState) =>
     selectTheme(state).breakpoints ?? DEFAULT_THEME.breakpoints;
-  
-
-  

@@ -1,6 +1,6 @@
 // themeSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {DEFAULT_THEME, MantineColorsTuple} from '@mantine/core';
+import {DEFAULT_THEME, MantineColorsTuple, virtualColor} from '@mantine/core';
 import { ThemeState, HeadingSize } from '@/data/types';
 import generateShades from '@/utils/generateColors';
 
@@ -51,7 +51,10 @@ const initialState: ThemeState = {
     autoContrast: DEFAULT_THEME.autoContrast,
     luminanceThreshold: DEFAULT_THEME.luminanceThreshold,
     breakpoints: DEFAULT_THEME.breakpoints,
-    components: DEFAULT_THEME.components
+    components: DEFAULT_THEME.components,
+    other: {
+      virtualColors: {}
+    }
   }
 };
 
@@ -74,6 +77,19 @@ export const themeSlice = createSlice({
         [action.payload.key]: action.payload.value as [string, string, string, string, string, string, string, string, string, string]
       };
     },
+
+    setVirtualColor: (state,  action: PayloadAction<{ key: string; value: { light: string, dark: string}}>) => {
+      if (state.other === undefined) {
+        state.other = {virtualColors:{}}
+      }
+      state.other.virtualColors[action.payload.key] = {...action.payload.value};
+
+      state.theme.colors = {
+        ...state.theme.colors,
+        [action.payload.key]: virtualColor({name:action.payload.key,...action.payload.value}) as [string, string, string, string, string, string, string, string, string, string]
+      };
+    },
+
     setColorFromString: (state, action: PayloadAction<{ key: string; value: string }>) => {
       state.theme.colors = {
         ...state.theme.colors,
@@ -299,6 +315,7 @@ export const {
   setTheme,
   setColor,
   setColorFromString,
+    setVirtualColor,
   updateColor,
   deleteColor,
   updateColorShade,

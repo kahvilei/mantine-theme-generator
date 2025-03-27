@@ -25,7 +25,8 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
 
   return (
-    <Group p='md' h="100%" align="center" justify="space-between">
+    <Group p='md' h="100%" align="center" justify="center">
+      <Group p='md' h="100%" align="center" justify="space-between" w={'100%'} maw={'2100px'}>
       <Group align={'flex-end'}>
         <Title size={'1.4rem'} className={classes.title}>
           Mantine Theme Editor
@@ -51,6 +52,7 @@ const Header: React.FC<HeaderProps> = ({
           </ActionIcon>
         </Tooltip>
 
+      </Group>
       </Group>
     </Group>
   );

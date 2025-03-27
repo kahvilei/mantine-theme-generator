@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector} from 'react-redux';
 import { IconPlus } from '@tabler/icons-react';
 import { ActionIcon, Group, Popover, Title, Tooltip } from '@mantine/core';
-import ColorEditorPopup from './Reusable Controls/ColorEditorPopup';
-import ColorItem from './Reusable Controls/ColorItem';
+import ColorEditorPopup from '../Shared/Colors/ColorEditor/ColorEditorPopup';
+import ColorEdit from '../Shared/Colors/ColorEditor/ColorEdit';
 import classes from './ColorControls.module.css';
 import { 
   selectCustomColors,
@@ -22,20 +22,17 @@ const ColorPalette: React.FC = () => {
 
   return (
     <>
-      <Title order={4}>Custom Colors</Title>
-      <Group >
+      <Group gap="xs">
         {colorEntries.map(([colorName]) => (
-          <ColorItem
+          <ColorEdit
             key={colorName}
             name={colorName}
-            type="theme"
-            description=""
           />
         ))}
         <Popover withArrow shadow="default" position="bottom">
           <Popover.Target>
             <Tooltip label="Add new color">
-              <ActionIcon variant={'light'} m={0} className={classes.colorAdd}>
+              <ActionIcon variant="light" m={0} className={classes.colorAdd}>
                 <IconPlus />
               </ActionIcon>
             </Tooltip>

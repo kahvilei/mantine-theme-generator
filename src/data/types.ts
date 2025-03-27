@@ -1,6 +1,6 @@
 // types.ts
   
-import {MantineColorsTuple} from "@mantine/core";
+import {MantineColorsTuple, MantineThemeOverride} from "@mantine/core";
 
 export type HeadingSize = {
 fontSize?: string;
@@ -8,7 +8,7 @@ lineHeight?: string;
 fontWeight?: string;
 };
 
-export interface ThemeState {
+export interface ThemeState extends MantineThemeOverride {
 theme: {
     // Colors
     colors?: Record<string, MantineColorsTuple>;
@@ -55,5 +55,14 @@ theme: {
     components?: {
     [key: string]: any;
     };
+
+    other?: {
+        [key: string]: any;
+    }
 };
+}
+
+export interface VirtualColor {
+    light: MantineColorsTuple;
+    dark: MantineColorsTuple;
 }

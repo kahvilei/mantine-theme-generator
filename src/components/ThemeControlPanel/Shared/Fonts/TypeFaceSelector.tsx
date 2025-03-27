@@ -37,12 +37,12 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
     const options = fontData.map((group) => {
         const subOptions = group.items.map((item) => {
             return(
-                <Combobox.Option value={item}><FontOption value={item} label={item}/></Combobox.Option>
+                <Combobox.Option key={item} value={item}><FontOption value={item} label={item}/></Combobox.Option>
             )
         })
 
         return (
-            <Combobox.Group label={group.group}>
+            <Combobox.Group key={group.group} label={group.group}>
                 {subOptions}
             </Combobox.Group>
         )

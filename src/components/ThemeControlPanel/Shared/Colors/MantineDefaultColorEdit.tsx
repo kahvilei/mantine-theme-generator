@@ -1,6 +1,6 @@
 import React from 'react';
-import { Stack, DEFAULT_THEME } from '@mantine/core';
-import DefaultColorItem from './ColorItem'; // Adjust the import path
+import { DEFAULT_THEME, Group} from '@mantine/core';
+import DefaultColorItem from './ColorEditor/ColorEdit'; // Adjust the import path
 
 const MantineDefaultColorEdit: React.FC = () => {
   const colors = DEFAULT_THEME.colors as unknown as { [key: string]: string[] };
@@ -15,16 +15,14 @@ const MantineDefaultColorEdit: React.FC = () => {
   };
 
   return (
-    <Stack gap="sm">
-      {Object.entries(colors).map(([name, shades], index) => (
+      <Group gap="xs">
+      {Object.entries(colors).map(([name]) => (
           <DefaultColorItem
             key={name}
             name={name}
-            description={descriptions[name] || ''}
-            type="mantine"
           />
       ))}
-      </Stack>
+      </Group>
   );
 };
 

@@ -1,10 +1,12 @@
 .swatchEditor {
     cursor: pointer;
-    svg{
+
+    &svg{
        opacity: 0;
        transition: .1s;
     }
-    :hover svg{
+
+    &:hover svg{
         scale: 1.1;
         opacity: 1;
     }
@@ -14,7 +16,8 @@
 .colorAdd {
     cursor: pointer;
     color:  var(--mantine-color-gray-text);
-    width: 100%;
+    height: var(--color-item-height);
+    width: var(--color-item-width);
 }
 
 .gradientText {

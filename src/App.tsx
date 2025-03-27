@@ -35,8 +35,10 @@ import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel'
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from './data/appTheme.json';
 
+export const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
+
 const App: React.FC = () => {
-  const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
+
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
   const [currentContent, setCurrentContent] = useState<string | null>('Overview');
   const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');

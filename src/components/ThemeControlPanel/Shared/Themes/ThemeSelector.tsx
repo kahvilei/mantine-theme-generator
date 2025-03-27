@@ -1,12 +1,9 @@
-import {Box, createTheme, Group, MantineThemeOverride, Paper, Select, SelectProps, Stack, Text} from '@mantine/core';
+import {Box, createTheme, Group, MantineThemeOverride} from '@mantine/core';
 import {setTheme} from "@/data/ThemeState/themeSlice";
 import ThemePreview from "./ThemePreview";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import classes from "./ThemeSelector.module.css";
-import {IconLayout} from "@tabler/icons-react";
-
-
 
 
 interface ThemeSelectorInterface {

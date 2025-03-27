@@ -32,8 +32,11 @@
 }
 
 .colorSelectorInput{
-    width: 4rem;
-    height: 4rem;
+    padding: 0;
+    width: fit-content;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .colorSelectorWrapper{
@@ -58,5 +61,5 @@
 }
 
 .colorSelectorDropdown{
-    width: 100% !important;
+    width: 20rem !important;
 }

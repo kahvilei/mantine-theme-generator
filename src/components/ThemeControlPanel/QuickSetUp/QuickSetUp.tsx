@@ -1,5 +1,4 @@
-import {MantineThemeOverride} from '@mantine/core';
-import premadeThemes from "@/components/ThemeControlPanel/Shared/Themes/premadeThemes.json";
+import {premadeThemes} from "@/components/ThemeControlPanel/Shared/Themes/premadeThemes";
 
 import React from "react";
 import ThemeSelector from "@/components/ThemeControlPanel/Shared/Themes/ThemeSelector";
@@ -7,7 +6,7 @@ import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/The
 import Page from "@/components/ThemeControlPanel/Shared/Layout/EditorPage";
 import Section from "@/components/ThemeControlPanel/Shared/Layout/EditorSection";
 
-import {IconColorSwatch, IconLayout, IconTypeface} from "@tabler/icons-react";
+import {IconColorPicker, IconLayout, IconTypeface} from "@tabler/icons-react";
 import ThemeFontsSelector from "@/components/ThemeControlPanel/Shared/Fonts/ThemeFontsSelector";
 
 
@@ -15,9 +14,9 @@ const QuickSetUp = () => {
     return (
         <Page title="Quick Setup">
             <Section labelIcon={<IconLayout/>} label="Premade themes">
-                <ThemeSelector themes={premadeThemes as unknown as Record<string, Partial<MantineThemeOverride>>} />
+                <ThemeSelector themes={premadeThemes} />
             </Section>
-            <Section labelIcon={<IconColorSwatch/>} label="Primary color">
+            <Section labelIcon={<IconColorPicker/>} label="Primary color">
                 <ThemeColorSelector label="Primary Color"/>
             </Section>
             <Section labelIcon={<IconTypeface/>} label="Font Families">

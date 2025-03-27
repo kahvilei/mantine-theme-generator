@@ -16,3 +16,29 @@
 :where([data-mantine-color-scheme='light']) .shadeContainer{
     border-top: 1px solid var(--mantine-color-gray-2);
 }
+
+:root{
+    --color-item-height: 3rem;
+    --color-item-width: 3rem;
+}
+
+.colorItem{
+    height: var(--color-item-height);
+    width: var(--color-item-width);
+    padding: .2rem;
+    cursor: pointer;
+
+    &:hover, &:focus {
+        outline: 2px solid var(--mantine-color-anchor);
+    }
+
+    &>div{
+        width: 100%;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        &>button{
+            padding: .1rem;
+        }
+    }
+}
