@@ -14,7 +14,7 @@ const ColorPanel = () => {
         <ThemeColorSelector label="Primary Color" />
       </Section>
       <Section labelIcon={<IconColorSwatch />} label="Custom colors">
-        <ColorPalette />
+        <ColorPalette/>
       </Section>
       <Section labelIcon={<IconAspectRatio />} label="Default gradient">
         <GradientControls />

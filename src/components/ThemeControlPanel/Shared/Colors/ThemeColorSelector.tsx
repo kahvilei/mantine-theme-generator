@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GroupedColorSelector from '@/components/ThemeControlPanel/Shared/Colors/GroupedColorSelector';
-import { RootState } from '@/data/store';
+import {RootState, useAppDispatch} from '@/data/OldReduxJunk/store';
 import {
   selectCustomColors,
   selectMantineColors,
   selectPrimaryColor,
-} from '@/data/ThemeState/themeSelectors';
-import { setPrimaryColor } from '@/data/ThemeState/themeSlice';
+} from '@/data/OldReduxJunk/themeSelectors';
+import { setPrimaryColor } from '@/data/OldReduxJunk/themeSlice';
 
 interface ThemeColorSelectorProps {
   label?: string;
@@ -24,7 +24,7 @@ const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   const customColors = useSelector(selectCustomColors);
   const mantineColors = useSelector(selectMantineColors);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handlePrimaryColorChange = (color: string) => {
     dispatch(setPrimaryColor(color));

@@ -21,8 +21,8 @@ import {
   Tooltip,
 } from '@mantine/core';
 import EditorPage from '@/components/ThemeControlPanel/Shared/Layout/EditorPage';
-import { selectComponentRuleByName, selectComponentRules } from '@/data/ThemeState/themeSelectors';
-import { deleteComponentRule, setComponentRule } from '@/data/ThemeState/themeSlice';
+import { selectComponentRuleByName, selectComponentRules } from '@/data/OldReduxJunk/themeSelectors';
+import { deleteComponentRule, setComponentRule } from '@/data/OldReduxJunk/themeSlice';
 import { RootState } from '@/main';
 import { ComponentProps } from './componentPropDefinitions';
 import ComponentPropertyEditor, {

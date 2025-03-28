@@ -1,7 +1,7 @@
 import { CodeHighlight } from '@mantine/code-highlight';
 import { Stack } from '@mantine/core';
 import { useSelector } from 'react-redux';
-import { selectTheme } from '@/data/ThemeState/themeSelectors';
+import { selectTheme } from '@/data/OldReduxJunk/themeSelectors';
 
 interface JsonEditorProps {
   onEdit?: (newTheme: string) => void;

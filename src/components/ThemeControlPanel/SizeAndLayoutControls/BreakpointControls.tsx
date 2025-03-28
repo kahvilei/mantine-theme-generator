@@ -1,33 +1,20 @@
-import { Stack, Text, Title, Box } from '@mantine/core';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectBreakpoints,
-} from '@/data/ThemeState/themeSelectors';
-import {
-  setBreakpoint,
-} from '@/data/ThemeState/themeSlice';
+import { Stack, Title, Box } from '@mantine/core';
 import NumberUnitSelector from "@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector";
+import {observer} from "mobx-react-lite";
+import { sizes } from '@/data/Store';
+import {Size} from "@/data/Models/Theme/SizeAndSpacing/Sizes";
 
-const BreakpointControls = () => {
-  const dispatch = useDispatch();
-
-  const breakpoints = useSelector(selectBreakpoints);
-  const breakpointSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-
-  const handleBreakpointChange = (size: typeof breakpointSizes[number], value: string) => {
-    dispatch(setBreakpoint({ key: size, value }));
-  };
-
+const BreakpointControls= observer(() => {
   return (
     <Box>
       <Title order={4}>Breakpoints</Title>
       <Stack mt="md">
-        {breakpointSizes.map((size) => (
+        {sizes.getBreakPoints().map(([size, value]) => (
           <NumberUnitSelector
             key={size}
             label={size}
-            value={breakpoints[size] || '0px'}
-            onChange={(value) => handleBreakpointChange(size, value)}
+            value={value || '0px'}
+            onChange={(value) => sizes.setBreakPoint(size as Size, value)}
             min={0}
             max={2000}
           />
@@ -35,6 +22,6 @@ const BreakpointControls = () => {
       </Stack>
     </Box>
   );
-};
+});
 
 export default BreakpointControls;

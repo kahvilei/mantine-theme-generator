@@ -1,72 +1,76 @@
 import React, { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { Box, MantineProvider } from '@mantine/core';
+import { observer } from 'mobx-react-lite';
+import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
+import { Theme as ThemeClass } from '@/data/Models/Theme/Theme';
+import { theme } from '@/data/Store';
 import classes from './ThemeDisplay.module.css';
 
+
+
 import './ThemeDisplay.css';
-
-import { selectTheme } from '@/data/ThemeState/themeSelectors';
-
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
 
+
+
+import { Components } from "@/components/ThemeDisplayPanel/Demo Pages/Components";
+import { Dashboard } from "@/components/ThemeDisplayPanel/Demo Pages/Dashboard";
+import { Forms } from "@/components/ThemeDisplayPanel/Demo Pages/Forms";
 import { Overview } from '@/components/ThemeDisplayPanel/Demo Pages/Overview';
 import { Typography } from "@/components/ThemeDisplayPanel/Demo Pages/Typography";
-import {Components} from "@/components/ThemeDisplayPanel/Demo Pages/Components";
-import {Forms} from "@/components/ThemeDisplayPanel/Demo Pages/Forms";
-import {Dashboard} from "@/components/ThemeDisplayPanel/Demo Pages/Dashboard";
+
 
 export interface ThemeDisplayProps {
   number: number;
   mode: 'light' | 'dark';
   displayContent: string;
+  themeOverride?: ThemeClass; // Optional theme prop to allow explicit theme passing
 }
 
-const ThemeDisplay: React.FC<ThemeDisplayProps> = ({ number, mode, displayContent }) => {
-  // Get theme from Redux instead of context
-  const theme = useSelector(selectTheme);
+const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(({ number, mode, displayContent, themeOverride }) => {
+  // Get theme from MobX store if not explicitly provided
+  const currentTheme = themeOverride || theme;
 
-  //memoize each content page
-
+  // Memoize each content page
   const Content = () => {
     switch (displayContent) {
       case 'overview':
         return <Overview />;
       case 'typography':
-        return <Typography theme={theme} />
+        return <Typography theme={currentTheme} />;
       case 'components':
         return <Components />;
       case 'forms':
         return <Forms />;
-        case 'dashboard':
-          return <Dashboard />;
+      case 'dashboard':
+        return <Dashboard />;
       default:
         return <Overview />;
     }
   };
 
-  const MemoizedContent = useMemo(() => Content, [displayContent]);
+  const MemoizedContent = useMemo(() => Content, [displayContent, currentTheme]);
 
   return (
-    <MantineProvider
-      theme={{ ...(theme as any) }}
-      forceColorScheme={mode}
-      getRootElement={() =>
-        document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined
-      }
-      cssVariablesSelector={`#display-panel-${mode}-${number}`}
-    >
-      <Box
-        h="100%"
-        p="xl"
-        id={`display-panel-${mode}-${number}`}
-        className={`scheme-override-${mode} ${classes.displayPanel}`}
-        bg="var(--mantine-color-body)"
+      <MantineProvider
+          theme={{ ...currentTheme.config } as MantineThemeOverride} // Use the config from the Theme class
+          forceColorScheme={mode}
+          getRootElement={() =>
+              document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined
+          }
+          cssVariablesSelector={`#display-panel-${mode}-${number}`}
       >
-        <MemoizedContent />
-      </Box>
-    </MantineProvider>
+        <Box
+            h="100%"
+            p="xl"
+            id={`display-panel-${mode}-${number}`}
+            className={`scheme-override-${mode} ${classes.displayPanel}`}
+            bg="var(--mantine-color-body)"
+        >
+          <MemoizedContent />
+        </Box>
+      </MantineProvider>
   );
-};
+});
 
 export default ThemeDisplay;

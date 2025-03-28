@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { MantineThemeOverride } from '@mantine/core';
 import ThemeDisplay, { ThemeDisplayProps } from './ThemeDisplay';
 
 export default {

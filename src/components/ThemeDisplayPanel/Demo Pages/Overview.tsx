@@ -156,7 +156,7 @@ const ColorStrip = ({ title, color, variableName, tooltip }: ColorStripInterface
       </Stack>
       <Group gap="xs" justify="space-between">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((shade) => (
-            <Tooltip label={`${title} ${shade}`}>
+            <Tooltip key={shade} label={`${title} ${shade}`}>
               <Card h="5rem" p="sm" flex="3 30%" key={shade} bg={color[shade]}>
                 <span />
               </Card>
@@ -198,6 +198,7 @@ const ColorPalettes = () => {
         <Group gap="xl" flex={1}>
         {colorData.map((data: ColorStripInterface) => (
           <ColorStrip
+              key={data.title}
             title={data.title}
             color={data.color}
             variableName={data.variableName}
@@ -213,12 +214,12 @@ const ColorPalettes = () => {
           <ScrollArea h="22rem" >
             {colorNames.map((colorName) => (
               <Group key={colorName} mb="sm">
-                <Text size="sm" w={'3rem'}>
+                <Text size="sm" w="3rem">
                   {colorName}
                 </Text>
                 <Group gap="xs" flex={9}>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((shade) => (
-                    <Tooltip label={`${colorName} ${shade}`}>
+                    <Tooltip key={shade} label={`${colorName} ${shade}`}>
                       <Card p={0} h="2rem" flex={1} key={shade} bg={theme.colors[colorName][shade]}>
                         <span />
                       </Card>

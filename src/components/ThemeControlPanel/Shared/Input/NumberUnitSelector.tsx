@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Group, NumberInput, Card, Select, Text, Box} from '@mantine/core';
+import {Group, NumberInput, Select, Text, Box} from '@mantine/core';
 
 export interface NumberUnitSelectorProps {
   value: string;
@@ -18,7 +18,6 @@ import classes from './NumberUnitSelector.module.css';
 const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   value,
   onChange,
-  size,
   variant,
   step = undefined,
   label,
@@ -54,7 +53,7 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
 
   useEffect(() => {
     onChange(hasUnits ? `${numberValue}${unitValue}` : `${numberValue}`);
-    if (step == undefined) {
+    if (step === undefined) {
       if (unitValue === 'px') {
         setDynamicStep(1);
       } else if (unitValue === 'rem') {
@@ -74,7 +73,7 @@ const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
   return (
     <Box className={variant==='reverse'?classes.reverse:classes.default}>
       <Group align="center" justify='end' wrap='nowrap'>
-        {label && <Text w={'150px'}>{label}</Text>}
+        {label && <Text w="150px">{label}</Text>}
         <NumberInput
           size='xs'
           value={numberValue}

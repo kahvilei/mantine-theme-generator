@@ -10,9 +10,7 @@ import {
 import {
   ActionIcon,
   Box, Center,
-  createTheme,
   Group,
-  MantineThemeOverride,
   Popover,
   ScrollArea,
   SegmentedControl,
@@ -25,18 +23,13 @@ import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls
 import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
 import {DownloadThemeButton, UploadThemeButton} from "./Shared/Themes/themeDownloadUpload";
-import {setTheme} from "@/data/ThemeState/themeSlice";
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
 import QuickSetUp from "@/components/ThemeControlPanel/QuickSetUp/QuickSetUp";
 
 const ThemeControlPanel = () => {
-  const defaultTheme = createTheme({} as unknown as MantineThemeOverride);
   const [activeTab, setActiveTab] = useState('quick-set-up');
   const [opened, setOpened] = useState(false);
 
-
-  const dispatch = useDispatch();
 
   const renderContent = () => {
     switch (activeTab) {
@@ -134,7 +127,6 @@ const ThemeControlPanel = () => {
                         variant="filled"
                         color="red"
                         onClick={() => {
-                          dispatch(setTheme(defaultTheme));
                           setOpened(false);
                         }}
                     >

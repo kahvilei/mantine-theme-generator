@@ -7,7 +7,8 @@ import ColorEdit from '../Shared/Colors/ColorEditor/ColorEdit';
 import classes from './ColorControls.module.css';
 import { 
   selectCustomColors,
-} from '@/data/ThemeState/themeSelectors';
+} from '@/data/OldReduxJunk/themeSelectors';
+
 
 const ColorPalette: React.FC = () => {
   
@@ -37,7 +38,9 @@ const ColorPalette: React.FC = () => {
               </ActionIcon>
             </Tooltip>
           </Popover.Target>
-          <ColorEditorPopup />
+          <Popover.Dropdown>
+            <ColorEditorPopup />
+          </Popover.Dropdown>
         </Popover>
       </Group>
     </>

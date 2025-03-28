@@ -1,15 +1,8 @@
 import { Slider, Stack, Text } from '@mantine/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectScale } from '@/data/ThemeState/themeSelectors';
-import { setScale } from '@/data/ThemeState/themeSlice';
+import { sizes } from '@/data/Store';
+import {observer} from "mobx-react-lite";
 
-const Scale = () => {
-  const dispatch = useDispatch();
-  const scale = useSelector(selectScale);
-
-  const handleScaleChange = (value: number) => {
-    dispatch(setScale(value));
-  };
+const Scale = observer(() => {
 
   return (
     <Stack>
@@ -18,8 +11,8 @@ const Scale = () => {
         min={0.1}
         max={2}
         step={0.1}
-        value={scale}
-        onChange={(value) => handleScaleChange(value)}
+        value={sizes.getScale()}
+        onChange={(value) => sizes.setScale(value)}
         marks={[
           { value: 0.5, label: '0.5x' },
           { value: 1, label: '1x' },
@@ -30,6 +23,6 @@ const Scale = () => {
       />
     </Stack>
   );
-};
+});
 
 export default Scale;

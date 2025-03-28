@@ -1,39 +1,41 @@
-;
-// StandardColorPanel.tsx
 import React, { useState } from 'react';
-import { IconTrash } from '@tabler/icons-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActionIcon, Button, ColorInput, ColorPicker, Group, MantineColorsTuple, Stack, TextInput, Tooltip } from '@mantine/core';
-import { selectColor } from '@/data/ThemeState/themeSelectors';
-import { deleteColor, setColor, updateColorShade } from '@/data/ThemeState/themeSlice';
+import {
+  Button,
+  ColorInput,
+  ColorPicker,
+  Group,
+  MantineColorsTuple,
+  Stack,
+  TextInput,
+} from '@mantine/core';
+import { selectColor } from '@/data/OldReduxJunk/themeSelectors';
+import { setColor, updateColorShade } from '@/data/OldReduxJunk/themeSlice';
 import { RootState } from '@/main';
 import generateColors from '@/utils/generateColors';
-
 
 interface StandardColorPanelProps {
   colorName?: string;
   isEditing: boolean;
   isMantine: boolean;
+  setNewColorName: (newColorName: string) => void;
 }
 
 const StandardColorPanel: React.FC<StandardColorPanelProps> = ({
   colorName,
   isEditing,
   isMantine,
+  setNewColorName,
 }) => {
   const dispatch = useDispatch();
   const defaultColorName = colorName || 'blue';
 
-  const [newColorName, setNewColorName] = useState(colorName);
+  const [newColorName] = useState(colorName);
   const colorObject = useSelector((state: RootState) => selectColor(state, defaultColorName));
 
   // Get base color (5th shade)
   const color = colorObject ? (colorObject as MantineColorsTuple)[5] : '#000';
   const [newColorValue, setNewColorValue] = useState(color);
-
-  const handleDeleteColor = (name: string) => {
-    dispatch(deleteColor({ colorName: name }));
-  };
 
   const handleUpdateColorShade = (index: number, newShade: string) => {
     if (colorName) {
@@ -95,7 +97,7 @@ const StandardColorPanel: React.FC<StandardColorPanelProps> = ({
 
           {!isEditing && (
             <Group justify="left">
-              <Button onClick={handleAddColor} disabled={!newColorName || !newColorValue}>
+              <Button onClick={handleAddColor} disabled={!newColorName}>
                 Add Color
               </Button>
             </Group>
@@ -118,20 +120,6 @@ const StandardColorPanel: React.FC<StandardColorPanelProps> = ({
           ))}
         </Stack>
       </Group>
-
-      {isEditing && !isMantine && (
-        <Group justify="right" mt="sm">
-          <Tooltip label="Permanently delete color">
-            <ActionIcon
-              variant="light"
-              color="red"
-              onClick={() => colorName && handleDeleteColor(colorName)}
-            >
-              <IconTrash />
-            </ActionIcon>
-          </Tooltip>
-        </Group>
-      )}
     </>
   );
 };

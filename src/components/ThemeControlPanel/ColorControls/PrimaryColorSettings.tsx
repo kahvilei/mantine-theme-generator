@@ -8,13 +8,13 @@ import {
   selectLuminanceThreshold,
   selectIsSchemeDependentPrimaryShade,
   selectShadesFromColorString
-} from '@/data/ThemeState/themeSelectors';
+} from '@/data/OldReduxJunk/themeSelectors';
 import {
   setPrimaryShade,
   setAutoContrast,
   setLuminanceThreshold
-} from '@/data/ThemeState/themeSlice';
-import { RootState } from '@/data/store';
+} from '@/data/OldReduxJunk/themeSlice';
+import { RootState } from '@/data/OldReduxJunk/store';
 import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 
 const PrimaryColorSettings = () => {

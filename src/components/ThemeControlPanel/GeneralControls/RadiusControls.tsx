@@ -1,16 +1,5 @@
 import {Stack, Text, SegmentedControl, Title, Box, Paper} from '@mantine/core';
 import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectDefaultRadius,
-  selectRadius,
-} from '@/data/ThemeState/themeSelectors';
-import {
-  setDefaultRadius,
-  setRadius,
-} from '@/data/ThemeState/themeSlice';
-
-import { RootState } from '@/data/store';
 
 const RadiusControls = () => {
   const dispatch = useDispatch();

@@ -10,12 +10,12 @@ import {
   selectFocusRing,
   selectRespectReducedMotion,
   selectCursorType,
-} from '@/data/ThemeState/themeSelectors';
+} from '@/data/OldReduxJunk/themeSelectors';
 import {
   setFocusRing,
   setRespectReducedMotion,
   setCursorType,
-} from '@/data/ThemeState/themeSlice';
+} from '@/data/OldReduxJunk/themeSlice';
 
 const InteractionAndAccessibilityControls = () => {
   const dispatch = useDispatch();

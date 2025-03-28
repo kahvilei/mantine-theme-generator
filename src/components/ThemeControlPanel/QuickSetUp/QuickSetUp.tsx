@@ -1,5 +1,3 @@
-import {premadeThemes} from "@/components/ThemeControlPanel/Shared/Themes/premadeThemes";
-
 import React from "react";
 import ThemeSelector from "@/components/ThemeControlPanel/Shared/Themes/ThemeSelector";
 import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
@@ -14,7 +12,7 @@ const QuickSetUp = () => {
     return (
         <Page title="Quick Setup">
             <Section labelIcon={<IconLayout/>} label="Premade themes">
-                <ThemeSelector themes={premadeThemes} />
+                <ThemeSelector/>
             </Section>
             <Section labelIcon={<IconColorPicker/>} label="Primary color">
                 <ThemeColorSelector label="Primary Color"/>

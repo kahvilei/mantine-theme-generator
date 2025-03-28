@@ -1,48 +1,49 @@
 import { Group } from '@mantine/core';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    selectBodyFontFamily,
-    selectHeadingFontFamily,
-    selectMonospaceFontFamily,
+import { observer } from 'mobx-react-lite';
+import { TypeFaceSelector } from "@/components/ThemeControlPanel/Shared/Fonts/TypeFaceSelector";
+import {typography as TypeManager} from "@/data/Store";
+import {Typography} from "@/data/Models/Theme/Typography/Typography";
 
-} from '@/data/ThemeState/themeSelectors';
-import {
-    setBodyFontFamily,
-    setHeadingFontFamily,
-    setMonospaceFontFamily,
+interface ThemeFontsSelectorProps {
+    typography?: Typography;
+}
 
-} from '@/data/ThemeState/themeSlice';
-import {TypeFaceSelector} from "@/components/ThemeControlPanel/Shared/Fonts/TypeFaceSelector";
-
-const ThemeFontsSelector = () => {
-    const dispatch = useDispatch();
-
-    // Selectors
-    const bodyFontFamily = useSelector(selectBodyFontFamily);
-    const headingFontFamily = useSelector(selectHeadingFontFamily);
-    const monospaceFontFamily = useSelector(selectMonospaceFontFamily);
-
+const ThemeFontsSelector = observer(({ typography = TypeManager }: ThemeFontsSelectorProps) => {
     // Action handlers
     const handleBodyFontFamilyChange = (value: string) => {
-        dispatch(setBodyFontFamily(value));
+        typography.setFontFamily(value);
     };
 
     const handleHeadingFontFamilyChange = (value: string) => {
-        dispatch(setHeadingFontFamily(value));
+        if (!typography.headings) {
+            typography.headings = {};
+        }
+        typography.headings.fontFamily = value;
     };
 
     const handleMonospaceFontFamilyChange = (value: string) => {
-        dispatch(setMonospaceFontFamily(value));
+        typography.setMonoFontFamily(value);
     };
 
-
     return (
-    <Group gap={7}>
-        <TypeFaceSelector label="Body" value={bodyFontFamily} onSelect={handleBodyFontFamilyChange}/>
-        <TypeFaceSelector label="Headings" value={headingFontFamily} onSelect={handleHeadingFontFamilyChange}/>
-        <TypeFaceSelector label="Monospace" value={monospaceFontFamily} onSelect={handleMonospaceFontFamilyChange}/>
-    </Group>
+        <Group gap={7}>
+            <TypeFaceSelector
+                label="Body"
+                value={typography.getFontFamily()}
+                onSelect={handleBodyFontFamilyChange}
+            />
+            <TypeFaceSelector
+                label="Headings"
+                value={typography.getHeadingFontFamily()}
+                onSelect={handleHeadingFontFamilyChange}
+            />
+            <TypeFaceSelector
+                label="Monospace"
+                value={typography.getMonoFontFamily()}
+                onSelect={handleMonospaceFontFamilyChange}
+            />
+        </Group>
     );
-};
+});
 
 export default ThemeFontsSelector;

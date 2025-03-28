@@ -1,46 +1,22 @@
-
-
-
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 import './App.css';
 
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
+import { IconComponents, IconDashboard, IconForms, IconMoon, IconPalette, IconSun, IconSunMoon, IconTypography } from '@tabler/icons-react';
 // Store setup
-import {
-  IconComponents,
-  IconDashboard,
-  IconForms,
-  IconMoon,
-  IconPalette,
-  IconSun,
-  IconSunMoon,
-  IconTypography,
-} from '@tabler/icons-react';
-import {
-  Card,
-  Center,
-  createTheme,
-  Group,
-  MantineProvider,
-  MantineThemeOverride,
-  ScrollArea,
-  SegmentedControl,
-  Stack,
-  Tabs,
-  Tooltip,
-} from '@mantine/core';
+import { observer } from 'mobx-react-lite';
+import { Card, Center, createTheme, Group, MantineProvider, MantineThemeOverride, ScrollArea, SegmentedControl, Stack, Tabs, Tooltip } from '@mantine/core';
 import Header from './components/Header/Header';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
-import appTheme from './data/appTheme.json';
+import appTheme from "./data/appTheme.json";
 
-export const defaultTheme = createTheme(appTheme as unknown as MantineThemeOverride);
 
-const App: React.FC = () => {
-
+const App: React.FC = observer(() => {
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
-  const [currentContent, setCurrentContent] = useState<string | null>('Overview');
+  const [currentContent, setCurrentContent] = useState<string | null>('overview');
   const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');
 
   const toggleScheme = () => {
@@ -48,14 +24,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <MantineProvider forceColorScheme={mode} theme={defaultTheme}>
+    <MantineProvider
+      forceColorScheme={mode}
+      theme={createTheme(appTheme as unknown as MantineThemeOverride)}
+    >
       <div className="app-container">
         {/* Header */}
         <div className="app-header">
-          <Header
-            lightMode={mode === 'light'}
-            toggleScheme={toggleScheme}
-          />
+          <Header lightMode={mode === 'light'} toggleScheme={toggleScheme} />
         </div>
 
         {/* Main layout */}
@@ -98,7 +74,7 @@ const App: React.FC = () => {
                         {
                           value: 'dark',
                           label: (
-                            <Tooltip label="Light mode">
+                            <Tooltip label="Dark mode">
                               <Center>
                                 <IconMoon size={12} />
                               </Center>
@@ -130,30 +106,42 @@ const App: React.FC = () => {
                   </Group>
 
                   {/* Tab Content */}
-                  <ScrollArea
-                    scrollbars="y"
-                    type="hover"
-                    className="tab-content-scroll"
-                  >
+                  <ScrollArea scrollbars="y" type="hover" className="tab-content-scroll">
                     {/* Dark Tab Content */}
                     {currentColorScheme === 'dark' && (
                       <Group justify="center" grow className="theme-display-container">
-                        <ThemeDisplay number={1} mode="dark" displayContent={currentContent??'overview'} />
+                        <ThemeDisplay
+                          number={1}
+                          mode="dark"
+                          displayContent={currentContent ?? 'overview'}
+                        />
                       </Group>
                     )}
 
                     {/* Dark and Light Tab Content */}
                     {currentColorScheme === 'dark-and-light' && (
                       <Group gap={0} justify="center" grow className="theme-display-container">
-                        <ThemeDisplay number={2} mode="dark" displayContent={currentContent??'overview'} />
-                        <ThemeDisplay number={3} mode="light" displayContent={currentContent??'overview'} />
+                        <ThemeDisplay
+                          number={2}
+                          mode="dark"
+                          displayContent={currentContent ?? 'overview'}
+                        />
+                        <ThemeDisplay
+                          number={3}
+                          mode="light"
+                          displayContent={currentContent ?? 'overview'}
+                        />
                       </Group>
                     )}
 
                     {/* Light Tab Content */}
                     {currentColorScheme === 'light' && (
                       <Group justify="center" grow className="theme-display-container">
-                        <ThemeDisplay number={4} mode="light" displayContent={currentContent??'overview'} />
+                        <ThemeDisplay
+                          number={4}
+                          mode="light"
+                          displayContent={currentContent ?? 'overview'}
+                        />
                       </Group>
                     )}
                   </ScrollArea>
@@ -165,6 +153,6 @@ const App: React.FC = () => {
       </div>
     </MantineProvider>
   );
-};
+});
 
 export default App;

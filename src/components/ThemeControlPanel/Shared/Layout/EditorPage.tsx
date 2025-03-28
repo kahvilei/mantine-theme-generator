@@ -1,18 +1,18 @@
-import {Stack, Title} from '@mantine/core';
-import React from "react";
+import React from 'react';
+import { Stack, Title } from '@mantine/core';
 
 interface EditorPageProps {
-    children?: React.ReactNode;
-    title?: string;
+  children?: React.ReactNode;
+  title?: string;
 }
 
-const EditorPage: React.FC<EditorPageProps> = ({ children, title}) => {
-    return (
-        <Stack p={2} gap="xl">
-            {title&&<Title order={2}>{title}</Title>}
-            {children}
-        </Stack>
-    );
+const EditorPage: React.FC<EditorPageProps> = ({ children, title }) => {
+  return (
+    <Stack p={2} gap="xl">
+      {title && <Title order={2}>{title}</Title>}
+      {children}
+    </Stack>
+  );
 };
 
 export default EditorPage;

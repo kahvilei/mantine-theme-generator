@@ -1,21 +1,14 @@
 import {
-    Card,
-    Center,
     Combobox,
     InputBase,
-    Input,
-    Paper,
-    Select,
-    Stack,
     Text,
     useCombobox,
-    Title,
     ScrollArea,
     Group
 } from '@mantine/core';
 import { fontData } from "@/components/ThemeControlPanel/Shared/Fonts/fontData";
 import classes from './TypeFaceSelector.module.css';
-import {IconDragDrop, IconSelector} from "@tabler/icons-react";
+import {IconSelector} from "@tabler/icons-react";
 
 
 interface TypeFaceSelectorProps {
@@ -25,7 +18,6 @@ interface TypeFaceSelectorProps {
     w?: number | string;
     h?: number | string;
 }
-
 
 export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelectorProps) => {
     const combobox = useCombobox({

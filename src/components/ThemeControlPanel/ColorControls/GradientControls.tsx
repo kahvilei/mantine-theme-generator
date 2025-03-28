@@ -2,14 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AngleSlider, Group, Stack } from '@mantine/core';
 import ThemeColorSelector from '@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector';
-import { RootState } from '@/data/store';
+import { RootState } from '@/data/OldReduxJunk/store';
 import {
   selectGradientAngle,
   selectGradientFrom,
   selectGradientTo,
   selectMainColorShade,
-} from '@/data/ThemeState/themeSelectors';
-import { setGradientAngle, setGradientFrom, setGradientTo } from '@/data/ThemeState/themeSlice';
+} from '@/data/OldReduxJunk/themeSelectors';
+import { setGradientAngle, setGradientFrom, setGradientTo } from '@/data/OldReduxJunk/themeSlice';
 
 const GradientControls = () => {
   const dispatch = useDispatch();
