@@ -13,7 +13,7 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ theme, name, selected=false
   const colors = theme.colors.colors?theme.colors.colors:DEFAULT_THEME.colors;
   const primaryColor = theme.colors.primaryColor?theme.colors.primaryColor:'blue';
   const hex = theme.colors.getColorByName(primaryColor).getShade();
-  const fontFamily = theme.headers?theme.headers.fontFamily:DEFAULT_THEME.fontFamily;
+  const fontFamily = theme.typography.headings?theme.typography.headings.fontFamily:DEFAULT_THEME.fontFamily;
 
   const lightMode = false;
 
