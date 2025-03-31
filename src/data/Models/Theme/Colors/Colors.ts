@@ -1,6 +1,6 @@
-import {DEFAULT_THEME, MantineColorsTuple} from "@mantine/core";
+import {DEFAULT_THEME, MantineColorsTuple, virtualColor} from "@mantine/core";
 import {CustomColor} from "@/data/Models/Theme/Colors/CustomColor";
-import {action, makeAutoObservable, runInAction} from "mobx";
+import {action, makeAutoObservable, } from "mobx";
 
 export type HeadingSize = {
     fontSize?: string;
@@ -15,7 +15,7 @@ export class Colors{
     //each color object will be responsible for grabbing and updating their own shades from the colors record
     colorMap: Map<string, CustomColor>; // Now maps UUID to CustomColor
 
-    colors?: Record<string, MantineColorsTuple>;
+    colors?: Record<string, MantineColorsTuple | (()=>MantineColorsTuple)>;
     primaryColor?: string;
     primaryShade?: number | { light: number; dark: number };
 
@@ -55,15 +55,20 @@ export class Colors{
 
             if (isVirtualColor) {
                 // Handle virtual color created with virtualColor()
-                const virtualColor = value as unknown as { name: string, dark: string, light: string };
+                const virtualColorProps = value as unknown as { name: string, dark: string, light: string };
                 colorObj = new CustomColor({
                     name: key,
                     type: 'virtual',
                     colorKeys: {
-                        dark: virtualColor.dark,
-                        light: virtualColor.light
+                        dark: virtualColorProps.dark,
+                        light: virtualColorProps.light
                     }
                 }, this);
+                const virtualColorTemp = () => {
+                    return  () => virtualColor(virtualColorProps);
+                }
+                this.colors[key] = virtualColorTemp();
+
             } else {
                 // Handle standard color (array of color values)
                 // eslint-disable-next-line no-lonely-if
@@ -83,6 +88,7 @@ export class Colors{
             // Store by UUID instead of name
             this.colorMap.set(colorObj.uuid, colorObj);
         }
+
 
         // Add any missing default colors from DEFAULT_COLORS_ARRAY
         for (const [key, value] of DEFAULT_COLORS_ARRAY) {
@@ -217,6 +223,10 @@ export class Colors{
 
     // Create a new color
     createColor(name: string, type: "standard" | "virtual" | "override" | "shadeless", colorKeys?: {light: string, dark: string}): CustomColor | null {
+        if(this.colors === undefined) {
+            this.colors = DEFAULT_COLORS;
+        }
+
         // Check if name already exists
         if (this.getColorByName(name)) {
             return null;
@@ -234,6 +244,12 @@ export class Colors{
         if (type !== 'virtual' && this.colors) {
             // Create a default color tuple
             this.colors[name] = ['#ffffff', '#f2f2f2', '#e6e6e6', '#d9d9d9', '#cccccc', '#bfbfbf', '#b3b3b3', '#a6a6a6', '#999999', '#8c8c8c'];
+        }
+
+        const virtualKeys = colorKeys??{dark:'blue', light:'blue'}
+
+        if (type === 'virtual') {
+            this.colors[name] = () => {return virtualColor({name, ...virtualKeys})};
         }
 
         return newColor;

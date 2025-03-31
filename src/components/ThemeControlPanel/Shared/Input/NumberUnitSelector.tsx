@@ -16,7 +16,7 @@ export interface NumberUnitSelectorProps {
 import classes from './NumberUnitSelector.module.css';
 
 const NumberUnitSelector: React.FC<NumberUnitSelectorProps> = ({
-  value,
+  value = '0',
   onChange,
   variant,
   step = undefined,

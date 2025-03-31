@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import {
   IconCube,
-  IconLayoutSidebar,
   IconPalette,
   IconResize,
   IconSettings,
@@ -9,146 +9,140 @@ import {
 } from '@tabler/icons-react';
 import {
   ActionIcon,
-  Box, Center,
+  Box,
+  Center,
   Group,
   Popover,
   ScrollArea,
   SegmentedControl,
   Text,
-  Tooltip
+  Tooltip,
 } from '@mantine/core';
+import QuickSetUp from '@/components/ThemeControlPanel/QuickSetUp/QuickSetUp';
+import { theme } from '@/data/Store';
 import ColorControl from './ColorControls/ColorControl';
 import ComponentControls from './ComponentControls/ComponentControls';
+import { DownloadThemeButton, UploadThemeButton } from './Shared/Themes/themeDownloadUpload';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
-import {DownloadThemeButton, UploadThemeButton} from "./Shared/Themes/themeDownloadUpload";
-import React, {useState} from "react";
-import QuickSetUp from "@/components/ThemeControlPanel/QuickSetUp/QuickSetUp";
 
 const ThemeControlPanel = () => {
   const [activeTab, setActiveTab] = useState('quick-set-up');
   const [opened, setOpened] = useState(false);
 
-
   const renderContent = () => {
     switch (activeTab) {
       case 'quick-set-up':
-        return <QuickSetUp/>;
+        return <QuickSetUp />;
       case 'color':
-        return <ColorControl/>;
+        return <ColorControl />;
       case 'typography':
-        return <TypographyControl/>;
+        return <TypographyControl />;
       case 'size-and-layout':
-        return <SizeAndLayoutControls/>;
+        return <SizeAndLayoutControls />;
       case 'components':
-        return <ComponentControls/>;
+        return <ComponentControls />;
       default:
-        return <ColorControl/>;
+        return <ColorControl />;
     }
   };
 
   return (
-      <Box id="control-panel">
-          <Group className={classes.header}>
-            <SegmentedControl
-                value={activeTab}
-                onChange={setActiveTab}
-                data={[
-                  {
-                    value: 'quick-set-up',
-                    label: (
-                        <Tooltip label="Quick Setup">
-                          <Center>
-                            <IconSettings size="1.2rem" />
-                          </Center>
-                        </Tooltip>
-                    ),
-                  },
-                  {
-                    value: 'color',
-                    label: (
-                        <Tooltip label="Color">
-                          <Center>
-                            <IconPalette size="1.2rem" />
-                          </Center>
-                        </Tooltip>
-                    ),
-                  },
-                  {
-                    value: 'typography',
-                    label: (
-                        <Tooltip label="Typography">
-                          <Center>
-                            <IconTypeface size="1.2rem" />
-                          </Center>
-                        </Tooltip>
-                    ),
-                  },
-                  {
-                    value: 'size-and-layout',
-                    label: (
-                        <Tooltip label="Size and Layout">
-                          <Center>
-                            <IconResize size="1.2rem" />
-                          </Center>
-                        </Tooltip>
-                    ),
-                  },
-                  {
-                    value: 'components',
-                    label: (
-                        <Tooltip label="Components">
-                          <Center>
-                            <IconCube size="1.2rem" />
-                          </Center>
-                        </Tooltip>
-                    ),
-                  },
-                ]}
-            />
-            <Group gap ="xs">
-              <DownloadThemeButton />
-              <UploadThemeButton />
-              <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
-                <Popover.Target>
-                  <Tooltip label="Reset Theme">
-                    <ActionIcon variant="light" color="red" onClick={() => setOpened(true)}>
-                      <IconTrash size="1.25rem" />
-                    </ActionIcon>
-                  </Tooltip>
-                </Popover.Target>
-                <Popover.Dropdown>
-                  <Text size="sm">
-                    Are you sure you want to reset the theme? This will delete all current changes.
-                  </Text>
-                  <Group mt="md">
-                    <ActionIcon
-                        variant="filled"
-                        color="red"
-                        onClick={() => {
-                          setOpened(false);
-                        }}
-                    >
-                      <IconTrash size="1.25rem" />
-                    </ActionIcon>
-                    <ActionIcon onClick={() => setOpened(false)}>
-                      <IconLayoutSidebar size="1.25rem" />
-                    </ActionIcon>
-                  </Group>
-                </Popover.Dropdown>
-              </Popover>
-            </Group>
-          </Group>
-          <ScrollArea scrollbars="y" type="hover" className={classes.contentArea}>
-            <Box>
-              {renderContent()}
-            </Box>
-          </ScrollArea>
-      </Box>
+    <Box id="control-panel">
+      <Group className={classes.header} wrap={'nowrap'}>
+        <SegmentedControl
+          value={activeTab}
+          onChange={setActiveTab}
+          data={[
+            {
+              value: 'quick-set-up',
+              label: (
+                <Tooltip label="Quick Setup">
+                  <Center>
+                    <IconSettings size="1.2rem" />
+                  </Center>
+                </Tooltip>
+              ),
+            },
+            {
+              value: 'color',
+              label: (
+                <Tooltip label="Color">
+                  <Center>
+                    <IconPalette size="1.2rem" />
+                  </Center>
+                </Tooltip>
+              ),
+            },
+            {
+              value: 'typography',
+              label: (
+                <Tooltip label="Typography">
+                  <Center>
+                    <IconTypeface size="1.2rem" />
+                  </Center>
+                </Tooltip>
+              ),
+            },
+            {
+              value: 'size-and-layout',
+              label: (
+                <Tooltip label="Size and Layout">
+                  <Center>
+                    <IconResize size="1.2rem" />
+                  </Center>
+                </Tooltip>
+              ),
+            },
+            {
+              value: 'components',
+              label: (
+                <Tooltip label="Components">
+                  <Center>
+                    <IconCube size="1.2rem" />
+                  </Center>
+                </Tooltip>
+              ),
+            },
+          ]}
+        />
+        <Group gap="xs" wrap={'nowrap'}>
+          <DownloadThemeButton />
+          <UploadThemeButton />
+          <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
+            <Popover.Target>
+              <Tooltip label="Reset Theme">
+                <ActionIcon variant="light" color="red" onClick={() => setOpened(true)}>
+                  <IconTrash size="1.25rem" />
+                </ActionIcon>
+              </Tooltip>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <Text size="sm">
+                Are you sure you want to reset the theme? This will delete all current changes.
+              </Text>
+              <Group mt="md">
+                <ActionIcon
+                  variant="filled"
+                  color="red"
+                  onClick={() => {
+                    theme.reset();
+                    setOpened(false);
+                  }}
+                >
+                  <IconTrash size="1.25rem" />
+                </ActionIcon>
+              </Group>
+            </Popover.Dropdown>
+          </Popover>
+        </Group>
+      </Group>
+      <ScrollArea scrollbars="y" type="hover" className={classes.contentArea}>
+        <Box>{renderContent()}</Box>
+      </ScrollArea>
+    </Box>
   );
 };
-
-
 
 export default ThemeControlPanel;

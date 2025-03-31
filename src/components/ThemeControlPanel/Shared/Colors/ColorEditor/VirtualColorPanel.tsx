@@ -54,7 +54,6 @@ const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
           <Stack gap="xs" flex={1}>
             <Text size="sm">Dark</Text>
             <ThemeColorSelector
-              colors={colorsInstance}
               mainColor={darkColor}
               onSelect={setDarkColor}
             />
@@ -63,7 +62,6 @@ const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
           <Stack gap="xs" flex={1}>
             <Text size="sm">Light</Text>
             <ThemeColorSelector
-              colors={colorsInstance}
               mainColor={lightColor}
               onSelect={setLightColor}
             />

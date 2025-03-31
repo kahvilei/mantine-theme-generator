@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconTrash } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
 import { ActionIcon, Group, SegmentedControl, Stack, Text, Tooltip } from '@mantine/core';
@@ -21,6 +21,10 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = observer(
 
     // State for new color name
     const [newColorName, setNewColorName] = useState(name || '');
+
+    useEffect(() => {
+        colorObject?.rename(newColorName);
+    }, [newColorName]);
 
     // State for color type (virtual or standard)
     const [isVirtual, setIsVirtual] = useState(colorObject?.type === 'virtual' || false);

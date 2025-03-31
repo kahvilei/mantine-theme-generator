@@ -46,26 +46,40 @@ export class Theme{
         this.store?.setMainTheme(this)
     }
 
+    reset() {
+        this.store?.resetTheme(this.name)
+    }
+
     //gets all manager values and generates our theme
     compile = (): MantineThemeOverride => {
         // Start with a fresh object
         const compiledTheme: MantineThemeOverride = {};
 
+        const omissions = ['colorMap']
+
         // Helper function to deeply map properties from source to target
         const mapDeepProperties = (source: any, target: any, path: string = '') => {
-            if (!source || typeof source !== 'object') {return;}
+            // Early return if source is not an object
+            if (!source || typeof source !== 'object') {
+                return;
+            }
 
             Object.entries(source).forEach(([key, value]) => {
                 const currentPath = path ? `${path}.${key}` : key;
 
-                if (value === null || value === undefined) {
-
+                if (value === null || value === undefined || omissions.includes(key)) {
+                    // Skip null, undefined, or omitted properties
+                } else if (typeof value === 'function') {
+                    // If the value is a function, assign it directly to the target
+                    target[key] = value();
                 } else if (Array.isArray(value)) {
                     // Special handling for arrays - create a copy using spread
                     target[key] = [...value];
                 } else if (typeof value === 'object') {
                     // For objects, create a nested structure
-                    if (!target[key]) {target[key] = {};}
+                    if (!target[key]) {
+                        target[key] = {};
+                    }
                     mapDeepProperties(value, target[key], currentPath);
                 } else {
                     // For primitive values, assign directly

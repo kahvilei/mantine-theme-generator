@@ -1,36 +1,31 @@
 import {makeAutoObservable} from "mobx";
-import {frameValue, unFrameValue} from "@/utils/frameValues";
+import {DEFAULT_THEME} from "@mantine/core";
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export class Sizes {
     scale?: number;
     fontScale?: number;
-    radius?: Record<Size, string>;
-    spacing?: Record<Size, string>;
-    defaultRadius?: Size;
+    radius: Record<Size, string>;
+    spacing: Record<Size, string>;
+    defaultRadius: Size | number | string;
     breakpoints: Record<Size, string>;
 
     constructor(config: SpacingSettings) {
         this.scale = config.scale;
         this.fontScale = config.fontScale;
-        this.radius = config.radius;
-        this.spacing = config.spacing;
-        this.defaultRadius = config.defaultRadius;
-        this.breakpoints = config.breakpoints;
+        this.radius = config.radius??DEFAULT_THEME.radius
+        this.spacing = config.spacing??DEFAULT_THEME.spacing
+        this.defaultRadius = config.defaultRadius??DEFAULT_THEME.defaultRadius;
+        this.breakpoints = config.breakpoints??DEFAULT_THEME.breakpoints
         makeAutoObservable(this);
     }
 
     setSpacingSize(size: Size, value: string) {
-        if(this.spacing !== undefined) {
-            // @ts-ignore
-            this.spacing = {}
-        }
-        // @ts-ignore
-        this.spacing[size] = frameValue(value);
+        this.spacing[size] = value;
     }
 
-    getSpacingSize(size: Size):string {
-        return unFrameValue(this.spacing?this.spacing[size]:'0');
+    getSpacingSize(size: Size):string | undefined{
+        return this.spacing[size];
     }
 
     getScale() {
@@ -46,32 +41,30 @@ export class Sizes {
     }
 
     setBreakPoint(size: Size, value: string) {
-        this.breakpoints[size] = frameValue(value);
+        this.breakpoints[size] = value;
     }
 
     getBreakPoint(size: Size) {
-        return unFrameValue(this.breakpoints[size]);
+        return this.breakpoints[size];
     }
 
     setRadiusSize(size: Size, value: string) {
-        if (!this.radius) {
-            this.radius = {} as Record<Size, string>;
-        }
-        this.radius[size] = frameValue(value);
+        this.radius[size] = value;
     }
 
     getRadiusSize(size: Size): string {
-        return unFrameValue(this.radius?.[size] || '0');
+        return this.radius?.[size];
     }
 
     setDefaultRadius(value: Size) {
         this.defaultRadius = value;
     }
 
-    getDefaultRadius(): Size {
-        return this.defaultRadius || 'md';
+    getDefaultRadius(): Size | number | string {
+        return this.defaultRadius;
     }
 }
+
 export interface SpacingSettings {
     scale?: number;
     fontScale?: number;

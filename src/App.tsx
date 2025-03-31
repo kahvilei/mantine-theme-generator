@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 import './App.css';
+import './Fonts.css'
 
 
 import React, { useEffect, useState } from 'react';
@@ -50,8 +51,8 @@ const App: React.FC = observer(() => {
                   <Group className="tab-header" justify="space-between" align="center">
                     <Tabs value={currentContent} onChange={setCurrentContent}>
                       <Tabs.List className="tab-header-list">
-                        <Tabs.Tab value="overview" leftSection={<IconPalette size={16} />}>
-                          Overview
+                        <Tabs.Tab value="dashboard" leftSection={<IconDashboard size={16} />}>
+                          Dashboard
                         </Tabs.Tab>
                         <Tabs.Tab value="typography" leftSection={<IconTypography size={16} />}>
                           Typography
@@ -61,9 +62,6 @@ const App: React.FC = observer(() => {
                         </Tabs.Tab>
                         <Tabs.Tab value="forms" leftSection={<IconForms size={16} />}>
                           Forms
-                        </Tabs.Tab>
-                        <Tabs.Tab value="dashboard" leftSection={<IconDashboard size={16} />}>
-                          Dashboard
                         </Tabs.Tab>
                       </Tabs.List>
                     </Tabs>

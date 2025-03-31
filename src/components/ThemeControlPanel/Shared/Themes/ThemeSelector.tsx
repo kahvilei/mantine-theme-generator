@@ -32,7 +32,7 @@ const ThemeSelector= observer(({store = Store}:ThemeSelectorProps) => {
         >
           <ThemePreview
             selected={currentThemeName === theme.name}
-            theme={theme.compile()}
+            theme={theme}
             name={theme.name}
           />
         </Box>

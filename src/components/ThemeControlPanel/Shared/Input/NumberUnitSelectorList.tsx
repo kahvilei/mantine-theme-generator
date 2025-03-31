@@ -1,14 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Box, Paper, Stack, Text } from '@mantine/core';
-import { RootState } from '@/main';
 import NumberUnitSelector, {
   NumberUnitSelectorProps,
 } from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
 
 interface NumberUnitSelectorListProps {
   list: Array<NumberUnitSelectorProps>;
-  selector: (state: RootState, value: string | number) => string;
+  selector: (value: string | number) => string;
   onChange: (value: string | number) => void;
 }
 
@@ -27,7 +25,7 @@ export const NumberUnitSelectorList: React.FC<NumberUnitSelectorListProps> = ({
               key={element.label}
               label={element.label}
               value={
-                useSelector((state: RootState) => selector(state, element.label ?? '')) || '0px'
+                selector(element.label ?? '')
               }
               onChange={(value:string) => onChange(value)}
               min={element.min ?? 0}

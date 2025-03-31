@@ -1,13 +1,16 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Box, Card, Stack, Tabs, Title } from '@mantine/core';
-import Store from '@/data/Store';
+import {typography as typographyProxy} from '@/data/Store';
 import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
+import {Typography} from "@/data/Models/Theme/Typography";
 
+interface HeadingsSettingsProps {
+    typography?: Typography;
+}
 
-const HeadingsSettings = observer(() => {
+const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography = typographyProxy}:HeadingsSettingsProps) => {
     const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-    const typography = Store.theme.typography
     const fontFamily = typography.getHeadingFontFamily();
 
     const handleHeadingSizeChange = (heading: typeof headings[number], value: string) => {

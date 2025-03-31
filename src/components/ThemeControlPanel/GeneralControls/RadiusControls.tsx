@@ -13,7 +13,7 @@ const RadiusControls = observer(({ sizes = SizesManager }: RadiusControlsProps) 
   const radiusSizes: Size[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   const handleDefaultRadiusChange = (value: Size) => {
-    sizes.defaultRadius = value;
+    sizes?.setDefaultRadius(value);
   };
 
   const handleRadiusChange = (size: Size, value: string) => {
@@ -21,7 +21,7 @@ const RadiusControls = observer(({ sizes = SizesManager }: RadiusControlsProps) 
     if (!sizes.radius) {
       sizes.radius = {} as Record<Size, string>;
     }
-    sizes.radius[size] = value;
+    sizes?.setRadiusSize(size, value);
   };
 
   return (
@@ -37,7 +37,7 @@ const RadiusControls = observer(({ sizes = SizesManager }: RadiusControlsProps) 
             { label: 'lg', value: 'lg' },
             { label: 'xl', value: 'xl' },
           ]}
-          value={sizes.defaultRadius || 'md'}
+          value={sizes.defaultRadius as string || 'md'}
           onChange={(value) => handleDefaultRadiusChange(value as Size)}
         />
         <Text size="sm">Radius settings</Text>
@@ -47,7 +47,7 @@ const RadiusControls = observer(({ sizes = SizesManager }: RadiusControlsProps) 
               <NumberUnitSelector
                 key={size}
                 label={size}
-                value={sizes.radius?.[size] || '0px'}
+                value={sizes?.getRadiusSize(size)}
                 onChange={(value) => handleRadiusChange(size, value)}
                 min={0}
                 max={100}

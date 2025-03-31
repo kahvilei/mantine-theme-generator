@@ -55,7 +55,7 @@ export const Dashboard: React.FC = () => {
                             ]}
                             dataKey="date"
                             series={[
-                                { name: 'Visitors', color: 'blue.6' },
+                                { name: 'Visitors', color: 'var(--mantine-primary-color-filled)' },
                                 { name: 'Conversions', color: 'teal.6' },
                                 { name: 'Revenue', color: 'violet.6' }
                             ]}
@@ -69,7 +69,7 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl" color="primary">
+                            <ThemeIcon size="xl">
                                 <IconUser size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
@@ -136,12 +136,12 @@ export const Dashboard: React.FC = () => {
                                 <Stack>
                                     {[
                                         { text: 'John updated the project status to "Completed"', time: '2 minutes ago', icon: IconCheck, color: 'green' },
-                                        { text: 'Sara uploaded a new file "design-mockup.fig"', time: '10 minutes ago', icon: IconUpload, color: 'blue' },
+                                        { text: 'Sara uploaded a new file "design-mockup.fig"', time: '10 minutes ago', icon: IconUpload, color: 'var(--mantine-primary-color-filled)' },
                                         { text: 'Team meeting scheduled for tomorrow at 10:00 AM', time: '1 hour ago', icon: IconUsersGroup, color: 'violet' },
                                         { text: 'New comment on task "Create user flow diagram"', time: '2 hours ago', icon: IconMessage, color: 'orange' },
                                         { text: 'David completed the task "Write API documentation"', time: '3 hours ago', icon: IconCircleCheck, color: 'green' },
                                         { text: 'System maintenance scheduled for Sunday', time: '5 hours ago', icon: IconSettings, color: 'gray' },
-                                        { text: 'Emily submitted a new feature request', time: '1 day ago', icon: IconPlus, color: 'blue' }
+                                        { text: 'Emily submitted a new feature request', time: '1 day ago', icon: IconPlus, color: 'var(--mantine-primary-color-filled)' }
                                     ].map((activity, index) => (
                                         <Paper key={index} p="md">
                                             <Group wrap='nowrap'>
@@ -169,7 +169,7 @@ export const Dashboard: React.FC = () => {
                                 <Center>
                                 <DonutChart
                                     data={[
-                                        { name: 'Desktop', value: 45, color: 'blue' },
+                                        { name: 'Desktop', value: 45, color: 'var(--mantine-primary-color-filled)' },
                                         { name: 'Mobile', value: 38, color: 'orange' },
                                         { name: 'Tablet', value: 17, color: 'violet' }
                                     ]}
@@ -180,7 +180,7 @@ export const Dashboard: React.FC = () => {
                                 /></Center>
                                 <List spacing="xs" size="sm" center>
                                     <List.Item icon={
-                                        <ThemeIcon color="blue" size={20} radius="xl">
+                                        <ThemeIcon size={20} radius="xl">
                                             <IconDeviceDesktop size={12} />
                                         </ThemeIcon>
                                     }>
@@ -217,7 +217,7 @@ export const Dashboard: React.FC = () => {
                                     ]}
                                     dataKey="name"
                                     series={[
-                                        { name: 'tasks', color: 'blue.6' }
+                                        { name: 'tasks', color: 'var(--mantine-primary-color-filled)' }
                                     ]}
                                     barProps={{ radius: 4 }}
                                 />

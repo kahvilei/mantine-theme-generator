@@ -15,7 +15,7 @@ const SpacingControls= observer(() => {
           <NumberUnitSelector
             key={size}
             label={size}
-            value={sizes.getSpacingSize(size)}
+            value={sizes.getSpacingSize(size)??""}
             onChange={(value) =>  sizes.setSpacingSize(size, value)}
             min={0}
             max={100}

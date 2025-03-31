@@ -1,6 +1,6 @@
 import {action, makeAutoObservable} from "mobx";
 import {Colors} from "@/data/Models/Theme/Colors/Colors";
-import {MantineColorsTuple} from "@mantine/core";
+import {MantineColorsTuple, virtualColor} from "@mantine/core";
 
 type ColorType = "standard" | "virtual" | "override" | "shadeless";
 type ColorKeys = {
@@ -48,6 +48,7 @@ export class CustomColor {
             return '';
         }
         // For standard and override colors
+        // @ts-ignore
         return this.manager.colors?.[this.name]?.[index??this.manager.getPrimaryShade(scheme)] || '';
     }
 
@@ -72,6 +73,7 @@ export class CustomColor {
 
             return sourceColor.getColorTuple(scheme);
         }
+        // @ts-ignore
         return this.manager.colors?.[this.name];
     }
 
@@ -87,6 +89,9 @@ export class CustomColor {
     setVirtualColorSource(colorScheme: 'light' | 'dark', sourceName: string): void {
         if (this.type === 'virtual' && this.manager.getColorByName(sourceName)) {
             this.colorKeys[colorScheme] = sourceName;
+            if(this.manager.colors && this.manager.colors[this.name]) {
+                this.manager.colors[this.name] = () => {return virtualColor({name: this.name, ...this.colorKeys})};
+            }
         }
     }
 
@@ -177,6 +182,7 @@ export class CustomColor {
         } else {
             // For standard and override colors, copy the color tuple
             if (this.manager.colors && this.manager.colors[this.name]) {
+                // @ts-ignore
                 this.manager.colors[newName] = [...this.manager.colors[this.name]];
             }
 

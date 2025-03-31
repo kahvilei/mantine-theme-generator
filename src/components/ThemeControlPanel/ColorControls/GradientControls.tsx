@@ -52,13 +52,11 @@ const GradientControls = observer(({ colorsInstance = ColorManager }: GradientCo
         }}
       >
         <ThemeColorSelector
-          colors={colorsInstance}
           mainColor={gradientStart}
           onSelect={handleGradientFromChange}
         />
         <AngleSlider value={gradientAngle} onChange={handleGradientAngleChange} />
         <ThemeColorSelector
-          colors={colorsInstance}
           mainColor={gradientEnd}
           onSelect={handleGradientToChange}
         />

@@ -1,5 +1,6 @@
 
 import {action, makeAutoObservable} from "mobx";
+import {frameValue, unFrameValue} from "@/utils/frameValues";
 
 export type HeadingSize = {
     fontSize?: string;
