@@ -1,3 +1,9 @@
 .displayPanel{
     min-height: calc(100vh - 96px);
+    width: 100%;
+}
+
+.displayContent{
+    max-width: var(--mantine-breakpoint-lg);
+    width: 100%;
 }

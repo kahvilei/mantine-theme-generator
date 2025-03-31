@@ -25,7 +25,7 @@ import {AreaChart, BarChart, DonutChart} from "@mantine/charts";
 
 export const Dashboard: React.FC = () => {
     return (
-        <Stack gap="xl">
+        <Stack gap="xl" flex={1}>
             <Grid>
                 <Grid.Col span={12}>
                     <Card p="lg">

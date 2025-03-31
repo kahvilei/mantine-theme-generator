@@ -23,8 +23,6 @@ export const Typography = ({theme}:TypographyInterface) =>{
     <Stack gap="xl">
 
     <Stack gap="md">
-    <Title order={2}>Typography</Title>
-    <Text>Font families, sizes, and styles defined in your theme</Text>
     <Card p="lg">
     <Group align='start' w='100%' justify="stretch">
         <Paper  p="lg">
