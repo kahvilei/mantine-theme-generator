@@ -1,79 +1,85 @@
-
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { observer } from 'mobx-react-lite';
 import { Button, Group, Stack, Text, TextInput } from '@mantine/core';
 import ThemeColorSelector from '@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector';
-import { selectVirtualColor } from '@/data/OldReduxJunk/themeSelectors';
-import { RootState } from '@/main';
-import {updateColor} from "@/data/OldReduxJunk/themeSlice";
-
+import { Colors } from '@/data/Models/Theme/Colors/Colors';
+import { CustomColor } from '@/data/Models/Theme/Colors/CustomColor';
+import { colors as ColorManager } from '@/data/Store';
 
 interface VirtualColorPanelProps {
-  colorName?: string;
+  colorObject?: CustomColor | null;
+  newColorName: string;
+  setNewColorName: (name: string) => void;
   isEditing: boolean;
-  setNewColorName: (newColorName: string) => void;
+  colorsInstance?: Colors;
 }
 
-const VirtualColorPanel: React.FC<VirtualColorPanelProps> = ({
-  colorName,
-  isEditing,
-  setNewColorName,
-}) => {
-  const dispatch = useDispatch();
-  const oldName = colorName;
+const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
+  ({ colorObject, newColorName, setNewColorName, isEditing, colorsInstance = ColorManager }) => {
+    // Initialize with current values if editing, or defaults if creating new
+    const [darkColor, setDarkColor] = useState(
+      colorObject?.type === 'virtual' ? colorObject.colorKeys.dark : 'blue'
+    );
 
-  const [newName] = useState(colorName);
-  const virtualColor = useSelector((state: RootState) =>
-    selectVirtualColor(state, oldName ?? 'blue')
-  );
+    const [lightColor, setLightColor] = useState(
+      colorObject?.type === 'virtual' ? colorObject.colorKeys.light : 'blue'
+    );
 
-  const [darkColor, setDarkColor] = useState(virtualColor.dark);
-  const [lightColor, setLightColor] = useState(virtualColor.light);
+    useEffect(() => {
+      // Update the virtual color whenever source colors change
+      if (isEditing && colorObject?.type === 'virtual') {
+        colorObject.setVirtualColorSource('dark', darkColor);
+        colorObject.setVirtualColorSource('light', lightColor);
+      }
+    }, [darkColor, lightColor, colorObject, isEditing]);
 
-  useEffect(() => {
-    dispatch(updateColor({ oldName, newName }));
-  }, [newName]);
+    const handleAddVirtualColor = () => {
+      if (newColorName && !isEditing) {
+        // Create a new virtual color
+        colorsInstance.createColor(newColorName, 'virtual', { dark: darkColor, light: lightColor });
+      }
+    };
 
-  useEffect(() => {
-    handleAddVirtualColor();
-  }, [darkColor, lightColor]);
+    return (
+      <>
+        <TextInput
+          label="Name"
+          value={newColorName}
+          required
+          onChange={(event) => setNewColorName(event.currentTarget.value)}
+          disabled={isEditing && colorObject?.type === 'override'}
+        />
 
-  const handleAddVirtualColor = () => {
-    if (newName) {
+        <Group align="top" gap="lg">
+          <Stack gap="xs" flex={1}>
+            <Text size="sm">Dark</Text>
+            <ThemeColorSelector
+              colors={colorsInstance}
+              mainColor={darkColor}
+              onSelect={setDarkColor}
+            />
+          </Stack>
 
-    }
-  };
+          <Stack gap="xs" flex={1}>
+            <Text size="sm">Light</Text>
+            <ThemeColorSelector
+              colors={colorsInstance}
+              mainColor={lightColor}
+              onSelect={setLightColor}
+            />
+          </Stack>
+        </Group>
 
-  return (
-    <>
-      <TextInput
-        label="Name"
-        value={newName}
-        required
-        onChange={(event) => setNewColorName(event.currentTarget.value)}
-      />
-
-      <Group align="top" gap="lg">
-        <Stack gap="xs" flex={1}>
-          <Text size="sm">Dark</Text>
-          <ThemeColorSelector mainColor={darkColor} onSelect={setDarkColor} />
-        </Stack>
-
-        <Stack gap="xs" flex={1}>
-          <Text size="sm">Light</Text>
-          <ThemeColorSelector mainColor={lightColor} onSelect={setLightColor} />
-        </Stack>
-      </Group>
-
-      <Group justify="space-between" mt="md">
-        {!isEditing && (
-          <Button onClick={handleAddVirtualColor} disabled={!newName}>
-            Add Color
-          </Button>
-        )}
-      </Group>
-    </>
-  );
-};
+        <Group justify="space-between" mt="md">
+          {!isEditing && (
+            <Button onClick={handleAddVirtualColor} disabled={!newColorName}>
+              Add Color
+            </Button>
+          )}
+        </Group>
+      </>
+    );
+  }
+);
 
 export default VirtualColorPanel;

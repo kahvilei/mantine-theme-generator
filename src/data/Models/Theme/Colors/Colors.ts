@@ -1,6 +1,6 @@
 import {DEFAULT_THEME, MantineColorsTuple} from "@mantine/core";
 import {CustomColor} from "@/data/Models/Theme/Colors/CustomColor";
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, runInAction} from "mobx";
 
 export type HeadingSize = {
     fontSize?: string;
@@ -37,7 +37,7 @@ export class Colors{
     constructor(config: ColorSettings) {
         this.colorMap = new Map();
         this.colors = config.colors as Record<string, MantineColorsTuple>;
-        this.primaryColor = config.primaryColor;
+        this.primaryColor = config.primaryColor?.toString();
         this.primaryShade = config.primaryShade as number | { light: number; dark: number };
         this.isThemeDependentPrimaryShade = ((this.primaryShade as { light: number; dark: number }).light !== undefined);
         this.white = config.white;
@@ -106,6 +106,10 @@ export class Colors{
         makeAutoObservable(this);
     }
 
+    getPrimaryColor(): string{
+        return this.primaryColor??'blue';
+    }
+
     // Get color by name (new method)
     getColorByName(name: string): CustomColor | undefined {
         for (const color of this.colorMap.values()) {
@@ -168,38 +172,45 @@ export class Colors{
     }
 
     // Update primary color
+    @action
     setPrimaryColor(colorName: string): void {
-        if (this.getColorByName(colorName)) {
+        if (this.getColorByName(colorName) !== undefined) {
             this.primaryColor = colorName;
         }
     }
 
     // Update primary shade
+    @action
     setPrimaryShade(shade: number | { light: number; dark: number }): void {
         this.primaryShade = shade;
         this.isThemeDependentPrimaryShade = ((this.primaryShade as { light: number; dark: number }).light !== undefined);
     }
 
     // Set color contrast settings
+    @action
     setAutoContrast(enabled: boolean): void {
         this.autoContrast = enabled;
     }
 
     // Set luminance threshold
+    @action
     setLuminanceThreshold(value: number): void {
         this.luminanceThreshold = value;
     }
 
     // Update gradient settings
+    @action
     setDefaultGradient(from: string, to: string, deg: number = 45): void {
         this.defaultGradient = { from, to, deg };
     }
 
     // Update white/black colors
+    @action
     setWhite(value: string): void {
         this.white = value;
     }
 
+    @action
     setBlack(value: string): void {
         this.black = value;
     }
@@ -234,7 +245,9 @@ export class Colors{
         if (!color) {return false;}
 
         // Can't delete color if it's the primary color
-        if (color.name === this.primaryColor) {return false;}
+        if (color.name === this.primaryColor) {
+            this.primaryColor = 'blue';
+        }
 
         // Remove from colors object if it exists there
         if (this.colors && this.colors[color.name]) {

@@ -1,5 +1,4 @@
 import { ActionIcon } from "@mantine/core";
-import { root } from "postcss";
 import componentProps from '@/data/mantineProps.json'
 
 export type ComponentProps = typeof componentProps;

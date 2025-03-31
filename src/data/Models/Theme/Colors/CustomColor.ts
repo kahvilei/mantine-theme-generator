@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable} from "mobx";
 import {Colors} from "@/data/Models/Theme/Colors/Colors";
 import {MantineColorsTuple} from "@mantine/core";
 
@@ -52,6 +52,7 @@ export class CustomColor {
     }
 
     // Set a specific shade by index
+    @action
     setShade(index: number, value: string): void {
         if (this.type === 'virtual') {
             // Virtual colors don't directly set shades, they reference other colors
@@ -82,6 +83,7 @@ export class CustomColor {
     }
 
     // Set the virtual color source for a specific color scheme
+    @action
     setVirtualColorSource(colorScheme: 'light' | 'dark', sourceName: string): void {
         if (this.type === 'virtual' && this.manager.getColorByName(sourceName)) {
             this.colorKeys[colorScheme] = sourceName;
@@ -89,6 +91,7 @@ export class CustomColor {
     }
 
     // Change the type of this color
+    @action
     setType(newType: ColorType): void {
         // Don't allow changing virtual colors to other types unless we have a fallback
         if (this.type === 'virtual' && newType !== 'virtual') {
@@ -102,6 +105,7 @@ export class CustomColor {
     }
 
     // Rename the color - updated for UUID-based storage
+    @action
     rename(newName: string): void {
         if (newName === this.name || this.manager.getColorByName(newName)) {
             return; // Don't rename if name is the same or already exists
@@ -145,11 +149,13 @@ export class CustomColor {
     }
 
     // Check if this color is the primary color
+    @action
     isPrimary(): boolean {
         return this.name === this.manager.primaryColor;
     }
 
     // Make this color the primary color
+    @action
     makePrimary(): void {
         this.manager.setPrimaryColor(this.name);
     }

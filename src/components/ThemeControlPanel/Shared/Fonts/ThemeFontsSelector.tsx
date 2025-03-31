@@ -1,24 +1,22 @@
-import { Group } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
+import { Group } from '@mantine/core';
 import { TypeFaceSelector } from "@/components/ThemeControlPanel/Shared/Fonts/TypeFaceSelector";
-import {typography as TypeManager} from "@/data/Store";
-import {Typography} from "@/data/Models/Theme/Typography/Typography";
+import { Typography } from '@/data/Models/Theme/Typography/Typography';
+import { typography as manager } from "@/data/Store";
+
 
 interface ThemeFontsSelectorProps {
     typography?: Typography;
 }
 
-const ThemeFontsSelector = observer(({ typography = TypeManager }: ThemeFontsSelectorProps) => {
+const ThemeFontsSelector = observer(({ typography = manager }: ThemeFontsSelectorProps) => {
     // Action handlers
     const handleBodyFontFamilyChange = (value: string) => {
         typography.setFontFamily(value);
     };
 
     const handleHeadingFontFamilyChange = (value: string) => {
-        if (!typography.headings) {
-            typography.headings = {};
-        }
-        typography.headings.fontFamily = value;
+        typography.setHeadingFontFamily(value);
     };
 
     const handleMonospaceFontFamilyChange = (value: string) => {

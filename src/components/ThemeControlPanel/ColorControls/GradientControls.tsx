@@ -1,37 +1,41 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { observer } from 'mobx-react-lite';
 import { AngleSlider, Group, Stack } from '@mantine/core';
 import ThemeColorSelector from '@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector';
-import { RootState } from '@/data/OldReduxJunk/store';
-import {
-  selectGradientAngle,
-  selectGradientFrom,
-  selectGradientTo,
-  selectMainColorShade,
-} from '@/data/OldReduxJunk/themeSelectors';
-import { setGradientAngle, setGradientFrom, setGradientTo } from '@/data/OldReduxJunk/themeSlice';
+import { Colors } from '@/data/Models/Theme/Colors/Colors';
+import { colors as ColorManager } from '@/data/Store';
 
-const GradientControls = () => {
-  const dispatch = useDispatch();
+interface GradientControlsProps {
+  colorsInstance?: Colors;
+}
 
-  // Selectors
-  const gradientStart = useSelector(selectGradientFrom) || 'blue';
-  const gradientEnd = useSelector(selectGradientTo) || 'cyan';
-  const gradientAngle = useSelector(selectGradientAngle) || 180;
-  const startShade = useSelector((state: RootState) => selectMainColorShade(state, gradientStart));
-  const endShade = useSelector((state: RootState) => selectMainColorShade(state, gradientEnd));
+const GradientControls = observer(({ colorsInstance = ColorManager }: GradientControlsProps) => {
+  // Get gradient properties from the Colors instance
+  const gradientStart = colorsInstance.defaultGradient?.from || 'blue';
+  const gradientEnd = colorsInstance.defaultGradient?.to || 'cyan';
+  const gradientAngle = colorsInstance.defaultGradient?.deg || 180;
 
-  // Action handlers
+  // Get color shades for preview
+  const startColor = colorsInstance.getColorByName(gradientStart)?.getShade() || '';
+  const endColor = colorsInstance.getColorByName(gradientEnd)?.getShade() || '';
+
+  // Handler functions
   const handleGradientFromChange = (color: string) => {
-    dispatch(setGradientFrom(color));
+    const to = colorsInstance.defaultGradient?.to || 'cyan';
+    const deg = colorsInstance.defaultGradient?.deg || 180;
+    colorsInstance.setDefaultGradient(color, to, deg);
   };
 
   const handleGradientToChange = (color: string) => {
-    dispatch(setGradientTo(color));
+    const from = colorsInstance.defaultGradient?.from || 'blue';
+    const deg = colorsInstance.defaultGradient?.deg || 180;
+    colorsInstance.setDefaultGradient(from, color, deg);
   };
 
   const handleGradientAngleChange = (value: number) => {
-    dispatch(setGradientAngle(value));
+    const from = colorsInstance.defaultGradient?.from || 'blue';
+    const to = colorsInstance.defaultGradient?.to || 'cyan';
+    colorsInstance.setDefaultGradient(from, to, value);
   };
 
   return (
@@ -43,22 +47,24 @@ const GradientControls = () => {
           width: '100%',
           height: '150px',
           padding: '10px',
-          background: `linear-gradient(${gradientAngle}deg, ${startShade}, ${endShade})`,
+          background: `linear-gradient(${gradientAngle}deg, ${startColor}, ${endColor})`,
           borderRadius: 'var(--mantine-radius-default)',
         }}
       >
         <ThemeColorSelector
-          mainColorSelector={selectGradientFrom}
+          colors={colorsInstance}
+          mainColor={gradientStart}
           onSelect={handleGradientFromChange}
         />
         <AngleSlider value={gradientAngle} onChange={handleGradientAngleChange} />
         <ThemeColorSelector
-          mainColorSelector={selectGradientTo}
+          colors={colorsInstance}
+          mainColor={gradientEnd}
           onSelect={handleGradientToChange}
         />
       </Group>
     </Stack>
   );
-};
+});
 
 export default GradientControls;

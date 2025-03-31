@@ -40,7 +40,7 @@ const ComponentSelector: React.FC<{
         placeholder="Choose a component to customize"
         value={value}
         onChange={onChange}
-        w={'100%'}
+        w="100%"
         searchable
         data={Object.entries(CATEGORIZED_COMPONENTS).map(([category, components]) => ({
           group: category.charAt(0).toUpperCase() + category.slice(1),

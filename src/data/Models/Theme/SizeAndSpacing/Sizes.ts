@@ -52,6 +52,25 @@ export class Sizes {
     getBreakPoint(size: Size) {
         return unFrameValue(this.breakpoints[size]);
     }
+
+    setRadiusSize(size: Size, value: string) {
+        if (!this.radius) {
+            this.radius = {} as Record<Size, string>;
+        }
+        this.radius[size] = frameValue(value);
+    }
+
+    getRadiusSize(size: Size): string {
+        return unFrameValue(this.radius?.[size] || '0');
+    }
+
+    setDefaultRadius(value: Size) {
+        this.defaultRadius = value;
+    }
+
+    getDefaultRadius(): Size {
+        return this.defaultRadius || 'md';
+    }
 }
 export interface SpacingSettings {
     scale?: number;

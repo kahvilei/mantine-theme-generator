@@ -1,33 +1,28 @@
 import React from 'react';
-import { useSelector} from 'react-redux';
 import { IconPlus } from '@tabler/icons-react';
-import { ActionIcon, Group, Popover, Title, Tooltip } from '@mantine/core';
-import ColorEditorPopup from '../Shared/Colors/ColorEditor/ColorEditorPopup';
+import { observer } from 'mobx-react-lite';
+import { ActionIcon, Group, Popover, Tooltip } from '@mantine/core';
+import { Colors } from '@/data/Models/Theme/Colors/Colors';
+import { colors as ColorManager } from '@/data/Store';
 import ColorEdit from '../Shared/Colors/ColorEditor/ColorEdit';
+import ColorEditorPopup from '../Shared/Colors/ColorEditor/ColorEditorPopup';
 import classes from './ColorControls.module.css';
-import { 
-  selectCustomColors,
-} from '@/data/OldReduxJunk/themeSelectors';
 
+interface ColorPaletteProps {
+  colorsInstance?: Colors;
+}
 
-const ColorPalette: React.FC = () => {
-  
-  // Use Redux selector instead of context
-  const customColors = useSelector(selectCustomColors);
-
-  // Convert Map to Array for rendering
-  const colorEntries = React.useMemo(() => 
-    Array.from(customColors.entries()),
-    [customColors]
-  );
+const ColorPalette: React.FC<ColorPaletteProps> = observer(({ colorsInstance = ColorManager }) => {
+  // Get custom colors (type "standard" or "virtual") from the Colors class
+  const customColors = colorsInstance.getCustomColors();
 
   return (
     <>
       <Group gap="xs">
-        {colorEntries.map(([colorName]) => (
+        {customColors.map((colorObject) => (
           <ColorEdit
-            key={colorName}
-            name={colorName}
+            key={colorObject.uuid}
+            name={colorObject.name}
           />
         ))}
         <Popover withArrow shadow="default" position="bottom">
@@ -39,12 +34,12 @@ const ColorPalette: React.FC = () => {
             </Tooltip>
           </Popover.Target>
           <Popover.Dropdown>
-            <ColorEditorPopup />
+            <ColorEditorPopup/>
           </Popover.Dropdown>
         </Popover>
       </Group>
     </>
   );
-};
+});
 
-export default React.memo(ColorPalette);
+export default ColorPalette;

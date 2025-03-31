@@ -258,6 +258,13 @@ export const Murkrow: MantineThemeOverride = {
   focusRing: "auto",
   white: "#ffffff",
   black: "#24292f",
+  breakpoints: {
+    xs: "36em",
+    sm: "48em",
+    md: "62em",
+    lg: "75em",
+    xl: "88em"
+  },
   colors: {
     dark: [
       "#fff",
@@ -533,6 +540,13 @@ export const Vivillan: MantineThemeOverride = {
   focusRing: "auto",
   white: "#ffffff",
   black: "#07300a",
+  breakpoints: {
+    xs: "36em",
+    sm: "48em",
+    md: "62em",
+    lg: "75em",
+    xl: "88em"
+  },
   colors: {
     dark: [
       "#f4f7f2",
@@ -830,14 +844,6 @@ export const Vivillan: MantineThemeOverride = {
     from: "moss",
     to: "lime",
     deg: 45
-  },
-  other: {
-    virtualColors: {
-      miku:{
-        dark: 'green',
-        light: 'amber'
-      }
-    }
   }
 };
 

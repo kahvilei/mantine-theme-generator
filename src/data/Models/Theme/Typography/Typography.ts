@@ -1,5 +1,5 @@
 
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable} from "mobx";
 
 export type HeadingSize = {
     fontSize?: string;
@@ -34,14 +34,19 @@ export class Typography {
 
     //monospaceFontFamily
     getMonoFontFamily(): string {
-        return this.fontFamily?? "Roboto Mono";
+        return this.fontFamilyMonospace?? "Roboto Mono";
     }
 
     setMonoFontFamily(family: string): void {
-        this.fontFamily = family;
+        this.fontFamilyMonospace = family;
     }
 
-    //headings
+    setHeadingFontFamily(family: string): void {
+        if (this.headings === undefined){this.headings = {};}
+        this.headings.fontFamily = family;
+    }
+
+    @action
     setHeadingAttr(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', attribute: string, value: string) {
         if (!this.headings) {
             this.headings = {};
@@ -55,30 +60,37 @@ export class Typography {
         this.headings.sizes[heading][attribute] = value;
     }
 
+    @action
     setHeadingSize(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
         this.setHeadingAttr(heading, 'fontSize', value);
     }
 
+    @action
     setHeadingLineHeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
         this.setHeadingAttr(heading, 'lineHeight', value);
     }
 
+    @action
     setHeadingWeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', value: string) {
         this.setHeadingAttr(heading, 'fontWeight', value);
     }
 
+    @action
     getHeadingSize(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.fontSize || '';
     }
 
+    @action
     getHeadingLineHeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.lineHeight || '';
     }
 
+    @action
     getHeadingWeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.fontWeight || '';
     }
 
+    @action
     getHeadingFontFamily(): string {
         return this.headings?.fontFamily || this.fontFamily || '';
     }

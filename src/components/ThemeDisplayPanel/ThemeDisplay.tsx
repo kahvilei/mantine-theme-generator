@@ -1,16 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Box, MantineProvider, MantineThemeOverride } from '@mantine/core';
+import {Box, createTheme, MantineProvider, MantineThemeOverride} from '@mantine/core';
 import { Theme as ThemeClass } from '@/data/Models/Theme/Theme';
-import { theme } from '@/data/Store';
+import {theme, colors, typography} from '@/data/Store';
 import classes from './ThemeDisplay.module.css';
-
 
 
 import './ThemeDisplay.css';
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
-
 
 
 import { Components } from "@/components/ThemeDisplayPanel/Demo Pages/Components";
@@ -27,9 +25,9 @@ export interface ThemeDisplayProps {
   themeOverride?: ThemeClass; // Optional theme prop to allow explicit theme passing
 }
 
-const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(({ number, mode, displayContent, themeOverride }) => {
+const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(({ number, mode, displayContent, themeOverride = theme }) => {
   // Get theme from MobX store if not explicitly provided
-  const currentTheme = themeOverride || theme;
+  const currentTheme = createTheme(themeOverride.compile());
 
   // Memoize each content page
   const Content = () => {
@@ -49,11 +47,9 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(({ number, mode, disp
     }
   };
 
-  const MemoizedContent = useMemo(() => Content, [displayContent, currentTheme]);
-
   return (
       <MantineProvider
-          theme={{ ...currentTheme.config } as MantineThemeOverride} // Use the config from the Theme class
+          theme={currentTheme}
           forceColorScheme={mode}
           getRootElement={() =>
               document.querySelector<HTMLElement>(`#display-panel-${mode}-${number}`) ?? undefined
@@ -67,7 +63,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(({ number, mode, disp
             className={`scheme-override-${mode} ${classes.displayPanel}`}
             bg="var(--mantine-color-body)"
         >
-          <MemoizedContent />
+          <Content />
         </Box>
       </MantineProvider>
   );

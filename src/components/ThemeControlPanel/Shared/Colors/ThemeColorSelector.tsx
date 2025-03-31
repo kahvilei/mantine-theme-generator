@@ -1,47 +1,47 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { observer } from 'mobx-react-lite';
 import GroupedColorSelector from '@/components/ThemeControlPanel/Shared/Colors/GroupedColorSelector';
-import {RootState, useAppDispatch} from '@/data/OldReduxJunk/store';
-import {
-  selectCustomColors,
-  selectMantineColors,
-  selectPrimaryColor,
-} from '@/data/OldReduxJunk/themeSelectors';
-import { setPrimaryColor } from '@/data/OldReduxJunk/themeSlice';
+import { CustomColor } from '@/data/Models/Theme/Colors/CustomColor';
+import { colors } from '@/data/Store';
 
 interface ThemeColorSelectorProps {
   label?: string;
   onSelect?: (color: string) => void;
-  mainColorSelector?: (state: RootState) => string;
   mainColor?: string;
 }
 
-const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
-  onSelect,
-  mainColorSelector,
-  mainColor,
-}: ThemeColorSelectorProps) => {
-  const customColors = useSelector(selectCustomColors);
-  const mantineColors = useSelector(selectMantineColors);
+const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = observer(
+  ({ onSelect, mainColor }: ThemeColorSelectorProps) => {
+    // Get custom and override colors from our Colors class
+    const customColors = colors.getCustomColors();
+    const overrideColors = colors.getOverrideColors();
 
-  const dispatch = useAppDispatch();
+    // Create maps for the grouped selector
+    const customColorsMap = new Map<string, CustomColor>();
+    const mantineColorsMap = new Map<string, CustomColor>();
 
-  const handlePrimaryColorChange = (color: string) => {
-    dispatch(setPrimaryColor(color));
-  };
+    // Populate maps with name->color mappings
+    customColors.forEach((color) => customColorsMap.set(color.name, color));
+    overrideColors.forEach((color) => mantineColorsMap.set(color.name, color));
 
-  const color = mainColorSelector ? useSelector(mainColorSelector) : mainColor ? mainColor : useSelector(selectPrimaryColor);
+    const handlePrimaryColorChange = (colorName: string) => {
+      colors.setPrimaryColor(colorName);
+    };
 
-  return (
-    <GroupedColorSelector
-      colors={[
-        { key: 'Custom Colors', value: new Set(customColors.keys()) },
-        { key: 'Mantine Colors', value: new Set(mantineColors.keys()) },
-      ]}
-      onSelect={onSelect ?? handlePrimaryColorChange}
-      mainColor={color}
-    />
-  );
-};
+    // Use provided mainColor or get the primaryColor from colors
+    const selectedColor = mainColor || colors.getPrimaryColor() || '';
+
+    return (
+      <GroupedColorSelector
+        colors={[
+          { key: 'Custom Colors', value: new Set(customColorsMap.keys()) },
+          { key: 'Mantine Colors', value: new Set(mantineColorsMap.keys()) },
+        ]}
+        onSelect={onSelect ?? handlePrimaryColorChange}
+        mainColor={selectedColor}
+      />
+    );
+  }
+);
 
 export default ThemeColorSelector;

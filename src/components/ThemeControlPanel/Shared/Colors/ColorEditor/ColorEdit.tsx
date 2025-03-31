@@ -21,7 +21,7 @@ const ColorEdit: React.FC<ColorEditProps> = ({ name }) => {
         </Box>
       </Popover.Target>
       <Popover.Dropdown>
-        <ColorEditorPopup colorName={name}/>
+        <ColorEditorPopup name={name}/>
       </Popover.Dropdown>
     </Popover>
   );

@@ -144,12 +144,12 @@ export const Forms: React.FC = () => {
                                 <Group>
                                     <Checkbox label="Checkbox" />
                                     <Checkbox label="Indeterminate" indeterminate />
-                                    <Checkbox label="Checked" checked />
+                                    <Checkbox label="Checked" />
                                     <Checkbox label="Disabled" disabled />
                                 </Group>
                                 <Group>
                                     <Switch label="Switch" />
-                                    <Switch label="Checked" checked />
+                                    <Switch label="Checked" />
                                     <Switch label="Disabled" disabled />
                                 </Group>
                                 <Radio.Group

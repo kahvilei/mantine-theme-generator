@@ -1,46 +1,39 @@
-;
-// ColorEditorPopup.tsx - Main component
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { IconTrash } from '@tabler/icons-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ActionIcon, Group, Popover, SegmentedControl, Stack, Text, Tooltip } from '@mantine/core';
-import { selectColor } from '@/data/OldReduxJunk/themeSelectors';
-import { deleteColor, updateColor } from '@/data/OldReduxJunk/themeSlice';
-import { RootState } from '@/main';
-import { checkIsMantine } from '@/utils/checkIsMantine';
-import { isVirtualColor } from '@/utils/isVirtualColor';
+import { observer } from 'mobx-react-lite';
+import { ActionIcon, Group, SegmentedControl, Stack, Text, Tooltip } from '@mantine/core';
+import { Colors } from '@/data/Models/Theme/Colors/Colors';
+import { colors as ColorManager } from '@/data/Store';
 import StandardColorPanel from './StandardColorPanel';
 import VirtualColorPanel from './VirtualColorPanel';
 
-
 interface ColorEditorPopupProps {
-  colorName?: string;
+  name?: string;
+  colorsInstance?: Colors;
 }
 
-const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({ colorName }) => {
-  const dispatch = useDispatch();
-  const isEditing = Boolean(colorName);
-  const defaultColorName = colorName || 'blue';
+const ColorEditorPopup: React.FC<ColorEditorPopupProps> = observer(
+  ({ name, colorsInstance = ColorManager }) => {
+    const isEditing = Boolean(name);
 
-  const oldName = colorName;
-  const [newName, setNewColorName] = useState(colorName);
+    // Get the color object if editing
+    const colorObject = name ? colorsInstance.getColorByName(name) : null;
 
-  const colorObject = useSelector((state: RootState) => selectColor(state, defaultColorName));
-  const [isVirtual, setIsVirtual] = useState(() => isVirtualColor(colorObject));
+    // State for new color name
+    const [newColorName, setNewColorName] = useState(name || '');
 
-  const isMantine = useMemo(() => checkIsMantine(colorName), [colorName]);
+    // State for color type (virtual or standard)
+    const [isVirtual, setIsVirtual] = useState(colorObject?.type === 'virtual' || false);
 
-  useEffect(() => {
-    dispatch(updateColor({ oldName, newName }));
-  }, [newName]);
+    // Check if it's a Mantine default color
+    const isMantine = colorObject?.type === 'override' || false;
 
-  const handleDeleteColor = (name: string) => {
-    dispatch(deleteColor({ colorName: name }));
-  };
+    const handleDeleteColor = (uuid: string) => {
+      colorsInstance.deleteColor(uuid);
+    };
 
-  return (
-    <Popover.Dropdown variant="shadow">
-      <Stack>
+    return (
+      <Stack gap="md">
         <Group justify="space-between">
           <Text size="sm" c="dimmed">
             {isEditing ? 'Update' : 'Add'} color
@@ -55,9 +48,9 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({ colorName }) => {
               value={isVirtual ? 'Virtual' : 'Standard'}
               onChange={(value) => setIsVirtual(value === 'Virtual')}
             />
-          ) : !isMantine ? (
+          ) : !isMantine && colorObject ? (
             <Tooltip label="Permanently delete color">
-              <ActionIcon color="red" onClick={() => colorName && handleDeleteColor(colorName)}>
+              <ActionIcon color="red" onClick={() => handleDeleteColor(colorObject.uuid)}>
                 <IconTrash />
               </ActionIcon>
             </Tooltip>
@@ -66,21 +59,25 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = ({ colorName }) => {
 
         {isVirtual ? (
           <VirtualColorPanel
-            colorName={newName}
+            colorObject={colorObject}
+            newColorName={newColorName}
             setNewColorName={setNewColorName}
             isEditing={isEditing}
+            colorsInstance={colorsInstance}
           />
         ) : (
           <StandardColorPanel
-            colorName={newName}
+            colorObject={colorObject}
+            newColorName={newColorName}
             setNewColorName={setNewColorName}
             isEditing={isEditing}
             isMantine={isMantine}
+            colorsInstance={colorsInstance}
           />
         )}
       </Stack>
-    </Popover.Dropdown>
-  );
-};
+    );
+  }
+);
 
 export default ColorEditorPopup;

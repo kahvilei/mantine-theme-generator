@@ -1,72 +1,79 @@
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { SegmentedControl, Stack, Switch, Text, Title } from '@mantine/core';
+import { Accessibility } from '@/data/Models/Theme/Accessibility/Accessibility';
+import { Interaction } from '@/data/Models/Theme/Interaction/Interaction';
 import {
-  SegmentedControl,
-  Stack,
-  Switch,
-  Text,
-  Title,
-} from '@mantine/core';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectFocusRing,
-  selectRespectReducedMotion,
-  selectCursorType,
-} from '@/data/OldReduxJunk/themeSelectors';
-import {
-  setFocusRing,
-  setRespectReducedMotion,
-  setCursorType,
-} from '@/data/OldReduxJunk/themeSlice';
+  accessibility as AccessibilityManager,
+  interaction as InteractionManager,
+} from '@/data/Store';
 
-const InteractionAndAccessibilityControls = () => {
-  const dispatch = useDispatch();
+interface InteractionAndAccessibilityControlsProps {
+  accessibility?: Accessibility;
+  interaction?: Interaction;
+}
 
-  const focusRing = useSelector(selectFocusRing);
-  const respectReducedMotion = useSelector(selectRespectReducedMotion);
-  const cursorType = useSelector(selectCursorType);
+const InteractionAndAccessibilityControls = observer(
+  ({
+    accessibility = AccessibilityManager,
+    interaction = InteractionManager,
+  }: InteractionAndAccessibilityControlsProps) => {
+    const handleFocusRingChange = (value: 'auto' | 'always' | 'never') => {
+      interaction.focusRing = value;
+    };
 
-  const handleFocusRingChange = (value: 'auto' | 'always' | 'never') => {
-    dispatch(setFocusRing(value));
-  };
+    const handleRespectReducedMotionChange = (checked: boolean) => {
+      accessibility.respectReducedMotion = checked;
+    };
 
-  const handleRespectReducedMotionChange = (checked: boolean) => {
-    dispatch(setRespectReducedMotion(checked));
-  };
+    const handleCursorTypeChange = (value: 'default' | 'pointer') => {
+      interaction.cursorType = value;
+    };
 
-  const handleCursorTypeChange = (value: 'default' | 'pointer') => {
-    dispatch(setCursorType(value));
-  };
+    const handleFontSmoothingChange = (checked: boolean) => {
+      accessibility.fontSmoothing = checked;
+    };
 
-  return (
-    <Stack>
-      <Title order={4}>Interaction and Accessibility</Title>
-      <Text size="sm">Focus Ring</Text>
-      <SegmentedControl
-        data={[
-          { value: 'auto', label: 'Auto' },
-          { value: 'always', label: 'Always' },
-          { value: 'never', label: 'Never' },
-        ]}
-        value={focusRing}
-        onChange={(value) => handleFocusRingChange(value as 'auto' | 'always' | 'never')}
-      />
+    return (
+      <Stack>
+        <Title order={4}>Interaction and Accessibility</Title>
 
-      <Switch
-        label="Respect Reduced Motion"
-        checked={respectReducedMotion}
-        onChange={(event) => handleRespectReducedMotionChange(event.currentTarget.checked)}
-      />
+        <Text size="sm">Focus Ring</Text>
+        <SegmentedControl
+          data={[
+            { value: 'auto', label: 'Auto' },
+            { value: 'always', label: 'Always' },
+            { value: 'never', label: 'Never' },
+          ]}
+          value={interaction.focusRing || 'auto'}
+          onChange={(value) => handleFocusRingChange(value as 'auto' | 'always' | 'never')}
+        />
 
-      <Text size="sm">Cursor Type</Text>
-      <SegmentedControl
-        data={[
-          { label: 'Default', value: 'default' },
-          { label: 'Pointer', value: 'pointer' },
-        ]}
-        value={cursorType}
-        onChange={(value) => handleCursorTypeChange(value as 'default' | 'pointer')}
-      />
-    </Stack>
-  );
-};
+        <Text size="sm">Accessibility</Text>
+        <Switch
+          label="Font Smoothing"
+          checked={accessibility.fontSmoothing || false}
+          onChange={(event) => handleFontSmoothingChange(event.currentTarget.checked)}
+        />
+
+        <Switch
+          label="Respect Reduced Motion"
+          checked={accessibility.respectReducedMotion || false}
+          onChange={(event) => handleRespectReducedMotionChange(event.currentTarget.checked)}
+        />
+
+        <Text size="sm">Cursor Type</Text>
+        <SegmentedControl
+          data={[
+            { label: 'Default', value: 'default' },
+            { label: 'Pointer', value: 'pointer' },
+          ]}
+          value={interaction.cursorType || 'default'}
+          onChange={(value) => handleCursorTypeChange(value as 'default' | 'pointer')}
+        />
+      </Stack>
+    );
+  }
+);
 
 export default InteractionAndAccessibilityControls;

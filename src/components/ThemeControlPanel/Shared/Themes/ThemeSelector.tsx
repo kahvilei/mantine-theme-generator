@@ -1,19 +1,23 @@
 import React from 'react';
 import { Box, Group } from '@mantine/core';
-import Store from '@/data/Store';
+import Store, {RemoraidStore} from '@/data/Store';
 import ThemePreview from './ThemePreview';
 import classes from './ThemeSelector.module.css';
 import {observer} from "mobx-react-lite";
 
-const ThemeSelector= observer(() => {
-  const currentThemeName = Store.theme.name;
-  const themeData = Store.themeList();
+interface ThemeSelectorProps {
+  store?: RemoraidStore,
+}
+
+const ThemeSelector= observer(({store = Store}:ThemeSelectorProps) => {
+  const currentThemeName = store.theme.name;
+  const themeData = store.themeList();
 
   return (
     <Group gap={6}>
-      {themeData.map(([name, theme]) => (
+      {themeData.map(([_, theme]) => (
         <Box
-          key={name}
+          key={theme.name}
           className={classes.themeButtonWrap}
           tabIndex={0}
           onClick={(e) => {
@@ -28,7 +32,7 @@ const ThemeSelector= observer(() => {
         >
           <ThemePreview
             selected={currentThemeName === theme.name}
-            theme={theme.value}
+            theme={theme.compile()}
             name={theme.name}
           />
         </Box>
