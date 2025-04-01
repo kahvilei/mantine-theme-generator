@@ -1,0 +1,4 @@
+.sectionLabel {
+    padding-bottom: 5px;
+    border-bottom: .1em dashed var(--mantine-color-default-border);
+}

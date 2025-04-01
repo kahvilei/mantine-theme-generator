@@ -2,12 +2,6 @@ import {DEFAULT_THEME, MantineColorsTuple, virtualColor} from "@mantine/core";
 import {CustomColor} from "@/data/Models/Theme/Colors/CustomColor";
 import {action, makeAutoObservable, } from "mobx";
 
-export type HeadingSize = {
-    fontSize?: string;
-    lineHeight?: string;
-    fontWeight?: string;
-};
-
 const DEFAULT_COLORS_ARRAY = Object.entries(DEFAULT_THEME.colors);
 const DEFAULT_COLORS = DEFAULT_THEME.colors;
 
@@ -131,11 +125,6 @@ export class Colors{
         return this.colorMap.get(uuid);
     }
 
-    getColorsArray() {
-        // Return an array of [name, colorTuple] pairs from the theme config
-        return Object.entries(this.colors || {});
-    }
-
     // Gets all CustomColor objects
     getAllColors(): CustomColor[] {
         return Array.from(this.colorMap.values());
@@ -144,6 +133,12 @@ export class Colors{
     //gets all color objects from our map with type set to "override"
     getOverrideColors(): CustomColor[] {
         return this.getAllColors().filter(color => color.type === 'override');
+    }
+
+    getMantineColors() {
+        return DEFAULT_COLORS_ARRAY.map(([name, _]) => {
+            return this.getColorByName(name)
+        })
     }
 
     //returns array of color object of type standard and virtual
