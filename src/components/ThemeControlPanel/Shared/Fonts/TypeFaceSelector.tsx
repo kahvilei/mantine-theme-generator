@@ -43,6 +43,7 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
     return (
         <Combobox
             store={combobox}
+            withArrow
             onOptionSubmit={(val) => {
                 onSelect(val);
                 combobox.closeDropdown();
@@ -56,6 +57,7 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
                     pointer
                     onClick={() => combobox.toggleDropdown()}
                     className={classes.typeFaceSelector}
+                    tabIndex={0}
                     aria-label={label??'select type face'}
                     style={{
                         fontSize: w??size,
