@@ -1,13 +1,16 @@
-import {DEFAULT_THEME, MantineColorsTuple, virtualColor} from "@mantine/core";
-import {CustomColor} from "@/data/Models/Theme/Colors/CustomColor";
+import {DEFAULT_THEME, MantineColorsTuple} from "@mantine/core";
+import {VirtualColor} from "@/data/Models/Theme/Colors/Color Classes/VirtualColor";
 import {action, makeAutoObservable, } from "mobx";
+import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
+import {ShadelessColor} from "@/data/Models/Theme/Colors/Color Classes/ShadelessColor";
+import generateColors from "@/utils/generateColors";
 
 const DEFAULT_COLORS_ARRAY = Object.entries(DEFAULT_THEME.colors);
 const DEFAULT_COLORS = DEFAULT_THEME.colors;
 
 export class Colors{
     //each color object will be responsible for grabbing and updating their own shades from the colors record
-    colorMap: Map<string, CustomColor>; // Now maps UUID to CustomColor
+    colorMap: Map<string, Color | VirtualColor>; // Now maps UUID to VirtualColor
 
     colors?: Record<string, MantineColorsTuple | (()=>MantineColorsTuple)>;
     primaryColor?: string;
@@ -40,41 +43,41 @@ export class Colors{
         this.luminanceThreshold = config.luminanceThreshold as number;
         this.defaultGradient = config.defaultGradient;
 
+        const white = new ShadelessColor({name:'white'}, this)
+        const black = new ShadelessColor({name:'black'}, this)
+        this.colorMap.set(white.uuid, white);
+        this.colorMap.set(black.uuid, black);
+
         // Process existing colors in config
         for (const [key, value] of Object.entries(this.colors || {})) {
             // Check if it's a virtual color (has name property)
             const isVirtualColor = typeof value === 'object' && 'name' in value;
 
-            let colorObj: CustomColor;
+            let colorObj: Color;
 
             if (isVirtualColor) {
                 // Handle virtual color created with virtualColor()
                 const virtualColorProps = value as unknown as { name: string, dark: string, light: string };
-                colorObj = new CustomColor({
+                colorObj = new VirtualColor({
                     name: key,
-                    type: 'virtual',
                     colorKeys: {
                         dark: virtualColorProps.dark,
                         light: virtualColorProps.light
                     }
                 }, this);
-                const virtualColorTemp = () => {
-                    return  () => virtualColor(virtualColorProps);
-                }
-                this.colors[key] = virtualColorTemp();
 
             } else {
                 // Handle standard color (array of color values)
                 // eslint-disable-next-line no-lonely-if
                 if (DEFAULT_COLORS[key] !== undefined) {
-                    colorObj = new CustomColor({
+                    colorObj = new Color({
                         name: key,
                         type: 'override'
                     }, this);
                 } else {
-                    colorObj = new CustomColor({
+                    colorObj = new Color({
                         name: key,
-                        type: 'standard'
+                        type: 'custom'
                     }, this);
                 }
             }
@@ -88,7 +91,7 @@ export class Colors{
         for (const [key, value] of DEFAULT_COLORS_ARRAY) {
             if (!this.getColorByName(key)) {
                 // Create new color object
-                const colorObj = new CustomColor({
+                const colorObj = new Color({
                     name: key,
                     type: 'override'
                 }, this);
@@ -111,7 +114,7 @@ export class Colors{
     }
 
     // Get color by name (new method)
-    getColorByName(name: string): CustomColor | undefined {
+    getColorByName(name: string): Color | VirtualColor | ShadelessColor | undefined {
         for (const color of this.colorMap.values()) {
             if (color.name === name) {
                 return color;
@@ -121,17 +124,17 @@ export class Colors{
     }
 
     // Get color by UUID
-    getColorByUUID(uuid: string): CustomColor | undefined {
+    getColorByUUID(uuid: string): Color | undefined {
         return this.colorMap.get(uuid);
     }
 
-    // Gets all CustomColor objects
-    getAllColors(): CustomColor[] {
+    // Gets all VirtualColor objects
+    getAllColors(): Color[] {
         return Array.from(this.colorMap.values());
     }
 
     //gets all color objects from our map with type set to "override"
-    getOverrideColors(): CustomColor[] {
+    getOverrideColors(): Color[] {
         return this.getAllColors().filter(color => color.type === 'override');
     }
 
@@ -142,14 +145,14 @@ export class Colors{
     }
 
     //returns array of color object of type standard and virtual
-    getCustomColors(): CustomColor[] {
+    getCustomColors(): (Color | VirtualColor)[] {
         return this.getAllColors().filter(color =>
-            color.type === 'standard' || color.type === 'virtual'
+            color.type === 'custom'
         );
     }
 
     //returns [dark, grey, white, black]
-    getLayoutColors(): CustomColor[] {
+    getLayoutColors(): Color[] {
         const layoutColorNames = ['dark', 'gray', 'white', 'black'];
         return this.getAllColors().filter(color =>
             layoutColorNames.includes(color.name)
@@ -157,7 +160,7 @@ export class Colors{
     }
 
     //returns [red, yellow, orange, green]
-    getSituationColors(): CustomColor[] {
+    getSituationColors(): Color[] {
         const situationColorNames = ['red', 'yellow', 'orange', 'green'];
         return this.getAllColors().filter(color =>
             situationColorNames.includes(color.name)
@@ -165,7 +168,7 @@ export class Colors{
     }
 
     //gets override colors that do not fall into the layout or situation colors
-    getTheRest(): CustomColor[] {
+    getTheRest(): Color[] {
         const excludedColorNames = ['dark', 'gray', 'white', 'black', 'red', 'yellow', 'orange', 'green'];
         return this.getOverrideColors().filter(color =>
             !excludedColorNames.includes(color.name)
@@ -217,7 +220,7 @@ export class Colors{
     }
 
     // Create a new color
-    createColor(name: string, type: "standard" | "virtual" | "override" | "shadeless", colorKeys?: {light: string, dark: string}): CustomColor | null {
+    createColor(name: string, value?: {light: string, dark: string} | string): Color | VirtualColor | null {
         if(this.colors === undefined) {
             this.colors = DEFAULT_COLORS;
         }
@@ -227,27 +230,14 @@ export class Colors{
             return null;
         }
 
-        const newColor = new CustomColor({
-            name,
-            type,
-            colorKeys
-        }, this);
-
-        this.colorMap.set(newColor.uuid, newColor);
-
-        // If it's not a virtual color, initialize the color tuple in the colors object
-        if (type !== 'virtual' && this.colors) {
-            // Create a default color tuple
-            this.colors[name] = ['#ffffff', '#f2f2f2', '#e6e6e6', '#d9d9d9', '#cccccc', '#bfbfbf', '#b3b3b3', '#a6a6a6', '#999999', '#8c8c8c'];
+        if (typeof value === 'string') {
+            const generatedColors = generateColors(value);
+            this.colorMap.set(name, new Color({name}, this));
+            this.colors[name] = generatedColors as unknown as MantineColorsTuple;
+        } else {
+            this.colorMap.set(name, new VirtualColor({name, colorKeys: value}, this));
         }
-
-        const virtualKeys = colorKeys??{dark:'blue', light:'blue'}
-
-        if (type === 'virtual') {
-            this.colors[name] = () => {return virtualColor({name, ...virtualKeys})};
-        }
-
-        return newColor;
+        return this.colorMap.get(name)??null;
     }
 
     // Delete a color
@@ -267,7 +257,7 @@ export class Colors{
 
         // Check if any virtual colors reference this color
         for (const otherColor of this.colorMap.values()) {
-            if (otherColor.type === 'virtual') {
+            if (otherColor instanceof VirtualColor) {
                 if (otherColor.colorKeys.light === color.name || otherColor.colorKeys.dark === color.name) {
                     return false; // Can't delete a color that's referenced by a virtual color
                 }

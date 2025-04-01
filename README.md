@@ -30,10 +30,10 @@ function App() {
 
 ## Current features
 
-### Primary Color Settings
+### Primary VirtualColor Settings
 ![alt text](/readme-files/primary-color-settings.png)
 
-### Custom Color Settings
+### Custom VirtualColor Settings
 Add custom colors beyond the default set of colors. Adding a new color automatically generates its shade values, and you can edit them as you see fit.
 ![alt text](/readme-files/custom-color-settings.png)
 
@@ -41,7 +41,7 @@ Add custom colors beyond the default set of colors. Adding a new color automatic
 This allows you to edit the default gradient that appears for any component that uses a gradient. You can edit the colors and angle.
 ![alt text](/readme-files/default-gradient-settings.png)
 
-### Default Color Override
+### Default VirtualColor Override
 The default mantine theme has a set of colors that are used throughout the library. This allows you to override those colors with your own.
 
 For example, Mantine uses "dark" and its shades for all components in dark mode. Overriding it and its shades allows you to do interesting things like have headings, outlines, and filled components be an entirely different color than the backdrop — without custom css.

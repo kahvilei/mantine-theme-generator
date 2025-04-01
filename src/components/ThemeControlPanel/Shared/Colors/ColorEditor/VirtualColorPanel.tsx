@@ -3,11 +3,11 @@ import { observer } from 'mobx-react-lite';
 import { Button, Group, Stack, Text, TextInput } from '@mantine/core';
 import ThemeColorSelector from '@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector';
 import { Colors } from '@/data/Models/Theme/Colors/Colors';
-import { CustomColor } from '@/data/Models/Theme/Colors/CustomColor';
+import { VirtualColor } from '@/data/Models/Theme/Colors/Color Classes/VirtualColor';
 import { colors as ColorManager } from '@/data/Store';
 
 interface VirtualColorPanelProps {
-  colorObject?: CustomColor | null;
+  colorObject?: VirtualColor | null;
   newColorName: string;
   setNewColorName: (name: string) => void;
   isEditing: boolean;
@@ -18,16 +18,16 @@ const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
   ({ colorObject, newColorName, setNewColorName, isEditing, colorsInstance = ColorManager }) => {
     // Initialize with current values if editing, or defaults if creating new
     const [darkColor, setDarkColor] = useState(
-      colorObject?.type === 'virtual' ? colorObject.colorKeys.dark : 'blue'
+      colorObject ? colorObject.colorKeys.dark : 'blue'
     );
 
     const [lightColor, setLightColor] = useState(
-      colorObject?.type === 'virtual' ? colorObject.colorKeys.light : 'blue'
+      colorObject ? colorObject.colorKeys.light : 'blue'
     );
 
     useEffect(() => {
       // Update the virtual color whenever source colors change
-      if (isEditing && colorObject?.type === 'virtual') {
+      if (isEditing && colorObject) {
         colorObject.setVirtualColorSource('dark', darkColor);
         colorObject.setVirtualColorSource('light', lightColor);
       }
@@ -35,8 +35,7 @@ const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
 
     const handleAddVirtualColor = () => {
       if (newColorName && !isEditing) {
-        // Create a new virtual color
-        colorsInstance.createColor(newColorName, 'virtual', { dark: darkColor, light: lightColor });
+        colorsInstance.createColor(newColorName, { dark: darkColor, light: lightColor });
       }
     };
 

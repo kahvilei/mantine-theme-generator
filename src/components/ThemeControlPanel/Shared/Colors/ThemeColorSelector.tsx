@@ -1,8 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import GroupedColorSelector from '@/components/ThemeControlPanel/Shared/Colors/GroupedColorSelector';
-import { CustomColor } from '@/data/Models/Theme/Colors/CustomColor';
 import { colors } from '@/data/Store';
+import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
 
 interface ThemeColorSelectorProps {
   label?: string;
@@ -17,8 +17,8 @@ const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = observer(
     const overrideColors = colors.getOverrideColors();
 
     // Create maps for the grouped selector
-    const customColorsMap = new Map<string, CustomColor>();
-    const mantineColorsMap = new Map<string, CustomColor>();
+    const customColorsMap = new Map<string, Color>();
+    const mantineColorsMap = new Map<string, Color>();
 
     // Populate maps with name->color mappings
     customColors.forEach((color) => customColorsMap.set(color.name, color));

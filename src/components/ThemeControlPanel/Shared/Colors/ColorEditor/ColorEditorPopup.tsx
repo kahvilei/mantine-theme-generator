@@ -6,6 +6,7 @@ import { Colors } from '@/data/Models/Theme/Colors/Colors';
 import { colors as ColorManager } from '@/data/Store';
 import StandardColorPanel from './StandardColorPanel';
 import VirtualColorPanel from './VirtualColorPanel';
+import {VirtualColor} from "@/data/Models/Theme/Colors/Color Classes/VirtualColor";
 
 interface ColorEditorPopupProps {
   name?: string;
@@ -27,7 +28,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = observer(
     }, [newColorName]);
 
     // State for color type (virtual or standard)
-    const [isVirtual, setIsVirtual] = useState(colorObject?.type === 'virtual' || false);
+    const [isVirtual, setIsVirtual] = useState((colorObject instanceof VirtualColor) || false);
 
     // Check if it's a Mantine default color
     const isMantine = colorObject?.type === 'override' || false;
@@ -63,7 +64,7 @@ const ColorEditorPopup: React.FC<ColorEditorPopupProps> = observer(
 
         {isVirtual ? (
           <VirtualColorPanel
-            colorObject={colorObject}
+            colorObject={colorObject as VirtualColor}
             newColorName={newColorName}
             setNewColorName={setNewColorName}
             isEditing={isEditing}

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Button, ColorInput, ColorPicker, Group, Stack, TextInput } from '@mantine/core';
 import { Colors } from '@/data/Models/Theme/Colors/Colors';
-import { CustomColor } from '@/data/Models/Theme/Colors/CustomColor';
 import { colors as ColorManager } from '@/data/Store';
 import generateColors from '@/utils/generateColors';
+import {ShadelessColor} from "@/data/Models/Theme/Colors/Color Classes/ShadelessColor";
+import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
 
 interface StandardColorPanelProps {
-  colorObject?: CustomColor | null;
+  colorObject?: Color | ShadelessColor | null;
   newColorName: string;
   setNewColorName: (name: string) => void;
   isEditing: boolean;
@@ -41,24 +42,26 @@ const StandardColorPanel: React.FC<StandardColorPanelProps> = observer(
       }
     };
 
+    const [isShadeless] = useState((colorObject instanceof ShadelessColor) || false);
+
     const handleSetColor = (name: string, color: string) => {
       // Generate a color tuple from the base color
-      const generatedColors = generateColors(color);
 
-      // For existing colors, update all shades
-      if (isEditing && colorObject) {
-        generatedColors.forEach((shade, index) => {
-          colorObject.setShade(index, shade);
-        });
+      if (isShadeless){
+        (colorObject as ShadelessColor)?.setColor(color);
       } else {
-        // Create a new color
-        const newColor = colorsInstance.createColor(name, 'standard');
-        if (newColor) {
+        const generatedColors = generateColors(color);
+
+        // For existing colors, update all shades
+        if (isEditing && colorObject) {
           generatedColors.forEach((shade, index) => {
-            newColor.setShade(index, shade);
+            colorObject.setShade(index, shade);
           });
+        } else {
+          colorsInstance.createColor(name, color);
         }
       }
+
     };
 
     const handleAddColor = () => {
@@ -109,7 +112,7 @@ const StandardColorPanel: React.FC<StandardColorPanelProps> = observer(
             )}
           </Stack>
 
-          {isEditing && colorObject && (
+          {isEditing && colorObject && !isShadeless && (
             <Stack gap={2}>
               {allShades.map((shade: string, index: number) => (
                 <Group key={index}>

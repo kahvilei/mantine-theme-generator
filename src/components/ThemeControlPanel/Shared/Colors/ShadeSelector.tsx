@@ -19,10 +19,10 @@ const ShadeSelector: React.FC<{
         <Stack
           key={index}
           bg={color}
-          w={'100%'}
+          w="100%"
           align="center"
           justify="center"
-          c={'white'}
+          c="white"
           onClick={() => onSelect(index)}
           style={{
             cursor: 'pointer',

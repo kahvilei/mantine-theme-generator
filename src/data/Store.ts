@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import {action, makeAutoObservable} from "mobx";
 import { DEFAULT_THEME, MantineThemeOverride } from "@mantine/core";
 import { premadeThemes } from "@/data/Models/Theme/premadeThemes";
 import { Sizes } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
@@ -38,9 +38,7 @@ export class RemoraidStore {
         this.theme = theme;
     }
 
-    /**
-     * Reset a theme to its default settings
-     */
+    @action
     resetTheme(themeName: string): void {
         if (this.themeDefaults[themeName]) {
             this.themes.delete(themeName);
@@ -58,6 +56,7 @@ export class RemoraidStore {
     /**
      * Set or create a theme with the given name and make it active
      */
+    @action
     setTheme(name: string, theme: MantineThemeOverride): void {
         this.themes.set(name, new Theme(theme, name, this));
         const newTheme = this.themes.get(name);
@@ -76,6 +75,7 @@ export class RemoraidStore {
     /**
      * Delete a theme by name
      */
+    @action
     deleteTheme(name: string): boolean {
         // Don't allow deletion of the current active theme
         if (this.theme.name === name) {
@@ -111,7 +111,6 @@ export const theme: Theme = new Proxy({} as Theme, {
 
 // Export colors with both get and set functionality
 export const colors: Colors = createColorsProxy(Root)
-
 
 // Export sizes with both get and set functionality
 export const sizes: Sizes = createSizesProxy(Root);

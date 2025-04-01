@@ -15,7 +15,7 @@ const QuickSetUp = () => {
                 <ThemeSelector/>
             </Section>
             <Section labelIcon={<IconColorPicker/>} label="Primary color">
-                <ThemeColorSelector label="Primary Color"/>
+                <ThemeColorSelector label="Primary VirtualColor"/>
             </Section>
             <Section labelIcon={<IconTypeface/>} label="Font Families">
                 <ThemeFontsSelector/>

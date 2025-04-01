@@ -5,7 +5,6 @@ import {
   Card,
   Center,
   Code,
-  ColorSwatch,
   Divider,
   Grid,
   Group,
@@ -22,7 +21,7 @@ import {
 export const Overview = () => {
   return (
     <Stack gap="xl">
-      {/* Color System */}
+      {/* VirtualColor System */}
 
       <Stack gap="md">
         <Title order={2}>Color System</Title>

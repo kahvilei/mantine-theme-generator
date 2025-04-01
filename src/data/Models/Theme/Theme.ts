@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable} from "mobx";
 import { MantineThemeOverride } from "@mantine/core";
 import { Colors, ColorSettings } from "@/data/Models/Theme/Colors/Colors";
 import { Sizes, SpacingSettings } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
@@ -46,6 +46,7 @@ export class Theme{
         this.store?.setMainTheme(this)
     }
 
+    @action
     reset() {
         this.store?.resetTheme(this.name)
     }

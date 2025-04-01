@@ -68,7 +68,7 @@ const ThemeControlPanel = () => {
             {
               value: 'color',
               label: (
-                <Tooltip label="Color">
+                <Tooltip label="VirtualColor">
                   <Center>
                     <IconPalette size="1.2rem" />
                   </Center>
