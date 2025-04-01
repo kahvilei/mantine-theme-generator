@@ -51,7 +51,6 @@ const themeToTypeScript = (themeObj: any): string => {
 
 // Helper to process uploaded TypeScript file content
 const processTypeScriptContent = (content: string): any => {
-  try {
     // Simple approach: extract the theme object and evaluate it
     let themeObject;
 
@@ -60,7 +59,8 @@ const processTypeScriptContent = (content: string): any => {
     if (themeMatch && themeMatch[1]) {
       const themeStr = themeMatch[1];
       // Use eval in a controlled way to convert the object string to a real object
-      themeObject = (0, eval)(`(${themeStr})`);
+        // eslint-disable-next-line no-eval
+      themeObject = eval(`(${themeStr})`);
       return themeObject;
     }
 
@@ -68,7 +68,8 @@ const processTypeScriptContent = (content: string): any => {
     const exportMatch = content.match(/export\s+default\s+({[\s\S]*?});/);
     if (exportMatch && exportMatch[1]) {
       const themeStr = exportMatch[1];
-      themeObject = (0, eval)(`(${themeStr})`);
+        // eslint-disable-next-line no-eval
+      themeObject = eval(`(${themeStr})`);
       return themeObject;
     }
 
@@ -77,45 +78,16 @@ const processTypeScriptContent = (content: string): any => {
       const varMatch = content.match(/const\s+theme\s*[^=]*=\s*({[\s\S]*?});/);
       if (varMatch && varMatch[1]) {
         const themeStr = varMatch[1];
-        themeObject = (0, eval)(`(${themeStr})`);
+          // eslint-disable-next-line no-eval
+        themeObject = eval(`(${themeStr})`);
         return themeObject;
       }
     }
-
-    throw new Error("Could not find theme object in the file");
-  } catch (error) {
-    console.error("Error parsing TypeScript theme:", error);
-    throw error;
-  }
 };
-
-export const ThemeDownloadUploadButtons = observer(() => {
-  const [fileFormat, setFileFormat] = useState<'json' | 'typescript'>('json');
-
-  return (
-      <Group>
-        <SegmentedControl
-            value={fileFormat}
-            onChange={(value: string) => setFileFormat(value as "json" | "typescript")}
-            data={[
-              { label: 'JSON', value: 'json' },
-              { label: 'TypeScript', value: 'typescript' }
-            ]}
-            size="xs"
-        />
-
-        <Tooltip label={`Download theme as ${fileFormat}`}>
-         <DownloadThemeButton />
-          <UploadThemeButton />
-        </Tooltip>
-
-      </Group>
-  );
-});
 
 // Individual components if you need them separately
 export const DownloadThemeButton = observer(() => {
-  const [fileFormat, setFileFormat] = useState<'json' | 'typescript'>('json');
+  const [fileFormat, setFileFormat] = useState<'json' | 'typescript'>('typescript');
 
   const downloadTheme = () => {
     let content: string;
@@ -183,7 +155,6 @@ export const UploadThemeButton = observer(() => {
           Store.setTheme(prettyName, themeData);
 
         } catch (error) {
-          console.error("Error processing theme file:", error);
           // eslint-disable-next-line no-alert
           alert("Failed to process theme file. Make sure it's a valid JSON or TypeScript theme file.");
         }

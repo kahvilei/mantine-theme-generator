@@ -50,7 +50,7 @@ const ThemeControlPanel = () => {
 
   return (
     <Box id="control-panel">
-      <Group className={classes.header} wrap={'nowrap'}>
+      <Group className={classes.header} wrap='nowrap'>
         <SegmentedControl
           value={activeTab}
           onChange={setActiveTab}
@@ -107,7 +107,7 @@ const ThemeControlPanel = () => {
             },
           ]}
         />
-        <Group gap="xs" wrap={'nowrap'}>
+        <Group gap="xs" wrap='nowrap'>
           <DownloadThemeButton />
           <UploadThemeButton />
           <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
