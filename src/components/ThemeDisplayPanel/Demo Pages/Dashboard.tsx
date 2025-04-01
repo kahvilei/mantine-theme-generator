@@ -69,13 +69,13 @@ export const Dashboard: React.FC = () => {
                 <Grid.Col span={3}>
                     <Card p="lg">
                         <Group>
-                            <ThemeIcon size="xl">
+                            <ThemeIcon variant="filled" size="xl">
                                 <IconUser size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
                                 <Text size="xs" c="dimmed">Total Users</Text>
-                                <Text size="xl" fw={700}>24,532</Text>
-                                <Text size="xs" c="green">+12.3% <IconArrowRight size={12} /></Text>
+                                <Text size="xl">24,532</Text>
+                                <Text size="xs">+12.3% <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
                     </Card>
@@ -88,7 +88,7 @@ export const Dashboard: React.FC = () => {
                             </ThemeIcon>
                             <Stack gap={0}>
                                 <Text size="xs" c="dimmed">Revenue</Text>
-                                <Text size="xl" fw={700}>$48,271</Text>
+                                <Text size="xl" >$48,271</Text>
                                 <Text size="xs" c="green">+8.7% <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
@@ -102,7 +102,7 @@ export const Dashboard: React.FC = () => {
                             </ThemeIcon>
                             <Stack gap={0}>
                                 <Text size="xs" c="dimmed">Sessions</Text>
-                                <Text size="xl" fw={700}>98,347</Text>
+                                <Text size="xl" >98,347</Text>
                                 <Text size="xs" c="green">+25.8% <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
@@ -116,7 +116,7 @@ export const Dashboard: React.FC = () => {
                             </ThemeIcon>
                             <Stack gap={0}>
                                 <Text size="xs" c="dimmed">Engagement</Text>
-                                <Text size="xl" fw={700}>64.8%</Text>
+                                <Text size="xl">64.8%</Text>
                                 <Text size="xs" c="red">-3.2% <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
@@ -130,7 +130,7 @@ export const Dashboard: React.FC = () => {
                         <Stack>
                             <Group justify="space-between">
                                 <Title order={3}>Recent Activities</Title>
-                                <Button variant="light" leftSection={<IconPlus size={14} />}>Add New</Button>
+                                <Button leftSection={<IconPlus size={14} />}>Add New</Button>
                             </Group>
                             <ScrollArea h={650}>
                                 <Stack>

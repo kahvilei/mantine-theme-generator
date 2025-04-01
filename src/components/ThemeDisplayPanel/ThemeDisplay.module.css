@@ -7,3 +7,8 @@
     max-width: var(--mantine-breakpoint-lg);
     width: 100%;
 }
+
+.displayWipe{
+    all: unset;
+    flex: 1;
+}

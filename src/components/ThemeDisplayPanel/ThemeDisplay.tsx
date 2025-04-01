@@ -43,6 +43,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
     };
 
     return (
+        <Box className={classes.displayWipe}>
       <MantineProvider
         theme={currentTheme}
         forceColorScheme={mode}
@@ -59,12 +60,12 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
           bg="var(--mantine-color-body)"
         >
           <Stack align="center">
-          <Group className={`scheme-override-${mode} ${classes.displayContent}`}>
+          <Group className={classes.displayContent}>
             <Content />
           </Group>
           </Stack>
         </Box>
-      </MantineProvider>
+      </MantineProvider></Box>
     );
   }
 );
