@@ -32,7 +32,6 @@
     align-items: flex-start;
     overflow: hidden;
     background-color: var(--mantine-color-dark-9);
-    border: none;
     padding: 0;
 }
 
