@@ -4,11 +4,10 @@ import { premadeThemes } from "@/data/Models/Theme/premadeThemes";
 import { Sizes } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
 import { Theme } from '@/data/Models/Theme/Theme';
 import { Components } from './Models/Theme/Components/Components';
-import { Typography } from './Models/Theme/Typography/Typography';
+import { Typography, typographyProxy } from '@/data/Models/Theme/Typography';
 import { Accessibility } from "@/data/Models/Theme/Accessibility/Accessibility";
 import { Interaction } from "@/data/Models/Theme/Interaction/Interaction";
 import { Colors } from "@/data/Models/Theme/Colors/Colors";
-import {typographyProxy} from "@/data/Models/Theme/Typography";
 import {createSizesProxy} from "@/data/Models/Theme/SizeAndSpacing/proxy";
 import {createColorsProxy} from "@/data/Models/Theme/Colors/proxy";
 
@@ -43,10 +42,9 @@ export class RemoraidStore {
      * Reset a theme to its default settings
      */
     resetTheme(themeName: string): void {
-        if (premadeThemes[themeName]) {
-            this.themes.set(themeName, new Theme(premadeThemes[themeName], themeName, this));
-        } else {
-            console.warn(`Theme "${themeName}" does not exist in premade themes`);
+        if (this.themeDefaults[themeName]) {
+            this.themes.delete(themeName);
+            this.themes.set(themeName, new Theme(this.themeDefaults[themeName], themeName, this));
         }
     }
 
@@ -81,7 +79,6 @@ export class RemoraidStore {
     deleteTheme(name: string): boolean {
         // Don't allow deletion of the current active theme
         if (this.theme.name === name) {
-            console.warn("Cannot delete the currently active theme");
             return false;
         }
         return this.themes.delete(name);
@@ -108,7 +105,6 @@ export const theme: Theme = new Proxy({} as Theme, {
             (Root.theme as any)[prop] = value;
             return true;
         }
-        console.warn(`Attempted to set invalid property "${prop}" on Theme object`);
         return false;
     }
 });
@@ -133,7 +129,6 @@ export const components: Components = new Proxy({} as Components, {
             (Root.theme.components as any)[prop] = value;
             return true;
         }
-        console.warn(`Attempted to set invalid property "${prop}" on Components object`);
         return false;
     }
 });
@@ -151,7 +146,6 @@ export const accessibility: Accessibility = new Proxy({} as Accessibility, {
             (Root.theme.accessibility as any)[prop] = value;
             return true;
         }
-        console.warn(`Attempted to set invalid property "${prop}" on Accessibility object`);
         return false;
     }
 });
@@ -169,7 +163,6 @@ export const interaction: Interaction = new Proxy({} as Interaction, {
             (Root.theme.interaction as any)[prop] = value;
             return true;
         }
-        console.warn(`Attempted to set invalid property "${prop}" on Interaction object`);
         return false;
     }
 });

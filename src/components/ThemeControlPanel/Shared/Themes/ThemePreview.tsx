@@ -14,7 +14,7 @@ interface ThemePreviewProps {
 const ThemePreview: React.FC<ThemePreviewProps> = observer(({ theme, selected=false }: ThemePreviewProps) => {
   const colors = theme.colors.colors?theme.colors.colors:DEFAULT_THEME.colors;
   const primaryColor = theme.colors.primaryColor?theme.colors.primaryColor:'blue';
-  const hex = theme.colors.getColorByName(primaryColor)?.getShade();
+  const hex = theme.colors.getColorByName(primaryColor)?.getShade(undefined,'dark');
   const fontFamily = theme.typography.headings?theme.typography.headings.fontFamily:DEFAULT_THEME.fontFamily;
 
   const lightMode = false;

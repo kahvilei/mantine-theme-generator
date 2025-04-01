@@ -722,7 +722,36 @@ export const Goomy: MantineThemeOverride = {
       "#0b619b",
       "#00385c",
       "#000f1c"
-    ]
+    ],
+    darkgoo: [
+      '#d1c7dd',
+      '#af9ec3',
+      '#8c76a9',
+      '#6b5687',
+      '#4b3c5e',
+      '#4b3c5e',
+      '#3b304a',
+      '#2b2336',
+      '#1c1722',
+      '#0b0b0d'
+    ],
+    lightgoo: [
+      '#efecf4',
+      '#efecf5',
+      '#f0ecf7',
+      '#f0ebf8',
+      '#f1ebf9',
+      '#f2edfa',
+      '#b192e3',
+      '#6f37cb',
+      '#3d1d72',
+      '#0d0419'
+    ],
+    goo: virtualColor({
+      name: "goo",
+      dark: "darkgoo",
+      light: "lightgoo"
+    })
   },
   primaryShade: {
     light: 5,
@@ -795,6 +824,14 @@ export const Goomy: MantineThemeOverride = {
     md: "calc(0.5rem * var(--mantine-scale))",
     lg: "calc(1rem * var(--mantine-scale))",
     xl: "calc(2rem * var(--mantine-scale))"
+  },
+  components: {
+    Card: {
+      defaultProps: {
+        bg: 'var(--mantine-color-goo-5)'
+      },
+      styles: {}
+    }
   }
 };
 
