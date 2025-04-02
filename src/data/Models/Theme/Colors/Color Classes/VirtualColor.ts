@@ -1,4 +1,4 @@
-import {action} from "mobx";
+import {action, makeObservable, observable} from "mobx";
 import {Colors} from "@/data/Models/Theme/Colors/Colors";
 import {MantineColorsTuple, virtualColor} from "@mantine/core";
 import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
@@ -14,11 +14,13 @@ export interface VirtualColorProps {
 
 
 export class VirtualColor extends Color{
+    @observable
     colorKeys: ColorKeys;
 
     constructor({name, colorKeys} : VirtualColorProps, colorManager: Colors) {
         super({name, type:"custom"}, colorManager);
         this.colorKeys = colorKeys ?? {light: name, dark: name};
+        makeObservable(this);
         this.render();
     }
 
@@ -63,7 +65,7 @@ export class VirtualColor extends Color{
 
     @action
     render():void{
-        if(this.manager.colors && this.manager.colors[this.name]) {
+        if(this.manager.colors) {
             this.manager.colors[this.name] = () => {return virtualColor({name: this.name, ...this.colorKeys})};
         }
     }
