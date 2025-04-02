@@ -135,7 +135,7 @@ export class Colors{
 
     //gets all color objects from our map with type set to "override"
     getOverrideColors(): Color[] {
-        return this.getAllColors().filter(color => color.type === 'override');
+        return this.getAllColors().filter(color => (color.type === 'override' && !(color instanceof ShadelessColor)));
     }
 
     getMantineColors() {
