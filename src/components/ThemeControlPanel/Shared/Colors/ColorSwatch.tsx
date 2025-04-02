@@ -34,8 +34,8 @@ const ColorSwatch: React.FC<ColorSwatchProps> = observer(
     }
 
     // Get color values for light and dark modes from the VirtualColor instance
-    const colorLight = color.getShade(undefined, 'light');
-    const colorDark = color.getShade(undefined, 'dark');
+    const colorLight = color.getShade(undefined, 'light')??'#000';
+    const colorDark = color.getShade(undefined, 'dark')??'#fff';
     const colorIcon = color.getShade(7)
 
     // Map of icons by type

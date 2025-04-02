@@ -24,7 +24,6 @@ export class Colors{
     luminanceThreshold?: number;
     isThemeDependentPrimaryShade?: boolean;
 
-    // Gradients
     defaultGradient?: {
         from: string;
         to: string;
@@ -33,7 +32,7 @@ export class Colors{
 
     constructor(config: ColorSettings) {
         this.colorMap = new Map();
-        this.colors = config.colors as Record<string, MantineColorsTuple>;
+        this.colors = config.colors as Record<string, MantineColorsTuple | (()=>MantineColorsTuple)>;
         this.primaryColor = config.primaryColor?.toString();
         this.primaryShade = config.primaryShade as number | { light: number; dark: number };
         this.isThemeDependentPrimaryShade = ((this.primaryShade as { light: number; dark: number }).light !== undefined);
@@ -49,15 +48,19 @@ export class Colors{
         this.colorMap.set(black.uuid, black);
 
         // Process existing colors in config
-        for (const [key, value] of Object.entries(this.colors || {})) {
+        for (const [key, value] of Object.entries(config.colors || {})) {
             // Check if it's a virtual color (has name property)
-            const isVirtualColor = typeof value === 'object' && 'name' in value;
+            const isVirtualColor = typeof value === 'object' && 'name' in value || typeof value === 'function';
+            let valueVirtual: { name: string, dark: string, light: string } | undefined;
+            if (typeof value === 'function'){
+                valueVirtual = (value as ()=>MantineColorsTuple)()as unknown as { name: string, dark: string, light: string };
+            }
 
-            let colorObj: Color;
+            let colorObj: Color | VirtualColor;
 
             if (isVirtualColor) {
                 // Handle virtual color created with virtualColor()
-                const virtualColorProps = value as unknown as { name: string, dark: string, light: string };
+                const virtualColorProps = valueVirtual??value as unknown as { name: string, dark: string, light: string };
                 colorObj = new VirtualColor({
                     name: key,
                     colorKeys: {

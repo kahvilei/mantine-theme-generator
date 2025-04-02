@@ -112,4 +112,4 @@ export class Theme{
 
 }
 
-type ThemeStateInternals = ColorSettings & SpacingSettings & TypographySettings & InteractionSettings & AccessibilitySettings & ComponentSettings;
+export type ThemeStateInternals = ColorSettings & SpacingSettings & TypographySettings & InteractionSettings & AccessibilitySettings & ComponentSettings;
