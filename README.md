@@ -2,7 +2,7 @@
 
 Work in progress editor for Mantine theme override generation. Basic functionality is there, with some bugs and incomplete features. The goal of this project is to let you edit mantine themes in as much or as little detail as you'd like, all from a UI with a live preview.
 
-[Shoot me a line](https://discordapp.com/users/kadiee) (username **kadiee**) if you have any questions on functionality or how to use it. My current objective is smoothing out rough edges, but in the future I'd like to add the ability to edit default component props/styles.
+[Shoot me a line](https://discordapp.com/users/kadiee) (username **kadiee**) if you have any questions on functionality or how to use it. My current objective is smoothing out rough edges. See my progress [here.](https://www.notion.so/kathrynhuff/Mantine-theme-generator-1c8cef7342fc801585d7d94d1127e875?pvs=4)
 
 ## How to use
 
