@@ -47,7 +47,7 @@ const ColorSwatch: React.FC<ColorSwatchProps> = observer(
 
     return (
       <Card
-        bg={`-moz-linear-gradient(45deg, ${colorDark} 50%, ${colorLight} 50%)`}
+        bg={`linear-gradient(45deg, ${colorDark} 50%, ${colorLight} 50%)`}
         className={`${classes.colorItem} ${classes[size]}`}
         data-type={type}
         tabIndex={0}
