@@ -1,0 +1,120 @@
+{
+  "panel": {
+    "title": "Theme Control Panel",
+    "download": "Download theme as {{format}}",
+    "upload": "Upload theme (JSON or TypeScript)",
+    "uploadError": "Failed to process theme file. Make sure it's a valid JSON or TypeScript theme file: {{error}}",
+    "resetTheme": "Reset Theme",
+    "resetConfirmation": "Are you sure you want to reset the theme? This will delete all current changes."
+  },
+  "tabs": {
+    "quickSetup": "Quick Setup",
+    "color": "Color",
+    "typography": "Typography",
+    "sizeAndLayout": "Size and Layout",
+    "components": "Components"
+  },
+  "setup": {
+    "premadeThemes": "Premade themes",
+    "primaryColor": "Primary color",
+    "fontFamilies": "Font families"
+  },
+  "colors": {
+    "panel": {
+      "title": "Color Controls",
+      "primaryColor": "Primary color",
+      "primaryColorSelector": "Primary Color",
+      "customColors": "Custom colors",
+      "mantineOverrides": "Mantine color overrides",
+      "contentColors": "Content colors",
+      "situationalColors": "Situational colors",
+      "otherOverrides": "Other mantine color overrides",
+      "defaultGradient": "Default gradient"
+    },
+    "editor": {
+      "addColor": "Add new color",
+      "addColorButton": "Add new color",
+      "updateColor": "Update color",
+      "name": "Name",
+      "color": "Color",
+      "dark": "Dark",
+      "light": "Light",
+      "shade": "Shade {{index}}"
+    },
+    "categories": {
+      "customColors": "Custom Colors",
+      "mantineColors": "Mantine Colors",
+      "standard": "Standard",
+      "virtual": "Virtual"
+    }
+  },
+  "typography": {
+    "settings": "Typography Settings",
+    "headings": "Headings",
+    "size": "Size",
+    "lineHeight": "Line Height",
+    "weight": "Weight",
+    "preview": "{{heading}} Preview Text",
+    "fonts": {
+      "body": "Body",
+      "headings": "Headings",
+      "monospace": "Monospace",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "Scale and Layout Controls",
+    "scale": "Scale",
+    "scaleValue": "{{value}}x",
+    "spacing": "Spacing",
+    "breakpoints": "Breakpoints",
+    "radius": {
+      "title": "Radius",
+      "default": "Default Radius",
+      "settings": "Radius settings"
+    }
+  },
+  "interaction": {
+    "title": "Interaction and Accessibility",
+    "focusRing": "Focus Ring",
+    "options": {
+      "auto": "Auto",
+      "always": "Always",
+      "never": "Never",
+      "default": "Default",
+      "pointer": "Pointer"
+    },
+    "accessibility": "Accessibility",
+    "fontSmoothing": "Font Smoothing",
+    "respectReducedMotion": "Respect Reduced Motion",
+    "cursorType": "Cursor Type"
+  },
+  "components": {
+    "title": "Component Controls",
+    "description": "Select a component below to define default props and styles. These rules will be applied to all instances of the component in the theme.",
+    "addRule": "Add Component Rule",
+    "selectComponent": "Select Component",
+    "choosePlaceholder": "Choose a component to customize",
+    "docsReference": "For reference on each component's props and styles API, see the",
+    "docsLink": "Mantine Documentation",
+    "defaultProps": "Default Props",
+    "stylesAPI": "Styles API",
+    "property": {
+      "addProperty": "Add property",
+      "addStyleProperty": "Add style property",
+      "addStyleSelector": "Add style selector",
+      "componentProps": "Component Props",
+      "styleProps": "Style Props"
+    },
+    "categories": {
+      "inputs": "Inputs",
+      "navigation": "Navigation",
+      "layout": "Layout",
+      "typography": "Typography",
+      "feedback": "Feedback",
+      "data": "Data",
+      "overlays": "Overlays",
+      "other": "Other"
+    }
+  }
+}

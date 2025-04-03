@@ -3,21 +3,23 @@ import ThemeSelector from "@/components/ThemeControlPanel/Shared/Themes/ThemeSel
 import ThemeColorSelector from "@/components/ThemeControlPanel/Shared/Colors/ThemeColorSelector";
 import Page from "@/components/ThemeControlPanel/Shared/Layout/EditorPage";
 import Section from "@/components/ThemeControlPanel/Shared/Layout/EditorSection";
-
-import {IconColorPicker, IconLayout, IconTypeface} from "@tabler/icons-react";
+import { IconColorPicker, IconLayout, IconTypeface } from "@tabler/icons-react";
 import ThemeFontsSelector from "@/components/ThemeControlPanel/Shared/Fonts/ThemeFontsSelector";
-
+import { useTranslation } from "react-i18next";
 
 const QuickSetUp = () => {
+    // Updated to use new namespace
+    const { t } = useTranslation(['theme']);
+
     return (
-        <Page title="Quick Setup">
-            <Section labelIcon={<IconLayout/>} label="Premade themes">
+        <Page title={t('tabs.quickSetup')}>
+            <Section labelIcon={<IconLayout/>} label={t('setup.premadeThemes')}>
                 <ThemeSelector/>
             </Section>
-            <Section labelIcon={<IconColorPicker/>} label="Primary color">
-                <ThemeColorSelector label="Primary VirtualColor"/>
+            <Section labelIcon={<IconColorPicker/>} label={t('setup.primaryColor')}>
+                <ThemeColorSelector label={t('colors.panel.primaryColorSelector')}/>
             </Section>
-            <Section labelIcon={<IconTypeface/>} label="Font Families">
+            <Section labelIcon={<IconTypeface/>} label={t('setup.fontFamilies')}>
                 <ThemeFontsSelector/>
             </Section>
         </Page>

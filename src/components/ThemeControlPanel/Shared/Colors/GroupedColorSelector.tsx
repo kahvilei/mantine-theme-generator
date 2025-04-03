@@ -8,7 +8,7 @@ import {
 } from '@mantine/core';
 import ColorSwatch from '@/components/ThemeControlPanel/Shared/Colors/ColorSwatch';
 import classes from './GroupedColorSelector.module.css';
-
+import { useTranslation } from 'react-i18next';
 
 interface ColorGroup {
   key: string;
@@ -22,13 +22,21 @@ interface GroupedColorSelectorProps {
 }
 
 const GroupedColorSelector: React.FC<GroupedColorSelectorProps> = ({
-  colors,
-  onSelect,
-  mainColor,
-}) => {
+                                                                     colors,
+                                                                     onSelect,
+                                                                     mainColor,
+                                                                   }) => {
+  const { t } = useTranslation(['theme']);
 
   const colorData = colors.map((group) => {
-    return { group: group.key, items: Array.from(group.value?.keys()) };
+    // Translate group key if it's a standard color category
+    const translatedKey = group.key === 'Custom Colors'
+        ? t('colors.categories.customColors')
+        : group.key === 'Mantine Colors'
+            ? t('colors.categories.mantineColors')
+            : group.key;
+
+    return { group: translatedKey, items: Array.from(group.value?.keys()) };
   });
 
   const combobox = useCombobox({
@@ -38,22 +46,21 @@ const GroupedColorSelector: React.FC<GroupedColorSelectorProps> = ({
   const options = colorData.map((group) => {
     const subOptions = group.items.map((item) => {
       return (
-        <Combobox.Option key={item} value={item}>
-          <Tooltip label={item} position="right">
-            <ColorSwatch name={item} size="sm" />
-          </Tooltip>
-        </Combobox.Option>
+          <Combobox.Option key={item} value={item}>
+            <Tooltip label={item} position="right">
+              <ColorSwatch name={item} size="sm" />
+            </Tooltip>
+          </Combobox.Option>
       );
     });
 
     return (
-      <Combobox.Group key={group.group} label={group.group}>
-        {subOptions}
-      </Combobox.Group>
+        <Combobox.Group key={group.group} label={group.group}>
+          {subOptions}
+        </Combobox.Group>
     );
   });
 
-  let label;
   return (
       <Tooltip label={mainColor} position="right">
         <Combobox
@@ -61,22 +68,19 @@ const GroupedColorSelector: React.FC<GroupedColorSelectorProps> = ({
             onOptionSubmit={(val) => {
               onSelect(val);
               combobox.closeDropdown();
-            }
-            }
-            classNames={
-              {
-                dropdown: classes.colorSelectorDropdown,
-                options: classes.options,
-                option: classes.option
-              }
-            }
+            }}
+            classNames={{
+              dropdown: classes.colorSelectorDropdown,
+              options: classes.options,
+              option: classes.option
+            }}
             withinPortal={false}
         >
           <Combobox.Target>
             <Box
                 component="button"
                 onClick={() => combobox.toggleDropdown()}
-                aria-label={label??'select color'}
+                aria-label={t('colors.editor.selectColor', { defaultValue: 'select color' })}
                 className={classes.colorSelectorInput}
                 p={0}
             >

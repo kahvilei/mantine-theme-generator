@@ -1,15 +1,17 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Box, Card, Stack, Tabs, Title } from '@mantine/core';
-import {typography as typographyProxy} from '@/data/Store';
+import { typography as typographyProxy } from '@/data/Store';
 import NumberUnitSelector from '@/components/ThemeControlPanel/Shared/Input/NumberUnitSelector';
-import {Typography} from "@/data/Models/Theme/Typography";
+import { Typography } from "@/data/Models/Theme/Typography";
+import { useTranslation } from 'react-i18next';
 
 interface HeadingsSettingsProps {
     typography?: Typography;
 }
 
 const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography = typographyProxy}:HeadingsSettingsProps) => {
+    const { t } = useTranslation(['theme']);
     const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
     const fontFamily = typography.getHeadingFontFamily();
 
@@ -46,7 +48,7 @@ const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography 
                     justifyContent: 'center',
                 }}
             >
-                {heading.toUpperCase()} Preview Text
+                {t('typography.preview', { heading: heading.toUpperCase() })}
             </Card>
         );
     };
@@ -55,7 +57,7 @@ const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography 
         <Stack gap="md">
             <NumberUnitSelector
                 key={`heading-size-${heading}`}
-                label={'Size'}
+                label={t('typography.size')}
                 value={typography.getHeadingSize(heading) || '0px'}
                 onChange={(value) => handleHeadingSizeChange(heading, value)}
                 min={0}
@@ -63,7 +65,7 @@ const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography 
             />
             <NumberUnitSelector
                 key={`heading-line-height-${heading}`}
-                label={'Line Height'}
+                label={t('typography.lineHeight')}
                 value={typography.getHeadingLineHeight(heading) || '0px'}
                 onChange={(value) => handleHeadingLineHeightChange(heading, value)}
                 hasUnits={false}
@@ -73,7 +75,7 @@ const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography 
             />
             <NumberUnitSelector
                 key={`heading-weight-${heading}`}
-                label={'Weight'}
+                label={t('typography.weight')}
                 value={typography.getHeadingWeight(heading) || '0px'}
                 onChange={(value) => handleHeadingWeightChange(heading, value)}
                 hasUnits={false}
@@ -87,7 +89,7 @@ const HeadingsSettings: React.FC<HeadingsSettingsProps> = observer(({typography 
 
     return (
         <Stack mt="md">
-            <Title order={4}>Headings</Title>
+            <Title order={4}>{t('typography.headings')}</Title>
             <Tabs defaultValue="h1">
                 <Tabs.List>
                     {headings.map((heading) => (

@@ -7,38 +7,41 @@ import { colors as ColorManager } from '@/data/Store';
 import ColorEdit from '../Shared/Colors/ColorEditor/ColorEdit';
 import ColorEditorPopup from '../Shared/Colors/ColorEditor/ColorEditorPopup';
 import classes from './ColorControls.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface ColorPaletteProps {
   colorsInstance?: Colors;
 }
 
 const ColorPalette: React.FC<ColorPaletteProps> = observer(({ colorsInstance = ColorManager }) => {
+  const { t } = useTranslation(['theme']);
+
   // Get custom colors (type "standard" or "virtual") from the Colors class
   const customColors = colorsInstance.getCustomColors();
 
   return (
-    <>
-      <Group gap="xs">
-        {customColors.map((colorObject) => (
-          <ColorEdit
-            key={colorObject.uuid}
-            name={colorObject.name}
-          />
-        ))}
-        <Popover withArrow shadow="default" position="bottom">
-          <Popover.Target>
-            <Tooltip label="Add new color">
-              <ActionIcon variant="light" m={0} className={classes.colorAdd}>
-                <IconPlus />
-              </ActionIcon>
-            </Tooltip>
-          </Popover.Target>
-          <Popover.Dropdown>
-            <ColorEditorPopup/>
-          </Popover.Dropdown>
-        </Popover>
-      </Group>
-    </>
+      <>
+        <Group gap="xs">
+          {customColors.map((colorObject) => (
+              <ColorEdit
+                  key={colorObject.uuid}
+                  name={colorObject.name}
+              />
+          ))}
+          <Popover withArrow shadow="default" position="bottom">
+            <Popover.Target>
+              <Tooltip label={t('colors.editor.addColor')}>
+                <ActionIcon variant="light" m={0} className={classes.colorAdd}>
+                  <IconPlus />
+                </ActionIcon>
+              </Tooltip>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <ColorEditorPopup/>
+            </Popover.Dropdown>
+          </Popover>
+        </Group>
+      </>
   );
 });
 

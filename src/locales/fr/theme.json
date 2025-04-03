@@ -1,0 +1,16 @@
+{
+  "appTitle": "Éditeur de thème Mantine",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "apply": "Appliquer",
+  "reset": "Réinitialiser",
+  "loading": "Chargement...",
+  "error": "Une erreur est survenue",
+  "success": "Succès !",
+  "overview": "Aperçu",
+  "runningOn": "Fonctionnant sur Mantine v{{version}}",
+  "viewOnGitHub": "Voir sur GitHub",
+  "viewMantineDocs": "Voir la documentation Mantine",
+  "changeLanguage": "Changer de langue",
+  "toggleTheme": "Changer le mode clair/sombre"
+}

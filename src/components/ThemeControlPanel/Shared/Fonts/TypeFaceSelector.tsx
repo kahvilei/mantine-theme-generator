@@ -8,8 +8,8 @@ import {
 } from '@mantine/core';
 import { fontData } from "@/components/ThemeControlPanel/Shared/Fonts/fontData";
 import classes from './TypeFaceSelector.module.css';
-import {IconSelector} from "@tabler/icons-react";
-
+import { IconSelector } from "@tabler/icons-react";
+import { useTranslation } from 'react-i18next';
 
 interface TypeFaceSelectorProps {
     value: string;
@@ -20,11 +20,12 @@ interface TypeFaceSelectorProps {
 }
 
 export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelectorProps) => {
+    const { t } = useTranslation(['theme']);
     const combobox = useCombobox({
         onDropdownClose: () => combobox.resetSelectedOption(),
     });
 
-    const size = w??'7rem';
+    const size = w ?? '7rem';
 
     const options = fontData.map((group) => {
         const subOptions = group.items.map((item) => {
@@ -47,8 +48,7 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
             onOptionSubmit={(val) => {
                 onSelect(val);
                 combobox.closeDropdown();
-            }
-            }
+            }}
         >
             <Combobox.Target>
                 <InputBase
@@ -58,25 +58,23 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
                     onClick={() => combobox.toggleDropdown()}
                     className={classes.typeFaceSelector}
                     tabIndex={0}
-                    aria-label={label??'select type face'}
+                    aria-label={label ?? t('typography.fonts.selectFont')}
                     style={{
-                        fontSize: w??size,
-                    }
-                    }
+                        fontSize: w ?? size,
+                    }}
                     styles={{
-                            input: {
-                                height: h ?? '100%',
-                                width: w ?? size
-                            }
+                        input: {
+                            height: h ?? '100%',
+                            width: w ?? size
                         }
-                    }
+                    }}
                 >
                     <Group className={classes.typeFaceLabel}>
                         {label && label}
                         <IconSelector size={15}/>
                     </Group>
                     <Group gap={0} justify="center">
-                        <Text ff={value} className={classes.typeFacePreview}>Aa</Text>
+                        <Text ff={value} className={classes.typeFacePreview}>{t('typography.fonts.typeFacePreview', { defaultValue: 'Aa' })}</Text>
                         <Text c="dimmed" className={classes.typeFaceName}>{value}</Text>
                     </Group>
                 </InputBase>
@@ -89,7 +87,6 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
                 </Combobox.Options>
             </Combobox.Dropdown>
         </Combobox>
-
     )
 }
 
@@ -99,7 +96,6 @@ interface FontOptionProps {
     label: string;
     isMonospace?: boolean;
 }
-
 
 const FontOption = ({ value }: FontOptionProps) => {
     return (

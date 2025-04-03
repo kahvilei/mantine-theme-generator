@@ -3,12 +3,14 @@ import { IconDownload, IconUpload } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
 import { ActionIcon, Group, SegmentedControl, Tooltip } from '@mantine/core';
 import Store, { theme } from '@/data/Store';
-import {processTypeScriptContent} from "@/utils/processTypescriptFile";
-import {themeToTypeScript} from "@/utils/themeToTypeScript";
+import { processTypeScriptContent } from "@/utils/processTypescriptFile";
+import { themeToTypeScript } from "@/utils/themeToTypeScript";
+import { useTranslation } from "react-i18next";
 
 // Individual components if you need them separately
 export const DownloadThemeButton = observer(() => {
   const [fileFormat, setFileFormat] = useState<'json' | 'typescript'>('typescript');
+  const { t } = useTranslation(['app', 'common']);
 
   const downloadTheme = () => {
     let content: string;
@@ -38,26 +40,28 @@ export const DownloadThemeButton = observer(() => {
     URL.revokeObjectURL(url);
   };
   return (
-    <Group gap="xs">
-      <SegmentedControl
-        value={fileFormat}
-        onChange={(value: string) => setFileFormat(value as 'json' | 'typescript')}
-        data={[
-          { label: 'JSON', value: 'json' },
-          { label: 'TS', value: 'typescript' },
-        ]}
-        size="xs"
-      />
-      <Tooltip label={`Download theme as ${fileFormat}`}>
-        <ActionIcon onClick={downloadTheme}>
-          <IconDownload size={18} />
-        </ActionIcon>
-      </Tooltip>
-    </Group>
+      <Group gap="xs">
+        <SegmentedControl
+            value={fileFormat}
+            onChange={(value: string) => setFileFormat(value as 'json' | 'typescript')}
+            data={[
+              { label: 'JSON', value: 'json' },
+              { label: 'TS', value: 'typescript' },
+            ]}
+            size="xs"
+        />
+        <Tooltip label={t('theme.download.tooltip', { format: fileFormat.toUpperCase(), ns: 'app' })}>
+          <ActionIcon onClick={downloadTheme}>
+            <IconDownload size={18} />
+          </ActionIcon>
+        </Tooltip>
+      </Group>
   );
 });
 
 export const UploadThemeButton = observer(() => {
+  const { t } = useTranslation(['app', 'common']);
+
   const uploadTheme = (file: File) => {
     if (file) {
       const reader = new FileReader();
@@ -77,7 +81,7 @@ export const UploadThemeButton = observer(() => {
         } catch (error) {
           // eslint-disable-next-line no-alert
           alert(
-            `Failed to process theme file. Make sure it's a valid JSON or TypeScript theme file:${error}`
+              t('theme.upload.error', { error, ns: 'app' })
           );
         }
       };
@@ -86,23 +90,23 @@ export const UploadThemeButton = observer(() => {
   };
 
   return (
-    <Tooltip label="Upload theme (JSON or TypeScript)">
-      <ActionIcon
-        onClick={() => {
-          const input = document.createElement('input');
-          input.type = 'file';
-          input.accept = '.json,.ts,.tsx,.txt';
-          input.onchange = (e) => {
-            const file = (e.target as HTMLInputElement).files?.[0];
-            if (file) {
-              uploadTheme(file);
-            }
-          };
-          input.click();
-        }}
-      >
-        <IconUpload size={18} />
-      </ActionIcon>
-    </Tooltip>
+      <Tooltip label={t('theme.upload.tooltip', { ns: 'app' })}>
+        <ActionIcon
+            onClick={() => {
+              const input = document.createElement('input');
+              input.type = 'file';
+              input.accept = '.json,.ts,.tsx,.txt';
+              input.onchange = (e) => {
+                const file = (e.target as HTMLInputElement).files?.[0];
+                if (file) {
+                  uploadTheme(file);
+                }
+              };
+              input.click();
+            }}
+        >
+          <IconUpload size={18} />
+        </ActionIcon>
+      </Tooltip>
   );
 });

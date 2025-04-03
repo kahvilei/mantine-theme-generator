@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mantine Theme Editor",
+    "version": "Running on Mantine v{{version}}",
+    "links": {
+      "github": "View on GitHub",
+      "docs": "View Mantine Documentation"
+    },
+    "language": "Change Language",
+    "theme": "Toggle Light/Dark Mode"
+  },
+  "status": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "reset": "Reset",
+    "delete": "Delete",
+    "add": "Add",
+    "edit": "Edit",
+    "select": "Select"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "typography": "Typography",
+    "components": "Components",
+    "forms": "Forms",
+    "overview": "Overview"
+  },
+  "display": {
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "sideBySide": "Side by side"
+  }
+}
