@@ -96,6 +96,7 @@
     "selectComponent": "Select Component",
     "choosePlaceholder": "Choose a component to customize",
     "docsReference": "For reference on each component's props and styles API, see the",
+    "docsReferenceCont": ", or click the icon next to added component's names. ",
     "docsLink": "Mantine Documentation",
     "defaultProps": "Default Props",
     "stylesAPI": "Styles API",

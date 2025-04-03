@@ -55,7 +55,7 @@ const ComponentRulesManager = observer(
                     <a target="_blank" href="https://mantine.dev/overview/" rel="noreferrer">
                         {t('components.docsLink')}
                     </a>
-                    , or click the icon next to added component's names.
+                    {t('components.docsReferenceCont')}
                 </Text>
             </EditorPage>
         );
