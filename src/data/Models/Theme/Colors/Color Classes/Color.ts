@@ -82,11 +82,11 @@ export class Color {
         // Update virtual colors that reference this color
         for (const color of this.manager.colorMap.values()) {
             if (color instanceof VirtualColor) {
-                if (color.colorKeys.light === this.name) {
-                    color.colorKeys.light = newName;
+                if (color.light === this.name) {
+                    color.light = newName;
                 }
-                if (color.colorKeys.dark === this.name) {
-                    color.colorKeys.dark = newName;
+                if (color.dark === this.name) {
+                    color.dark = newName;
                 }
             }
         }

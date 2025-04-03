@@ -63,10 +63,8 @@ export class Colors{
                 const virtualColorProps = valueVirtual??value as unknown as { name: string, dark: string, light: string };
                 colorObj = new VirtualColor({
                     name: key,
-                    colorKeys: {
-                        dark: virtualColorProps.dark,
-                        light: virtualColorProps.light
-                    }
+                    dark: virtualColorProps.dark,
+                    light: virtualColorProps.light
                 }, this);
 
             } else {
@@ -238,7 +236,7 @@ export class Colors{
             this.colorMap.set(name, new Color({name}, this));
             this.colors[name] = generatedColors as unknown as MantineColorsTuple;
         } else {
-            this.colorMap.set(name, new VirtualColor({name, colorKeys: value}, this));
+            this.colorMap.set(name, new VirtualColor({name, ...value}, this));
         }
         return this.colorMap.get(name)??null;
     }
@@ -261,7 +259,7 @@ export class Colors{
         // Check if any virtual colors reference this color
         for (const otherColor of this.colorMap.values()) {
             if (otherColor instanceof VirtualColor) {
-                if (otherColor.colorKeys.light === color.name || otherColor.colorKeys.dark === color.name) {
+                if (otherColor.light === color.name || otherColor.dark === color.name) {
                     return false; // Can't delete a color that's referenced by a virtual color
                 }
             }

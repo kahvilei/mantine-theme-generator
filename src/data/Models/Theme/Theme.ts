@@ -1,22 +1,20 @@
 import {action, makeAutoObservable} from "mobx";
-import { MantineThemeOverride } from "@mantine/core";
-import { Colors, ColorSettings } from "@/data/Models/Theme/Colors/Colors";
-import { Sizes, SpacingSettings } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
-import { Typography, TypographySettings } from "@/data/Models/Theme/Typography/Typography";
-import { RemoraidStore } from "@/data/Store";
+import {MantineThemeOverride} from "@mantine/core";
+import {Colors, ColorSettings} from "@/data/Models/Theme/Colors/Colors";
+import {Sizes, SpacingSettings} from "@/data/Models/Theme/SizeAndSpacing/Sizes";
+import {Typography, TypographySettings} from "@/data/Models/Theme/Typography/Typography";
+import {RemoraidStore} from "@/data/Store";
 import {Interaction, InteractionSettings} from "@/data/Models/Theme/Interaction/Interaction";
 import {Accessibility, AccessibilitySettings} from "@/data/Models/Theme/Accessibility/Accessibility";
 import {Components, ComponentSettings} from "@/data/Models/Theme/Components/Components";
 
-
 export type HeadingSize = {
-  fontSize?: string;
-  lineHeight?: string;
-  fontWeight?: string;
+    fontSize?: string;
+    lineHeight?: string;
+    fontWeight?: string;
 };
 
-
-export class Theme{
+export class Theme {
     config: ThemeStateInternals;
     typography: Typography;
     colors: Colors;
@@ -28,7 +26,7 @@ export class Theme{
     name: string;
     private readonly store?: RemoraidStore;
 
-    constructor(theme: MantineThemeOverride, name:string, store?: RemoraidStore) {
+    constructor(theme: MantineThemeOverride, name: string, store?: RemoraidStore) {
         this.config = theme as ThemeStateInternals;
         this.typography = new Typography(this.config);
         this.colors = new Colors(this.config);
@@ -43,20 +41,20 @@ export class Theme{
     }
 
     makeMainTheme() {
-        this.store?.setMainTheme(this)
+        this.store?.setMainTheme(this);
     }
 
     @action
     reset() {
-        this.store?.resetTheme(this.name)
+        this.store?.resetTheme(this.name);
     }
 
-    //gets all manager values and generates our theme
-    compile = (): MantineThemeOverride => {
+    // Modified compile function to properly handle color functions
+    compile = (keepFunctions = false): MantineThemeOverride => {
         // Start with a fresh object
         const compiledTheme: MantineThemeOverride = {};
 
-        const omissions = ['colorMap']
+        const omissions = ['colorMap'];
 
         // Helper function to deeply map properties from source to target
         const mapDeepProperties = (source: any, target: any, path: string = '') => {
@@ -71,8 +69,14 @@ export class Theme{
                 if (value === null || value === undefined || omissions.includes(key)) {
                     // Skip null, undefined, or omitted properties
                 } else if (typeof value === 'function') {
-                    // If the value is a function, assign it directly to the target
-                    target[key] = value();
+                    // Special handling for color functions
+                    if (keepFunctions) {
+                        // For other functions, respect the keepFunctions flag
+                        target[key] = value;
+                    } else {
+                        // Evaluate other functions as before
+                        target[key] = value();
+                    }
                 } else if (Array.isArray(value)) {
                     // Special handling for arrays - create a copy using spread
                     target[key] = [...value];
@@ -90,11 +94,11 @@ export class Theme{
         };
 
         // Map properties from each theme section
-        mapDeepProperties(this.colors, compiledTheme);
-        mapDeepProperties(this.typography, compiledTheme);
-        mapDeepProperties(this.sizes, compiledTheme);
-        mapDeepProperties(this.accessibility, compiledTheme);
-        mapDeepProperties(this.interaction, compiledTheme);
+        mapDeepProperties(this.colors, compiledTheme, 'colors');
+        mapDeepProperties(this.typography, compiledTheme, 'typography');
+        mapDeepProperties(this.sizes, compiledTheme, 'sizes');
+        mapDeepProperties(this.accessibility, compiledTheme, 'accessibility');
+        mapDeepProperties(this.interaction, compiledTheme, 'interaction');
 
         // Special handling for components since they have a special structure
         if (this.components.rules && Array.from(this.components.rules).length > 0) {
@@ -108,8 +112,14 @@ export class Theme{
         }
 
         return compiledTheme;
-    }
+    };
 
 }
 
-export type ThemeStateInternals = ColorSettings & SpacingSettings & TypographySettings & InteractionSettings & AccessibilitySettings & ComponentSettings;
+export type ThemeStateInternals =
+    ColorSettings
+    & SpacingSettings
+    & TypographySettings
+    & InteractionSettings
+    & AccessibilitySettings
+    & ComponentSettings;

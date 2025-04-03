@@ -18,11 +18,11 @@ const VirtualColorPanel: React.FC<VirtualColorPanelProps> = observer(
   ({ colorObject, newColorName, setNewColorName, isEditing, colorsInstance = ColorManager }) => {
     // Initialize with current values if editing, or defaults if creating new
     const [darkColor, setDarkColor] = useState(
-      colorObject ? colorObject.colorKeys.dark : 'blue'
+      colorObject ? colorObject.dark : 'blue'
     );
 
     const [lightColor, setLightColor] = useState(
-      colorObject ? colorObject.colorKeys.light : 'blue'
+      colorObject ? colorObject.light : 'blue'
     );
 
     useEffect(() => {

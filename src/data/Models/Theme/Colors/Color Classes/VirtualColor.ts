@@ -3,31 +3,34 @@ import {Colors} from "@/data/Models/Theme/Colors/Colors";
 import {MantineColorsTuple, virtualColor} from "@mantine/core";
 import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
 
-type ColorKeys = {
-    light: string;
-    dark: string;
-}
 export interface VirtualColorProps {
     name: string;
-    colorKeys?: ColorKeys;
+    light?: string;
+    dark?: string;
 }
 
-
-export class VirtualColor extends Color{
+export class VirtualColor extends Color {
     @observable
-    colorKeys: ColorKeys;
+    light: string;
 
-    constructor({name, colorKeys} : VirtualColorProps, colorManager: Colors) {
-        super({name, type:"custom"}, colorManager);
-        this.colorKeys = colorKeys ?? {light: name, dark: name};
+    @observable
+    dark: string;
+
+    constructor({name, light, dark}: VirtualColorProps, colorManager: Colors) {
+        super({name, type: "custom"}, colorManager);
+
+        // Default to using the name as both light and dark source if not provided
+        this.light = light ?? name;
+        this.dark = dark ?? name;
+
         makeObservable(this);
         this.render();
     }
 
     // Get a specific shade by index (0-9 for Mantine colors)
     getShade(index?: number, scheme: 'light' | 'dark' = 'light'): string {
-        // For virtual colors, we need to get the shade from the source color
-        const sourceColorName = this.colorKeys[scheme];
+        // Get the source color name based on the scheme
+        const sourceColorName = scheme === 'light' ? this.light : this.dark;
         const sourceColor = this.manager.getColorByName(sourceColorName);
 
         if (sourceColor) {
@@ -38,12 +41,12 @@ export class VirtualColor extends Color{
 
     // override parent class to do nothing
     setShade(): void {
-       //do nothing
+        //do nothing
     }
 
     // Get the entire color tuple
     getColorTuple(scheme: 'light' | 'dark' = 'light'): MantineColorsTuple | undefined {
-        const sourceColorName = this.colorKeys[scheme];
+        const sourceColorName = scheme === 'light' ? this.light : this.dark;
         const sourceColor = this.manager.getColorByName(sourceColorName);
         if (!sourceColor) {return undefined;}
         return sourceColor.getColorTuple(scheme);
@@ -59,15 +62,24 @@ export class VirtualColor extends Color{
     // Set the virtual color source for a specific color scheme
     @action
     setVirtualColorSource(scheme: 'light' | 'dark', name: string): void {
-        this.colorKeys[scheme] = name;
+        if (scheme === 'light') {
+            this.light = name;
+        } else {
+            this.dark = name;
+        }
         this.render();
     }
 
     @action
-    render():void{
-        if(this.manager.colors) {
-            this.manager.colors[this.name] = () => {return virtualColor({name: this.name, ...this.colorKeys})};
+    render(): void {
+        if (this.manager.colors) {
+            this.manager.colors[this.name] = () => {
+                return virtualColor({
+                    name: this.name,
+                    light: this.light,
+                    dark: this.dark
+                });
+            };
         }
     }
-
 }
