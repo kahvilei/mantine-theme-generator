@@ -7,6 +7,12 @@ import enCoreTranslations from './locales/en/core.json';
 import enThemeTranslations from './locales/en/theme.json';
 import frCoreTranslations from './locales/fr/core.json';
 import frThemeTranslations from './locales/fr/theme.json';
+import esCoreTranslations from './locales/es/core.json';
+import esThemeTranslations from './locales/es/theme.json';
+import zhCoreTranslations from './locales/zh/core.json';
+import zhThemeTranslations from './locales/zh/theme.json';
+import jaCoreTranslations from './locales/ja/core.json';
+import jaThemeTranslations from './locales/ja/theme.json';
 
 const resources = {
     en: {
@@ -16,6 +22,18 @@ const resources = {
     fr: {
         core: frCoreTranslations,
         theme: frThemeTranslations
+    },
+    es: {
+        core: esCoreTranslations,
+        theme: esThemeTranslations
+    },
+    zh: {
+        core: zhCoreTranslations,
+        theme: zhThemeTranslations
+    },
+    ja: {
+        core: jaCoreTranslations,
+        theme: jaThemeTranslations
     }
 };
 

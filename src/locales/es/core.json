@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Editor de Temas Mantine",
+    "version": "Funcionando en Mantine v{{version}}",
+    "links": {
+      "github": "Ver en GitHub",
+      "docs": "Ver Documentación de Mantine"
+    },
+    "language": "Cambiar Idioma",
+    "theme": "Alternar Modo Claro/Oscuro"
+  },
+  "status": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "success": "¡Éxito!"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "apply": "Aplicar",
+    "reset": "Restablecer",
+    "delete": "Eliminar",
+    "add": "Añadir",
+    "edit": "Editar",
+    "select": "Seleccionar"
+  },
+  "navigation": {
+    "dashboard": "Panel de Control",
+    "typography": "Tipografía",
+    "components": "Componentes",
+    "forms": "Formularios",
+    "overview": "Resumen"
+  },
+  "display": {
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "sideBySide": "Lado a lado"
+  }
+}

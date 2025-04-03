@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mantine 主题编辑器",
+    "version": "运行于 Mantine v{{version}}",
+    "links": {
+      "github": "在 GitHub 上查看",
+      "docs": "查看 Mantine 文档"
+    },
+    "language": "更改语言",
+    "theme": "切换明暗模式"
+  },
+  "status": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "success": "成功！"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "取消",
+    "apply": "应用",
+    "reset": "重置",
+    "delete": "删除",
+    "add": "添加",
+    "edit": "编辑",
+    "select": "选择"
+  },
+  "navigation": {
+    "dashboard": "仪表盘",
+    "typography": "排版",
+    "components": "组件",
+    "forms": "表单",
+    "overview": "概览"
+  },
+  "display": {
+    "darkMode": "暗色模式",
+    "lightMode": "亮色模式",
+    "sideBySide": "并排显示"
+  }
+}

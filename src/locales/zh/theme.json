@@ -1,0 +1,120 @@
+{
+  "panel": {
+    "title": "主题控制面板",
+    "download": "下载主题为 {{format}}",
+    "upload": "上传主题 (JSON 或 TypeScript)",
+    "uploadError": "处理主题文件失败。请确保它是有效的 JSON 或 TypeScript 主题文件：{{error}}",
+    "resetTheme": "重置主题",
+    "resetConfirmation": "您确定要重置主题吗？这将删除所有当前的更改。"
+  },
+  "tabs": {
+    "quickSetup": "快速设置",
+    "color": "颜色",
+    "typography": "排版",
+    "sizeAndLayout": "尺寸和布局",
+    "components": "组件"
+  },
+  "setup": {
+    "premadeThemes": "预制主题",
+    "primaryColor": "主要颜色",
+    "fontFamilies": "字体系列"
+  },
+  "colors": {
+    "panel": {
+      "title": "颜色控制",
+      "primaryColor": "主要颜色",
+      "primaryColorSelector": "主要颜色选择器",
+      "customColors": "自定义颜色",
+      "mantineOverrides": "Mantine 颜色覆盖",
+      "contentColors": "内容颜色",
+      "situationalColors": "情境颜色",
+      "otherOverrides": "其他 Mantine 颜色覆盖",
+      "defaultGradient": "默认渐变"
+    },
+    "editor": {
+      "addColor": "添加新颜色",
+      "addColorButton": "添加新颜色",
+      "updateColor": "更新颜色",
+      "name": "名称",
+      "color": "颜色",
+      "dark": "暗色",
+      "light": "亮色",
+      "shade": "色调 {{index}}"
+    },
+    "categories": {
+      "customColors": "自定义颜色",
+      "mantineColors": "Mantine 颜色",
+      "standard": "标准",
+      "virtual": "虚拟"
+    }
+  },
+  "typography": {
+    "settings": "排版设置",
+    "headings": "标题",
+    "size": "大小",
+    "lineHeight": "行高",
+    "weight": "粗细",
+    "preview": "{{heading}} 预览文本",
+    "fonts": {
+      "body": "正文",
+      "headings": "标题",
+      "monospace": "等宽字体",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "比例和布局控制",
+    "scale": "比例",
+    "scaleValue": "{{value}}倍",
+    "spacing": "间距",
+    "breakpoints": "断点",
+    "radius": {
+      "title": "圆角",
+      "default": "默认圆角",
+      "settings": "圆角设置"
+    }
+  },
+  "interaction": {
+    "title": "交互和无障碍",
+    "focusRing": "焦点环",
+    "options": {
+      "auto": "自动",
+      "always": "始终",
+      "never": "从不",
+      "default": "默认",
+      "pointer": "指针"
+    },
+    "accessibility": "无障碍",
+    "fontSmoothing": "字体平滑",
+    "respectReducedMotion": "尊重减弱动画",
+    "cursorType": "光标类型"
+  },
+  "components": {
+    "title": "组件控制",
+    "description": "选择下面的组件来定义默认属性和样式。这些规则将应用于主题中该组件的所有实例。",
+    "addRule": "添加组件规则",
+    "selectComponent": "选择组件",
+    "choosePlaceholder": "选择要自定义的组件",
+    "docsReference": "有关每个组件的属性和样式API的参考，请参阅",
+    "docsLink": "Mantine 文档",
+    "defaultProps": "默认属性",
+    "stylesAPI": "样式 API",
+    "property": {
+      "addProperty": "添加属性",
+      "addStyleProperty": "添加样式属性",
+      "addStyleSelector": "添加样式选择器",
+      "componentProps": "组件属性",
+      "styleProps": "样式属性"
+    },
+    "categories": {
+      "inputs": "输入",
+      "navigation": "导航",
+      "layout": "布局",
+      "typography": "排版",
+      "feedback": "反馈",
+      "data": "数据",
+      "overlays": "覆盖层",
+      "other": "其他"
+    }
+  }
+}

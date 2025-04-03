@@ -69,6 +69,15 @@ const Header: React.FC<HeaderProps> = ({
                 <Menu.Item onClick={() => changeLanguage('fr')}>
                   Français
                 </Menu.Item>
+                <Menu.Item onClick={() => changeLanguage('es')}>
+                  Español
+                </Menu.Item>
+                <Menu.Item onClick={() => changeLanguage('zh')}>
+                  中文
+                </Menu.Item>
+                <Menu.Item onClick={() => changeLanguage('ja')}>
+                  日本語
+                </Menu.Item>
               </Menu.Dropdown>
             </Menu>
             <Tooltip label={t('app.theme')}>

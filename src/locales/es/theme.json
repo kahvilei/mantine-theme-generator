@@ -1,0 +1,120 @@
+{
+  "panel": {
+    "title": "Panel de Control de Temas",
+    "download": "Descargar tema como {{format}}",
+    "upload": "Subir tema (JSON o TypeScript)",
+    "uploadError": "Error al procesar el archivo del tema. Asegúrate de que es un archivo de tema JSON o TypeScript válido: {{error}}",
+    "resetTheme": "Restablecer Tema",
+    "resetConfirmation": "¿Estás seguro de que quieres restablecer el tema? Esto eliminará todos los cambios actuales."
+  },
+  "tabs": {
+    "quickSetup": "Configuración Rápida",
+    "color": "Color",
+    "typography": "Tipografía",
+    "sizeAndLayout": "Tamaño y Diseño",
+    "components": "Componentes"
+  },
+  "setup": {
+    "premadeThemes": "Temas predefinidos",
+    "primaryColor": "Color primario",
+    "fontFamilies": "Familias de fuentes"
+  },
+  "colors": {
+    "panel": {
+      "title": "Controles de Color",
+      "primaryColor": "Color primario",
+      "primaryColorSelector": "Selector de Color Primario",
+      "customColors": "Colores personalizados",
+      "mantineOverrides": "Anulaciones de colores Mantine",
+      "contentColors": "Colores de contenido",
+      "situationalColors": "Colores situacionales",
+      "otherOverrides": "Otras anulaciones de colores Mantine",
+      "defaultGradient": "Degradado predeterminado"
+    },
+    "editor": {
+      "addColor": "Añadir nuevo color",
+      "addColorButton": "Añadir nuevo color",
+      "updateColor": "Actualizar color",
+      "name": "Nombre",
+      "color": "Color",
+      "dark": "Oscuro",
+      "light": "Claro",
+      "shade": "Tono {{index}}"
+    },
+    "categories": {
+      "customColors": "Colores Personalizados",
+      "mantineColors": "Colores Mantine",
+      "standard": "Estándar",
+      "virtual": "Virtual"
+    }
+  },
+  "typography": {
+    "settings": "Configuración de Tipografía",
+    "headings": "Encabezados",
+    "size": "Tamaño",
+    "lineHeight": "Altura de Línea",
+    "weight": "Peso",
+    "preview": "{{heading}} Texto de Vista Previa",
+    "fonts": {
+      "body": "Cuerpo",
+      "headings": "Encabezados",
+      "monospace": "Monoespaciado",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "Controles de Escala y Diseño",
+    "scale": "Escala",
+    "scaleValue": "{{value}}x",
+    "spacing": "Espaciado",
+    "breakpoints": "Puntos de Ruptura",
+    "radius": {
+      "title": "Radio",
+      "default": "Radio Predeterminado",
+      "settings": "Configuración de radio"
+    }
+  },
+  "interaction": {
+    "title": "Interacción y Accesibilidad",
+    "focusRing": "Anillo de Enfoque",
+    "options": {
+      "auto": "Auto",
+      "always": "Siempre",
+      "never": "Nunca",
+      "default": "Predeterminado",
+      "pointer": "Puntero"
+    },
+    "accessibility": "Accesibilidad",
+    "fontSmoothing": "Suavizado de Fuente",
+    "respectReducedMotion": "Respetar Movimiento Reducido",
+    "cursorType": "Tipo de Cursor"
+  },
+  "components": {
+    "title": "Controles de Componentes",
+    "description": "Selecciona un componente a continuación para definir propiedades y estilos predeterminados. Estas reglas se aplicarán a todas las instancias del componente en el tema.",
+    "addRule": "Añadir Regla de Componente",
+    "selectComponent": "Seleccionar Componente",
+    "choosePlaceholder": "Elige un componente para personalizar",
+    "docsReference": "Para referencia sobre las propiedades y API de estilos de cada componente, consulta la",
+    "docsLink": "Documentación de Mantine",
+    "defaultProps": "Propiedades Predeterminadas",
+    "stylesAPI": "API de Estilos",
+    "property": {
+      "addProperty": "Añadir propiedad",
+      "addStyleProperty": "Añadir propiedad de estilo",
+      "addStyleSelector": "Añadir selector de estilo",
+      "componentProps": "Propiedades de Componente",
+      "styleProps": "Propiedades de Estilo"
+    },
+    "categories": {
+      "inputs": "Entradas",
+      "navigation": "Navegación",
+      "layout": "Diseño",
+      "typography": "Tipografía",
+      "feedback": "Retroalimentación",
+      "data": "Datos",
+      "overlays": "Superposiciones",
+      "other": "Otro"
+    }
+  }
+}

@@ -1,16 +1,120 @@
 {
-  "appTitle": "Éditeur de thème Mantine",
-  "save": "Enregistrer",
-  "cancel": "Annuler",
-  "apply": "Appliquer",
-  "reset": "Réinitialiser",
-  "loading": "Chargement...",
-  "error": "Une erreur est survenue",
-  "success": "Succès !",
-  "overview": "Aperçu",
-  "runningOn": "Fonctionnant sur Mantine v{{version}}",
-  "viewOnGitHub": "Voir sur GitHub",
-  "viewMantineDocs": "Voir la documentation Mantine",
-  "changeLanguage": "Changer de langue",
-  "toggleTheme": "Changer le mode clair/sombre"
+  "panel": {
+    "title": "Panneau de Contrôle du Thème",
+    "download": "Télécharger le thème au format {{format}}",
+    "upload": "Téléverser un thème (JSON ou TypeScript)",
+    "uploadError": "Échec du traitement du fichier thème. Assurez-vous qu'il s'agit d'un fichier thème JSON ou TypeScript valide: {{error}}",
+    "resetTheme": "Réinitialiser le Thème",
+    "resetConfirmation": "Êtes-vous sûr de vouloir réinitialiser le thème ? Cela supprimera toutes les modifications actuelles."
+  },
+  "tabs": {
+    "quickSetup": "Configuration Rapide",
+    "color": "Couleur",
+    "typography": "Typographie",
+    "sizeAndLayout": "Taille et Mise en Page",
+    "components": "Composants"
+  },
+  "setup": {
+    "premadeThemes": "Thèmes prédéfinis",
+    "primaryColor": "Couleur primaire",
+    "fontFamilies": "Familles de polices"
+  },
+  "colors": {
+    "panel": {
+      "title": "Contrôles de Couleur",
+      "primaryColor": "Couleur primaire",
+      "primaryColorSelector": "Sélecteur de Couleur Primaire",
+      "customColors": "Couleurs personnalisées",
+      "mantineOverrides": "Remplacements de couleurs Mantine",
+      "contentColors": "Couleurs de contenu",
+      "situationalColors": "Couleurs situationnelles",
+      "otherOverrides": "Autres remplacements de couleurs Mantine",
+      "defaultGradient": "Dégradé par défaut"
+    },
+    "editor": {
+      "addColor": "Ajouter une nouvelle couleur",
+      "addColorButton": "Ajouter une nouvelle couleur",
+      "updateColor": "Mettre à jour la couleur",
+      "name": "Nom",
+      "color": "Couleur",
+      "dark": "Sombre",
+      "light": "Clair",
+      "shade": "Teinte {{index}}"
+    },
+    "categories": {
+      "customColors": "Couleurs Personnalisées",
+      "mantineColors": "Couleurs Mantine",
+      "standard": "Standard",
+      "virtual": "Virtuel"
+    }
+  },
+  "typography": {
+    "settings": "Paramètres de Typographie",
+    "headings": "Titres",
+    "size": "Taille",
+    "lineHeight": "Hauteur de Ligne",
+    "weight": "Épaisseur",
+    "preview": "{{heading}} Texte d'Aperçu",
+    "fonts": {
+      "body": "Corps",
+      "headings": "Titres",
+      "monospace": "Monospace",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "Contrôles d'Échelle et de Mise en Page",
+    "scale": "Échelle",
+    "scaleValue": "{{value}}x",
+    "spacing": "Espacement",
+    "breakpoints": "Points de Rupture",
+    "radius": {
+      "title": "Rayon",
+      "default": "Rayon Par Défaut",
+      "settings": "Paramètres de rayon"
+    }
+  },
+  "interaction": {
+    "title": "Interaction et Accessibilité",
+    "focusRing": "Anneau de Focus",
+    "options": {
+      "auto": "Auto",
+      "always": "Toujours",
+      "never": "Jamais",
+      "default": "Par Défaut",
+      "pointer": "Pointeur"
+    },
+    "accessibility": "Accessibilité",
+    "fontSmoothing": "Lissage de Police",
+    "respectReducedMotion": "Respecter la Réduction de Mouvement",
+    "cursorType": "Type de Curseur"
+  },
+  "components": {
+    "title": "Contrôles de Composants",
+    "description": "Sélectionnez un composant ci-dessous pour définir les props et styles par défaut. Ces règles seront appliquées à toutes les instances du composant dans le thème.",
+    "addRule": "Ajouter une Règle de Composant",
+    "selectComponent": "Sélectionner un Composant",
+    "choosePlaceholder": "Choisir un composant à personnaliser",
+    "docsReference": "Pour référence sur les props et l'API de styles de chaque composant, voir la",
+    "docsLink": "Documentation Mantine",
+    "defaultProps": "Props Par Défaut",
+    "stylesAPI": "API de Styles",
+    "property": {
+      "addProperty": "Ajouter une propriété",
+      "addStyleProperty": "Ajouter une propriété de style",
+      "addStyleSelector": "Ajouter un sélecteur de style",
+      "componentProps": "Props de Composant",
+      "styleProps": "Props de Style"
+    },
+    "categories": {
+      "inputs": "Entrées",
+      "navigation": "Navigation",
+      "layout": "Mise en Page",
+      "typography": "Typographie",
+      "feedback": "Retour",
+      "data": "Données",
+      "overlays": "Superpositions",
+      "other": "Autre"
+    }
+  }
 }

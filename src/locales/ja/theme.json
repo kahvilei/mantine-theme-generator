@@ -1,0 +1,120 @@
+{
+  "panel": {
+    "title": "テーマコントロールパネル",
+    "download": "テーマを{{format}}形式でダウンロード",
+    "upload": "テーマをアップロード（JSON または TypeScript）",
+    "uploadError": "テーマファイルの処理に失敗しました。有効なJSONまたはTypeScriptテーマファイルであることを確認してください：{{error}}",
+    "resetTheme": "テーマをリセット",
+    "resetConfirmation": "テーマをリセットしてもよろしいですか？現在の変更がすべて削除されます。"
+  },
+  "tabs": {
+    "quickSetup": "クイックセットアップ",
+    "color": "色",
+    "typography": "タイポグラフィ",
+    "sizeAndLayout": "サイズとレイアウト",
+    "components": "コンポーネント"
+  },
+  "setup": {
+    "premadeThemes": "事前作成テーマ",
+    "primaryColor": "メインカラー",
+    "fontFamilies": "フォントファミリー"
+  },
+  "colors": {
+    "panel": {
+      "title": "カラーコントロール",
+      "primaryColor": "メインカラー",
+      "primaryColorSelector": "メインカラーセレクタ",
+      "customColors": "カスタムカラー",
+      "mantineOverrides": "Mantineカラーオーバーライド",
+      "contentColors": "コンテンツカラー",
+      "situationalColors": "状況別カラー",
+      "otherOverrides": "その他のMantineカラーオーバーライド",
+      "defaultGradient": "デフォルトグラデーション"
+    },
+    "editor": {
+      "addColor": "新しい色を追加",
+      "addColorButton": "新しい色を追加",
+      "updateColor": "色を更新",
+      "name": "名前",
+      "color": "色",
+      "dark": "ダーク",
+      "light": "ライト",
+      "shade": "シェード {{index}}"
+    },
+    "categories": {
+      "customColors": "カスタムカラー",
+      "mantineColors": "Mantineカラー",
+      "standard": "標準",
+      "virtual": "バーチャル"
+    }
+  },
+  "typography": {
+    "settings": "タイポグラフィ設定",
+    "headings": "見出し",
+    "size": "サイズ",
+    "lineHeight": "行の高さ",
+    "weight": "太さ",
+    "preview": "{{heading}} プレビューテキスト",
+    "fonts": {
+      "body": "本文",
+      "headings": "見出し",
+      "monospace": "等幅",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "スケールとレイアウトコントロール",
+    "scale": "スケール",
+    "scaleValue": "{{value}}倍",
+    "spacing": "間隔",
+    "breakpoints": "ブレークポイント",
+    "radius": {
+      "title": "角丸",
+      "default": "デフォルトの角丸",
+      "settings": "角丸設定"
+    }
+  },
+  "interaction": {
+    "title": "インタラクションとアクセシビリティ",
+    "focusRing": "フォーカスリング",
+    "options": {
+      "auto": "自動",
+      "always": "常に表示",
+      "never": "表示しない",
+      "default": "デフォルト",
+      "pointer": "ポインター"
+    },
+    "accessibility": "アクセシビリティ",
+    "fontSmoothing": "フォントスムージング",
+    "respectReducedMotion": "モーション軽減を尊重",
+    "cursorType": "カーソルタイプ"
+  },
+  "components": {
+    "title": "コンポーネントコントロール",
+    "description": "以下のコンポーネントを選択して、デフォルトのプロパティとスタイルを定義します。これらのルールはテーマ内のそのコンポーネントのすべてのインスタンスに適用されます。",
+    "addRule": "コンポーネントルールを追加",
+    "selectComponent": "コンポーネントを選択",
+    "choosePlaceholder": "カスタマイズするコンポーネントを選択",
+    "docsReference": "各コンポーネントのプロパティとスタイルAPIについては、",
+    "docsLink": "Mantine ドキュメント",
+    "defaultProps": "デフォルトプロパティ",
+    "stylesAPI": "スタイルAPI",
+    "property": {
+      "addProperty": "プロパティを追加",
+      "addStyleProperty": "スタイルプロパティを追加",
+      "addStyleSelector": "スタイルセレクターを追加",
+      "componentProps": "コンポーネントプロパティ",
+      "styleProps": "スタイルプロパティ"
+    },
+    "categories": {
+      "inputs": "入力",
+      "navigation": "ナビゲーション",
+      "layout": "レイアウト",
+      "typography": "タイポグラフィ",
+      "feedback": "フィードバック",
+      "data": "データ",
+      "overlays": "オーバーレイ",
+      "other": "その他"
+    }
+  }
+}

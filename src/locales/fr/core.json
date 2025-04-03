@@ -1,52 +1,39 @@
 {
-  "dashboard": "Tableau de bord",
-  "typography": "Typographie",
-  "components": "Composants",
-  "forms": "Formulaires",
-  "darkMode": "Mode sombre",
-  "lightMode": "Mode clair",
-  "sideBySide": "Côte à côte",
-  "theme": {
-    "controlPanel": "Panneau de contrôle du thème",
-    "download": {
-      "tooltip": "Télécharger le thème en {{format}}"
+  "app": {
+    "title": "Éditeur de Thème Mantine",
+    "version": "Fonctionne sur Mantine v{{version}}",
+    "links": {
+      "github": "Voir sur GitHub",
+      "docs": "Voir la Documentation Mantine"
     },
-    "upload": {
-      "tooltip": "Importer un thème (JSON ou TypeScript)",
-      "error": "Échec du traitement du fichier de thème. Assurez-vous qu'il s'agit d'un fichier de thème JSON ou TypeScript valide : {{error}}"
-    }
+    "language": "Changer de Langue",
+    "theme": "Basculer Mode Clair/Sombre"
   },
-  "controls": {
-    "quickSetup": "Configuration rapide",
-    "color": "Couleur",
+  "status": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !"
+  },
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "apply": "Appliquer",
+    "reset": "Réinitialiser",
+    "delete": "Supprimer",
+    "add": "Ajouter",
+    "edit": "Modifier",
+    "select": "Sélectionner"
+  },
+  "navigation": {
+    "dashboard": "Tableau de Bord",
     "typography": "Typographie",
-    "sizeAndLayout": "Taille et mise en page",
     "components": "Composants",
-    "resetTheme": "Réinitialiser le thème",
-    "resetConfirmation": "Êtes-vous sûr de vouloir réinitialiser le thème ? Cela supprimera toutes les modifications actuelles."
+    "forms": "Formulaires",
+    "overview": "Aperçu"
   },
-  "quickSetup": {
-    "title": "Configuration rapide",
-    "premadeThemes": "Thèmes prédéfinis",
-    "primaryColor": "Couleur primaire",
-    "primaryColorSelector": "Couleur Primaire",
-    "fontFamilies": "Familles de polices"
-  },
-  "fonts": {
-    "headingsFont": "Police des titres",
-    "bodyFont": "Police du texte",
-    "monoFont": "Police monospace",
-    "selectFont": "Sélectionner une police"
-  },
-  "colorPanel": {
-    "title": "Contrôles de couleur",
-    "primaryColor": "Couleur primaire",
-    "primaryColorSelector": "Couleur Primaire",
-    "customColors": "Couleurs personnalisées",
-    "mantineOverrides": "Remplacements des couleurs Mantine",
-    "contentColors": "Couleurs de contenu",
-    "situationalColors": "Couleurs situationnelles",
-    "otherOverrides": "Autres remplacements de couleurs Mantine",
-    "defaultGradient": "Dégradé par défaut"
+  "display": {
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "sideBySide": "Côte à côte"
   }
 }
