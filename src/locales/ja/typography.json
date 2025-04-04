@@ -1,0 +1,37 @@
+{
+    "headings": {
+        "title": "見出し",
+        "h1": "見出し 1",
+        "h2": "見出し 2",
+        "h3": "見出し 3",
+        "h4": "見出し 4",
+        "h5": "見出し 5",
+        "h6": "見出し 6"
+    },
+    "textSizes": {
+        "title": "テキストサイズ",
+        "xl": "特大テキスト",
+        "lg": "大テキスト",
+        "md": "中テキスト",
+        "default": "（デフォルト）",
+        "sm": "小テキスト",
+        "xs": "特小テキスト"
+    },
+    "specialStyles": {
+        "title": "特殊テキストスタイル",
+        "blockquoteText": "デザインは見た目や感触だけではありません。デザインは機能するかどうかです。",
+        "blockquoteCite": "— 有名なデザイナー",
+        "codeText": "const theme = useMantineTheme();",
+        "kbdText": "Ctrl + K",
+        "markText": "",
+        "markHighlight": "ハイライト",
+        "markEnd": "されたコンテンツを含むテキスト",
+        "anchorText": "クリック可能なリンク"
+    },
+    "fontFamily": {
+        "title": "フォントファミリー",
+        "default": "デフォルト：",
+        "headings": "見出し：",
+        "monospace": "等幅："
+    }
+}

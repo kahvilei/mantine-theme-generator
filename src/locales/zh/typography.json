@@ -1,0 +1,37 @@
+{
+    "headings": {
+        "title": "标题",
+        "h1": "标题 1",
+        "h2": "标题 2",
+        "h3": "标题 3",
+        "h4": "标题 4",
+        "h5": "标题 5",
+        "h6": "标题 6"
+    },
+    "textSizes": {
+        "title": "文本大小",
+        "xl": "特大文本",
+        "lg": "大文本",
+        "md": "中文本",
+        "default": "（默认）",
+        "sm": "小文本",
+        "xs": "特小文本"
+    },
+    "specialStyles": {
+        "title": "特殊文本样式",
+        "blockquoteText": "设计不仅仅是外观和感觉。设计是它如何工作。",
+        "blockquoteCite": "— 著名设计师",
+        "codeText": "const theme = useMantineTheme();",
+        "kbdText": "Ctrl + K",
+        "markText": "带有",
+        "markHighlight": "高亮",
+        "markEnd": "内容的文本",
+        "anchorText": "可点击链接"
+    },
+    "fontFamily": {
+        "title": "字体系列",
+        "default": "默认：",
+        "headings": "标题：",
+        "monospace": "等宽："
+    }
+}

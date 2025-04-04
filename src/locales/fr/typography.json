@@ -1,0 +1,37 @@
+{
+    "headings": {
+        "title": "Titres",
+        "h1": "Titre 1",
+        "h2": "Titre 2",
+        "h3": "Titre 3",
+        "h4": "Titre 4",
+        "h5": "Titre 5",
+        "h6": "Titre 6"
+    },
+    "textSizes": {
+        "title": "Tailles de Texte",
+        "xl": "Texte Très Grand",
+        "lg": "Texte Grand",
+        "md": "Texte Moyen",
+        "default": "(Par défaut)",
+        "sm": "Texte Petit",
+        "xs": "Texte Très Petit"
+    },
+    "specialStyles": {
+        "title": "Styles de Texte Spéciaux",
+        "blockquoteText": "Le design n'est pas seulement l'apparence et la sensation. Le design est la façon dont ça fonctionne.",
+        "blockquoteCite": "— Designer Célèbre",
+        "codeText": "const theme = useMantineTheme();",
+        "kbdText": "Ctrl + K",
+        "markText": "Texte avec contenu ",
+        "markHighlight": "surligné",
+        "markEnd": "",
+        "anchorText": "Lien cliquable"
+    },
+    "fontFamily": {
+        "title": "Famille de Police",
+        "default": "Par défaut:",
+        "headings": "Titres:",
+        "monospace": "Monospace:"
+    }
+}
