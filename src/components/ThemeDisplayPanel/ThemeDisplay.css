@@ -27,7 +27,7 @@
 }
 
 :where([data-mantine-color-scheme='light']).scheme-override-light .m_1b7284a3:where([data-with-border]) {
-    border: calc(0.0625rem* var(--mantine-scale)) solid var(--mantine-color-gray-3);
+    border: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-gray-3);
 }
 
 :where([data-mantine-color-scheme='light']).scheme-override-light .m_b23fa0ef {
@@ -86,10 +86,10 @@
   }
 
   .scheme-override-light {
-    font-family: var(--mantine-font-family) Arial, Helvetica, sans-serif;
+    font-family: var(--mantine-font-family), Arial, Helvetica, sans-serif;
   }
 
   .scheme-override-dark {
-    font-family: var(--mantine-font-family) Arial, Helvetica, sans-serif;
+    font-family: var(--mantine-font-family), Arial, Helvetica, sans-serif;
   }
 

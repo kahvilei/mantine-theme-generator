@@ -1,0 +1,70 @@
+{
+  "analytics": {
+    "title": "分析概览",
+    "subtitle": "月度性能指标",
+    "timeframes": {
+      "day": "日",
+      "week": "周",
+      "month": "月"
+    },
+    "charts": {
+      "visitors": "访问者",
+      "conversions": "转化",
+      "revenue": "收入"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "总用户数",
+      "increase": "+12.3%"
+    },
+    "revenue": {
+      "title": "收入",
+      "increase": "+8.7%"
+    },
+    "sessions": {
+      "title": "会话数",
+      "increase": "+25.8%"
+    },
+    "engagement": {
+      "title": "参与度",
+      "decrease": "-3.2%"
+    }
+  },
+  "activities": {
+    "title": "最近活动",
+    "addNew": "添加新活动",
+    "items": {
+      "statusUpdate": "John 将项目状态更新为 \"已完成\"",
+      "fileUpload": "Sara 上传了新文件 \"design-mockup.fig\"",
+      "meeting": "团队会议安排在明天上午 10:00",
+      "comment": "任务 \"创建用户流程图\" 有新评论",
+      "taskComplete": "David 完成了任务 \"编写 API 文档\"",
+      "maintenance": "系统维护计划在周日进行",
+      "feature": "Emily 提交了新功能请求"
+    },
+    "timeAgo": {
+      "minutes": "{{count}} 分钟前",
+      "hours": "{{count}} 小时前",
+      "days": "{{count}} 天前"
+    }
+  },
+  "deviceUsage": {
+    "title": "设备使用情况",
+    "devices": {
+      "desktop": "桌面设备",
+      "mobile": "移动设备",
+      "tablet": "平板设备"
+    }
+  },
+  "teamPerformance": {
+    "title": "团队表现",
+    "teams": {
+      "design": "设计",
+      "frontend": "前端",
+      "backend": "后端",
+      "qa": "质量保证"
+    },
+    "tasks": "任务"
+  }
+}

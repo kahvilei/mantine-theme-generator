@@ -29,3 +29,76 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap';
+
+/* =========================================
+   Chinese Font Imports
+   ========================================= */
+
+/* Serif Fonts (Chinese) */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap';
+
+/* Sans-Serif Fonts (Chinese) */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap';
+
+/* Monospace Fonts (Chinese) */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+Mono+SC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+Mono+TC:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Source+Han+Code+JP:wght@400;500;700&display=swap';
+
+/* Display Fonts (Chinese) */
+@import 'https://fonts.googleapis.com/css2?family=Long+Cang&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap';
+
+/* =========================================
+   Japanese Font Imports
+   ========================================= */
+
+/* Serif Fonts (Japanese) */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap';
+
+/* Sans-Serif Fonts (Japanese) */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kosugi&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Stick&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Potta+One&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Train+One&display=swap';
+
+/* Monospace & Display Fonts (Japanese) */
+@import 'https://fonts.googleapis.com/css2?family=BIZ+UDMincho&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Reggae+One&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Yomogi&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=DotGothic16&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap';

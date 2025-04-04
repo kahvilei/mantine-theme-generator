@@ -1,0 +1,71 @@
+{
+  "analytics": {
+    "title": "Analytics Overview",
+    "subtitle": "Monthly performance metrics",
+    "timeframes": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month"
+    },
+    "charts": {
+      "visitors": "Visitors",
+      "conversions": "Conversions",
+      "revenue": "Revenue"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "Total Users",
+      "increase": "+12.3%"
+    },
+    "revenue": {
+      "title": "Revenue",
+      "increase": "+8.7%"
+    },
+    "sessions": {
+      "title": "Sessions",
+      "increase": "+25.8%"
+    },
+    "engagement": {
+      "title": "Engagement",
+      "decrease": "-3.2%"
+    }
+  },
+  "activities": {
+    "title": "Recent Activities",
+    "addNew": "Add New",
+    "items": {
+      "statusUpdate": "John updated the project status to \"Completed\"",
+      "fileUpload": "Sara uploaded a new file \"design-mockup.fig\"",
+      "meeting": "Team meeting scheduled for tomorrow at 10:00 AM",
+      "comment": "New comment on task \"Create user flow diagram\"",
+      "taskComplete": "David completed the task \"Write API documentation\"",
+      "maintenance": "System maintenance scheduled for Sunday",
+      "feature": "Emily submitted a new feature request"
+    },
+    "timeAgo": {
+      "minutes": "{{count}} minutes ago",
+      "hours": "{{count}} hours ago",
+      "days": "{{count}} day ago",
+      "daysPlural": "{{count}} days ago"
+    }
+  },
+  "deviceUsage": {
+    "title": "Device Usage",
+    "devices": {
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "tablet": "Tablet"
+    }
+  },
+  "teamPerformance": {
+    "title": "Team Performance",
+    "teams": {
+      "design": "Design",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    },
+    "tasks": "tasks"
+  }
+}

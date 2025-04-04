@@ -1,0 +1,73 @@
+{
+  "analytics": {
+    "title": "Aperçu des Analyses",
+    "subtitle": "Métriques de performance mensuelles",
+    "timeframes": {
+      "day": "Jour",
+      "week": "Semaine",
+      "month": "Mois"
+    },
+    "charts": {
+      "visitors": "Visiteurs",
+      "conversions": "Conversions",
+      "revenue": "Revenu"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "Utilisateurs Totaux",
+      "increase": "+12.3%"
+    },
+    "revenue": {
+      "title": "Revenu",
+      "increase": "+8.7%"
+    },
+    "sessions": {
+      "title": "Sessions",
+      "increase": "+25.8%"
+    },
+    "engagement": {
+      "title": "Engagement",
+      "decrease": "-3.2%"
+    }
+  },
+  "activities": {
+    "title": "Activités Récentes",
+    "addNew": "Ajouter Nouveau",
+    "items": {
+      "statusUpdate": "John a mis à jour le statut du projet à \"Terminé\"",
+      "fileUpload": "Sara a téléchargé un nouveau fichier \"design-mockup.fig\"",
+      "meeting": "Réunion d'équipe prévue pour demain à 10h00",
+      "comment": "Nouveau commentaire sur la tâche \"Créer un diagramme de flux utilisateur\"",
+      "taskComplete": "David a terminé la tâche \"Rédiger la documentation API\"",
+      "maintenance": "Maintenance système prévue pour dimanche",
+      "feature": "Emily a soumis une nouvelle demande de fonctionnalité"
+    },
+    "timeAgo": {
+      "minutes": "il y a {{count}} minute",
+      "minutesPlural": "il y a {{count}} minutes",
+      "hours": "il y a {{count}} heure",
+      "hoursPlural": "il y a {{count}} heures",
+      "days": "il y a {{count}} jour",
+      "daysPlural": "il y a {{count}} jours"
+    }
+  },
+  "deviceUsage": {
+    "title": "Utilisation par Appareil",
+    "devices": {
+      "desktop": "Ordinateur",
+      "mobile": "Mobile",
+      "tablet": "Tablette"
+    }
+  },
+  "teamPerformance": {
+    "title": "Performance de l'Équipe",
+    "teams": {
+      "design": "Design",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    },
+    "tasks": "tâches"
+  }
+}

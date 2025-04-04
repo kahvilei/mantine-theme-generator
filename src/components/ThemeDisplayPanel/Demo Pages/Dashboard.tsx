@@ -21,9 +21,22 @@ import {
 } from "@tabler/icons-react";
 import React from "react";
 import {AreaChart, BarChart, DonutChart} from "@mantine/charts";
-
+import { useTranslation } from 'react-i18next';
 
 export const Dashboard: React.FC = () => {
+    // Use the dashboard namespace
+    const { t } = useTranslation('dashboard');
+
+    const activities = [
+        { text: t('activities.items.statusUpdate'), time: t('activities.timeAgo.minutes', { count: 2 }), icon: IconCheck, color: 'green' },
+        { text: t('activities.items.fileUpload'), time: t('activities.timeAgo.minutes', { count: 10 }), icon: IconUpload, color: 'var(--mantine-primary-color-filled)' },
+        { text: t('activities.items.meeting'), time: t('activities.timeAgo.hours', { count: 1 }), icon: IconUsersGroup, color: 'violet' },
+        { text: t('activities.items.comment'), time: t('activities.timeAgo.hours', { count: 2 }), icon: IconMessage, color: 'orange' },
+        { text: t('activities.items.taskComplete'), time: t('activities.timeAgo.hours', { count: 3 }), icon: IconCircleCheck, color: 'green' },
+        { text: t('activities.items.maintenance'), time: t('activities.timeAgo.hours', { count: 5 }), icon: IconSettings, color: 'gray' },
+        { text: t('activities.items.feature'), time: t('activities.timeAgo.days', { count: 1 }), icon: IconPlus, color: 'var(--mantine-primary-color-filled)' }
+    ];
+
     return (
         <Stack gap="xl" flex={1}>
             <Grid>
@@ -31,14 +44,14 @@ export const Dashboard: React.FC = () => {
                     <Card p="lg">
                         <Group justify="space-between" mb="md">
                             <Stack gap={0}>
-                                <Title order={3}>Analytics Overview</Title>
-                                <Text c="dimmed">Monthly performance metrics</Text>
+                                <Title order={3}>{t('analytics.title')}</Title>
+                                <Text c="dimmed">{t('analytics.subtitle')}</Text>
                             </Stack>
                             <SegmentedControl
                                 data={[
-                                    { label: 'Day', value: 'day' },
-                                    { label: 'Week', value: 'week' },
-                                    { label: 'Month', value: 'month' }
+                                    { label: t('analytics.timeframes.day'), value: 'day' },
+                                    { label: t('analytics.timeframes.week'), value: 'week' },
+                                    { label: t('analytics.timeframes.month'), value: 'month' }
                                 ]}
                                 defaultValue="month"
                             />
@@ -55,9 +68,9 @@ export const Dashboard: React.FC = () => {
                             ]}
                             dataKey="date"
                             series={[
-                                { name: 'Visitors', color: 'var(--mantine-primary-color-filled)' },
-                                { name: 'Conversions', color: 'teal.6' },
-                                { name: 'Revenue', color: 'violet.6' }
+                                { name: t('analytics.charts.visitors'), color: 'var(--mantine-primary-color-filled)' },
+                                { name: t('analytics.charts.conversions'), color: 'teal.6' },
+                                { name: t('analytics.charts.revenue'), color: 'violet.6' }
                             ]}
                             curveType="monotone"
                         />
@@ -73,9 +86,9 @@ export const Dashboard: React.FC = () => {
                                 <IconUser size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
-                                <Text size="xs" c="dimmed">Total Users</Text>
+                                <Text size="xs" c="dimmed">{t('metrics.users.title')}</Text>
                                 <Text size="xl">24,532</Text>
-                                <Text size="xs">+12.3% <IconArrowRight size={12} /></Text>
+                                <Text size="xs">{t('metrics.users.increase')} <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
                     </Card>
@@ -87,9 +100,9 @@ export const Dashboard: React.FC = () => {
                                 <IconChartBar size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
-                                <Text size="xs" c="dimmed">Revenue</Text>
+                                <Text size="xs" c="dimmed">{t('metrics.revenue.title')}</Text>
                                 <Text size="xl" >$48,271</Text>
-                                <Text size="xs" c="green">+8.7% <IconArrowRight size={12} /></Text>
+                                <Text size="xs" c="green">{t('metrics.revenue.increase')} <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
                     </Card>
@@ -101,9 +114,9 @@ export const Dashboard: React.FC = () => {
                                 <IconDeviceDesktop size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
-                                <Text size="xs" c="dimmed">Sessions</Text>
+                                <Text size="xs" c="dimmed">{t('metrics.sessions.title')}</Text>
                                 <Text size="xl" >98,347</Text>
-                                <Text size="xs" c="green">+25.8% <IconArrowRight size={12} /></Text>
+                                <Text size="xs" c="green">{t('metrics.sessions.increase')} <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
                     </Card>
@@ -115,9 +128,9 @@ export const Dashboard: React.FC = () => {
                                 <IconBrandSlack size={24} />
                             </ThemeIcon>
                             <Stack gap={0}>
-                                <Text size="xs" c="dimmed">Engagement</Text>
+                                <Text size="xs" c="dimmed">{t('metrics.engagement.title')}</Text>
                                 <Text size="xl">64.8%</Text>
-                                <Text size="xs" c="red">-3.2% <IconArrowRight size={12} /></Text>
+                                <Text size="xs" c="red">{t('metrics.engagement.decrease')} <IconArrowRight size={12} /></Text>
                             </Stack>
                         </Group>
                     </Card>
@@ -129,20 +142,12 @@ export const Dashboard: React.FC = () => {
                     <Card p="lg">
                         <Stack>
                             <Group justify="space-between">
-                                <Title order={3}>Recent Activities</Title>
-                                <Button leftSection={<IconPlus size={14} />}>Add New</Button>
+                                <Title order={3}>{t('activities.title')}</Title>
+                                <Button leftSection={<IconPlus size={14} />}>{t('activities.addNew')}</Button>
                             </Group>
                             <ScrollArea h={650}>
                                 <Stack>
-                                    {[
-                                        { text: 'John updated the project status to "Completed"', time: '2 minutes ago', icon: IconCheck, color: 'green' },
-                                        { text: 'Sara uploaded a new file "design-mockup.fig"', time: '10 minutes ago', icon: IconUpload, color: 'var(--mantine-primary-color-filled)' },
-                                        { text: 'Team meeting scheduled for tomorrow at 10:00 AM', time: '1 hour ago', icon: IconUsersGroup, color: 'violet' },
-                                        { text: 'New comment on task "Create user flow diagram"', time: '2 hours ago', icon: IconMessage, color: 'orange' },
-                                        { text: 'David completed the task "Write API documentation"', time: '3 hours ago', icon: IconCircleCheck, color: 'green' },
-                                        { text: 'System maintenance scheduled for Sunday', time: '5 hours ago', icon: IconSettings, color: 'gray' },
-                                        { text: 'Emily submitted a new feature request', time: '1 day ago', icon: IconPlus, color: 'var(--mantine-primary-color-filled)' }
-                                    ].map((activity, index) => (
+                                    {activities.map((activity, index) => (
                                         <Paper key={index} p="md">
                                             <Group wrap='nowrap'>
                                                 <ThemeIcon color={activity.color} size="lg" radius="xl">
@@ -165,40 +170,40 @@ export const Dashboard: React.FC = () => {
                     <Stack>
                         <Card p="lg">
                             <Stack gap="md">
-                                <Title order={3}>Device Usage</Title>
+                                <Title order={3}>{t('deviceUsage.title')}</Title>
                                 <Center>
-                                <DonutChart
-                                    data={[
-                                        { name: 'Desktop', value: 45, color: 'var(--mantine-primary-color-filled)' },
-                                        { name: 'Mobile', value: 38, color: 'orange' },
-                                        { name: 'Tablet', value: 17, color: 'violet' }
-                                    ]}
-                                    size={180}
-                                    thickness={20}
-                                    withLabels
-                                    withTooltip
-                                /></Center>
+                                    <DonutChart
+                                        data={[
+                                            { name: t('deviceUsage.devices.desktop'), value: 45, color: 'var(--mantine-primary-color-filled)' },
+                                            { name: t('deviceUsage.devices.mobile'), value: 38, color: 'orange' },
+                                            { name: t('deviceUsage.devices.tablet'), value: 17, color: 'violet' }
+                                        ]}
+                                        size={180}
+                                        thickness={20}
+                                        withLabels
+                                        withTooltip
+                                    /></Center>
                                 <List spacing="xs" size="sm" center>
                                     <List.Item icon={
                                         <ThemeIcon size={20} radius="xl">
                                             <IconDeviceDesktop size={12} />
                                         </ThemeIcon>
                                     }>
-                                        Desktop: 45%
+                                        {t('deviceUsage.devices.desktop')}: 45%
                                     </List.Item>
                                     <List.Item icon={
                                         <ThemeIcon color="orange" size={20} radius="xl">
                                             <IconDeviceMobile size={12} />
                                         </ThemeIcon>
                                     }>
-                                        Mobile: 38%
+                                        {t('deviceUsage.devices.mobile')}: 38%
                                     </List.Item>
                                     <List.Item icon={
                                         <ThemeIcon color="violet" size={20} radius="xl">
                                             <IconDeviceTablet size={12} />
                                         </ThemeIcon>
                                     }>
-                                        Tablet: 17%
+                                        {t('deviceUsage.devices.tablet')}: 17%
                                     </List.Item>
                                 </List>
                             </Stack>
@@ -206,18 +211,18 @@ export const Dashboard: React.FC = () => {
 
                         <Card p="lg">
                             <Stack>
-                                <Title order={3}>Team Performance</Title>
+                                <Title order={3}>{t('teamPerformance.title')}</Title>
                                 <BarChart
                                     h={180}
                                     data={[
-                                        { name: 'Design', tasks: 42 },
-                                        { name: 'Frontend', tasks: 58 },
-                                        { name: 'Backend', tasks: 45 },
-                                        { name: 'QA', tasks: 37 }
+                                        { name: t('teamPerformance.teams.design'), tasks: 42 },
+                                        { name: t('teamPerformance.teams.frontend'), tasks: 58 },
+                                        { name: t('teamPerformance.teams.backend'), tasks: 45 },
+                                        { name: t('teamPerformance.teams.qa'), tasks: 37 }
                                     ]}
                                     dataKey="name"
                                     series={[
-                                        { name: 'tasks', color: 'var(--mantine-primary-color-filled)' }
+                                        { name: t('teamPerformance.tasks'), color: 'var(--mantine-primary-color-filled)' }
                                     ]}
                                     barProps={{ radius: 4 }}
                                 />

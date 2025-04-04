@@ -1,0 +1,70 @@
+{
+  "analytics": {
+    "title": "分析概要",
+    "subtitle": "月間パフォーマンス指標",
+    "timeframes": {
+      "day": "日",
+      "week": "週",
+      "month": "月"
+    },
+    "charts": {
+      "visitors": "訪問者数",
+      "conversions": "コンバージョン",
+      "revenue": "収益"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "総ユーザー数",
+      "increase": "+12.3%"
+    },
+    "revenue": {
+      "title": "収益",
+      "increase": "+8.7%"
+    },
+    "sessions": {
+      "title": "セッション数",
+      "increase": "+25.8%"
+    },
+    "engagement": {
+      "title": "エンゲージメント",
+      "decrease": "-3.2%"
+    }
+  },
+  "activities": {
+    "title": "最近のアクティビティ",
+    "addNew": "新規追加",
+    "items": {
+      "statusUpdate": "Johnがプロジェクトのステータスを「完了」に更新しました",
+      "fileUpload": "Saraが新しいファイル「design-mockup.fig」をアップロードしました",
+      "meeting": "明日午前10時にチーム会議が予定されています",
+      "comment": "タスク「ユーザーフロー図作成」に新しいコメントがあります",
+      "taskComplete": "DavidがタスクのAPIドキュメントを完了しました",
+      "maintenance": "システムメンテナンスが日曜日に予定されています",
+      "feature": "Emilyが新機能リクエストを提出しました"
+    },
+    "timeAgo": {
+      "minutes": "{{count}}分前",
+      "hours": "{{count}}時間前",
+      "days": "{{count}}日前"
+    }
+  },
+  "deviceUsage": {
+    "title": "デバイス利用状況",
+    "devices": {
+      "desktop": "デスクトップ",
+      "mobile": "モバイル",
+      "tablet": "タブレット"
+    }
+  },
+  "teamPerformance": {
+    "title": "チームパフォーマンス",
+    "teams": {
+      "design": "デザイン",
+      "frontend": "フロントエンド",
+      "backend": "バックエンド",
+      "qa": "品質保証"
+    },
+    "tasks": "タスク"
+  }
+}

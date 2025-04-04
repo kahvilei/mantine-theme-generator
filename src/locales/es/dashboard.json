@@ -1,0 +1,73 @@
+{
+  "analytics": {
+    "title": "Resumen Analítico",
+    "subtitle": "Métricas de rendimiento mensual",
+    "timeframes": {
+      "day": "Día",
+      "week": "Semana",
+      "month": "Mes"
+    },
+    "charts": {
+      "visitors": "Visitantes",
+      "conversions": "Conversiones",
+      "revenue": "Ingresos"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "Usuarios Totales",
+      "increase": "+12.3%"
+    },
+    "revenue": {
+      "title": "Ingresos",
+      "increase": "+8.7%"
+    },
+    "sessions": {
+      "title": "Sesiones",
+      "increase": "+25.8%"
+    },
+    "engagement": {
+      "title": "Participación",
+      "decrease": "-3.2%"
+    }
+  },
+  "activities": {
+    "title": "Actividades Recientes",
+    "addNew": "Añadir Nuevo",
+    "items": {
+      "statusUpdate": "John actualizó el estado del proyecto a \"Completado\"",
+      "fileUpload": "Sara subió un nuevo archivo \"design-mockup.fig\"",
+      "meeting": "Reunión de equipo programada para mañana a las 10:00 AM",
+      "comment": "Nuevo comentario en la tarea \"Crear diagrama de flujo de usuario\"",
+      "taskComplete": "David completó la tarea \"Escribir documentación API\"",
+      "maintenance": "Mantenimiento del sistema programado para el domingo",
+      "feature": "Emily envió una nueva solicitud de función"
+    },
+    "timeAgo": {
+      "minutes": "hace {{count}} minuto",
+      "minutesPlural": "hace {{count}} minutos",
+      "hours": "hace {{count}} hora",
+      "hoursPlural": "hace {{count}} horas",
+      "days": "hace {{count}} día",
+      "daysPlural": "hace {{count}} días"
+    }
+  },
+  "deviceUsage": {
+    "title": "Uso por Dispositivo",
+    "devices": {
+      "desktop": "Escritorio",
+      "mobile": "Móvil",
+      "tablet": "Tableta"
+    }
+  },
+  "teamPerformance": {
+    "title": "Rendimiento del Equipo",
+    "teams": {
+      "design": "Diseño",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "Control de Calidad"
+    },
+    "tasks": "tareas"
+  }
+}

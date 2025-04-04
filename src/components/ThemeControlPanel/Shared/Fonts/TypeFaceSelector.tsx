@@ -6,7 +6,7 @@ import {
     ScrollArea,
     Group
 } from '@mantine/core';
-import { fontData } from "@/components/ThemeControlPanel/Shared/Fonts/fontData";
+import { getFontData } from "@/components/ThemeControlPanel/Shared/Fonts/fontData";
 import classes from './TypeFaceSelector.module.css';
 import { IconSelector } from "@tabler/icons-react";
 import { useTranslation } from 'react-i18next';
@@ -24,6 +24,8 @@ export const TypeFaceSelector = ({value, onSelect, label, w, h}: TypeFaceSelecto
     const combobox = useCombobox({
         onDropdownClose: () => combobox.resetSelectedOption(),
     });
+
+    const fontData = getFontData();
 
     const size = w ?? '7rem';
 
