@@ -1,0 +1,71 @@
+{
+  "analytics": {
+    "title": "Analytik-Übersicht",
+    "subtitle": "Monatliche Leistungskennzahlen",
+    "timeframes": {
+      "day": "Tag",
+      "week": "Woche",
+      "month": "Monat"
+    },
+    "charts": {
+      "visitors": "Besucher",
+      "conversions": "Konversionen",
+      "revenue": "Umsatz"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "Gesamtnutzer",
+      "increase": "+12,3%"
+    },
+    "revenue": {
+      "title": "Umsatz",
+      "increase": "+8,7%"
+    },
+    "sessions": {
+      "title": "Sitzungen",
+      "increase": "+25,8%"
+    },
+    "engagement": {
+      "title": "Engagement",
+      "decrease": "-3,2%"
+    }
+  },
+  "activities": {
+    "title": "Neueste Aktivitäten",
+    "addNew": "Neu hinzufügen",
+    "items": {
+      "statusUpdate": "John hat den Projektstatus auf \"Abgeschlossen\" aktualisiert",
+      "fileUpload": "Sara hat eine neue Datei \"design-mockup.fig\" hochgeladen",
+      "meeting": "Team-Meeting für morgen um 10:00 Uhr geplant",
+      "comment": "Neuer Kommentar zur Aufgabe \"Benutzerflussdiagramm erstellen\"",
+      "taskComplete": "David hat die Aufgabe \"API-Dokumentation schreiben\" abgeschlossen",
+      "maintenance": "Systemwartung für Sonntag geplant",
+      "feature": "Emily hat eine neue Funktionsanfrage eingereicht"
+    },
+    "timeAgo": {
+      "minutes": "vor {{count}} Minuten",
+      "hours": "vor {{count}} Stunden",
+      "days": "vor {{count}} Tag",
+      "daysPlural": "vor {{count}} Tagen"
+    }
+  },
+  "deviceUsage": {
+    "title": "Gerätenutzung",
+    "devices": {
+      "desktop": "Desktop",
+      "mobile": "Mobil",
+      "tablet": "Tablet"
+    }
+  },
+  "teamPerformance": {
+    "title": "Team-Leistung",
+    "teams": {
+      "design": "Design",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    },
+    "tasks": "Aufgaben"
+  }
+}

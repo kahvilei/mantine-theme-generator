@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "动作组件",
+    "dataDisplay": "数据显示",
+    "navigationIndicators": "导航与指示器",
+    "containersLayout": "容器与布局"
+  },
+  "labels": {
+    "buttonSizes": "按钮尺寸",
+    "actionIconVariants": "动作图标变体",
+    "menuComponent": "菜单组件",
+    "avatarIndicator": "头像与指示器",
+    "progressRingProgress": "进度条与环形进度",
+    "table": "表格",
+    "tabsVariants": "选项卡变体",
+    "navLink": "导航链接",
+    "stepper": "步骤器",
+    "accordion": "手风琴",
+    "alertVariants": "警告变体",
+    "hoverCard": "悬停卡片"
+  },
+  "buttons": {
+    "xs": "超小",
+    "sm": "小",
+    "md": "中",
+    "lg": "大",
+    "xl": "超大",
+    "openMenu": "打开菜单",
+    "hoverMe": "悬停在我上面"
+  },
+  "menu": {
+    "application": "应用程序",
+    "settings": "设置",
+    "messages": "消息",
+    "gallery": "图库",
+    "search": "搜索"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "项目",
+      "price": "价格",
+      "status": "状态"
+    },
+    "items": {
+      "laptop": "笔记本电脑",
+      "phone": "手机",
+      "headphones": "耳机"
+    },
+    "prices": {
+      "laptop": "¥8399",
+      "phone": "¥4499",
+      "headphones": "¥1299"
+    },
+    "statuses": {
+      "inStock": "有库存",
+      "outOfStock": "缺货"
+    }
+  },
+  "tabs": {
+    "gallery": "图库",
+    "messages": "消息",
+    "settings": "设置"
+  },
+  "navLink": {
+    "dashboard": "仪表盘",
+    "settings": "设置",
+    "messages": "消息"
+  },
+  "stepper": {
+    "step1": {
+      "label": "步骤 1",
+      "description": "创建账户"
+    },
+    "step2": {
+      "label": "步骤 2",
+      "description": "验证电子邮件"
+    },
+    "step3": {
+      "label": "步骤 3",
+      "description": "完善个人资料"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "什么是 Mantine？",
+      "content": "Mantine 是一个 React 组件库，注重易用性、可访问性和开发者体验。"
+    },
+    "item2": {
+      "title": "定制化",
+      "content": "Mantine 组件可以通过全局主题和内联样式进行定制。"
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "信息",
+      "content": "这是一个带有默认样式的信息提醒"
+    },
+    "success": {
+      "title": "成功",
+      "content": "这是一个带有填充样式的成功提醒"
+    },
+    "warning": {
+      "title": "警告",
+      "content": "这是一个带有轮廓样式的警告提醒"
+    }
+  },
+  "hoverCard": {
+    "content": "这是一个悬停卡片下拉菜单，在悬停时显示信息。"
+  }
+}

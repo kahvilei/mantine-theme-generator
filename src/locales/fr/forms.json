@@ -1,0 +1,146 @@
+{
+
+    "titles": {
+      "basicFormControls": "Contrôles de Formulaire Basiques",
+      "specializedInputs": "Champs Spécialisés",
+      "completeForm": "Exemple de Formulaire Complet"
+    },
+    "labels": {
+      "textInputs": "Champs de Texte",
+      "variantsSizes": "Variantes et Tailles",
+      "inputTypes": "Types de Champs",
+      "toggleControls": "Contrôles à Bascule"
+    },
+    "inputs": {
+      "default": {
+        "label": "Champ par défaut",
+        "placeholder": "Entrez du texte"
+      },
+      "withDescription": {
+        "label": "Avec description",
+        "placeholder": "Entrez du texte",
+        "description": "Ceci est une description pour le champ"
+      },
+      "withError": {
+        "label": "Avec erreur",
+        "placeholder": "Entrez du texte",
+        "error": "Ce champ est obligatoire"
+      },
+      "withIcon": {
+        "label": "Avec icône",
+        "placeholder": "Rechercher..."
+      },
+      "disabled": {
+        "label": "Champ désactivé",
+        "placeholder": "Celui-ci est désactivé"
+      },
+      "variants": {
+        "default": {
+          "label": "Par défaut",
+          "placeholder": "Variante par défaut"
+        },
+        "filled": {
+          "label": "Rempli",
+          "placeholder": "Variante remplie"
+        },
+        "unstyled": {
+          "label": "Sans style",
+          "placeholder": "Variante sans style"
+        }
+      },
+      "sizes": {
+        "xs": "Taille XS",
+        "sm": "Taille SM",
+        "md": "Taille MD",
+        "lg": "Taille LG",
+        "xl": "Taille XL"
+      },
+      "specialized": {
+        "password": {
+          "label": "Mot de passe",
+          "placeholder": "Entrez votre mot de passe"
+        },
+        "number": {
+          "label": "Nombre",
+          "placeholder": "Entrez un nombre"
+        },
+        "file": {
+          "label": "Télécharger un fichier",
+          "placeholder": "Cliquez pour télécharger"
+        },
+        "select": {
+          "label": "Sélectionner une option",
+          "placeholder": "Choisissez-en une",
+          "options": {
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          }
+        }
+      }
+    },
+    "toggles": {
+      "checkbox": {
+        "default": "Case à cocher",
+        "indeterminate": "Indéterminé",
+        "checked": "Coché",
+        "disabled": "Désactivé",
+        "terms": "J'accepte les termes et conditions"
+      },
+      "switch": {
+        "default": "Interrupteur",
+        "checked": "Activé",
+        "disabled": "Désactivé"
+      },
+      "radio": {
+        "group": "Groupe Radio",
+        "description": "Sélectionnez une option",
+        "option1": "Option 1",
+        "option2": "Option 2",
+        "option3": "Option 3"
+      },
+      "chips": {
+        "react": "React",
+        "vue": "Vue",
+        "angular": "Angular"
+      },
+      "slider": {
+        "20": "20%",
+        "50": "50%",
+        "80": "80%"
+      }
+    },
+    "form": {
+      "title": "Créer un Compte",
+      "firstName": {
+        "label": "Prénom",
+        "placeholder": "Jean"
+      },
+      "lastName": {
+        "label": "Nom",
+        "placeholder": "Dupont"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "votre@email.com"
+      },
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "Créez un mot de passe fort"
+      },
+      "role": {
+        "label": "Rôle",
+        "placeholder": "Sélectionnez votre rôle",
+        "options": {
+          "developer": "Développeur",
+          "designer": "Designer",
+          "manager": "Gestionnaire",
+          "other": "Autre"
+        }
+      },
+      "buttons": {
+        "cancel": "Annuler",
+        "create": "Créer un Compte"
+      }
+    }
+  }

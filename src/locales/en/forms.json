@@ -1,0 +1,145 @@
+{
+    "titles": {
+      "basicFormControls": "Basic Form Controls",
+      "specializedInputs": "Specialized Inputs",
+      "completeForm": "Complete Form Example"
+    },
+    "labels": {
+      "textInputs": "Text Inputs",
+      "variantsSizes": "Variants & Sizes",
+      "inputTypes": "Input Types",
+      "toggleControls": "Toggle Controls"
+    },
+    "inputs": {
+      "default": {
+        "label": "Default Input",
+        "placeholder": "Enter some text"
+      },
+      "withDescription": {
+        "label": "With description",
+        "placeholder": "Enter some text",
+        "description": "This is a description for the input"
+      },
+      "withError": {
+        "label": "With error",
+        "placeholder": "Enter some text",
+        "error": "This field is required"
+      },
+      "withIcon": {
+        "label": "With icon",
+        "placeholder": "Search..."
+      },
+      "disabled": {
+        "label": "Disabled input",
+        "placeholder": "This is disabled"
+      },
+      "variants": {
+        "default": {
+          "label": "Default",
+          "placeholder": "Default variant"
+        },
+        "filled": {
+          "label": "Filled",
+          "placeholder": "Filled variant"
+        },
+        "unstyled": {
+          "label": "Unstyled",
+          "placeholder": "Unstyled variant"
+        }
+      },
+      "sizes": {
+        "xs": "XS size",
+        "sm": "SM size",
+        "md": "MD size",
+        "lg": "LG size",
+        "xl": "XL size"
+      },
+      "specialized": {
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        },
+        "number": {
+          "label": "Number",
+          "placeholder": "Enter a number"
+        },
+        "file": {
+          "label": "Upload file",
+          "placeholder": "Click to upload"
+        },
+        "select": {
+          "label": "Select option",
+          "placeholder": "Choose one",
+          "options": {
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          }
+        }
+      }
+    },
+    "toggles": {
+      "checkbox": {
+        "default": "Checkbox",
+        "indeterminate": "Indeterminate",
+        "checked": "Checked",
+        "disabled": "Disabled",
+        "terms": "I agree to the terms and conditions"
+      },
+      "switch": {
+        "default": "Switch",
+        "checked": "Checked",
+        "disabled": "Disabled"
+      },
+      "radio": {
+        "group": "Radio Group",
+        "description": "Select one option",
+        "option1": "Option 1",
+        "option2": "Option 2",
+        "option3": "Option 3"
+      },
+      "chips": {
+        "react": "React",
+        "vue": "Vue",
+        "angular": "Angular"
+      },
+      "slider": {
+        "20": "20%",
+        "50": "50%",
+        "80": "80%"
+      }
+    },
+    "form": {
+      "title": "Create Account",
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "John"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Doe"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Create a strong password"
+      },
+      "role": {
+        "label": "Role",
+        "placeholder": "Select your role",
+        "options": {
+          "developer": "Developer",
+          "designer": "Designer",
+          "manager": "Manager",
+          "other": "Other"
+        }
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create Account"
+      }
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mantine Theme Editor",
+    "version": "Läuft auf Mantine v{{version}}",
+    "links": {
+      "github": "Auf GitHub ansehen",
+      "docs": "Mantine-Dokumentation ansehen"
+    },
+    "language": "Sprache ändern",
+    "theme": "Hell-/Dunkelmodus umschalten"
+  },
+  "status": {
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolgreich!"
+  },
+  "actions": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "apply": "Anwenden",
+    "reset": "Zurücksetzen",
+    "delete": "Löschen",
+    "add": "Hinzufügen",
+    "edit": "Bearbeiten",
+    "select": "Auswählen"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "typography": "Typografie",
+    "components": "Komponenten",
+    "forms": "Formulare",
+    "overview": "Übersicht"
+  },
+  "display": {
+    "darkMode": "Dunkelmodus",
+    "lightMode": "Hellmodus",
+    "sideBySide": "Nebeneinander"
+  }
+}

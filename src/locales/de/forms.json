@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "Grundlegende Formularelemente",
+    "specializedInputs": "Spezialisierte Eingabefelder",
+    "completeForm": "Vollständiges Formular-Beispiel"
+  },
+  "labels": {
+    "textInputs": "Texteingabefelder",
+    "variantsSizes": "Varianten & Größen",
+    "inputTypes": "Eingabetypen",
+    "toggleControls": "Umschaltelemente"
+  },
+  "inputs": {
+    "default": {
+      "label": "Standard-Eingabefeld",
+      "placeholder": "Text eingeben"
+    },
+    "withDescription": {
+      "label": "Mit Beschreibung",
+      "placeholder": "Text eingeben",
+      "description": "Dies ist eine Beschreibung für das Eingabefeld"
+    },
+    "withError": {
+      "label": "Mit Fehler",
+      "placeholder": "Text eingeben",
+      "error": "Dieses Feld ist erforderlich"
+    },
+    "withIcon": {
+      "label": "Mit Symbol",
+      "placeholder": "Suchen..."
+    },
+    "disabled": {
+      "label": "Deaktiviertes Eingabefeld",
+      "placeholder": "Dies ist deaktiviert"
+    },
+    "variants": {
+      "default": {
+        "label": "Standard",
+        "placeholder": "Standard-Variante"
+      },
+      "filled": {
+        "label": "Gefüllt",
+        "placeholder": "Gefüllte Variante"
+      },
+      "unstyled": {
+        "label": "Ohne Stil",
+        "placeholder": "Variante ohne Stil"
+      }
+    },
+    "sizes": {
+      "xs": "XS-Größe",
+      "sm": "SM-Größe",
+      "md": "MD-Größe",
+      "lg": "LG-Größe",
+      "xl": "XL-Größe"
+    },
+    "specialized": {
+      "password": {
+        "label": "Passwort",
+        "placeholder": "Passwort eingeben"
+      },
+      "number": {
+        "label": "Zahl",
+        "placeholder": "Zahl eingeben"
+      },
+      "file": {
+        "label": "Datei hochladen",
+        "placeholder": "Zum Hochladen klicken"
+      },
+      "select": {
+        "label": "Option wählen",
+        "placeholder": "Eine auswählen",
+        "options": {
+          "option1": "Option 1",
+          "option2": "Option 2",
+          "option3": "Option 3"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "Kontrollkästchen",
+      "indeterminate": "Unbestimmt",
+      "checked": "Ausgewählt",
+      "disabled": "Deaktiviert",
+      "terms": "Ich stimme den Allgemeinen Geschäftsbedingungen zu"
+    },
+    "switch": {
+      "default": "Schalter",
+      "checked": "Eingeschaltet",
+      "disabled": "Deaktiviert"
+    },
+    "radio": {
+      "group": "Radio-Gruppe",
+      "description": "Eine Option auswählen",
+      "option1": "Option 1",
+      "option2": "Option 2",
+      "option3": "Option 3"
+    },
+    "chips": {
+      "react": "React",
+      "vue": "Vue",
+      "angular": "Angular"
+    },
+    "slider": {
+      "20": "20%",
+      "50": "50%",
+      "80": "80%"
+    }
+  },
+  "form": {
+    "title": "Konto erstellen",
+    "firstName": {
+      "label": "Vorname",
+      "placeholder": "John"
+    },
+    "lastName": {
+      "label": "Nachname",
+      "placeholder": "Doe"
+    },
+    "email": {
+      "label": "E-Mail",
+      "placeholder": "deine@email.com"
+    },
+    "password": {
+      "label": "Passwort",
+      "placeholder": "Erstelle ein sicheres Passwort"
+    },
+    "role": {
+      "label": "Rolle",
+      "placeholder": "Wähle deine Rolle",
+      "options": {
+        "developer": "Entwickler",
+        "designer": "Designer",
+        "manager": "Manager",
+        "other": "Andere"
+      }
+    },
+    "buttons": {
+      "cancel": "Abbrechen",
+      "create": "Konto erstellen"
+    }
+  }
+}

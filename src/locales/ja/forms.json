@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "基本フォームコントロール",
+    "specializedInputs": "専門入力フィールド",
+    "completeForm": "完全なフォーム例"
+  },
+  "labels": {
+    "textInputs": "テキスト入力",
+    "variantsSizes": "バリアントとサイズ",
+    "inputTypes": "入力タイプ",
+    "toggleControls": "トグルコントロール"
+  },
+  "inputs": {
+    "default": {
+      "label": "デフォルト入力",
+      "placeholder": "テキストを入力"
+    },
+    "withDescription": {
+      "label": "説明付き",
+      "placeholder": "テキストを入力",
+      "description": "これは入力欄の説明です"
+    },
+    "withError": {
+      "label": "エラー付き",
+      "placeholder": "テキストを入力",
+      "error": "このフィールドは必須です"
+    },
+    "withIcon": {
+      "label": "アイコン付き",
+      "placeholder": "検索..."
+    },
+    "disabled": {
+      "label": "無効化された入力",
+      "placeholder": "これは無効化されています"
+    },
+    "variants": {
+      "default": {
+        "label": "デフォルト",
+        "placeholder": "デフォルトバリアント"
+      },
+      "filled": {
+        "label": "塗りつぶし",
+        "placeholder": "塗りつぶしバリアント"
+      },
+      "unstyled": {
+        "label": "スタイルなし",
+        "placeholder": "スタイルなしバリアント"
+      }
+    },
+    "sizes": {
+      "xs": "XSサイズ",
+      "sm": "SMサイズ",
+      "md": "MDサイズ",
+      "lg": "LGサイズ",
+      "xl": "XLサイズ"
+    },
+    "specialized": {
+      "password": {
+        "label": "パスワード",
+        "placeholder": "パスワードを入力してください"
+      },
+      "number": {
+        "label": "数値",
+        "placeholder": "数値を入力してください"
+      },
+      "file": {
+        "label": "ファイルをアップロード",
+        "placeholder": "クリックしてアップロード"
+      },
+      "select": {
+        "label": "オプションを選択",
+        "placeholder": "一つ選択してください",
+        "options": {
+          "option1": "オプション1",
+          "option2": "オプション2",
+          "option3": "オプション3"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "チェックボックス",
+      "indeterminate": "不確定状態",
+      "checked": "チェック済み",
+      "disabled": "無効化",
+      "terms": "利用規約に同意します"
+    },
+    "switch": {
+      "default": "スイッチ",
+      "checked": "オン",
+      "disabled": "無効化"
+    },
+    "radio": {
+      "group": "ラジオグループ",
+      "description": "一つのオプションを選択",
+      "option1": "オプション1",
+      "option2": "オプション2",
+      "option3": "オプション3"
+    },
+    "chips": {
+      "react": "React",
+      "vue": "Vue",
+      "angular": "Angular"
+    },
+    "slider": {
+      "20": "20%",
+      "50": "50%",
+      "80": "80%"
+    }
+  },
+  "form": {
+    "title": "アカウント作成",
+    "firstName": {
+      "label": "名",
+      "placeholder": "太郎"
+    },
+    "lastName": {
+      "label": "姓",
+      "placeholder": "山田"
+    },
+    "email": {
+      "label": "メールアドレス",
+      "placeholder": "your@email.com"
+    },
+    "password": {
+      "label": "パスワード",
+      "placeholder": "強力なパスワードを作成"
+    },
+    "role": {
+      "label": "役割",
+      "placeholder": "役割を選択",
+      "options": {
+        "developer": "開発者",
+        "designer": "デザイナー",
+        "manager": "マネージャー",
+        "other": "その他"
+      }
+    },
+    "buttons": {
+      "cancel": "キャンセル",
+      "create": "アカウント作成"
+    }
+  }
+}

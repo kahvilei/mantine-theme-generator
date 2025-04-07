@@ -1,0 +1,145 @@
+{
+    "titles": {
+      "basicFormControls": "Controles Básicos de Formulario",
+      "specializedInputs": "Entradas Especializadas",
+      "completeForm": "Ejemplo de Formulario Completo"
+    },
+    "labels": {
+      "textInputs": "Entradas de Texto",
+      "variantsSizes": "Variantes y Tamaños",
+      "inputTypes": "Tipos de Entrada",
+      "toggleControls": "Controles de Alternancia"
+    },
+    "inputs": {
+      "default": {
+        "label": "Entrada Predeterminada",
+        "placeholder": "Ingrese algún texto"
+      },
+      "withDescription": {
+        "label": "Con descripción",
+        "placeholder": "Ingrese algún texto",
+        "description": "Esta es una descripción para la entrada"
+      },
+      "withError": {
+        "label": "Con error",
+        "placeholder": "Ingrese algún texto",
+        "error": "Este campo es obligatorio"
+      },
+      "withIcon": {
+        "label": "Con icono",
+        "placeholder": "Buscar..."
+      },
+      "disabled": {
+        "label": "Entrada deshabilitada",
+        "placeholder": "Esta está deshabilitada"
+      },
+      "variants": {
+        "default": {
+          "label": "Predeterminado",
+          "placeholder": "Variante predeterminada"
+        },
+        "filled": {
+          "label": "Relleno",
+          "placeholder": "Variante rellena"
+        },
+        "unstyled": {
+          "label": "Sin estilo",
+          "placeholder": "Variante sin estilo"
+        }
+      },
+      "sizes": {
+        "xs": "Tamaño XS",
+        "sm": "Tamaño SM",
+        "md": "Tamaño MD",
+        "lg": "Tamaño LG",
+        "xl": "Tamaño XL"
+      },
+      "specialized": {
+        "password": {
+          "label": "Contraseña",
+          "placeholder": "Ingrese su contraseña"
+        },
+        "number": {
+          "label": "Número",
+          "placeholder": "Ingrese un número"
+        },
+        "file": {
+          "label": "Subir archivo",
+          "placeholder": "Haga clic para subir"
+        },
+        "select": {
+          "label": "Seleccionar opción",
+          "placeholder": "Elija una",
+          "options": {
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          }
+        }
+      }
+    },
+    "toggles": {
+      "checkbox": {
+        "default": "Casilla de verificación",
+        "indeterminate": "Indeterminado",
+        "checked": "Marcado",
+        "disabled": "Deshabilitado",
+        "terms": "Estoy de acuerdo con los términos y condiciones"
+      },
+      "switch": {
+        "default": "Interruptor",
+        "checked": "Activado",
+        "disabled": "Deshabilitado"
+      },
+      "radio": {
+        "group": "Grupo de Radio",
+        "description": "Seleccione una opción",
+        "option1": "Opción 1",
+        "option2": "Opción 2",
+        "option3": "Opción 3"
+      },
+      "chips": {
+        "react": "React",
+        "vue": "Vue",
+        "angular": "Angular"
+      },
+      "slider": {
+        "20": "20%",
+        "50": "50%",
+        "80": "80%"
+      }
+    },
+    "form": {
+      "title": "Crear Cuenta",
+      "firstName": {
+        "label": "Nombre",
+        "placeholder": "Juan"
+      },
+      "lastName": {
+        "label": "Apellido",
+        "placeholder": "Pérez"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "tu@email.com"
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Cree una contraseña segura"
+      },
+      "role": {
+        "label": "Rol",
+        "placeholder": "Seleccione su rol",
+        "options": {
+          "developer": "Desarrollador",
+          "designer": "Diseñador",
+          "manager": "Gerente",
+          "other": "Otro"
+        }
+      },
+      "buttons": {
+        "cancel": "Cancelar",
+        "create": "Crear Cuenta"
+      }
+    }
+  }

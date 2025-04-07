@@ -72,6 +72,9 @@ const Header: React.FC<HeaderProps> = ({
                 <Menu.Item onClick={() => changeLanguage('es')}>
                   Español
                 </Menu.Item>
+                <Menu.Item onClick={() => changeLanguage('de')}>
+                  Deutsch
+                </Menu.Item>
                 <Menu.Item onClick={() => changeLanguage('zh')}>
                   中文
                 </Menu.Item>

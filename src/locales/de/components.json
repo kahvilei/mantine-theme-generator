@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "Aktions-Komponenten",
+    "dataDisplay": "Datenanzeige",
+    "navigationIndicators": "Navigation & Indikatoren",
+    "containersLayout": "Container & Layout"
+  },
+  "labels": {
+    "buttonSizes": "Schaltflächen-Größen",
+    "actionIconVariants": "ActionIcon-Varianten",
+    "menuComponent": "Menü-Komponente",
+    "avatarIndicator": "Avatar & Indikator",
+    "progressRingProgress": "Fortschritt & Ringfortschritt",
+    "table": "Tabelle",
+    "tabsVariants": "Tabs-Varianten",
+    "navLink": "NavLink",
+    "stepper": "Stepper",
+    "accordion": "Akkordeon",
+    "alertVariants": "Alarm-Varianten",
+    "hoverCard": "HoverCard"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "Menü öffnen",
+    "hoverMe": "Über mich schweben"
+  },
+  "menu": {
+    "application": "Anwendung",
+    "settings": "Einstellungen",
+    "messages": "Nachrichten",
+    "gallery": "Galerie",
+    "search": "Suche"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "Artikel",
+      "price": "Preis",
+      "status": "Status"
+    },
+    "items": {
+      "laptop": "Laptop",
+      "phone": "Telefon",
+      "headphones": "Kopfhörer"
+    },
+    "prices": {
+      "laptop": "1299€",
+      "phone": "699€",
+      "headphones": "199€"
+    },
+    "statuses": {
+      "inStock": "Auf Lager",
+      "outOfStock": "Nicht auf Lager"
+    }
+  },
+  "tabs": {
+    "gallery": "Galerie",
+    "messages": "Nachrichten",
+    "settings": "Einstellungen"
+  },
+  "navLink": {
+    "dashboard": "Dashboard",
+    "settings": "Einstellungen",
+    "messages": "Nachrichten"
+  },
+  "stepper": {
+    "step1": {
+      "label": "Schritt 1",
+      "description": "Konto erstellen"
+    },
+    "step2": {
+      "label": "Schritt 2",
+      "description": "E-Mail bestätigen"
+    },
+    "step3": {
+      "label": "Schritt 3",
+      "description": "Profil vervollständigen"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "Was ist Mantine?",
+      "content": "Mantine ist eine React-Komponentenbibliothek mit Fokus auf Benutzerfreundlichkeit, Barrierefreiheit und Entwicklererfahrung."
+    },
+    "item2": {
+      "title": "Anpassung",
+      "content": "Mantine-Komponenten können mit globalem Theme und Inline-Stilen angepasst werden."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "Information",
+      "content": "Dies ist ein Informationsalarm mit dem Standard-Stil"
+    },
+    "success": {
+      "title": "Erfolg",
+      "content": "Dies ist ein Erfolgsalarm mit gefülltem Stil"
+    },
+    "warning": {
+      "title": "Warnung",
+      "content": "Dies ist ein Warnalarm mit Umriss-Stil"
+    }
+  },
+  "hoverCard": {
+    "content": "Dies ist ein HoverCard-Dropdown mit Informationen, die beim Darüberfahren erscheinen."
+  }
+}

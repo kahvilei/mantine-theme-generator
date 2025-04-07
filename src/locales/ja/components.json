@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "アクションコンポーネント",
+    "dataDisplay": "データ表示",
+    "navigationIndicators": "ナビゲーションとインジケーター",
+    "containersLayout": "コンテナとレイアウト"
+  },
+  "labels": {
+    "buttonSizes": "ボタンサイズ",
+    "actionIconVariants": "アクションアイコンのバリエーション",
+    "menuComponent": "メニューコンポーネント",
+    "avatarIndicator": "アバターとインジケーター",
+    "progressRingProgress": "プログレスとリングプログレス",
+    "table": "テーブル",
+    "tabsVariants": "タブのバリエーション",
+    "navLink": "ナビリンク",
+    "stepper": "ステッパー",
+    "accordion": "アコーディオン",
+    "alertVariants": "アラートのバリエーション",
+    "hoverCard": "ホバーカード"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "メニューを開く",
+    "hoverMe": "ホバーしてください"
+  },
+  "menu": {
+    "application": "アプリケーション",
+    "settings": "設定",
+    "messages": "メッセージ",
+    "gallery": "ギャラリー",
+    "search": "検索"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "アイテム",
+      "price": "価格",
+      "status": "状態"
+    },
+    "items": {
+      "laptop": "ノートパソコン",
+      "phone": "スマートフォン",
+      "headphones": "ヘッドフォン"
+    },
+    "prices": {
+      "laptop": "¥150,000",
+      "phone": "¥80,000",
+      "headphones": "¥25,000"
+    },
+    "statuses": {
+      "inStock": "在庫あり",
+      "outOfStock": "在庫切れ"
+    }
+  },
+  "tabs": {
+    "gallery": "ギャラリー",
+    "messages": "メッセージ",
+    "settings": "設定"
+  },
+  "navLink": {
+    "dashboard": "ダッシュボード",
+    "settings": "設定",
+    "messages": "メッセージ"
+  },
+  "stepper": {
+    "step1": {
+      "label": "ステップ1",
+      "description": "アカウント作成"
+    },
+    "step2": {
+      "label": "ステップ2",
+      "description": "メール確認"
+    },
+    "step3": {
+      "label": "ステップ3",
+      "description": "プロフィール完成"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "Mantineとは？",
+      "content": "Mantineは、使いやすさ、アクセシビリティ、開発者体験に焦点を当てたReactコンポーネントライブラリです。"
+    },
+    "item2": {
+      "title": "カスタマイズ",
+      "content": "Mantineコンポーネントは、グローバルテーマとインラインスタイルでカスタマイズできます。"
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "情報",
+      "content": "これはデフォルトスタイルの情報アラートです"
+    },
+    "success": {
+      "title": "成功",
+      "content": "これは塗りつぶしスタイルの成功アラートです"
+    },
+    "warning": {
+      "title": "警告",
+      "content": "これはアウトラインスタイルの警告アラートです"
+    }
+  },
+  "hoverCard": {
+    "content": "これはホバー時に情報が表示されるホバーカードのドロップダウンです。"
+  }
+}

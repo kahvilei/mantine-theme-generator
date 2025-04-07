@@ -1,0 +1,37 @@
+{
+  "headings": {
+    "title": "Überschriften",
+    "h1": "Überschrift 1",
+    "h2": "Überschrift 2",
+    "h3": "Überschrift 3",
+    "h4": "Überschrift 4",
+    "h5": "Überschrift 5",
+    "h6": "Überschrift 6"
+  },
+  "textSizes": {
+    "title": "Textgrößen",
+    "xl": "Text Extra Groß",
+    "lg": "Text Groß",
+    "md": "Text Mittel",
+    "default": "(Standard)",
+    "sm": "Text Klein",
+    "xs": "Text Extra Klein"
+  },
+  "specialStyles": {
+    "title": "Spezielle Textstile",
+    "blockquoteText": "Design ist nicht nur, wie es aussieht und sich anfühlt. Design ist, wie es funktioniert.",
+    "blockquoteCite": "— Berühmter Designer",
+    "codeText": "const theme = useMantineTheme();",
+    "kbdText": "Strg + K",
+    "markText": "Text mit ",
+    "markHighlight": "hervorgehobenem",
+    "markEnd": " Inhalt",
+    "anchorText": "Anklickbarer Link"
+  },
+  "fontFamily": {
+    "title": "Schriftfamilie",
+    "default": "Standard:",
+    "headings": "Überschriften:",
+    "monospace": "Monospace:"
+  }
+}

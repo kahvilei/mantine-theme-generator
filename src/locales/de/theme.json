@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "Theme-Kontrollpanel",
+    "download": "Theme als {{format}} herunterladen",
+    "upload": "Theme hochladen (JSON oder TypeScript)",
+    "uploadError": "Fehler beim Verarbeiten der Theme-Datei. Stelle sicher, dass es sich um eine gültige JSON- oder TypeScript-Theme-Datei handelt: {{error}}",
+    "resetTheme": "Theme zurücksetzen",
+    "resetConfirmation": "Bist du sicher, dass du das Theme zurücksetzen möchtest? Dies löscht alle aktuellen Änderungen."
+  },
+  "tabs": {
+    "quickSetup": "Schnelleinrichtung",
+    "color": "Farbe",
+    "typography": "Typografie",
+    "sizeAndLayout": "Größe und Layout",
+    "components": "Komponenten"
+  },
+  "setup": {
+    "premadeThemes": "Vorgefertigte Themes",
+    "primaryColor": "Primärfarbe",
+    "fontFamilies": "Schriftfamilien"
+  },
+  "colors": {
+    "panel": {
+      "title": "Farb-Einstellungen",
+      "primaryColor": "Primärfarbe",
+      "primaryColorSelector": "Primärfarbe",
+      "customColors": "Benutzerdefinierte Farben",
+      "mantineOverrides": "Mantine-Farbenüberschreibungen",
+      "contentColors": "Inhaltsfarben",
+      "situationalColors": "Situationsfarben",
+      "otherOverrides": "Andere Mantine-Farbenüberschreibungen",
+      "defaultGradient": "Standard-Verlauf"
+    },
+    "editor": {
+      "addColor": "Neue Farbe hinzufügen",
+      "addColorButton": "Neue Farbe hinzufügen",
+      "updateColor": "Farbe aktualisieren",
+      "name": "Name",
+      "color": "Farbe",
+      "dark": "Dunkel",
+      "light": "Hell",
+      "shade": "Farbton {{index}}"
+    },
+    "categories": {
+      "customColors": "Benutzerdefinierte Farben",
+      "mantineColors": "Mantine-Farben",
+      "standard": "Standard",
+      "virtual": "Virtuell"
+    }
+  },
+  "typography": {
+    "settings": "Typografie-Einstellungen",
+    "headings": "Überschriften",
+    "size": "Größe",
+    "lineHeight": "Zeilenhöhe",
+    "weight": "Gewicht",
+    "preview": "{{heading}} Vorschautext",
+    "fonts": {
+      "body": "Fließtext",
+      "headings": "Überschriften",
+      "monospace": "Monospace",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "Skala- und Layout-Einstellungen",
+    "scale": "Skala",
+    "scaleValue": "{{value}}x",
+    "spacing": "Abstand",
+    "breakpoints": "Breakpoints",
+    "radius": {
+      "title": "Radius",
+      "default": "Standard-Radius",
+      "settings": "Radius-Einstellungen"
+    }
+  },
+  "interaction": {
+    "title": "Interaktion und Barrierefreiheit",
+    "focusRing": "Fokus-Ring",
+    "options": {
+      "auto": "Automatisch",
+      "always": "Immer",
+      "never": "Nie",
+      "default": "Standard",
+      "pointer": "Zeiger"
+    },
+    "accessibility": "Barrierefreiheit",
+    "fontSmoothing": "Schriftglättung",
+    "respectReducedMotion": "Reduzierte Bewegung respektieren",
+    "cursorType": "Cursor-Typ"
+  },
+  "components": {
+    "title": "Komponenten-Einstellungen",
+    "description": "Wähle unten eine Komponente aus, um Standard-Props und Stile zu definieren. Diese Regeln werden auf alle Instanzen der Komponente im Theme angewendet.",
+    "addRule": "Komponenten-Regel hinzufügen",
+    "selectComponent": "Komponente auswählen",
+    "choosePlaceholder": "Wähle eine Komponente zur Anpassung",
+    "docsReference": "Als Referenz für die Props und Styles-API jeder Komponente, siehe die",
+    "docsReferenceCont": ", oder klicke auf das Symbol neben dem Namen der hinzugefügten Komponente.",
+    "docsLink": "Mantine-Dokumentation",
+    "defaultProps": "Standard-Props",
+    "stylesAPI": "Styles-API",
+    "property": {
+      "addProperty": "Eigenschaft hinzufügen",
+      "addStyleProperty": "Stil-Eigenschaft hinzufügen",
+      "addStyleSelector": "Stil-Selektor hinzufügen",
+      "componentProps": "Komponenten-Props",
+      "styleProps": "Stil-Props"
+    },
+    "categories": {
+      "inputs": "Eingaben",
+      "navigation": "Navigation",
+      "layout": "Layout",
+      "typography": "Typografie",
+      "feedback": "Feedback",
+      "data": "Daten",
+      "overlays": "Overlays",
+      "other": "Andere"
+    }
+  }
+}

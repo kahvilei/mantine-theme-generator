@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "Action Components",
+    "dataDisplay": "Data Display",
+    "navigationIndicators": "Navigation & Indicators",
+    "containersLayout": "Containers & Layout"
+  },
+  "labels": {
+    "buttonSizes": "Button Sizes",
+    "actionIconVariants": "ActionIcon Variants",
+    "menuComponent": "Menu Component",
+    "avatarIndicator": "Avatar & Indicator",
+    "progressRingProgress": "Progress & RingProgress",
+    "table": "Table",
+    "tabsVariants": "Tabs Variants",
+    "navLink": "NavLink",
+    "stepper": "Stepper",
+    "accordion": "Accordion",
+    "alertVariants": "Alert Variants",
+    "hoverCard": "HoverCard"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "Open Menu",
+    "hoverMe": "Hover me"
+  },
+  "menu": {
+    "application": "Application",
+    "settings": "Settings",
+    "messages": "Messages",
+    "gallery": "Gallery",
+    "search": "Search"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "Item",
+      "price": "Price",
+      "status": "Status"
+    },
+    "items": {
+      "laptop": "Laptop",
+      "phone": "Phone",
+      "headphones": "Headphones"
+    },
+    "prices": {
+      "laptop": "$1299",
+      "phone": "$699",
+      "headphones": "$199"
+    },
+    "statuses": {
+      "inStock": "In Stock",
+      "outOfStock": "Out of Stock"
+    }
+  },
+  "tabs": {
+    "gallery": "Gallery",
+    "messages": "Messages",
+    "settings": "Settings"
+  },
+  "navLink": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "messages": "Messages"
+  },
+  "stepper": {
+    "step1": {
+      "label": "Step 1",
+      "description": "Create account"
+    },
+    "step2": {
+      "label": "Step 2",
+      "description": "Verify email"
+    },
+    "step3": {
+      "label": "Step 3",
+      "description": "Complete profile"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "What is Mantine?",
+      "content": "Mantine is a React component library with a focus on usability, accessibility and developer experience."
+    },
+    "item2": {
+      "title": "Customization",
+      "content": "Mantine components can be customized with global theme and inline styles."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "Information",
+      "content": "This is an informational alert with the default style"
+    },
+    "success": {
+      "title": "Success",
+      "content": "This is a success alert with filled style"
+    },
+    "warning": {
+      "title": "Warning",
+      "content": "This is a warning alert with outline style"
+    }
+  },
+  "hoverCard": {
+    "content": "This is a HoverCard dropdown with information that appears on hover."
+  }
+}

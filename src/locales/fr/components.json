@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "Composants d'Action",
+    "dataDisplay": "Affichage des Données",
+    "navigationIndicators": "Navigation et Indicateurs",
+    "containersLayout": "Conteneurs et Mise en Page"
+  },
+  "labels": {
+    "buttonSizes": "Tailles de Boutons",
+    "actionIconVariants": "Variantes d'IconeAction",
+    "menuComponent": "Composant Menu",
+    "avatarIndicator": "Avatar et Indicateur",
+    "progressRingProgress": "Progression et ProgressionAnnulaire",
+    "table": "Tableau",
+    "tabsVariants": "Variantes d'Onglets",
+    "navLink": "Lien de Navigation",
+    "stepper": "Étapes",
+    "accordion": "Accordéon",
+    "alertVariants": "Variantes d'Alerte",
+    "hoverCard": "Carte Survol"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "Ouvrir Menu",
+    "hoverMe": "Survoler moi"
+  },
+  "menu": {
+    "application": "Application",
+    "settings": "Paramètres",
+    "messages": "Messages",
+    "gallery": "Galerie",
+    "search": "Recherche"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "Article",
+      "price": "Prix",
+      "status": "Statut"
+    },
+    "items": {
+      "laptop": "Ordinateur portable",
+      "phone": "Téléphone",
+      "headphones": "Écouteurs"
+    },
+    "prices": {
+      "laptop": "1299€",
+      "phone": "699€",
+      "headphones": "199€"
+    },
+    "statuses": {
+      "inStock": "En Stock",
+      "outOfStock": "Rupture de Stock"
+    }
+  },
+  "tabs": {
+    "gallery": "Galerie",
+    "messages": "Messages",
+    "settings": "Paramètres"
+  },
+  "navLink": {
+    "dashboard": "Tableau de Bord",
+    "settings": "Paramètres",
+    "messages": "Messages"
+  },
+  "stepper": {
+    "step1": {
+      "label": "Étape 1",
+      "description": "Créer un compte"
+    },
+    "step2": {
+      "label": "Étape 2",
+      "description": "Vérifier l'email"
+    },
+    "step3": {
+      "label": "Étape 3",
+      "description": "Compléter le profil"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "Qu'est-ce que Mantine?",
+      "content": "Mantine est une bibliothèque de composants React axée sur l'utilisabilité, l'accessibilité et l'expérience des développeurs."
+    },
+    "item2": {
+      "title": "Personnalisation",
+      "content": "Les composants Mantine peuvent être personnalisés avec un thème global et des styles en ligne."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "Information",
+      "content": "C'est une alerte d'information avec le style par défaut"
+    },
+    "success": {
+      "title": "Succès",
+      "content": "C'est une alerte de succès avec un style rempli"
+    },
+    "warning": {
+      "title": "Avertissement",
+      "content": "C'est une alerte d'avertissement avec un style contour"
+    }
+  },
+  "hoverCard": {
+    "content": "C'est un menu déroulant HoverCard avec des informations qui apparaissent au survol."
+  }
+}

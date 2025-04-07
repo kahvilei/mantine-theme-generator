@@ -1,0 +1,145 @@
+{
+    "titles": {
+      "basicFormControls": "基础表单控件",
+      "specializedInputs": "专业输入框",
+      "completeForm": "完整表单示例"
+    },
+    "labels": {
+      "textInputs": "文本输入",
+      "variantsSizes": "变体和尺寸",
+      "inputTypes": "输入类型",
+      "toggleControls": "切换控件"
+    },
+    "inputs": {
+      "default": {
+        "label": "默认输入框",
+        "placeholder": "请输入文本"
+      },
+      "withDescription": {
+        "label": "带描述",
+        "placeholder": "请输入文本",
+        "description": "这是输入框的描述"
+      },
+      "withError": {
+        "label": "带错误提示",
+        "placeholder": "请输入文本",
+        "error": "此字段为必填项"
+      },
+      "withIcon": {
+        "label": "带图标",
+        "placeholder": "搜索..."
+      },
+      "disabled": {
+        "label": "禁用输入框",
+        "placeholder": "此输入框已禁用"
+      },
+      "variants": {
+        "default": {
+          "label": "默认",
+          "placeholder": "默认变体"
+        },
+        "filled": {
+          "label": "填充",
+          "placeholder": "填充变体"
+        },
+        "unstyled": {
+          "label": "无样式",
+          "placeholder": "无样式变体"
+        }
+      },
+      "sizes": {
+        "xs": "超小尺寸",
+        "sm": "小尺寸",
+        "md": "中等尺寸",
+        "lg": "大尺寸",
+        "xl": "超大尺寸"
+      },
+      "specialized": {
+        "password": {
+          "label": "密码",
+          "placeholder": "请输入密码"
+        },
+        "number": {
+          "label": "数字",
+          "placeholder": "请输入数字"
+        },
+        "file": {
+          "label": "上传文件",
+          "placeholder": "点击上传"
+        },
+        "select": {
+          "label": "选择选项",
+          "placeholder": "请选择一项",
+          "options": {
+            "option1": "选项 1",
+            "option2": "选项 2",
+            "option3": "选项 3"
+          }
+        }
+      }
+    },
+    "toggles": {
+      "checkbox": {
+        "default": "复选框",
+        "indeterminate": "不确定状态",
+        "checked": "已选中",
+        "disabled": "已禁用",
+        "terms": "我同意条款和条件"
+      },
+      "switch": {
+        "default": "开关",
+        "checked": "已开启",
+        "disabled": "已禁用"
+      },
+      "radio": {
+        "group": "单选按钮组",
+        "description": "选择一个选项",
+        "option1": "选项 1",
+        "option2": "选项 2",
+        "option3": "选项 3"
+      },
+      "chips": {
+        "react": "React",
+        "vue": "Vue",
+        "angular": "Angular"
+      },
+      "slider": {
+        "20": "20%",
+        "50": "50%",
+        "80": "80%"
+      }
+    },
+    "form": {
+      "title": "创建账户",
+      "firstName": {
+        "label": "名字",
+        "placeholder": "张"
+      },
+      "lastName": {
+        "label": "姓氏",
+        "placeholder": "伟"
+      },
+      "email": {
+        "label": "电子邮箱",
+        "placeholder": "your@email.com"
+      },
+      "password": {
+        "label": "密码",
+        "placeholder": "创建一个强密码"
+      },
+      "role": {
+        "label": "角色",
+        "placeholder": "选择您的角色",
+        "options": {
+          "developer": "开发者",
+          "designer": "设计师",
+          "manager": "经理",
+          "other": "其他"
+        }
+      },
+      "buttons": {
+        "cancel": "取消",
+        "create": "创建账户"
+      }
+    }
+  }
