@@ -1,0 +1,37 @@
+{
+  "headings": {
+    "title": "제목",
+    "h1": "제목 1",
+    "h2": "제목 2",
+    "h3": "제목 3",
+    "h4": "제목 4",
+    "h5": "제목 5",
+    "h6": "제목 6"
+  },
+  "textSizes": {
+    "title": "텍스트 크기",
+    "xl": "텍스트 아주 큼",
+    "lg": "텍스트 큼",
+    "md": "텍스트 중간",
+    "default": "(기본)",
+    "sm": "텍스트 작음",
+    "xs": "텍스트 아주 작음"
+  },
+  "specialStyles": {
+    "title": "특수 텍스트 스타일",
+    "blockquoteText": "디자인은 단순히 보이는 것과 느껴지는 것이 아닙니다. 디자인은 어떻게 작동하는지입니다.",
+    "blockquoteCite": "— 유명한 디자이너",
+    "codeText": "const theme = useMantineTheme();",
+    "kbdText": "Ctrl + K",
+    "markText": "텍스트와 ",
+    "markHighlight": "강조된",
+    "markEnd": " 내용",
+    "anchorText": "클릭 가능한 링크"
+  },
+  "fontFamily": {
+    "title": "글꼴 패밀리",
+    "default": "기본:",
+    "headings": "제목:",
+    "monospace": "고정폭:"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "기본 폼 컨트롤",
+    "specializedInputs": "특수 입력 필드",
+    "completeForm": "완전한 폼 예시"
+  },
+  "labels": {
+    "textInputs": "텍스트 입력",
+    "variantsSizes": "변형 및 크기",
+    "inputTypes": "입력 타입",
+    "toggleControls": "토글 컨트롤"
+  },
+  "inputs": {
+    "default": {
+      "label": "기본 입력",
+      "placeholder": "텍스트 입력"
+    },
+    "withDescription": {
+      "label": "설명 포함",
+      "placeholder": "텍스트 입력",
+      "description": "이것은 입력 필드에 대한 설명입니다"
+    },
+    "withError": {
+      "label": "오류 포함",
+      "placeholder": "텍스트 입력",
+      "error": "이 필드는 필수입니다"
+    },
+    "withIcon": {
+      "label": "아이콘 포함",
+      "placeholder": "검색..."
+    },
+    "disabled": {
+      "label": "비활성화된 입력",
+      "placeholder": "이것은 비활성화되어 있습니다"
+    },
+    "variants": {
+      "default": {
+        "label": "기본",
+        "placeholder": "기본 변형"
+      },
+      "filled": {
+        "label": "채워짐",
+        "placeholder": "채워진 변형"
+      },
+      "unstyled": {
+        "label": "스타일 없음",
+        "placeholder": "스타일 없는 변형"
+      }
+    },
+    "sizes": {
+      "xs": "XS 크기",
+      "sm": "SM 크기",
+      "md": "MD 크기",
+      "lg": "LG 크기",
+      "xl": "XL 크기"
+    },
+    "specialized": {
+      "password": {
+        "label": "비밀번호",
+        "placeholder": "비밀번호 입력"
+      },
+      "number": {
+        "label": "숫자",
+        "placeholder": "숫자 입력"
+      },
+      "file": {
+        "label": "파일 업로드",
+        "placeholder": "클릭하여 업로드"
+      },
+      "select": {
+        "label": "옵션 선택",
+        "placeholder": "하나 선택",
+        "options": {
+          "option1": "옵션 1",
+          "option2": "옵션 2",
+          "option3": "옵션 3"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "체크박스",
+      "indeterminate": "불확정",
+      "checked": "체크됨",
+      "disabled": "비활성화",
+      "terms": "이용약관에 동의합니다"
+    },
+    "switch": {
+      "default": "스위치",
+      "checked": "켜짐",
+      "disabled": "비활성화"
+    },
+    "radio": {
+      "group": "라디오 그룹",
+      "description": "하나의 옵션 선택",
+      "option1": "옵션 1",
+      "option2": "옵션 2",
+      "option3": "옵션 3"
+    },
+    "chips": {
+      "react": "리액트",
+      "vue": "뷰",
+      "angular": "앵귤러"
+    },
+    "slider": {
+      "20": "20%",
+      "50": "50%",
+      "80": "80%"
+    }
+  },
+  "form": {
+    "title": "계정 생성",
+    "firstName": {
+      "label": "이름",
+      "placeholder": "민수"
+    },
+    "lastName": {
+      "label": "성",
+      "placeholder": "김"
+    },
+    "email": {
+      "label": "이메일",
+      "placeholder": "your@email.com"
+    },
+    "password": {
+      "label": "비밀번호",
+      "placeholder": "강력한 비밀번호 생성"
+    },
+    "role": {
+      "label": "역할",
+      "placeholder": "역할 선택",
+      "options": {
+        "developer": "개발자",
+        "designer": "디자이너",
+        "manager": "매니저",
+        "other": "기타"
+      }
+    },
+    "buttons": {
+      "cancel": "취소",
+      "create": "계정 생성"
+    }
+  }
+}

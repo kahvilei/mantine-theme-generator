@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "액션 컴포넌트",
+    "dataDisplay": "데이터 표시",
+    "navigationIndicators": "네비게이션 및 인디케이터",
+    "containersLayout": "컨테이너 및 레이아웃"
+  },
+  "labels": {
+    "buttonSizes": "버튼 크기",
+    "actionIconVariants": "액션아이콘 변형",
+    "menuComponent": "메뉴 컴포넌트",
+    "avatarIndicator": "아바타 및 인디케이터",
+    "progressRingProgress": "프로그레스 및 링프로그레스",
+    "table": "테이블",
+    "tabsVariants": "탭 변형",
+    "navLink": "네비게이션 링크",
+    "stepper": "스테퍼",
+    "accordion": "아코디언",
+    "alertVariants": "알림 변형",
+    "hoverCard": "호버카드"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "메뉴 열기",
+    "hoverMe": "마우스 올리기"
+  },
+  "menu": {
+    "application": "애플리케이션",
+    "settings": "설정",
+    "messages": "메시지",
+    "gallery": "갤러리",
+    "search": "검색"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "항목",
+      "price": "가격",
+      "status": "상태"
+    },
+    "items": {
+      "laptop": "노트북",
+      "phone": "휴대폰",
+      "headphones": "헤드폰"
+    },
+    "prices": {
+      "laptop": "₩1,299,000",
+      "phone": "₩699,000",
+      "headphones": "₩199,000"
+    },
+    "statuses": {
+      "inStock": "재고 있음",
+      "outOfStock": "품절"
+    }
+  },
+  "tabs": {
+    "gallery": "갤러리",
+    "messages": "메시지",
+    "settings": "설정"
+  },
+  "navLink": {
+    "dashboard": "대시보드",
+    "settings": "설정",
+    "messages": "메시지"
+  },
+  "stepper": {
+    "step1": {
+      "label": "1단계",
+      "description": "계정 생성"
+    },
+    "step2": {
+      "label": "2단계",
+      "description": "이메일 인증"
+    },
+    "step3": {
+      "label": "3단계",
+      "description": "프로필 완성"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "Mantine이란 무엇인가요?",
+      "content": "Mantine은 사용성, 접근성 및 개발자 경험에 중점을 둔 React 컴포넌트 라이브러리입니다."
+    },
+    "item2": {
+      "title": "커스터마이징",
+      "content": "Mantine 컴포넌트는 전역 테마 및 인라인 스타일로 커스터마이징할 수 있습니다."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "정보",
+      "content": "이것은 기본 스타일의 정보 알림입니다"
+    },
+    "success": {
+      "title": "성공",
+      "content": "이것은 채워진 스타일의 성공 알림입니다"
+    },
+    "warning": {
+      "title": "경고",
+      "content": "이것은 윤곽선 스타일의 경고 알림입니다"
+    }
+  },
+  "hoverCard": {
+    "content": "이것은 마우스를 올렸을 때 나타나는 정보가 있는 호버카드 드롭다운입니다."
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "analytics": {
+    "title": "نظرة عامة على التحليلات",
+    "subtitle": "مقاييس الأداء الشهرية",
+    "timeframes": {
+      "day": "يوم",
+      "week": "أسبوع",
+      "month": "شهر"
+    },
+    "charts": {
+      "visitors": "الزوار",
+      "conversions": "التحويلات",
+      "revenue": "الإيرادات"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "إجمالي المستخدمين",
+      "increase": "+١٢.٣٪"
+    },
+    "revenue": {
+      "title": "الإيرادات",
+      "increase": "+٨.٧٪"
+    },
+    "sessions": {
+      "title": "الجلسات",
+      "increase": "+٢٥.٨٪"
+    },
+    "engagement": {
+      "title": "المشاركة",
+      "decrease": "-٣.٢٪"
+    }
+  },
+  "activities": {
+    "title": "الأنشطة الحديثة",
+    "addNew": "إضافة جديد",
+    "items": {
+      "statusUpdate": "قام محمد بتحديث حالة المشروع إلى \"مكتمل\"",
+      "fileUpload": "قامت سارة برفع ملف جديد \"design-mockup.fig\"",
+      "meeting": "تم جدولة اجتماع الفريق غداً الساعة ١٠:٠٠ صباحاً",
+      "comment": "تعليق جديد على مهمة \"إنشاء مخطط تدفق المستخدم\"",
+      "taskComplete": "أكمل أحمد مهمة \"كتابة توثيق API\"",
+      "maintenance": "صيانة النظام مجدولة ليوم الأحد",
+      "feature": "قدمت فاطمة طلب ميزة جديدة"
+    },
+    "timeAgo": {
+      "minutes": "منذ {{count}} دقيقة",
+      "hours": "منذ {{count}} ساعة",
+      "days": "منذ {{count}} يوم",
+      "daysPlural": "منذ {{count}} أيام"
+    }
+  },
+  "deviceUsage": {
+    "title": "استخدام الأجهزة",
+    "devices": {
+      "desktop": "سطح المكتب",
+      "mobile": "الجوال",
+      "tablet": "الجهاز اللوحي"
+    }
+  },
+  "teamPerformance": {
+    "title": "أداء الفريق",
+    "teams": {
+      "design": "التصميم",
+      "frontend": "الواجهة الأمامية",
+      "backend": "الخلفية",
+      "qa": "ضمان الجودة"
+    },
+    "tasks": "مهام"
+  }
+}

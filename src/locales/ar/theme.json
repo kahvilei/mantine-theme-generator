@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "لوحة التحكم بالسمة",
+    "download": "تنزيل السمة بصيغة {{format}}",
+    "upload": "رفع السمة (JSON أو TypeScript)",
+    "uploadError": "فشل في معالجة ملف السمة. تأكد من أنه ملف سمة JSON أو TypeScript صالح: {{error}}",
+    "resetTheme": "إعادة ضبط السمة",
+    "resetConfirmation": "هل أنت متأكد من رغبتك في إعادة ضبط السمة؟ سيؤدي هذا إلى حذف جميع التغييرات الحالية."
+  },
+  "tabs": {
+    "quickSetup": "الإعداد السريع",
+    "color": "اللون",
+    "typography": "الطباعة",
+    "sizeAndLayout": "الحجم والتخطيط",
+    "components": "المكونات"
+  },
+  "setup": {
+    "premadeThemes": "سمات جاهزة",
+    "primaryColor": "اللون الأساسي",
+    "fontFamilies": "عائلات الخطوط"
+  },
+  "colors": {
+    "panel": {
+      "title": "عناصر التحكم بالألوان",
+      "primaryColor": "اللون الأساسي",
+      "primaryColorSelector": "اللون الأساسي",
+      "customColors": "ألوان مخصصة",
+      "mantineOverrides": "تجاوزات لون Mantine",
+      "contentColors": "ألوان المحتوى",
+      "situationalColors": "ألوان موقفية",
+      "otherOverrides": "تجاوزات لون Mantine أخرى",
+      "defaultGradient": "التدرج الافتراضي"
+    },
+    "editor": {
+      "addColor": "إضافة لون جديد",
+      "addColorButton": "إضافة لون جديد",
+      "updateColor": "تحديث اللون",
+      "name": "الاسم",
+      "color": "اللون",
+      "dark": "داكن",
+      "light": "فاتح",
+      "shade": "ظل {{index}}"
+    },
+    "categories": {
+      "customColors": "ألوان مخصصة",
+      "mantineColors": "ألوان Mantine",
+      "standard": "قياسية",
+      "virtual": "افتراضية"
+    }
+  },
+  "typography": {
+    "settings": "إعدادات الطباعة",
+    "headings": "العناوين",
+    "size": "الحجم",
+    "lineHeight": "ارتفاع السطر",
+    "weight": "السمك",
+    "preview": "{{heading}} نص المعاينة",
+    "fonts": {
+      "body": "النص الأساسي",
+      "headings": "العناوين",
+      "monospace": "أحادي المسافة",
+      "typeFacePreview": "أب"
+    }
+  },
+  "layout": {
+    "title": "عناصر التحكم بالمقياس والتخطيط",
+    "scale": "المقياس",
+    "scaleValue": "{{value}}x",
+    "spacing": "التباعد",
+    "breakpoints": "نقاط التوقف",
+    "radius": {
+      "title": "الزاوية",
+      "default": "الزاوية الافتراضية",
+      "settings": "إعدادات الزاوية"
+    }
+  },
+  "interaction": {
+    "title": "التفاعل وإمكانية الوصول",
+    "focusRing": "حلقة التركيز",
+    "options": {
+      "auto": "تلقائي",
+      "always": "دائماً",
+      "never": "أبداً",
+      "default": "افتراضي",
+      "pointer": "مؤشر"
+    },
+    "accessibility": "إمكانية الوصول",
+    "fontSmoothing": "تنعيم الخط",
+    "respectReducedMotion": "احترام تقليل الحركة",
+    "cursorType": "نوع المؤشر"
+  },
+  "components": {
+    "title": "عناصر التحكم بالمكونات",
+    "description": "حدد مكوناً أدناه لتعريف الخصائص والأنماط الافتراضية. سيتم تطبيق هذه القواعد على جميع حالات المكون في السمة.",
+    "addRule": "إضافة قاعدة مكون",
+    "selectComponent": "اختيار مكون",
+    "choosePlaceholder": "اختر مكوناً للتخصيص",
+    "docsReference": "للرجوع إلى واجهة برمجة تطبيقات خصائص وأنماط كل مكون، راجع",
+    "docsReferenceCont": "، أو انقر على الأيقونة بجانب أسماء المكونات المضافة.",
+    "docsLink": "توثيق Mantine",
+    "defaultProps": "الخصائص الافتراضية",
+    "stylesAPI": "واجهة برمجة تطبيقات الأنماط",
+    "property": {
+      "addProperty": "إضافة خاصية",
+      "addStyleProperty": "إضافة خاصية نمط",
+      "addStyleSelector": "إضافة محدد نمط",
+      "componentProps": "خصائص المكون",
+      "styleProps": "خصائص النمط"
+    },
+    "categories": {
+      "inputs": "المدخلات",
+      "navigation": "التنقل",
+      "layout": "التخطيط",
+      "typography": "الطباعة",
+      "feedback": "الملاحظات",
+      "data": "البيانات",
+      "overlays": "الطبقات",
+      "other": "أخرى"
+    }
+  }
+}

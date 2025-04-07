@@ -1,0 +1,84 @@
+{
+  "analytics": {
+    "title": "विश्लेषण डैशबोर्ड",
+    "subtitle": "आपके प्रदर्शन का परिदृश्य",
+    "timeframes": {
+      "day": "दिन",
+      "week": "सप्ताह",
+      "month": "महीना"
+    },
+    "charts": {
+      "visitors": "आगंतुक",
+      "conversions": "रूपांतरण",
+      "revenue": "राजस्व"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "कुल उपयोगकर्ता",
+      "increase": "8.1% बढ़त"
+    },
+    "revenue": {
+      "title": "कुल राजस्व",
+      "increase": "12.3% बढ़त"
+    },
+    "sessions": {
+      "title": "सत्र",
+      "increase": "5.2% बढ़त"
+    },
+    "engagement": {
+      "title": "जुड़ाव दर",
+      "decrease": "2.1% कमी"
+    }
+  },
+  "activities": {
+    "title": "हाल की गतिविधियाँ",
+    "addNew": "नया जोड़ें",
+    "items": {
+      "statusUpdate": "प्रोजेक्ट स्टेटस अपडेट",
+      "fileUpload": "नई फ़ाइल अपलोड की गई",
+      "meeting": "टीम मीटिंग शेड्यूल हुई",
+      "comment": "टास्क पर नया कमेंट",
+      "taskComplete": "प्रोजेक्ट मिलस्टोन पूरा हुआ",
+      "maintenance": "सिस्टम रखरखाव शेड्यूल हुआ",
+      "feature": "नई फीचर रिलीज़"
+    },
+    "timeAgo": {
+      "minutes": "{{count}} मिनट पहले",
+      "hours": "{{count}} घंटे पहले",
+      "days": "{{count}} दिन पहले"
+    }
+  },
+  "deviceUsage": {
+    "title": "डिवाइस उपयोग",
+    "devices": {
+      "desktop": "डेस्कटॉप",
+      "mobile": "मोबाइल",
+      "tablet": "टैबलेट"
+    }
+  },
+  "teamPerformance": {
+    "title": "टीम प्रदर्शन",
+    "tasks": "पूरे किए गए कार्य",
+    "teams": {
+      "design": "डिज़ाइन",
+      "frontend": "फ्रंटएंड",
+      "backend": "बैकएंड",
+      "qa": "क्यूए"
+    }
+  },
+  "months": {
+    "jan": "जन",
+    "feb": "फर",
+    "mar": "मार्च",
+    "apr": "अप्रै",
+    "may": "मई",
+    "jun": "जून",
+    "jul": "जुल",
+    "aug": "अग",
+    "sep": "सित",
+    "oct": "अक्टू",
+    "nov": "नव",
+    "dec": "दिस"
+  }
+}

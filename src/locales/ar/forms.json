@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "عناصر التحكم الأساسية للنموذج",
+    "specializedInputs": "إدخالات متخصصة",
+    "completeForm": "مثال نموذج كامل"
+  },
+  "labels": {
+    "textInputs": "إدخالات النص",
+    "variantsSizes": "الأنواع والأحجام",
+    "inputTypes": "أنواع الإدخال",
+    "toggleControls": "عناصر التبديل"
+  },
+  "inputs": {
+    "default": {
+      "label": "إدخال افتراضي",
+      "placeholder": "أدخل بعض النص"
+    },
+    "withDescription": {
+      "label": "مع وصف",
+      "placeholder": "أدخل بعض النص",
+      "description": "هذا وصف للإدخال"
+    },
+    "withError": {
+      "label": "مع خطأ",
+      "placeholder": "أدخل بعض النص",
+      "error": "هذا الحقل مطلوب"
+    },
+    "withIcon": {
+      "label": "مع أيقونة",
+      "placeholder": "بحث..."
+    },
+    "disabled": {
+      "label": "إدخال معطل",
+      "placeholder": "هذا معطل"
+    },
+    "variants": {
+      "default": {
+        "label": "افتراضي",
+        "placeholder": "النوع الافتراضي"
+      },
+      "filled": {
+        "label": "ممتلئ",
+        "placeholder": "النوع الممتلئ"
+      },
+      "unstyled": {
+        "label": "بدون تنسيق",
+        "placeholder": "النوع بدون تنسيق"
+      }
+    },
+    "sizes": {
+      "xs": "حجم صغير جداً",
+      "sm": "حجم صغير",
+      "md": "حجم متوسط",
+      "lg": "حجم كبير",
+      "xl": "حجم كبير جداً"
+    },
+    "specialized": {
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "أدخل كلمة المرور"
+      },
+      "number": {
+        "label": "رقم",
+        "placeholder": "أدخل رقماً"
+      },
+      "file": {
+        "label": "رفع ملف",
+        "placeholder": "انقر للرفع"
+      },
+      "select": {
+        "label": "اختر خياراً",
+        "placeholder": "اختر واحداً",
+        "options": {
+          "option1": "الخيار ١",
+          "option2": "الخيار ٢",
+          "option3": "الخيار ٣"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "مربع اختيار",
+      "indeterminate": "غير محدد",
+      "checked": "محدد",
+      "disabled": "معطل",
+      "terms": "أوافق على الشروط والأحكام"
+    },
+    "switch": {
+      "default": "مفتاح",
+      "checked": "محدد",
+      "disabled": "معطل"
+    },
+    "radio": {
+      "group": "مجموعة أزرار الراديو",
+      "description": "اختر خياراً واحداً",
+      "option1": "الخيار ١",
+      "option2": "الخيار ٢",
+      "option3": "الخيار ٣"
+    },
+    "chips": {
+      "react": "رياكت",
+      "vue": "فيو",
+      "angular": "أنجولار"
+    },
+    "slider": {
+      "20": "٢٠٪",
+      "50": "٥٠٪",
+      "80": "٨٠٪"
+    }
+  },
+  "form": {
+    "title": "إنشاء حساب",
+    "firstName": {
+      "label": "الاسم الأول",
+      "placeholder": "محمد"
+    },
+    "lastName": {
+      "label": "اسم العائلة",
+      "placeholder": "العبدالله"
+    },
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "بريدك@example.com"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "أنشئ كلمة مرور قوية"
+    },
+    "role": {
+      "label": "الدور",
+      "placeholder": "اختر دورك",
+      "options": {
+        "developer": "مطور",
+        "designer": "مصمم",
+        "manager": "مدير",
+        "other": "أخرى"
+      }
+    },
+    "buttons": {
+      "cancel": "إلغاء",
+      "create": "إنشاء حساب"
+    }
+  }
+}

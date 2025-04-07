@@ -1,0 +1,84 @@
+{
+  "analytics": {
+    "title": "분석 대시보드",
+    "subtitle": "성과 개요",
+    "timeframes": {
+      "day": "일",
+      "week": "주",
+      "month": "월"
+    },
+    "charts": {
+      "visitors": "방문자",
+      "conversions": "전환율",
+      "revenue": "수익"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "총 사용자",
+      "increase": "8.1% 증가"
+    },
+    "revenue": {
+      "title": "총 수익",
+      "increase": "12.3% 증가"
+    },
+    "sessions": {
+      "title": "세션",
+      "increase": "5.2% 증가"
+    },
+    "engagement": {
+      "title": "참여율",
+      "decrease": "2.1% 감소"
+    }
+  },
+  "activities": {
+    "title": "최근 활동",
+    "addNew": "새로 추가",
+    "items": {
+      "statusUpdate": "프로젝트 상태 업데이트",
+      "fileUpload": "새 파일 업로드됨",
+      "meeting": "팀 회의 예약됨",
+      "comment": "작업에 새 댓글",
+      "taskComplete": "프로젝트 마일스톤 완료",
+      "maintenance": "시스템 유지보수 예약됨",
+      "feature": "새 기능 출시"
+    },
+    "timeAgo": {
+      "minutes": "{{count}}분 전",
+      "hours": "{{count}}시간 전",
+      "days": "{{count}}일 전"
+    }
+  },
+  "deviceUsage": {
+    "title": "기기 사용량",
+    "devices": {
+      "desktop": "데스크톱",
+      "mobile": "모바일",
+      "tablet": "태블릿"
+    }
+  },
+  "teamPerformance": {
+    "title": "팀 성과",
+    "tasks": "완료된 작업",
+    "teams": {
+      "design": "디자인",
+      "frontend": "프론트엔드",
+      "backend": "백엔드",
+      "qa": "QA"
+    }
+  },
+  "months": {
+    "jan": "1월",
+    "feb": "2월",
+    "mar": "3월",
+    "apr": "4월",
+    "may": "5월",
+    "jun": "6월",
+    "jul": "7월",
+    "aug": "8월",
+    "sep": "9월",
+    "oct": "10월",
+    "nov": "11월",
+    "dec": "12월"
+  }
+}

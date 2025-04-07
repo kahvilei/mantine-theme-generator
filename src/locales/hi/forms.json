@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "बुनियादी फॉर्म नियंत्रण",
+    "specializedInputs": "विशेष इनपुट",
+    "completeForm": "पूर्ण फॉर्म उदाहरण"
+  },
+  "labels": {
+    "textInputs": "टेक्स्ट इनपुट",
+    "variantsSizes": "प्रकार और आकार",
+    "inputTypes": "इनपुट प्रकार",
+    "toggleControls": "टॉगल नियंत्रण"
+  },
+  "inputs": {
+    "default": {
+      "label": "डिफॉल्ट इनपुट",
+      "placeholder": "कुछ टेक्स्ट दर्ज करें"
+    },
+    "withDescription": {
+      "label": "विवरण के साथ",
+      "placeholder": "कुछ टेक्स्ट दर्ज करें",
+      "description": "यह इनपुट के लिए एक विवरण है"
+    },
+    "withError": {
+      "label": "त्रुटि के साथ",
+      "placeholder": "कुछ टेक्स्ट दर्ज करें",
+      "error": "यह फील्ड आवश्यक है"
+    },
+    "withIcon": {
+      "label": "आइकन के साथ",
+      "placeholder": "खोजें..."
+    },
+    "disabled": {
+      "label": "अक्षम इनपुट",
+      "placeholder": "यह अक्षम है"
+    },
+    "variants": {
+      "default": {
+        "label": "डिफॉल्ट",
+        "placeholder": "डिफॉल्ट प्रकार"
+      },
+      "filled": {
+        "label": "भरा हुआ",
+        "placeholder": "भरा हुआ प्रकार"
+      },
+      "unstyled": {
+        "label": "बिना स्टाइल",
+        "placeholder": "बिना स्टाइल प्रकार"
+      }
+    },
+    "sizes": {
+      "xs": "XS आकार",
+      "sm": "SM आकार",
+      "md": "MD आकार",
+      "lg": "LG आकार",
+      "xl": "XL आकार"
+    },
+    "specialized": {
+      "password": {
+        "label": "पासवर्ड",
+        "placeholder": "अपना पासवर्ड दर्ज करें"
+      },
+      "number": {
+        "label": "संख्या",
+        "placeholder": "एक संख्या दर्ज करें"
+      },
+      "file": {
+        "label": "फ़ाइल अपलोड करें",
+        "placeholder": "अपलोड करने के लिए क्लिक करें"
+      },
+      "select": {
+        "label": "विकल्प चुनें",
+        "placeholder": "एक चुनें",
+        "options": {
+          "option1": "विकल्प 1",
+          "option2": "विकल्प 2",
+          "option3": "विकल्प 3"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "चेकबॉक्स",
+      "indeterminate": "अनिर्धारित",
+      "checked": "चेक किया गया",
+      "disabled": "अक्षम",
+      "terms": "मैं नियम और शर्तों से सहमत हूं"
+    },
+    "switch": {
+      "default": "स्विच",
+      "checked": "चेक किया गया",
+      "disabled": "अक्षम"
+    },
+    "radio": {
+      "group": "रेडियो समूह",
+      "description": "एक विकल्प चुनें",
+      "option1": "विकल्प 1",
+      "option2": "विकल्प 2",
+      "option3": "विकल्प 3"
+    },
+    "chips": {
+      "react": "रिएक्ट",
+      "vue": "व्यू",
+      "angular": "एंगुलर"
+    },
+    "slider": {
+      "20": "20%",
+      "50": "50%",
+      "80": "80%"
+    }
+  },
+  "form": {
+    "title": "खाता बनाएं",
+    "firstName": {
+      "label": "पहला नाम",
+      "placeholder": "राहुल"
+    },
+    "lastName": {
+      "label": "अंतिम नाम",
+      "placeholder": "शर्मा"
+    },
+    "email": {
+      "label": "ईमेल",
+      "placeholder": "आपका@ईमेल.com"
+    },
+    "password": {
+      "label": "पासवर्ड",
+      "placeholder": "एक मजबूत पासवर्ड बनाएं"
+    },
+    "role": {
+      "label": "भूमिका",
+      "placeholder": "अपनी भूमिका चुनें",
+      "options": {
+        "developer": "डेवलपर",
+        "designer": "डिज़ाइनर",
+        "manager": "प्रबंधक",
+        "other": "अन्य"
+      }
+    },
+    "buttons": {
+      "cancel": "रद्द करें",
+      "create": "खाता बनाएं"
+    }
+  }
+}

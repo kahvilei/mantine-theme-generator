@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "مكونات الإجراءات",
+    "dataDisplay": "عرض البيانات",
+    "navigationIndicators": "التنقل والمؤشرات",
+    "containersLayout": "الحاويات والتخطيط"
+  },
+  "labels": {
+    "buttonSizes": "أحجام الأزرار",
+    "actionIconVariants": "أنواع أيقونة الإجراء",
+    "menuComponent": "مكون القائمة",
+    "avatarIndicator": "الصورة الرمزية والمؤشر",
+    "progressRingProgress": "شريط التقدم وحلقة التقدم",
+    "table": "جدول",
+    "tabsVariants": "أنواع التبويبات",
+    "navLink": "رابط التنقل",
+    "stepper": "الخطوات",
+    "accordion": "أكورديون",
+    "alertVariants": "أنواع التنبيهات",
+    "hoverCard": "بطاقة التمرير"
+  },
+  "buttons": {
+    "xs": "صغير جداً",
+    "sm": "صغير",
+    "md": "متوسط",
+    "lg": "كبير",
+    "xl": "كبير جداً",
+    "openMenu": "فتح القائمة",
+    "hoverMe": "مرر فوقي"
+  },
+  "menu": {
+    "application": "التطبيق",
+    "settings": "الإعدادات",
+    "messages": "الرسائل",
+    "gallery": "المعرض",
+    "search": "البحث"
+  },
+  "progress": {
+    "percentage": "٦٥٪"
+  },
+  "table": {
+    "headers": {
+      "item": "العنصر",
+      "price": "السعر",
+      "status": "الحالة"
+    },
+    "items": {
+      "laptop": "حاسوب محمول",
+      "phone": "هاتف",
+      "headphones": "سماعات رأس"
+    },
+    "prices": {
+      "laptop": "٤،٩٩٩ ريال",
+      "phone": "٢،٤٩٩ ريال",
+      "headphones": "٧٩٩ ريال"
+    },
+    "statuses": {
+      "inStock": "متوفر",
+      "outOfStock": "غير متوفر"
+    }
+  },
+  "tabs": {
+    "gallery": "المعرض",
+    "messages": "الرسائل",
+    "settings": "الإعدادات"
+  },
+  "navLink": {
+    "dashboard": "لوحة التحكم",
+    "settings": "الإعدادات",
+    "messages": "الرسائل"
+  },
+  "stepper": {
+    "step1": {
+      "label": "الخطوة ١",
+      "description": "إنشاء حساب"
+    },
+    "step2": {
+      "label": "الخطوة ٢",
+      "description": "تأكيد البريد الإلكتروني"
+    },
+    "step3": {
+      "label": "الخطوة ٣",
+      "description": "إكمال الملف الشخصي"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "ما هو Mantine؟",
+      "content": "Mantine هي مكتبة مكونات React تركز على سهولة الاستخدام وإمكانية الوصول وتجربة المطور."
+    },
+    "item2": {
+      "title": "التخصيص",
+      "content": "يمكن تخصيص مكونات Mantine باستخدام السمة العامة وأنماط مضمنة."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "معلومات",
+      "content": "هذا تنبيه معلوماتي بالنمط الافتراضي"
+    },
+    "success": {
+      "title": "نجاح",
+      "content": "هذا تنبيه نجاح بنمط ممتلئ"
+    },
+    "warning": {
+      "title": "تحذير",
+      "content": "هذا تنبيه تحذير بنمط مخطط"
+    }
+  },
+  "hoverCard": {
+    "content": "هذه قائمة منسدلة لبطاقة التمرير مع معلومات تظهر عند التمرير."
+  }
+}

@@ -95,7 +95,31 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
         flag: '🇷🇺',
         isRTL: false,
         fontFamily: "'Noto Sans', 'Noto Sans Cyrillic', sans-serif",
-    }
+    },
+    {
+        code: 'hi',
+        nativeName: 'हिन्दी',
+        englishName: 'Hindi',
+        flag: '🇮🇳',
+        isRTL: false,
+        fontFamily: "'Noto Sans Devanagari', sans-serif",
+    },
+    {
+        code: 'ko',
+        nativeName: '한국어',
+        englishName: 'Korean',
+        flag: '🇰🇷',
+        isRTL: false,
+        fontFamily: "'Noto Sans KR', sans-serif",
+    },
+    {
+        code: 'ar',
+        nativeName: 'العربية',
+        englishName: 'Arabic',
+        flag: '🇸🇦',
+        isRTL: true,
+        fontFamily: "'Noto Sans Arabic', sans-serif",
+    },
 ];
 
 /**

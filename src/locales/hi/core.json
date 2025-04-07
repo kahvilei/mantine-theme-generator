@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "मैंटिन थीम एडिटर",
+    "version": "मैंटिन v{{version}} पर चल रहा है",
+    "links": {
+      "github": "GitHub पर देखें",
+      "docs": "मैंटिन डॉक्युमेंटेशन देखें"
+    },
+    "language": "भाषा बदलें",
+    "theme": "लाइट/डार्क मोड टॉगल करें"
+  },
+  "status": {
+    "loading": "लोड हो रहा है...",
+    "error": "एक त्रुटि हुई",
+    "success": "सफलता!"
+  },
+  "actions": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "apply": "लागू करें",
+    "reset": "रीसेट करें",
+    "delete": "हटाएं",
+    "add": "जोड़ें",
+    "edit": "संपादित करें",
+    "select": "चुनें"
+  },
+  "navigation": {
+    "dashboard": "डैशबोर्ड",
+    "typography": "टाइपोग्राफी",
+    "components": "कंपोनेंट्स",
+    "forms": "फॉर्म",
+    "overview": "अवलोकन"
+  },
+  "display": {
+    "darkMode": "डार्क मोड",
+    "lightMode": "लाइट मोड",
+    "sideBySide": "साइड बाय साइड"
+  }
+}

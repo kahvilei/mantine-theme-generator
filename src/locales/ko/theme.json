@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "테마 제어 패널",
+    "download": "테마를 {{format}}(으)로 다운로드",
+    "upload": "테마 업로드 (JSON 또는 TypeScript)",
+    "uploadError": "테마 파일을 처리하는 데 실패했습니다. 유효한 JSON 또는 TypeScript 테마 파일인지 확인하세요: {{error}}",
+    "resetTheme": "테마 초기화",
+    "resetConfirmation": "정말로 테마를 초기화하시겠습니까? 현재 모든 변경사항이 삭제됩니다."
+  },
+  "tabs": {
+    "quickSetup": "빠른 설정",
+    "color": "색상",
+    "typography": "타이포그래피",
+    "sizeAndLayout": "크기 및 레이아웃",
+    "components": "컴포넌트"
+  },
+  "setup": {
+    "premadeThemes": "미리 만들어진 테마",
+    "primaryColor": "기본 색상",
+    "fontFamilies": "글꼴 패밀리"
+  },
+  "colors": {
+    "panel": {
+      "title": "색상 제어",
+      "primaryColor": "기본 색상",
+      "primaryColorSelector": "기본 색상",
+      "customColors": "사용자 정의 색상",
+      "mantineOverrides": "Mantine 색상 재정의",
+      "contentColors": "콘텐츠 색상",
+      "situationalColors": "상황별 색상",
+      "otherOverrides": "기타 Mantine 색상 재정의",
+      "defaultGradient": "기본 그라데이션"
+    },
+    "editor": {
+      "addColor": "새 색상 추가",
+      "addColorButton": "새 색상 추가",
+      "updateColor": "색상 업데이트",
+      "name": "이름",
+      "color": "색상",
+      "dark": "어두움",
+      "light": "밝음",
+      "shade": "음영 {{index}}"
+    },
+    "categories": {
+      "customColors": "사용자 정의 색상",
+      "mantineColors": "Mantine 색상",
+      "standard": "표준",
+      "virtual": "가상"
+    }
+  },
+  "typography": {
+    "settings": "타이포그래피 설정",
+    "headings": "제목",
+    "size": "크기",
+    "lineHeight": "줄 높이",
+    "weight": "두께",
+    "preview": "{{heading}} 미리보기 텍스트",
+    "fonts": {
+      "body": "본문",
+      "headings": "제목",
+      "monospace": "고정폭",
+      "typeFacePreview": "가나"
+    }
+  },
+  "layout": {
+    "title": "크기 및 레이아웃 제어",
+    "scale": "스케일",
+    "scaleValue": "{{value}}x",
+    "spacing": "간격",
+    "breakpoints": "중단점",
+    "radius": {
+      "title": "반경",
+      "default": "기본 반경",
+      "settings": "반경 설정"
+    }
+  },
+  "interaction": {
+    "title": "상호작용 및 접근성",
+    "focusRing": "포커스 링",
+    "options": {
+      "auto": "자동",
+      "always": "항상",
+      "never": "없음",
+      "default": "기본",
+      "pointer": "포인터"
+    },
+    "accessibility": "접근성",
+    "fontSmoothing": "글꼴 부드럽게",
+    "respectReducedMotion": "모션 감소 존중",
+    "cursorType": "커서 유형"
+  },
+  "components": {
+    "title": "컴포넌트 제어",
+    "description": "아래에서 컴포넌트를 선택하여 기본 속성과 스타일을 정의하세요. 이 규칙은 테마의 모든 컴포넌트 인스턴스에 적용됩니다.",
+    "addRule": "컴포넌트 규칙 추가",
+    "selectComponent": "컴포넌트 선택",
+    "choosePlaceholder": "사용자 정의할 컴포넌트 선택",
+    "docsReference": "각 컴포넌트의 속성 및 스타일 API에 대한 참조는",
+    "docsReferenceCont": "을 참조하거나, 추가된 컴포넌트 이름 옆의 아이콘을 클릭하세요.",
+    "docsLink": "Mantine 문서",
+    "defaultProps": "기본 속성",
+    "stylesAPI": "스타일 API",
+    "property": {
+      "addProperty": "속성 추가",
+      "addStyleProperty": "스타일 속성 추가",
+      "addStyleSelector": "스타일 선택자 추가",
+      "componentProps": "컴포넌트 속성",
+      "styleProps": "스타일 속성"
+    },
+    "categories": {
+      "inputs": "입력",
+      "navigation": "네비게이션",
+      "layout": "레이아웃",
+      "typography": "타이포그래피",
+      "feedback": "피드백",
+      "data": "데이터",
+      "overlays": "오버레이",
+      "other": "기타"
+    }
+  }
+}

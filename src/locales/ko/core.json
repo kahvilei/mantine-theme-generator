@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mantine 테마 에디터",
+    "version": "Mantine v{{version}} 버전에서 실행 중",
+    "links": {
+      "github": "GitHub에서 보기",
+      "docs": "Mantine 문서 보기"
+    },
+    "language": "언어 변경",
+    "theme": "라이트/다크 모드 전환"
+  },
+  "status": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "success": "성공!"
+  },
+  "actions": {
+    "save": "저장",
+    "cancel": "취소",
+    "apply": "적용",
+    "reset": "초기화",
+    "delete": "삭제",
+    "add": "추가",
+    "edit": "편집",
+    "select": "선택"
+  },
+  "navigation": {
+    "dashboard": "대시보드",
+    "typography": "타이포그래피",
+    "components": "컴포넌트",
+    "forms": "폼",
+    "overview": "개요"
+  },
+  "display": {
+    "darkMode": "다크 모드",
+    "lightMode": "라이트 모드",
+    "sideBySide": "나란히 보기"
+  }
+}

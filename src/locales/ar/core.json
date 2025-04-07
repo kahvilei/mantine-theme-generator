@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "محرر سمة Mantine",
+    "version": "يعمل على Mantine الإصدار {{version}}",
+    "links": {
+      "github": "عرض على GitHub",
+      "docs": "عرض توثيق Mantine"
+    },
+    "language": "تغيير اللغة",
+    "theme": "تبديل الوضع الفاتح/الداكن"
+  },
+  "status": {
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح!"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "apply": "تطبيق",
+    "reset": "إعادة ضبط",
+    "delete": "حذف",
+    "add": "إضافة",
+    "edit": "تعديل",
+    "select": "اختيار"
+  },
+  "navigation": {
+    "dashboard": "لوحة التحكم",
+    "typography": "الطباعة",
+    "components": "المكونات",
+    "forms": "النماذج",
+    "overview": "نظرة عامة"
+  },
+  "display": {
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "sideBySide": "جنباً إلى جنب"
+  }
+}

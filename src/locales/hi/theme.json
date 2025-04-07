@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "थीम कंट्रोल पैनल",
+    "download": "थीम को {{format}} के रूप में डाउनलोड करें",
+    "upload": "थीम अपलोड करें (JSON या TypeScript)",
+    "uploadError": "थीम फ़ाइल को प्रोसेस करने में विफल। सुनिश्चित करें कि यह एक वैध JSON या TypeScript थीम फ़ाइल है: {{error}}",
+    "resetTheme": "थीम रीसेट करें",
+    "resetConfirmation": "क्या आप वाकई थीम को रीसेट करना चाहते हैं? इससे सभी वर्तमान परिवर्तन हट जाएंगे।"
+  },
+  "tabs": {
+    "quickSetup": "त्वरित सेटअप",
+    "color": "रंग",
+    "typography": "टाइपोग्राफी",
+    "sizeAndLayout": "आकार और लेआउट",
+    "components": "कंपोनेंट्स"
+  },
+  "setup": {
+    "premadeThemes": "पूर्वनिर्मित थीम",
+    "primaryColor": "प्राथमिक रंग",
+    "fontFamilies": "फॉन्ट फैमिली"
+  },
+  "colors": {
+    "panel": {
+      "title": "रंग नियंत्रण",
+      "primaryColor": "प्राथमिक रंग",
+      "primaryColorSelector": "प्राथमिक रंग",
+      "customColors": "कस्टम रंग",
+      "mantineOverrides": "मैंटिन रंग ओवरराइड",
+      "contentColors": "सामग्री रंग",
+      "situationalColors": "परिस्थितिजन्य रंग",
+      "otherOverrides": "अन्य मैंटिन रंग ओवरराइड",
+      "defaultGradient": "डिफॉल्ट ग्रेडिएंट"
+    },
+    "editor": {
+      "addColor": "नया रंग जोड़ें",
+      "addColorButton": "नया रंग जोड़ें",
+      "updateColor": "रंग अपडेट करें",
+      "name": "नाम",
+      "color": "रंग",
+      "dark": "डार्क",
+      "light": "लाइट",
+      "shade": "शेड {{index}}"
+    },
+    "categories": {
+      "customColors": "कस्टम रंग",
+      "mantineColors": "मैंटिन रंग",
+      "standard": "मानक",
+      "virtual": "वर्चुअल"
+    }
+  },
+  "typography": {
+    "settings": "टाइपोग्राफी सेटिंग्स",
+    "headings": "शीर्षक",
+    "size": "आकार",
+    "lineHeight": "लाइन हाइट",
+    "weight": "वजन",
+    "preview": "{{heading}} प्रीव्यू टेक्स्ट",
+    "fonts": {
+      "body": "बॉडी",
+      "headings": "शीर्षक",
+      "monospace": "मोनोस्पेस",
+      "typeFacePreview": "अा"
+    }
+  },
+  "layout": {
+    "title": "स्केल और लेआउट नियंत्रण",
+    "scale": "स्केल",
+    "scaleValue": "{{value}}x",
+    "spacing": "स्पेसिंग",
+    "breakpoints": "ब्रेकपॉइंट्स",
+    "radius": {
+      "title": "त्रिज्या",
+      "default": "डिफॉल्ट त्रिज्या",
+      "settings": "त्रिज्या सेटिंग्स"
+    }
+  },
+  "interaction": {
+    "title": "इंटरैक्शन और पहुंच",
+    "focusRing": "फोकस रिंग",
+    "options": {
+      "auto": "ऑटो",
+      "always": "हमेशा",
+      "never": "कभी नहीं",
+      "default": "डिफॉल्ट",
+      "pointer": "पॉइंटर"
+    },
+    "accessibility": "पहुंच",
+    "fontSmoothing": "फॉन्ट स्मूथिंग",
+    "respectReducedMotion": "कम मोशन का सम्मान करें",
+    "cursorType": "कर्सर प्रकार"
+  },
+  "components": {
+    "title": "कंपोनेंट नियंत्रण",
+    "description": "डिफॉल्ट प्रॉप्स और स्टाइल को परिभाषित करने के लिए नीचे एक कंपोनेंट चुनें। ये नियम थीम में कंपोनेंट के सभी उदाहरणों पर लागू होंगे।",
+    "addRule": "कंपोनेंट नियम जोड़ें",
+    "selectComponent": "कंपोनेंट चुनें",
+    "choosePlaceholder": "अनुकूलित करने के लिए एक कंपोनेंट चुनें",
+    "docsReference": "प्रत्येक कंपोनेंट के प्रॉप्स और स्टाइल्स API पर संदर्भ के लिए, देखें",
+    "docsReferenceCont": ", या जोड़े गए कंपोनेंट के नामों के बगल में आइकन पर क्लिक करें।",
+    "docsLink": "मैंटिन डॉक्युमेंटेशन",
+    "defaultProps": "डिफॉल्ट प्रॉप्स",
+    "stylesAPI": "स्टाइल्स API",
+    "property": {
+      "addProperty": "प्रॉपर्टी जोड़ें",
+      "addStyleProperty": "स्टाइल प्रॉपर्टी जोड़ें",
+      "addStyleSelector": "स्टाइल सेलेक्टर जोड़ें",
+      "componentProps": "कंपोनेंट प्रॉप्स",
+      "styleProps": "स्टाइल प्रॉप्स"
+    },
+    "categories": {
+      "inputs": "इनपुट",
+      "navigation": "नेविगेशन",
+      "layout": "लेआउट",
+      "typography": "टाइपोग्राफी",
+      "feedback": "प्रतिक्रिया",
+      "data": "डेटा",
+      "overlays": "ओवरले",
+      "other": "अन्य"
+    }
+  }
+}

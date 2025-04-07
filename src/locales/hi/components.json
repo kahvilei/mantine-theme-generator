@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "क्रिया कंपोनेंट",
+    "dataDisplay": "डेटा प्रदर्शन",
+    "navigationIndicators": "नेविगेशन और संकेतक",
+    "containersLayout": "कंटेनर्स और लेआउट"
+  },
+  "labels": {
+    "buttonSizes": "बटन आकार",
+    "actionIconVariants": "एक्शनआइकॉन प्रकार",
+    "menuComponent": "मेनू कंपोनेंट",
+    "avatarIndicator": "अवतार और संकेतक",
+    "progressRingProgress": "प्रगति और रिंगप्रगति",
+    "table": "तालिका",
+    "tabsVariants": "टैब प्रकार",
+    "navLink": "नेवलिंक",
+    "stepper": "स्टेपर",
+    "accordion": "अकॉर्डियन",
+    "alertVariants": "अलर्ट प्रकार",
+    "hoverCard": "हॉवरकार्ड"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "मेनू खोलें",
+    "hoverMe": "मुझ पर होवर करें"
+  },
+  "menu": {
+    "application": "एप्लिकेशन",
+    "settings": "सेटिंग्स",
+    "messages": "संदेश",
+    "gallery": "गैलरी",
+    "search": "खोज"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "वस्तु",
+      "price": "मूल्य",
+      "status": "स्थिति"
+    },
+    "items": {
+      "laptop": "लैपटॉप",
+      "phone": "फोन",
+      "headphones": "हेडफोन"
+    },
+    "prices": {
+      "laptop": "₹99,999",
+      "phone": "₹49,999",
+      "headphones": "₹14,999"
+    },
+    "statuses": {
+      "inStock": "स्टॉक में",
+      "outOfStock": "स्टॉक में नहीं"
+    }
+  },
+  "tabs": {
+    "gallery": "गैलरी",
+    "messages": "संदेश",
+    "settings": "सेटिंग्स"
+  },
+  "navLink": {
+    "dashboard": "डैशबोर्ड",
+    "settings": "सेटिंग्स",
+    "messages": "संदेश"
+  },
+  "stepper": {
+    "step1": {
+      "label": "चरण 1",
+      "description": "खाता बनाएं"
+    },
+    "step2": {
+      "label": "चरण 2",
+      "description": "ईमेल सत्यापित करें"
+    },
+    "step3": {
+      "label": "चरण 3",
+      "description": "प्रोफाइल पूरा करें"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "मैंटिन क्या है?",
+      "content": "मैंटिन एक रिएक्ट कंपोनेंट लाइब्रेरी है जिसका फोकस उपयोगिता, पहुंच और डेवलपर अनुभव पर है।"
+    },
+    "item2": {
+      "title": "अनुकूलन",
+      "content": "मैंटिन कंपोनेंट्स को ग्लोबल थीम और इनलाइन स्टाइल के साथ अनुकूलित किया जा सकता है।"
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "जानकारी",
+      "content": "यह डिफ़ॉल्ट स्टाइल के साथ एक सूचनात्मक अलर्ट है"
+    },
+    "success": {
+      "title": "सफलता",
+      "content": "यह भरे हुए स्टाइल के साथ एक सफलता अलर्ट है"
+    },
+    "warning": {
+      "title": "चेतावनी",
+      "content": "यह आउटलाइन स्टाइल के साथ एक चेतावनी अलर्ट है"
+    }
+  },
+  "hoverCard": {
+    "content": "यह एक हॉवरकार्ड ड्रॉपडाउन है जिसमें होवर करने पर जानकारी दिखाई देती है।"
+  }
+}

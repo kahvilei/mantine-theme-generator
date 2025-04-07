@@ -1,0 +1,37 @@
+{
+  "headings": {
+    "title": "العناوين",
+    "h1": "عنوان ١",
+    "h2": "عنوان ٢",
+    "h3": "عنوان ٣",
+    "h4": "عنوان ٤",
+    "h5": "عنوان ٥",
+    "h6": "عنوان ٦"
+  },
+  "textSizes": {
+    "title": "أحجام النص",
+    "xl": "نص كبير جداً",
+    "lg": "نص كبير",
+    "md": "نص متوسط",
+    "default": "(افتراضي)",
+    "sm": "نص صغير",
+    "xs": "نص صغير جداً"
+  },
+  "specialStyles": {
+    "title": "أنماط النص الخاصة",
+    "blockquoteText": "التصميم ليس مجرد كيف يبدو ويشعر. التصميم هو كيف يعمل.",
+    "blockquoteCite": "— مصمم مشهور",
+    "codeText": "const theme = useMantineTheme();",
+    "kbdText": "Ctrl + K",
+    "markText": "نص مع ",
+    "markHighlight": "محتوى مميز",
+    "markEnd": " بتنسيق خاص",
+    "anchorText": "رابط قابل للنقر"
+  },
+  "fontFamily": {
+    "title": "عائلة الخط",
+    "default": "افتراضي:",
+    "headings": "العناوين:",
+    "monospace": "أحادي المسافة:"
+  }
+}
