@@ -19,13 +19,67 @@ import {
     IconUpload,
     IconUser, IconUsersGroup
 } from "@tabler/icons-react";
-import React from "react";
+import React, { useMemo } from "react";
 import {AreaChart, BarChart, DonutChart} from "@mantine/charts";
 import { useTranslation } from 'react-i18next';
 
 export const Dashboard: React.FC = () => {
     // Use the dashboard namespace
     const { t } = useTranslation('dashboard');
+
+    // Create translated series keys
+    const seriesKeys = useMemo(() => ({
+        visitors: t('analytics.charts.visitors'),
+        conversions: t('analytics.charts.conversions'),
+        revenue: t('analytics.charts.revenue')
+    }), [t]);
+
+    // Generate chart data with translated keys
+    const chartData = useMemo(() => [
+        {
+            date: t('months.jan'),
+            [seriesKeys.visitors]: 4500,
+            [seriesKeys.conversions]: 2300,
+            [seriesKeys.revenue]: 8100
+        },
+        {
+            date: t('months.feb'),
+            [seriesKeys.visitors]: 5300,
+            [seriesKeys.conversions]: 2800,
+            [seriesKeys.revenue]: 9300
+        },
+        {
+            date: t('months.mar'),
+            [seriesKeys.visitors]: 6100,
+            [seriesKeys.conversions]: 3300,
+            [seriesKeys.revenue]: 10800
+        },
+        {
+            date: t('months.apr'),
+            [seriesKeys.visitors]: 5800,
+            [seriesKeys.conversions]: 3100,
+            [seriesKeys.revenue]: 10200
+        },
+        {
+            date: t('months.may'),
+            [seriesKeys.visitors]: 6700,
+            [seriesKeys.conversions]: 3700,
+            [seriesKeys.revenue]: 11500
+        },
+        {
+            date: t('months.jun'),
+            [seriesKeys.visitors]: 7500,
+            [seriesKeys.conversions]: 4200,
+            [seriesKeys.revenue]: 12800
+        }
+    ], [t, seriesKeys]);
+
+    // Define chart series using the same translated keys
+    const chartSeries = useMemo(() => [
+        { name: seriesKeys.visitors, color: 'var(--mantine-primary-color-filled)' },
+        { name: seriesKeys.conversions, color: 'teal.6' },
+        { name: seriesKeys.revenue, color: 'violet.6' }
+    ], [seriesKeys]);
 
     const activities = [
         { text: t('activities.items.statusUpdate'), time: t('activities.timeAgo.minutes', { count: 2 }), icon: IconCheck, color: 'green' },
@@ -58,20 +112,9 @@ export const Dashboard: React.FC = () => {
                         </Group>
                         <AreaChart
                             h={300}
-                            data={[
-                                { date: 'Jan', Visitors: 4500, Conversions: 2300, Revenue: 8100 },
-                                { date: 'Feb', Visitors: 5300, Conversions: 2800, Revenue: 9300 },
-                                { date: 'Mar', Visitors: 6100, Conversions: 3300, Revenue: 10800 },
-                                { date: 'Apr', Visitors: 5800, Conversions: 3100, Revenue: 10200 },
-                                { date: 'May', Visitors: 6700, Conversions: 3700, Revenue: 11500 },
-                                { date: 'Jun', Visitors: 7500, Conversions: 4200, Revenue: 12800 }
-                            ]}
+                            data={chartData}
                             dataKey="date"
-                            series={[
-                                { name: t('analytics.charts.visitors'), color: 'var(--mantine-primary-color-filled)' },
-                                { name: t('analytics.charts.conversions'), color: 'teal.6' },
-                                { name: t('analytics.charts.revenue'), color: 'violet.6' }
-                            ]}
+                            series={chartSeries}
                             curveType="monotone"
                         />
                     </Card>

@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 // Individual components if you need them separately
 export const DownloadThemeButton = observer(() => {
   const [fileFormat, setFileFormat] = useState<'json' | 'typescript'>('typescript');
-  const { t } = useTranslation(['app', 'common']);
+  const { t } = useTranslation(['app', 'theme']);
 
   const downloadTheme = () => {
     let content: string;
@@ -50,7 +50,7 @@ export const DownloadThemeButton = observer(() => {
             ]}
             size="xs"
         />
-        <Tooltip label={t('theme.download.tooltip', { format: fileFormat.toUpperCase(), ns: 'app' })}>
+        <Tooltip label={t('panel.download', { format: fileFormat.toUpperCase(), ns: 'theme' })}>
           <ActionIcon onClick={downloadTheme}>
             <IconDownload size={18} />
           </ActionIcon>
@@ -90,7 +90,7 @@ export const UploadThemeButton = observer(() => {
   };
 
   return (
-      <Tooltip label={t('theme.upload.tooltip', { ns: 'app' })}>
+      <Tooltip label={t('panel.upload', { ns: 'theme' })}>
         <ActionIcon
             onClick={() => {
               const input = document.createElement('input');
