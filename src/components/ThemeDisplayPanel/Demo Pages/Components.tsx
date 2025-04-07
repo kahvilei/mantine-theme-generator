@@ -21,7 +21,6 @@ import {
   Button,
   Card,
   Center,
-  Grid,
   Group,
   HoverCard,
   Indicator,
@@ -43,10 +42,10 @@ export const Components: React.FC = () => {
   const { t } = useTranslation('components');
   const [stepper, setStepper] = React.useState<number>(1);
   return (
-      <Stack gap="xl">
-        <Grid>
-          <Grid.Col span={6}>
-            <Stack>
+      <Stack gap="xl" w="100%">
+        <Group align="flex-start">
+          <Stack flex="1 300px">
+
               <Card p="lg">
                 <Stack gap="md">
                   <Title order={3}>{t('titles.actionComponents')}</Title>
@@ -195,11 +194,8 @@ export const Components: React.FC = () => {
                   </Paper>
                 </Stack>
               </Card>
-            </Stack>
-          </Grid.Col>
-
-          <Grid.Col span={6}>
-            <Stack>
+          </Stack>
+          <Stack flex="1 300px">
               <Card p="lg">
                 <Stack gap="md">
                   <Title order={3}>{t('titles.navigationIndicators')}</Title>
@@ -324,9 +320,8 @@ export const Components: React.FC = () => {
                   </Paper>
                 </Stack>
               </Card>
-            </Stack>
-          </Grid.Col>
-        </Grid>
+          </Stack>
+        </Group>
       </Stack>
   );
 };

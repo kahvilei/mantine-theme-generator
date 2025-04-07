@@ -20,8 +20,8 @@ export const Forms: React.FC = () => {
     const { t } = useTranslation('forms');
 
     return (<Stack gap="xl">
-        <Grid>
-            <Grid.Col span={6}>
+        <Group align="flex-start">
+            <Stack flex="1 300px">
                 <Card p="lg">
                     <Stack gap="md">
                         <Title order={3}>{t('titles.basicFormControls')}</Title>
@@ -104,9 +104,9 @@ export const Forms: React.FC = () => {
                         </Paper>
                     </Stack>
                 </Card>
-            </Grid.Col>
+            </Stack>
 
-            <Grid.Col span={6}>
+            <Stack flex="1 300px">
                 <Card p="lg">
                     <Stack gap="md">
                         <Title order={3}>{t('titles.specializedInputs')}</Title>
@@ -185,8 +185,8 @@ export const Forms: React.FC = () => {
                         </Paper>
                     </Stack>
                 </Card>
-            </Grid.Col>
-        </Grid>
+            </Stack>
+        </Group>
 
         <Card p="lg">
             <Stack gap="md">

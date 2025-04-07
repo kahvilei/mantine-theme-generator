@@ -93,8 +93,6 @@ export const Dashboard: React.FC = () => {
 
     return (
         <Stack gap="xl" flex={1}>
-            <Grid>
-                <Grid.Col span={12}>
                     <Card p="lg">
                         <Group justify="space-between" mb="md">
                             <Stack gap={0}>
@@ -118,11 +116,9 @@ export const Dashboard: React.FC = () => {
                             curveType="monotone"
                         />
                     </Card>
-                </Grid.Col>
-            </Grid>
 
-            <Grid>
-                <Grid.Col span={3}>
+            <Group>
+                <Stack flex="1 30px">
                     <Card p="lg">
                         <Group>
                             <ThemeIcon variant="filled" size="xl">
@@ -135,8 +131,8 @@ export const Dashboard: React.FC = () => {
                             </Stack>
                         </Group>
                     </Card>
-                </Grid.Col>
-                <Grid.Col span={3}>
+                </Stack>
+                <Stack flex="1 30px">
                     <Card p="lg">
                         <Group>
                             <ThemeIcon size="xl" color="green">
@@ -149,8 +145,8 @@ export const Dashboard: React.FC = () => {
                             </Stack>
                         </Group>
                     </Card>
-                </Grid.Col>
-                <Grid.Col span={3}>
+                </Stack>
+                <Stack flex="1 30px">
                     <Card p="lg">
                         <Group>
                             <ThemeIcon size="xl" color="violet">
@@ -163,8 +159,8 @@ export const Dashboard: React.FC = () => {
                             </Stack>
                         </Group>
                     </Card>
-                </Grid.Col>
-                <Grid.Col span={3}>
+                </Stack>
+                <Stack flex="1 30px">
                     <Card p="lg">
                         <Group>
                             <ThemeIcon size="xl" color="red">
@@ -177,11 +173,11 @@ export const Dashboard: React.FC = () => {
                             </Stack>
                         </Group>
                     </Card>
-                </Grid.Col>
-            </Grid>
+                </Stack>
+            </Group>
 
-            <Grid>
-                <Grid.Col span={8}>
+            <Group align="flex-start">
+                <Stack flex="3 300px">
                     <Card p="lg">
                         <Stack>
                             <Group justify="space-between">
@@ -207,10 +203,9 @@ export const Dashboard: React.FC = () => {
                             </ScrollArea>
                         </Stack>
                     </Card>
-                </Grid.Col>
+                </Stack>
 
-                <Grid.Col span={4}>
-                    <Stack>
+                    <Stack flex="1 50px">
                         <Card p="lg">
                             <Stack gap="md">
                                 <Title order={3}>{t('deviceUsage.title')}</Title>
@@ -272,7 +267,6 @@ export const Dashboard: React.FC = () => {
                             </Stack>
                         </Card>
                     </Stack>
-                </Grid.Col>
-            </Grid>
+            </Group>
         </Stack>);
 }

@@ -23,23 +23,18 @@ export const Typography = ({ theme }: TypographyInterface) => {
 
     return (
         <Stack gap="xl" w="100%">
-            <Grid>
-                <Grid.Col span={12}>
 
-                        <Group gap="md" align='flex-end' justify="space-between">
-                            <Title order={1}>{t('headings.h1')}</Title>
-                            <Title order={2}>{t('headings.h2')}</Title>
-                            <Title order={3}>{t('headings.h3')}</Title>
-                            <Title order={4}>{t('headings.h4')}</Title>
-                            <Title order={5}>{t('headings.h5')}</Title>
-                            <Title order={6}>{t('headings.h6')}</Title>
-                        </Group>
+            <Group gap="md" align='flex-end' justify="space-between">
+                <Title order={1}>{t('headings.h1')}</Title>
+                <Title order={2}>{t('headings.h2')}</Title>
+                <Title order={3}>{t('headings.h3')}</Title>
+                <Title order={4}>{t('headings.h4')}</Title>
+                <Title order={5}>{t('headings.h5')}</Title>
+                <Title order={6}>{t('headings.h6')}</Title>
+            </Group>
 
-                </Grid.Col>
-            </Grid>
-
-            <Grid>
-                <Grid.Col span={6}>
+            <Group align="flex-start">
+                <Stack flex="1 300px">
                     <Card p="lg">
                         <Stack gap="md">
                             <Title order={3}>{t('textSizes.title')}</Title>
@@ -54,9 +49,9 @@ export const Typography = ({ theme }: TypographyInterface) => {
                             </Paper>
                         </Stack>
                     </Card>
-                </Grid.Col>
+                </Stack>
 
-                <Grid.Col span={6}>
+                <Stack flex="1 300px">
                     <Card p="lg">
                         <Stack gap="md">
                             <Title order={3}>{t('fontFamily.title')}</Title>
@@ -78,8 +73,8 @@ export const Typography = ({ theme }: TypographyInterface) => {
                             </Paper>
                         </Stack>
                     </Card>
-                </Grid.Col>
-            </Grid>
+                </Stack>
+            </Group>
 
             <Grid>
                 <Grid.Col span={12}>
