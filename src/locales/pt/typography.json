@@ -1,0 +1,37 @@
+{
+  "headings": {
+    "title": "Títulos",
+    "h1": "Título 1",
+    "h2": "Título 2",
+    "h3": "Título 3",
+    "h4": "Título 4",
+    "h5": "Título 5",
+    "h6": "Título 6"
+  },
+  "textSizes": {
+    "title": "Tamanhos de Texto",
+    "xl": "Texto Extra Grande",
+    "lg": "Texto Grande",
+    "md": "Texto Médio",
+    "default": "(Padrão)",
+    "sm": "Texto Pequeno",
+    "xs": "Texto Extra Pequeno"
+  },
+  "specialStyles": {
+    "title": "Estilos de Texto Especiais",
+    "blockquoteText": "Design não é apenas como parece e como se sente. Design é como funciona.",
+    "blockquoteCite": "— Designer Famoso",
+    "codeText": "const theme = useMantineTheme();",
+    "kbdText": "Ctrl + K",
+    "markText": "Texto com ",
+    "markHighlight": "destaque",
+    "markEnd": " no conteúdo",
+    "anchorText": "Link clicável"
+  },
+  "fontFamily": {
+    "title": "Família de Fontes",
+    "default": "Padrão:",
+    "headings": "Títulos:",
+    "monospace": "Monospace:"
+  }
+}

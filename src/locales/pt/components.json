@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "Componentes de Ação",
+    "dataDisplay": "Exibição de Dados",
+    "navigationIndicators": "Navegação e Indicadores",
+    "containersLayout": "Contêineres e Layout"
+  },
+  "labels": {
+    "buttonSizes": "Tamanhos de Botão",
+    "actionIconVariants": "Variantes de ActionIcon",
+    "menuComponent": "Componente de Menu",
+    "avatarIndicator": "Avatar e Indicador",
+    "progressRingProgress": "Progress e RingProgress",
+    "table": "Tabela",
+    "tabsVariants": "Variantes de Abas",
+    "navLink": "NavLink",
+    "stepper": "Stepper",
+    "accordion": "Accordion",
+    "alertVariants": "Variantes de Alerta",
+    "hoverCard": "HoverCard"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "Abrir Menu",
+    "hoverMe": "Passe o mouse aqui"
+  },
+  "menu": {
+    "application": "Aplicação",
+    "settings": "Configurações",
+    "messages": "Mensagens",
+    "gallery": "Galeria",
+    "search": "Busca"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "Item",
+      "price": "Preço",
+      "status": "Status"
+    },
+    "items": {
+      "laptop": "Notebook",
+      "phone": "Telefone",
+      "headphones": "Fones de ouvido"
+    },
+    "prices": {
+      "laptop": "R$ 6.499",
+      "phone": "R$ 3.499",
+      "headphones": "R$ 999"
+    },
+    "statuses": {
+      "inStock": "Em Estoque",
+      "outOfStock": "Esgotado"
+    }
+  },
+  "tabs": {
+    "gallery": "Galeria",
+    "messages": "Mensagens",
+    "settings": "Configurações"
+  },
+  "navLink": {
+    "dashboard": "Painel",
+    "settings": "Configurações",
+    "messages": "Mensagens"
+  },
+  "stepper": {
+    "step1": {
+      "label": "Etapa 1",
+      "description": "Criar conta"
+    },
+    "step2": {
+      "label": "Etapa 2",
+      "description": "Verificar email"
+    },
+    "step3": {
+      "label": "Etapa 3",
+      "description": "Completar perfil"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "O que é Mantine?",
+      "content": "Mantine é uma biblioteca de componentes React com foco em usabilidade, acessibilidade e experiência do desenvolvedor."
+    },
+    "item2": {
+      "title": "Personalização",
+      "content": "Componentes Mantine podem ser personalizados com tema global e estilos inline."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "Informação",
+      "content": "Este é um alerta informativo com o estilo padrão"
+    },
+    "success": {
+      "title": "Sucesso",
+      "content": "Este é um alerta de sucesso com estilo preenchido"
+    },
+    "warning": {
+      "title": "Aviso",
+      "content": "Este é um alerta de aviso com estilo de contorno"
+    }
+  },
+  "hoverCard": {
+    "content": "Este é um dropdown HoverCard com informações que aparecem ao passar o mouse."
+  }
+}

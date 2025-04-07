@@ -1,0 +1,113 @@
+{
+  "titles": {
+    "actionComponents": "Компоненты действий",
+    "dataDisplay": "Отображение данных",
+    "navigationIndicators": "Навигация и индикаторы",
+    "containersLayout": "Контейнеры и макет"
+  },
+  "labels": {
+    "buttonSizes": "Размеры кнопок",
+    "actionIconVariants": "Варианты ActionIcon",
+    "menuComponent": "Компонент меню",
+    "avatarIndicator": "Аватар и индикатор",
+    "progressRingProgress": "Прогресс и кольцевой прогресс",
+    "table": "Таблица",
+    "tabsVariants": "Варианты вкладок",
+    "navLink": "NavLink",
+    "stepper": "Степпер",
+    "accordion": "Аккордеон",
+    "alertVariants": "Варианты оповещений",
+    "hoverCard": "HoverCard"
+  },
+  "buttons": {
+    "xs": "XS",
+    "sm": "SM",
+    "md": "MD",
+    "lg": "LG",
+    "xl": "XL",
+    "openMenu": "Открыть меню",
+    "hoverMe": "Наведите на меня"
+  },
+  "menu": {
+    "application": "Приложение",
+    "settings": "Настройки",
+    "messages": "Сообщения",
+    "gallery": "Галерея",
+    "search": "Поиск"
+  },
+  "progress": {
+    "percentage": "65%"
+  },
+  "table": {
+    "headers": {
+      "item": "Товар",
+      "price": "Цена",
+      "status": "Статус"
+    },
+    "items": {
+      "laptop": "Ноутбук",
+      "phone": "Телефон",
+      "headphones": "Наушники"
+    },
+    "prices": {
+      "laptop": "₽129900",
+      "phone": "₽69900",
+      "headphones": "₽19900"
+    },
+    "statuses": {
+      "inStock": "В наличии",
+      "outOfStock": "Нет в наличии"
+    }
+  },
+  "tabs": {
+    "gallery": "Галерея",
+    "messages": "Сообщения",
+    "settings": "Настройки"
+  },
+  "navLink": {
+    "dashboard": "Панель управления",
+    "settings": "Настройки",
+    "messages": "Сообщения"
+  },
+  "stepper": {
+    "step1": {
+      "label": "Шаг 1",
+      "description": "Создать аккаунт"
+    },
+    "step2": {
+      "label": "Шаг 2",
+      "description": "Подтвердить email"
+    },
+    "step3": {
+      "label": "Шаг 3",
+      "description": "Заполнить профиль"
+    }
+  },
+  "accordion": {
+    "item1": {
+      "title": "Что такое Mantine?",
+      "content": "Mantine — это библиотека компонентов React с фокусом на удобство использования, доступность и опыт разработчика."
+    },
+    "item2": {
+      "title": "Настройка",
+      "content": "Компоненты Mantine можно настраивать с помощью глобальной темы и встроенных стилей."
+    }
+  },
+  "alerts": {
+    "information": {
+      "title": "Информация",
+      "content": "Это информационное оповещение со стандартным стилем"
+    },
+    "success": {
+      "title": "Успех",
+      "content": "Это оповещение об успехе с заполненным стилем"
+    },
+    "warning": {
+      "title": "Предупреждение",
+      "content": "Это предупреждающее оповещение с контурным стилем"
+    }
+  },
+  "hoverCard": {
+    "content": "Это выпадающее меню HoverCard с информацией, которая появляется при наведении."
+  }
+}

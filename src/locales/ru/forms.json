@@ -1,0 +1,145 @@
+{
+  "titles": {
+    "basicFormControls": "Основные элементы формы",
+    "specializedInputs": "Специализированные поля ввода",
+    "completeForm": "Полный пример формы"
+  },
+  "labels": {
+    "textInputs": "Текстовые поля",
+    "variantsSizes": "Варианты и размеры",
+    "inputTypes": "Типы ввода",
+    "toggleControls": "Переключатели"
+  },
+  "inputs": {
+    "default": {
+      "label": "Стандартное поле",
+      "placeholder": "Введите текст"
+    },
+    "withDescription": {
+      "label": "С описанием",
+      "placeholder": "Введите текст",
+      "description": "Это описание для поля ввода"
+    },
+    "withError": {
+      "label": "С ошибкой",
+      "placeholder": "Введите текст",
+      "error": "Это поле обязательно для заполнения"
+    },
+    "withIcon": {
+      "label": "С иконкой",
+      "placeholder": "Поиск..."
+    },
+    "disabled": {
+      "label": "Отключенное поле",
+      "placeholder": "Это поле отключено"
+    },
+    "variants": {
+      "default": {
+        "label": "Стандартный",
+        "placeholder": "Стандартный вариант"
+      },
+      "filled": {
+        "label": "Заполненный",
+        "placeholder": "Заполненный вариант"
+      },
+      "unstyled": {
+        "label": "Без стилей",
+        "placeholder": "Вариант без стилей"
+      }
+    },
+    "sizes": {
+      "xs": "Размер XS",
+      "sm": "Размер SM",
+      "md": "Размер MD",
+      "lg": "Размер LG",
+      "xl": "Размер XL"
+    },
+    "specialized": {
+      "password": {
+        "label": "Пароль",
+        "placeholder": "Введите ваш пароль"
+      },
+      "number": {
+        "label": "Число",
+        "placeholder": "Введите число"
+      },
+      "file": {
+        "label": "Загрузить файл",
+        "placeholder": "Нажмите для загрузки"
+      },
+      "select": {
+        "label": "Выберите опцию",
+        "placeholder": "Выберите один вариант",
+        "options": {
+          "option1": "Вариант 1",
+          "option2": "Вариант 2",
+          "option3": "Вариант 3"
+        }
+      }
+    }
+  },
+  "toggles": {
+    "checkbox": {
+      "default": "Флажок",
+      "indeterminate": "Неопределенный",
+      "checked": "Отмеченный",
+      "disabled": "Отключенный",
+      "terms": "Я согласен с условиями и положениями"
+    },
+    "switch": {
+      "default": "Переключатель",
+      "checked": "Включенный",
+      "disabled": "Отключенный"
+    },
+    "radio": {
+      "group": "Радио-группа",
+      "description": "Выберите один вариант",
+      "option1": "Вариант 1",
+      "option2": "Вариант 2",
+      "option3": "Вариант 3"
+    },
+    "chips": {
+      "react": "React",
+      "vue": "Vue",
+      "angular": "Angular"
+    },
+    "slider": {
+      "20": "20%",
+      "50": "50%",
+      "80": "80%"
+    }
+  },
+  "form": {
+    "title": "Создать аккаунт",
+    "firstName": {
+      "label": "Имя",
+      "placeholder": "Иван"
+    },
+    "lastName": {
+      "label": "Фамилия",
+      "placeholder": "Иванов"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "ваш@email.com"
+    },
+    "password": {
+      "label": "Пароль",
+      "placeholder": "Создайте надежный пароль"
+    },
+    "role": {
+      "label": "Роль",
+      "placeholder": "Выберите вашу роль",
+      "options": {
+        "developer": "Разработчик",
+        "designer": "Дизайнер",
+        "manager": "Менеджер",
+        "other": "Другое"
+      }
+    },
+    "buttons": {
+      "cancel": "Отмена",
+      "create": "Создать аккаунт"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "Панель управления темой",
+    "download": "Скачать тему как {{format}}",
+    "upload": "Загрузить тему (JSON или TypeScript)",
+    "uploadError": "Не удалось обработать файл темы. Убедитесь, что это корректный файл темы JSON или TypeScript: {{error}}",
+    "resetTheme": "Сбросить тему",
+    "resetConfirmation": "Вы уверены, что хотите сбросить тему? Это удалит все текущие изменения."
+  },
+  "tabs": {
+    "quickSetup": "Быстрая настройка",
+    "color": "Цвет",
+    "typography": "Типография",
+    "sizeAndLayout": "Размер и макет",
+    "components": "Компоненты"
+  },
+  "setup": {
+    "premadeThemes": "Готовые темы",
+    "primaryColor": "Основной цвет",
+    "fontFamilies": "Семейства шрифтов"
+  },
+  "colors": {
+    "panel": {
+      "title": "Настройки цветов",
+      "primaryColor": "Основной цвет",
+      "primaryColorSelector": "Основной цвет",
+      "customColors": "Пользовательские цвета",
+      "mantineOverrides": "Переопределения цветов Mantine",
+      "contentColors": "Цвета контента",
+      "situationalColors": "Ситуационные цвета",
+      "otherOverrides": "Другие переопределения цветов Mantine",
+      "defaultGradient": "Градиент по умолчанию"
+    },
+    "editor": {
+      "addColor": "Добавить новый цвет",
+      "addColorButton": "Добавить новый цвет",
+      "updateColor": "Обновить цвет",
+      "name": "Имя",
+      "color": "Цвет",
+      "dark": "Темный",
+      "light": "Светлый",
+      "shade": "Оттенок {{index}}"
+    },
+    "categories": {
+      "customColors": "Пользовательские цвета",
+      "mantineColors": "Цвета Mantine",
+      "standard": "Стандартные",
+      "virtual": "Виртуальные"
+    }
+  },
+  "typography": {
+    "settings": "Настройки типографики",
+    "headings": "Заголовки",
+    "size": "Размер",
+    "lineHeight": "Высота строки",
+    "weight": "Толщина",
+    "preview": "{{heading}} Предварительный просмотр текста",
+    "fonts": {
+      "body": "Основной текст",
+      "headings": "Заголовки",
+      "monospace": "Моноширинный",
+      "typeFacePreview": "Аа"
+    }
+  },
+  "layout": {
+    "title": "Настройки масштаба и макета",
+    "scale": "Масштаб",
+    "scaleValue": "{{value}}x",
+    "spacing": "Отступы",
+    "breakpoints": "Контрольные точки",
+    "radius": {
+      "title": "Радиус",
+      "default": "Радиус по умолчанию",
+      "settings": "Настройки радиуса"
+    }
+  },
+  "interaction": {
+    "title": "Взаимодействие и доступность",
+    "focusRing": "Кольцо фокуса",
+    "options": {
+      "auto": "Авто",
+      "always": "Всегда",
+      "never": "Никогда",
+      "default": "По умолчанию",
+      "pointer": "Указатель"
+    },
+    "accessibility": "Доступность",
+    "fontSmoothing": "Сглаживание шрифта",
+    "respectReducedMotion": "Учитывать уменьшенное движение",
+    "cursorType": "Тип курсора"
+  },
+  "components": {
+    "title": "Настройки компонентов",
+    "description": "Выберите компонент ниже, чтобы определить свойства и стили по умолчанию. Эти правила будут применены ко всем экземплярам компонента в теме.",
+    "addRule": "Добавить правило компонента",
+    "selectComponent": "Выбрать компонент",
+    "choosePlaceholder": "Выберите компонент для настройки",
+    "docsReference": "Для справки по API свойств и стилей каждого компонента см.",
+    "docsReferenceCont": ", или нажмите на значок рядом с именами добавленных компонентов.",
+    "docsLink": "Документация Mantine",
+    "defaultProps": "Свойства по умолчанию",
+    "stylesAPI": "API стилей",
+    "property": {
+      "addProperty": "Добавить свойство",
+      "addStyleProperty": "Добавить свойство стиля",
+      "addStyleSelector": "Добавить селектор стиля",
+      "componentProps": "Свойства компонента",
+      "styleProps": "Свойства стиля"
+    },
+    "categories": {
+      "inputs": "Ввод",
+      "navigation": "Навигация",
+      "layout": "Макет",
+      "typography": "Типография",
+      "feedback": "Обратная связь",
+      "data": "Данные",
+      "overlays": "Наложения",
+      "other": "Другое"
+    }
+  }
+}

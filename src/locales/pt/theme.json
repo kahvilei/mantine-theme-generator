@@ -1,0 +1,121 @@
+{
+  "panel": {
+    "title": "Painel de Controle de Tema",
+    "download": "Baixar tema como {{format}}",
+    "upload": "Enviar tema (JSON ou TypeScript)",
+    "uploadError": "Falha ao processar arquivo de tema. Certifique-se de que é um arquivo de tema JSON ou TypeScript válido: {{error}}",
+    "resetTheme": "Redefinir Tema",
+    "resetConfirmation": "Tem certeza de que deseja redefinir o tema? Isso excluirá todas as alterações atuais."
+  },
+  "tabs": {
+    "quickSetup": "Configuração Rápida",
+    "color": "Cor",
+    "typography": "Tipografia",
+    "sizeAndLayout": "Tamanho e Layout",
+    "components": "Componentes"
+  },
+  "setup": {
+    "premadeThemes": "Temas pré-criados",
+    "primaryColor": "Cor primária",
+    "fontFamilies": "Famílias de fontes"
+  },
+  "colors": {
+    "panel": {
+      "title": "Controles de Cor",
+      "primaryColor": "Cor primária",
+      "primaryColorSelector": "Cor Primária",
+      "customColors": "Cores personalizadas",
+      "mantineOverrides": "Sobreposições de cor do Mantine",
+      "contentColors": "Cores de conteúdo",
+      "situationalColors": "Cores situacionais",
+      "otherOverrides": "Outras sobreposições de cor do Mantine",
+      "defaultGradient": "Gradiente padrão"
+    },
+    "editor": {
+      "addColor": "Adicionar nova cor",
+      "addColorButton": "Adicionar nova cor",
+      "updateColor": "Atualizar cor",
+      "name": "Nome",
+      "color": "Cor",
+      "dark": "Escuro",
+      "light": "Claro",
+      "shade": "Tonalidade {{index}}"
+    },
+    "categories": {
+      "customColors": "Cores Personalizadas",
+      "mantineColors": "Cores do Mantine",
+      "standard": "Padrão",
+      "virtual": "Virtual"
+    }
+  },
+  "typography": {
+    "settings": "Configurações de Tipografia",
+    "headings": "Títulos",
+    "size": "Tamanho",
+    "lineHeight": "Altura da Linha",
+    "weight": "Peso",
+    "preview": "{{heading}} Texto de Pré-visualização",
+    "fonts": {
+      "body": "Corpo",
+      "headings": "Títulos",
+      "monospace": "Monospace",
+      "typeFacePreview": "Aa"
+    }
+  },
+  "layout": {
+    "title": "Controles de Escala e Layout",
+    "scale": "Escala",
+    "scaleValue": "{{value}}x",
+    "spacing": "Espaçamento",
+    "breakpoints": "Pontos de quebra",
+    "radius": {
+      "title": "Raio",
+      "default": "Raio Padrão",
+      "settings": "Configurações de raio"
+    }
+  },
+  "interaction": {
+    "title": "Interação e Acessibilidade",
+    "focusRing": "Anel de Foco",
+    "options": {
+      "auto": "Auto",
+      "always": "Sempre",
+      "never": "Nunca",
+      "default": "Padrão",
+      "pointer": "Ponteiro"
+    },
+    "accessibility": "Acessibilidade",
+    "fontSmoothing": "Suavização de Fonte",
+    "respectReducedMotion": "Respeitar Movimento Reduzido",
+    "cursorType": "Tipo de Cursor"
+  },
+  "components": {
+    "title": "Controles de Componentes",
+    "description": "Selecione um componente abaixo para definir props e estilos padrão. Essas regras serão aplicadas a todas as instâncias do componente no tema.",
+    "addRule": "Adicionar Regra de Componente",
+    "selectComponent": "Selecionar Componente",
+    "choosePlaceholder": "Escolha um componente para personalizar",
+    "docsReference": "Para referência sobre a API de props e estilos de cada componente, consulte a",
+    "docsReferenceCont": ", ou clique no ícone ao lado dos nomes dos componentes adicionados.",
+    "docsLink": "Documentação do Mantine",
+    "defaultProps": "Props Padrão",
+    "stylesAPI": "API de Estilos",
+    "property": {
+      "addProperty": "Adicionar propriedade",
+      "addStyleProperty": "Adicionar propriedade de estilo",
+      "addStyleSelector": "Adicionar seletor de estilo",
+      "componentProps": "Props de Componente",
+      "styleProps": "Props de Estilo"
+    },
+    "categories": {
+      "inputs": "Entradas",
+      "navigation": "Navegação",
+      "layout": "Layout",
+      "typography": "Tipografia",
+      "feedback": "Feedback",
+      "data": "Dados",
+      "overlays": "Sobreposições",
+      "other": "Outros"
+    }
+  }
+}

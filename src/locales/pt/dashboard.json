@@ -1,0 +1,71 @@
+{
+  "analytics": {
+    "title": "Visão Geral de Análises",
+    "subtitle": "Métricas de desempenho mensal",
+    "timeframes": {
+      "day": "Dia",
+      "week": "Semana",
+      "month": "Mês"
+    },
+    "charts": {
+      "visitors": "Visitantes",
+      "conversions": "Conversões",
+      "revenue": "Receita"
+    }
+  },
+  "metrics": {
+    "users": {
+      "title": "Total de Usuários",
+      "increase": "+12,3%"
+    },
+    "revenue": {
+      "title": "Receita",
+      "increase": "+8,7%"
+    },
+    "sessions": {
+      "title": "Sessões",
+      "increase": "+25,8%"
+    },
+    "engagement": {
+      "title": "Engajamento",
+      "decrease": "-3,2%"
+    }
+  },
+  "activities": {
+    "title": "Atividades Recentes",
+    "addNew": "Adicionar Nova",
+    "items": {
+      "statusUpdate": "João atualizou o status do projeto para \"Concluído\"",
+      "fileUpload": "Sara enviou um novo arquivo \"design-mockup.fig\"",
+      "meeting": "Reunião de equipe agendada para amanhã às 10:00",
+      "comment": "Novo comentário na tarefa \"Criar diagrama de fluxo do usuário\"",
+      "taskComplete": "David concluiu a tarefa \"Escrever documentação da API\"",
+      "maintenance": "Manutenção do sistema agendada para domingo",
+      "feature": "Emily enviou uma nova solicitação de recurso"
+    },
+    "timeAgo": {
+      "minutes": "há {{count}} minutos",
+      "hours": "há {{count}} horas",
+      "days": "há {{count}} dia",
+      "daysPlural": "há {{count}} dias"
+    }
+  },
+  "deviceUsage": {
+    "title": "Uso por Dispositivo",
+    "devices": {
+      "desktop": "Desktop",
+      "mobile": "Móvel",
+      "tablet": "Tablet"
+    }
+  },
+  "teamPerformance": {
+    "title": "Desempenho da Equipe",
+    "teams": {
+      "design": "Design",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "qa": "QA"
+    },
+    "tasks": "tarefas"
+  }
+}

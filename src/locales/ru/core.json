@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Редактор тем Mantine",
+    "version": "Работает на Mantine v{{version}}",
+    "links": {
+      "github": "Просмотреть на GitHub",
+      "docs": "Просмотреть документацию Mantine"
+    },
+    "language": "Изменить язык",
+    "theme": "Переключить светлую/темную тему"
+  },
+  "status": {
+    "loading": "Загрузка...",
+    "error": "Произошла ошибка",
+    "success": "Успех!"
+  },
+  "actions": {
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "apply": "Применить",
+    "reset": "Сбросить",
+    "delete": "Удалить",
+    "add": "Добавить",
+    "edit": "Редактировать",
+    "select": "Выбрать"
+  },
+  "navigation": {
+    "dashboard": "Панель управления",
+    "typography": "Типография",
+    "components": "Компоненты",
+    "forms": "Формы",
+    "overview": "Обзор"
+  },
+  "display": {
+    "darkMode": "Темный режим",
+    "lightMode": "Светлый режим",
+    "sideBySide": "Бок о бок"
+  }
+}
