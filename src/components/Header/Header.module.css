@@ -7,3 +7,9 @@
     text-decoration-thickness: 3px;
     text-decoration-color: var(--mantine-color-blue-5);
 }
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 5vw;
+    }
+}

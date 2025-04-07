@@ -3,7 +3,7 @@ import {
   IconBrandGithub,
   IconBrandMantine,
   IconSunMoon,
-  IconLanguage,
+  IconMenu2, IconPaint,
 } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -22,10 +22,14 @@ import { SUPPORTED_LANGUAGES } from '../../config/languages';
 interface HeaderProps {
   toggleScheme: () => void;
   lightMode: boolean;
+  openDrawer?: () => void;
+  isMobile?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
                                          toggleScheme,
+                                         openDrawer,
+                                         isMobile = false,
                                        }) => {
   const { t } = useTranslation(['core']);
   const currentLanguage = i18n.language;
@@ -52,33 +56,46 @@ const Header: React.FC<HeaderProps> = ({
       [availableLanguages, currentLanguage]);
 
   return (
-      <Group p='md' h="100%" align="center" justify="center">
-        <Group p='md' h="100%" align="center" justify="space-between" w="100%" maw="2100px">
-          <Group align="flex-end">
-            <Title size="1.4rem" className={classes.title}>
+      <Group h="100%" align="center" justify="center">
+        <Group px={isMobile ? "xs" : "md"} h="100%" align="center" justify="space-between" w="100%" maw="2100px" wrap="nowrap">
+          {isMobile && openDrawer && (
+              <ActionIcon onClick={openDrawer} variant="subtle" size="lg">
+                <IconPaint/>
+              </ActionIcon>
+          )}
+
+          <Group align="flex-end" wrap="nowrap">
+            <Title size={isMobile ? "h4" : "1.4rem"} className={classes.title}>
               {t('app.title')}
             </Title>
-            <Text size="xs" c="dimmed">
-              {t('app.version', { version: '7.17.0' })}
-            </Text>
+            {!isMobile && (
+                <Text size="xs" c="dimmed">
+                  {t('app.version', { version: '7.17.0' })}
+                </Text>
+            )}
           </Group>
-          <Group align="center">
-            <Tooltip label={t('app.links.github')}>
-              <ActionIcon variant="filled" onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}>
-                <IconBrandGithub size="1.25rem" />
-              </ActionIcon>
-            </Tooltip>
-            <Tooltip label={t('app.links.docs')}>
-              <ActionIcon variant="filled" onClick={() => window.open('https://mantine.dev/', '_blank')}>
-                <IconBrandMantine size="1.25rem" />
-              </ActionIcon>
-            </Tooltip>
+
+          <Group align="center" gap={isMobile ? "xs" : "md"} wrap="nowrap">
+            {!isMobile && (
+                <>
+                  <Tooltip label={t('app.links.github')}>
+                    <ActionIcon variant="filled" onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}>
+                      <IconBrandGithub size="1.25rem" />
+                    </ActionIcon>
+                  </Tooltip>
+                  <Tooltip label={t('app.links.docs')}>
+                    <ActionIcon variant="filled" onClick={() => window.open('https://mantine.dev/', '_blank')}>
+                      <IconBrandMantine size="1.25rem" />
+                    </ActionIcon>
+                  </Tooltip>
+                </>
+            )}
 
             {/* Language Menu */}
-            <Menu position="bottom-end" withArrow>
+            <Menu position="bottom-end" withArrow withinPortal>
               <Menu.Target>
                 <Tooltip label={t('app.language')}>
-                  <ActionIcon variant="outline">
+                  <ActionIcon variant="outline" size={isMobile ? "sm" : "md"}>
                     <Group gap={5}>
                       {currentLanguageDetails.code && currentLanguageDetails.code}
                     </Group>
@@ -108,10 +125,42 @@ const Header: React.FC<HeaderProps> = ({
             </Menu>
 
             <Tooltip label={t('app.theme')}>
-              <ActionIcon variant="outline" onClick={toggleScheme}>
-                <IconSunMoon size="1.25rem" />
+              <ActionIcon
+                  variant="outline"
+                  onClick={toggleScheme}
+                  size={isMobile ? "sm" : "md"}
+              >
+                <IconSunMoon size={isMobile ? "1rem" : "1.25rem"} />
               </ActionIcon>
             </Tooltip>
+
+            {/* Mobile menu for additional options */}
+            {isMobile && (
+                <Menu position="bottom-end" withArrow withinPortal>
+                  <Menu.Target>
+                    <ActionIcon variant="subtle" size="sm">
+                      <IconMenu2 size="1.25rem" />
+                    </ActionIcon>
+                  </Menu.Target>
+                  <Menu.Dropdown>
+                    <Menu.Item
+                        leftSection={<IconBrandGithub size="1rem" />}
+                        onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}
+                    >
+                      {t('app.links.github')}
+                    </Menu.Item>
+                    <Menu.Item
+                        leftSection={<IconBrandMantine size="1rem" />}
+                        onClick={() => window.open('https://mantine.dev/', '_blank')}
+                    >
+                      {t('app.links.docs')}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {t('app.version', { version: '7.17.0' })}
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+            )}
           </Group>
         </Group>
       </Group>

@@ -4,28 +4,55 @@ import './App.css';
 import './Fonts.css'
 import './i18n'; // Import i18n configuration
 
-import React, { useState } from 'react';
-import { IconComponents, IconDashboard, IconForms, IconMoon, IconSun, IconSunMoon, IconTypography } from '@tabler/icons-react';
+import React, { useState, useEffect } from 'react';
+import { IconComponents, IconDashboard, IconForms, IconMoon, IconSun, IconSunMoon, IconTypography, IconX } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
-import { Card, Center, createTheme, Group, MantineProvider, MantineThemeOverride, ScrollArea, SegmentedControl, Stack, Tabs, Tooltip } from '@mantine/core';
+import {
+    Card,
+    Center,
+    createTheme,
+    Drawer,
+    Group,
+    MantineProvider,
+    MantineThemeOverride,
+    ScrollArea,
+    SegmentedControl,
+    Stack,
+    Tabs,
+    ActionIcon,
+} from '@mantine/core';
 import Header from './components/Header/Header';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
 import appTheme from "./data/appTheme.json";
 import { useTranslation } from "react-i18next";
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 
 const App: React.FC = observer(() => {
     const [mode, setMode] = useState<'light' | 'dark'>('dark');
     const [currentContent, setCurrentContent] = useState<string | null>('overview');
     const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');
+    const [drawerOpened, { open: openDrawer, close: closeDrawer }] = useDisclosure(false);
+
+    // Media query for responsive layout
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
+    // Set default color scheme for mobile
+    useEffect(() => {
+        if (isMobile && currentColorScheme === 'dark-and-light') {
+            setCurrentColorScheme('dark');
+        }
+    }, [isMobile]);
 
     const toggleScheme = () => {
         setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+        if (isMobile) {
+            setCurrentColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+        }
     };
 
     // Update to use new namespaces
     const { t } = useTranslation(['core', 'theme']);
-
 
     return (
         <MantineProvider
@@ -38,15 +65,38 @@ const App: React.FC = observer(() => {
                     <Header
                         lightMode={mode === 'light'}
                         toggleScheme={toggleScheme}
+                        openDrawer={openDrawer}
+                        isMobile={isMobile}
                     />
                 </div>
 
                 {/* Main layout */}
                 <Card className="app-content" withBorder>
-                    {/* Navbar / Sidebar */}
-                    <div className="app-sidebar">
-                        <ThemeControlPanel />
-                    </div>
+                    {/* Navbar / Sidebar - Show in drawer on mobile */}
+                    {isMobile ? (
+                        <Drawer
+                            opened={drawerOpened}
+                            onClose={closeDrawer}
+                            title={
+                                <Group justify="space-between" w="100%">
+                                    <div>{t('panel.title', { ns: 'theme' })}</div>
+                                    <ActionIcon onClick={closeDrawer} variant="subtle">
+                                        <IconX size="1.1rem" />
+                                    </ActionIcon>
+                                </Group>
+                            }
+                            size="100%"
+                            position="left"
+                            withCloseButton={false}
+                        >
+                            <ThemeControlPanel onApplyChanges={closeDrawer} />
+                        </Drawer>
+                    ) : (
+                        <div className="app-sidebar">
+                            <ThemeControlPanel />
+                        </div>
+                    )}
+
                     {/* Main Content */}
                     <div className="app-main">
                         <Stack align="center" justify="center" className="main-container">
@@ -54,59 +104,58 @@ const App: React.FC = observer(() => {
                                 {/* Custom Tab System */}
                                 <div className="tab-container">
                                     {/* Tab Header */}
-                                    <Group className="tab-header" justify="space-between" align="center">
-                                        <Tabs value={currentContent} onChange={setCurrentContent}>
+                                    <Group className="tab-header" justify="space-between" align="center" wrap="nowrap">
+                                        <Tabs value={currentContent} onChange={setCurrentContent} style={{ overflow: 'auto' }}>
                                             <Tabs.List className="tab-header-list">
-                                                <Tabs.Tab value="dashboard" leftSection={<IconDashboard size={16} />}>
-                                                    {t('navigation.dashboard', { ns: 'core' })}
+                                                <Tabs.Tab value="dashboard" leftSection={isMobile ? null : <IconDashboard size={16} />}>
+                                                    {isMobile ? <IconDashboard size={16} /> : t('navigation.dashboard', { ns: 'core' })}
                                                 </Tabs.Tab>
-                                                <Tabs.Tab value="typography" leftSection={<IconTypography size={16} />}>
-                                                    {t('navigation.typography', { ns: 'core' })}
+                                                <Tabs.Tab value="typography" leftSection={isMobile ? null : <IconTypography size={16} />}>
+                                                    {isMobile ? <IconTypography size={16} /> : t('navigation.typography', { ns: 'core' })}
                                                 </Tabs.Tab>
-                                                <Tabs.Tab value="components" leftSection={<IconComponents size={16} />}>
-                                                    {t('navigation.components', { ns: 'core' })}
+                                                <Tabs.Tab value="components" leftSection={isMobile ? null : <IconComponents size={16} />}>
+                                                    {isMobile ? <IconComponents size={16} /> : t('navigation.components', { ns: 'core' })}
                                                 </Tabs.Tab>
-                                                <Tabs.Tab value="forms" leftSection={<IconForms size={16} />}>
-                                                    {t('navigation.forms', { ns: 'core' })}
+                                                <Tabs.Tab value="forms" leftSection={isMobile ? null : <IconForms size={16} />}>
+                                                    {isMobile ? <IconForms size={16} /> : t('navigation.forms', { ns: 'core' })}
                                                 </Tabs.Tab>
                                             </Tabs.List>
                                         </Tabs>
-                                        <SegmentedControl
-                                            value={currentColorScheme}
-                                            onChange={setCurrentColorScheme}
-                                            data={[
-                                                {
-                                                    value: 'dark',
-                                                    label: (
-                                                        <Tooltip label={t('display.darkMode', { ns: 'core' })}>
+
+                                        {/* Only show SegmentedControl on desktop */}
+                                        {!isMobile && (
+                                            <SegmentedControl
+                                                size="sm"
+                                                value={currentColorScheme}
+                                                onChange={setCurrentColorScheme}
+                                                data={[
+                                                    {
+                                                        value: 'dark',
+                                                        label: (
                                                             <Center>
                                                                 <IconMoon size={12} />
                                                             </Center>
-                                                        </Tooltip>
-                                                    ),
-                                                },
-                                                {
-                                                    value: 'dark-and-light',
-                                                    label: (
-                                                        <Tooltip label={t('display.sideBySide', { ns: 'core' })}>
+                                                        ),
+                                                    },
+                                                    {
+                                                        value: 'dark-and-light',
+                                                        label: (
                                                             <Center>
                                                                 <IconSunMoon size={12} />
                                                             </Center>
-                                                        </Tooltip>
-                                                    ),
-                                                },
-                                                {
-                                                    value: 'light',
-                                                    label: (
-                                                        <Tooltip label={t('display.lightMode', { ns: 'core' })}>
+                                                        ),
+                                                    },
+                                                    {
+                                                        value: 'light',
+                                                        label: (
                                                             <Center>
                                                                 <IconSun size={12} />
                                                             </Center>
-                                                        </Tooltip>
-                                                    ),
-                                                },
-                                            ]}
-                                        />
+                                                        ),
+                                                    },
+                                                ]}
+                                            />
+                                        )}
                                     </Group>
 
                                     {/* Tab Content */}
@@ -124,7 +173,7 @@ const App: React.FC = observer(() => {
 
                                         {/* Dark and Light Tab Content */}
                                         {currentColorScheme === 'dark-and-light' && (
-                                            <Group gap={0} justify="center" grow className="theme-display-container">
+                                            <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
                                                 <ThemeDisplay
                                                     number={2}
                                                     mode="dark"
