@@ -259,8 +259,10 @@ export class Colors{
         // Check if any virtual colors reference this color
         for (const otherColor of this.colorMap.values()) {
             if (otherColor instanceof VirtualColor) {
-                if (otherColor.light === color.name || otherColor.dark === color.name) {
-                    return false; // Can't delete a color that's referenced by a virtual color
+                if (otherColor.dark === color.name) {
+                    otherColor.dark = 'blue';
+                } else if (otherColor.light === color.name) {
+                    otherColor.light = 'blue';
                 }
             }
         }
