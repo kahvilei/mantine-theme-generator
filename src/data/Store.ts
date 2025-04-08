@@ -42,7 +42,11 @@ export class RemoraidStore {
     resetTheme(themeName: string): void {
         if (this.themeDefaults[themeName]) {
             this.themes.delete(themeName);
-            this.themes.set(themeName, new Theme(this.themeDefaults[themeName], themeName, this));
+            const newTheme =  new Theme(this.themeDefaults[themeName], themeName, this);
+            this.themes.set(themeName, newTheme);
+            if( this.theme.name === themeName ) {
+                this.theme = newTheme;
+            }
         }
     }
 

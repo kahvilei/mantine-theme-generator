@@ -39,7 +39,10 @@
       "color": "Color",
       "dark": "Dark",
       "light": "Light",
-      "shade": "Shade {{index}}"
+      "shade": "Shade {{index}}",
+      "shadeStrategy": "Shade generation",
+      "focused": "focused",
+      "fullRange": "full range"
     },
     "categories": {
       "customColors": "Custom Colors",
