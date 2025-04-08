@@ -5,7 +5,9 @@
     "upload": "Upload theme (JSON or TypeScript)",
     "uploadError": "Failed to process theme file. Make sure it's a valid JSON or TypeScript theme file: {{error}}",
     "resetTheme": "Reset Theme",
-    "resetConfirmation": "Are you sure you want to reset the theme? This will delete all current changes."
+    "resetConfirmation": "Are you sure you want to reset the theme? This will delete all current changes.",
+    "deleteChanges": "Delete current changes",
+    "cancelReset": "Cancel theme reset"
   },
   "tabs": {
     "quickSetup": "Quick Setup",

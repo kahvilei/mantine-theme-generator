@@ -6,7 +6,7 @@ import {
     IconSettings,
     IconTrash,
     IconTypeface,
-    IconDeviceFloppy,
+     IconX, IconRestore,
 } from '@tabler/icons-react';
 import {
     ActionIcon,
@@ -32,11 +32,7 @@ import classes from './ThemeControlPanel.module.css';
 import { useTranslation } from 'react-i18next';
 import {useMediaQuery} from "@mantine/hooks";
 
-interface ThemeControlPanelProps {
-    onApplyChanges?: () => void;
-}
-
-const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ onApplyChanges }) => {
+const ThemeControlPanel: React.FC = () => {
     const [activeTab, setActiveTab] = useState('quick-set-up');
     const [opened, setOpened] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -58,12 +54,6 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ onApplyChanges })
                 return <ComponentControls />;
             default:
                 return <ColorControl />;
-        }
-    };
-
-    const handleApplyChanges = () => {
-        if (onApplyChanges) {
-            onApplyChanges();
         }
     };
 
@@ -189,7 +179,7 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ onApplyChanges })
                                         onClick={() => setOpened(true)}
                                         size={isMobile ? "sm" : "md"}
                                     >
-                                        <IconTrash size={isMobile ? "1rem" : "1.25rem"} />
+                                        <IconRestore size={isMobile ? "1rem" : "1.25rem"} />
                                     </ActionIcon>
                                 </Tooltip>
                             </Popover.Target>
@@ -198,16 +188,26 @@ const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ onApplyChanges })
                                     {t('panel.resetConfirmation', { ns: 'theme' })}
                                 </Text>
                                 <Group mt="md">
-                                    <ActionIcon
+                                    <Button
                                         variant="filled"
                                         color="red"
+                                        leftSection={<IconTrash size="1.25rem" />}
                                         onClick={() => {
                                             theme.reset();
                                             setOpened(false);
                                         }}
                                     >
-                                        <IconTrash size="1.25rem" />
-                                    </ActionIcon>
+                                        {t('panel.deleteChanges', { ns: 'theme' })}
+                                    </Button>
+                                    <Button
+                                        variant="filled"
+                                        leftSection={<IconX size="1.25rem" />}
+                                        onClick={() => {
+                                            setOpened(false);
+                                        }}
+                                    >
+                                        {t('panel.cancelReset', { ns: 'theme' })}
+                                    </Button>
                                 </Group>
                             </Popover.Dropdown>
                         </Popover>

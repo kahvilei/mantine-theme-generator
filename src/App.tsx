@@ -89,7 +89,7 @@ const App: React.FC = observer(() => {
                             position="left"
                             withCloseButton={false}
                         >
-                            <ThemeControlPanel onApplyChanges={closeDrawer} />
+                            <ThemeControlPanel/>
                         </Drawer>
                     ) : (
                         <div className="app-sidebar">
