@@ -2,6 +2,7 @@ import {action, makeObservable, observable} from "mobx";
 import {Colors} from "@/data/Models/Theme/Colors/Colors";
 import {MantineColorsTuple} from "@mantine/core";
 import {VirtualColor} from "@/data/Models/Theme/Colors/Color Classes/VirtualColor";
+import {t} from "i18next";
 
 type ColorType = "custom" | "override";
 
@@ -43,6 +44,17 @@ export class Color {
         const colorTuple = this.getColorTuple();
         if (!colorTuple) {return [];}
         return Array.from(colorTuple);
+    }
+
+    getAccessor(){
+        return `theme.colors.${this.name}`;
+    }
+
+    getDescription() {
+        if (this.type === "custom") {
+            return t(`colors.customColor`);
+        }
+        return t(`colors.${this.name}`);
     }
 
     // Set a specific shade by index

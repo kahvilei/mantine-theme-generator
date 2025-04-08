@@ -27,6 +27,10 @@ export class ShadelessColor extends Color{
        //do nothing
     }
 
+    getAccessor(){
+        return `theme.${this.name}`;
+    }
+
     @action
     setColor(color: string): void {
         if (this.name === "white") {
