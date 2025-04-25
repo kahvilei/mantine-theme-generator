@@ -16,11 +16,11 @@ Give me a star in exchange for motivation.
 
 ## Usage
 
-1. go to the [editor](https://kahvilei.github.io/mantine-theme-generator/)
-2. select a theme from quickstart, upload a json/tsx file, or start from scratch
-3. edit the theme to your liking, or don't
-4. download the theme file with the download button
-5. copy the theme json or tsx into your project and load in like so (you will have to do some extra parsing if using json - createTheme function):
+1. Go to the [editor](https://kahvilei.github.io/mantine-theme-generator/)
+2. Select a theme from quickstart, upload a json/tsx file, or start from scratch
+3. Edit the theme to your liking, or don't
+4. Download the theme file with the download button
+5. Copy the theme json or ts into your project and load in like so (you will have to do some extra parsing if using json -- createTheme function):
 
 ```typescript
 // In your project
@@ -36,7 +36,7 @@ function App() {
 }
 ```
 
-## Features
+## Control panel tab details
 
 ### Quick Setup
 - Pick a preset theme
@@ -64,17 +64,7 @@ function App() {
 - Add style rules
 - Target specific component parts
 
-
-## Preview Options
-
-- Dashboard
-- Typography
-- Components
-- Forms
-
-Toggle light/dark mode with the button in the header.
-
-## Advanced Features
+## Advanced features
 
 ### Virtual Colors
 Colors that change between light/dark mode:
