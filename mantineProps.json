@@ -1,0 +1,3548 @@
+{
+  "Accordion": {
+    "props": {
+      "variant": [
+        "default",
+        "contained",
+        "filled",
+        "separated"
+      ],
+      "loop": "boolean",
+      "disableChevronRotation": "boolean",
+      "chevronSize": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "content",
+      "item",
+      "panel",
+      "icon",
+      "chevron",
+      "label",
+      "itemTitle",
+      "control"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--accordion-transition-duration",
+      "--accordion-chevron-size",
+      "--accordion-radius;}"
+    ]
+  },
+  "ActionIcon": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "subtle",
+        "default",
+        "gradient"
+      ],
+      "'data-disabled'": "boolean",
+      "__staticSelector": "string",
+      "loading": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "loader",
+      "icon"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--ai-radius",
+      "--ai-size",
+      "--ai-bg",
+      "--ai-hover",
+      "--ai-hover-color",
+      "--ai-color",
+      "--ai-bd;}"
+    ]
+  },
+  "Affix": {
+    "props": {
+      "zIndex": "string",
+      "withinPortal": "boolean",
+      "position": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "AffixBase",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--affix-z-index",
+      "--affix-top",
+      "--affix-left",
+      "--affix-bottom",
+      "--affix-right;}"
+    ]
+  },
+  "Alert": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "default",
+        "transparent",
+        "white"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "withCloseButton": "boolean",
+      "closeButtonLabel": "string",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "body",
+      "label",
+      "title",
+      "icon",
+      "wrapper",
+      "message",
+      "closeButton"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--alert-radius",
+      "--alert-bg",
+      "--alert-color",
+      "--alert-bd;}"
+    ]
+  },
+  "Anchor": {
+    "props": {
+      "variant": [
+        "TextVariant"
+      ],
+      "underline": [
+        "always",
+        "hover",
+        "not-hover",
+        "never"
+      ]
+    },
+    "styleApi": [
+      "TextStylesNames"
+    ],
+    "interfaceExtends": [
+      "Omit"
+    ],
+    "cssVars": [
+      "TextCssVariables"
+    ]
+  },
+  "AngleSlider": {
+    "props": {
+      "withLabel": "boolean",
+      "marks": "string",
+      "disabled": "boolean",
+      "restrictToMarks": "boolean",
+      "name": "string"
+    },
+    "styleApi": [
+      "root",
+      "thumb",
+      "label",
+      "marks",
+      "mark"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--slider-size",
+      "--thumb-size;}"
+    ]
+  },
+  "AppShell": {
+    "props": {
+      "withBorder": "boolean",
+      "padding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "zIndex": "string",
+      "layout": [
+        "default",
+        "alt"
+      ],
+      "disabled": "boolean",
+      "offsetScrollbars": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "navbar",
+      "main",
+      "header",
+      "footer",
+      "aside",
+      "section"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--app-shell-transition-duration",
+      "--app-shell-transition-timing-function;}"
+    ]
+  },
+  "AspectRatio": {
+    "props": {},
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--ar-ratio;}"
+    ]
+  },
+  "Autocomplete": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "clearable": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "__InputStylesNames",
+      "ComboboxLikeStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "Omit",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Avatar": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "gradient",
+        "outline",
+        "transparent",
+        "default",
+        "white"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "src": "string",
+      "alt": "string",
+      "autoContrast": "boolean",
+      "name": "string",
+      "allowedInitialsColors": "color"
+    },
+    "styleApi": [
+      "root",
+      "placeholder",
+      "image"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--avatar-size",
+      "--avatar-radius",
+      "--avatar-bg",
+      "--avatar-color",
+      "--avatar-bd;}"
+    ]
+  },
+  "BackgroundImage": {
+    "props": {
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "src": "string"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--bi-radius;}"
+    ]
+  },
+  "Badge": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "dot",
+        "transparent",
+        "white",
+        "default",
+        "gradient"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "circle": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "fullWidth": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "section",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--badge-height",
+      "--badge-padding-x",
+      "--badge-fz",
+      "--badge-radius",
+      "--badge-bg",
+      "--badge-color",
+      "--badge-bd",
+      "--badge-dot-color;}"
+    ]
+  },
+  "Blockquote": {
+    "props": {
+      "iconSize": "string",
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "icon",
+      "cite"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--bq-bg-light",
+      "--bq-bg-dark",
+      "--bq-bd",
+      "--bq-icon-size",
+      "--bq-radius;}"
+    ]
+  },
+  "Breadcrumbs": {
+    "props": {
+      "separatorMargin": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "separator",
+      "breadcrumb"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--bc-separator-margin;}"
+    ]
+  },
+  "Burger": {
+    "props": {
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "lineSize": "string",
+      "color": "color",
+      "opened": "boolean",
+      "transitionTimingFunction": "string"
+    },
+    "styleApi": [
+      "root",
+      "burger"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--burger-color",
+      "--burger-size",
+      "--burger-line-size",
+      "--burger-transition-duration",
+      "--burger-transition-timing-function;}"
+    ]
+  },
+  "Button": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "subtle",
+        "default",
+        "gradient"
+      ],
+      "'data-disabled'": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "fullWidth": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "loading": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "inner",
+      "loader",
+      "section",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--button-justify",
+      "--button-height",
+      "--button-padding-x",
+      "--button-fz",
+      "--button-radius",
+      "--button-bg",
+      "--button-hover",
+      "--button-hover-color",
+      "--button-color",
+      "--button-bd;}"
+    ]
+  },
+  "Card": {
+    "props": {
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "withBorder": "boolean",
+      "padding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "section"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--card-padding;}"
+    ]
+  },
+  "Center": {
+    "props": {
+      "inline": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ]
+  },
+  "Checkbox": {
+    "props": {
+      "variant": [
+        "filled",
+        "outline"
+      ],
+      "id": "string",
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "wrapperProps": "string",
+      "labelPosition": [
+        "left",
+        "right"
+      ],
+      "indeterminate": "boolean",
+      "icon": "boolean",
+      "iconColor": "color",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "icon",
+      "inner",
+      "input",
+      "InlineInputStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--checkbox-size",
+      "--checkbox-radius",
+      "--checkbox-color",
+      "--checkbox-icon-color;}"
+    ]
+  },
+  "Chip": {
+    "props": {
+      "variant": [
+        "outline",
+        "filled",
+        "light"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "type": [
+        "radio",
+        "checkbox"
+      ],
+      "checked": "boolean",
+      "defaultChecked": "boolean",
+      "onChange": "boolean",
+      "color": "color",
+      "id": "string",
+      "wrapperProps": "string",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "input",
+      "iconWrapper",
+      "checkIcon",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--chip-fz",
+      "--chip-size",
+      "--chip-icon-size",
+      "--chip-padding",
+      "--chip-checked-padding",
+      "--chip-radius",
+      "--chip-bg",
+      "--chip-hover",
+      "--chip-color",
+      "--chip-bd",
+      "--chip-spacing;}"
+    ]
+  },
+  "CloseButton": {
+    "props": {
+      "variant": [
+        "subtle",
+        "transparent"
+      ],
+      "'data-disabled'": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "iconSize": "string",
+      "__staticSelector": "string"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "__CloseButton",
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--cb-icon-size",
+      "--cb-size",
+      "--cb-radius;}"
+    ]
+  },
+  "Code": {
+    "props": {
+      "color": "color",
+      "block": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--code-bg;}"
+    ]
+  },
+  "Collapse": {
+    "props": {
+      "in": "boolean",
+      "transitionTimingFunction": "string",
+      "animateOpacity": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "Omit"
+    ]
+  },
+  "ColorInput": {
+    "props": {
+      "disallowInput": "boolean",
+      "fixOnBlur": "boolean",
+      "withPreview": "boolean",
+      "withEyeDropper": "boolean",
+      "closeOnColorSwatchClick": "boolean",
+      "eyeDropperButtonProps": "string",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean",
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "onChangeEnd": "string",
+      "withPicker": "boolean",
+      "swatches": "string",
+      "fullWidth": "boolean",
+      "focusable": "boolean",
+      "saturationLabel": "string",
+      "hueLabel": "string",
+      "alphaLabel": "string",
+      "onColorSwatchClick": "string"
+    },
+    "styleApi": [
+      "dropdown",
+      "eyeDropperButton",
+      "eyeDropperIcon",
+      "colorPreview",
+      "ColorPickerStylesNames",
+      "__InputStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "__ColorPicker",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{eyeDropperIcon:--ci-eye-dropper-icon-size;colorPreview:--ci-preview-size;}"
+    ]
+  },
+  "ColorPicker": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "onChangeEnd": "string",
+      "withPicker": "boolean",
+      "swatches": "string",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "__staticSelector": "string",
+      "fullWidth": "boolean",
+      "focusable": "boolean",
+      "saturationLabel": "string",
+      "hueLabel": "string",
+      "alphaLabel": "string",
+      "onColorSwatchClick": "string"
+    },
+    "styleApi": [
+      "wrapper",
+      "preview",
+      "body",
+      "sliders",
+      "slider",
+      "sliderOverlay",
+      "thumb",
+      "saturation",
+      "thumb",
+      "saturationOverlay",
+      "thumb",
+      "swatches",
+      "swatch"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__ColorPicker",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{wrapper:--cp-preview-size",
+      "--cp-width",
+      "--cp-body-spacing",
+      "--cp-swatch-size",
+      "--cp-thumb-size",
+      "--cp-saturation-height;}"
+    ]
+  },
+  "ColorSwatch": {
+    "props": {
+      "color": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "withShadow": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "alphaOverlay",
+      "shadowOverlay",
+      "colorOverlay",
+      "childrenOverlay"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--cs-radius",
+      "--cs-size;}"
+    ]
+  },
+  "Combobox": {
+    "props": {
+      "__staticSelector": "string",
+      "onOptionSubmit": "string",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "resetSelectionOnOptionHover": "boolean",
+      "readOnly": "boolean",
+      "offset": [
+        "number",
+        "FloatingAxesOffsets"
+      ],
+      "keepMounted": "boolean",
+      "withArrow": "boolean",
+      "withOverlay": "boolean",
+      "withinPortal": "boolean",
+      "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "returnFocus": "boolean",
+      "defaultOpened": "boolean",
+      "opened": "boolean",
+      "onChange": "boolean",
+      "closeOnClickOutside": "boolean",
+      "clickOutsideEvents": "string",
+      "trapFocus": "boolean",
+      "closeOnEscape": "boolean",
+      "id": "string",
+      "withRoles": "boolean"
+    },
+    "styleApi": [
+      "options",
+      "dropdown",
+      "option",
+      "search",
+      "empty",
+      "footer",
+      "header",
+      "group",
+      "groupLabel"
+    ],
+    "interfaceExtends": [
+      "__Popover",
+      "StylesApi"
+    ]
+  },
+  "Container": {
+    "props": {
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "fluid": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--container-size;}"
+    ]
+  },
+  "CopyButton": {
+    "props": {
+      "children": "boolean",
+      "value": "string"
+    },
+    "styleApi": [],
+    "interfaceExtends": []
+  },
+  "Dialog": {
+    "props": {
+      "keepMounted": "boolean",
+      "withCloseButton": "boolean",
+      "opened": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "closeButton"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "AffixBase",
+      "PaperBase",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--dialog-size;}"
+    ]
+  },
+  "Divider": {
+    "props": {
+      "variant": [
+        "solid",
+        "dashed",
+        "dotted"
+      ],
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "labelPosition": [
+        "left",
+        "center",
+        "right"
+      ],
+      "orientation": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--divider-color",
+      "--divider-border-style",
+      "--divider-size;}"
+    ]
+  },
+  "Drawer": {
+    "props": {
+      "withOverlay": "boolean",
+      "withCloseButton": "boolean",
+      "stackId": "string"
+    },
+    "styleApi": [
+      "DrawerRootStylesNames"
+    ],
+    "interfaceExtends": [
+      "DrawerRoot"
+    ],
+    "cssVars": [
+      "DrawerRootCssVariables"
+    ]
+  },
+  "Fieldset": {
+    "props": {
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "legend"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "FileButton": {
+    "props": {
+      "onChange": [
+        "(payload:Multipleextendstrue?File[]:File",
+        "null)=>void"
+      ],
+      "accept": "string",
+      "name": "string",
+      "form": "string",
+      "disabled": "boolean",
+      "capture": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": []
+  },
+  "FileInput": {
+    "props": {
+      "onChange": [
+        "(payload:Multipleextendstrue?File[]:File",
+        "null)=>void"
+      ],
+      "value": [
+        "Multipleextendstrue?File[]:File",
+        "null"
+      ],
+      "defaultValue": [
+        "Multipleextendstrue?File[]:File",
+        "null"
+      ],
+      "accept": "string",
+      "name": "string",
+      "form": "string",
+      "valueComponent": [
+        "React.FC<{value:null",
+        "File",
+        "File[];}>"
+      ],
+      "clearable": "boolean",
+      "readOnly": "boolean",
+      "capture": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Flex": {
+    "props": {
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "rowGap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "columnGap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "FloatingIndicator": {
+    "props": {
+      "target": [
+        "HTMLElement",
+        "null"
+      ],
+      "parent": [
+        "HTMLElement",
+        "null"
+      ],
+      "transitionDuration": "string",
+      "displayAfterTransitionEnd": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--transition-duration;}"
+    ]
+  },
+  "FocusTrap": {
+    "props": {
+      "active": "boolean",
+      "refProp": "string"
+    },
+    "styleApi": [],
+    "interfaceExtends": []
+  },
+  "Grid": {
+    "props": {
+      "gutter": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "grow": "boolean",
+      "type": [
+        "media",
+        "container"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "col",
+      "inner",
+      "container"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--grid-justify",
+      "--grid-align",
+      "--grid-overflow;}"
+    ]
+  },
+  "Group": {
+    "props": {
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "grow": "boolean",
+      "preventGrowOverflow": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--group-gap",
+      "--group-align",
+      "--group-justify",
+      "--group-wrap",
+      "--group-child-width;}"
+    ]
+  },
+  "Highlight": {
+    "props": {
+      "highlight": "string",
+      "color": "color",
+      "highlightStyles": [
+        "React.CSSProperties",
+        "((theme:MantineTheme)=>React.CSSProperties)"
+      ],
+      "children": "string"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Omit"
+    ]
+  },
+  "HoverCard": {
+    "props": {
+      "variant": "string",
+      "initiallyOpened": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Omit"
+    ]
+  },
+  "Image": {
+    "props": {
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "fallbackSrc": "string"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--image-radius",
+      "--image-object-fit;}"
+    ]
+  },
+  "Indicator": {
+    "props": {
+      "inline": "boolean",
+      "size": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "withBorder": "boolean",
+      "disabled": "boolean",
+      "processing": "boolean",
+      "zIndex": "string",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "indicator"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--indicator-color",
+      "--indicator-text-color",
+      "--indicator-size",
+      "--indicator-radius",
+      "--indicator-z-index",
+      "IndicatorPositionVariables;}"
+    ]
+  },
+  "InlineInput": {
+    "props": {
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "id": "string",
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "labelPosition": [
+        "left",
+        "right"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "body",
+      "labelWrapper",
+      "label",
+      "description",
+      "error"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Input": {
+    "props": {
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "input",
+      "wrapper",
+      "section"
+    ],
+    "interfaceExtends": [
+      "__InputWrapper",
+      "Omit",
+      "Box",
+      "__Input",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{wrapper:--input-height",
+      "--input-fz",
+      "--input-radius",
+      "--input-left-section-width",
+      "--input-right-section-width",
+      "--input-left-section-pointer-events",
+      "--input-right-section-pointer-events",
+      "--input-padding-y",
+      "--input-margin-top",
+      "--input-margin-bottom;}"
+    ]
+  },
+  "InputBase": {
+    "props": {
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "wrapperProps": "string",
+      "multiline": "boolean",
+      "withAria": "boolean",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "id": "string"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi"
+    ]
+  },
+  "InputsGroupFieldset": {
+    "props": {
+      "role": [
+        "radiogroup",
+        "group"
+      ]
+    },
+    "styleApi": [],
+    "interfaceExtends": []
+  },
+  "JsonInput": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "formatOnBlur": "boolean",
+      "serialize": "string"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Omit"
+    ]
+  },
+  "Kbd": {
+    "props": {
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--kbd-padding",
+      "--kbd-fz;}"
+    ]
+  },
+  "List": {
+    "props": {
+      "type": [
+        "ordered",
+        "unordered"
+      ],
+      "withPadding": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "spacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "center": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "ListItemStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--list-fz",
+      "--list-lh",
+      "--list-spacing;}"
+    ]
+  },
+  "Loader": {
+    "props": {
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Omit"
+    ],
+    "cssVars": [
+      "{root:--loader-size",
+      "--loader-color;}"
+    ]
+  },
+  "LoadingOverlay": {
+    "props": {
+      "visible": "boolean",
+      "zIndex": "string"
+    },
+    "styleApi": [
+      "root",
+      "loader",
+      "overlay"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--lo-z-index;}"
+    ]
+  },
+  "Mark": {
+    "props": {
+      "color": "color"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--mark-bg-dark",
+      "--mark-bg-light;}"
+    ]
+  },
+  "Menu": {
+    "props": {
+      "variant": "string",
+      "opened": "boolean",
+      "defaultOpened": "boolean",
+      "trapFocus": "boolean",
+      "onChange": "boolean",
+      "closeOnItemClick": "boolean",
+      "loop": "boolean",
+      "closeOnEscape": "boolean",
+      "trigger": [
+        "click",
+        "hover",
+        "click-hover"
+      ],
+      "closeOnClickOutside": "boolean",
+      "clickOutsideEvents": "string",
+      "id": "string",
+      "menuItemTabIndex": [
+        "-1",
+        "0"
+      ],
+      "withInitialFocusPlaceholder": "boolean",
+      "offset": [
+        "number",
+        "FloatingAxesOffsets"
+      ],
+      "keepMounted": "boolean",
+      "withArrow": "boolean",
+      "withOverlay": "boolean",
+      "withinPortal": "boolean",
+      "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "returnFocus": "boolean",
+      "__staticSelector": "string",
+      "withRoles": "boolean"
+    },
+    "styleApi": [
+      "item",
+      "itemLabel",
+      "itemSection",
+      "label",
+      "divider",
+      "PopoverStylesNames"
+    ],
+    "interfaceExtends": [
+      "__Popover",
+      "StylesApi"
+    ]
+  },
+  "Modal": {
+    "props": {
+      "__staticSelector": "string",
+      "withOverlay": "boolean",
+      "withCloseButton": "boolean",
+      "stackId": "string"
+    },
+    "styleApi": [
+      "ModalRootStylesNames"
+    ],
+    "interfaceExtends": [
+      "ModalRoot"
+    ],
+    "cssVars": [
+      "ModalRootCssVariables"
+    ]
+  },
+  "ModalBase": {
+    "props": {
+      "unstyled": "boolean",
+      "keepMounted": "boolean",
+      "opened": "boolean",
+      "id": "string",
+      "lockScroll": "boolean",
+      "trapFocus": "boolean",
+      "withinPortal": "boolean",
+      "closeOnClickOutside": "boolean",
+      "closeOnEscape": "boolean",
+      "returnFocus": "boolean",
+      "zIndex": "string",
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "padding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "Element"
+    ]
+  },
+  "MultiSelect": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "onRemove": "string",
+      "searchValue": "string",
+      "defaultSearchValue": "string",
+      "onSearchChange": "string",
+      "searchable": "boolean",
+      "withCheckIcon": "boolean",
+      "checkIconPosition": [
+        "left",
+        "right"
+      ],
+      "hidePickedOptions": "boolean",
+      "clearable": "boolean",
+      "hiddenInputValuesDivider": "string",
+      "chevronColor": "color",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "__InputStylesNames",
+      "ComboboxLikeStylesNames",
+      "pill",
+      "pillsList",
+      "inputField"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "ComboboxLike",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "NativeSelect": {
+    "props": {},
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "Omit",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "NavLink": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "subtle"
+      ],
+      "active": "boolean",
+      "color": "color",
+      "noWrap": "boolean",
+      "opened": "boolean",
+      "defaultOpened": "boolean",
+      "onChange": "boolean",
+      "disableRightSectionRotation": "boolean",
+      "childrenOffset": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "section",
+      "body",
+      "label",
+      "description",
+      "chevron",
+      "collapse",
+      "children"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--nl-color",
+      "--nl-bg",
+      "--nl-hover;children:--nl-offset;}"
+    ]
+  },
+  "Notification": {
+    "props": {
+      "variant": "string",
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "loading": "boolean",
+      "withBorder": "boolean",
+      "withCloseButton": "boolean",
+      "closeButtonProps": "string"
+    },
+    "styleApi": [
+      "root",
+      "icon",
+      "loader",
+      "body",
+      "title",
+      "description",
+      "closeButton"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--notification-radius",
+      "--notification-color;}"
+    ]
+  },
+  "NumberFormatter": {
+    "props": {
+      "value": "string",
+      "allowNegative": "boolean",
+      "decimalSeparator": "string",
+      "fixedDecimalScale": "boolean",
+      "prefix": "string",
+      "suffix": "string",
+      "thousandsGroupStyle": [
+        "thousand",
+        "lakh",
+        "wan",
+        "none"
+      ],
+      "thousandSeparator": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "React.ComponentWithoutRef"
+    ]
+  },
+  "NumberInput": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "allowLeadingZeros": "boolean",
+      "allowNegative": "boolean",
+      "allowedDecimalSeparators": "string",
+      "decimalSeparator": "string",
+      "fixedDecimalScale": "boolean",
+      "prefix": "string",
+      "suffix": "string",
+      "thousandsGroupStyle": [
+        "thousand",
+        "lakh",
+        "wan",
+        "none"
+      ],
+      "isAllowed": "boolean",
+      "valueIsNumericString": "boolean",
+      "type": [
+        "text",
+        "tel",
+        "password"
+      ],
+      "thousandSeparator": "boolean",
+      "hideControls": "boolean",
+      "clampBehavior": [
+        "strict",
+        "blur",
+        "none"
+      ],
+      "allowDecimal": "boolean",
+      "handlersRef": [
+        "React.ForwardedRef<NumberInputHandlers",
+        "undefined>"
+      ],
+      "stepHoldInterval": [
+        "number",
+        "((stepCount:number)=>number)"
+      ],
+      "withKeyboardEvents": "boolean",
+      "trimLeadingZeroesOnBlur": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "controls",
+      "control",
+      "__InputStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{controls:--ni-chevron-size;}"
+    ]
+  },
+  "Overlay": {
+    "props": {
+      "blur": "string",
+      "gradient": "string",
+      "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "center": "boolean",
+      "fixed": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--overlay-bg",
+      "--overlay-filter",
+      "--overlay-radius",
+      "--overlay-z-index;}"
+    ]
+  },
+  "Pagination": {
+    "props": {
+      "withEdges": "boolean",
+      "withControls": "boolean",
+      "getControlProps": "string",
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "hideWithOnePage": "boolean",
+      "withPages": "boolean"
+    },
+    "styleApi": [
+      "PaginationRootStylesNames"
+    ],
+    "interfaceExtends": [
+      "PaginationRoot"
+    ],
+    "cssVars": [
+      "PaginationRootCssVariables"
+    ]
+  },
+  "Paper": {
+    "props": {
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "withBorder": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "PaperBase",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--paper-radius",
+      "--paper-shadow;}"
+    ]
+  },
+  "PasswordInput": {
+    "props": {
+      "visibilityToggleIcon": "boolean",
+      "visibilityToggleButtonProps": "string",
+      "visible": "boolean",
+      "defaultVisible": "boolean",
+      "onVisibilityChange": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "visibilityToggle",
+      "innerInput",
+      "__InputStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--psi-icon-size",
+      "--psi-button-size;}"
+    ]
+  },
+  "Pill": {
+    "props": {
+      "variant": [
+        "default",
+        "contrast"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "withRemoveButton": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "label",
+      "remove"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--pill-fz",
+      "--pill-radius",
+      "--pill-height;}"
+    ]
+  },
+  "PillsInput": {
+    "props": {
+      "__stylesApiProps": "string",
+      "__staticSelector": "string",
+      "multiline": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "PinInput": {
+    "props": {
+      "name": "string",
+      "form": "string",
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "autoFocus": "boolean",
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "onComplete": "string",
+      "placeholder": "string",
+      "manageFocus": "boolean",
+      "oneTimeCode": "boolean",
+      "id": "string",
+      "disabled": "boolean",
+      "error": "boolean",
+      "type": [
+        "alphanumeric",
+        "number",
+        "RegExp"
+      ],
+      "mask": "boolean",
+      "readOnly": "boolean",
+      "inputMode": [
+        "none",
+        "text",
+        "tel",
+        "url",
+        "email",
+        "numeric",
+        "decimal",
+        "search"
+      ],
+      "ariaLabel": "string"
+    },
+    "styleApi": [
+      "root",
+      "pinInput",
+      "input"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--pin-input-size;}"
+    ]
+  },
+  "Popover": {
+    "props": {
+      "offset": [
+        "number",
+        "FloatingAxesOffsets"
+      ],
+      "keepMounted": "boolean",
+      "withArrow": "boolean",
+      "withOverlay": "boolean",
+      "withinPortal": "boolean",
+      "zIndex": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "shadow": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "returnFocus": "boolean",
+      "__staticSelector": "string",
+      "defaultOpened": "boolean",
+      "opened": "boolean",
+      "onChange": "boolean",
+      "closeOnClickOutside": "boolean",
+      "clickOutsideEvents": "string",
+      "trapFocus": "boolean",
+      "closeOnEscape": "boolean",
+      "id": "string",
+      "withRoles": "boolean"
+    },
+    "styleApi": [
+      "dropdown",
+      "arrow",
+      "overlay"
+    ],
+    "interfaceExtends": [
+      "__Popover",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{dropdown:--popover-radius",
+      "--popover-shadow;}"
+    ]
+  },
+  "Portal": {
+    "props": {
+      "target": "string",
+      "reuseTargetNode": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "React.ComponentWithoutRef"
+    ]
+  },
+  "Progress": {
+    "props": {
+      "color": "color",
+      "striped": "boolean",
+      "animated": "boolean"
+    },
+    "styleApi": [
+      "ProgressRootStylesNames"
+    ],
+    "interfaceExtends": [
+      "__ProgressRoot",
+      "StylesApi"
+    ]
+  },
+  "Radio": {
+    "props": {
+      "variant": [
+        "filled",
+        "outline"
+      ],
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "wrapperProps": "string",
+      "labelPosition": [
+        "left",
+        "right"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "iconColor": "color",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "InlineInputStylesNames",
+      "inner",
+      "radio",
+      "icon"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--radio-size",
+      "--radio-radius",
+      "--radio-color",
+      "--radio-icon-color",
+      "--radio-icon-size;}"
+    ]
+  },
+  "Rating": {
+    "props": {
+      "emptySymbol": [
+        "React.ReactNode",
+        "((value:number)=>React.ReactNode)"
+      ],
+      "fullSymbol": [
+        "React.ReactNode",
+        "((value:number)=>React.ReactNode)"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "getSymbolLabel": "string",
+      "name": "string",
+      "readOnly": "boolean",
+      "highlightSelectedOnly": "boolean",
+      "color": "color"
+    },
+    "styleApi": [
+      "root",
+      "starSymbol",
+      "input",
+      "label",
+      "symbolBody",
+      "symbolGroup"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--rating-size",
+      "--rating-color;}"
+    ]
+  },
+  "RingProgress": {
+    "props": {
+      "roundCaps": "boolean",
+      "rootColor": "color"
+    },
+    "styleApi": [
+      "root",
+      "svg",
+      "label",
+      "curve"
+    ],
+    "interfaceExtends": [
+      "React.ComponentWithRef",
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--rp-size",
+      "--rp-label-offset",
+      "--rp-transition-duration;}"
+    ]
+  },
+  "ScrollArea": {
+    "props": {
+      "scrollbarSize": "string",
+      "type": [
+        "auto",
+        "always",
+        "scroll",
+        "hover",
+        "never"
+      ],
+      "scrollbars": [
+        "x",
+        "y",
+        "xy",
+        "false"
+      ],
+      "offsetScrollbars": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "viewport",
+      "scrollbar",
+      "thumb",
+      "corner"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element",
+      "ScrollArea"
+    ],
+    "cssVars": [
+      "{root:--scrollarea-scrollbar-size;}"
+    ]
+  },
+  "SegmentedControl": {
+    "props": {
+      "data": "string",
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "disabled": "boolean",
+      "name": "string",
+      "fullWidth": "boolean",
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "transitionTimingFunction": "string",
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ],
+      "readOnly": "boolean",
+      "autoContrast": "boolean",
+      "withItemsBorders": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "input",
+      "label",
+      "control",
+      "indicator",
+      "innerLabel"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--sc-radius",
+      "--sc-color",
+      "--sc-font-size",
+      "--sc-padding",
+      "--sc-shadow",
+      "--sc-transition-duration",
+      "--sc-transition-timing-function;}"
+    ]
+  },
+  "Select": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "searchable": "boolean",
+      "withCheckIcon": "boolean",
+      "checkIconPosition": [
+        "left",
+        "right"
+      ],
+      "searchValue": "string",
+      "defaultSearchValue": "string",
+      "onSearchChange": "string",
+      "allowDeselect": "boolean",
+      "clearable": "boolean",
+      "chevronColor": "color",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "__InputStylesNames",
+      "ComboboxLikeStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "ComboboxLike",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "SemiCircleProgress": {
+    "props": {
+      "orientation": [
+        "up",
+        "down"
+      ],
+      "fillDirection": [
+        "right-to-left",
+        "left-to-right"
+      ],
+      "filledSegmentColor": "color",
+      "emptySegmentColor": "color",
+      "labelPosition": [
+        "center",
+        "bottom"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "svg",
+      "emptySegment",
+      "filledSegment",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--scp-filled-segment-color",
+      "--scp-empty-segment-color",
+      "--scp-rotation",
+      "--scp-transition-duration",
+      "--scp-thickness;}"
+    ]
+  },
+  "SimpleGrid": {
+    "props": {
+      "spacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "verticalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "type": [
+        "media",
+        "container"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "container"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Skeleton": {
+    "props": {
+      "visible": "boolean",
+      "circle": "boolean",
+      "animate": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--skeleton-width",
+      "--skeleton-height",
+      "--skeleton-radius;}"
+    ]
+  },
+  "Space": {
+    "props": {},
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Spoiler": {
+    "props": {
+      "initialState": "boolean",
+      "expanded": "boolean",
+      "onExpandedChange": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "control",
+      "content"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--spoiler-transition-duration;}"
+    ]
+  },
+  "Stack": {
+    "props": {
+      "gap": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--stack-gap",
+      "--stack-align",
+      "--stack-justify;}"
+    ]
+  },
+  "Stepper": {
+    "props": {
+      "icon": [
+        "React.ReactNode",
+        "StepFragmentComponent"
+      ],
+      "completedIcon": [
+        "React.ReactNode",
+        "StepFragmentComponent"
+      ],
+      "progressIcon": [
+        "React.ReactNode",
+        "StepFragmentComponent"
+      ],
+      "color": "color",
+      "iconSize": "string",
+      "contentPadding": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ],
+      "iconPosition": [
+        "right",
+        "left"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "allowNextStepsSelect": "boolean",
+      "wrap": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "separator",
+      "steps",
+      "content",
+      "step",
+      "stepLoader",
+      "verticalSeparator",
+      "stepWrapper",
+      "stepIcon",
+      "stepCompletedIcon",
+      "stepBody",
+      "stepLabel",
+      "stepDescription"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--stepper-color",
+      "--stepper-icon-color",
+      "--stepper-icon-size",
+      "--stepper-content-padding",
+      "--stepper-radius",
+      "--stepper-fz",
+      "--stepper-spacing;}"
+    ]
+  },
+  "Switch": {
+    "props": {
+      "id": "string",
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "wrapperProps": "string",
+      "labelPosition": [
+        "left",
+        "right"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "track",
+      "trackLabel",
+      "thumb",
+      "input",
+      "InlineInputStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--switch-radius",
+      "--switch-height",
+      "--switch-width",
+      "--switch-thumb-size",
+      "--switch-label-font-size",
+      "--switch-track-label-padding",
+      "--switch-color;}"
+    ]
+  },
+  "Table": {
+    "props": {
+      "variant": [
+        "default",
+        "vertical"
+      ],
+      "captionSide": [
+        "top",
+        "bottom"
+      ],
+      "borderColor": "color",
+      "withTableBorder": "boolean",
+      "withColumnBorders": "boolean",
+      "withRowBorders": "boolean",
+      "horizontalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "verticalSpacing": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "striped": "boolean",
+      "stripedColor": "color",
+      "highlightOnHover": "boolean",
+      "highlightOnHoverColor": "color",
+      "stickyHeader": "boolean",
+      "stickyHeaderOffset": "string",
+      "tabularNums": "boolean"
+    },
+    "styleApi": [
+      "table",
+      "thead",
+      "tbody",
+      "tfoot",
+      "tr",
+      "th",
+      "td",
+      "caption"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{table:--table-layout",
+      "--table-border-color",
+      "--table-caption-side",
+      "--table-horizontal-spacing",
+      "--table-vertical-spacing",
+      "--table-striped-color",
+      "--table-highlight-on-hover-color",
+      "--table-sticky-header-offset;}"
+    ]
+  },
+  "TableOfContents": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "none"
+      ],
+      "active": "boolean",
+      "color": "color",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "autoContrast": "boolean",
+      "getControlProps": "string",
+      "depthOffset": "string",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "styleApi": [
+      "root",
+      "control"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--toc-bg",
+      "--toc-color",
+      "--toc-size",
+      "--toc-depth-offset",
+      "--toc-radius;}"
+    ]
+  },
+  "Tabs": {
+    "props": {
+      "variant": [
+        "default",
+        "outline",
+        "pills"
+      ],
+      "defaultValue": "string",
+      "value": "string",
+      "onChange": "string",
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ],
+      "placement": [
+        "left",
+        "right"
+      ],
+      "id": "string",
+      "loop": "boolean",
+      "activateTabWithKeyboard": "boolean",
+      "allowTabDeactivation": "boolean",
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "inverted": "boolean",
+      "keepMounted": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "TabsListStylesNames",
+      "TabsPanelStylesNames",
+      "TabsTabStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--tabs-color",
+      "--tabs-radius;}"
+    ]
+  },
+  "TagsInput": {
+    "props": {
+      "value": "string",
+      "defaultValue": "string",
+      "onChange": "string",
+      "onRemove": "string",
+      "searchValue": "string",
+      "defaultSearchValue": "string",
+      "onSearchChange": "string",
+      "allowDuplicates": "boolean",
+      "onDuplicate": "string",
+      "splitChars": "string",
+      "clearable": "boolean",
+      "hiddenInputValuesDivider": "string",
+      "acceptValueOnBlur": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [
+      "__InputStylesNames",
+      "ComboboxLikeStylesNames",
+      "pill",
+      "pillsList",
+      "inputField"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "Omit",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "Text": {
+    "props": {
+      "variant": [
+        "text",
+        "gradient"
+      ],
+      "__staticSelector": "string",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "inline": "boolean",
+      "inherit": "boolean",
+      "span": "boolean",
+      "color": "color"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi"
+    ],
+    "cssVars": [
+      "{root:--text-gradient",
+      "--text-line-clamp",
+      "--text-fz",
+      "--text-lh;}"
+    ]
+  },
+  "Textarea": {
+    "props": {
+      "__staticSelector": "string",
+      "autosize": "boolean",
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "TextInput": {
+    "props": {
+      "wrapperProps": "string",
+      "variant": [
+        "default",
+        "filled",
+        "unstyled"
+      ],
+      "required": "boolean",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "disabled": "boolean",
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "pointer": "boolean",
+      "withErrorStyles": "boolean",
+      "inputSize": "string",
+      "__clearable": "boolean",
+      "__staticSelector": "string",
+      "__stylesApiProps": "string",
+      "multiline": "boolean",
+      "id": "string",
+      "withAria": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "Box",
+      "__BaseInput",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "ThemeIcon": {
+    "props": {
+      "variant": [
+        "filled",
+        "light",
+        "outline",
+        "transparent",
+        "white",
+        "default",
+        "gradient"
+      ],
+      "size": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--ti-radius",
+      "--ti-size",
+      "--ti-bg",
+      "--ti-color",
+      "--ti-bd;}"
+    ]
+  },
+  "Timeline": {
+    "props": {
+      "color": "color",
+      "radius": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "bulletSize": "string",
+      "align": [
+        "right",
+        "left"
+      ],
+      "lineWidth": "string",
+      "reverseActive": "boolean",
+      "autoContrast": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "TimelineItemStylesNames"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--tl-line-width",
+      "--tl-bullet-size",
+      "--tl-color",
+      "--tl-icon-color",
+      "--tl-radius;}"
+    ]
+  },
+  "Title": {
+    "props": {
+      "textWrap": [
+        "wrap",
+        "nowrap",
+        "balance",
+        "pretty",
+        "stable"
+      ]
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--title-fw",
+      "--title-lh",
+      "--title-fz",
+      "--title-line-clamp",
+      "--title-text-wrap;}"
+    ]
+  },
+  "Tooltip": {
+    "props": {
+      "opened": "boolean",
+      "defaultOpened": "boolean",
+      "offset": [
+        "number",
+        "FloatingAxesOffsets"
+      ],
+      "withArrow": "boolean",
+      "events": "boolean",
+      "inline": "boolean",
+      "keepMounted": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": [
+      "TooltipBase"
+    ]
+  },
+  "Transition": {
+    "props": {
+      "keepMounted": "boolean",
+      "timingFunction": "string",
+      "mounted": "boolean"
+    },
+    "styleApi": [],
+    "interfaceExtends": []
+  },
+  "Tree": {
+    "props": {
+      "levelOffset": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "expandOnClick": "boolean",
+      "expandOnSpace": "boolean",
+      "checkOnSpace": "boolean",
+      "selectOnClick": "boolean",
+      "clearSelectionOnOutsideClick": "boolean",
+      "allowRangeSelection": "boolean"
+    },
+    "styleApi": [
+      "root",
+      "node",
+      "subtree",
+      "label"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ],
+    "cssVars": [
+      "{root:--level-offset;}"
+    ]
+  },
+  "TypographyStylesProvider": {
+    "props": {},
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  },
+  "UnstyledButton": {
+    "props": {
+      "__staticSelector": "string"
+    },
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Omit",
+      "StylesApi"
+    ]
+  },
+  "VisuallyHidden": {
+    "props": {},
+    "styleApi": [
+      "root"
+    ],
+    "interfaceExtends": [
+      "Box",
+      "StylesApi",
+      "Element"
+    ]
+  }
+}

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
-  "homepage": "https://kahvilei.github.io/mantine-theme-generator/",
+  "homepage": "https://remoraid.dev/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
