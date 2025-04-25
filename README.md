@@ -46,7 +46,9 @@ function App() {
 ### Colors
 - Set primary color
 - Create custom colors
+  - Either standard or virtual, with options for the color shade generation behavior and the ability to edit each shade individually.
 - Override Mantine colors
+  - Useful especially for colors like "dark" and "grey" which are used by default for most, if not all, components
 - Configure gradients
 
 ### Typography
@@ -57,7 +59,7 @@ function App() {
 - Adjust spacing scale
 - Set border radiuses
 - Configure breakpoints
-- Manage accessibility
+- Manage some accessibility settings
 
 ### Components
 - Set default props
@@ -71,6 +73,7 @@ Colors that change between light/dark mode:
 1. Add new color with "+"
 2. Select "Virtual" type
 3. Pick different colors for light/dark
+
 
 ### Component Styling
 1. Go to Components tab
