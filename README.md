@@ -16,7 +16,27 @@ Give me a star in exchange for motivation.
 
 ## Usage
 
-First, go to the [editor](https://kahvilei.github.io/mantine-theme-generator/).
+1. go to the [editor](https://kahvilei.github.io/mantine-theme-generator/)
+2. select a theme from quickstart, upload a json/tsx file, or start from scratch
+3. edit the theme to your liking, or don't
+4. download the theme file with the download button
+5. copy the theme json or tsx into your project and load in like so (you will have to do some extra parsing if using json - createTheme function):
+
+```typescript
+// In your project
+import { MantineProvider } from '@mantine/core';
+import theme from './your-theme';
+
+function App() {
+  return (
+    <MantineProvider theme={theme}>
+      {/* Your app */}
+    </MantineProvider>
+  );
+}
+```
+
+## Features
 
 ### Quick Setup
 - Pick a preset theme
@@ -44,22 +64,6 @@ First, go to the [editor](https://kahvilei.github.io/mantine-theme-generator/).
 - Add style rules
 - Target specific component parts
 
-### Export
-Click the download button and choose JSON or TypeScript.
-
-```typescript
-// In your project
-import { MantineProvider } from '@mantine/core';
-import theme from './your-theme';
-
-function App() {
-  return (
-    <MantineProvider theme={theme}>
-      {/* Your app */}
-    </MantineProvider>
-  );
-}
-```
 
 ## Preview Options
 
