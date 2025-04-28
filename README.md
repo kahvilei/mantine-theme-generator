@@ -4,7 +4,7 @@ Visual editor for Mantine UI v7 themes with real-time preview. Still a work in p
 
 Give me a star in exchange for motivation.
 
-![Remoraid dashboard](/readme-files/remoraid.png)
+![Remoraid dashboard](/readme-files/remoraid-main.png)
 
 ## Features
 
