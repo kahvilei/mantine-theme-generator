@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({
             </Title>
             {!isMobile && (
                 <Text size="xs" c="dimmed">
-                  {t('app.version', { version: '7.17.0' })}
+                  {t('app.version', { version: '8.0.1' })}
                 </Text>
             )}
           </Group>
