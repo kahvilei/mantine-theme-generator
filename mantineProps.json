@@ -10,6 +10,7 @@
       "loop": "boolean",
       "disableChevronRotation": "boolean",
       "chevronSize": "string",
+      "chevronIconSize": "string",
       "radius": [
         "xs",
         "sm",
@@ -94,15 +95,7 @@
   },
   "Affix": {
     "props": {
-      "zIndex": "string",
-      "withinPortal": "boolean",
-      "position": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ]
+      "withinPortal": "boolean"
     },
     "styleApi": [
       "root"
@@ -269,37 +262,7 @@
       "defaultValue": "string",
       "onChange": "string",
       "clearable": "boolean",
-      "wrapperProps": "string",
-      "variant": [
-        "default",
-        "filled",
-        "unstyled"
-      ],
-      "required": "boolean",
-      "radius": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
-      "disabled": "boolean",
-      "size": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
-      "pointer": "boolean",
-      "withErrorStyles": "boolean",
-      "inputSize": "string",
-      "__clearable": "boolean",
-      "__staticSelector": "string",
-      "__stylesApiProps": "string",
-      "multiline": "boolean",
-      "id": "string",
-      "withAria": "boolean"
+      "autoSelectOnBlur": "boolean"
     },
     "styleApi": [
       "__InputStylesNames",
@@ -307,7 +270,7 @@
     ],
     "interfaceExtends": [
       "Box",
-      "__BaseInput",
+      "Omit",
       "Omit",
       "StylesApi",
       "Element"
@@ -648,7 +611,6 @@
         "lg",
         "xl"
       ],
-      "wrapperProps": "string",
       "labelPosition": [
         "left",
         "right"
@@ -706,7 +668,6 @@
       "onChange": "boolean",
       "color": "color",
       "id": "string",
-      "wrapperProps": "string",
       "autoContrast": "boolean"
     },
     "styleApi": [
@@ -795,7 +756,8 @@
     "props": {
       "in": "boolean",
       "transitionTimingFunction": "string",
-      "animateOpacity": "boolean"
+      "animateOpacity": "boolean",
+      "keepMounted": "boolean"
     },
     "styleApi": [],
     "interfaceExtends": [
@@ -811,7 +773,6 @@
       "withEyeDropper": "boolean",
       "closeOnColorSwatchClick": "boolean",
       "eyeDropperButtonProps": "string",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -993,6 +954,8 @@
       ],
       "disabled": "boolean",
       "returnFocus": "boolean",
+      "hideDetached": "boolean",
+      "preventPositionChangeWhenVisible": "boolean",
       "defaultOpened": "boolean",
       "opened": "boolean",
       "onChange": "boolean",
@@ -1028,7 +991,11 @@
         "lg",
         "xl"
       ],
-      "fluid": "boolean"
+      "fluid": "boolean",
+      "strategy": [
+        "block",
+        "grid"
+      ]
     },
     "styleApi": [
       "root"
@@ -1199,7 +1166,6 @@
       "clearable": "boolean",
       "readOnly": "boolean",
       "capture": "boolean",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -1449,41 +1415,8 @@
       "IndicatorPositionVariables;}"
     ]
   },
-  "InlineInput": {
-    "props": {
-      "__staticSelector": "string",
-      "__stylesApiProps": "string",
-      "id": "string",
-      "disabled": "boolean",
-      "size": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
-      "labelPosition": [
-        "left",
-        "right"
-      ]
-    },
-    "styleApi": [
-      "root",
-      "body",
-      "labelWrapper",
-      "label",
-      "description",
-      "error"
-    ],
-    "interfaceExtends": [
-      "Box",
-      "StylesApi",
-      "Element"
-    ]
-  },
   "Input": {
     "props": {
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -1522,7 +1455,7 @@
     ],
     "interfaceExtends": [
       "__InputWrapper",
-      "Omit",
+      "__Input",
       "Box",
       "__Input",
       "StylesApi"
@@ -1544,7 +1477,6 @@
     "props": {
       "__staticSelector": "string",
       "__stylesApiProps": "string",
-      "wrapperProps": "string",
       "multiline": "boolean",
       "withAria": "boolean",
       "variant": [
@@ -1581,16 +1513,6 @@
       "StylesApi"
     ]
   },
-  "InputsGroupFieldset": {
-    "props": {
-      "role": [
-        "radiogroup",
-        "group"
-      ]
-    },
-    "styleApi": [],
-    "interfaceExtends": []
-  },
   "JsonInput": {
     "props": {
       "value": "string",
@@ -1623,8 +1545,7 @@
       "Element"
     ],
     "cssVars": [
-      "{root:--kbd-padding",
-      "--kbd-fz;}"
+      "{root:--kbd-fz;}"
     ]
   },
   "List": {
@@ -1773,6 +1694,8 @@
       ],
       "disabled": "boolean",
       "returnFocus": "boolean",
+      "hideDetached": "boolean",
+      "preventPositionChangeWhenVisible": "boolean",
       "__staticSelector": "string",
       "withRoles": "boolean"
     },
@@ -1782,6 +1705,7 @@
       "itemSection",
       "label",
       "divider",
+      "chevron",
       "PopoverStylesNames"
     ],
     "interfaceExtends": [
@@ -1866,7 +1790,7 @@
       "clearable": "boolean",
       "hiddenInputValuesDivider": "string",
       "chevronColor": "color",
-      "wrapperProps": "string",
+      "clearSearchOnChange": "boolean",
       "variant": [
         "default",
         "filled",
@@ -2066,7 +1990,6 @@
       ],
       "withKeyboardEvents": "boolean",
       "trimLeadingZeroesOnBlur": "boolean",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -2205,7 +2128,6 @@
       "visible": "boolean",
       "defaultVisible": "boolean",
       "onVisibilityChange": "boolean",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -2297,8 +2219,6 @@
     "props": {
       "__stylesApiProps": "string",
       "__staticSelector": "string",
-      "multiline": "boolean",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -2324,6 +2244,7 @@
       "withErrorStyles": "boolean",
       "inputSize": "string",
       "__clearable": "boolean",
+      "multiline": "boolean",
       "id": "string",
       "withAria": "boolean"
     },
@@ -2431,6 +2352,8 @@
       ],
       "disabled": "boolean",
       "returnFocus": "boolean",
+      "hideDetached": "boolean",
+      "preventPositionChangeWhenVisible": "boolean",
       "__staticSelector": "string",
       "defaultOpened": "boolean",
       "opened": "boolean",
@@ -2463,7 +2386,8 @@
     },
     "styleApi": [],
     "interfaceExtends": [
-      "React.ComponentWithoutRef"
+      "React.ComponentWithoutRef",
+      "BasePortal"
     ]
   },
   "Progress": {
@@ -2494,7 +2418,6 @@
         "lg",
         "xl"
       ],
-      "wrapperProps": "string",
       "labelPosition": [
         "left",
         "right"
@@ -2608,14 +2531,16 @@
         "xy",
         "false"
       ],
-      "offsetScrollbars": "boolean"
+      "offsetScrollbars": "boolean",
+      "onOverflowChange": "boolean"
     },
     "styleApi": [
       "root",
       "viewport",
       "scrollbar",
       "thumb",
-      "corner"
+      "corner",
+      "content"
     ],
     "interfaceExtends": [
       "Box",
@@ -2700,7 +2625,7 @@
       "allowDeselect": "boolean",
       "clearable": "boolean",
       "chevronColor": "color",
-      "wrapperProps": "string",
+      "autoSelectOnBlur": "boolean",
       "variant": [
         "default",
         "filled",
@@ -2982,11 +2907,11 @@
         "lg",
         "xl"
       ],
-      "wrapperProps": "string",
       "labelPosition": [
         "left",
         "right"
-      ]
+      ],
+      "withThumbIndicator": "boolean"
     },
     "styleApi": [
       "root",
@@ -3182,7 +3107,7 @@
       "clearable": "boolean",
       "hiddenInputValuesDivider": "string",
       "acceptValueOnBlur": "boolean",
-      "wrapperProps": "string",
+      "isDuplicate": "boolean",
       "variant": [
         "default",
         "filled",
@@ -3237,11 +3162,8 @@
       ],
       "__staticSelector": "string",
       "size": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
+        "MantineFontSize",
+        "MantineLineHeight"
       ],
       "inline": "boolean",
       "inherit": "boolean",
@@ -3266,7 +3188,6 @@
     "props": {
       "__staticSelector": "string",
       "autosize": "boolean",
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -3307,7 +3228,6 @@
   },
   "TextInput": {
     "props": {
-      "wrapperProps": "string",
       "variant": [
         "default",
         "filled",
@@ -3464,7 +3384,9 @@
       "withArrow": "boolean",
       "events": "boolean",
       "inline": "boolean",
-      "keepMounted": "boolean"
+      "keepMounted": "boolean",
+      "autoContrast": "boolean",
+      "target": "string"
     },
     "styleApi": [],
     "interfaceExtends": [
@@ -3511,7 +3433,7 @@
       "{root:--level-offset;}"
     ]
   },
-  "TypographyStylesProvider": {
+  "Typography": {
     "props": {},
     "styleApi": [
       "root"
