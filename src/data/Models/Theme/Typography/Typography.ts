@@ -1,6 +1,6 @@
 
 import {action, makeAutoObservable} from "mobx";
-import {frameValue, unFrameValue} from "@/utils/frameValues";
+import {DEFAULT_THEME} from "@mantine/core";
 
 export type HeadingSize = {
     fontSize?: string;
@@ -21,6 +21,13 @@ export class Typography {
         this.fontFamily = config.fontFamily;
         this.fontFamilyMonospace = config.fontFamilyMonospace;
         this.headings = config.headings;
+        if (!this.headings) {
+            this.headings = DEFAULT_THEME.headings;
+        }
+        if (!this.headings.sizes) {
+            console.log(DEFAULT_THEME.headings.sizes);
+            this.headings.sizes = DEFAULT_THEME.headings.sizes;
+        }
         makeAutoObservable(this);
     }
 
@@ -50,11 +57,14 @@ export class Typography {
     @action
     setHeadingAttr(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', attribute: string, value: string) {
         if (!this.headings) {
-            this.headings = {};
+            this.headings = DEFAULT_THEME.headings;
         }
         if (!this.headings.sizes) {
-            // @ts-ignore
-            this.headings.sizes = {}
+            console.log(DEFAULT_THEME.headings.sizes);
+            this.headings.sizes = DEFAULT_THEME.headings.sizes;
+        }
+        if (!this.headings.sizes[heading]) {
+            this.headings.sizes[heading] = DEFAULT_THEME.headings.sizes[heading];
         }
 
         // @ts-ignore

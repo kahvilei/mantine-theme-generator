@@ -14,7 +14,8 @@
     "color": "Color",
     "typography": "Typography",
     "sizeAndLayout": "Size and Layout",
-    "components": "Components"
+    "components": "Components",
+    "themeSelect": "Theme"
   },
   "setup": {
     "premadeThemes": "Premade themes",

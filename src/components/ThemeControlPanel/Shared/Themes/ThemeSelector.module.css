@@ -2,7 +2,8 @@
     padding:0;
 }
 
-.themePreview {
+.themeButtonWrap{
+    width: 100%;
     cursor: pointer;
 }
 

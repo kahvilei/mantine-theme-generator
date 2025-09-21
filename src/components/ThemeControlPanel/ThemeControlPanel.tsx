@@ -4,28 +4,20 @@ import {
     IconPalette,
     IconResize,
     IconSettings,
-    IconTrash,
     IconTypeface,
-     IconX, IconRestore,
 } from '@tabler/icons-react';
 import {
-    ActionIcon,
     Box,
-    Button,
     Center,
     Group,
-    Popover,
     ScrollArea,
     SegmentedControl,
-    Text,
     Tooltip,
     Stack,
 } from '@mantine/core';
 import QuickSetUp from '@/components/ThemeControlPanel/QuickSetUp/QuickSetUp';
-import { theme } from '@/data/Store';
 import ColorControl from './ColorControls/ColorControl';
 import ComponentControls from './ComponentControls/ComponentControls';
-import { DownloadThemeButton, UploadThemeButton } from './Shared/Themes/themeDownloadUpload';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
 import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
@@ -34,7 +26,6 @@ import {useMediaQuery} from "@mantine/hooks";
 
 const ThemeControlPanel: React.FC = () => {
     const [activeTab, setActiveTab] = useState('quick-set-up');
-    const [opened, setOpened] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     // Updated to use new namespaces
@@ -59,7 +50,7 @@ const ThemeControlPanel: React.FC = () => {
 
     return (
         <Box id="control-panel" h="100%">
-            <Stack h="100%" gap="xs">
+            <Stack h="100%" gap="xs" pt={'lg'}>
                 <Group className={classes.header}>
                     {isMobile ? (
                         <SegmentedControl
@@ -167,51 +158,6 @@ const ThemeControlPanel: React.FC = () => {
                             ]}
                         />
                     )}
-                    <Group gap="xs" wrap='nowrap'>
-                        <DownloadThemeButton />
-                        <UploadThemeButton />
-                        <Popover opened={opened} onClose={() => setOpened(false)} position="bottom" withArrow>
-                            <Popover.Target>
-                                <Tooltip label={t('panel.resetTheme', { ns: 'theme' })}>
-                                    <ActionIcon
-                                        variant="light"
-                                        color="red"
-                                        onClick={() => setOpened(true)}
-                                        size={isMobile ? "sm" : "md"}
-                                    >
-                                        <IconRestore size={isMobile ? "1rem" : "1.25rem"} />
-                                    </ActionIcon>
-                                </Tooltip>
-                            </Popover.Target>
-                            <Popover.Dropdown>
-                                <Text size="sm">
-                                    {t('panel.resetConfirmation', { ns: 'theme' })}
-                                </Text>
-                                <Group mt="md">
-                                    <Button
-                                        variant="filled"
-                                        color="red"
-                                        leftSection={<IconTrash size="1.25rem" />}
-                                        onClick={() => {
-                                            theme.reset();
-                                            setOpened(false);
-                                        }}
-                                    >
-                                        {t('panel.deleteChanges', { ns: 'theme' })}
-                                    </Button>
-                                    <Button
-                                        variant="filled"
-                                        leftSection={<IconX size="1.25rem" />}
-                                        onClick={() => {
-                                            setOpened(false);
-                                        }}
-                                    >
-                                        {t('panel.cancelReset', { ns: 'theme' })}
-                                    </Button>
-                                </Group>
-                            </Popover.Dropdown>
-                        </Popover>
-                    </Group>
                 </Group>
 
                 <ScrollArea
@@ -222,6 +168,7 @@ const ThemeControlPanel: React.FC = () => {
                         height: isMobile ? 'calc(100vh - 160px)' : undefined,
                         flex: 1
                     }}
+                    p={'sm'}
                 >
                     <Box>{renderContent()}</Box>
                 </ScrollArea>

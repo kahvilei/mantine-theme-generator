@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({
       [availableLanguages, currentLanguage]);
 
   return (
-      <Group h="100%" align="center" justify="center">
+      <Group align="center" justify="center">
         <Group px={isMobile ? "xs" : "md"} h="100%" align="center" justify="space-between" w="100%" maw="2100px" wrap="nowrap">
           {isMobile && openDrawer && (
               <ActionIcon onClick={openDrawer} variant="subtle" size="lg">
@@ -68,29 +68,9 @@ const Header: React.FC<HeaderProps> = ({
             <Title size={isMobile ? "h4" : "1.4rem"} className={classes.title}>
               {t('app.title')}
             </Title>
-            {!isMobile && (
-                <Text size="xs" c="dimmed">
-                  {t('app.version', { version: '8.3.1' })}
-                </Text>
-            )}
           </Group>
 
           <Group align="center" gap={isMobile ? "xs" : "md"} wrap="nowrap">
-            {!isMobile && (
-                <>
-                  <Tooltip label={t('app.links.github')}>
-                    <ActionIcon variant="filled" onClick={() => window.open('https://github.com/kahvilei/mantine-theme-generator', '_blank')}>
-                      <IconBrandGithub size="1.25rem" />
-                    </ActionIcon>
-                  </Tooltip>
-                  <Tooltip label={t('app.links.docs')}>
-                    <ActionIcon variant="filled" onClick={() => window.open('https://mantine.dev/', '_blank')}>
-                      <IconBrandMantine size="1.25rem" />
-                    </ActionIcon>
-                  </Tooltip>
-                </>
-            )}
-
             {/* Language Menu */}
             <Menu position="bottom-end" withArrow withinPortal>
               <Menu.Target>

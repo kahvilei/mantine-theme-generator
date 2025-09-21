@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IconDownload, IconUpload } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
-import { ActionIcon, Group, SegmentedControl, Tooltip } from '@mantine/core';
+import { ActionIcon, Group, SegmentedControl, Text, Tooltip } from '@mantine/core';
 import Store, { theme } from '@/data/Store';
 import { processTypeScriptContent } from "@/utils/processTypescriptFile";
 import { themeToTypeScript } from "@/utils/themeToTypeScript";
@@ -41,8 +41,12 @@ export const DownloadThemeButton = observer(() => {
   };
   return (
       <Group gap="xs">
+        <Text size='sm'>
+          Export as:
+        </Text>
         <SegmentedControl
             value={fileFormat}
+            c="primary"
             onChange={(value: string) => setFileFormat(value as 'json' | 'typescript')}
             data={[
               { label: 'JSON', value: 'json' },

@@ -12,15 +12,9 @@ const QuickSetUp = () => {
     const { t } = useTranslation(['theme']);
 
     return (
-        <Page title={t('tabs.quickSetup')}>
+        <Page title={t('tabs.themeSelect')}>
             <Section labelIcon={<IconLayout/>} label={t('setup.premadeThemes')}>
                 <ThemeSelector/>
-            </Section>
-            <Section labelIcon={<IconColorPicker/>} label={t('setup.primaryColor')}>
-                <ThemeColorSelector label={t('colors.panel.primaryColorSelector')}/>
-            </Section>
-            <Section labelIcon={<IconTypeface/>} label={t('setup.fontFamilies')}>
-                <ThemeFontsSelector/>
             </Section>
         </Page>
     );

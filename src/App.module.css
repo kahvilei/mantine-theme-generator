@@ -1,0 +1,40 @@
+.pageContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 400px;
+  min-width: 300px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tabHeader {
+  padding: 0.5rem 1rem;
+}
+
+.tabs {
+  flex: 1;
+}
+
+.tabContentScroll {
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.themeDisplayContainer {
+  width: 100%;
+}

@@ -1361,6 +1361,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4":
+  version: 4.17.20
+  resolution: "@types/lodash@npm:4.17.20"
+  checksum: 10c0/98cdd0faae22cbb8079a01a3bb65aa8f8c41143367486c1cbf5adc83f16c9272a2a5d2c1f541f61d0d73da543c16ee1d21cf2ef86cb93cd0cc0ac3bced6dd88f
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^22.9.0":
   version: 22.18.5
   resolution: "@types/node@npm:22.18.5"
@@ -4380,6 +4387,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
+  languageName: node
+  linkType: hard
+
 "loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -4478,6 +4492,7 @@ __metadata:
     "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:^14.5.2"
     "@types/chroma-js": "npm:^2.4.4"
+    "@types/lodash": "npm:^4"
     "@types/node": "npm:^22.9.0"
     "@types/react": "npm:^18.3.5"
     "@types/react-dom": "npm:^18.3.0"
@@ -4494,6 +4509,7 @@ __metadata:
     i18next-http-backend: "npm:^3.0.2"
     identity-obj-proxy: "npm:^3.0.0"
     jsdom: "npm:^25.0.0"
+    lodash: "npm:^4.17.21"
     mobx: "npm:^6.13.7"
     mobx-react-lite: "npm:^4.1.0"
     postcss: "npm:^8.4.45"
