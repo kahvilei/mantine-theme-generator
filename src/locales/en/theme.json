@@ -19,6 +19,7 @@
   },
   "setup": {
     "premadeThemes": "Premade themes",
+    "userThemes": "Uploaded themes",
     "primaryColor": "Primary color",
     "fontFamilies": "Font families"
   },

@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { IconDownload, IconUpload } from '@tabler/icons-react';
+import { IconDownload, IconUpload, IconX } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
-import { ActionIcon, Group, SegmentedControl, Text, Tooltip } from '@mantine/core';
+import { ActionIcon, Card, Group, SegmentedControl, Text, Tooltip } from '@mantine/core';
 import Store, { theme } from '@/data/Store';
 import { processTypeScriptContent } from "@/utils/processTypescriptFile";
 import { themeToTypeScript } from "@/utils/themeToTypeScript";
 import { useTranslation } from "react-i18next";
+import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 
 // Individual components if you need them separately
 export const DownloadThemeButton = observer(() => {
@@ -63,54 +64,66 @@ export const DownloadThemeButton = observer(() => {
   );
 });
 
-export const UploadThemeButton = observer(() => {
-  const { t } = useTranslation(['app', 'common']);
+
+export const UploadTheme = observer(() => {
+  const { t } = useTranslation(["app", "theme"]);
 
   const uploadTheme = (file: File) => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          let themeData;
-          const content = e.target?.result as string;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string;
+        let themeData;
 
-          if (file.name.endsWith('.ts') || file.name.endsWith('.tsx')) {
-            themeData = processTypeScriptContent(content);
-          } else {
-            themeData = JSON.parse(content);
-          }
-
-          const prettyName = file.name.replace(/\.(ts|tsx|json)$/, '');
-          Store.setTheme(prettyName, themeData);
-        } catch (error) {
-          // eslint-disable-next-line no-alert
-          alert(
-              t('theme.upload.error', { error, ns: 'app' })
-          );
+        if (file.name.endsWith(".ts") || file.name.endsWith(".tsx")) {
+          themeData = processTypeScriptContent(content);
+        } else {
+          themeData = JSON.parse(content);
         }
-      };
-      reader.readAsText(file);
-    }
+
+        const prettyName = file.name.replace(/\.(ts|tsx|json)$/, "");
+        Store.setTheme(prettyName, themeData);
+      } catch (error) {
+        // eslint-disable-next-line no-alert
+        alert(t("theme.upload.error", { error, ns: "app" }));
+      }
+    };
+    reader.readAsText(file);
   };
 
   return (
-      <Tooltip label={t('panel.upload', { ns: 'theme' })}>
-        <ActionIcon
-            onClick={() => {
-              const input = document.createElement('input');
-              input.type = 'file';
-              input.accept = '.json,.ts,.tsx,.txt';
-              input.onchange = (e) => {
-                const file = (e.target as HTMLInputElement).files?.[0];
-                if (file) {
-                  uploadTheme(file);
-                }
-              };
-              input.click();
-            }}
-        >
-          <IconUpload size={18} />
-        </ActionIcon>
-      </Tooltip>
+    <Card>
+      <Dropzone
+        onDrop={(files) => {
+          if (files.length > 0) uploadTheme(files[0]);
+        }}
+        onReject={(files) =>
+          alert(
+            t("theme.upload.error", {
+              error: "File type not supported",
+              ns: "app",
+            })
+          )
+        }
+        maxFiles={1}
+        accept={['tsx', 'json']}
+        style={{ cursor: "pointer", padding: "10px" }}
+      >
+        <Group justify="center" gap="xs">
+          <Dropzone.Accept>
+            <IconUpload size={18} />
+          </Dropzone.Accept>
+          <Dropzone.Reject>
+            <IconX size={18} />
+          </Dropzone.Reject>
+          <Dropzone.Idle>
+            <IconUpload size={18} />
+          </Dropzone.Idle>
+          <Text size="sm" c="dimmed">
+            {t("panel.upload", { ns: "theme" })}
+          </Text>
+        </Group>
+      </Dropzone>
+    </Card>
   );
 });

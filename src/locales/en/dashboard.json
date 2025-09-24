@@ -13,6 +13,15 @@
       "revenue": "Revenue"
     }
   },
+  "hero": {
+    "title": "Mantine Theme Editor",
+    "subtitle": "Visualize your theme in real-time",
+    "links": {
+      "github": "View on GitHub",
+      "docs": "Mantine Documentation"
+    },
+    "version": "Mantine version: {{version}}"
+  },
   "metrics": {
     "users": {
       "title": "Total Users",

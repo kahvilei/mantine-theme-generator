@@ -27,10 +27,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-                                         toggleScheme,
-                                         openDrawer,
-                                         isMobile = false,
-                                       }) => {
+    toggleScheme,
+    openDrawer,
+    isMobile = false,
+  }) => {
   const { t } = useTranslation(['core']);
   const currentLanguage = i18n.language;
 
@@ -57,25 +57,18 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
       <Group align="center" justify="center">
-        <Group px={isMobile ? "xs" : "md"} h="100%" align="center" justify="space-between" w="100%" maw="2100px" wrap="nowrap">
+        <Group p={isMobile ? "xs" : "md"} align="center" justify="space-between">
           {isMobile && openDrawer && (
               <ActionIcon onClick={openDrawer} variant="subtle" size="lg">
                 <IconPaint/>
               </ActionIcon>
           )}
-
-          <Group align="flex-end" wrap="nowrap">
-            <Title size={isMobile ? "h4" : "1.4rem"} className={classes.title}>
-              {t('app.title')}
-            </Title>
-          </Group>
-
           <Group align="center" gap={isMobile ? "xs" : "md"} wrap="nowrap">
             {/* Language Menu */}
             <Menu position="bottom-end" withArrow withinPortal>
               <Menu.Target>
                 <Tooltip label={t('app.language')}>
-                  <ActionIcon variant="outline" size={isMobile ? "sm" : "md"}>
+                  <ActionIcon  size={isMobile ? "sm" : "md"}>
                     <Group gap={5}>
                       {currentLanguageDetails.code && currentLanguageDetails.code}
                     </Group>
@@ -106,7 +99,6 @@ const Header: React.FC<HeaderProps> = ({
 
             <Tooltip label={t('app.theme')}>
               <ActionIcon
-                  variant="outline"
                   onClick={toggleScheme}
                   size={isMobile ? "sm" : "md"}
               >

@@ -6,6 +6,7 @@ import Section from "@/components/ThemeControlPanel/Shared/Layout/EditorSection"
 import { IconColorPicker, IconLayout, IconTypeface } from "@tabler/icons-react";
 import ThemeFontsSelector from "@/components/ThemeControlPanel/Shared/Fonts/ThemeFontsSelector";
 import { useTranslation } from "react-i18next";
+import { UploadTheme } from "../Shared/Themes/themeDownloadUpload";
 
 const QuickSetUp = () => {
     // Updated to use new namespace
@@ -14,8 +15,13 @@ const QuickSetUp = () => {
     return (
         <Page title={t('tabs.themeSelect')}>
             <Section labelIcon={<IconLayout/>} label={t('setup.premadeThemes')}>
-                <ThemeSelector/>
+                <ThemeSelector/>     
             </Section>
+            <Section labelIcon={<IconLayout/>} label={t('setup.userThemes')}>
+                <ThemeSelector userThemes/>
+                <UploadTheme/>
+            </Section>
+            
         </Page>
     );
 };

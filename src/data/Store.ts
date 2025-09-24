@@ -72,7 +72,6 @@ export class RemoraidStore {
     const newTheme = new Theme(theme, name, this);
     this.userThemes.set(name, newTheme);
     this.themes.set(name, newTheme);
-    
     newTheme.makeMainTheme();
   }
 
@@ -115,6 +114,11 @@ export class RemoraidStore {
     ]);
   }
 
+  /** Get filtered themes based on userThemes flag */
+  filteredThemeList(userOnly = false): [string, Theme][] {
+    return userOnly ? this.userThemeList() : this.premadeList();
+  }
+
   /** Get just user themes */
   userThemeList(): [string, Theme][] {
     return Array.from(this.userThemes);
@@ -140,12 +144,23 @@ export class RemoraidStore {
       const data = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (data) {
         const parsed: Record<string, MantineThemeOverride> = JSON.parse(data);
-        Object.entries(parsed).forEach(([name, t]) =>
-          this.userThemes.set(name, new Theme(t, name, this))
-        );
+
+        Object.entries(parsed).forEach(([name, t]) => {
+          const isPremade = !!this.premadeDefaults[name];
+
+          // If premade, load as edited premade into `themes`
+          if (isPremade) {
+            this.themes.set(name, new Theme(t, name, this));
+          } else {
+            // Otherwise treat as user theme
+            const theme = new Theme(t, name, this);
+            this.userThemes.set(name, theme);
+            this.themes.set(name, theme);
+          }
+        });
       }
     } catch {
-      console.warn("Failed to load user themes from localStorage");
+      console.warn("Failed to load themes from localStorage");
     }
   }
 

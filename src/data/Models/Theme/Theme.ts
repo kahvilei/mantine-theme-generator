@@ -49,6 +49,12 @@ export class Theme {
         this.store?.resetTheme(this.name);
     }
 
+    isEdited(): boolean {
+        if (!this?.store?.premadeDefaults[this.name]) return false;
+        const defaultData = this.store.premadeDefaults[this.name];
+        return JSON.stringify(defaultData) !== JSON.stringify(this.compile());
+    }
+
     // Modified compile function to properly handle color functions
     compile = (keepFunctions = false): MantineThemeOverride => {
         // Start with a fresh object

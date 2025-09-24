@@ -22,6 +22,7 @@ import {
 import React, { useMemo } from "react";
 import {AreaChart, BarChart, DonutChart} from "@mantine/charts";
 import { useTranslation } from 'react-i18next';
+import { Hero } from "./Demo Page Components/Hero";
 
 export const Dashboard: React.FC = () => {
     // Use the dashboard namespace
@@ -93,29 +94,30 @@ export const Dashboard: React.FC = () => {
 
     return (
         <Stack gap="xl" flex={1}>
-                    <Card p="lg">
-                        <Group justify="space-between" mb="md">
-                            <Stack gap={0}>
-                                <Title order={3}>{t('analytics.title')}</Title>
-                                <Text c="dimmed">{t('analytics.subtitle')}</Text>
-                            </Stack>
-                            <SegmentedControl
-                                data={[
-                                    { label: t('analytics.timeframes.day'), value: 'day' },
-                                    { label: t('analytics.timeframes.week'), value: 'week' },
-                                    { label: t('analytics.timeframes.month'), value: 'month' }
-                                ]}
-                                defaultValue="month"
-                            />
-                        </Group>
-                        <AreaChart
-                            h={300}
-                            data={chartData}
-                            dataKey="date"
-                            series={chartSeries}
-                            curveType="monotone"
-                        />
-                    </Card>
+            <Hero/>
+            <Card p="lg">
+                <Group justify="space-between" mb="md">
+                    <Stack gap={0}>
+                        <Title order={3}>{t('analytics.title')}</Title>
+                        <Text c="dimmed">{t('analytics.subtitle')}</Text>
+                    </Stack>
+                    <SegmentedControl
+                        data={[
+                            { label: t('analytics.timeframes.day'), value: 'day' },
+                            { label: t('analytics.timeframes.week'), value: 'week' },
+                            { label: t('analytics.timeframes.month'), value: 'month' }
+                        ]}
+                        defaultValue="month"
+                    />
+                </Group>
+                <AreaChart
+                    h={300}
+                    data={chartData}
+                    dataKey="date"
+                    series={chartSeries}
+                    curveType="monotone"
+                />
+            </Card>
 
             <Group>
                 <Stack flex="1 30px">

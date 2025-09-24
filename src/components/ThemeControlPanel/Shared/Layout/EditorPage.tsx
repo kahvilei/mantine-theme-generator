@@ -9,7 +9,7 @@ interface EditorPageProps {
 const EditorPage: React.FC<EditorPageProps> = ({ children, title }) => {
   return (
     <Stack p={0} gap="xl">
-      {title && <Title order={2}>{title}</Title>}
+      {title && <Title order={3}>{title}</Title>}
       {children}
     </Stack>
   );
