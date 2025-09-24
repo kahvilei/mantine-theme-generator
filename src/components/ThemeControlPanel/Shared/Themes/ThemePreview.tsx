@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Text, Box, ActionIcon, DEFAULT_THEME, MantineColorsTuple, Tooltip, Stack } from '@mantine/core';
+import { Group, Text, Box, ActionIcon, DEFAULT_THEME, MantineColorsTuple, Tooltip, Stack, Card } from '@mantine/core';
 import { IconTrash, IconRefresh } from '@tabler/icons-react';
 import classes from './ThemeSelector.module.css';
 import ColorSwatch from "@/components/ThemeControlPanel/Shared/Colors/ColorSwatch";
@@ -19,31 +19,22 @@ interface ThemePreviewProps {
 }
 
 const ThemePreview: React.FC<ThemePreviewProps> = observer(({ theme, selected = false, onReset, onDelete }: ThemePreviewProps) => {
-  const colors = theme.colors.colors ? theme.colors.colors : DEFAULT_THEME.colors;
   const primaryColor = theme.colors.primaryColor ? theme.colors.primaryColor : 'blue';
-  const hex = theme.colors.getColorByName(primaryColor)?.getShade(undefined, 'dark');
   const fontFamily = theme.typography.headings ? theme.typography.headings.fontFamily : DEFAULT_THEME.fontFamily;
 
-  const lightMode = false;
-
-  const dark = colors.dark as MantineColorsTuple;
-
-  const fontColor = lightMode ? 'black' : dark ? dark[0] : DEFAULT_THEME.colors.dark[0];
-  const backgroundColor = lightMode ? 'white' : dark ? dark[7] : DEFAULT_THEME.colors.dark[7];
-  const { t } = useTranslation(['theme']);
-
   return (
-    <Box
+    <Card
       p="xs"
       className={classes.themePreview}
       style={{
         fontFamily,
         borderRadius: '.5rem',
       }}
+      withBorder={selected}
     >
       <Group justify="space-between" align="center" gap="xs">
         <Group gap="xs">
-          <Text size="sm" fw={500} style={{ color: fontColor }}>
+          <Text size="sm" fw={500}>
             {theme.name}
           </Text>
           <ColorSwatch size="xs" colorsInstance={theme.colors} name={primaryColor} />
@@ -84,7 +75,7 @@ const ThemePreview: React.FC<ThemePreviewProps> = observer(({ theme, selected = 
           )}
         </Group>
       </Group>
-    </Box>
+    </Card>
   );
 });
 
