@@ -55,8 +55,5 @@ const processThemeObject = (theme: any): any => {
             }
         });
     }
-
-    console.log(theme)
-
     return theme;
 };

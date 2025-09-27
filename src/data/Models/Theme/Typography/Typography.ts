@@ -25,7 +25,6 @@ export class Typography {
             this.headings = DEFAULT_THEME.headings;
         }
         if (!this.headings.sizes) {
-            console.log(DEFAULT_THEME.headings.sizes);
             this.headings.sizes = DEFAULT_THEME.headings.sizes;
         }
         makeAutoObservable(this);
@@ -60,7 +59,6 @@ export class Typography {
             this.headings = DEFAULT_THEME.headings;
         }
         if (!this.headings.sizes) {
-            console.log(DEFAULT_THEME.headings.sizes);
             this.headings.sizes = DEFAULT_THEME.headings.sizes;
         }
         if (!this.headings.sizes[heading]) {
