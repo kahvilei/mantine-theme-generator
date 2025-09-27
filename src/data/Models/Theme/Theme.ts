@@ -1,131 +1,167 @@
-import {action, makeAutoObservable} from "mobx";
-import {MantineThemeOverride} from "@mantine/core";
-import {Colors, ColorSettings} from "@/data/Models/Theme/Colors/Colors";
-import {Sizes, SpacingSettings} from "@/data/Models/Theme/SizeAndSpacing/Sizes";
-import {Typography, TypographySettings} from "@/data/Models/Theme/Typography/Typography";
-import {RemoraidStore} from "@/data/Store";
-import {Interaction, InteractionSettings} from "@/data/Models/Theme/Interaction/Interaction";
-import {Accessibility, AccessibilitySettings} from "@/data/Models/Theme/Accessibility/Accessibility";
-import {Components, ComponentSettings} from "@/data/Models/Theme/Components/Components";
+import { action, computed, makeAutoObservable, reaction, runInAction, toJS } from "mobx";
+import { MantineThemeOverride } from "@mantine/core";
+import { Colors, ColorSettings } from "@/data/Models/Theme/Colors/Colors";
+import { Sizes, SpacingSettings } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
+import { Typography, TypographySettings } from "@/data/Models/Theme/Typography/Typography";
+import { RemoraidStore, USER_THEME_PREFIX } from "@/data/Store";
+import { Interaction, InteractionSettings } from "@/data/Models/Theme/Interaction/Interaction";
+import { Accessibility, AccessibilitySettings } from "@/data/Models/Theme/Accessibility/Accessibility";
+import { Components, ComponentSettings } from "@/data/Models/Theme/Components/Components";
+import debounce from "lodash.debounce";
+import { themeToTypeScript } from "@/utils/themeToTypeScript";
+
+const SAVE_DEBOUNCE_MS = 1000;
+const COMPILE_DEBOUNCE_MS = 100;
 
 export type HeadingSize = {
-    fontSize?: string;
-    lineHeight?: string;
-    fontWeight?: string;
+  fontSize?: string;
+  lineHeight?: string;
+  fontWeight?: string;
 };
 
 export class Theme {
-    config: ThemeStateInternals;
-    typography: Typography;
-    colors: Colors;
-    sizes: Sizes;
-    interaction: Interaction;
-    accessibility: Accessibility;
-    components: Components;
+  config: ThemeStateInternals;
+  typography: Typography;
+  colors: Colors;
+  sizes: Sizes;
+  interaction: Interaction;
+  accessibility: Accessibility;
+  components: Components;
 
-    name: string;
-    private readonly store?: RemoraidStore;
+  name: string;
+  edited = false;
+  private store?: RemoraidStore;
 
-    constructor(theme: MantineThemeOverride, name: string, store?: RemoraidStore) {
-        this.config = theme as ThemeStateInternals;
-        this.typography = new Typography(this.config);
-        this.colors = new Colors(this.config);
-        this.sizes = new Sizes(this.config);
-        this.accessibility = new Accessibility(this.config);
-        this.components = new Components(this.config);
-        this.interaction = new Interaction(this.config);
+  private _compiled: MantineThemeOverride = {};
+  private _compiledWithVirtuals: MantineThemeOverride = {};
 
-        this.store = store;
-        this.name = name;
-        makeAutoObservable(this);
-    }
+  private debouncedSave: () => void;
+  private triggerCompile: () => void;
+  private triggerCompileWithVirtuals: () => void;
 
-    makeMainTheme() {
-        this.store?.setMainTheme(this);
-    }
+  constructor(theme: MantineThemeOverride, name: string, store?: RemoraidStore) {
+    this.config = theme as ThemeStateInternals;
+    this.typography = new Typography(this.config);
+    this.colors = new Colors(this.config);
+    this.sizes = new Sizes(this.config);
+    this.accessibility = new Accessibility(this.config);
+    this.components = new Components(this.config);
+    this.interaction = new Interaction(this.config);
+    this.name = name;
+    this.store = store;
 
-    @action
-    reset() {
-        this.store?.resetTheme(this.name);
-    }
+    makeAutoObservable(this);
 
-    isEdited(): boolean {
-        if (!this?.store?.premadeDefaults[this.name]) return false;
-        const defaultData = this.store.premadeDefaults[this.name];
-        return JSON.stringify(defaultData) !== JSON.stringify(this.compile());
-    }
+    // Debounced save to avoid too many localStorage writes
+    this.debouncedSave = debounce(() => {
+      localStorage.setItem(
+        `${USER_THEME_PREFIX}${this.name}`,
+            themeToTypeScript(this.compiledWithVirtuals)
+        );
+    }, SAVE_DEBOUNCE_MS);
 
-    // Modified compile function to properly handle color functions
-    compile = (keepFunctions = false): MantineThemeOverride => {
-        // Start with a fresh object
-        const compiledTheme: MantineThemeOverride = {};
+    // Debounced compile
+    this.triggerCompile = debounce(() => {
+      runInAction(() => { this._compiled = this.compile(false); });
+    }, COMPILE_DEBOUNCE_MS);
 
-        const omissions = ['colorMap'];
+    this.triggerCompileWithVirtuals = debounce(() => {
+      runInAction(() => { this._compiledWithVirtuals = this.compile(true); });
+    }, COMPILE_DEBOUNCE_MS);
 
-        // Helper function to deeply map properties from source to target
-        const mapDeepProperties = (source: any, target: any, path: string = '') => {
-            // Early return if source is not an object
-            if (!source || typeof source !== 'object') {
-                return;
+    // Initial compile
+    this._compiled = this.compile(false);
+    this._compiledWithVirtuals = this.compile(true);
+
+    // Observe deep changes to theme sections and auto-save
+    reaction(
+      () => [
+        toJS(this.colors),
+        toJS(this.sizes),
+        toJS(this.typography),
+        toJS(this.interaction),
+        toJS(this.accessibility),
+        toJS(this.components)
+      ],
+      () => this.save()
+    );
+  }
+
+  @computed
+  get compiled(): MantineThemeOverride { return this._compiled; }
+
+  @computed
+  get compiledWithVirtuals(): MantineThemeOverride { return this._compiledWithVirtuals; }
+
+  @action
+  reset() {
+    this.store?.resetTheme(this.name);
+  }
+
+  makeActiveTheme() {
+    this.store?.setActiveTheme(this);
+  }
+
+  save() {
+    this.edited = true;
+    this.debouncedSave();
+    this.scheduleCompile();
+  }
+
+  scheduleCompile() {
+    this.triggerCompile();
+    this.triggerCompileWithVirtuals();
+  }
+
+  compile(keepFunctions = false): MantineThemeOverride {
+    const compiled: MantineThemeOverride = {};
+    const omit = ['colorMap'];
+
+    const mapDeep = (source: any, target: any) => {
+      if (!source || typeof source !== 'object') return;
+
+      Object.entries(source).forEach(([key, value]) => {
+        if (value == null || omit.includes(key)) return;
+
+        if (typeof value === 'function') {
+          target[key] = keepFunctions ? value : value();
+        } else if (Array.isArray(value)) {
+          target[key] = [...value];
+        } else if (typeof value === 'object') {
+            if (!target[key]) {
+                target[key] = {};
             }
-
-            Object.entries(source).forEach(([key, value]) => {
-                const currentPath = path ? `${path}.${key}` : key;
-
-                if (value === null || value === undefined || omissions.includes(key)) {
-                    // Skip null, undefined, or omitted properties
-                } else if (typeof value === 'function') {
-                    // Special handling for color functions
-                    if (keepFunctions) {
-                        // For other functions, respect the keepFunctions flag
-                        target[key] = value;
-                    } else {
-                        // Evaluate other functions as before
-                        target[key] = value();
-                    }
-                } else if (Array.isArray(value)) {
-                    // Special handling for arrays - create a copy using spread
-                    target[key] = [...value];
-                } else if (typeof value === 'object') {
-                    // For objects, create a nested structure
-                    if (!target[key]) {
-                        target[key] = {};
-                    }
-                    mapDeepProperties(value, target[key], currentPath);
-                } else {
-                    // For primitive values, assign directly
-                    target[key] = value;
-                }
-            });
-        };
-
-        // Map properties from each theme section
-        mapDeepProperties(this.colors, compiledTheme, 'colors');
-        mapDeepProperties(this.typography, compiledTheme, 'typography');
-        mapDeepProperties(this.sizes, compiledTheme, 'sizes');
-        mapDeepProperties(this.accessibility, compiledTheme, 'accessibility');
-        mapDeepProperties(this.interaction, compiledTheme, 'interaction');
-
-        // Special handling for components since they have a special structure
-        if (this.components.rules && Array.from(this.components.rules).length > 0) {
-            compiledTheme.components = {};
-            for (const [componentName, componentConfig] of Array.from(this.components.rules)) {
-                compiledTheme.components[componentName] = {
-                    defaultProps: componentConfig.defaultProps ? {...componentConfig.defaultProps} : undefined,
-                    styles: componentConfig.styles ? {...componentConfig.styles} : undefined
-                };
-            }
+            mapDeep(value, target[key]);
+        } else {
+          target[key] = value;
         }
-
-        return compiledTheme;
+      });
     };
 
+    mapDeep(this.colors, compiled);
+    mapDeep(this.typography, compiled);
+    mapDeep(this.sizes, compiled);
+    mapDeep(this.accessibility, compiled);
+    mapDeep(this.interaction, compiled);
+
+    if (this.components.rules?.size) {
+      compiled.components = {};
+      for (const [name, cfg] of this.components.rules) {
+        compiled.components[name] = {
+          defaultProps: cfg.defaultProps ? { ...cfg.defaultProps } : undefined,
+          styles: cfg.styles ? { ...cfg.styles } : undefined
+        };
+      }
+    }
+
+    return compiled;
+  }
 }
 
 export type ThemeStateInternals =
-    ColorSettings
-    & SpacingSettings
-    & TypographySettings
-    & InteractionSettings
-    & AccessibilitySettings
-    & ComponentSettings;
+  ColorSettings &
+  SpacingSettings &
+  TypographySettings &
+  InteractionSettings &
+  AccessibilitySettings &
+  ComponentSettings;

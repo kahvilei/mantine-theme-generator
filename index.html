@@ -7,22 +7,26 @@
       name="viewport"
       content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
     />
-    <meta name="description" content="Remoraid: A visual Mantine UI v7 theme editor with real-time preview. Customize colors, typography, spacing, and components. Export to JSON/TypeScript. Work in progress—contributions welcome! "/>
-
+    <meta name="description" content="Remoraid: A visual Mantine UI v8 theme editor with real-time preview. Customize colors, typography, spacing, and components. Export to JSON/TypeScript. Work in progress—contributions welcome!"/>
     <title>Mantine theme editor</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETMZBX477S"></script>
+    <script>
+     document.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ETMZBX477S', {
+            page_path: window.location.pathname,
+        });
+     }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETMZBX477S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-ETMZBX477S');
-  </script>
-
 </html>

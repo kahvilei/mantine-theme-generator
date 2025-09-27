@@ -84,7 +84,7 @@ export const UploadTheme = observer(() => {
         const prettyName = file.name.replace(/\.(ts|tsx|json)$/, "");
         Store.setTheme(prettyName, themeData);
       } catch (error) {
-        // eslint-disable-next-line no-alert
+
         alert(t("theme.upload.error", { error, ns: "app" }));
       }
     };
@@ -106,7 +106,7 @@ export const UploadTheme = observer(() => {
           )
         }
         maxFiles={1}
-        accept={['tsx', 'json']}
+        accept={['text/typescript', 'application/json']}
         style={{ cursor: "pointer", padding: "10px" }}
       >
         <Group justify="center" gap="xs">

@@ -35,5 +35,22 @@
     "darkMode": "Dark mode",
     "lightMode": "Light mode",
     "sideBySide": "Side by side"
+  },
+   "colors": {
+    "gray": "Gray",
+    "red": "Red",
+    "pink": "Pink",
+    "grape": "Grape",
+    "violet": "Violet",
+    "indigo": "Indigo",
+    "blue": "Blue",
+    "cyan": "Cyan",
+    "teal": "Teal",
+    "green": "Green",
+    "lime": "Lime",
+    "yellow": "Yellow",
+    "orange": "Orange",
+    "dark": "Dark",
+    "customColor": "Custom Color"
   }
 }

@@ -27,6 +27,12 @@ export const processTypeScriptContent = (content: string): any => {
 
         // Process the theme to convert function string representations back to real functions
         return processThemeObject(themeObject);
+    } else {
+        themeObject = eval(`"use strict";
+        (function (virtualColor) {
+            return ${content};
+        })(${virtualColor.toString()})`);
+        return processThemeObject(themeObject);
     }
 };
 
@@ -49,6 +55,8 @@ const processThemeObject = (theme: any): any => {
             }
         });
     }
+
+    console.log(theme)
 
     return theme;
 };

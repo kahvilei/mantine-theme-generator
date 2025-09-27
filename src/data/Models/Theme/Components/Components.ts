@@ -13,7 +13,7 @@ export class Components {
 
     constructor(config: ComponentSettings = {}) {
         this.rules = new Map();
-
+        
         // Initialize from config
         if (config.components) {
             Object.entries(config.components).forEach(([name, data]) => {

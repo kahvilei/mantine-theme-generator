@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-    IconBrandGithub,
-    IconBrandMantine,
     IconCube,
     IconPalette,
     IconResize,
@@ -9,7 +7,6 @@ import {
     IconTypeface,
 } from '@tabler/icons-react';
 import {
-    Box,
     Center,
     Group,
     ScrollArea,
@@ -20,10 +17,9 @@ import {
     createTheme,
     MantineThemeOverride,
     Card,
-    ActionIcon,
-    Text,
+    useMantineColorScheme,
 } from '@mantine/core';
-import QuickSetUp from '@/components/ThemeControlPanel/QuickSetUp/QuickSetUp';
+import ThemeSetUp from '@/components/ThemeControlPanel/ThemeSetUp/ThemeSetUp';
 import ColorControl from './ColorControls/ColorControl';
 import ComponentControls from './ComponentControls/ComponentControls';
 import SizeAndLayoutControls from './SizeAndLayoutControls/SizeAndLayoutControls';
@@ -38,8 +34,8 @@ import { DownloadThemeButton } from './Shared/Themes/themeDownloadUpload';
 const ThemeControlPanel: React.FC = () => {
     const [activeTab, setActiveTab] = useState('quick-set-up');
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const [mode, setMode] = useState<'light' | 'dark'>('dark');
-    const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');
+    const { colorScheme, setColorScheme, toggleColorScheme } = useMantineColorScheme();
+    const [currentColorScheme, setCurrentColorScheme] = useState<string>(colorScheme);
     const [opened, { toggle }] = useDisclosure();
 
     // Media query for responsive layout
@@ -51,20 +47,13 @@ const ThemeControlPanel: React.FC = () => {
         }
     }, [isMobile]);
 
-    const toggleScheme = () => {
-        setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
-        if (isMobile) {
-            setCurrentColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-        }
-    };
-
     // Updated to use new namespaces
     const { t } = useTranslation(['core', 'theme']);
 
     const renderContent = () => {
         switch (activeTab) {
             case 'quick-set-up':
-                return <QuickSetUp />;
+                return <ThemeSetUp />;
             case 'color':
                 return <ColorControl />;
             case 'typography':
@@ -80,14 +69,13 @@ const ThemeControlPanel: React.FC = () => {
 
     return (
         <MantineProvider
-            forceColorScheme={mode}
             theme={createTheme(appTheme as unknown as MantineThemeOverride)}
         >
             <Stack id="control-panel" h="100vh" gap="xs" p={0}>
                 <Group align='center' justify='space-between'>
                     <Header
-                        lightMode={mode === 'light'}
-                        toggleScheme={toggleScheme}
+                        lightMode={colorScheme === 'light'}
+                        toggleScheme={toggleColorScheme}
                         openDrawer={toggle}
                         isMobile={isMobile}
                     />
@@ -207,7 +195,7 @@ const ThemeControlPanel: React.FC = () => {
                     className={classes.contentArea}
                     style={{
                         height: isMobile ? 'calc(100vh - 160px)' : undefined,
-                        flex: 1
+                        flex: 1,
                     }}
                 >
                     {renderContent()}

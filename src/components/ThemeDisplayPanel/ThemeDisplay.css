@@ -77,19 +77,38 @@
     --switch-bd: var(--mantine-color-gray-3);
     --switch-text-color: var(--mantine-color-gray-6);
     --switch-disabled-color: var(--mantine-color-gray-2);
-  }
+}
 
-  [data-mantine-color-scheme="light"].scheme-override-light .m_6c018570[data-variant="filled"] {
+[data-mantine-color-scheme="light"].scheme-override-light .m_6c018570[data-variant="filled"] {
     --input-bd: transparent;
     --input-bg: var(--mantine-color-gray-1);
     --input-bd-focus: var(--mantine-primary-color-filled);
-  }
+}
 
-  .scheme-override-light {
+.scheme-override-light {
     font-family: var(--mantine-font-family), Arial, Helvetica, sans-serif;
-  }
+}
 
-  .scheme-override-dark {
+.scheme-override-dark {
     font-family: var(--mantine-font-family), Arial, Helvetica, sans-serif;
-  }
+}
 
+
+#display-panel * {
+  transition: 
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    fill 0.3s ease,
+    stroke 0.3s ease,
+    padding 0.3s ease,
+    margin 0.3s ease,
+    width 0.3s ease,
+    height 0.3s ease,
+    min-width 0.3s ease,
+    max-width 0.3s ease,
+    min-height 0.3s ease,
+    max-height 0.3s ease,
+    border-radius 0.3s ease;
+}

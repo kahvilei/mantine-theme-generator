@@ -1,10 +1,8 @@
 .contentArea{
     height: calc(var(--editor-height) - 5rem);
-    padding: 1rem 2rem;
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    overflow: auto;
 }
 
 .header{
@@ -37,7 +35,6 @@
 @media (max-width: 768px) {
     .contentArea {
         padding: 0.5rem 1rem;
-        overflow-x: hidden;
     }
 
     .header {

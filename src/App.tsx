@@ -18,6 +18,7 @@ import {
     Tabs,
     AppShell,
     Box,
+    useMantineColorScheme,
 } from '@mantine/core';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
@@ -34,7 +35,6 @@ const App: React.FC = observer(() => {
     // Media query for responsive layout
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-
     // Update to use new namespaces
     const { t } = useTranslation(['core', 'theme']);
 
@@ -42,7 +42,7 @@ const App: React.FC = observer(() => {
         <MantineProvider>
             <AppShell
                 navbar={{
-                    width: 450,
+                    width: 430,
                     breakpoint: 'sm',
                     collapsed: { mobile: !opened },
                 }}
@@ -52,13 +52,11 @@ const App: React.FC = observer(() => {
                     </AppShell.Navbar>
                     <AppShell.Main>
                         <MantineProvider
-                            theme={createTheme(theme.compile())}
                             cssVariablesSelector={`#display-panel`}
                         >
                             <Box pos={'relative'} id='display-panel' bg="var(--mantine-color-body)">
                                 
                                 {/* Tab Content */}
-                                <ScrollArea scrollbars="y" type="hover" className="tab-content-scroll">
                                     <Card flex={1} pos={'fixed'} right={0} m={'lg'} p={'xs'} c={'primary'} style={{zIndex: 10}}>
                                         <Group className="tab-header" justify="space-between" align="center" wrap="nowrap">
                                             <Tabs value={currentContent} onChange={setCurrentContent} style={{ overflow: 'auto' }}>
@@ -151,7 +149,6 @@ const App: React.FC = observer(() => {
                                             />
                                         </Group>
                                     )}
-                                </ScrollArea>     
                             </Box>
                         </MantineProvider>                 
                     </AppShell.Main>  

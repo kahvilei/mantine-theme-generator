@@ -11,187 +11,138 @@ import { Colors } from "@/data/Models/Theme/Colors/Colors";
 import {createSizesProxy} from "@/data/Models/Theme/SizeAndSpacing/proxy";
 import {createColorsProxy} from "@/data/Models/Theme/Colors/proxy";
 import { debounce } from "lodash";
+import { processTypeScriptContent } from "@/utils/processTypescriptFile";
+import { themeToTypeScript } from "@/utils/themeToTypeScript";
 
-const LOCAL_STORAGE_KEY = "remoraid_user_themes";
-const ACTIVE_THEME_KEY = "remoraid_active_theme";
+export const ACTIVE_THEME_KEY = "active-theme";
+export const USER_THEME_PREFIX = "remoraid-theme:";
+
+export type ThemeType = "user" | "app" | null;
 
 export class RemoraidStore {
-  // Separate sources of truth
-  premadeDefaults: Record<string, MantineThemeOverride>;
-  userThemes: Map<string, Theme>;
-  themes: Map<string, Theme>; // working set: premades + user
-  theme: Theme;               // currently active
+    // Separate sources of truth
+    premadeDefaults: Record<string, MantineThemeOverride>;
+    themes: Map<string, Theme>; // working set: premades + user
+    theme: Theme;               // currently active
 
-  private disposers: IReactionDisposer[] = []; // Track reactions for cleanup
+    constructor() {
+        this.premadeDefaults = premadeThemes;
+        this.themes = new Map();
 
-  constructor() {
-    this.premadeDefaults = premadeThemes;
-    this.userThemes = new Map();
-    this.themes = new Map();
-
-    this.loadFromLocalStorage();
-
-    // Load premade defaults fresh each time
-    Object.entries(this.premadeDefaults).forEach(([name, data]) => {
-      this.themes.set(name, new Theme(data, name, this));
-    });
-
-    // Merge user themes into the working set
-    this.userThemes.forEach((theme, name) => {
-      this.themes.set(name, theme);
-    });
-
-    // Pick last active theme or Mantine
-    const activeName = localStorage.getItem(ACTIVE_THEME_KEY) || "Mantine";
-    this.theme = this.themes.get(activeName) ?? new Theme(DEFAULT_THEME, activeName, this);
-
-    this.initReactions();
-    makeAutoObservable(this);
-  }
-
-  // --- THEME MANAGEMENT ---
-
-  setMainTheme(theme: Theme): void {
-    this.theme = theme;
-    localStorage.setItem(ACTIVE_THEME_KEY, theme.name);
-  }
-
-  /** Reset a premade theme to its original default */
-  @action
-  resetTheme(name: string): void {
-    if (this.premadeDefaults[name]) {
-      const fresh = new Theme(this.premadeDefaults[name], name, this);
-      this.themes.set(name, fresh);
-      if (this.theme.name === name) this.theme = fresh;
-    }
-  }
-
-  /** Add or update a USER theme */
-  @action
-  setTheme(name: string, theme: MantineThemeOverride): void {
-    const newTheme = new Theme(theme, name, this);
-    this.userThemes.set(name, newTheme);
-    this.themes.set(name, newTheme);
-    newTheme.makeMainTheme();
-  }
-
-  @action
-  saveThemeToStorage(name: string, theme: MantineThemeOverride): void {
-    const newTheme = new Theme(theme, name, this);
-    this.userThemes.set(name, newTheme);
-    this.themes.set(name, newTheme);
-    this.saveToLocalStorage();
-    newTheme.makeMainTheme();
-  }
-
-  /** Delete only user themes */
-  @action
-  deleteTheme(name: string): boolean {
-    if (this.theme.name === name) return false; // can't delete active theme
-    const deleted = this.userThemes.delete(name);
-    if (deleted) {
-      this.themes.delete(name);
-      this.saveToLocalStorage();
-    }
-    return deleted;
-  }
-
-  /** Check if a theme exists (in working set) */
-  hasTheme(name: string): boolean {
-    return this.themes.has(name);
-  }
-
-  /** Get all working themes (premades + user) */
-  themeList(): [string, Theme][] {
-    return Array.from(this.themes);
-  }
-
-  /** Get just premade themes */
-  premadeList(): [string, Theme][] {
-    return Object.keys(this.premadeDefaults).map((name) => [
-      name,
-      this.themes.get(name)!,
-    ]);
-  }
-
-  /** Get filtered themes based on userThemes flag */
-  filteredThemeList(userOnly = false): [string, Theme][] {
-    return userOnly ? this.userThemeList() : this.premadeList();
-  }
-
-  /** Get just user themes */
-  userThemeList(): [string, Theme][] {
-    return Array.from(this.userThemes);
-  }
-
-  /** Get theme by name */
-  getTheme(name: string): Theme | undefined {
-    return this.themes.get(name);
-  }
-
-  // --- PERSISTENCE ---
-
-  private saveToLocalStorage() {
-    const out: Record<string, MantineThemeOverride> = {};
-    this.themes.forEach((theme, name) => {
-      out[name] = theme.compile();
-    });
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(out));
-  }
-
-  private loadFromLocalStorage() {
-    try {
-      const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (data) {
-        const parsed: Record<string, MantineThemeOverride> = JSON.parse(data);
-
-        Object.entries(parsed).forEach(([name, t]) => {
-          const isPremade = !!this.premadeDefaults[name];
-
-          // If premade, load as edited premade into `themes`
-          if (isPremade) {
-            this.themes.set(name, new Theme(t, name, this));
-          } else {
-            // Otherwise treat as user theme
-            const theme = new Theme(t, name, this);
-            this.userThemes.set(name, theme);
-            this.themes.set(name, theme);
-          }
+        // Load premade defaults fresh each time
+        Object.entries(this.premadeDefaults).forEach(([name, data]) => {
+            this.themes.set(name, new Theme(data, name, this));
         });
-      }
-    } catch {
-      console.warn("Failed to load themes from localStorage");
+
+        // 2️⃣ Load user themes from localStorage
+        this.loadUserThemesFromLocalStorage();
+
+        // 3️⃣ Restore last active theme
+        const activeName = localStorage.getItem(ACTIVE_THEME_KEY) || "Mantine";
+        this.theme = this.themes.get(activeName) ?? new Theme(DEFAULT_THEME, activeName, this);
+
+        makeAutoObservable(this);
     }
-  }
 
-  private saveToLocalStorageDebounced = debounce(() => this.saveToLocalStorage(), 300);
+    // --- THEME MANAGEMENT ---
+    setActiveTheme(theme: Theme): void {
+        this.theme = theme;
+        localStorage.setItem(ACTIVE_THEME_KEY, theme.name);
+    }
 
-  private initReactions() {
-    // 1. Watch all themes for changes (compile output)
-    this.disposers.push(
-      reaction(
-        () => Array.from(this.themes.values()).map(t => t.compile()), // track all compiled states
-        () => {
-          this.saveToLocalStorage(); // persist user themes only
+    /** Reset a premade theme to its original default */
+    @action
+    resetTheme(name: string): void {
+        if (this.premadeDefaults[name]) {
+            const fresh = new Theme(this.premadeDefaults[name], name, this);
+            this.themes.set(name, fresh);
+            if (this.theme.name === name) this.theme = fresh;
         }
-      )
-    );
+    }
 
-    // 2. Watch active theme name for switching
-    this.disposers.push(
-      reaction(
-        () => this.theme.name,
-        (name) => localStorage.setItem(ACTIVE_THEME_KEY, name)
-      )
-    );
-  }
+    /** Get theme by name */
+    getTheme(name: string): Theme | undefined {
+        return this.themes.get(name);
+    }
+
+    /** Check if a theme exists (in working set) */
+    hasTheme(name: string): boolean {
+        return this.themes.has(name);
+    }
+
+    @action
+    deleteTheme(name: string): boolean {
+        if (this.premadeDefaults[name]) {
+            return false;
+        }
+        this.themes.delete(name);
+        localStorage.removeItem(`${USER_THEME_PREFIX}${name}`);
+        return true;
+    }
+
+    @action
+    setTheme(name: string, theme: MantineThemeOverride): void {
+        const newTheme = new Theme(theme, name, this);
+        this.themes.set(name, newTheme);
+        newTheme.makeActiveTheme();
+
+        // Save user theme to localStorage
+        localStorage.setItem(`${USER_THEME_PREFIX}${name}`, themeToTypeScript(newTheme.compiled));
+    }
+
+    /** Get all working themes (premades + user) */
+    getAllThemes(): [string, Theme][] {
+        return Array.from(this.themes);
+    }
+
+    /** Get just premade themes */
+    getAppThemes(): [string, Theme][] {
+        return Object.keys(this.premadeDefaults).map((name) => [
+            name,
+            this.themes.get(name)!,
+        ]);
+    }
+
+    /** Get just user themes */
+    getUserThemes(): [string, Theme][] {
+        return Array.from(this.themes).filter(([name, theme]) => !this.premadeDefaults[name]);
+    }
+
+    /** Get filtered themes based on flag */
+    getThemes(filter: ThemeType = null): [string, Theme][] {
+        return filter ? filter === "app" ? this.getAppThemes() : this.getUserThemes() : this.getAllThemes();
+    }
+
+    @action
+    private loadUserThemesFromLocalStorage(): void {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith(USER_THEME_PREFIX)) {
+                const name = key.replace(USER_THEME_PREFIX, "");
+                const data = localStorage.getItem(key);
+                if (data) {
+                    try {
+                        const parsed = processTypeScriptContent(data);
+                        this.themes.set(name, new Theme(parsed, name, this));
+                        const theme = this.themes.get(name);
+                        if (premadeThemes[name] && theme){
+                            theme.edited = true;
+                        }
+                    } catch (e) {
+                        console.error(`Failed to load theme ${name} from localStorage`, e);
+                    }
+                }
+            }
+        }
+    }
+
 }
-
 
 // Create the singleton instance
 const Root = new RemoraidStore();
 
-// Export the theme with both get and set functionality
+
+//Proxies
 export const theme: Theme = new Proxy({} as Theme, {
     get: (_, prop: string) => {
         return Root.theme[prop as keyof Theme];
@@ -205,13 +156,13 @@ export const theme: Theme = new Proxy({} as Theme, {
     }
 });
 
-// Export colors with both get and set functionality
+
 export const colors: Colors = createColorsProxy(Root)
 
-// Export sizes with both get and set functionality
+
 export const sizes: Sizes = createSizesProxy(Root);
 
-// Export components with both get and set functionality
+
 export const components: Components = new Proxy({} as Components, {
     get: (_, prop: string) => {
         if (Root.theme.components && prop in Root.theme.components) {
@@ -228,7 +179,7 @@ export const components: Components = new Proxy({} as Components, {
     }
 });
 
-// Export accessibility with both get and set functionality
+
 export const accessibility: Accessibility = new Proxy({} as Accessibility, {
     get: (_, prop: string) => {
         if (Root.theme.accessibility && prop in Root.theme.accessibility) {
@@ -245,7 +196,7 @@ export const accessibility: Accessibility = new Proxy({} as Accessibility, {
     }
 });
 
-// Export interaction with both get and set functionality
+
 export const interaction: Interaction = new Proxy({} as Interaction, {
     get: (_, prop: string) => {
         if (Root.theme.interaction && prop in Root.theme.interaction) {
@@ -253,6 +204,7 @@ export const interaction: Interaction = new Proxy({} as Interaction, {
         }
         return undefined;
     },
+
     set: (_, prop: string, value: any): boolean => {
         if (Root.theme.interaction && prop in Root.theme.interaction) {
             (Root.theme.interaction as any)[prop] = value;
@@ -262,8 +214,6 @@ export const interaction: Interaction = new Proxy({} as Interaction, {
     }
 });
 
-// Export typography with both get and set functionality
 export const typography: Typography = typographyProxy(Root);
 
-// Export the root store as default
 export default Root;

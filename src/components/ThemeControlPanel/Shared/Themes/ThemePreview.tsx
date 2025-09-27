@@ -29,8 +29,10 @@ const ThemePreview: React.FC<ThemePreviewProps> = observer(({ theme, selected = 
       style={{
         fontFamily,
         borderRadius: '.5rem',
+        outline: selected ? '.1rem solid var(--mantine-primary-color-filled)' : 'none'
+
       }}
-      withBorder={selected}
+      withBorder = {false}
     >
       <Group justify="space-between" align="center" gap="xs">
         <Group gap="xs">

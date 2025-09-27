@@ -24,7 +24,7 @@ export interface ThemeDisplayProps {
 const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
   ({ number, mode, displayContent, themeOverride = theme }) => {
     // Get theme from MobX store if not explicitly provided
-    const currentTheme = createTheme(themeOverride.compile());
+    const currentTheme = createTheme(themeOverride.compiled);
 
     // Memoize each content page
     const Content = () => {
@@ -43,7 +43,7 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
     };
 
     return (
-      <div className={classes.displayWipe}>
+    <div className={classes.displayWipe}>
       <MantineProvider
         theme={currentTheme}
         forceColorScheme={mode}
