@@ -1,155 +1,241 @@
 {
-
-      "lineChart": {
-        "title": "Line Chart",
-        "subtitle": "Weekly sales overview"
+  "cryptoCard": {
+    "title": "Crypto Trading Card",
+    "data": {
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "price": "42,573.28",
+      "change": 5.24,
+      "chart": [
+        { "time": "00:00", "price": 40000 },
+        { "time": "04:00", "price": 40800 },
+        { "time": "08:00", "price": 41200 },
+        { "time": "12:00", "price": 41800 },
+        { "time": "16:00", "price": 42000 },
+        { "time": "20:00", "price": 42573 }
+      ]
+    }
+  },
+  "musicPlayer": {
+    "title": "Music Player",
+    "track": {
+      "title": "Midnight Dreams",
+      "artist": "Luna Rivers",
+      "album": "Ethereal Nights",
+      "duration": "3:27"
+    }
+  },
+  "socialPost": {
+    "title": "Social Media Post",
+    "data": {
+      "author": "Sarah Chen",
+      "handle": "sarahdesigns",
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "time": "2h",
+      "content": "Just shipped a major update to our design system! 🚀 Improved accessibility, new components, and better performance across the board.",
+      "highlight": "AI-powered design suggestions now available",
+      "likes": 234,
+      "comments": 18
+    }
+  },
+  "weatherWidget": {
+    "title": "Weather Widget",
+    "data": {
+      "location": "San Francisco",
+      "date": "Today, Sep 28",
+      "temp": 72,
+      "condition": "Partly Cloudy",
+      "humidity": 65,
+      "wind": 12,
+      "clouds": 40,
+      "forecast": [
+        { "day": "Mon", "temp": 68 },
+        { "day": "Tue", "temp": 71 },
+        { "day": "Wed", "temp": 75 },
+        { "day": "Thu", "temp": 73 }
+      ]
+    }
+  },
+  "taskCard": {
+    "title": "Task Kanban Card",
+    "data": {
+      "title": "Redesign Dashboard Layout",
+      "description": "Update the main dashboard with new analytics widgets and improved responsive design for mobile devices.",
+      "priority": "High",
+      "progress": 65,
+      "tags": ["Design", "UI/UX", "Sprint 3"],
+      "assignees": [
+        { "name": "Alex Kim", "avatar": "https://i.pravatar.cc/150?img=3" },
+        { "name": "Jordan Lee", "avatar": "https://i.pravatar.cc/150?img=4" }
+      ],
+      "due": "3 days"
+    }
+  },
+  "notificationCenter": {
+    "title": "Notification Center",
+    "items": [
+      {
+        "type": "success",
+        "color": "green",
+        "title": "Deployment Successful",
+        "description": "Your application has been deployed to production",
+        "time": "2 min ago"
       },
-      "article": {
-        "title": "Article Snippet",
-        "subtitle": "Quick summary of content",
-        "excerpt": "This is an example of a short article snippet. It shows how text will appear in your theme.",
-        "tags": ["News", "Tech", "Design"]
+      {
+        "type": "warning",
+        "color": "yellow",
+        "title": "Storage Warning",
+        "description": "You've used 85% of your storage quota",
+        "time": "1 hour ago"
       },
-      "login": {
-        "title": "Login Form",
-        "email": "Email",
-        "emailPlaceholder": "Enter your email",
-        "password": "Password",
-        "passwordPlaceholder": "Enter your password",
-        "remember": "Remember me",
-        "forgot": "Forgot password?",
-        "submit": "Login"
+      {
+        "type": "info",
+        "color": "blue",
+        "title": "New Team Member",
+        "description": "Emily Watson joined your team",
+        "time": "3 hours ago"
+      }
+    ]
+  },
+  "analyticsCard": {
+    "title": "Analytics Dashboard",
+    "data": {
+      "revenue": "48,392",
+      "growth": 73,
+      "stats": [
+        { "label": "Orders", "value": "1,234", "trend": 1, "color": "blue" },
+        { "label": "Customers", "value": "892", "trend": 1, "color": "green" },
+        { "label": "Returns", "value": "23", "trend": -1, "color": "red" },
+        { "label": "Revenue", "value": "+12%", "trend": 1, "color": "violet" }
+      ],
+      "chart": [
+        { "month": "Jan", "sales": 3200 },
+        { "month": "Feb", "sales": 4100 },
+        { "month": "Mar", "sales": 3800 },
+        { "month": "Apr", "sales": 5200 },
+        { "month": "May", "sales": 4800 }
+      ],
+      "breakdown": [
+        { "name": "Products", "value": 65, "color": "blue" },
+        { "name": "Services", "value": 25, "color": "green" },
+        { "name": "Subscriptions", "value": 10, "color": "violet" }
+      ]
+    }
+  },
+  "productCard": {
+    "title": "Product Card",
+    "data": {
+      "name": "Premium Wireless Headphones",
+      "description": "Active noise cancellation with 30-hour battery life and superior sound quality",
+      "price": 179.99,
+      "originalPrice": 249.99,
+      "discount": 28,
+      "rating": 4.5,
+      "reviews": 324,
+      "inStock": true,
+      "image": "/product-image.jpg"
+    }
+  },
+  "codeEditor": {
+    "title": "Code Editor Preview",
+    "code": {
+      "lines": [
+        { "content": "interface User {", "color": "blue" },
+        { "content": "  id: string;", "color": "cyan" },
+        { "content": "  name: string;", "color": "cyan" },
+        { "content": "  email: string;", "color": "cyan" },
+        { "content": "  role: 'admin' | 'user';", "color": "green" },
+        { "content": "}", "color": "blue" },
+        { "content": "", "color": "gray" },
+        { "content": "async function getUser(id: string): Promise<User> {", "color": "violet" },
+        { "content": "  const response = await fetch(`/api/users/${id}`);", "color": "orange" },
+        { "content": "  return response.json();", "color": "pink" },
+        { "content": "}", "color": "violet" }
+      ]
+    }
+  },
+  "calendarEvent": {
+    "title": "Calendar Event",
+    "data": {
+      "month": "September",
+      "day": "28",
+      "title": "Product Launch Meeting",
+      "time": "2:00 PM - 3:30 PM",
+      "location": "Conference Room A / Zoom",
+      "attendees": [
+        { "name": "Mike Johnson", "avatar": "https://i.pravatar.cc/150?img=5" },
+        { "name": "Lisa Wang", "avatar": "https://i.pravatar.cc/150?img=6" },
+        { "name": "Tom Davis", "avatar": "https://i.pravatar.cc/150?img=7" }
+      ],
+      "moreCount": 5
+    }
+  },
+  "paymentCard": {
+    "title": "Payment Method",
+    "data": {
+      "type": "Visa",
+      "last4": "4242",
+      "holder": "JOHN SMITH",
+      "expiry": "12/25"
+    }
+  },
+  "fitnessTracker": {
+    "title": "Fitness Tracker",
+    "data": {
+      "steps": "8,432",
+      "goal": "10,000",
+      "percentage": 84,
+      "rings": [
+        { "value": 84, "color": "green" },
+        { "value": 72, "color": "blue" },
+        { "value": 45, "color": "pink" }
+      ],
+      "activities": [
+        { "name": "Morning Run", "duration": "32 min", "calories": "285", "icon": "run", "color": "green" },
+        { "name": "Bike Ride", "duration": "45 min", "calories": "420", "icon": "bike", "color": "blue" },
+        { "name": "Evening Walk", "duration": "20 min", "calories": "95", "icon": "walk", "color": "violet" }
+      ]
+    }
+  },
+  "fileUpload": {
+    "title": "File Upload Zone",
+    "files": [
+      { "name": "design-mockup.png", "size": "2.4 MB", "type": "image", "status": "complete", "progress": 100 },
+      { "name": "presentation.pdf", "size": "5.1 MB", "type": "document", "status": "uploading", "progress": 65 },
+      { "name": "data-export.csv", "size": "892 KB", "type": "document", "status": "error", "progress": 0 }
+    ]
+  },
+  "subscriptionPlan": {
+    "title": "Subscription Plan",
+    "data": {
+      "name": "Professional",
+      "type": "Best Value",
+      "price": "29",
+      "featured": true,
+      "trial": 14,
+      "cta": "Start Free Trial",
+      "features": [
+        { "text": "Unlimited projects", "included": true },
+        { "text": "Advanced analytics", "included": true },
+        { "text": "Priority support", "included": true },
+        { "text": "Custom integrations", "included": true },
+        { "text": "White-label options", "included": false },
+        { "text": "Dedicated account manager", "included": false }
+      ]
+    }
+  },
+  "livestreamCard": {
+    "title": "Live Stream",
+    "data": {
+      "title": "Building a Real-Time Chat App with WebSockets",
+      "streamer": {
+        "name": "CodeWithAlex",
+        "avatar": "https://i.pravatar.cc/150?img=8"
       },
-      "chat": {
-        "title": "Chat Log",
-        "messages": [
-          { "sender": "me", "text": "Hey there!" },
-          { "sender": "them", "text": "Hello! How's it going?" },
-          { "sender": "me", "text": "All good, working on the theme editor." },
-          { "sender": "them", "text": "Nice! That looks amazing." }
-        ],
-        "footer": "End of chat"
-      },
-      "team": {
-        "title": "Team Members",
-        "members": [
-          { "name": "Alice Smith", "role": "Designer", "avatar": "/avatars/alice.png" },
-          { "name": "Bob Johnson", "role": "Developer", "avatar": "/avatars/bob.png" },
-          { "name": "Carol Lee", "role": "Project Manager", "avatar": "/avatars/carol.png" }
-        ],
-        "action": "Message"
-      },
-      "expenseDashboard": {
-        "title": "Expense Dashboard",
-        "subtitle": "Track your weekly expenses",
-        "data": [
-          { "category": "Food", "amount": 120 },
-          { "category": "Transport", "amount": 50 },
-          { "category": "Entertainment", "amount": 80 },
-          { "category": "Utilities", "amount": 40 },
-          { "category": "Other", "amount": 30 }
-        ]
-      },
-      "userProfile": {
-        "title": "User Profile",
-        "user": {
-          "name": "Jane Doe",
-          "role": "Frontend Developer",
-          "avatar": "/avatars/jane.png"
-        },
-        "follow": "Follow"
-      },
-      "pricing": {
-        "title": "Pricing Plans",
-        "plans": [
-          {
-            "name": "Basic",
-            "price": "$10/mo",
-            "features": ["Feature 1", "Feature 2", "Feature 3"]
-          },
-          {
-            "name": "Pro",
-            "price": "$30/mo",
-            "features": ["Feature 1", "Feature 2", "Feature 3", "Feature 4"]
-          },
-          {
-            "name": "Enterprise",
-            "price": "$100/mo",
-            "features": ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5"]
-          }
-        ],
-        "select": "Select Plan"
-      },
-      "notifications": {
-        "title": "Notifications",
-        "items": [
-          { "title": "Server rebooted", "type": "info" },
-          { "title": "New message from John", "type": "info" },
-          { "title": "Payment failed", "type": "error" },
-          { "title": "Update available", "type": "info" }
-        ]
-      },
-      "calendar": {
-        "title": "Upcoming Events",
-        "events": [
-          { "title": "Team Meeting", "time": "10:00 AM", "color": "blue" },
-          { "title": "Client Call", "time": "1:00 PM", "color": "green" },
-          { "title": "Design Review", "time": "3:30 PM", "color": "orange" }
-        ]
-      },
-        "weeklyActivity": {
-          "title": "Weekly Activity",
-          "subtitle": "Progress of your tasks over the week",
-          "data": [
-            { "day": "Monday", "activity": 40 },
-            { "day": "Tuesday", "activity": 60 },
-            { "day": "Wednesday", "activity": 50 },
-            { "day": "Thursday", "activity": 70 },
-            { "day": "Friday", "activity": 30 },
-            { "day": "Saturday", "activity": 20 },
-            { "day": "Sunday", "activity": 50 }
-          ]
-        },
-        "projectPie": {
-          "title": "Project Distribution",
-          "projects": [
-            { "name": "Design", "percent": 25, "color": "blue" },
-            { "name": "Development", "percent": 40, "color": "green" },
-            { "name": "Marketing", "percent": 20, "color": "orange" },
-            { "name": "Research", "percent": 15, "color": "red" }
-          ]
-        },
-        "taskList": {
-          "title": "Task List",
-          "done": "Done",
-          "pending": "Pending",
-          "items": [
-            { "task": "Write documentation", "completed": true },
-            { "task": "Fix bug #112", "completed": false },
-            { "task": "Design new feature", "completed": false },
-            { "task": "Deploy to staging", "completed": true },
-            { "task": "Review pull requests", "completed": false }
-          ]
-        },
-        "profileSummary": {
-          "title": "Profile Summary",
-          "user": {
-            "name": "Alex Johnson",
-            "role": "Frontend Developer",
-            "avatar": "https://i.pravatar.cc/150?img=5",
-            "progress": 75
-          }
-        },
-        "barPerformance": {
-          "title": "Performance Metrics",
-          "data": [
-            { "metric": "CPU Usage", "value": 65, "color": "red" },
-            { "metric": "Memory", "value": 80, "color": "orange" },
-            { "metric": "Disk", "value": 55, "color": "green" },
-            { "metric": "Network", "value": 70, "color": "blue" }
-          ]
-        }
-      }      
-    
-  
-  
+      "game": "Software Development",
+      "category": "Technology",
+      "viewers": "2.3K",
+      "duration": "1:24:36"
+    }
+  }
+}

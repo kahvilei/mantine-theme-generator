@@ -1,6 +1,6 @@
 import {DEFAULT_THEME, MantineColorsTuple} from "@mantine/core";
 import {VirtualColor} from "@/data/Models/Theme/Colors/Color Classes/VirtualColor";
-import {action, makeAutoObservable, } from "mobx";
+import {action, computed, makeAutoObservable, } from "mobx";
 import {Color} from "@/data/Models/Theme/Colors/Color Classes/Color";
 import {ShadelessColor} from "@/data/Models/Theme/Colors/Color Classes/ShadelessColor";
 import generateColors from "@/utils/generateColors";
@@ -108,6 +108,14 @@ export class Colors{
         }
 
         makeAutoObservable(this);
+    }
+
+    @computed
+    get gradient() {
+        return `
+        linear-gradient(${this.defaultGradient?.deg ?? 45}deg, 
+        var(--mantine-color-${this.defaultGradient?.from ?? "blue"}-filled) 0%, 
+        var(--mantine-color-${this.defaultGradient?.to ?? "cyan"}-filled) 100%)`;
     }
 
     getPrimaryColor(): string{

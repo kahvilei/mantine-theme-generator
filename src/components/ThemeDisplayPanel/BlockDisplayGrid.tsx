@@ -8,7 +8,7 @@ import {
   Box,
 } from '@mantine/core';
 import { useResizeObserver } from '@mantine/hooks';
-import { themeBlocks, ThemeBlock } from './Blocks/Blocks';
+import { themeBlocks, ThemeBlock } from './Blocks';
 import Masonry from 'react-masonry-css';
 import './BlockDisplayGrid.css';
 
