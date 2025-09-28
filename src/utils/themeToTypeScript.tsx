@@ -1,14 +1,17 @@
 import {MantineThemeOverride} from "@mantine/core";
 import {VirtualColorProps} from "@/data/Models/Theme/Colors/Color Classes/VirtualColor";
+import { toJS } from "mobx";
 
 export const themeToTypeScript = (theme: MantineThemeOverride): string => {
 
     // Special handling for virtual color functions
     if (theme.colors !== undefined) {
-        Object.entries(theme.colors).forEach(([colorName, colorValue]) => {
+        Object.entries(toJS(theme.colors)).forEach(([colorName, colorValue]) => {
             if (typeof colorValue === 'function') {
                 // Get the result of the function to obtain the parameters
                 const result = (colorValue as (()=>VirtualColorProps))();
+
+                console.log(result);
 
                 // Replace the function with a string representation that will be properly formatted
                 // when converted to TypeScript by themeToTypeScript

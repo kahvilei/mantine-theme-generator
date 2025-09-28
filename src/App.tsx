@@ -10,15 +10,13 @@ import { observer } from 'mobx-react-lite';
 import {
     Card,
     Center,
-    createTheme,
     Group,
     MantineProvider,
-    ScrollArea,
     SegmentedControl,
     Tabs,
     AppShell,
     Box,
-    useMantineColorScheme,
+    createTheme
 } from '@mantine/core';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
@@ -52,6 +50,7 @@ const App: React.FC = observer(() => {
                     </AppShell.Navbar>
                     <AppShell.Main>
                         <MantineProvider
+                            theme = {createTheme(theme.compiled)}
                             cssVariablesSelector={`#display-panel`}
                         >
                             <Box pos={'relative'} id='display-panel' bg="var(--mantine-color-body)">

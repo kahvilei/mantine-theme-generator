@@ -110,5 +110,6 @@
     max-width 0.3s ease,
     min-height 0.3s ease,
     max-height 0.3s ease,
-    border-radius 0.3s ease;
+    border-radius 0.3s ease,
+    font-size 0.3s ease;
 }

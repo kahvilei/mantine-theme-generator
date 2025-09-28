@@ -92,7 +92,6 @@ export const UploadTheme = observer(() => {
   };
 
   return (
-    <Card>
       <Dropzone
         onDrop={(files) => {
           if (files.length > 0) uploadTheme(files[0]);
@@ -106,8 +105,10 @@ export const UploadTheme = observer(() => {
           )
         }
         maxFiles={1}
-        accept={['text/typescript', 'application/json']}
-        style={{ cursor: "pointer", padding: "10px" }}
+        accept={{'application/json': ['.json'],'text/plain': ['.ts', '.tsx']}}
+        style={{ cursor: "pointer", borderRadius: ".5rem"}}
+        p={'xl'}
+        bd={'1px dashed var(--app-shell-border-color)'}
       >
         <Group justify="center" gap="xs">
           <Dropzone.Accept>
@@ -124,6 +125,5 @@ export const UploadTheme = observer(() => {
           </Text>
         </Group>
       </Dropzone>
-    </Card>
   );
 });

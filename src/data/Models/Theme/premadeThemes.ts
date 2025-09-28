@@ -584,7 +584,6 @@ export const Remoraid: MantineThemeOverride = {
   black: '#24292f',
   autoContrast: true,
   luminanceThreshold: 0.3,
-  isThemeDependentPrimaryShade: true,
   fontFamily: 'Open Sans',
   fontFamilyMonospace: 'Roboto Mono',
   headings: {
@@ -592,9 +591,9 @@ export const Remoraid: MantineThemeOverride = {
     fontWeight: '500',
     sizes: {
       h1: {
-        fontSize: '2.125rem',
+        fontSize: '3.125rem',
         lineHeight: '1.3',
-        fontWeight: '0'
+        fontWeight: '700'
       },
       h2: {
         fontSize: '1.625rem',

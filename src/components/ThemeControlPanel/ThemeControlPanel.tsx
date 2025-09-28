@@ -27,7 +27,7 @@ import TypographyControl from './TypographyControls/TypographyControls';
 import classes from './ThemeControlPanel.module.css';
 import { useTranslation } from 'react-i18next';
 import {useDisclosure, useMediaQuery} from "@mantine/hooks";
-import appTheme from "../../data/appTheme.json";
+import appTheme from "../../data/appTheme";
 import Header from '../Header/Header';
 import { DownloadThemeButton } from './Shared/Themes/themeDownloadUpload';
 
@@ -69,7 +69,7 @@ const ThemeControlPanel: React.FC = () => {
 
     return (
         <MantineProvider
-            theme={createTheme(appTheme as unknown as MantineThemeOverride)}
+            theme={createTheme(appTheme)}
         >
             <Stack id="control-panel" h="100vh" gap="xs" p={0}>
                 <Group align='center' justify='space-between'>

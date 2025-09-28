@@ -24,6 +24,7 @@ export interface ThemeDisplayProps {
 const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
   ({ number, mode, displayContent, themeOverride = theme }) => {
     // Get theme from MobX store if not explicitly provided
+    
     const currentTheme = createTheme(themeOverride.compiled);
 
     // Memoize each content page

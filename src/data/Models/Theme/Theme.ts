@@ -56,7 +56,7 @@ export class Theme {
     this.debouncedSave = debounce(() => {
       localStorage.setItem(
         `${USER_THEME_PREFIX}${this.name}`,
-            themeToTypeScript(this.compiledWithVirtuals)
+            themeToTypeScript({...toJS(this._compiledWithVirtuals)})
         );
     }, SAVE_DEBOUNCE_MS);
 
@@ -88,10 +88,20 @@ export class Theme {
   }
 
   @computed
-  get compiled(): MantineThemeOverride { return this._compiled; }
+  get compiled(): MantineThemeOverride { 
+    const theme = {...toJS(this._compiledWithVirtuals)}; // gotta return as a clone bc the mobx proxy gets funky in createTheme
+    if (theme.colors){
+      for (let [name, color] of Object.entries(theme.colors) ?? []) {
+        if (typeof color === 'function') {
+          theme.colors[name] = (color as Function)();
+        }
+      }
+    }
+    return theme;
+  }
 
   @computed
-  get compiledWithVirtuals(): MantineThemeOverride { return this._compiledWithVirtuals; }
+  get compiledWithVirtuals(): MantineThemeOverride { return {...toJS(this._compiledWithVirtuals)} } // gotta return as a clone bc the mobx proxy gets funky
 
   @action
   reset() {
