@@ -1,0 +1,155 @@
+{
+
+      "lineChart": {
+        "title": "Line Chart",
+        "subtitle": "Weekly sales overview"
+      },
+      "article": {
+        "title": "Article Snippet",
+        "subtitle": "Quick summary of content",
+        "excerpt": "This is an example of a short article snippet. It shows how text will appear in your theme.",
+        "tags": ["News", "Tech", "Design"]
+      },
+      "login": {
+        "title": "Login Form",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "remember": "Remember me",
+        "forgot": "Forgot password?",
+        "submit": "Login"
+      },
+      "chat": {
+        "title": "Chat Log",
+        "messages": [
+          { "sender": "me", "text": "Hey there!" },
+          { "sender": "them", "text": "Hello! How's it going?" },
+          { "sender": "me", "text": "All good, working on the theme editor." },
+          { "sender": "them", "text": "Nice! That looks amazing." }
+        ],
+        "footer": "End of chat"
+      },
+      "team": {
+        "title": "Team Members",
+        "members": [
+          { "name": "Alice Smith", "role": "Designer", "avatar": "/avatars/alice.png" },
+          { "name": "Bob Johnson", "role": "Developer", "avatar": "/avatars/bob.png" },
+          { "name": "Carol Lee", "role": "Project Manager", "avatar": "/avatars/carol.png" }
+        ],
+        "action": "Message"
+      },
+      "expenseDashboard": {
+        "title": "Expense Dashboard",
+        "subtitle": "Track your weekly expenses",
+        "data": [
+          { "category": "Food", "amount": 120 },
+          { "category": "Transport", "amount": 50 },
+          { "category": "Entertainment", "amount": 80 },
+          { "category": "Utilities", "amount": 40 },
+          { "category": "Other", "amount": 30 }
+        ]
+      },
+      "userProfile": {
+        "title": "User Profile",
+        "user": {
+          "name": "Jane Doe",
+          "role": "Frontend Developer",
+          "avatar": "/avatars/jane.png"
+        },
+        "follow": "Follow"
+      },
+      "pricing": {
+        "title": "Pricing Plans",
+        "plans": [
+          {
+            "name": "Basic",
+            "price": "$10/mo",
+            "features": ["Feature 1", "Feature 2", "Feature 3"]
+          },
+          {
+            "name": "Pro",
+            "price": "$30/mo",
+            "features": ["Feature 1", "Feature 2", "Feature 3", "Feature 4"]
+          },
+          {
+            "name": "Enterprise",
+            "price": "$100/mo",
+            "features": ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5"]
+          }
+        ],
+        "select": "Select Plan"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "items": [
+          { "title": "Server rebooted", "type": "info" },
+          { "title": "New message from John", "type": "info" },
+          { "title": "Payment failed", "type": "error" },
+          { "title": "Update available", "type": "info" }
+        ]
+      },
+      "calendar": {
+        "title": "Upcoming Events",
+        "events": [
+          { "title": "Team Meeting", "time": "10:00 AM", "color": "blue" },
+          { "title": "Client Call", "time": "1:00 PM", "color": "green" },
+          { "title": "Design Review", "time": "3:30 PM", "color": "orange" }
+        ]
+      },
+        "weeklyActivity": {
+          "title": "Weekly Activity",
+          "subtitle": "Progress of your tasks over the week",
+          "data": [
+            { "day": "Monday", "activity": 40 },
+            { "day": "Tuesday", "activity": 60 },
+            { "day": "Wednesday", "activity": 50 },
+            { "day": "Thursday", "activity": 70 },
+            { "day": "Friday", "activity": 30 },
+            { "day": "Saturday", "activity": 20 },
+            { "day": "Sunday", "activity": 50 }
+          ]
+        },
+        "projectPie": {
+          "title": "Project Distribution",
+          "projects": [
+            { "name": "Design", "percent": 25, "color": "blue" },
+            { "name": "Development", "percent": 40, "color": "green" },
+            { "name": "Marketing", "percent": 20, "color": "orange" },
+            { "name": "Research", "percent": 15, "color": "red" }
+          ]
+        },
+        "taskList": {
+          "title": "Task List",
+          "done": "Done",
+          "pending": "Pending",
+          "items": [
+            { "task": "Write documentation", "completed": true },
+            { "task": "Fix bug #112", "completed": false },
+            { "task": "Design new feature", "completed": false },
+            { "task": "Deploy to staging", "completed": true },
+            { "task": "Review pull requests", "completed": false }
+          ]
+        },
+        "profileSummary": {
+          "title": "Profile Summary",
+          "user": {
+            "name": "Alex Johnson",
+            "role": "Frontend Developer",
+            "avatar": "https://i.pravatar.cc/150?img=5",
+            "progress": 75
+          }
+        },
+        "barPerformance": {
+          "title": "Performance Metrics",
+          "data": [
+            { "metric": "CPU Usage", "value": 65, "color": "red" },
+            { "metric": "Memory", "value": 80, "color": "orange" },
+            { "metric": "Disk", "value": 55, "color": "green" },
+            { "metric": "Network", "value": 70, "color": "blue" }
+          ]
+        }
+      }      
+    
+  
+  

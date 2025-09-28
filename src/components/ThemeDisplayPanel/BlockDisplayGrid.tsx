@@ -1,32 +1,38 @@
-// BlockDisplayGrid.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import {
   TextInput,
   Chip,
-  Box,
   Stack,
   Group,
   Card,
+  Box,
 } from '@mantine/core';
+import { useResizeObserver } from '@mantine/hooks';
 import { themeBlocks, ThemeBlock } from './Blocks/Blocks';
 import Masonry from 'react-masonry-css';
+import './BlockDisplayGrid.css';
 
 interface BlockDisplayGridProps {
   blocks?: ThemeBlock[];
 }
 
-const breakpointCols = {
-  default: 4,
-  1200: 3,
-  800: 2,
-  500: 1,
-};
+// Column logic based on container width
+function getColumns(width: number) {
+  if (width > 1200) return 4;
+  if (width > 900) return 3;
+  if (width > 400) return 2;
+  return 1;
+}
 
 export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   blocks = themeBlocks,
 }) => {
   const [search, setSearch] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [ref, rect] = useResizeObserver();
+  const containerWidth = rect?.width ?? 0;
+  const columnCount = getColumns(containerWidth || 0);
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
@@ -48,7 +54,8 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   }, [blocks, search, selectedTags]);
 
   return (
-    <Stack gap="md">
+    <Box ref={ref}>
+    <Stack gap="md" ref={containerRef}>
       <Group align="flex-end" gap="md">
         <TextInput
           placeholder="Search blocks…"
@@ -60,8 +67,6 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
           multiple
           value={selectedTags}
           onChange={(val) => {
-            // Mantine’s Chip.Group onChange gives string or string[]
-            // When multiple=true, val is string[]
             if (Array.isArray(val)) {
               setSelectedTags(val);
             } else {
@@ -80,16 +85,15 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
       </Group>
 
       <Masonry
-        breakpointCols={breakpointCols}
+        breakpointCols={columnCount}
         className="masonry-grid"
         columnClassName="masonry-column"
       >
         {filtered.map((b) => (
-          <Card>
-            {b.render}
-          </Card>
+          <b.render key={b.id} />
         ))}
       </Masonry>
     </Stack>
+    </Box>
   );
 };

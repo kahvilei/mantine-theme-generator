@@ -142,6 +142,7 @@ export const NAMESPACES = [
     'typography',
     'components',
     'forms',
+    'blocks'
     // Add more namespaces here
 ];
 
