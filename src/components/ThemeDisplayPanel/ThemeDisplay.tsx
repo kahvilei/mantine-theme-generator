@@ -13,6 +13,8 @@ import { Components } from '@/components/ThemeDisplayPanel/Demo Pages/Components
 import { Dashboard } from '@/components/ThemeDisplayPanel/Demo Pages/Dashboard';
 import { Forms } from '@/components/ThemeDisplayPanel/Demo Pages/Forms';
 import { Typography } from '@/components/ThemeDisplayPanel/Demo Pages/Typography';
+import { BlockDisplayGrid } from './BlockDisplayGrid';
+import { Hero } from './Demo Pages/Demo Page Components/Hero';
 
 export interface ThemeDisplayProps {
   number: number;
@@ -26,22 +28,6 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
     // Get theme from MobX store if not explicitly provided
     
     const currentTheme = createTheme(themeOverride.compiled);
-
-    // Memoize each content page
-    const Content = () => {
-      switch (displayContent) {
-        case 'typography':
-          return <Typography theme={currentTheme} />;
-        case 'components':
-          return <Components />;
-        case 'forms':
-          return <Forms />;
-        case 'dashboard':
-          return <Dashboard />;
-        default:
-          return <Dashboard />;
-      }
-    };
 
     return (
     <div className={classes.displayWipe}>
@@ -61,12 +47,12 @@ const ThemeDisplay: React.FC<ThemeDisplayProps> = observer(
           bg="var(--mantine-color-body)"
         >
           <Stack align="center">
-          <Group className={classes.displayContent}>
-            <Content />
-          </Group>
+            <Hero/>
+            <BlockDisplayGrid/>
           </Stack>
         </Box>
-      </MantineProvider></div>
+      </MantineProvider>
+    </div>
     );
   }
 );

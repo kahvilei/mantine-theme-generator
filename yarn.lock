@@ -4569,6 +4569,7 @@ __metadata:
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
     react-i18next: "npm:^15.4.1"
+    react-masonry-css: "npm:^1.0.16"
     react-router-dom: "npm:^6.26.1"
     recharts: "npm:^3.2.1"
     stylelint: "npm:^16.9.0"
@@ -5405,6 +5406,15 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10c0/2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-masonry-css@npm:^1.0.16":
+  version: 1.0.16
+  resolution: "react-masonry-css@npm:1.0.16"
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: 10c0/058dac3ffeba0c56608a252561188d7964e8a943a0812517ec6266183bbea8df474fc57607c01458b96b16d06219f0466995f3d32984dceba43b4b8b993326b3
   languageName: node
   linkType: hard
 

@@ -44,6 +44,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.4.1",
+    "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.26.1",
     "recharts": "^3.2.1",
     "yarn": "^1.22.22"

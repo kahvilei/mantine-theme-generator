@@ -54,100 +54,76 @@ const App: React.FC = observer(() => {
                             cssVariablesSelector={`#display-panel`}
                         >
                             <Box pos={'relative'} id='display-panel' bg="var(--mantine-color-body)">
-                                
-                                {/* Tab Content */}
-                                    <Card flex={1} pos={'fixed'} right={0} m={'lg'} p={'xs'} c={'primary'} style={{zIndex: 10}}>
-                                        <Group className="tab-header" justify="space-between" align="center" wrap="nowrap">
-                                            <Tabs value={currentContent} onChange={setCurrentContent} style={{ overflow: 'auto' }}>
-                                                <Tabs.List className="tab-header-list">
-                                                    <Tabs.Tab value="dashboard" leftSection={isMobile ? null : <IconDashboard size={16} />}>
-                                                        {isMobile ? <IconDashboard size={16} /> : t('navigation.dashboard', { ns: 'core' })}
-                                                    </Tabs.Tab>
-                                                    <Tabs.Tab value="typography" leftSection={isMobile ? null : <IconTypography size={16} />}>
-                                                        {isMobile ? <IconTypography size={16} /> : t('navigation.typography', { ns: 'core' })}
-                                                    </Tabs.Tab>
-                                                    <Tabs.Tab value="components" leftSection={isMobile ? null : <IconComponents size={16} />}>
-                                                        {isMobile ? <IconComponents size={16} /> : t('navigation.components', { ns: 'core' })}
-                                                    </Tabs.Tab>
-                                                    <Tabs.Tab value="forms" leftSection={isMobile ? null : <IconForms size={16} />}>
-                                                        {isMobile ? <IconForms size={16} /> : t('navigation.forms', { ns: 'core' })}
-                                                    </Tabs.Tab>
-                                                </Tabs.List>
-                                            </Tabs>
+                                <Card flex={1} pos={'fixed'} right={0} m={'lg'} p={'xs'} c={'primary'} style={{zIndex: 10}}>
+                                    <SegmentedControl
+                                        size="sm"
+                                        value={currentColorScheme}
+                                        onChange={setCurrentColorScheme}
+                                        data={[
+                                            {
+                                                value: 'dark',
+                                                label: (
+                                                    <Center>
+                                                        <IconMoon size={16} />
+                                                    </Center>
+                                                ),
+                                            },
+                                            {
+                                                value: 'dark-and-light',
+                                                label: (
+                                                    <Center>
+                                                        <IconSunMoon size={16} />
+                                                    </Center>
+                                                ),
+                                            },
+                                            {
+                                                value: 'light',
+                                                label: (
+                                                    <Center>
+                                                        <IconSun size={16} />
+                                                    </Center>
+                                                ),
+                                            },
+                                        ]}
+                                    />
+                                </Card>
+                                {/* Dark Tab Content */}
+                                {currentColorScheme === 'dark' && (
+                                    <Group justify="center" grow className="theme-display-container">
+                                        <ThemeDisplay
+                                            number={1}
+                                            mode="dark"
+                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
+                                        />
+                                    </Group>
+                                )}
 
-                                            {/* Only show SegmentedControl on desktop */}
-                                            {!isMobile && (
-                                                <SegmentedControl
-                                                    size="sm"
-                                                    value={currentColorScheme}
-                                                    onChange={setCurrentColorScheme}
-                                                    data={[
-                                                        {
-                                                            value: 'dark',
-                                                            label: (
-                                                                <Center>
-                                                                    <IconMoon size={16} />
-                                                                </Center>
-                                                            ),
-                                                        },
-                                                        {
-                                                            value: 'dark-and-light',
-                                                            label: (
-                                                                <Center>
-                                                                    <IconSunMoon size={16} />
-                                                                </Center>
-                                                            ),
-                                                        },
-                                                        {
-                                                            value: 'light',
-                                                            label: (
-                                                                <Center>
-                                                                    <IconSun size={16} />
-                                                                </Center>
-                                                            ),
-                                                        },
-                                                    ]}
-                                                />
-                                            )}
-                                        </Group>
-                                    </Card>
-                                    {/* Dark Tab Content */}
-                                    {currentColorScheme === 'dark' && (
-                                        <Group justify="center" grow className="theme-display-container">
-                                            <ThemeDisplay
-                                                number={1}
-                                                mode="dark"
-                                                displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                            />
-                                        </Group>
-                                    )}
+                                {/* Dark and Light Tab Content */}
+                                {currentColorScheme === 'dark-and-light' && (
+                                    <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
+                                        <ThemeDisplay
+                                            number={2}
+                                            mode="dark"
+                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
+                                        />
+                                        <ThemeDisplay
+                                            number={3}
+                                            mode="light"
+                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
+                                        />
+                                    </Group>
+                                )}
 
-                                    {/* Dark and Light Tab Content */}
-                                    {currentColorScheme === 'dark-and-light' && (
-                                        <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
-                                            <ThemeDisplay
-                                                number={2}
-                                                mode="dark"
-                                                displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                            />
-                                            <ThemeDisplay
-                                                number={3}
-                                                mode="light"
-                                                displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                            />
-                                        </Group>
-                                    )}
-
-                                    {/* Light Tab Content */}
-                                    {currentColorScheme === 'light' && (
-                                        <Group justify="center" grow className="theme-display-container">
-                                            <ThemeDisplay
-                                                number={4}
-                                                mode="light"
-                                                displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                            />
-                                        </Group>
-                                    )}
+                                {/* Light Tab Content */}
+                                {currentColorScheme === 'light' && (
+                                    <Group justify="center" grow className="theme-display-container">
+                                        <ThemeDisplay
+                                            number={4}
+                                            mode="light"
+                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
+                                        />
+                                    </Group>
+                                )}
                             </Box>
                         </MantineProvider>                 
                     </AppShell.Main>  
