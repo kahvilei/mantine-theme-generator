@@ -1,5 +1,4 @@
-import { colors } from "@/data/Store";
-import { ActionIcon, AspectRatio, Avatar, Badge, Box, Card, Center, Group, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
+import { ActionIcon, AspectRatio, Avatar, Badge, Box, Card, Center, Group, Stack, Text, ThemeIcon } from "@mantine/core";
 import { IconCheck, IconEye, IconHeart, IconShare, IconVideo} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
@@ -8,7 +7,7 @@ const liveStream:ThemeBlock = {
     id: 'livestream-card',
     title: 'blocks.livestreamCard.title',
     tags: ['Media', 'Live', 'Video'],
-    components: ['Paper', 'AspectRatio', 'Badge', 'Center', 'Avatar'],
+    components: ['ActionIcon', 'AspectRatio', 'Avatar', 'Badge', 'Card', 'Center', 'Group', 'Stack', 'Text', 'ThemeIcon'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const stream = t('livestreamCard.data', { returnObjects: true }) as any;

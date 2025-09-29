@@ -9,7 +9,7 @@ const cryptoCard:ThemeBlock = {
     id: 'crypto-card',
     title: 'blocks.cryptoCard.title',
     tags: ['Finance', 'Card', 'Chart', 'Gradient'],
-
+    components: ['Badge', 'Button', 'Card', 'Group', 'Paper', 'Text', 'Title'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const data = t('cryptoCard.data', { returnObjects: true }) as any;

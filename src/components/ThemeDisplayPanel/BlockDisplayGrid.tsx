@@ -36,7 +36,7 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
-    blocks.forEach((b) => b.tags.forEach((t) => tagSet.add(t)));
+    blocks.forEach((b) => b.tags?.forEach((t) => tagSet.add(t)));
     return Array.from(tagSet).sort();
   }, [blocks]);
 
@@ -45,10 +45,11 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
       const searchMatch =
         search.trim() === '' ||
         b.title.toLowerCase().includes(search.toLowerCase()) ||
-        b.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
+        b.components?.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
+        b.tags?.some((t) => t.toLowerCase().includes(search.toLowerCase()));
       const tagsMatch =
         selectedTags.length === 0 ||
-        selectedTags.every((tag) => b.tags.includes(tag));
+        selectedTags.every((tag) => b.tags?.includes(tag));
       return searchMatch && tagsMatch;
     });
   }, [blocks, search, selectedTags]);
