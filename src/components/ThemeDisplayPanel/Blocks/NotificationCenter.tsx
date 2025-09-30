@@ -1,5 +1,4 @@
-import { colors } from "@/data/Store";
-import { ActionIcon, Badge, Box, Button, Card, Group, Loader, Paper, Progress, Stack, Text, ThemeIcon, Timeline } from "@mantine/core";
+import { ActionIcon, Badge, Button, Card, Group, Text, ThemeIcon, Timeline } from "@mantine/core";
 import { IconBell, IconCheck, IconSettings, IconX} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
@@ -7,7 +6,9 @@ import { ThemeBlock } from "../Blocks";
 const notificationCenter:ThemeBlock ={
     id: 'notification-center',
     title: 'blocks.notificationCenter.title',
+    category: 'General',
     tags: ['Pipeline', 'Timeline', 'Actions'],
+    components: ['ActionIcon', 'Badge', 'Button', 'Card', 'Group', 'Text', 'ThemeIcon', 'Timeline'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const notifications = t('notificationCenter.items', { returnObjects: true }) as any[];

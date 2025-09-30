@@ -7,6 +7,7 @@ import { ThemeBlock } from "../Blocks";
 const musicPlayer:ThemeBlock =  {
     id: 'music-player',
     title: 'blocks.musicPlayer.title',
+    category: 'Media',
     tags: ['Media', 'Controls', 'Progress'],
     components: ['ActionIcon', 'AspectRatio', 'Card', 'Group', 'Paper', 'Progress', 'Stack', 'Text', 'Title'],
     render: () => {

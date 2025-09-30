@@ -1,5 +1,5 @@
 import { colors } from "@/data/Store";
-import {ActionIcon, AspectRatio, Badge, Box, Button, Card, Center, Group, Paper, Rating,  Stack, Text, Title} from "@mantine/core";
+import { ActionIcon, AspectRatio, Badge, Box, Button, Card, Center, Group, Rating, Stack, Text, Title} from "@mantine/core";
 import { IconHeart, IconPackage, IconShoppingCart} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
@@ -7,7 +7,9 @@ import { ThemeBlock } from "../Blocks";
 const productCard:ThemeBlock =  {
     id: 'product-card',
     title: 'blocks.productCard.title',
+    category: 'E-commerce',
     tags: ['E-commerce', 'Product', 'Rating'],
+    components: ['ActionIcon', 'AspectRatio', 'Badge', 'Button', 'Card', 'Center', 'Group', 'Rating', 'Stack', 'Text', 'Title'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const product = t('productCard.data', { returnObjects: true }) as any;

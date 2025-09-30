@@ -1,14 +1,15 @@
 import { colors } from "@/data/Store";
-import { ActionIcon, AspectRatio, Avatar, Badge, Card, Chip, Group, Indicator, Menu, Paper, Progress, Stack, Text, ThemeIcon, Title, TooltipFloating } from "@mantine/core";
-import { IconArchive, IconBolt, IconCheck, IconClock, IconDots, IconEdit, IconHeart, IconMessage, IconMusic, IconPlayerPlay, IconPlayerSkipBack, IconPlayerSkipForward, IconShare, IconTrash} from "@tabler/icons-react";
+import { ActionIcon, Avatar, Badge, Card, Chip, Group, Menu, Progress, Stack, Text, Title, Tooltip } from "@mantine/core";
+import { IconArchive, IconClock, IconDots, IconEdit } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
-import { Tooltip } from "recharts";
 
 const taskCard:ThemeBlock =  {
     id: 'task-card',
     title: 'blocks.taskCard.title', 
+    category: "Project Management",
     tags: ['Project', 'Timeline', 'Progress'],
+    components: [ 'ActionIcon', 'Avatar', 'Badge', 'Card', 'Chip', 'Group', 'Menu', 'Progress', 'Stack', 'Text', 'Title', 'Tooltip'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const task = t('taskCard.data', { returnObjects: true }) as any;
@@ -58,9 +59,9 @@ const taskCard:ThemeBlock =  {
             <Group justify="space-between">
                 <Avatar.Group spacing="xs">
                 {task.assignees.map((user: any) => (
-                    <TooltipFloating key={user.name} label={user.name}>
+                    <Tooltip key={user.name} label={user.name}>
                     <Avatar src={user.avatar} size="sm" radius="xl" />
-                    </TooltipFloating>
+                    </Tooltip>
                 ))}
                 </Avatar.Group>
                 <Group gap={4}>

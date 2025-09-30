@@ -7,6 +7,7 @@ import { ThemeBlock } from "../Blocks";
 const calendarEvent:ThemeBlock = {
     id: 'calendar-event',
     title: 'blocks.calendarEvent.title',
+    category: 'General',
     tags: ['Calendar', 'Schedule', 'Time'],
     components: ['Avatar', 'Button', 'Card', 'Group', 'Paper', 'Stack', 'Text', 'ThemeIcon', 'Tooltip'],
     render: () => {
@@ -39,7 +40,7 @@ const calendarEvent:ThemeBlock = {
               </Group>
             </div>
             
-            <Paper p="xs" radius="sm">
+            <Paper p="xs">
               <Group gap="xs">
                 <IconMapPin size={14} color="var(--mantine-color-dimmed)" />
                 <Text size="xs">{event.location}</Text>

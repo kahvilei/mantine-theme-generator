@@ -7,8 +7,9 @@ import { ThemeBlock } from "../Blocks";
 const weatherWidget:ThemeBlock = {
     id: 'weather-widget',
     title: 'blocks.weatherWidget.title',
+    category: 'General',
     tags: ['Weather', 'Gradient', 'Icons'],
-    components: ['Card', 'Title', 'Text', 'Group', 'Paper', 'Stack'],
+    components: ['Card', 'Title', 'Text', 'Group', 'Paper', 'Stack', 'Grid', 'ThemeIcon'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const weather = t('weatherWidget.data', { returnObjects: true }) as any;
@@ -63,7 +64,7 @@ const weatherWidget:ThemeBlock = {
                 
                 <Group gap="xs">
                     {weather.forecast.map((day: any) => (
-                    <Paper key={day.day} p="xs" radius="sm" bg="rgba(255,255,255,0.2)" style={{ flex: 1 }}>
+                    <Paper key={day.day} p="xs" bg="rgba(255,255,255,0.2)" style={{ flex: 1 }}>
                         <Stack gap={2} align="center">
                         <Text size="xs" fw={600}>{day.day}</Text>
                         <IconSun size={16} />

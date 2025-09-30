@@ -7,6 +7,7 @@ import { ThemeBlock } from "../Blocks";
 const fitnessTracker:ThemeBlock =   {
     id: 'fitness-tracker',
     title: 'blocks.fitnessTracker.title',
+    category: 'Health',
     tags: ['Health', 'Progress', 'Stats'],
     components: ['Button', 'Card', 'Group', 'Paper', 'RingProgress', 'Stack', 'Text', 'ThemeIcon'],
     render: () => {

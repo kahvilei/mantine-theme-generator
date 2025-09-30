@@ -8,6 +8,7 @@ import { BarChart, DonutChart } from "@mantine/charts";
 const analyticsDashboard:ThemeBlock =  {
     id: 'analytics-card',
     title: 'blocks.analyticsCard.title',
+    category: 'General',
     tags: ['Analytics', 'Charts', 'Stats'],
     components: ['Card', 'Center', 'Group', 'Paper', 'RingProgress', 'SimpleGrid', 'Stack', 'Tabs', 'Text', 'ThemeIcon', 'Title'],
     render: () => {

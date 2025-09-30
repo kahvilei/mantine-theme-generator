@@ -1,13 +1,15 @@
 import { colors } from "@/data/Store";
-import { ActionIcon, AspectRatio, Avatar, Badge, Box, Button, Card, Group, Indicator, Menu, Paper, Progress, Stack, Text, ThemeIcon, Title } from "@mantine/core";
-import { IconBolt, IconCheck, IconDots, IconEdit, IconHeart, IconMessage, IconMusic, IconPlayerPlay, IconPlayerSkipBack, IconPlayerSkipForward, IconShare, IconTrash, IconX} from "@tabler/icons-react";
+import { Badge, Button, Card, Group, Stack, Text, ThemeIcon} from "@mantine/core";
+import { IconCheck, IconX} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
 
 const subscriptionPlan:ThemeBlock =  {
     id: 'subscription-plan',
     title: 'blocks.subscriptionPlan.title',
+    category: 'E-commerce',
     tags: ['Pricing', 'Features', 'CTA'],
+    components: [ 'Badge', 'Button', 'Card', 'Group', 'Stack', 'Text', 'ThemeIcon' ],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const plan = t('subscriptionPlan.data', { returnObjects: true }) as any;

@@ -1,13 +1,14 @@
-import { colors } from "@/data/Store";
-import { ActionIcon, AspectRatio, Badge, Box, Button, Card, Group, Loader, Paper, Progress, Stack, Text, ThemeIcon, Timeline } from "@mantine/core";
-import { IconBell, IconCheck, IconCreditCard, IconSettings, IconX} from "@tabler/icons-react";
+import { AspectRatio, Badge, Box, Card, Group, Stack, Text} from "@mantine/core";
+import { IconCreditCard } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
 
 const paymentMethod:ThemeBlock = {
     id: 'payment-card',
     title: 'blocks.paymentCard.title',
+    category: 'E-commerce',
     tags: ['Payment', 'Finance', 'Card'],
+    components: ['AspectRatio', 'Badge', 'Card', 'Group', 'Stack', 'Text'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const payment = t('paymentCard.data', { returnObjects: true }) as any;

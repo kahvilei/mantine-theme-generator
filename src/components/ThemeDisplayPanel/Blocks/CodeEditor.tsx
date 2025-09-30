@@ -6,6 +6,7 @@ import { IconCheck, IconCopy, IconDownload } from "@tabler/icons-react";
 const codeEditor:ThemeBlock = {
     id: 'code-editor',
     title: 'blocks.codeEditor.title',
+    category: "Development",
     tags: ['Code', 'Developer', 'Syntax'],
     components: ['ActionIcon', 'Badge', 'Card', 'Code', 'Group', 'ScrollArea', 'Select', 'Stack', 'Text'],
     render: () => {

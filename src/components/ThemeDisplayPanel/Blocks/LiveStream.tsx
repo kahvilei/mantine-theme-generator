@@ -6,6 +6,7 @@ import { ThemeBlock } from "../Blocks";
 const liveStream:ThemeBlock = {
     id: 'livestream-card',
     title: 'blocks.livestreamCard.title',
+    category: 'Media',
     tags: ['Media', 'Live', 'Video'],
     components: ['ActionIcon', 'AspectRatio', 'Avatar', 'Badge', 'Card', 'Center', 'Group', 'Stack', 'Text', 'ThemeIcon'],
     render: () => {

@@ -8,6 +8,7 @@ import { AreaChart } from "@mantine/charts";
 const cryptoCard:ThemeBlock = {
     id: 'crypto-card',
     title: 'blocks.cryptoCard.title',
+    category: 'Finance',
     tags: ['Finance', 'Card', 'Chart', 'Gradient'],
     components: ['Badge', 'Button', 'Card', 'Group', 'Paper', 'Text', 'Title'],
     render: () => {

@@ -1,14 +1,13 @@
 /* ThemeDisplayGrid.css */
 .masonry-grid {
     display: flex;
-    margin-left: -16px; /* adjust to gutter */
     width: auto;
+    gap: var(--mantine-spacing-xl);
 }
   
 .masonry-column {
-    padding-left: 16px; /* gutter */
     background-clip: padding-box;
-    gap: 1rem;
+    gap: var(--mantine-spacing-xl);
     display: flex;
     flex-direction: column;
 }

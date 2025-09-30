@@ -36,7 +36,7 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
-    blocks.forEach((b) => b.tags?.forEach((t) => tagSet.add(t)));
+    blocks.forEach((b) => tagSet.add(b.category??''));
     return Array.from(tagSet).sort();
   }, [blocks]);
 
@@ -46,6 +46,8 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
         search.trim() === '' ||
         b.title.toLowerCase().includes(search.toLowerCase()) ||
         b.components?.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
+        b.category?.toLowerCase().includes(search.toLowerCase()) ||
+        b.category?.toLowerCase() === search.toLowerCase() ||
         b.tags?.some((t) => t.toLowerCase().includes(search.toLowerCase()));
       const tagsMatch =
         selectedTags.length === 0 ||
@@ -56,7 +58,7 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
 
   return (
     <Box ref={ref}>
-    <Stack gap="md" ref={containerRef}>
+    <Stack gap="xl" ref={containerRef}>
       <Group align="flex-end" gap="md">
         <TextInput
           placeholder="Search blocks…"

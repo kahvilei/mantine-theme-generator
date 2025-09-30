@@ -237,5 +237,440 @@
       "viewers": "2.3K",
       "duration": "1:24:36"
     }
+  },
+  "apiMonitor": {
+    "title": "API Health Monitor",
+    "data": {
+      "lastUpdate": "2 min ago",
+      "uptime": 99.8,
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/api/users",
+          "status": "success",
+          "responseTime": "145",
+          "requests": "1,234"
+        },
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "status": "success",
+          "responseTime": "98",
+          "requests": "892"
+        },
+        {
+          "method": "GET",
+          "path": "/api/products",
+          "status": "warning",
+          "responseTime": "523",
+          "requests": "2,105"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/orders",
+          "status": "success",
+          "responseTime": "210",
+          "requests": "456"
+        }
+      ]
+    }
+  },
+  "gitCommit": {
+    "title": "Git Commit History",
+    "data": {
+      "branch": "main",
+      "hash": "a3f5c21",
+      "message": "feat: Add real-time notifications system",
+      "author": {
+        "name": "Alex Chen",
+        "avatar": "https://i.pravatar.cc/150?img=9"
+      },
+      "time": "23 minutes ago",
+      "files": [
+        {
+          "path": "src/notifications.ts",
+          "additions": 145,
+          "deletions": 12
+        },
+        {
+          "path": "src/components/NotificationBell.tsx",
+          "additions": 78,
+          "deletions": 5
+        },
+        {
+          "path": "tests/notifications.test.ts",
+          "additions": 92,
+          "deletions": 0
+        }
+      ]
+    }
+  },
+  "terminal": {
+    "title": "Terminal",
+    "data": {
+      "title": "bash",
+      "prompt": "user@localhost:~$",
+      "lines": [
+        {
+          "type": "command",
+          "content": "npm run build"
+        },
+        {
+          "type": "output",
+          "content": "Building application..."
+        },
+        {
+          "type": "output",
+          "content": "Compiling TypeScript files..."
+        },
+        {
+          "type": "success",
+          "content": "Build completed successfully"
+        },
+        {
+          "type": "output",
+          "content": "Output: dist/ (2.4 MB)"
+        },
+        {
+          "type": "command",
+          "content": "npm test"
+        },
+        {
+          "type": "output",
+          "content": "Running test suite..."
+        },
+        {
+          "type": "output",
+          "content": "✓ 142 tests passed"
+        }
+      ]
+    }
+  },
+  "playerStats": {
+    "title": "Champion Statistics",
+    "data": {
+      "champion": "Ahri",
+      "role": "Mid Lane",
+      "totalGames": 127,
+      "winRate": 54,
+      "kda": "3.2",
+      "kills": 8.4,
+      "deaths": 4.2,
+      "assists": 9.1,
+      "csPerMin": "7.8",
+      "csTrend": 12,
+      "ratings": [
+        {
+          "stat": "Laning",
+          "value": 4,
+          "score": "8.2"
+        },
+        {
+          "stat": "Teamfighting",
+          "value": 5,
+          "score": "9.1"
+        },
+        {
+          "stat": "Vision Control",
+          "value": 3,
+          "score": "6.7"
+        }
+      ],
+      "recentGames": [
+        { "game": "G1", "performance": 85 },
+        { "game": "G2", "performance": 62 },
+        { "game": "G3", "performance": 91 },
+        { "game": "G4", "performance": 74 },
+        { "game": "G5", "performance": 88 }
+      ]
+    }
+  },
+  "matchLobby": {
+    "title": "Match Analysis",
+    "data": {
+      "matchType": "Ranked Solo",
+      "map": "Summoner's Rift",
+      "mode": "5v5",
+      "result": "Victory",
+      "duration": "32:15",
+      "teamSize": 5,
+      "damageDealt": 28450,
+      "damageTaken": 18320,
+      "teamStats": [
+        {
+          "metric": "Total Damage",
+          "yours": 28450,
+          "team": 89200
+        },
+        {
+          "metric": "Gold Earned",
+          "yours": 14200,
+          "team": 52800
+        },
+        {
+          "metric": "Vision Score",
+          "yours": 42,
+          "team": 156
+        }
+      ]
+    }
+  },
+  "inventoryItem": {
+    "title": "Market Listing",
+    "data": {
+      "name": "Dragon Lore AWP",
+      "category": "Rifle Skin",
+      "rarity": {
+        "label": "Covert",
+        "color": "red"
+      },
+      "currentPrice": "$1,847",
+      "priceChange": 12.4,
+      "volume": "342",
+      "listings": "1,247",
+      "median": "$1,799",
+      "priceHistory": [
+        { "day": "Mon", "price": 1650 },
+        { "day": "Tue", "price": 1720 },
+        { "day": "Wed", "price": 1680 },
+        { "day": "Thu", "price": 1750 },
+        { "day": "Fri", "price": 1820 },
+        { "day": "Sat", "price": 1790 },
+        { "day": "Sun", "price": 1847 }
+      ],
+      "recentSales": [
+        {
+          "price": "$1,850",
+          "time": "2m ago",
+          "buyer": "ProTrader_88",
+          "type": "buy"
+        },
+        {
+          "price": "$1,845",
+          "time": "8m ago",
+          "buyer": "SkinCollector",
+          "type": "buy"
+        },
+        {
+          "price": "$1,830",
+          "time": "15m ago",
+          "buyer": "MarketWatch",
+          "type": "buy"
+        }
+      ]
+    }
+  },
+  "leaderboard": {
+    "title": "Champion Tier List",
+    "data": {
+      "patch": "14.2",
+      "lastUpdate": "2 hours ago",
+      "region": "Global",
+      "tiers": [
+        {
+          "tier": "S",
+          "color": "red",
+          "champions": [
+            {
+              "name": "Kai'Sa",
+              "roles": ["ADC"],
+              "winRate": 53.2
+            },
+            {
+              "name": "Thresh",
+              "roles": ["Support"],
+              "winRate": 52.8
+            }
+          ]
+        },
+        {
+          "tier": "A",
+          "color": "orange",
+          "champions": [
+            {
+              "name": "Ahri",
+              "roles": ["Mid"],
+              "winRate": 51.4
+            },
+            {
+              "name": "Lee Sin",
+              "roles": ["Jungle"],
+              "winRate": 50.9
+            },
+            {
+              "name": "Jinx",
+              "roles": ["ADC"],
+              "winRate": 51.2
+            }
+          ]
+        },
+        {
+          "tier": "B",
+          "color": "yellow",
+          "champions": [
+            {
+              "name": "Yasuo",
+              "roles": ["Mid", "Top"],
+              "winRate": 49.8
+            },
+            {
+              "name": "Lux",
+              "roles": ["Mid", "Support"],
+              "winRate": 49.2
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "packageManager": {
+    "title": "Package Manager",
+    "data": {
+      "totalPackages": 247,
+      "packages": [
+        {
+          "name": "react",
+          "version": "18.2.0",
+          "latestVersion": "18.3.1",
+          "updateAvailable": true,
+          "description": "A JavaScript library for building user interfaces",
+          "downloads": "20M/week",
+          "dev": false
+        },
+        {
+          "name": "@mantine/core",
+          "version": "7.8.1",
+          "latestVersion": "7.8.1",
+          "updateAvailable": false,
+          "description": "Mantine core components library",
+          "downloads": "450K/week",
+          "dev": false
+        },
+        {
+          "name": "typescript",
+          "version": "5.3.3",
+          "latestVersion": "5.4.2",
+          "updateAvailable": true,
+          "description": "TypeScript is a language for application-scale JavaScript",
+          "downloads": "35M/week",
+          "dev": true
+        },
+        {
+          "name": "vite",
+          "version": "5.1.4",
+          "latestVersion": "5.1.4",
+          "updateAvailable": false,
+          "description": "Next generation frontend tooling",
+          "downloads": "8M/week",
+          "dev": true
+        },
+        {
+          "name": "axios",
+          "version": "1.6.7",
+          "latestVersion": "1.6.8",
+          "updateAvailable": true,
+          "description": "Promise based HTTP client for the browser and node.js",
+          "downloads": "45M/week",
+          "dev": false
+        }
+      ]
+    }
+  },
+  "characterSheet": {
+    "title": "D&D Character Sheet",
+    "data": {
+      "name": "Elara Moonwhisper",
+      "race": "High Elf",
+      "class": "Wizard",
+      "level": 8,
+      "classColor": "violet",
+      "hp": {
+        "current": 48,
+        "max": 56
+      },
+      "ac": 15,
+      "initiative": 3,
+      "abilities": [
+        {
+          "name": "STR",
+          "score": 10,
+          "modifier": 0
+        },
+        {
+          "name": "DEX",
+          "score": 16,
+          "modifier": 3
+        },
+        {
+          "name": "CON",
+          "score": 14,
+          "modifier": 2
+        },
+        {
+          "name": "INT",
+          "score": 18,
+          "modifier": 4
+        },
+        {
+          "name": "WIS",
+          "score": 12,
+          "modifier": 1
+        },
+        {
+          "name": "CHA",
+          "score": 13,
+          "modifier": 1
+        }
+      ],
+      "proficiencies": [
+        {
+          "name": "Arcana",
+          "proficient": true,
+          "bonus": 7
+        },
+        {
+          "name": "History",
+          "proficient": true,
+          "bonus": 7
+        },
+        {
+          "name": "Investigation",
+          "proficient": true,
+          "bonus": 7
+        },
+        {
+          "name": "Perception",
+          "proficient": false,
+          "bonus": 1
+        },
+        {
+          "name": "Insight",
+          "proficient": false,
+          "bonus": 1
+        }
+      ],
+      "spellSlots": [
+        {
+          "level": 1,
+          "total": 4,
+          "used": 1
+        },
+        {
+          "level": 2,
+          "total": 3,
+          "used": 2
+        },
+        {
+          "level": 3,
+          "total": 3,
+          "used": 0
+        },
+        {
+          "level": 4,
+          "total": 2,
+          "used": 1
+        }
+      ]
+    }
   }
 }

@@ -1,13 +1,14 @@
-import { colors } from "@/data/Store";
-import { ActionIcon, AspectRatio, Avatar, Card, Group, Indicator, Menu, Paper, Progress, Stack, Text, ThemeIcon, Title } from "@mantine/core";
-import { IconBolt, IconCheck, IconDots, IconEdit, IconHeart, IconMessage, IconMusic, IconPlayerPlay, IconPlayerSkipBack, IconPlayerSkipForward, IconShare, IconTrash} from "@tabler/icons-react";
+import { ActionIcon, Avatar, Card, Group, Indicator, Menu, Paper, Stack, Text, ThemeIcon, Title } from "@mantine/core";
+import { IconBolt, IconCheck, IconDots, IconEdit, IconHeart, IconMessage, IconShare, IconTrash} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
 
 const socialPost:ThemeBlock =   {
     id: 'social-post',
     title: 'blocks.socialPost.title',
+    category: 'Social',
     tags: ['Social', 'Avatar', 'Interactive'],
+    components: ['ActionIcon', 'Avatar', 'Card', 'Group', 'Indicator', 'Menu', 'Paper', 'Stack', 'Text', 'ThemeIcon', 'Title'],
     render: () => {
       const { t } = useTranslation(['blocks']);
       const post = t('socialPost.data', { returnObjects: true }) as any;
@@ -44,7 +45,7 @@ const socialPost:ThemeBlock =   {
             
             <Text size="sm">{post.content}</Text>
             
-            <Paper radius="md" p="xs">
+            <Paper p="xs">
               <Group gap="xs">
                 <ThemeIcon size="md" color="violet" variant="light">
                   <IconBolt size={16} />

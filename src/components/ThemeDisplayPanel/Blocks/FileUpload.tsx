@@ -7,6 +7,7 @@ import { ThemeBlock } from "../Blocks";
 const fileUpload:ThemeBlock = {
     id: 'file-upload',
     title: 'blocks.fileUpload.title',
+    category: 'General',
     tags: ['Upload', 'Files', 'Drag'],
     components: ['ActionIcon', 'Group', 'Loader', 'Paper', 'Progress', 'Stack', 'Text', 'ThemeIcon'],
     render: () => {
