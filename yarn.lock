@@ -799,45 +799,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/charts@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/charts@npm:8.3.1"
+"@mantine/charts@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/charts@npm:8.3.6"
   peerDependencies:
-    "@mantine/core": 8.3.1
-    "@mantine/hooks": 8.3.1
+    "@mantine/core": 8.3.6
+    "@mantine/hooks": 8.3.6
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
     recharts: ">=2.13.3"
-  checksum: 10c0/e086e655a897c95bf0a780f246abe8612837c11e28b0f0b9f4a96fc3af2c90df834f3884bf4ee126c47f8d79df4a6d254bbff0dac5627cbf50b588b4f9a7dbf9
+  checksum: 10c0/0512de939612ad06a35e1b2b41720d122ffc14f444224cec39e00687401898eec2363786e37804c55cc6c8b51c591b162f4a0e037daab022f14d1a24296b23b6
   languageName: node
   linkType: hard
 
-"@mantine/code-highlight@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/code-highlight@npm:8.3.1"
+"@mantine/code-highlight@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/code-highlight@npm:8.3.6"
   dependencies:
     clsx: "npm:^2.1.1"
   peerDependencies:
-    "@mantine/core": 8.3.1
-    "@mantine/hooks": 8.3.1
+    "@mantine/core": 8.3.6
+    "@mantine/hooks": 8.3.6
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/829fc2460b0ce60f4294086526465e430149c62aa1511ab2d3ef6f6fdbc3a3cafcad56c18b5ecdaa6b176b34fcf42dac7e9e47c87143a59115bb43107527816b
+  checksum: 10c0/42fbaab2304f8e2c00bc16812f0258fa256a631e92ac0292075c08109b1ed9c70890d7bed809a9de435dca3c71e899fec90a3b8435d7d22ac884a7bcd2c4247b
   languageName: node
   linkType: hard
 
-"@mantine/colors-generator@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/colors-generator@npm:8.3.1"
+"@mantine/colors-generator@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/colors-generator@npm:8.3.6"
   peerDependencies:
     chroma-js: ">=2.4.2"
-  checksum: 10c0/827cf8e30d7d6ad1aef37af5627a408a1638f2743ef9dc37936ca44cb05706c4e7b424613ce7c9afe2fc3bc437563012d8d26e910f30c0229e25bca56d9fa7b1
+  checksum: 10c0/14cb1329f0adc2cbd58a7193a342eaea405a10a6185ede3092db37fe5ad6c005049f40feeaefe3528740f1930cd0baeee33a051041dd7714b0f6034953e36d55
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/core@npm:8.3.1"
+"@mantine/core@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/core@npm:8.3.6"
   dependencies:
     "@floating-ui/react": "npm:^0.27.16"
     clsx: "npm:^2.1.1"
@@ -846,48 +846,48 @@ __metadata:
     react-textarea-autosize: "npm:8.5.9"
     type-fest: "npm:^4.41.0"
   peerDependencies:
-    "@mantine/hooks": 8.3.1
+    "@mantine/hooks": 8.3.6
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/6faab4553d35e3f676e852ea9b926e0d3b744eda5b38d450eb3bdb89c92cdd2ce8ae9fd7e4b47c83fc870d215a62c8fa3299d25fcaa83a07f67c782883a8ca30
+  checksum: 10c0/6f999a6c274361e78ca4d3b04cb1988d3d09231d48fc8e2c74537b2f954e465ed2325026ee4a96d9f0b6328b1392697d94384e743079abd3e61d3924157157ba
   languageName: node
   linkType: hard
 
-"@mantine/dates@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/dates@npm:8.3.1"
+"@mantine/dates@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/dates@npm:8.3.6"
   dependencies:
     clsx: "npm:^2.1.1"
   peerDependencies:
-    "@mantine/core": 8.3.1
-    "@mantine/hooks": 8.3.1
+    "@mantine/core": 8.3.6
+    "@mantine/hooks": 8.3.6
     dayjs: ">=1.0.0"
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/9b451f14704b640b01ec7a51eaa113bd4e3d2f44568d9e9eff331487505ddf51f6730caa7ae8ea4cda59c7d33c6a100095cc33bec1d4e3ed33a076fe1087bdb4
+  checksum: 10c0/467998d7b7cd8220d9f34abf44e0fbb1af24b9f41432dd76e98187bc5686b878587767c1ff3f57828d9701d48405415b9e8370ec25c8ac86948ef4b2c9753401
   languageName: node
   linkType: hard
 
-"@mantine/dropzone@npm:^8.3.2":
-  version: 8.3.2
-  resolution: "@mantine/dropzone@npm:8.3.2"
+"@mantine/dropzone@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/dropzone@npm:8.3.6"
   dependencies:
     react-dropzone: "npm:14.3.8"
   peerDependencies:
-    "@mantine/core": 8.3.2
-    "@mantine/hooks": 8.3.2
+    "@mantine/core": 8.3.6
+    "@mantine/hooks": 8.3.6
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/db80f42256c48959948862f6948321d716226085cf478086a6554382f521a8d4c8126d4195f4c15be929d0f88ce3f497b979731c6567228e483f7a815de0ae3d
+  checksum: 10c0/c39eb22bd9027f86e87d378953c774a8924a5e7218a45e40410f95ff125a787aa3dbf556a9b41f8a6195ac9e72922049fc33258368bbf4b74f83fb5d6b1613d3
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/hooks@npm:8.3.1"
+"@mantine/hooks@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@mantine/hooks@npm:8.3.6"
   peerDependencies:
     react: ^18.x || ^19.x
-  checksum: 10c0/d64ea9c848a687668ce34007e3ab226b5c45c52ea1f4bdd721ca17b07d7f7a642b86e23ee65777179d6cd1ae9c3ce56fe43602828f332bfc2cbd59658b1c9047
+  checksum: 10c0/418e2aca8d360d711ebaa09e62ddc82500cad8f7c64154e7cce0249880bc77a386a1ca29455d565e46cb9c60f939bcf973c9235547c581283f11d8d35b7848b6
   languageName: node
   linkType: hard
 
@@ -3203,7 +3203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fdir@npm:^6.4.4, fdir@npm:^6.5.0":
+"fdir@npm:^6.5.0":
   version: 6.5.0
   resolution: "fdir@npm:6.5.0"
   peerDependencies:
@@ -4526,13 +4526,13 @@ __metadata:
   dependencies:
     "@eslint/js": "npm:^9.10.0"
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.3.1"
-    "@mantine/charts": "npm:^8.3.1"
-    "@mantine/code-highlight": "npm:^8.3.1"
-    "@mantine/colors-generator": "npm:^8.3.1"
-    "@mantine/core": "npm:^8.3.1"
-    "@mantine/dates": "npm:^8.3.1"
-    "@mantine/dropzone": "npm:^8.3.2"
-    "@mantine/hooks": "npm:^8.3.1"
+    "@mantine/charts": "npm:^8.3.6"
+    "@mantine/code-highlight": "npm:^8.3.6"
+    "@mantine/colors-generator": "npm:^8.3.6"
+    "@mantine/core": "npm:^8.3.6"
+    "@mantine/dates": "npm:^8.3.6"
+    "@mantine/dropzone": "npm:^8.3.6"
+    "@mantine/hooks": "npm:^8.3.6"
     "@tabler/icons-react": "npm:^3.19.0"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.5.0"
@@ -4576,7 +4576,7 @@ __metadata:
     tsx: "npm:^4.19.2"
     typescript: "npm:^5.6.3"
     typescript-eslint: "npm:^8.4.0"
-    vite: "npm:6.3.4"
+    vite: "npm:7.1.12"
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.1.1"
     yarn: "npm:^1.22.22"
@@ -5269,7 +5269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.45, postcss@npm:^8.5.3, postcss@npm:^8.5.6":
+"postcss@npm:^8.4.45, postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -5693,7 +5693,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.34.9, rollup@npm:^4.43.0":
+"rollup@npm:^4.43.0":
   version: 4.50.2
   resolution: "rollup@npm:4.50.2"
   dependencies:
@@ -6447,7 +6447,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.13, tinyglobby@npm:^0.2.14, tinyglobby@npm:^0.2.15":
+"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.14, tinyglobby@npm:^0.2.15":
   version: 0.2.15
   resolution: "tinyglobby@npm:0.2.15"
   dependencies:
@@ -6894,26 +6894,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:6.3.4":
-  version: 6.3.4
-  resolution: "vite@npm:6.3.4"
+"vite@npm:7.1.12":
+  version: 7.1.12
+  resolution: "vite@npm:7.1.12"
   dependencies:
     esbuild: "npm:^0.25.0"
-    fdir: "npm:^6.4.4"
+    fdir: "npm:^6.5.0"
     fsevents: "npm:~2.3.3"
-    picomatch: "npm:^4.0.2"
-    postcss: "npm:^8.5.3"
-    rollup: "npm:^4.34.9"
-    tinyglobby: "npm:^0.2.13"
+    picomatch: "npm:^4.0.3"
+    postcss: "npm:^8.5.6"
+    rollup: "npm:^4.43.0"
+    tinyglobby: "npm:^0.2.15"
   peerDependencies:
-    "@types/node": ^18.0.0 || ^20.0.0 || >=22.0.0
+    "@types/node": ^20.19.0 || >=22.12.0
     jiti: ">=1.21.0"
-    less: "*"
+    less: ^4.0.0
     lightningcss: ^1.21.0
-    sass: "*"
-    sass-embedded: "*"
-    stylus: "*"
-    sugarss: "*"
+    sass: ^1.70.0
+    sass-embedded: ^1.70.0
+    stylus: ">=0.54.8"
+    sugarss: ^5.0.0
     terser: ^5.16.0
     tsx: ^4.8.1
     yaml: ^2.4.2
@@ -6945,7 +6945,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/f1534a3f42d14b30e11c58e5e451903d965d5f5ba18d8c81f9df208589e3d2c65535abaa3268d3963573174b8e056ea7bc445f567622c65fcdf98eb4acc1bf4e
+  checksum: 10c0/cef4d4b4a84e663e09b858964af36e916892ac8540068df42a05ced637ceeae5e9ef71c72d54f3cfc1f3c254af16634230e221b6e2327c2a66d794bb49203262
   languageName: node
   linkType: hard
 

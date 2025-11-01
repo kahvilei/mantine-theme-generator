@@ -2,7 +2,7 @@ import { ActionIcon, Tooltip, Group, Stack, Title, Text, Card, Box } from "@mant
 import { IconBrandGithub, IconBrandMantine } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 
-const MANTINE_VERSION = "8.3.1";
+const MANTINE_VERSION = "8.3.6";
 
 export const Hero = () => {
     const { t } = useTranslation("dashboard");
