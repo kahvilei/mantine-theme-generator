@@ -9,7 +9,6 @@ import {
 } from '@mantine/core';
 import { useResizeObserver } from '@mantine/hooks';
 import { themeBlocks, ThemeBlock } from './Blocks';
-import Masonry from 'react-masonry-css';
 import './BlockDisplayGrid.css';
 
 interface BlockDisplayGridProps {
@@ -87,15 +86,12 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
         </Chip.Group>
       </Group>
 
-      <Masonry
-        breakpointCols={columnCount}
-        className="masonry-grid"
-        columnClassName="masonry-column"
-      >
+      <Box className='masonry-grid'>
         {filtered.map((b) => (
           <b.render key={b.id} />
         ))}
-      </Masonry>
+      </Box>
+
     </Stack>
     </Box>
   );
