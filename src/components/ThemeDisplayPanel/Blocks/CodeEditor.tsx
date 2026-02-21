@@ -7,6 +7,7 @@ const codeEditor:ThemeBlock = {
     id: 'code-editor',
     title: 'blocks.codeEditor.title',
     category: "Development",
+    colSpan: 2,
     tags: ['Code', 'Developer', 'Syntax'],
     components: ['ActionIcon', 'Badge', 'Card', 'Code', 'Group', 'ScrollArea', 'Select', 'Stack', 'Text'],
     render: () => {

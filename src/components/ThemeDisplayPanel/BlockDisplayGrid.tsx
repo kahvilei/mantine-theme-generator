@@ -1,13 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import {
-  TextInput,
-  Chip,
-  Stack,
-  Group,
-  Box,
-} from '@mantine/core';
+import Masonry from 'react-masonry-css';
+import { Button, Group, MultiSelect, Stack } from '@mantine/core';
 import { themeBlocks, ThemeBlock } from './Blocks';
 import './BlockDisplayGrid.css';
+
+const BREAKPOINT_COLS = { default: 2, 640: 1 };
 
 interface BlockDisplayGridProps {
   blocks?: ThemeBlock[];
@@ -16,69 +13,111 @@ interface BlockDisplayGridProps {
 export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   blocks = themeBlocks,
 }) => {
-  const [search, setSearch] = useState('');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  // Checked once on mount — stable for the lifetime of the component
+  const [nativeMasonry] = useState(
+    () => typeof CSS !== 'undefined' && CSS.supports('grid-template-rows', 'masonry')
+  );
 
-  const allTags = useMemo(() => {
-    const tagSet = new Set<string>();
-    blocks.forEach((b) => tagSet.add(b.category??''));
-    return Array.from(tagSet).sort();
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedComponents, setSelectedComponents] = useState<string[]>([]);
+
+  const allCategories = useMemo(() => {
+    const seen = new Set<string>();
+    const cats: string[] = [];
+    blocks.forEach((b) => {
+      if (b.category && !seen.has(b.category)) {
+        seen.add(b.category);
+        cats.push(b.category);
+      }
+    });
+    return cats;
+  }, [blocks]);
+
+  const allComponents = useMemo(() => {
+    const seen = new Set<string>();
+    blocks.forEach((b) => b.components?.forEach((c) => seen.add(c)));
+    return Array.from(seen).sort();
   }, [blocks]);
 
   const filtered = useMemo(() => {
-    return blocks.filter((b) => {
-      const searchMatch =
-        search.trim() === '' ||
-        b.title.toLowerCase().includes(search.toLowerCase()) ||
-        b.components?.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
-        b.category?.toLowerCase().includes(search.toLowerCase()) ||
-        b.category?.toLowerCase() === search.toLowerCase() ||
-        b.tags?.some((t) => t.toLowerCase().includes(search.toLowerCase()));
-      const tagsMatch =
-        selectedTags.length === 0 ||
-        selectedTags.every((tag) => b.tags?.includes(tag));
-      return searchMatch && tagsMatch;
-    });
-  }, [blocks, search, selectedTags]);
+    let result = selectedCategory === 'All'
+      ? blocks
+      : blocks.filter((b) => b.category === selectedCategory);
+
+    if (selectedComponents.length > 0) {
+      result = result.filter((b) =>
+        selectedComponents.every((c) => b.components?.includes(c as any))
+      );
+    }
+
+    return result;
+  }, [blocks, selectedCategory, selectedComponents]);
+
+  const renderGrid = () => {
+    if (nativeMasonry) {
+      // CSS masonry: all blocks in one grid, wide blocks use grid-column: span 2
+      return (
+        <div className="masonry-grid-native">
+          {filtered.map((b) => {
+            const Render = b.render;
+            return (
+              <div
+                key={b.id}
+                className={b.colSpan === 2 ? 'masonry-item masonry-item--wide' : 'masonry-item'}
+              >
+                <Render />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // Fallback: all blocks flow into the masonry columns regardless of colSpan
+    return (
+      <Masonry
+        breakpointCols={BREAKPOINT_COLS}
+        className="masonry-grid"
+        columnClassName="masonry-col"
+      >
+        {filtered.map((b) => {
+          const Render = b.render;
+          return <Render key={b.id} />;
+        })}
+      </Masonry>
+    );
+  };
 
   return (
-    <Box>
-    <Stack gap="xl">
-      <Group align="flex-end" gap="md">
-        <TextInput
-          placeholder="Search blocks…"
-          value={search}
-          onChange={(e) => setSearch(e.currentTarget.value)}
-          style={{ flex: 1 }}
+    <Stack gap="xl" w="100%" maw={860}>
+      <Group justify="space-between" align="flex-end" wrap="wrap" gap="xs">
+        <Group gap="xs">
+          {['All', ...allCategories].map((cat) => (
+            <Button
+              key={cat}
+              size="xs"
+              radius="xl"
+              variant={selectedCategory === cat ? 'filled' : 'default'}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </Button>
+          ))}
+        </Group>
+
+        <MultiSelect
+          placeholder="Filter by component…"
+          data={allComponents}
+          value={selectedComponents}
+          onChange={setSelectedComponents}
+          searchable
+          clearable
+          size="xs"
+          w={220}
         />
-        <Chip.Group
-          multiple
-          value={selectedTags}
-          onChange={(val) => {
-            if (Array.isArray(val)) {
-              setSelectedTags(val);
-            } else {
-              setSelectedTags(val ? [val] : []);
-            }
-          }}
-        >
-          <Group gap="xs">
-            {allTags.map((tag) => (
-              <Chip key={tag} value={tag}>
-                {tag}
-              </Chip>
-            ))}
-          </Group>
-        </Chip.Group>
       </Group>
 
-      <Box className='masonry-grid'>
-        {filtered.map((b) => (
-          <b.render key={b.id} />
-        ))}
-      </Box>
-
+      {renderGrid()}
     </Stack>
-    </Box>
   );
 };

@@ -1,7 +1,38 @@
-/* ThemeDisplayGrid.css */
+/* BlockDisplayGrid.css */
+
+/* === Native CSS masonry (Safari, Chrome behind flag) === */
+.masonry-grid-native {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: masonry;
+  gap: var(--mantine-spacing-xl);
+}
+
+.masonry-item--wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .masonry-grid-native {
+    grid-template-columns: 1fr;
+  }
+  .masonry-item--wide {
+    grid-column: span 1;
+  }
+}
+
+/* === Fallback: react-masonry-css (Chrome, Firefox) === */
 .masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: minmax(100px, min-content);
-    gap: var(--mantine-spacing-xl);
+  display: flex;
+  margin-left: calc(var(--mantine-spacing-xl) * -1);
+  width: auto;
+}
+
+.masonry-col {
+  padding-left: var(--mantine-spacing-xl);
+  background-clip: padding-box;
+}
+
+.masonry-col > * {
+  margin-bottom: var(--mantine-spacing-xl);
 }
