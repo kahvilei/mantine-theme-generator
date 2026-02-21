@@ -1,43 +1,4 @@
 {
-  "cryptoCard": {
-    "title": "Crypto Trading Card",
-    "data": {
-      "symbol": "BTC",
-      "name": "Bitcoin",
-      "price": "42,573.28",
-      "change": 5.24,
-      "chart": [
-        { "time": "00:00", "price": 40000 },
-        { "time": "04:00", "price": 40800 },
-        { "time": "08:00", "price": 41200 },
-        { "time": "12:00", "price": 41800 },
-        { "time": "16:00", "price": 42000 },
-        { "time": "20:00", "price": 42573 }
-      ]
-    }
-  },
-  "musicPlayer": {
-    "title": "Music Player",
-    "track": {
-      "title": "Midnight Dreams",
-      "artist": "Luna Rivers",
-      "album": "Ethereal Nights",
-      "duration": "3:27"
-    }
-  },
-  "socialPost": {
-    "title": "Social Media Post",
-    "data": {
-      "author": "Sarah Chen",
-      "handle": "sarahdesigns",
-      "avatar": "https://i.pravatar.cc/150?img=1",
-      "time": "2h",
-      "content": "Just shipped a major update to our design system! 🚀 Improved accessibility, new components, and better performance across the board.",
-      "highlight": "AI-powered design suggestions now available",
-      "likes": 234,
-      "comments": 18
-    }
-  },
   "weatherWidget": {
     "title": "Weather Widget",
     "data": {
@@ -56,8 +17,30 @@
       ]
     }
   },
+  "socialPost": {
+    "title": "Social Media Post",
+    "ui": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "data": {
+      "author": "Sarah Chen",
+      "handle": "sarahdesigns",
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "time": "2h",
+      "content": "Just shipped a major update to our design system! 🚀 Improved accessibility, new components, and better performance across the board.",
+      "highlight": "AI-powered design suggestions now available",
+      "likes": 234,
+      "comments": 18
+    }
+  },
   "taskCard": {
     "title": "Task Kanban Card",
+    "ui": {
+      "edit": "Edit",
+      "archive": "Archive",
+      "progress": "Progress"
+    },
     "data": {
       "title": "Redesign Dashboard Layout",
       "description": "Update the main dashboard with new analytics widgets and improved responsive design for mobile devices.",
@@ -71,460 +54,63 @@
       "due": "3 days"
     }
   },
-  "notificationCenter": {
-    "title": "Notification Center",
-    "items": [
-      {
-        "type": "success",
-        "color": "green",
-        "title": "Deployment Successful",
-        "description": "Your application has been deployed to production",
-        "time": "2 min ago"
-      },
-      {
-        "type": "warning",
-        "color": "yellow",
-        "title": "Storage Warning",
-        "description": "You've used 85% of your storage quota",
-        "time": "1 hour ago"
-      },
-      {
-        "type": "info",
-        "color": "blue",
-        "title": "New Team Member",
-        "description": "Emily Watson joined your team",
-        "time": "3 hours ago"
-      }
-    ]
-  },
-  "analyticsCard": {
-    "title": "Analytics Dashboard",
+  "settingsCard": {
+    "title": "Settings Card",
     "data": {
-      "revenue": "48,392",
-      "growth": 73,
-      "stats": [
-        { "label": "Orders", "value": "1,234", "trend": 1, "color": "blue" },
-        { "label": "Customers", "value": "892", "trend": 1, "color": "green" },
-        { "label": "Returns", "value": "23", "trend": -1, "color": "red" },
-        { "label": "Revenue", "value": "+12%", "trend": 1, "color": "violet" }
+      "heading": "Preferences",
+      "notificationsSection": "Notifications",
+      "settings": [
+        { "label": "Email notifications", "description": "Receive updates about your account", "defaultChecked": true },
+        { "label": "Marketing emails", "description": "Tips, news, and promotions", "defaultChecked": false },
+        { "label": "Activity digest", "description": "Weekly summary of your activity", "defaultChecked": true }
       ],
-      "chart": [
-        { "month": "Jan", "sales": 3200 },
-        { "month": "Feb", "sales": 4100 },
-        { "month": "Mar", "sales": 3800 },
-        { "month": "Apr", "sales": 5200 },
-        { "month": "May", "sales": 4800 }
+      "languageLabel": "Language",
+      "languages": [
+        { "value": "en", "label": "English" },
+        { "value": "es", "label": "Español" },
+        { "value": "fr", "label": "Français" },
+        { "value": "de", "label": "Deutsch" }
       ],
-      "breakdown": [
-        { "name": "Products", "value": 65, "color": "blue" },
-        { "name": "Services", "value": 25, "color": "green" },
-        { "name": "Subscriptions", "value": 10, "color": "violet" }
+      "cancel": "Cancel",
+      "save": "Save changes"
+    }
+  },
+  "activityFeed": {
+    "title": "Activity Feed",
+    "data": {
+      "heading": "Recent Activity",
+      "viewAll": "View all activity",
+      "items": [
+        { "title": "Merged pull request", "description": "feat: add dark mode toggle", "time": "2 hours ago", "color": "", "avatar": "https://i.pravatar.cc/150?img=9" },
+        { "title": "Pushed 3 commits", "description": "to main branch", "time": "4 hours ago", "color": "blue", "avatar": "https://i.pravatar.cc/150?img=10" },
+        { "title": "Left a comment", "description": "Looks good to me!", "time": "Yesterday", "color": "violet", "avatar": "https://i.pravatar.cc/150?img=11" },
+        { "title": "Starred repository", "description": "mantine/mantine", "time": "2 days ago", "color": "yellow", "avatar": "https://i.pravatar.cc/150?img=12" }
       ]
     }
   },
-  "productCard": {
-    "title": "Product Card",
+  "statusAlerts": {
+    "title": "Status Alerts",
     "data": {
-      "name": "Premium Wireless Headphones",
-      "description": "Active noise cancellation with 30-hour battery life and superior sound quality",
-      "price": 179.99,
-      "originalPrice": 249.99,
-      "discount": 28,
-      "rating": 4.5,
-      "reviews": 324,
-      "inStock": true,
-      "image": "/product-image.jpg"
-    }
-  },
-  "codeEditor": {
-    "title": "Code Editor Preview",
-    "code": {
-      "lines": [
-        { "content": "interface User {", "color": "blue" },
-        { "content": "  id: string;", "color": "cyan" },
-        { "content": "  name: string;", "color": "cyan" },
-        { "content": "  email: string;", "color": "cyan" },
-        { "content": "  role: 'admin' | 'user';", "color": "green" },
-        { "content": "}", "color": "blue" },
-        { "content": "", "color": "gray" },
-        { "content": "async function getUser(id: string): Promise<User> {", "color": "violet" },
-        { "content": "  const response = await fetch(`/api/users/${id}`);", "color": "orange" },
-        { "content": "  return response.json();", "color": "pink" },
-        { "content": "}", "color": "violet" }
-      ]
-    }
-  },
-  "calendarEvent": {
-    "title": "Calendar Event",
-    "data": {
-      "month": "September",
-      "day": "28",
-      "title": "Product Launch Meeting",
-      "time": "2:00 PM - 3:30 PM",
-      "location": "Conference Room A / Zoom",
-      "attendees": [
-        { "name": "Mike Johnson", "avatar": "https://i.pravatar.cc/150?img=5" },
-        { "name": "Lisa Wang", "avatar": "https://i.pravatar.cc/150?img=6" },
-        { "name": "Tom Davis", "avatar": "https://i.pravatar.cc/150?img=7" }
-      ],
-      "moreCount": 5
-    }
-  },
-  "paymentCard": {
-    "title": "Payment Method",
-    "data": {
-      "type": "Visa",
-      "last4": "4242",
-      "holder": "JOHN SMITH",
-      "expiry": "12/25"
-    }
-  },
-  "fitnessTracker": {
-    "title": "Fitness Tracker",
-    "data": {
-      "steps": "8,432",
-      "goal": "10,000",
-      "percentage": 84,
-      "rings": [
-        { "value": 84, "color": "green" },
-        { "value": 72, "color": "blue" },
-        { "value": 45, "color": "pink" }
-      ],
-      "activities": [
-        { "name": "Morning Run", "duration": "32 min", "calories": "285", "icon": "run", "color": "green" },
-        { "name": "Bike Ride", "duration": "45 min", "calories": "420", "icon": "bike", "color": "blue" },
-        { "name": "Evening Walk", "duration": "20 min", "calories": "95", "icon": "walk", "color": "violet" }
-      ]
-    }
-  },
-  "fileUpload": {
-    "title": "File Upload Zone",
-    "files": [
-      { "name": "design-mockup.png", "size": "2.4 MB", "type": "image", "status": "complete", "progress": 100 },
-      { "name": "presentation.pdf", "size": "5.1 MB", "type": "document", "status": "uploading", "progress": 65 },
-      { "name": "data-export.csv", "size": "892 KB", "type": "document", "status": "error", "progress": 0 }
-    ]
-  },
-  "subscriptionPlan": {
-    "title": "Subscription Plan",
-    "data": {
-      "name": "Professional",
-      "type": "Best Value",
-      "price": "29",
-      "featured": true,
-      "trial": 14,
-      "cta": "Start Free Trial",
-      "features": [
-        { "text": "Unlimited projects", "included": true },
-        { "text": "Advanced analytics", "included": true },
-        { "text": "Priority support", "included": true },
-        { "text": "Custom integrations", "included": true },
-        { "text": "White-label options", "included": false },
-        { "text": "Dedicated account manager", "included": false }
-      ]
-    }
-  },
-  "livestreamCard": {
-    "title": "Live Stream",
-    "data": {
-      "title": "Building a Real-Time Chat App with WebSockets",
-      "streamer": {
-        "name": "CodeWithAlex",
-        "avatar": "https://i.pravatar.cc/150?img=8"
-      },
-      "game": "Software Development",
-      "category": "Technology",
-      "viewers": "2.3K",
-      "duration": "1:24:36"
-    }
-  },
-  "apiMonitor": {
-    "title": "API Health Monitor",
-    "data": {
-      "lastUpdate": "2 min ago",
-      "uptime": 99.8,
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/api/users",
-          "status": "success",
-          "responseTime": "145",
-          "requests": "1,234"
-        },
-        {
-          "method": "POST",
-          "path": "/api/auth/login",
-          "status": "success",
-          "responseTime": "98",
-          "requests": "892"
-        },
-        {
-          "method": "GET",
-          "path": "/api/products",
-          "status": "warning",
-          "responseTime": "523",
-          "requests": "2,105"
-        },
-        {
-          "method": "PUT",
-          "path": "/api/orders",
-          "status": "success",
-          "responseTime": "210",
-          "requests": "456"
-        }
-      ]
-    }
-  },
-  "gitCommit": {
-    "title": "Git Commit History",
-    "data": {
-      "branch": "main",
-      "hash": "a3f5c21",
-      "message": "feat: Add real-time notifications system",
-      "author": {
-        "name": "Alex Chen",
-        "avatar": "https://i.pravatar.cc/150?img=9"
-      },
-      "time": "23 minutes ago",
-      "files": [
-        {
-          "path": "src/notifications.ts",
-          "additions": 145,
-          "deletions": 12
-        },
-        {
-          "path": "src/components/NotificationBell.tsx",
-          "additions": 78,
-          "deletions": 5
-        },
-        {
-          "path": "tests/notifications.test.ts",
-          "additions": 92,
-          "deletions": 0
-        }
-      ]
-    }
-  },
-  "terminal": {
-    "title": "Terminal",
-    "data": {
-      "title": "bash",
-      "prompt": "user@localhost:~$",
-      "lines": [
-        {
-          "type": "command",
-          "content": "npm run build"
-        },
-        {
-          "type": "output",
-          "content": "Building application..."
-        },
-        {
-          "type": "output",
-          "content": "Compiling TypeScript files..."
-        },
-        {
-          "type": "success",
-          "content": "Build completed successfully"
-        },
-        {
-          "type": "output",
-          "content": "Output: dist/ (2.4 MB)"
-        },
-        {
-          "type": "command",
-          "content": "npm test"
-        },
-        {
-          "type": "output",
-          "content": "Running test suite..."
-        },
-        {
-          "type": "output",
-          "content": "✓ 142 tests passed"
-        }
-      ]
-    }
-  },
-  "playerStats": {
-    "title": "Champion Statistics",
-    "data": {
-      "champion": "Ahri",
-      "role": "Mid Lane",
-      "totalGames": 127,
-      "winRate": 54,
-      "kda": "3.2",
-      "kills": 8.4,
-      "deaths": 4.2,
-      "assists": 9.1,
-      "csPerMin": "7.8",
-      "csTrend": 12,
-      "ratings": [
-        {
-          "stat": "Laning",
-          "value": 4,
-          "score": "8.2"
-        },
-        {
-          "stat": "Teamfighting",
-          "value": 5,
-          "score": "9.1"
-        },
-        {
-          "stat": "Vision Control",
-          "value": 3,
-          "score": "6.7"
-        }
-      ],
-      "recentGames": [
-        { "game": "G1", "performance": 85 },
-        { "game": "G2", "performance": 62 },
-        { "game": "G3", "performance": 91 },
-        { "game": "G4", "performance": 74 },
-        { "game": "G5", "performance": 88 }
-      ]
-    }
-  },
-  "matchLobby": {
-    "title": "Match Analysis",
-    "data": {
-      "matchType": "Ranked Solo",
-      "map": "Summoner's Rift",
-      "mode": "5v5",
-      "result": "Victory",
-      "duration": "32:15",
-      "teamSize": 5,
-      "damageDealt": 28450,
-      "damageTaken": 18320,
-      "teamStats": [
-        {
-          "metric": "Total Damage",
-          "yours": 28450,
-          "team": 89200
-        },
-        {
-          "metric": "Gold Earned",
-          "yours": 14200,
-          "team": 52800
-        },
-        {
-          "metric": "Vision Score",
-          "yours": 42,
-          "team": 156
-        }
-      ]
-    }
-  },
-  "inventoryItem": {
-    "title": "Market Listing",
-    "data": {
-      "name": "Dragon Lore AWP",
-      "category": "Rifle Skin",
-      "rarity": {
-        "label": "Covert",
-        "color": "red"
-      },
-      "currentPrice": "$1,847",
-      "priceChange": 12.4,
-      "volume": "342",
-      "listings": "1,247",
-      "median": "$1,799",
-      "priceHistory": [
-        { "day": "Mon", "price": 1650 },
-        { "day": "Tue", "price": 1720 },
-        { "day": "Wed", "price": 1680 },
-        { "day": "Thu", "price": 1750 },
-        { "day": "Fri", "price": 1820 },
-        { "day": "Sat", "price": 1790 },
-        { "day": "Sun", "price": 1847 }
-      ],
-      "recentSales": [
-        {
-          "price": "$1,850",
-          "time": "2m ago",
-          "buyer": "ProTrader_88",
-          "type": "buy"
-        },
-        {
-          "price": "$1,845",
-          "time": "8m ago",
-          "buyer": "SkinCollector",
-          "type": "buy"
-        },
-        {
-          "price": "$1,830",
-          "time": "15m ago",
-          "buyer": "MarketWatch",
-          "type": "buy"
-        }
-      ]
-    }
-  },
-  "leaderboard": {
-    "title": "Champion Tier List",
-    "data": {
-      "patch": "14.2",
-      "lastUpdate": "2 hours ago",
-      "region": "Global",
-      "tiers": [
-        {
-          "tier": "S",
-          "color": "red",
-          "champions": [
-            {
-              "name": "Kai'Sa",
-              "roles": ["ADC"],
-              "winRate": 53.2
-            },
-            {
-              "name": "Thresh",
-              "roles": ["Support"],
-              "winRate": 52.8
-            }
-          ]
-        },
-        {
-          "tier": "A",
-          "color": "orange",
-          "champions": [
-            {
-              "name": "Ahri",
-              "roles": ["Mid"],
-              "winRate": 51.4
-            },
-            {
-              "name": "Lee Sin",
-              "roles": ["Jungle"],
-              "winRate": 50.9
-            },
-            {
-              "name": "Jinx",
-              "roles": ["ADC"],
-              "winRate": 51.2
-            }
-          ]
-        },
-        {
-          "tier": "B",
-          "color": "yellow",
-          "champions": [
-            {
-              "name": "Yasuo",
-              "roles": ["Mid", "Top"],
-              "winRate": 49.8
-            },
-            {
-              "name": "Lux",
-              "roles": ["Mid", "Support"],
-              "winRate": 49.2
-            }
-          ]
-        }
+      "heading": "System Status",
+      "uptime": "All systems operational",
+      "alerts": [
+        { "color": "green", "title": "Deployment successful", "body": "All services are running normally.", "time": "3 min ago" },
+        { "color": "blue", "title": "Maintenance window", "body": "Scheduled downtime on Saturday from 02:00–04:00 UTC.", "time": "1 hour ago" },
+        { "color": "yellow", "title": "High memory usage", "body": "Instance memory is at 87%. Consider scaling up.", "time": "5 min ago" },
+        { "color": "red", "title": "Connection failed", "body": "Could not reach database replica. Failover in progress.", "time": "Just now" }
       ]
     }
   },
   "packageManager": {
     "title": "Package Manager",
+    "ui": {
+      "header": "Package Manager",
+      "packagesInstalled": "packages installed",
+      "updateAll": "Update All",
+      "searchPlaceholder": "Search packages...",
+      "dev": "dev",
+      "prod": "prod"
+    },
     "data": {
       "totalPackages": 247,
       "packages": [
@@ -576,100 +162,49 @@
       ]
     }
   },
-  "characterSheet": {
-    "title": "D&D Character Sheet",
+  "codeEditor": {
+    "title": "Code Editor Preview",
+    "ui": {
+      "languages": ["JavaScript", "TypeScript", "Python", "Go"],
+      "defaultLanguage": "TypeScript",
+      "noErrors": "No errors",
+      "languageBadge": "TypeScript"
+    },
+    "code": {
+      "lines": [
+        { "content": "interface User {", "color": "blue" },
+        { "content": "  id: string;", "color": "cyan" },
+        { "content": "  name: string;", "color": "cyan" },
+        { "content": "  email: string;", "color": "cyan" },
+        { "content": "  role: 'admin' | 'user';", "color": "green" },
+        { "content": "}", "color": "blue" },
+        { "content": "", "color": "gray" },
+        { "content": "async function getUser(id: string): Promise<User> {", "color": "violet" },
+        { "content": "  const response = await fetch(`/api/users/${id}`);", "color": "orange" },
+        { "content": "  return response.json();", "color": "pink" },
+        { "content": "}", "color": "violet" }
+      ]
+    }
+  },
+  "dataTable": {
+    "title": "Data Table",
     "data": {
-      "name": "Elara Moonwhisper",
-      "race": "High Elf",
-      "class": "Wizard",
-      "level": 8,
-      "classColor": "violet",
-      "hp": {
-        "current": 48,
-        "max": 56
+      "heading": "Recent Orders",
+      "searchPlaceholder": "Search orders...",
+      "exportButton": "Export",
+      "rowsLabel": "results",
+      "columns": {
+        "order": "Order",
+        "customer": "Customer",
+        "amount": "Amount",
+        "status": "Status"
       },
-      "ac": 15,
-      "initiative": 3,
-      "abilities": [
-        {
-          "name": "STR",
-          "score": 10,
-          "modifier": 0
-        },
-        {
-          "name": "DEX",
-          "score": 16,
-          "modifier": 3
-        },
-        {
-          "name": "CON",
-          "score": 14,
-          "modifier": 2
-        },
-        {
-          "name": "INT",
-          "score": 18,
-          "modifier": 4
-        },
-        {
-          "name": "WIS",
-          "score": 12,
-          "modifier": 1
-        },
-        {
-          "name": "CHA",
-          "score": 13,
-          "modifier": 1
-        }
-      ],
-      "proficiencies": [
-        {
-          "name": "Arcana",
-          "proficient": true,
-          "bonus": 7
-        },
-        {
-          "name": "History",
-          "proficient": true,
-          "bonus": 7
-        },
-        {
-          "name": "Investigation",
-          "proficient": true,
-          "bonus": 7
-        },
-        {
-          "name": "Perception",
-          "proficient": false,
-          "bonus": 1
-        },
-        {
-          "name": "Insight",
-          "proficient": false,
-          "bonus": 1
-        }
-      ],
-      "spellSlots": [
-        {
-          "level": 1,
-          "total": 4,
-          "used": 1
-        },
-        {
-          "level": 2,
-          "total": 3,
-          "used": 2
-        },
-        {
-          "level": 3,
-          "total": 3,
-          "used": 0
-        },
-        {
-          "level": 4,
-          "total": 2,
-          "used": 1
-        }
+      "rows": [
+        { "id": "#3012", "customer": "Alice Chen", "amount": "$142.00", "status": "Completed" },
+        { "id": "#3011", "customer": "Bob Smith", "amount": "$89.50", "status": "Pending" },
+        { "id": "#3010", "customer": "Carol Davis", "amount": "$234.00", "status": "Completed" },
+        { "id": "#3009", "customer": "Dan Wilson", "amount": "$57.25", "status": "Refunded" },
+        { "id": "#3008", "customer": "Eva Martinez", "amount": "$310.00", "status": "Pending" }
       ]
     }
   }

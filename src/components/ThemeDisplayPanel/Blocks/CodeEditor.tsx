@@ -13,6 +13,7 @@ const codeEditor:ThemeBlock = {
     render: () => {
       const { t } = useTranslation(['blocks']);
       const code = t('codeEditor.code', { returnObjects: true }) as any;
+      const ui = t('codeEditor.ui', { returnObjects: true }) as any;
       return (
         <Card bg="dark.8">
           <Group justify="space-between" align="start" mb="sm">
@@ -24,8 +25,8 @@ const codeEditor:ThemeBlock = {
             <Select
               size="xs"
               variant="filled"
-              data={['JavaScript', 'TypeScript', 'Python', 'Go']}
-              defaultValue="TypeScript"
+              data={ui.languages}
+              defaultValue={ui.defaultLanguage}
               w={100}
             />
           </Group>
@@ -48,10 +49,10 @@ const codeEditor:ThemeBlock = {
           <Group justify="space-between" mt="sm">
             <Group gap="xs">
               <Badge size="sm" variant="light" color="green" leftSection={<IconCheck size={10} />}>
-                No errors
+                {ui.noErrors}
               </Badge>
               <Badge size="sm" variant="light" color="blue">
-                TypeScript
+                {ui.languageBadge}
               </Badge>
             </Group>
             <ActionIcon.Group>

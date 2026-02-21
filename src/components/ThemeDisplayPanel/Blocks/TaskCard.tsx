@@ -13,6 +13,7 @@ const taskCard:ThemeBlock =  {
     render: () => {
       const { t } = useTranslation(['blocks']);
       const task = t('taskCard.data', { returnObjects: true }) as any;
+      const ui = t('taskCard.ui', { returnObjects: true }) as any;
       return (
         <Card>
             <Stack gap={'xs'}>
@@ -27,8 +28,8 @@ const taskCard:ThemeBlock =  {
                     </ActionIcon>
                 </Menu.Target>
                 <Menu.Dropdown>
-                    <Menu.Item leftSection={<IconEdit size={14} />}>Edit</Menu.Item>
-                    <Menu.Item leftSection={<IconArchive size={14} />}>Archive</Menu.Item>
+                    <Menu.Item leftSection={<IconEdit size={14} />}>{ui.edit}</Menu.Item>
+                    <Menu.Item leftSection={<IconArchive size={14} />}>{ui.archive}</Menu.Item>
                 </Menu.Dropdown>
                 </Menu>
             </Group>
@@ -40,7 +41,7 @@ const taskCard:ThemeBlock =  {
       
             <Stack gap="xs">
                 <Group justify="space-between">
-                <Text size="xs" c="dimmed">Progress</Text>
+                <Text size="xs" c="dimmed">{ui.progress}</Text>
                 <Text size="xs" fw={600}>{task.progress}%</Text>
                 </Group>
                 <Progress value={task.progress} size="xs" color={colors.primaryColor} />

@@ -7,6 +7,7 @@ import activityFeed from './Blocks/ActivityFeed';
 import statusAlerts from './Blocks/StatusAlerts';
 import packageManager from './Blocks/PackageManager';
 import codeEditor from './Blocks/CodeEditor';
+import dataTable from './Blocks/DataTable';
 
 type Components = typeof ComponentsJson;
 
@@ -31,4 +32,5 @@ export const themeBlocks: ThemeBlock[] = [
     statusAlerts,
     packageManager,
     codeEditor,
+    dataTable,
 ];

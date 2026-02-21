@@ -13,6 +13,7 @@ const packageManager: ThemeBlock = {
   render: () => {
     const { t } = useTranslation(['blocks']);
     const packages = t('packageManager.data', { returnObjects: true }) as any;
+    const ui = t('packageManager.ui', { returnObjects: true }) as any;
     return (
       <Card>
         <Group justify="space-between" mb="sm">
@@ -21,17 +22,17 @@ const packageManager: ThemeBlock = {
               <IconBox size={18} />
             </ThemeIcon>
             <div>
-              <Text size="sm" fw={600}>Package Manager</Text>
-              <Text size="xs" c="dimmed">{packages.totalPackages} packages installed</Text>
+              <Text size="sm" fw={600}>{ui.header}</Text>
+              <Text size="xs" c="dimmed">{packages.totalPackages} {ui.packagesInstalled}</Text>
             </div>
           </Group>
           <Button size="xs" color={colors.primaryColor} leftSection={<IconTrendingUp size={14} />}>
-            Update All
+            {ui.updateAll}
           </Button>
         </Group>
 
         <TextInput
-          placeholder="Search packages..."
+          placeholder={ui.searchPlaceholder}
           leftSection={<IconSearch size={14} />}
           size="xs"
           mb="sm"
@@ -63,7 +64,7 @@ const packageManager: ThemeBlock = {
                         <Text size="xs" c="dimmed">{pkg.downloads}</Text>
                       </Group>
                       <Badge size="xs" variant="outline" color={pkg.dev ? 'blue' : 'green'}>
-                        {pkg.dev ? 'dev' : 'prod'}
+                        {pkg.dev ? ui.dev : ui.prod}
                       </Badge>
                     </Group>
                   </div>

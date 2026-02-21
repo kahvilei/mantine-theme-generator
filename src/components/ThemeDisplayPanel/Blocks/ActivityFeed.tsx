@@ -1,5 +1,6 @@
-import { Card, Stack, Text, Timeline, Title } from "@mantine/core";
-import { IconCode, IconGitCommit, IconMessageDots, IconStar } from "@tabler/icons-react";
+import { Avatar, Button, Card, Group, Stack, Text, Timeline, Title } from "@mantine/core";
+import { IconChevronRight } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import { ThemeBlock } from "../Blocks";
 
 const activityFeed: ThemeBlock = {
@@ -7,34 +8,38 @@ const activityFeed: ThemeBlock = {
   title: 'blocks.activityFeed.title',
   category: 'General',
   tags: ['Timeline', 'Activity', 'Feed'],
-  components: ['Card', 'Stack', 'Text', 'Timeline', 'Title'],
+  components: ['Avatar', 'Button', 'Card', 'Group', 'Stack', 'Text', 'Timeline', 'Title'],
   render: () => {
+    const { t } = useTranslation(['blocks']);
+    const data = t('activityFeed.data', { returnObjects: true }) as any;
     return (
       <Card>
         <Stack gap="sm">
-          <Title order={5}>Recent Activity</Title>
+          <Title order={5}>{data.heading}</Title>
 
-          <Timeline active={3} bulletSize={22} lineWidth={2}>
-            <Timeline.Item bullet={<IconGitCommit size={12} />} title="Merged pull request">
-              <Text size="xs" c="dimmed">feat: add dark mode toggle</Text>
-              <Text size="xs" c="dimmed" mt={2}>2 hours ago</Text>
-            </Timeline.Item>
-
-            <Timeline.Item bullet={<IconCode size={12} />} title="Pushed 3 commits" color="blue">
-              <Text size="xs" c="dimmed">to main branch</Text>
-              <Text size="xs" c="dimmed" mt={2}>4 hours ago</Text>
-            </Timeline.Item>
-
-            <Timeline.Item bullet={<IconMessageDots size={12} />} title="Left a comment" color="violet">
-              <Text size="xs" c="dimmed">Looks good to me!</Text>
-              <Text size="xs" c="dimmed" mt={2}>Yesterday</Text>
-            </Timeline.Item>
-
-            <Timeline.Item bullet={<IconStar size={12} />} title="Starred repository" color="yellow">
-              <Text size="xs" c="dimmed">mantine/mantine</Text>
-              <Text size="xs" c="dimmed" mt={2}>2 days ago</Text>
-            </Timeline.Item>
+          <Timeline active={data.items.length - 1} bulletSize={26} lineWidth={2}>
+            {data.items.map((item: any, idx: number) => (
+              <Timeline.Item
+                key={idx}
+                bullet={<Avatar src={item.avatar} size={20} radius="xl" />}
+                title={item.title}
+                color={item.color || undefined}
+              >
+                <Text size="xs" c="dimmed">{item.description}</Text>
+                <Text size="xs" c="dimmed" mt={2}>{item.time}</Text>
+              </Timeline.Item>
+            ))}
           </Timeline>
+
+          <Group justify="flex-end">
+            <Button
+              variant="subtle"
+              size="xs"
+              rightSection={<IconChevronRight size={12} />}
+            >
+              {data.viewAll}
+            </Button>
+          </Group>
         </Stack>
       </Card>
     );

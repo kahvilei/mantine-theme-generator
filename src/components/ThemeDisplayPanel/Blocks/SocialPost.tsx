@@ -12,6 +12,7 @@ const socialPost:ThemeBlock =   {
     render: () => {
       const { t } = useTranslation(['blocks']);
       const post = t('socialPost.data', { returnObjects: true }) as any;
+      const ui = t('socialPost.ui', { returnObjects: true }) as any;
       return (
         <Card>
           <Stack>
@@ -37,8 +38,8 @@ const socialPost:ThemeBlock =   {
                   </ActionIcon>
                 </Menu.Target>
                 <Menu.Dropdown>
-                  <Menu.Item leftSection={<IconEdit size={14} />}>Edit</Menu.Item>
-                  <Menu.Item leftSection={<IconTrash size={14} />} color="red">Delete</Menu.Item>
+                  <Menu.Item leftSection={<IconEdit size={14} />}>{ui.edit}</Menu.Item>
+                  <Menu.Item leftSection={<IconTrash size={14} />} color="red">{ui.delete}</Menu.Item>
                 </Menu.Dropdown>
               </Menu>
             </Group>
