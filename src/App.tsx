@@ -5,7 +5,7 @@ import './Fonts.css'
 import './i18n'; // Import i18n configuration
 
 import React, { useState } from 'react';
-import { IconComponents, IconDashboard, IconForms, IconMoon, IconSun, IconSunMoon, IconTypography} from '@tabler/icons-react';
+import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
 import {
     Card,
@@ -13,28 +13,22 @@ import {
     Group,
     MantineProvider,
     SegmentedControl,
-    Tabs,
     AppShell,
     Box,
     createTheme
 } from '@mantine/core';
 import ThemeControlPanel from './components/ThemeControlPanel/ThemeControlPanel';
 import ThemeDisplay from './components/ThemeDisplayPanel/ThemeDisplay';
-import { useTranslation } from "react-i18next";
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { theme } from '@/data/Store';
 
 
 const App: React.FC = observer(() => {
-    const [currentContent, setCurrentContent] = useState<string | null>('overview');
     const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');
-    const [opened, { toggle }] = useDisclosure();
+    const [opened] = useDisclosure();
 
     // Media query for responsive layout
     const isMobile = useMediaQuery('(max-width: 768px)');
-
-    // Update to use new namespaces
-    const { t } = useTranslation(['core', 'theme']);
 
     return (
         <MantineProvider>
@@ -90,43 +84,27 @@ const App: React.FC = observer(() => {
                                 {/* Dark Tab Content */}
                                 {currentColorScheme === 'dark' && (
                                     <Group justify="center" grow className="theme-display-container">
-                                        <ThemeDisplay
-                                            number={1}
-                                            mode="dark"
-                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                        />
+                                        <ThemeDisplay number={1} mode="dark" />
                                     </Group>
                                 )}
 
                                 {/* Dark and Light Tab Content */}
                                 {currentColorScheme === 'dark-and-light' && (
                                     <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
-                                        <ThemeDisplay
-                                            number={2}
-                                            mode="dark"
-                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                        />
-                                        <ThemeDisplay
-                                            number={3}
-                                            mode="light"
-                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                        />
+                                        <ThemeDisplay number={2} mode="dark" />
+                                        <ThemeDisplay number={3} mode="light" />
                                     </Group>
                                 )}
 
                                 {/* Light Tab Content */}
                                 {currentColorScheme === 'light' && (
                                     <Group justify="center" grow className="theme-display-container">
-                                        <ThemeDisplay
-                                            number={4}
-                                            mode="light"
-                                            displayContent={currentContent ?? t('navigation.overview', { ns: 'core' })}
-                                        />
+                                        <ThemeDisplay number={4} mode="light" />
                                     </Group>
                                 )}
                             </Box>
-                        </MantineProvider>                 
-                    </AppShell.Main>  
+                        </MantineProvider>
+                    </AppShell.Main>
             </AppShell>
         </MantineProvider>
     );

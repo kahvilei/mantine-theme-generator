@@ -5,17 +5,17 @@ import { toJS } from "mobx";
 export const themeToTypeScript = (theme: MantineThemeOverride): string => {
 
     // Special handling for virtual color functions
+    // Clone colors to avoid mutating the caller's object (theme.colors is a shared reference)
     if (theme.colors !== undefined) {
-        Object.entries(toJS(theme.colors)).forEach(([colorName, colorValue]) => {
+        const colorsCopy = { ...theme.colors };
+        Object.entries(theme.colors).forEach(([colorName, colorValue]) => {
             if (typeof colorValue === 'function') {
                 // Get the result of the function to obtain the parameters
-                const result = (colorValue as (()=>VirtualColorProps))();
-
-                console.log(result);
+                const result = (colorValue as (() => VirtualColorProps))();
 
                 // Replace the function with a string representation that will be properly formatted
                 // when converted to TypeScript by themeToTypeScript
-                (theme.colors as any)[colorName] = {
+                (colorsCopy as any)[colorName] = {
                     __isFunction: true,
                     params: {
                         name: result.name,
@@ -25,6 +25,7 @@ export const themeToTypeScript = (theme: MantineThemeOverride): string => {
                 };
             }
         });
+        theme.colors = colorsCopy as any;
     }
     // Custom formatter to produce TypeScript without unnecessary quotes on property names
     const formatObject = (obj: any, indent: number = 0): string => {
@@ -68,10 +69,7 @@ export const themeToTypeScript = (theme: MantineThemeOverride): string => {
 
         const props = entries.map(([key, value]) => {
             // Check if key is a valid JS identifier or needs quotes
-            const needsQuotes = !/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ||
-                key.includes('-') ||
-                key.includes(' ') ||
-                /^\d/.test(key);
+            const needsQuotes = !/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key);
 
             const formattedKey = needsQuotes ? `'${key}'` : key;
             return `${' '.repeat(indent + 2)}${formattedKey}: ${formatObject(value, indent + 2)}`;

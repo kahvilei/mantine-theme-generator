@@ -5,12 +5,3 @@
     grid-auto-rows: minmax(100px, min-content);
     gap: var(--mantine-spacing-xl);
 }
-  
-.masonry-column {
-    background-clip: padding-box;
-    gap: var(--mantine-spacing-xl);
-    display: flex;
-    flex-direction: column;
-}
-  
-  /* optional: style the Box wrappers, ensure they don’t break across columns */

@@ -1,4 +1,4 @@
-import { action, computed, makeAutoObservable, reaction, runInAction, toJS } from "mobx";
+import { action, computed, IReactionDisposer, makeAutoObservable, reaction, runInAction, toJS } from "mobx";
 import { MantineThemeOverride } from "@mantine/core";
 import { Colors, ColorSettings } from "@/data/Models/Theme/Colors/Colors";
 import { Sizes, SpacingSettings } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
@@ -32,12 +32,11 @@ export class Theme {
   edited = false;
   private store?: RemoraidStore;
 
-  private _compiled: MantineThemeOverride = {};
   private _compiledWithVirtuals: MantineThemeOverride = {};
 
   private debouncedSave: () => void;
-  private triggerCompile: () => void;
   private triggerCompileWithVirtuals: () => void;
+  private _reactionDisposer: IReactionDisposer;
 
   constructor(theme: MantineThemeOverride, name: string, store?: RemoraidStore) {
     this.config = theme as ThemeStateInternals;
@@ -60,21 +59,15 @@ export class Theme {
         );
     }, SAVE_DEBOUNCE_MS);
 
-    // Debounced compile
-    this.triggerCompile = debounce(() => {
-      runInAction(() => { this._compiled = this.compile(false); });
-    }, COMPILE_DEBOUNCE_MS);
-
     this.triggerCompileWithVirtuals = debounce(() => {
       runInAction(() => { this._compiledWithVirtuals = this.compile(true); });
     }, COMPILE_DEBOUNCE_MS);
 
     // Initial compile
-    this._compiled = this.compile(false);
     this._compiledWithVirtuals = this.compile(true);
 
     // Observe deep changes to theme sections and auto-save
-    reaction(
+    this._reactionDisposer = reaction(
       () => [
         toJS(this.colors),
         toJS(this.sizes),
@@ -85,6 +78,10 @@ export class Theme {
       ],
       () => this.save()
     );
+  }
+
+  dispose() {
+    this._reactionDisposer();
   }
 
   @computed
@@ -119,7 +116,6 @@ export class Theme {
   }
 
   scheduleCompile() {
-    this.triggerCompile();
     this.triggerCompileWithVirtuals();
   }
 

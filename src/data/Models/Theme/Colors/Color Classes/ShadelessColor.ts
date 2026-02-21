@@ -16,11 +16,10 @@ export class ShadelessColor extends Color{
     // Get a specific shade by index (0-9 for Mantine colors)
     getShade(): string {
         if (this.name === "white") {
-            return this.manager.white??"#fff";
-        } if (this.name === "black") {
-            return this.manager.black??"#fff";
+            return this.manager.white ?? "#fff";
+        } else {
+            return this.manager.black ?? "#000";
         }
-        return this.manager.black??"#fff";
     }
 
     setShade(): void {

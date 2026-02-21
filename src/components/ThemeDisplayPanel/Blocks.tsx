@@ -17,7 +17,7 @@ import subscriptionPlan from './Blocks/SubscriptionPlan';
 import apiMonitor from "./Blocks/ApiMonitor";
 import playerStats from "./Blocks/PlayerStats";
 import gitCommit from "./Blocks/GitCommit";
-import inventoryItem from "./Blocks/inventoryItem";
+import inventoryItem from "./Blocks/InventoryItem";
 import matchLobby from "./Blocks/MatchLobby";
 import terminal from "./Blocks/Terminal";
 import packageManager from "./Blocks/PackageManager";

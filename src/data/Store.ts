@@ -1,4 +1,4 @@
-import {action, IReactionDisposer, makeAutoObservable, reaction} from "mobx";
+import {action, makeAutoObservable} from "mobx";
 import { DEFAULT_THEME, MantineThemeOverride } from "@mantine/core";
 import { premadeThemes } from "@/data/Models/Theme/premadeThemes";
 import { Sizes } from "@/data/Models/Theme/SizeAndSpacing/Sizes";
@@ -10,7 +10,6 @@ import { Interaction } from "@/data/Models/Theme/Interaction/Interaction";
 import { Colors } from "@/data/Models/Theme/Colors/Colors";
 import {createSizesProxy} from "@/data/Models/Theme/SizeAndSpacing/proxy";
 import {createColorsProxy} from "@/data/Models/Theme/Colors/proxy";
-import { debounce } from "lodash";
 import { processTypeScriptContent } from "@/utils/processTypescriptFile";
 import { themeToTypeScript } from "@/utils/themeToTypeScript";
 
@@ -54,6 +53,8 @@ export class RemoraidStore {
     @action
     resetTheme(name: string): void {
         if (this.premadeDefaults[name]) {
+            localStorage.removeItem(`${USER_THEME_PREFIX}${name}`);
+            this.themes.get(name)?.dispose();
             const fresh = new Theme(this.premadeDefaults[name], name, this);
             this.themes.set(name, fresh);
             if (this.theme.name === name) this.theme = fresh;
@@ -75,6 +76,7 @@ export class RemoraidStore {
         if (this.premadeDefaults[name]) {
             return false;
         }
+        this.themes.get(name)?.dispose();
         this.themes.delete(name);
         localStorage.removeItem(`${USER_THEME_PREFIX}${name}`);
         return true;
@@ -82,6 +84,7 @@ export class RemoraidStore {
 
     @action
     setTheme(name: string, theme: MantineThemeOverride): void {
+        this.themes.get(name)?.dispose();
         const newTheme = new Theme(theme, name, this);
         this.themes.set(name, newTheme);
         newTheme.makeActiveTheme();
@@ -105,7 +108,7 @@ export class RemoraidStore {
 
     /** Get just user themes */
     getUserThemes(): [string, Theme][] {
-        return Array.from(this.themes).filter(([name, theme]) => !this.premadeDefaults[name]);
+        return Array.from(this.themes).filter(([name]) => !this.premadeDefaults[name]);
     }
 
     /** Get filtered themes based on flag */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     IconCube,
     IconPalette,
@@ -15,7 +15,6 @@ import {
     Stack,
     MantineProvider,
     createTheme,
-    MantineThemeOverride,
     Card,
     useMantineColorScheme,
 } from '@mantine/core';
@@ -34,18 +33,8 @@ import { DownloadThemeButton } from './Shared/Themes/themeDownloadUpload';
 const ThemeControlPanel: React.FC = () => {
     const [activeTab, setActiveTab] = useState('quick-set-up');
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { colorScheme, setColorScheme, toggleColorScheme } = useMantineColorScheme();
-    const [currentColorScheme, setCurrentColorScheme] = useState<string>(colorScheme);
-    const [opened, { toggle }] = useDisclosure();
-
-    // Media query for responsive layout
-
-    // Set default color scheme for mobile
-    useEffect(() => {
-        if (isMobile && currentColorScheme === 'dark-and-light') {
-            setCurrentColorScheme('dark');
-        }
-    }, [isMobile]);
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const [, { toggle }] = useDisclosure();
 
     // Updated to use new namespaces
     const { t } = useTranslation(['core', 'theme']);

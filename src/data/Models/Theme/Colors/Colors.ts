@@ -133,12 +133,11 @@ export class Colors{
     }
 
     // Get color by UUID
-    getColorByUUID(uuid: string): Color | undefined {
+    getColorByUUID(uuid: string): Color | VirtualColor | undefined {
         return this.colorMap.get(uuid);
     }
 
-    // Gets all VirtualColor objects
-    getAllColors(): Color[] {
+    getAllColors(): (Color | VirtualColor | ShadelessColor)[] {
         return Array.from(this.colorMap.values());
     }
 
@@ -241,12 +240,15 @@ export class Colors{
 
         if (typeof value === 'string') {
             const generatedColors = generateColors(value);
-            this.colorMap.set(name, new Color({name}, this));
+            const colorObj = new Color({name}, this);
+            this.colorMap.set(colorObj.uuid, colorObj);
             this.colors[name] = generatedColors as unknown as MantineColorsTuple;
+            return colorObj;
         } else {
-            this.colorMap.set(name, new VirtualColor({name, ...value}, this));
+            const colorObj = new VirtualColor({name, ...value}, this);
+            this.colorMap.set(colorObj.uuid, colorObj);
+            return colorObj;
         }
-        return this.colorMap.get(name)??null;
     }
 
     // Delete a color

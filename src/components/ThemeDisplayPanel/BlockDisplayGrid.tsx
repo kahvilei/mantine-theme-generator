@@ -1,13 +1,11 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   TextInput,
   Chip,
   Stack,
   Group,
-  Card,
   Box,
 } from '@mantine/core';
-import { useResizeObserver } from '@mantine/hooks';
 import { themeBlocks, ThemeBlock } from './Blocks';
 import './BlockDisplayGrid.css';
 
@@ -15,23 +13,11 @@ interface BlockDisplayGridProps {
   blocks?: ThemeBlock[];
 }
 
-// Column logic based on container width
-function getColumns(width: number) {
-  if (width > 1200) return 4;
-  if (width > 900) return 3;
-  if (width > 400) return 2;
-  return 1;
-}
-
 export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   blocks = themeBlocks,
 }) => {
   const [search, setSearch] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [ref, rect] = useResizeObserver();
-  const containerWidth = rect?.width ?? 0;
-  const columnCount = getColumns(containerWidth || 0);
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
@@ -56,8 +42,8 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   }, [blocks, search, selectedTags]);
 
   return (
-    <Box ref={ref}>
-    <Stack gap="xl" ref={containerRef}>
+    <Box>
+    <Stack gap="xl">
       <Group align="flex-end" gap="md">
         <TextInput
           placeholder="Search blocks…"

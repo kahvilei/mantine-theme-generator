@@ -27,7 +27,14 @@ export class Typography {
         if (!this.headings.sizes) {
             this.headings.sizes = DEFAULT_THEME.headings.sizes;
         }
-        makeAutoObservable(this);
+        makeAutoObservable(this, {
+            getFontFamily: false,
+            getMonoFontFamily: false,
+            getHeadingFontFamily: false,
+            getHeadingSize: false,
+            getHeadingLineHeight: false,
+            getHeadingWeight: false,
+        });
     }
 
     //base font family
@@ -84,22 +91,18 @@ export class Typography {
         this.setHeadingAttr(heading, 'fontWeight', value);
     }
 
-    @action
     getHeadingSize(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.fontSize || '';
     }
 
-    @action
     getHeadingLineHeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.lineHeight || '';
     }
 
-    @action
     getHeadingWeight(heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'): string {
         return this.headings?.sizes?.[heading]?.fontWeight || '';
     }
 
-    @action
     getHeadingFontFamily(): string {
         return this.headings?.fontFamily || this.fontFamily || '';
     }

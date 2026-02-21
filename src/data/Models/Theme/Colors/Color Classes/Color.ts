@@ -108,7 +108,6 @@ export class Color {
     }
 
     // Check if this color is the primary color
-    @action
     isPrimary(): boolean {
         return this.name === this.manager.primaryColor;
     }
