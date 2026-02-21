@@ -30,13 +30,24 @@ import appTheme from "../../data/appTheme";
 import Header from '../Header/Header';
 import { DownloadThemeButton } from './Shared/Themes/themeDownloadUpload';
 
-const ThemeControlPanel: React.FC = () => {
+interface ThemeControlPanelProps {
+    previewMode: string;
+    onPreviewModeChange: (mode: string) => void;
+}
+
+const ThemeControlPanel: React.FC<ThemeControlPanelProps> = ({ previewMode, onPreviewModeChange }) => {
     const [activeTab, setActiveTab] = useState('quick-set-up');
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const { setColorScheme } = useMantineColorScheme();
     const [, { toggle }] = useDisclosure();
 
-    // Updated to use new namespaces
+    const handlePreviewModeChange = (mode: string) => {
+        onPreviewModeChange(mode);
+        if (mode === 'dark') setColorScheme('dark');
+        else if (mode === 'light') setColorScheme('light');
+        // 'dark-and-light': keep current control panel scheme
+    };
+
     const { t } = useTranslation(['core', 'theme']);
 
     const renderContent = () => {
@@ -63,8 +74,8 @@ const ThemeControlPanel: React.FC = () => {
             <Stack id="control-panel" h="100vh" gap="xs" p={0}>
                 <Group align='center' justify='space-between'>
                     <Header
-                        lightMode={colorScheme === 'light'}
-                        toggleScheme={toggleColorScheme}
+                        previewMode={previewMode}
+                        onPreviewModeChange={handlePreviewModeChange}
                         openDrawer={toggle}
                         isMobile={isMobile}
                     />
@@ -177,7 +188,7 @@ const ThemeControlPanel: React.FC = () => {
                         )}
                     </Group>
                 </Group>
-                            
+
                 <ScrollArea
                     scrollbars="y"
                     type="hover"

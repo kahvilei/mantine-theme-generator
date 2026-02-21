@@ -5,14 +5,10 @@ import './Fonts.css'
 import './i18n'; // Import i18n configuration
 
 import React, { useState } from 'react';
-import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
 import {
-    Card,
-    Center,
     Group,
     MantineProvider,
-    SegmentedControl,
     AppShell,
     Box,
     createTheme
@@ -24,10 +20,9 @@ import { theme } from '@/data/Store';
 
 
 const App: React.FC = observer(() => {
-    const [currentColorScheme, setCurrentColorScheme] = useState<string>('dark');
+    const [previewMode, setPreviewMode] = useState<string>('dark');
     const [opened] = useDisclosure();
 
-    // Media query for responsive layout
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     return (
@@ -39,72 +34,39 @@ const App: React.FC = observer(() => {
                     collapsed: { mobile: !opened },
                 }}
             >
-                    <AppShell.Navbar>
-                        <ThemeControlPanel />
-                    </AppShell.Navbar>
-                    <AppShell.Main>
-                        <MantineProvider
-                            theme = {createTheme(theme.compiled)}
-                            cssVariablesSelector={`#display-panel`}
-                        >
-                            <Box pos={'relative'} id='display-panel' bg="var(--mantine-color-body)">
-                                <Card flex={1} pos={'fixed'} right={0} m={'lg'} p={'xs'} c={'primary'} style={{zIndex: 10}}>
-                                    <SegmentedControl
-                                        size="sm"
-                                        value={currentColorScheme}
-                                        onChange={setCurrentColorScheme}
-                                        data={[
-                                            {
-                                                value: 'dark',
-                                                label: (
-                                                    <Center>
-                                                        <IconMoon size={16} />
-                                                    </Center>
-                                                ),
-                                            },
-                                            {
-                                                value: 'dark-and-light',
-                                                label: (
-                                                    <Center>
-                                                        <IconSunMoon size={16} />
-                                                    </Center>
-                                                ),
-                                            },
-                                            {
-                                                value: 'light',
-                                                label: (
-                                                    <Center>
-                                                        <IconSun size={16} />
-                                                    </Center>
-                                                ),
-                                            },
-                                        ]}
-                                    />
-                                </Card>
-                                {/* Dark Tab Content */}
-                                {currentColorScheme === 'dark' && (
-                                    <Group justify="center" grow className="theme-display-container">
-                                        <ThemeDisplay number={1} mode="dark" />
-                                    </Group>
-                                )}
+                <AppShell.Navbar>
+                    <ThemeControlPanel
+                        previewMode={previewMode}
+                        onPreviewModeChange={setPreviewMode}
+                    />
+                </AppShell.Navbar>
+                <AppShell.Main>
+                    <MantineProvider
+                        theme={createTheme(theme.compiled)}
+                        cssVariablesSelector={`#display-panel`}
+                    >
+                        <Box pos={'relative'} id='display-panel' bg="var(--mantine-color-body)">
+                            {previewMode === 'dark' && (
+                                <Group justify="center" grow className="theme-display-container">
+                                    <ThemeDisplay number={1} mode="dark" />
+                                </Group>
+                            )}
 
-                                {/* Dark and Light Tab Content */}
-                                {currentColorScheme === 'dark-and-light' && (
-                                    <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
-                                        <ThemeDisplay number={2} mode="dark" />
-                                        <ThemeDisplay number={3} mode="light" />
-                                    </Group>
-                                )}
+                            {previewMode === 'dark-and-light' && (
+                                <Group gap={0} justify="center" grow className="theme-display-container" wrap={isMobile ? "wrap" : "nowrap"}>
+                                    <ThemeDisplay number={2} mode="dark" />
+                                    <ThemeDisplay number={3} mode="light" />
+                                </Group>
+                            )}
 
-                                {/* Light Tab Content */}
-                                {currentColorScheme === 'light' && (
-                                    <Group justify="center" grow className="theme-display-container">
-                                        <ThemeDisplay number={4} mode="light" />
-                                    </Group>
-                                )}
-                            </Box>
-                        </MantineProvider>
-                    </AppShell.Main>
+                            {previewMode === 'light' && (
+                                <Group justify="center" grow className="theme-display-container">
+                                    <ThemeDisplay number={4} mode="light" />
+                                </Group>
+                            )}
+                        </Box>
+                    </MantineProvider>
+                </AppShell.Main>
             </AppShell>
         </MantineProvider>
     );

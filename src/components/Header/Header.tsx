@@ -2,17 +2,21 @@ import React, { useMemo } from 'react';
 import {
   IconBrandGithub,
   IconBrandMantine,
+  IconMenu2,
+  IconMoon,
+  IconPaint,
+  IconSun,
   IconSunMoon,
-  IconMenu2, IconPaint,
 } from '@tabler/icons-react';
 import {
   ActionIcon,
+  Center,
   Group,
   Text,
-  Title,
   Tooltip,
   Menu,
   Badge,
+  SegmentedControl,
 } from '@mantine/core';
 import classes from './Header.module.css';
 import { useTranslation } from 'react-i18next';
@@ -20,37 +24,34 @@ import i18n from '../../i18n';
 import { SUPPORTED_LANGUAGES } from '../../config/languages';
 
 interface HeaderProps {
-  toggleScheme: () => void;
-  lightMode: boolean;
+  previewMode: string;
+  onPreviewModeChange: (mode: string) => void;
   openDrawer?: () => void;
   isMobile?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
-    toggleScheme,
+    previewMode,
+    onPreviewModeChange,
     openDrawer,
     isMobile = false,
   }) => {
   const { t } = useTranslation(['core']);
   const currentLanguage = i18n.language;
 
-  // Get available languages from i18n resources
   const availableLanguageCodes = useMemo(() =>
           Object.keys(i18n.options.resources || {}),
       []);
 
-  // Filter language configs to only include languages available in i18n resources
   const availableLanguages = useMemo(() =>
           SUPPORTED_LANGUAGES.filter(lang => availableLanguageCodes.includes(lang.code)),
       [availableLanguageCodes]);
 
-  // Function to change language
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('preferredLanguage', lng);
   };
 
-  // Get current language details
   const currentLanguageDetails = useMemo(() =>
           availableLanguages.find(lang => lang.code === currentLanguage) || availableLanguages[0],
       [availableLanguages, currentLanguage]);
@@ -64,11 +65,10 @@ const Header: React.FC<HeaderProps> = ({
               </ActionIcon>
           )}
           <Group align="center" gap={isMobile ? "xs" : "md"} wrap="nowrap">
-            {/* Language Menu */}
             <Menu position="bottom-end" withArrow withinPortal>
               <Menu.Target>
                 <Tooltip label={t('app.language')}>
-                  <ActionIcon  size={isMobile ? "sm" : "md"}>
+                  <ActionIcon size={isMobile ? "sm" : "md"}>
                     <Group gap={5}>
                       {currentLanguageDetails.code && currentLanguageDetails.code}
                     </Group>
@@ -76,7 +76,6 @@ const Header: React.FC<HeaderProps> = ({
                 </Tooltip>
               </Menu.Target>
               <Menu.Dropdown>
-                {/* Dynamically generate language options from shared config */}
                 {availableLanguages.map((lang) => (
                     <Menu.Item
                         key={lang.code}
@@ -87,8 +86,6 @@ const Header: React.FC<HeaderProps> = ({
                       {lang.nativeName}
                     </Menu.Item>
                 ))}
-
-                {/* If no languages are found, show a message */}
                 {availableLanguages.length === 0 && (
                     <Menu.Item disabled>
                       No languages configured
@@ -97,16 +94,38 @@ const Header: React.FC<HeaderProps> = ({
               </Menu.Dropdown>
             </Menu>
 
-            <Tooltip label={t('app.theme')}>
-              <ActionIcon
-                  onClick={toggleScheme}
-                  size={isMobile ? "sm" : "md"}
-              >
-                <IconSunMoon size={isMobile ? "1rem" : "1.25rem"} />
-              </ActionIcon>
-            </Tooltip>
+            <SegmentedControl
+              size="xs"
+              value={previewMode}
+              onChange={onPreviewModeChange}
+              data={[
+                {
+                  value: 'dark',
+                  label: (
+                    <Tooltip label="Dark">
+                      <Center><IconMoon size={14} /></Center>
+                    </Tooltip>
+                  ),
+                },
+                {
+                  value: 'dark-and-light',
+                  label: (
+                    <Tooltip label="Side by side">
+                      <Center><IconSunMoon size={14} /></Center>
+                    </Tooltip>
+                  ),
+                },
+                {
+                  value: 'light',
+                  label: (
+                    <Tooltip label="Light">
+                      <Center><IconSun size={14} /></Center>
+                    </Tooltip>
+                  ),
+                },
+              ]}
+            />
 
-            {/* Mobile menu for additional options */}
             {isMobile && (
                 <Menu position="bottom-end" withArrow withinPortal>
                   <Menu.Target>
