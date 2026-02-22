@@ -25,14 +25,13 @@ const statusAlerts: ThemeBlock = {
         <Stack gap="sm">
           <Group justify="space-between" align="center">
             <Title order={5}>{data.heading}</Title>
-            <Badge color="green" variant="dot" size="sm">{data.uptime}</Badge>
+            <Badge color="green" size="sm">{data.uptime}</Badge>
           </Group>
 
           {data.alerts.map((alert: any) => (
             <Alert
               key={alert.title}
               color={alert.color}
-              variant="light"
               title={alert.title}
               icon={iconMap[alert.color]}
               withCloseButton

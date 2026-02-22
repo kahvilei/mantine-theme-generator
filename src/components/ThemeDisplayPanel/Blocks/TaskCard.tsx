@@ -1,4 +1,3 @@
-import { colors } from "@/data/Store";
 import { ActionIcon, Avatar, Badge, Card, Chip, Group, Menu, Progress, Stack, Text, Title, Tooltip } from "@mantine/core";
 import { IconArchive, IconClock, IconDots, IconEdit } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
@@ -23,7 +22,7 @@ const taskCard:ThemeBlock =  {
                 </Badge>
                 <Menu>
                 <Menu.Target>
-                    <ActionIcon variant="subtle" size="xs">
+                    <ActionIcon size="xs">
                     <IconDots size={14} />
                     </ActionIcon>
                 </Menu.Target>
@@ -44,13 +43,13 @@ const taskCard:ThemeBlock =  {
                 <Text size="xs" c="dimmed">{ui.progress}</Text>
                 <Text size="xs" fw={600}>{task.progress}%</Text>
                 </Group>
-                <Progress value={task.progress} size="xs" color={colors.primaryColor} />
+                <Progress value={task.progress} size="xs" />
             </Stack>
             
             <Group gap="xs">
                 <Chip.Group multiple>
                 {task.tags.map((tag: string) => (
-                    <Chip key={tag} size="xs" variant="light" color={colors.primaryColor}>
+                    <Chip key={tag} size="xs">
                     {tag}
                     </Chip>
                 ))}

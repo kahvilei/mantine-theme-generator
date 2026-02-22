@@ -30,7 +30,7 @@ const dataTable: ThemeBlock = {
                 size="xs"
                 w={160}
               />
-              <Button size="xs" variant="default" leftSection={<IconDownload size={14} />}>
+              <Button size="xs" leftSection={<IconDownload size={14} />}>
                 {data.exportButton}
               </Button>
             </Group>
@@ -59,16 +59,16 @@ const dataTable: ThemeBlock = {
                     <Text size="xs" fw={500}>{row.amount}</Text>
                   </Table.Td>
                   <Table.Td>
-                    <Badge size="xs" color={statusColor[row.status]} variant="light">
+                    <Badge size="xs" color={statusColor[row.status]}>
                       {row.status}
                     </Badge>
                   </Table.Td>
                   <Table.Td>
                     <ActionIcon.Group>
-                      <ActionIcon size="xs" variant="subtle" color="gray">
+                      <ActionIcon size="xs">
                         <IconEdit size={12} />
                       </ActionIcon>
-                      <ActionIcon size="xs" variant="subtle" color="red">
+                      <ActionIcon size="xs" color="red">
                         <IconTrash size={12} />
                       </ActionIcon>
                     </ActionIcon.Group>

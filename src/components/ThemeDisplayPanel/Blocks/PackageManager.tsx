@@ -1,4 +1,3 @@
-import { colors } from "@/data/Store";
 import { ActionIcon, Badge, Button, Card, Code, Group, Paper, ScrollArea, Stack, Text, TextInput, ThemeIcon } from "@mantine/core";
 import { IconBox, IconDownload, IconSearch, IconTrash, IconTrendingUp } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
@@ -18,7 +17,7 @@ const packageManager: ThemeBlock = {
       <Card>
         <Group justify="space-between" mb="sm">
           <Group gap="xs">
-            <ThemeIcon size="md" color={colors.primaryColor}>
+            <ThemeIcon size="md">
               <IconBox size={18} />
             </ThemeIcon>
             <div>
@@ -26,7 +25,7 @@ const packageManager: ThemeBlock = {
               <Text size="xs" c="dimmed">{packages.totalPackages} {ui.packagesInstalled}</Text>
             </div>
           </Group>
-          <Button size="xs" color={colors.primaryColor} leftSection={<IconTrendingUp size={14} />}>
+          <Button size="xs" leftSection={<IconTrendingUp size={14} />}>
             {ui.updateAll}
           </Button>
         </Group>
@@ -46,11 +45,11 @@ const packageManager: ThemeBlock = {
                   <div style={{ flex: 1 }}>
                     <Group gap="xs" mb={4}>
                       <Code fw={600}>{pkg.name}</Code>
-                      <Badge size="xs" variant="light" color={pkg.updateAvailable ? 'yellow' : 'gray'}>
+                      <Badge size="xs" color={pkg.updateAvailable ? 'yellow' : 'gray'}>
                         v{pkg.version}
                       </Badge>
                       {pkg.updateAvailable && (
-                        <Badge size="xs" color="green" variant="dot">
+                        <Badge size="xs" color="green">
                           v{pkg.latestVersion}
                         </Badge>
                       )}
@@ -63,18 +62,18 @@ const packageManager: ThemeBlock = {
                         <IconDownload size={10} color="var(--mantine-color-dimmed)" />
                         <Text size="xs" c="dimmed">{pkg.downloads}</Text>
                       </Group>
-                      <Badge size="xs" variant="outline" color={pkg.dev ? 'blue' : 'green'}>
+                      <Badge size="xs" color={pkg.dev ? 'blue' : 'green'}>
                         {pkg.dev ? ui.dev : ui.prod}
                       </Badge>
                     </Group>
                   </div>
                   <ActionIcon.Group>
                     {pkg.updateAvailable && (
-                      <ActionIcon size="sm" variant="light" color="green">
+                      <ActionIcon size="sm" color="green">
                         <IconTrendingUp size={12} />
                       </ActionIcon>
                     )}
-                    <ActionIcon size="sm" variant="subtle" color="red">
+                    <ActionIcon size="sm" color="red">
                       <IconTrash size={12} />
                     </ActionIcon>
                   </ActionIcon.Group>

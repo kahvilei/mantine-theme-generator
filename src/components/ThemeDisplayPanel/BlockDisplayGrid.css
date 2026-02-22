@@ -3,13 +3,19 @@
 /* === Native CSS masonry (Safari, Chrome behind flag) === */
 .masonry-grid-native {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: masonry;
   gap: var(--mantine-spacing-xl);
 }
 
 .masonry-item--wide {
   grid-column: span 2;
+}
+
+@media (max-width: 1500px) {
+  .masonry-grid-native {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {

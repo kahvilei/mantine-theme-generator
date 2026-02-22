@@ -33,7 +33,6 @@ const activityFeed: ThemeBlock = {
 
           <Group justify="flex-end">
             <Button
-              variant="subtle"
               size="xs"
               rightSection={<IconChevronRight size={12} />}
             >

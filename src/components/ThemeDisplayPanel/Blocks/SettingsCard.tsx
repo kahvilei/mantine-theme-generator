@@ -33,7 +33,7 @@ const settingsCard: ThemeBlock = {
             {data.settings.map((setting: any, idx: number) => (
               <Group key={setting.label} justify="space-between" wrap="nowrap">
                 <Group gap="sm" wrap="nowrap">
-                  <ThemeIcon size="sm" variant="light" color="gray" radius="sm">
+                  <ThemeIcon size="sm" radius="sm">
                     {settingIcons[idx]}
                   </ThemeIcon>
                   <div>
@@ -56,7 +56,7 @@ const settingsCard: ThemeBlock = {
           />
 
           <Group justify="flex-end" gap="xs">
-            <Button size="xs" variant="default">{data.cancel}</Button>
+            <Button size="xs">{data.cancel}</Button>
             <Button size="xs">{data.save}</Button>
           </Group>
         </Stack>

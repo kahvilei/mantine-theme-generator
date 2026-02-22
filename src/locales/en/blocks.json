@@ -186,6 +186,308 @@
       ]
     }
   },
+  "userProfileCard": {
+    "title": "User Profile Card",
+    "data": {
+      "name": "Alex Rivera",
+      "role": "Senior Engineer",
+      "bio": "Full-stack developer with 8 years building scalable web apps.",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "tabs": ["Overview", "Skills", "Stats"],
+      "completion": 78,
+      "completionLabel": "Profile complete",
+      "stats": [
+        { "label": "Projects", "value": "42" },
+        { "label": "Commits", "value": "1.2k" },
+        { "label": "Reviews", "value": "318" }
+      ],
+      "skills": [
+        { "label": "TypeScript", "value": 92 },
+        { "label": "React", "value": 88 },
+        { "label": "Node.js", "value": 75 },
+        { "label": "PostgreSQL", "value": 64 }
+      ],
+      "followButton": "Follow",
+      "messageButton": "Message"
+    }
+  },
+  "pricingCard": {
+    "title": "Pricing Card",
+    "data": {
+      "planName": "Pro",
+      "badge": "Most Popular",
+      "price": "$29",
+      "period": "per month",
+      "description": "Everything you need to build production apps.",
+      "features": [
+        "Unlimited projects",
+        "Priority support",
+        "Custom domains",
+        "Team collaboration",
+        "Advanced analytics",
+        "Export to PDF & CSV"
+      ],
+      "cta": "Get started",
+      "footerNote": "Cancel anytime. No hidden fees."
+    }
+  },
+  "onboardingStepper": {
+    "title": "Onboarding Stepper",
+    "data": {
+      "heading": "Create your account",
+      "stepCounter": "Step 2 of 4",
+      "activeStep": 1,
+      "steps": [
+        { "label": "Account", "description": "Basic details" },
+        { "label": "Profile", "description": "About you" },
+        { "label": "Plan", "description": "Choose a tier" },
+        { "label": "Done", "description": "All set!" }
+      ],
+      "stepContent": {
+        "heading": "Tell us about yourself",
+        "body": "Help us personalize your experience by filling out your profile details below."
+      },
+      "back": "Back",
+      "continue": "Continue"
+    }
+  },
+  "notificationPanel": {
+    "title": "Notification Panel",
+    "data": {
+      "heading": "Notifications",
+      "unreadCount": 3,
+      "markAllRead": "Mark all read",
+      "items": [
+        { "title": "New comment on your post", "body": "Jordan replied: 'Great write-up, really helpful!'", "time": "2 min ago", "unread": true, "color": "blue" },
+        { "title": "Pull request approved", "body": "feat/dark-mode was approved by Kim.", "time": "15 min ago", "unread": true, "color": "green" },
+        { "title": "Storage almost full", "body": "You've used 90% of your 5 GB quota.", "time": "1 hour ago", "unread": true, "color": "yellow" },
+        { "title": "Invoice paid", "body": "Invoice #1042 was successfully paid.", "time": "Yesterday", "unread": false, "color": "gray" },
+        { "title": "New team member", "body": "Sam Lee joined your workspace.", "time": "2 days ago", "unread": false, "color": "violet" }
+      ]
+    }
+  },
+  "signupForm": {
+    "title": "Sign Up Form",
+    "data": {
+      "heading": "Create account",
+      "nameLabel": "Full name",
+      "namePlaceholder": "Jane Smith",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jane@example.com",
+      "passwordLabel": "Password",
+      "roleLabel": "I am a...",
+      "roles": [
+        { "value": "developer", "label": "Developer" },
+        { "value": "designer", "label": "Designer" },
+        { "value": "manager", "label": "Product Manager" },
+        { "value": "other", "label": "Other" }
+      ],
+      "planLabel": "Choose a plan",
+      "plans": [
+        { "value": "free", "label": "Free — up to 3 projects" },
+        { "value": "pro", "label": "Pro — $29/mo" },
+        { "value": "team", "label": "Team — $99/mo" }
+      ],
+      "termsLabel": "I agree to the terms and conditions",
+      "submitButton": "Create account",
+      "dividerLabel": "or sign in",
+      "signInPrompt": "Already have an account? Sign in"
+    }
+  },
+  "loadingCard": {
+    "title": "Loading States",
+    "data": {
+      "heading": "Latest Activity",
+      "loadingText": "Fetching latest data..."
+    }
+  },
+  "appNavigation": {
+    "title": "App Navigation",
+    "data": {
+      "breadcrumbs": [
+        { "label": "Home" },
+        { "label": "Projects" },
+        { "label": "Alpha Dashboard" }
+      ],
+      "navLabel": "Main",
+      "items": [
+        { "label": "Dashboard", "active": true, "badge": null },
+        { "label": "Projects", "active": false, "badge": "12" },
+        { "label": "Team", "active": false, "badge": null },
+        { "label": "Analytics", "active": false, "badge": null },
+        { "label": "Settings", "active": false, "badge": null }
+      ]
+    }
+  },
+  "segmentedStats": {
+    "title": "Segmented Stats",
+    "data": {
+      "heading": "Overview",
+      "segments": [
+        { "value": "revenue", "label": "Revenue" },
+        { "value": "users", "label": "Users" },
+        { "value": "sessions", "label": "Sessions" }
+      ],
+      "metric": {
+        "value": "$24,890",
+        "change": "+12.5%",
+        "trend": "up",
+        "period": "vs last month",
+        "bars": [38, 52, 44, 70, 61, 85, 72]
+      }
+    }
+  },
+  "supportForm": {
+    "title": "Support Form",
+    "data": {
+      "heading": "Contact Support",
+      "contactLegend": "Your message",
+      "nameLabel": "Name",
+      "namePlaceholder": "Jane Smith",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Describe your issue in detail...",
+      "detailsLegend": "Details",
+      "topicLabel": "Topic",
+      "topics": [
+        { "value": "billing", "label": "Billing" },
+        { "value": "technical", "label": "Technical issue" },
+        { "value": "feature", "label": "Feature request" },
+        { "value": "other", "label": "Other" }
+      ],
+      "showMore": "Read full policy",
+      "showLess": "Collapse",
+      "policyText": "By submitting this form you agree to our support terms. We typically respond within 24 hours on business days. For urgent issues, please call our hotline. All support interactions are recorded for quality assurance purposes.",
+      "submitButton": "Send message"
+    }
+  },
+  "shortcutsGuide": {
+    "title": "Keyboard Shortcuts",
+    "data": {
+      "heading": "Keyboard Shortcuts",
+      "hoverHint": "Hover for details",
+      "sections": [
+        {
+          "label": "Navigation",
+          "shortcuts": [
+            { "action": "Go to dashboard", "description": "Navigate to the main dashboard view", "keys": ["G", "D"] },
+            { "action": "Open search", "description": "Focus the global command palette", "keys": ["⌘", "K"] },
+            { "action": "New document", "description": "Create a new document in current project", "keys": ["⌘", "N"] }
+          ]
+        },
+        {
+          "label": "Editor",
+          "shortcuts": [
+            { "action": "Save", "description": "Save the current document to the cloud", "keys": ["⌘", "S"] },
+            { "action": "Undo", "description": "Undo the last action", "keys": ["⌘", "Z"] },
+            { "action": "Bold", "description": "Toggle bold formatting on selected text", "keys": ["⌘", "B"] }
+          ]
+        }
+      ]
+    }
+  },
+  "mediaGrid": {
+    "title": "Media Library",
+    "data": {
+      "heading": "Media Library",
+      "totalItems": "48 items",
+      "totalPages": 6,
+      "currentPage": 1,
+      "items": [
+        { "id": 1, "src": "https://picsum.photos/seed/mg1/200/200" },
+        { "id": 2, "src": "https://picsum.photos/seed/mg2/200/200" },
+        { "id": 3, "src": "https://picsum.photos/seed/mg3/200/200" },
+        { "id": 4, "src": "https://picsum.photos/seed/mg4/200/200" },
+        { "id": 5, "src": "https://picsum.photos/seed/mg5/200/200" },
+        { "id": 6, "src": "https://picsum.photos/seed/mg6/200/200" },
+        { "id": 7, "src": "https://picsum.photos/seed/mg7/200/200" },
+        { "id": 8, "src": "https://picsum.photos/seed/mg8/200/200" }
+      ]
+    }
+  },
+  "otpVerification": {
+    "title": "OTP Verification",
+    "data": {
+      "heading": "Verify your identity",
+      "description": "Enter the 6-digit code sent to your email ending in ••••@example.com",
+      "verifyButton": "Verify",
+      "resendPrompt": "Didn't receive a code? Resend"
+    }
+  },
+  "tagManager": {
+    "title": "Tag Manager",
+    "data": {
+      "heading": "Article Tags",
+      "description": "Add tags to help categorize and discover this article.",
+      "tagsLabel": "Tags",
+      "placeholder": "Add a tag...",
+      "defaultTags": ["react", "typescript", "mantine"],
+      "notification": {
+        "title": "Tags updated",
+        "body": "Your tags have been saved successfully."
+      },
+      "saveButton": "Save tags"
+    }
+  },
+  "productReviews": {
+    "title": "Product Reviews",
+    "data": {
+      "heading": "Customer Reviews",
+      "average": 4.3,
+      "totalReviews": "128 reviews",
+      "outOf": "out of 5",
+      "breakdown": [
+        { "stars": 5, "percent": 62 },
+        { "stars": 4, "percent": 21 },
+        { "stars": 3, "percent": 10 },
+        { "stars": 2, "percent": 4 },
+        { "stars": 1, "percent": 3 }
+      ],
+      "reviews": [
+        { "name": "Maria G.", "avatar": "https://i.pravatar.cc/150?img=20", "rating": 5, "body": "Absolutely love it. Intuitive, fast, and the support team is incredibly responsive." },
+        { "name": "Tom K.", "avatar": "https://i.pravatar.cc/150?img=21", "rating": 4, "body": "Great product overall. A few rough edges but nothing that gets in the way of daily use." },
+        { "name": "Priya N.", "avatar": "https://i.pravatar.cc/150?img=22", "rating": 4, "body": "Solid. The onboarding could be smoother but once you're past that it's excellent." }
+      ]
+    }
+  },
+  "faqAccordion": {
+    "title": "FAQ Accordion",
+    "data": {
+      "heading": "Frequently Asked Questions",
+      "badge": "6 questions",
+      "items": [
+        {
+          "id": "billing",
+          "question": "How does billing work?",
+          "answer": "You're billed monthly on the date you signed up. You can upgrade, downgrade, or cancel at any time from your account settings."
+        },
+        {
+          "id": "refund",
+          "question": "Can I get a refund?",
+          "answer": "We offer a 14-day money-back guarantee on all plans. If you're not satisfied, contact support and we'll process a full refund."
+        },
+        {
+          "id": "team",
+          "question": "How do I add team members?",
+          "answer": "Head to Settings → Team and click Invite. Team members can be assigned roles: Owner, Admin, or Viewer."
+        },
+        {
+          "id": "data",
+          "question": "Is my data secure?",
+          "answer": "All data is encrypted at rest and in transit using AES-256. We are SOC 2 Type II certified and GDPR compliant."
+        },
+        {
+          "id": "export",
+          "question": "Can I export my data?",
+          "answer": "Yes. You can export all your data as CSV or JSON at any time from the Settings → Export page."
+        },
+        {
+          "id": "cancel",
+          "question": "What happens when I cancel?",
+          "answer": "Your account downgrades to the Free plan at the end of the current billing period. Your data is retained for 30 days."
+        }
+      ]
+    }
+  },
   "dataTable": {
     "title": "Data Table",
     "data": {

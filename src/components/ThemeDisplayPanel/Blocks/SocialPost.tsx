@@ -24,7 +24,7 @@ const socialPost:ThemeBlock =   {
                 <div>
                   <Group gap={4}>
                     <Title order={5}>{post.author}</Title>
-                    <ThemeIcon size="xs" radius="xl" color="blue" variant="filled">
+                    <ThemeIcon size="xs" radius="xl">
                       <IconCheck size={10} />
                     </ThemeIcon>
                   </Group>
@@ -33,7 +33,7 @@ const socialPost:ThemeBlock =   {
               </Group>
               <Menu>
                 <Menu.Target>
-                  <ActionIcon variant="subtle" color="gray">
+                  <ActionIcon>
                     <IconDots size={16} />
                   </ActionIcon>
                 </Menu.Target>
@@ -48,7 +48,7 @@ const socialPost:ThemeBlock =   {
             
             <Paper p="xs">
               <Group gap="xs">
-                <ThemeIcon size="md" color="violet" variant="light">
+                <ThemeIcon size="md">
                   <IconBolt size={16} />
                 </ThemeIcon>
                 <Text size="xs" c="dimmed">{post.highlight}</Text>
@@ -58,13 +58,13 @@ const socialPost:ThemeBlock =   {
             <Group justify="space-between">
               <Group gap={6}>
                 <ActionIcon.Group>
-                  <ActionIcon color="pink">
+                  <ActionIcon>
                     <IconHeart size={16} />
                   </ActionIcon>
-                  <ActionIcon color="blue">
+                  <ActionIcon>
                     <IconMessage size={16} />
                   </ActionIcon>
-                  <ActionIcon color="green">
+                  <ActionIcon>
                     <IconShare size={16} />
                   </ActionIcon>
                 </ActionIcon.Group>

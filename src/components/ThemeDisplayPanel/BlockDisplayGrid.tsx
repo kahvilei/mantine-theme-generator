@@ -4,7 +4,7 @@ import { Button, Group, MultiSelect, Stack } from '@mantine/core';
 import { themeBlocks, ThemeBlock } from './Blocks';
 import './BlockDisplayGrid.css';
 
-const BREAKPOINT_COLS = { default: 2, 640: 1 };
+const BREAKPOINT_COLS = { default: 3, 1100: 2, 640: 1 };
 
 interface BlockDisplayGridProps {
   blocks?: ThemeBlock[];
@@ -55,7 +55,6 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
 
   const renderGrid = () => {
     if (nativeMasonry) {
-      // CSS masonry: all blocks in one grid, wide blocks use grid-column: span 2
       return (
         <div className="masonry-grid-native">
           {filtered.map((b) => {
@@ -73,7 +72,6 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
       );
     }
 
-    // Fallback: all blocks flow into the masonry columns regardless of colSpan
     return (
       <Masonry
         breakpointCols={BREAKPOINT_COLS}
@@ -89,7 +87,7 @@ export const BlockDisplayGrid: React.FC<BlockDisplayGridProps> = ({
   };
 
   return (
-    <Stack gap="xl" w="100%" maw={860}>
+    <Stack gap="xl" w="100%" maw={1400}>
       <Group justify="space-between" align="flex-end" wrap="wrap" gap="xs">
         <Group gap="xs">
           {['All', ...allCategories].map((cat) => (
