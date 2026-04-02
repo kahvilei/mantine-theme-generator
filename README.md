@@ -1,6 +1,6 @@
 # Mantine Theme Generator: 'Remoraid'
 
-Visual editor for Mantine UI v7 themes with real-time preview. Still a work in progress :)
+Visual editor for Mantine UI v8 themes with real-time preview. Still a work in progress :)
 
 Give me a star in exchange for motivation.
 
